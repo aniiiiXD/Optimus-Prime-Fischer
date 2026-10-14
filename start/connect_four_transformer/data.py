@@ -36,7 +36,13 @@ def canonical_position(row: dict[str, Any]) -> tuple[tuple[int, ...], int]:
 
 
 def tactical_target(row: dict[str, Any]) -> list[int]:
-    """Return forced winning moves or a unique immediate block, if present."""
+    """Return immediate wins or moves that really prevent an immediate loss.
+
+    A column with an opposing winning drop is not automatically a valid block:
+    filling it can support a different winning drop on the opponent's next turn.
+    Only actions that remove *all* of the opponent's one-ply wins are returned.
+    If none can, the position is not assigned an impossible hard target.
+    """
     board = list(row["board"])
     player = int(row["current_player"])
     legal = list(row["legal_actions"])
@@ -55,7 +61,25 @@ def tactical_target(row: dict[str, Any]) -> list[int]:
     if own:
         return own
     opponent = wins(-player)
-    return opponent if len(opponent) == 1 else []
+    if not opponent:
+        return []
+
+    safe_actions = []
+    for action, landing_row in zip(legal, landing):
+        next_board = board.copy()
+        next_board[landing_row * 7 + action] = player
+        opponent_wins = []
+        for reply, current_landing in zip(legal, landing):
+            reply_landing = landing_row - 1 if reply == action else current_landing
+            if reply_landing < 0:
+                continue
+            branch = next_board.copy()
+            branch[reply_landing * 7 + reply] = -player
+            if find_winner(branch) == -player:
+                opponent_wins.append(reply)
+        if not opponent_wins:
+            safe_actions.append(action)
+    return safe_actions
 
 
 class SearchDataset(Dataset[dict[str, torch.Tensor]]):

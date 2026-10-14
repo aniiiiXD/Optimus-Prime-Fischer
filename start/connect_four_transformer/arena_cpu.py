@@ -123,24 +123,47 @@ def immediate_wins(game: ConnectFour, player: int) -> list[int]:
     return result
 
 
+TACTICAL_CATEGORIES = ("win_now", "forced_block", "blockable_threats")
+THREAT_CATEGORIES = ("forced_block", "blockable_threats", "unavoidable_loss")
+
+
 def category_and_critical(game: ConnectFour) -> tuple[str, list[int]]:
+    """Classify immediate tactics and return the *good actions* for the side to move.
+
+    A threatened column is not necessarily a usable block: playing there can
+    uncover a second immediate win for the opponent. We therefore test every
+    legal response and only count a forced block when at least one move really
+    removes all immediate winning replies.
+    """
     own = immediate_wins(game, game.current_player)
     if own:
         return "win_now", own
     opponent = immediate_wins(game, -game.current_player)
-    if len(opponent) == 1:
-        return "forced_block", opponent
-    if len(opponent) > 1:
-        return "multiple_threats", opponent
+    if opponent:
+        safe_actions = []
+        actor = game.current_player
+        for action in game.legal_actions():
+            branch = game.copy()
+            result = branch.step(action)
+            if result.winner == actor or result.is_terminal:
+                safe_actions.append(action)
+            elif not immediate_wins(branch, branch.current_player):
+                safe_actions.append(action)
+        if not safe_actions:
+            return "unavoidable_loss", []
+        if len(safe_actions) == 1:
+            return "forced_block", safe_actions
+        return "blockable_threats", safe_actions
     return "ordinary", []
 
 
-def threat_orientation(game: ConnectFour, kind: str, critical: list[int]) -> str | None:
-    if kind not in ("win_now", "forced_block"):
+def threat_orientation(game: ConnectFour, kind: str) -> str | None:
+    if kind not in (*TACTICAL_CATEGORIES, "unavoidable_loss"):
         return None
     actor = game.current_player if kind == "win_now" else -game.current_player
+    threats = immediate_wins(game, actor)
     directions = set()
-    for action in critical:
+    for action in threats:
         branch = game.copy()
         branch.current_player = actor
         line = branch.step(action).winning_line
@@ -158,7 +181,7 @@ def percentile(samples: list[float], fraction: float) -> float:
 
 
 def summarize(records: list[dict[str, Any]]) -> dict[str, Any]:
-    tactical = [row for row in records if row["category"] in ("win_now", "forced_block")]
+    tactical = [row for row in records if row["category"] in TACTICAL_CATEGORIES]
     return {
         "positions": len(records),
         "teacher_best_move_rate": sum(row["teacher_best_move"] for row in records) / len(records),
@@ -171,6 +194,9 @@ def summarize(records: list[dict[str, Any]]) -> dict[str, Any]:
             if tactical else None
         ),
         "critical_positions": len(tactical),
+        "unavoidable_loss_positions": sum(
+            row["category"] == "unavoidable_loss" for row in records
+        ),
     }
 
 
@@ -218,8 +244,10 @@ def main() -> None:
             "dataset_index": index,
             "category": kind,
             "player": "X" if game.current_player == 1 else "O",
-            "orientation": threat_orientation(game, kind, critical),
-            "critical_columns": critical,
+            "orientation": threat_orientation(game, kind),
+            "critical_actions": critical,
+            "opponent_threat_columns": immediate_wins(game, -game.current_player)
+            if kind in THREAT_CATEGORIES else [],
             "chosen_column": action,
             "guarded_column": guarded_action,
             "teacher_best_move": abs(chosen_value - best_value) < 1e-6,
@@ -227,7 +255,7 @@ def main() -> None:
             "critical_move": action in critical if critical else None,
             "guarded_critical_move": guarded_action in critical if critical else None,
             "top3": decision["choices"][:3],
-            "prompt": prompt if kind in ("win_now", "forced_block") and action not in critical else None,
+            "prompt": prompt if kind in TACTICAL_CATEGORIES and action not in critical else None,
         })
 
     teacher = AlphaBetaTeacher()
@@ -244,15 +272,17 @@ def main() -> None:
             "name": name,
             "moves_zero_based": list(moves),
             "category": kind,
-            "orientation": threat_orientation(game, kind, critical),
-            "critical_columns": critical,
+            "orientation": threat_orientation(game, kind),
+            "critical_actions": critical,
+            "opponent_threat_columns": immediate_wins(game, -game.current_player)
+            if kind in THREAT_CATEGORIES else [],
             "model_column": choice,
             "guarded_column": guarded_choice,
             "model_top3": decision["choices"][:3],
             "teacher_best_column": label.best_action,
             "teacher_values": label.action_values,
-            "passed": choice in critical,
-            "guarded_passed": guarded_choice in critical,
+            "passed": choice in critical if critical else None,
+            "guarded_passed": guarded_choice in critical if critical else None,
             "guard_reason": decision["decision_reason"],
             "text_observation": prompt,
         })

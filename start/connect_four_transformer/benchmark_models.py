@@ -21,8 +21,11 @@ from connect_four_engine import PLAYER_ONE
 from .agent import TransformerAgent
 from .arena_cpu import (
     DEFAULT_DATASET,
+    TACTICAL_CATEGORIES,
+    THREAT_CATEGORIES,
     category_and_critical,
     from_dataset_row,
+    immediate_wins,
     percentile,
 )
 from .data import grouped_split, load_rows
@@ -49,7 +52,7 @@ def percentile_or_none(values: list[float], fraction: float) -> float | None:
 def summarize_positions(records: list[dict[str, Any]]) -> dict[str, Any]:
     # A position with multiple simultaneous opponent wins is categorized for
     # analysis, but it is not a single-move forced-block test.
-    tactical = [record for record in records if record["category"] in ("win_now", "forced_block")]
+    tactical = [record for record in records if record["category"] in TACTICAL_CATEGORIES]
     return {
         "positions": len(records),
         "teacher_best_move_rate": statistics.mean(
@@ -59,6 +62,9 @@ def summarize_positions(records: list[dict[str, Any]]) -> dict[str, Any]:
             record["teacher_regret"] for record in records
         ),
         "critical_positions": len(tactical),
+        "unavoidable_loss_positions": sum(
+            record["category"] == "unavoidable_loss" for record in records
+        ),
         "raw_critical_move_rate": (
             statistics.mean(record["raw_critical_move"] for record in tactical)
             if tactical else None
@@ -126,7 +132,9 @@ def score_heldout(agent: TransformerAgent, rows: list[dict[str, Any]], indices: 
             "dataset_index": index,
             "category": category,
             "player": game.current_player,
-            "critical_columns": critical,
+            "critical_actions": critical,
+            "opponent_threat_columns": immediate_wins(game, -game.current_player)
+            if category in THREAT_CATEGORIES else [],
             "raw_action": raw_action,
             "guarded_action": guarded_action,
             "teacher_best_move": abs(raw_value - best_value) <= 1e-6,
@@ -170,6 +178,14 @@ def main() -> None:
     )
     parser.add_argument("--checkpoint-dir", type=Path, default=DEFAULT_CHECKPOINT_DIR)
     parser.add_argument("--dataset", type=Path, default=DEFAULT_DATASET)
+    parser.add_argument(
+        "--exclude-training-data", type=Path, action="append", default=[],
+        help="exclude any benchmark row sharing an opening_group with these datasets; repeat as needed",
+    )
+    parser.add_argument(
+        "--all-positions", action="store_true",
+        help="score every remaining row (use with an independent external evaluation dataset)",
+    )
     parser.add_argument("--report", type=Path, default=DEFAULT_REPORT)
     parser.add_argument("--threads", type=int, default=1)
     parser.add_argument("--split-seed", type=int, default=2026)
@@ -183,7 +199,24 @@ def main() -> None:
     torch.set_num_threads(args.threads)
     checkpoints = resolve_checkpoints(args.checkpoint, args.checkpoint_dir)
     rows = load_rows(args.dataset)
-    test_indices = grouped_split(rows, seed=args.split_seed)["test"]
+    excluded_groups: set[str] = set()
+    for training_path in args.exclude_training_data:
+        excluded_groups.update(
+            str(row.get("opening_group", "")) for row in load_rows(training_path)
+        )
+    original_position_count = len(rows)
+    if excluded_groups:
+        rows = [
+            row for row in rows
+            if str(row.get("opening_group", "")) not in excluded_groups
+        ]
+    if not rows:
+        raise ValueError("no benchmark positions remain after excluding training opening groups")
+    test_indices = (
+        list(range(len(rows)))
+        if args.all_positions
+        else grouped_split(rows, seed=args.split_seed)["test"]
+    )
     openings = make_openings(args.games_per_side, args.opening_seed)
     model_records: list[dict[str, Any]] = []
     weight_hashes: dict[str, list[str]] = defaultdict(list)
@@ -253,7 +286,10 @@ def main() -> None:
     report = {
         "protocol": {
             "dataset": str(args.dataset),
-            "heldout_split": "grouped test partition",
+            "heldout_split": "all remaining rows" if args.all_positions else "grouped test partition",
+            "positions_before_opening_exclusion": original_position_count,
+            "positions_excluded_by_training_opening_groups": original_position_count - len(rows),
+            "training_data_excluded_by_opening_group": [str(path) for path in args.exclude_training_data],
             "split_seed": args.split_seed,
             "tournament_openings_seed": args.opening_seed,
             "games_per_side": None if args.skip_tournament else args.games_per_side,

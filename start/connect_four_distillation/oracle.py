@@ -51,6 +51,10 @@ class PonsOracle:
     def __enter__(self) -> "PonsOracle":
         if not self.executable.is_file():
             raise FileNotFoundError(f"solver not built: {self.executable}; run make c4solver")
+        self._start()
+        return self
+
+    def _start(self) -> None:
         command = [str(self.executable.resolve()), "-a"]
         if self.weak:
             command.append("-w")
@@ -67,15 +71,19 @@ class PonsOracle:
             bufsize=1,
             cwd=self.executable.parent,
         )
-        return self
 
-    def __exit__(self, *_exc: object) -> None:
-        if self.process is None:
-            return
+    def _stop(self, *, kill: bool = False) -> None:
         process = self.process
         self.process = None
-        if process.stdin is not None:
-            process.stdin.close()
+        if process is None:
+            return
+        if kill and process.poll() is None:
+            process.kill()
+        if process.stdin is not None and not process.stdin.closed:
+            try:
+                process.stdin.close()
+            except BrokenPipeError:
+                pass
         try:
             process.wait(timeout=1)
         except subprocess.TimeoutExpired:
@@ -84,18 +92,26 @@ class PonsOracle:
         if process.stdout is not None:
             process.stdout.close()
 
+    def __exit__(self, *_exc: object) -> None:
+        self._stop()
+
     def analyze(self, moves: str) -> dict[str, Any]:
         """Return exact move scores, or weak W/D/L scores if ``weak=True``."""
         game = validate_history(moves)
         process = self.process
+        if process is not None and process.poll() is not None:
+            self._stop()
+            process = None
+        if process is None:
+            self._start()
+            process = self.process
         if process is None or process.stdin is None or process.stdout is None:
             raise RuntimeError("use PonsOracle inside a with block")
         process.stdin.write(moves + "\n")
         process.stdin.flush()
         ready, _, _ = select.select([process.stdout], [], [], self.timeout_seconds)
         if not ready:
-            process.kill()
-            process.wait()
+            self._stop(kill=True)
             raise TimeoutError(
                 f"solver exceeded {self.timeout_seconds:g}s at ply {game.move_count}; "
                 "try later positions or an opening book"

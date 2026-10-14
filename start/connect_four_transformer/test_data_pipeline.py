@@ -8,13 +8,23 @@ from pathlib import Path
 
 from connect_four_engine import ConnectFour, mirror_board
 
-from .data import canonical_position
+from .data import canonical_position, tactical_target
 from .generate_curriculum import canonicalize_candidate
 from .generate_dataset import Candidate
 from .teacher_cache import TeacherLabelCache
 
 
 class DataPipelineTests(unittest.TestCase):
+    @staticmethod
+    def tactical_row(game: ConnectFour) -> dict[str, object]:
+        legal = list(game.legal_actions())
+        return {
+            "board": game.board.copy(),
+            "current_player": game.current_player,
+            "legal_actions": legal,
+            "landing_rows": [5 - game.column_heights[action] for action in legal],
+        }
+
     def test_position_identity_merges_mirrors_but_keeps_side_to_move(self) -> None:
         board = [0] * 42
         board[35 + 1] = 1
@@ -75,6 +85,17 @@ class DataPipelineTests(unittest.TestCase):
                 self.assertIsNone(
                     cache.get(board, -1, depth=5, node_limit=5000, temperature=0.18)
                 )
+
+    def test_tactical_target_labels_only_a_real_forced_block(self) -> None:
+        game = ConnectFour.from_moves([0, 6, 1, 6, 2])
+        self.assertEqual(tactical_target(self.tactical_row(game)), [3])
+
+    def test_tactical_target_skips_an_unavoidable_immediate_loss(self) -> None:
+        # Blocking column 4 raises the column and gives X a different winning
+        # drop; no move actually stops the loss on the following turn.
+        history = "2534314677333213262772415"
+        game = ConnectFour.from_moves([int(column) - 1 for column in history])
+        self.assertEqual(tactical_target(self.tactical_row(game)), [])
 
 
 if __name__ == "__main__":

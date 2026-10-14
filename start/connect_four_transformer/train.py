@@ -219,7 +219,13 @@ def main() -> None:
     random.seed(args.seed)
     rows = load_rows(args.dataset)
     split = grouped_split(rows, seed=args.seed)
+    heldout_opening_groups = {
+        str(rows[index].get("opening_group", ""))
+        for name in ("validation", "test")
+        for index in split[name]
+    }
     duplicate_extras = 0
+    excluded_group_extras = 0
     known_positions = {canonical_position(row) for row in rows}
     for extra_path in args.extra_train or []:
         extra = load_rows(extra_path)
@@ -227,6 +233,9 @@ def main() -> None:
             identity = canonical_position(row)
             if identity in known_positions:
                 duplicate_extras += 1
+                continue
+            if str(row.get("opening_group", "")) in heldout_opening_groups:
+                excluded_group_extras += 1
                 continue
             known_positions.add(identity)
             split["train"].append(len(rows))
@@ -268,7 +277,8 @@ def main() -> None:
     print(
         f"CPU | {len(split['train'])} train / {len(split['validation'])} validation / "
         f"{len(split['test'])} test | {len(known_positions):,} unique positions "
-        f"({duplicate_extras:,} duplicate extras skipped) | {parameter_count(model):,} parameters"
+        f"({duplicate_extras:,} duplicate and {excluded_group_extras:,} held-out-opening extras skipped) "
+        f"| {parameter_count(model):,} parameters"
     )
     if args.time_budget_seconds is not None:
         print(f"fit-loop time budget: {args.time_budget_seconds:.0f} s; checking after each epoch", flush=True)
@@ -385,7 +395,14 @@ def main() -> None:
         "model": "ConnectFourTransformer candidate policy/Q/value v0",
         "config": DEFAULT_CONFIG.to_dict(),
         "parameters": parameter_count(model),
-        "dataset": {"path": str(args.dataset), "extra_train": [str(path) for path in args.extra_train] if args.extra_train else [], "rows": len(rows), "split": {key: len(value) for key, value in split.items()}},
+        "dataset": {
+            "path": str(args.dataset),
+            "extra_train": [str(path) for path in args.extra_train] if args.extra_train else [],
+            "rows": len(rows),
+            "split": {key: len(value) for key, value in split.items()},
+            "duplicate_extras_skipped": duplicate_extras,
+            "heldout_opening_group_extras_skipped": excluded_group_extras,
+        },
         "training": {
             "epochs": completed_epochs,
             "epoch_limit": epoch_limit,
