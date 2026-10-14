@@ -1,0 +1,264 @@
+{
+  "seed": 13,
+  "random_games_per_side": 1000,
+  "models": {
+    "classic_policy": {
+      "as_x_vs_random": {
+        "x_agent": "transformer",
+        "o_agent": "random",
+        "games": 1000,
+        "x_wins": 990,
+        "o_wins": 0,
+        "draws": 10,
+        "mean_game_length": 5.722,
+        "x_move_latency": {
+          "mean_ms": 0.22535252505110143,
+          "p50_ms": 0.22483399516204372,
+          "p95_ms": 0.2394580005784519,
+          "max_ms": 1.0897079991991632
+        },
+        "o_move_latency": {
+          "mean_ms": 0.000931787483961381,
+          "p50_ms": 0.0009170034900307655,
+          "p95_ms": 0.0011250012903474271,
+          "max_ms": 0.007791000825818628
+        }
+      },
+      "as_o_vs_random": {
+        "x_agent": "random",
+        "o_agent": "transformer",
+        "games": 1000,
+        "x_wins": 24,
+        "o_wins": 824,
+        "draws": 152,
+        "mean_game_length": 6.788,
+        "x_move_latency": {
+          "mean_ms": 0.0008684531207315973,
+          "p50_ms": 0.0008749993867240846,
+          "p95_ms": 0.0010410003596916795,
+          "max_ms": 0.003917004505638033
+        },
+        "o_move_latency": {
+          "mean_ms": 0.2234959217401898,
+          "p50_ms": 0.22383299801731482,
+          "p95_ms": 0.23648949718335643,
+          "max_ms": 0.284791000012774
+        }
+      },
+      "as_x_vs_minimax": {
+        "x_agent": "transformer",
+        "o_agent": "minimax",
+        "games": 1,
+        "x_wins": 0,
+        "o_wins": 0,
+        "draws": 1,
+        "mean_game_length": 9.0,
+        "x_move_latency": {
+          "mean_ms": 0.22652479965472594,
+          "p50_ms": 0.2268329990329221,
+          "p95_ms": 0.23374120064545423,
+          "max_ms": 0.23429100110661238
+        },
+        "o_move_latency": {
+          "mean_ms": 9.024656499605044,
+          "p50_ms": 0.3850210014206823,
+          "p95_ms": 30.133687549096056,
+          "max_ms": 35.32324999832781
+        }
+      },
+      "as_o_vs_minimax": {
+        "x_agent": "minimax",
+        "o_agent": "transformer",
+        "games": 1,
+        "x_wins": 0,
+        "o_wins": 0,
+        "draws": 1,
+        "mean_game_length": 9.0,
+        "x_move_latency": {
+          "mean_ms": 70.7979916012846,
+          "p50_ms": 0.1357080036541447,
+          "p95_ms": 280.26687499805115,
+          "max_ms": 349.1656249971129
+        },
+        "o_move_latency": {
+          "mean_ms": 0.28937524984939955,
+          "p50_ms": 0.2536669999244623,
+          "p95_ms": 0.38001259854354424,
+          "max_ms": 0.40212499879999086
+        }
+      }
+    },
+    "candidate_policy": {
+      "as_x_vs_random": {
+        "x_agent": "candidate_policy",
+        "o_agent": "random",
+        "games": 1000,
+        "x_wins": 996,
+        "o_wins": 0,
+        "draws": 4,
+        "mean_game_length": 5.662,
+        "x_move_latency": {
+          "mean_ms": 0.3259894467270406,
+          "p50_ms": 0.32604199805064127,
+          "p95_ms": 0.3457295024418272,
+          "max_ms": 0.5113750012242235
+        },
+        "o_move_latency": {
+          "mean_ms": 0.0008408520940562581,
+          "p50_ms": 0.0007920025382190943,
+          "p95_ms": 0.0010000003385357559,
+          "max_ms": 0.009000003046821803
+        }
+      },
+      "as_o_vs_random": {
+        "x_agent": "random",
+        "o_agent": "candidate_policy",
+        "games": 1000,
+        "x_wins": 29,
+        "o_wins": 802,
+        "draws": 169,
+        "mean_game_length": 6.888,
+        "x_move_latency": {
+          "mean_ms": 0.0008283538693482503,
+          "p50_ms": 0.0007920025382190943,
+          "p95_ms": 0.0010410003596916795,
+          "max_ms": 0.008041999535635114
+        },
+        "o_move_latency": {
+          "mean_ms": 0.32112184930107274,
+          "p50_ms": 0.3209159985999577,
+          "p95_ms": 0.3392828002688475,
+          "max_ms": 0.8887499934644438
+        }
+      },
+      "as_x_vs_minimax": {
+        "x_agent": "candidate_policy",
+        "o_agent": "minimax",
+        "games": 1,
+        "x_wins": 0,
+        "o_wins": 0,
+        "draws": 1,
+        "mean_game_length": 9.0,
+        "x_move_latency": {
+          "mean_ms": 0.33681640052236617,
+          "p50_ms": 0.3345000004628673,
+          "p95_ms": 0.37854960246477276,
+          "max_ms": 0.3820830024778843
+        },
+        "o_move_latency": {
+          "mean_ms": 9.549791748213465,
+          "p50_ms": 0.3135209990432486,
+          "p95_ms": 32.0197688488406,
+          "max_ms": 37.565874998108484
+        }
+      },
+      "as_o_vs_minimax": {
+        "x_agent": "minimax",
+        "o_agent": "candidate_policy",
+        "games": 1,
+        "x_wins": 1,
+        "o_wins": 0,
+        "draws": 0,
+        "mean_game_length": 7.0,
+        "x_move_latency": {
+          "mean_ms": 88.29073950073507,
+          "p50_ms": 2.511874998162966,
+          "p95_ms": 296.6462348536878,
+          "max_ms": 348.12991600483656
+        },
+        "o_move_latency": {
+          "mean_ms": 0.40568033000454307,
+          "p50_ms": 0.3429159987717867,
+          "p95_ms": 0.5191287949855905,
+          "max_ms": 0.538707994564902
+        }
+      }
+    },
+    "shared_multitask": {
+      "as_x_vs_random": {
+        "x_agent": "shared_multitask",
+        "o_agent": "random",
+        "games": 1000,
+        "x_wins": 980,
+        "o_wins": 0,
+        "draws": 20,
+        "mean_game_length": 5.592,
+        "x_move_latency": {
+          "mean_ms": 0.320559022448277,
+          "p50_ms": 0.3211250004824251,
+          "p95_ms": 0.34055150172207505,
+          "max_ms": 0.3750409960048273
+        },
+        "o_move_latency": {
+          "mean_ms": 0.0008073963825167027,
+          "p50_ms": 0.0007910057320259511,
+          "p95_ms": 0.0009590003173798323,
+          "max_ms": 0.0076669966802001
+        }
+      },
+      "as_o_vs_random": {
+        "x_agent": "random",
+        "o_agent": "shared_multitask",
+        "games": 1000,
+        "x_wins": 8,
+        "o_wins": 820,
+        "draws": 172,
+        "mean_game_length": 6.844,
+        "x_move_latency": {
+          "mean_ms": 0.0008244968406195224,
+          "p50_ms": 0.0007920025382190943,
+          "p95_ms": 0.0010419971658848226,
+          "max_ms": 0.00875000114319846
+        },
+        "o_move_latency": {
+          "mean_ms": 0.32140928323285683,
+          "p50_ms": 0.3213125019101426,
+          "p95_ms": 0.34234779996040743,
+          "max_ms": 0.5924999932176434
+        }
+      },
+      "as_x_vs_minimax": {
+        "x_agent": "shared_multitask",
+        "o_agent": "minimax",
+        "games": 1,
+        "x_wins": 0,
+        "o_wins": 0,
+        "draws": 1,
+        "mean_game_length": 9.0,
+        "x_move_latency": {
+          "mean_ms": 0.3265749997808598,
+          "p50_ms": 0.32291700335917994,
+          "p95_ms": 0.3534250005031936,
+          "max_ms": 0.35362500057090074
+        },
+        "o_move_latency": {
+          "mean_ms": 9.599551749488455,
+          "p50_ms": 0.3315624999231659,
+          "p95_ms": 32.16200989736534,
+          "max_ms": 37.72916599700693
+        }
+      },
+      "as_o_vs_minimax": {
+        "x_agent": "minimax",
+        "o_agent": "shared_multitask",
+        "games": 1,
+        "x_wins": 0,
+        "o_wins": 0,
+        "draws": 1,
+        "mean_game_length": 9.0,
+        "x_move_latency": {
+          "mean_ms": 69.68564999842783,
+          "p50_ms": 0.13845799549017102,
+          "p95_ms": 275.8939667997765,
+          "max_ms": 343.7318750002305
+        },
+        "o_move_latency": {
+          "mean_ms": 0.3625310000643367,
+          "p50_ms": 0.3448330026003532,
+          "p95_ms": 0.43893115034734365,
+          "max_ms": 0.45287499960977584
+        }
+      }
+    }
+  }
+}

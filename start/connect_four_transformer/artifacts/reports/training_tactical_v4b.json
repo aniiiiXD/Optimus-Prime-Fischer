@@ -1,0 +1,279 @@
+{
+  "model": "ConnectFourTransformer candidate policy/Q/value v0",
+  "config": {
+    "d_model": 64,
+    "n_heads": 4,
+    "n_blocks": 2,
+    "mlp_hidden": 128,
+    "dropout": 0.1,
+    "board_tokens": 42,
+    "action_count": 7
+  },
+  "parameters": 114819,
+  "dataset": {
+    "path": "connect_four_transformer/artifacts/data/positions_v0_2000.jsonl",
+    "extra_train": [
+      "connect_four_transformer/artifacts/data/tactics_v1.jsonl",
+      "connect_four_transformer/artifacts/data/curriculum_v4.jsonl"
+    ],
+    "rows": 4200,
+    "split": {
+      "train": 3600,
+      "validation": 300,
+      "test": 300
+    }
+  },
+  "training": {
+    "epochs": 100,
+    "best_epoch": 91,
+    "batch_size": 64,
+    "learning_rate": 0.0001,
+    "q_weight": 0.5,
+    "value_weight": 0.25,
+    "hard_tactical_targets": true,
+    "tactical_weight": 3.0,
+    "selection_metric": "balanced",
+    "best_validation_balanced_score": 0.7051000042539655,
+    "init_checkpoint": "connect_four_transformer/artifacts/checkpoints/candidate_tactical_v3.pt",
+    "wall_seconds": 102.22520808399713,
+    "cpu_seconds": 152.01685799999998,
+    "peak_rss_mib": 376.328125,
+    "curve": [
+      {
+        "epoch": 1,
+        "train_loss": 1.5350036239624023,
+        "validation": {
+          "positions": 300,
+          "loss": 1.9077066198984782,
+          "policy_loss": 1.7720668808619182,
+          "q_loss": 0.17448537707328796,
+          "value_loss": 0.19358818431695302,
+          "best_move_accuracy": 0.4533333333333333,
+          "top2_best_move_recall": 0.6533333333333333,
+          "critical_move_accuracy": 0.6931818181818182,
+          "critical_positions": 88,
+          "mean_teacher_regret": 0.2756707159678141,
+          "q_mae": 0.4620982711665188,
+          "value_mae": 0.5248313268025716
+        }
+      },
+      {
+        "epoch": 10,
+        "train_loss": 1.4828174691730076,
+        "validation": {
+          "positions": 300,
+          "loss": 1.9018012984593708,
+          "policy_loss": 1.7715092277526856,
+          "q_loss": 0.16827318112055462,
+          "value_loss": 0.18462197999159494,
+          "best_move_accuracy": 0.45666666666666667,
+          "top2_best_move_recall": 0.6333333333333333,
+          "critical_move_accuracy": 0.6590909090909091,
+          "critical_positions": 88,
+          "mean_teacher_regret": 0.28102617581685385,
+          "q_mae": 0.43761218802750607,
+          "value_mae": 0.5051214917500814
+        }
+      },
+      {
+        "epoch": 20,
+        "train_loss": 1.4408369498782687,
+        "validation": {
+          "positions": 300,
+          "loss": 1.9214957809448243,
+          "policy_loss": 1.7893782552083333,
+          "q_loss": 0.16980711261431375,
+          "value_loss": 0.1888559357325236,
+          "best_move_accuracy": 0.49,
+          "top2_best_move_recall": 0.66,
+          "critical_move_accuracy": 0.7045454545454546,
+          "critical_positions": 88,
+          "mean_teacher_regret": 0.2540440559387207,
+          "q_mae": 0.4455393825541573,
+          "value_mae": 0.507556635538737
+        }
+      },
+      {
+        "epoch": 30,
+        "train_loss": 1.4036151027679444,
+        "validation": {
+          "positions": 300,
+          "loss": 1.9306790494918824,
+          "policy_loss": 1.7982716099421183,
+          "q_loss": 0.17072264810403187,
+          "value_loss": 0.18818445126215616,
+          "best_move_accuracy": 0.48,
+          "top2_best_move_recall": 0.66,
+          "critical_move_accuracy": 0.7045454545454546,
+          "critical_positions": 88,
+          "mean_teacher_regret": 0.2764805825551351,
+          "q_mae": 0.4456861205378398,
+          "value_mae": 0.5038358052571614
+        }
+      },
+      {
+        "epoch": 40,
+        "train_loss": 1.3704995536804199,
+        "validation": {
+          "positions": 300,
+          "loss": 1.9743379020690919,
+          "policy_loss": 1.8483820025126139,
+          "q_loss": 0.16313542147477467,
+          "value_loss": 0.17755289614200592,
+          "best_move_accuracy": 0.47333333333333333,
+          "top2_best_move_recall": 0.6666666666666666,
+          "critical_move_accuracy": 0.7159090909090909,
+          "critical_positions": 88,
+          "mean_teacher_regret": 0.2873120498657227,
+          "q_mae": 0.4251622926495412,
+          "value_mae": 0.4833859380086263
+        }
+      },
+      {
+        "epoch": 50,
+        "train_loss": 1.3445099311404758,
+        "validation": {
+          "positions": 300,
+          "loss": 1.9646399863560995,
+          "policy_loss": 1.8341801993052165,
+          "q_loss": 0.16905767142772674,
+          "value_loss": 0.18372389554977417,
+          "best_move_accuracy": 0.4766666666666667,
+          "top2_best_move_recall": 0.68,
+          "critical_move_accuracy": 0.7159090909090909,
+          "critical_positions": 88,
+          "mean_teacher_regret": 0.2782020314534505,
+          "q_mae": 0.4361665255475242,
+          "value_mae": 0.49142414728800454
+        }
+      },
+      {
+        "epoch": 60,
+        "train_loss": 1.3200993431939019,
+        "validation": {
+          "positions": 300,
+          "loss": 1.9721573193868,
+          "policy_loss": 1.8427551809946696,
+          "q_loss": 0.1684351682662964,
+          "value_loss": 0.18073804914951325,
+          "best_move_accuracy": 0.4666666666666667,
+          "top2_best_move_recall": 0.6766666666666666,
+          "critical_move_accuracy": 0.7159090909090909,
+          "critical_positions": 88,
+          "mean_teacher_regret": 0.29689039548238116,
+          "q_mae": 0.43489430604548995,
+          "value_mae": 0.48575294494628907
+        }
+      },
+      {
+        "epoch": 70,
+        "train_loss": 1.2998097689946493,
+        "validation": {
+          "positions": 300,
+          "loss": 1.966942434310913,
+          "policy_loss": 1.83428049882253,
+          "q_loss": 0.17317645013332367,
+          "value_loss": 0.1842948273817698,
+          "best_move_accuracy": 0.49666666666666665,
+          "top2_best_move_recall": 0.7033333333333334,
+          "critical_move_accuracy": 0.7272727272727273,
+          "critical_positions": 88,
+          "mean_teacher_regret": 0.2707268206278483,
+          "q_mae": 0.44980320811601887,
+          "value_mae": 0.492399107615153
+        }
+      },
+      {
+        "epoch": 80,
+        "train_loss": 1.2655045111974081,
+        "validation": {
+          "positions": 300,
+          "loss": 2.000284881591797,
+          "policy_loss": 1.870870410601298,
+          "q_loss": 0.16695988138516743,
+          "value_loss": 0.1837381023168564,
+          "best_move_accuracy": 0.5,
+          "top2_best_move_recall": 0.7266666666666667,
+          "critical_move_accuracy": 0.7386363636363636,
+          "critical_positions": 88,
+          "mean_teacher_regret": 0.2640436871846517,
+          "q_mae": 0.4308115613097299,
+          "value_mae": 0.4964326095581055
+        }
+      },
+      {
+        "epoch": 90,
+        "train_loss": 1.2626060692469279,
+        "validation": {
+          "positions": 300,
+          "loss": 1.9726704438527425,
+          "policy_loss": 1.842945055961609,
+          "q_loss": 0.16520339429378508,
+          "value_loss": 0.18849473893642427,
+          "best_move_accuracy": 0.5366666666666666,
+          "top2_best_move_recall": 0.7266666666666667,
+          "critical_move_accuracy": 0.75,
+          "critical_positions": 88,
+          "mean_teacher_regret": 0.238108336130778,
+          "q_mae": 0.4292972765470806,
+          "value_mae": 0.5035314178466797
+        }
+      },
+      {
+        "epoch": 100,
+        "train_loss": 1.2228435071309407,
+        "validation": {
+          "positions": 300,
+          "loss": 2.0230685806274415,
+          "policy_loss": 1.8944582684834799,
+          "q_loss": 0.16508011321226757,
+          "value_loss": 0.18428097744782765,
+          "best_move_accuracy": 0.52,
+          "top2_best_move_recall": 0.7133333333333334,
+          "critical_move_accuracy": 0.7045454545454546,
+          "critical_positions": 88,
+          "mean_teacher_regret": 0.26305766264597574,
+          "q_mae": 0.43319296374545535,
+          "value_mae": 0.491140079498291
+        }
+      }
+    ]
+  },
+  "test": {
+    "positions": 300,
+    "loss": 1.992566089630127,
+    "policy_loss": 1.8625132020314534,
+    "q_loss": 0.15849287629127504,
+    "value_loss": 0.20322567621866863,
+    "best_move_accuracy": 0.49333333333333335,
+    "top2_best_move_recall": 0.6833333333333333,
+    "critical_move_accuracy": 0.6483516483516484,
+    "critical_positions": 91,
+    "mean_teacher_regret": 0.2781561517715454,
+    "q_mae": 0.43781146383766095,
+    "value_mae": 0.5228951517740885
+  },
+  "latency": {
+    "batch_1": {
+      "batch_size": 1,
+      "iterations": 300,
+      "median_ms": 0.3264165,
+      "p95_ms": 0.340459,
+      "positions_per_second": 3063.5706221958753
+    },
+    "batch_64": {
+      "batch_size": 64,
+      "iterations": 300,
+      "median_ms": 3.650708,
+      "p95_ms": 3.752333,
+      "positions_per_second": 17530.846071501746
+    }
+  },
+  "environment": {
+    "python": "3.11.15",
+    "pytorch": "2.7.1",
+    "platform": "macOS-27.0.1-arm64-arm-64bit",
+    "logical_cpus": 10,
+    "torch_threads": 4
+  }
+}

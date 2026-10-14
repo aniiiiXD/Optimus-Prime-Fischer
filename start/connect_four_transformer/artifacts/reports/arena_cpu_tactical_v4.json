@@ -1,0 +1,1684 @@
+{
+  "scope": "structured-token Transformer; Game Arena-style text is an observation/response adapter",
+  "checkpoint": "connect_four_transformer/artifacts/checkpoints/candidate_tactical_v4.pt",
+  "dataset": "/Users/anixd/Documents/Hyde/start/connect_four_transformer/artifacts/data/positions_v0_2000.jsonl",
+  "split": "held-out test opening groups only",
+  "seed": 2026,
+  "overall": {
+    "positions": 300,
+    "teacher_best_move_rate": 0.48,
+    "teacher_regret": 0.29358515624623804,
+    "critical_move_rate": 0.6813186813186813,
+    "critical_positions": 91
+  },
+  "categories": {
+    "forced_block": {
+      "positions": 39,
+      "teacher_best_move_rate": 0.717948717948718,
+      "teacher_regret": 0.14467905284483742,
+      "critical_move_rate": 0.717948717948718,
+      "critical_positions": 39
+    },
+    "multiple_threats": {
+      "positions": 12,
+      "teacher_best_move_rate": 1.0,
+      "teacher_regret": 0.0,
+      "critical_move_rate": null,
+      "critical_positions": 0
+    },
+    "ordinary": {
+      "positions": 197,
+      "teacher_best_move_rate": 0.3401015228426396,
+      "teacher_regret": 0.3204767227559891,
+      "critical_move_rate": null,
+      "critical_positions": 0
+    },
+    "win_now": {
+      "positions": 52,
+      "teacher_best_move_rate": 0.7115384615384616,
+      "teacher_regret": 0.3711374890383251,
+      "critical_move_rate": 0.6538461538461539,
+      "critical_positions": 52
+    }
+  },
+  "by_category_and_side": {
+    "forced_block:O": {
+      "positions": 20,
+      "teacher_best_move_rate": 0.65,
+      "teacher_regret": 0.24808747703962022,
+      "critical_move_rate": 0.65,
+      "critical_positions": 20
+    },
+    "forced_block:X": {
+      "positions": 19,
+      "teacher_best_move_rate": 0.7894736842105263,
+      "teacher_regret": 0.035828080008223955,
+      "critical_move_rate": 0.7894736842105263,
+      "critical_positions": 19
+    },
+    "multiple_threats:O": {
+      "positions": 7,
+      "teacher_best_move_rate": 1.0,
+      "teacher_regret": 0.0,
+      "critical_move_rate": null,
+      "critical_positions": 0
+    },
+    "multiple_threats:X": {
+      "positions": 5,
+      "teacher_best_move_rate": 1.0,
+      "teacher_regret": 0.0,
+      "critical_move_rate": null,
+      "critical_positions": 0
+    },
+    "ordinary:O": {
+      "positions": 98,
+      "teacher_best_move_rate": 0.336734693877551,
+      "teacher_regret": 0.28953314506473776,
+      "critical_move_rate": null,
+      "critical_positions": 0
+    },
+    "ordinary:X": {
+      "positions": 99,
+      "teacher_best_move_rate": 0.3434343434343434,
+      "teacher_regret": 0.35110773905641973,
+      "critical_move_rate": null,
+      "critical_positions": 0
+    },
+    "win_now:O": {
+      "positions": 28,
+      "teacher_best_move_rate": 0.7142857142857143,
+      "teacher_regret": 0.3133379343578882,
+      "critical_move_rate": 0.6428571428571429,
+      "critical_positions": 28
+    },
+    "win_now:X": {
+      "positions": 24,
+      "teacher_best_move_rate": 0.7083333333333334,
+      "teacher_regret": 0.4385703028321682,
+      "critical_move_rate": 0.6666666666666666,
+      "critical_positions": 24
+    }
+  },
+  "by_category_and_orientation": {
+    "forced_block:diagonal": {
+      "positions": 17,
+      "teacher_best_move_rate": 0.5294117647058824,
+      "teacher_regret": 0.3190999984584923,
+      "critical_move_rate": 0.5294117647058824,
+      "critical_positions": 17
+    },
+    "forced_block:horizontal": {
+      "positions": 18,
+      "teacher_best_move_rate": 0.8333333333333334,
+      "teacher_regret": 0.012099060397460578,
+      "critical_move_rate": 0.8333333333333334,
+      "critical_positions": 18
+    },
+    "forced_block:vertical": {
+      "positions": 4,
+      "teacher_best_move_rate": 1.0,
+      "teacher_regret": 0.0,
+      "critical_move_rate": 1.0,
+      "critical_positions": 4
+    },
+    "win_now:diagonal": {
+      "positions": 24,
+      "teacher_best_move_rate": 0.625,
+      "teacher_regret": 0.5368445107146546,
+      "critical_move_rate": 0.5416666666666666,
+      "critical_positions": 24
+    },
+    "win_now:horizontal": {
+      "positions": 15,
+      "teacher_best_move_rate": 0.6666666666666666,
+      "teacher_regret": 0.4269272383361531,
+      "critical_move_rate": 0.6666666666666666,
+      "critical_positions": 15
+    },
+    "win_now:mixed": {
+      "positions": 9,
+      "teacher_best_move_rate": 1.0,
+      "teacher_regret": 0.0,
+      "critical_move_rate": 0.8888888888888888,
+      "critical_positions": 9
+    },
+    "win_now:vertical": {
+      "positions": 4,
+      "teacher_best_move_rate": 0.75,
+      "teacher_regret": 0.002743149449725202,
+      "critical_move_rate": 0.75,
+      "critical_positions": 4
+    }
+  },
+  "human_match_fixtures": [
+    {
+      "name": "vertical_block_missed",
+      "moves_zero_based": [
+        0,
+        3,
+        4,
+        2,
+        4,
+        3,
+        4
+      ],
+      "category": "forced_block",
+      "orientation": "vertical",
+      "critical_columns": [
+        4
+      ],
+      "model_column": 4,
+      "model_top3": [
+        {
+          "column": 4,
+          "probability": 0.9800214171409607,
+          "q": 0.39795175194740295,
+          "opponent_winning_replies": [],
+          "safe_next_turn": true,
+          "selected": true
+        },
+        {
+          "column": 3,
+          "probability": 0.007478724699467421,
+          "q": -0.06827624142169952,
+          "opponent_winning_replies": [
+            5
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        },
+        {
+          "column": 2,
+          "probability": 0.003524589352309704,
+          "q": -0.17349886894226074,
+          "opponent_winning_replies": [
+            5
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        }
+      ],
+      "teacher_best_column": 4,
+      "teacher_values": {
+        "3": -1.0,
+        "2": -1.0,
+        "4": -0.6844826259620602,
+        "1": -1.0,
+        "5": -1.0,
+        "0": -1.0,
+        "6": -1.0
+      },
+      "passed": true,
+      "text_observation": "Player to move: O\n. . . . . . .\n. . . . . . .\n. . . . . . .\n. . . . X . .\n. . . O X . .\nX . O O X . .\n0 1 2 3 4 5 6\nFinal Answer: <column_index>"
+    },
+    {
+      "name": "diagonal_block_missed",
+      "moves_zero_based": [
+        0,
+        3,
+        4,
+        2,
+        4,
+        3,
+        4,
+        3,
+        3,
+        4,
+        1,
+        2,
+        2
+      ],
+      "category": "forced_block",
+      "orientation": "diagonal",
+      "critical_columns": [
+        1
+      ],
+      "model_column": 2,
+      "model_top3": [
+        {
+          "column": 2,
+          "probability": 0.4022623598575592,
+          "q": 0.05376173555850983,
+          "opponent_winning_replies": [
+            2
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        },
+        {
+          "column": 1,
+          "probability": 0.3718665540218353,
+          "q": -0.03038848750293255,
+          "opponent_winning_replies": [],
+          "safe_next_turn": true,
+          "selected": true
+        },
+        {
+          "column": 5,
+          "probability": 0.06329908967018127,
+          "q": -0.4158170819282532,
+          "opponent_winning_replies": [
+            2
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        }
+      ],
+      "teacher_best_column": 1,
+      "teacher_values": {
+        "3": -1.0,
+        "2": -1.0,
+        "4": -1.0,
+        "1": 0.5800247468527949,
+        "5": -1.0,
+        "0": -1.0,
+        "6": -1.0
+      },
+      "passed": false,
+      "text_observation": "Player to move: O\n. . . . . . .\n. . . . . . .\n. . . X O . .\n. . X O X . .\n. . O O X . .\nX X O O X . .\n0 1 2 3 4 5 6\nFinal Answer: <column_index>"
+    }
+  ],
+  "cpu": {
+    "platform": "macOS-27.0.1-arm64-arm-64bit",
+    "torch_version": "2.7.1",
+    "threads": 1,
+    "wall_seconds": 0.20089329199981876,
+    "process_cpu_seconds": 0.19116100000000003,
+    "peak_rss_mib": 197.015625,
+    "model_forward_median_ms": 0.2638335,
+    "model_forward_p95_ms": 0.284083,
+    "full_move_median_ms": 0.532292,
+    "full_move_p95_ms": 0.574708
+  },
+  "failures": [
+    {
+      "source": "held_out_test",
+      "dataset_index": 85,
+      "category": "forced_block",
+      "player": "O",
+      "orientation": "diagonal",
+      "critical_columns": [
+        2
+      ],
+      "chosen_column": 5,
+      "teacher_best_move": false,
+      "teacher_regret": 0.6200510377447751,
+      "critical_move": false,
+      "top3": [
+        {
+          "column": 5,
+          "probability": 0.5024689435958862,
+          "q": -0.22397512197494507,
+          "opponent_winning_replies": [
+            3
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        },
+        {
+          "column": 3,
+          "probability": 0.30237266421318054,
+          "q": -0.270719438791275,
+          "opponent_winning_replies": [
+            3
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        },
+        {
+          "column": 6,
+          "probability": 0.05571291968226433,
+          "q": -0.6040999293327332,
+          "opponent_winning_replies": [
+            3
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        }
+      ],
+      "prompt": "Player to move: O\n. . . . . . .\n. . . . . . .\n. . . . X . .\n. . . X O O .\n. O . O X X .\n. X X O O X .\n0 1 2 3 4 5 6\nFinal Answer: <column_index>"
+    },
+    {
+      "source": "held_out_test",
+      "dataset_index": 127,
+      "category": "win_now",
+      "player": "O",
+      "orientation": "vertical",
+      "critical_columns": [
+        5
+      ],
+      "chosen_column": 2,
+      "teacher_best_move": false,
+      "teacher_regret": 0.010972597798900807,
+      "critical_move": false,
+      "top3": [
+        {
+          "column": 2,
+          "probability": 0.9293044209480286,
+          "q": 0.05047585442662239,
+          "opponent_winning_replies": [],
+          "safe_next_turn": true,
+          "selected": false
+        },
+        {
+          "column": 0,
+          "probability": 0.02445443719625473,
+          "q": -0.6147460341453552,
+          "opponent_winning_replies": [
+            3
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        },
+        {
+          "column": 1,
+          "probability": 0.01812172308564186,
+          "q": -0.6466875672340393,
+          "opponent_winning_replies": [
+            3
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        }
+      ],
+      "prompt": "Player to move: O\n. . . X X . .\n. . X O O O .\n. O X X X O .\n. X X O O O .\nX X O O O X .\nO X X O O X X\n0 1 2 3 4 5 6\nFinal Answer: <column_index>"
+    },
+    {
+      "source": "held_out_test",
+      "dataset_index": 193,
+      "category": "win_now",
+      "player": "X",
+      "orientation": "diagonal",
+      "critical_columns": [
+        0
+      ],
+      "chosen_column": 5,
+      "teacher_best_move": false,
+      "teacher_regret": 1.6975434949818515,
+      "critical_move": false,
+      "top3": [
+        {
+          "column": 5,
+          "probability": 0.7326524257659912,
+          "q": 0.15154105424880981,
+          "opponent_winning_replies": [],
+          "safe_next_turn": true,
+          "selected": false
+        },
+        {
+          "column": 0,
+          "probability": 0.17807461321353912,
+          "q": -0.18643967807292938,
+          "opponent_winning_replies": [],
+          "safe_next_turn": true,
+          "selected": true
+        },
+        {
+          "column": 4,
+          "probability": 0.05908240005373955,
+          "q": -0.35833585262298584,
+          "opponent_winning_replies": [],
+          "safe_next_turn": true,
+          "selected": false
+        }
+      ],
+      "prompt": "Player to move: X\n. X O X . . .\n. O X O O . .\n. X X O X . .\n. O X X O . .\nO X O O X . X\nX O O X O O X\n0 1 2 3 4 5 6\nFinal Answer: <column_index>"
+    },
+    {
+      "source": "held_out_test",
+      "dataset_index": 255,
+      "category": "forced_block",
+      "player": "O",
+      "orientation": "diagonal",
+      "critical_columns": [
+        0
+      ],
+      "chosen_column": 2,
+      "teacher_best_move": false,
+      "teacher_regret": 1.17323515783466,
+      "critical_move": false,
+      "top3": [
+        {
+          "column": 2,
+          "probability": 0.48106586933135986,
+          "q": 0.24254460632801056,
+          "opponent_winning_replies": [
+            1
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        },
+        {
+          "column": 5,
+          "probability": 0.2752716839313507,
+          "q": 0.1214817687869072,
+          "opponent_winning_replies": [
+            1
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        },
+        {
+          "column": 1,
+          "probability": 0.14396406710147858,
+          "q": 0.4063633680343628,
+          "opponent_winning_replies": [
+            1
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        }
+      ],
+      "prompt": "Player to move: O\n. . . X X . .\n. . . O O . .\n. . . X X . .\n. . X O O O .\n. X O O O X .\n. X X O O X X\n0 1 2 3 4 5 6\nFinal Answer: <column_index>"
+    },
+    {
+      "source": "held_out_test",
+      "dataset_index": 260,
+      "category": "forced_block",
+      "player": "X",
+      "orientation": "diagonal",
+      "critical_columns": [
+        0
+      ],
+      "chosen_column": 4,
+      "teacher_best_move": false,
+      "teacher_regret": 0.4629504330019647,
+      "critical_move": false,
+      "top3": [
+        {
+          "column": 4,
+          "probability": 0.32076653838157654,
+          "q": 0.04546776041388512,
+          "opponent_winning_replies": [
+            1
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        },
+        {
+          "column": 0,
+          "probability": 0.1936628520488739,
+          "q": 0.10031217336654663,
+          "opponent_winning_replies": [],
+          "safe_next_turn": true,
+          "selected": true
+        },
+        {
+          "column": 5,
+          "probability": 0.16532351076602936,
+          "q": 0.3631622791290283,
+          "opponent_winning_replies": [
+            1
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        }
+      ],
+      "prompt": "Player to move: X\n. . X . . . .\n. O X O . . .\n. X O O . . .\n. O O X . X .\n. X X O . X .\nO X X X O O O\n0 1 2 3 4 5 6\nFinal Answer: <column_index>"
+    },
+    {
+      "source": "held_out_test",
+      "dataset_index": 521,
+      "category": "win_now",
+      "player": "O",
+      "orientation": "horizontal",
+      "critical_columns": [
+        5
+      ],
+      "chosen_column": 2,
+      "teacher_best_move": false,
+      "teacher_regret": 0.18224592202971235,
+      "critical_move": false,
+      "top3": [
+        {
+          "column": 2,
+          "probability": 0.5724684596061707,
+          "q": 0.15054678916931152,
+          "opponent_winning_replies": [],
+          "safe_next_turn": true,
+          "selected": false
+        },
+        {
+          "column": 3,
+          "probability": 0.1941569596529007,
+          "q": 0.008364125154912472,
+          "opponent_winning_replies": [],
+          "safe_next_turn": true,
+          "selected": false
+        },
+        {
+          "column": 1,
+          "probability": 0.12723778188228607,
+          "q": -0.18499618768692017,
+          "opponent_winning_replies": [],
+          "safe_next_turn": true,
+          "selected": false
+        }
+      ],
+      "prompt": "Player to move: O\n. . . . . . .\n. . . . . . .\n. . . . O . .\n. . . . X . .\nX X X O O . .\nX X X O O . O\n0 1 2 3 4 5 6\nFinal Answer: <column_index>"
+    },
+    {
+      "source": "held_out_test",
+      "dataset_index": 524,
+      "category": "win_now",
+      "player": "O",
+      "orientation": "horizontal",
+      "critical_columns": [
+        5
+      ],
+      "chosen_column": 6,
+      "teacher_best_move": false,
+      "teacher_regret": 1.563194927804731,
+      "critical_move": false,
+      "top3": [
+        {
+          "column": 6,
+          "probability": 0.28143128752708435,
+          "q": -0.35762301087379456,
+          "opponent_winning_replies": [],
+          "safe_next_turn": true,
+          "selected": false
+        },
+        {
+          "column": 5,
+          "probability": 0.24848921597003937,
+          "q": 0.11234903335571289,
+          "opponent_winning_replies": [],
+          "safe_next_turn": true,
+          "selected": true
+        },
+        {
+          "column": 0,
+          "probability": 0.18397589027881622,
+          "q": -0.5306116938591003,
+          "opponent_winning_replies": [
+            7
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        }
+      ],
+      "prompt": "Player to move: O\n. . O O . . .\n. . X X O . .\n. O O X X . .\n. X O O O . .\n. O O X X X .\nO X X X O X X\n0 1 2 3 4 5 6\nFinal Answer: <column_index>"
+    },
+    {
+      "source": "held_out_test",
+      "dataset_index": 573,
+      "category": "forced_block",
+      "player": "O",
+      "orientation": "diagonal",
+      "critical_columns": [
+        6
+      ],
+      "chosen_column": 5,
+      "teacher_best_move": false,
+      "teacher_regret": 0.024863301706371632,
+      "critical_move": false,
+      "top3": [
+        {
+          "column": 5,
+          "probability": 0.2798207998275757,
+          "q": -0.8352800011634827,
+          "opponent_winning_replies": [
+            7
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        },
+        {
+          "column": 2,
+          "probability": 0.2543695569038391,
+          "q": -0.9138937592506409,
+          "opponent_winning_replies": [
+            7
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        },
+        {
+          "column": 0,
+          "probability": 0.14074614644050598,
+          "q": -0.9060378670692444,
+          "opponent_winning_replies": [
+            7
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        }
+      ],
+      "prompt": "Player to move: O\n. . . O . . .\n. . . X . . .\n. . . X . . .\nX . . O . X X\nX O . X X O O\nO X . X O O O\n0 1 2 3 4 5 6\nFinal Answer: <column_index>"
+    },
+    {
+      "source": "held_out_test",
+      "dataset_index": 624,
+      "category": "win_now",
+      "player": "O",
+      "orientation": "diagonal",
+      "critical_columns": [
+        0
+      ],
+      "chosen_column": 5,
+      "teacher_best_move": false,
+      "teacher_regret": 0.02954806338654614,
+      "critical_move": false,
+      "top3": [
+        {
+          "column": 5,
+          "probability": 0.49994558095932007,
+          "q": 0.4476330876350403,
+          "opponent_winning_replies": [],
+          "safe_next_turn": true,
+          "selected": false
+        },
+        {
+          "column": 4,
+          "probability": 0.16682741045951843,
+          "q": 0.42134401202201843,
+          "opponent_winning_replies": [
+            6
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        },
+        {
+          "column": 6,
+          "probability": 0.13660161197185516,
+          "q": -0.21652176976203918,
+          "opponent_winning_replies": [
+            6
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        }
+      ],
+      "prompt": "Player to move: O\n. . . . . . .\n. . . O . . .\nX O . X . . .\nO X O O O X X\nX X X O O X O\nO X X O X X O\n0 1 2 3 4 5 6\nFinal Answer: <column_index>"
+    },
+    {
+      "source": "held_out_test",
+      "dataset_index": 696,
+      "category": "forced_block",
+      "player": "O",
+      "orientation": "diagonal",
+      "critical_columns": [
+        4
+      ],
+      "chosen_column": 5,
+      "teacher_best_move": false,
+      "teacher_regret": 1.9305531409332848,
+      "critical_move": false,
+      "top3": [
+        {
+          "column": 5,
+          "probability": 0.34099090099334717,
+          "q": 0.014559849165380001,
+          "opponent_winning_replies": [
+            5
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        },
+        {
+          "column": 1,
+          "probability": 0.20134663581848145,
+          "q": -0.024713654071092606,
+          "opponent_winning_replies": [
+            5
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        },
+        {
+          "column": 6,
+          "probability": 0.15513776242733002,
+          "q": -0.3124276101589203,
+          "opponent_winning_replies": [
+            5
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        }
+      ],
+      "prompt": "Player to move: O\n. . . . . . .\n. . X . . . .\n. . O X X O .\n. O X O O X .\n. X O O O X .\nO X X O X X .\n0 1 2 3 4 5 6\nFinal Answer: <column_index>"
+    },
+    {
+      "source": "held_out_test",
+      "dataset_index": 775,
+      "category": "forced_block",
+      "player": "X",
+      "orientation": "horizontal",
+      "critical_columns": [
+        5
+      ],
+      "chosen_column": 3,
+      "teacher_best_move": false,
+      "teacher_regret": 0.1448529707230355,
+      "critical_move": false,
+      "top3": [
+        {
+          "column": 3,
+          "probability": 0.3945029377937317,
+          "q": -0.3971903324127197,
+          "opponent_winning_replies": [
+            6
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        },
+        {
+          "column": 2,
+          "probability": 0.15241387486457825,
+          "q": -0.6463627219200134,
+          "opponent_winning_replies": [
+            6
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        },
+        {
+          "column": 0,
+          "probability": 0.15143632888793945,
+          "q": -0.6406556963920593,
+          "opponent_winning_replies": [
+            6
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        }
+      ],
+      "prompt": "Player to move: X\n. . . . . . .\n. . . . . . .\n. . . . . . .\nO . . . . . .\nX X X O O . O\nO X X O X X O\n0 1 2 3 4 5 6\nFinal Answer: <column_index>"
+    },
+    {
+      "source": "held_out_test",
+      "dataset_index": 807,
+      "category": "forced_block",
+      "player": "X",
+      "orientation": "horizontal",
+      "critical_columns": [
+        5
+      ],
+      "chosen_column": 4,
+      "teacher_best_move": false,
+      "teacher_regret": 0.07287773084168037,
+      "critical_move": false,
+      "top3": [
+        {
+          "column": 4,
+          "probability": 0.7202403545379639,
+          "q": -0.024809185415506363,
+          "opponent_winning_replies": [
+            6
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        },
+        {
+          "column": 1,
+          "probability": 0.1247105672955513,
+          "q": -0.3370441794395447,
+          "opponent_winning_replies": [
+            6
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        },
+        {
+          "column": 0,
+          "probability": 0.08806303143501282,
+          "q": -0.32160335779190063,
+          "opponent_winning_replies": [
+            6
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        }
+      ],
+      "prompt": "Player to move: X\n. . X O . . .\n. . O O . . .\n. . X X . . .\nX . X O . . .\nX X X O O . O\nO X O X O X O\n0 1 2 3 4 5 6\nFinal Answer: <column_index>"
+    },
+    {
+      "source": "held_out_test",
+      "dataset_index": 1043,
+      "category": "forced_block",
+      "player": "O",
+      "orientation": "diagonal",
+      "critical_columns": [
+        3
+      ],
+      "chosen_column": 6,
+      "teacher_best_move": false,
+      "teacher_regret": 0.82676484216534,
+      "critical_move": false,
+      "top3": [
+        {
+          "column": 6,
+          "probability": 0.5153341293334961,
+          "q": -0.5296362638473511,
+          "opponent_winning_replies": [
+            4
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        },
+        {
+          "column": 1,
+          "probability": 0.18930883705615997,
+          "q": -0.5321187376976013,
+          "opponent_winning_replies": [
+            4
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        },
+        {
+          "column": 3,
+          "probability": 0.13622912764549255,
+          "q": -0.46917924284935,
+          "opponent_winning_replies": [],
+          "safe_next_turn": true,
+          "selected": true
+        }
+      ],
+      "prompt": "Player to move: O\n. . . . X . .\n. . . . O X .\n. . X . X O .\n. . O . O X .\n. . X X O X O\n. . X O O X O\n0 1 2 3 4 5 6\nFinal Answer: <column_index>"
+    },
+    {
+      "source": "held_out_test",
+      "dataset_index": 1095,
+      "category": "multiple_threats",
+      "player": "X",
+      "orientation": null,
+      "critical_columns": [
+        4,
+        5
+      ],
+      "chosen_column": 2,
+      "teacher_best_move": true,
+      "teacher_regret": 0.0,
+      "critical_move": false,
+      "top3": [
+        {
+          "column": 2,
+          "probability": 0.7019956707954407,
+          "q": -0.27884238958358765,
+          "opponent_winning_replies": [
+            3,
+            5,
+            6
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        },
+        {
+          "column": 4,
+          "probability": 0.16613471508026123,
+          "q": -0.6771754026412964,
+          "opponent_winning_replies": [
+            6
+          ],
+          "safe_next_turn": false,
+          "selected": true
+        },
+        {
+          "column": 0,
+          "probability": 0.05490972101688385,
+          "q": -0.696173906326294,
+          "opponent_winning_replies": [
+            5,
+            6
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        }
+      ],
+      "prompt": null
+    },
+    {
+      "source": "held_out_test",
+      "dataset_index": 1113,
+      "category": "win_now",
+      "player": "X",
+      "orientation": "diagonal",
+      "critical_columns": [
+        6
+      ],
+      "chosen_column": 2,
+      "teacher_best_move": false,
+      "teacher_regret": 0.6094066613048692,
+      "critical_move": false,
+      "top3": [
+        {
+          "column": 2,
+          "probability": 0.2754954695701599,
+          "q": 0.44216251373291016,
+          "opponent_winning_replies": [],
+          "safe_next_turn": true,
+          "selected": false
+        },
+        {
+          "column": 0,
+          "probability": 0.2530020475387573,
+          "q": 0.44169938564300537,
+          "opponent_winning_replies": [],
+          "safe_next_turn": true,
+          "selected": false
+        },
+        {
+          "column": 6,
+          "probability": 0.16129247844219208,
+          "q": 0.16309496760368347,
+          "opponent_winning_replies": [],
+          "safe_next_turn": true,
+          "selected": true
+        }
+      ],
+      "prompt": "Player to move: X\n. . . O . . .\n. . . X . . .\n. . . X . . .\nX O . O . X X\nX O . X X O O\nO X . X O O O\n0 1 2 3 4 5 6\nFinal Answer: <column_index>"
+    },
+    {
+      "source": "held_out_test",
+      "dataset_index": 1126,
+      "category": "win_now",
+      "player": "O",
+      "orientation": "horizontal",
+      "critical_columns": [
+        0
+      ],
+      "chosen_column": 5,
+      "teacher_best_move": false,
+      "teacher_regret": 0.9875006510009792,
+      "critical_move": false,
+      "top3": [
+        {
+          "column": 5,
+          "probability": 0.5663132071495056,
+          "q": 0.06593646854162216,
+          "opponent_winning_replies": [],
+          "safe_next_turn": true,
+          "selected": false
+        },
+        {
+          "column": 0,
+          "probability": 0.28025782108306885,
+          "q": 0.2758421003818512,
+          "opponent_winning_replies": [],
+          "safe_next_turn": true,
+          "selected": true
+        },
+        {
+          "column": 2,
+          "probability": 0.05944259092211723,
+          "q": 0.3893480598926544,
+          "opponent_winning_replies": [],
+          "safe_next_turn": true,
+          "selected": false
+        }
+      ],
+      "prompt": "Player to move: O\n. X . . . . .\n. O . . . . .\n. X . X . . .\n. X . O . . X\n. O O O X . O\nX X O O X O X\n0 1 2 3 4 5 6\nFinal Answer: <column_index>"
+    },
+    {
+      "source": "held_out_test",
+      "dataset_index": 1148,
+      "category": "win_now",
+      "player": "O",
+      "orientation": "diagonal",
+      "critical_columns": [
+        1
+      ],
+      "chosen_column": 5,
+      "teacher_best_move": true,
+      "teacher_regret": 0.0,
+      "critical_move": false,
+      "top3": [
+        {
+          "column": 5,
+          "probability": 0.9624865055084229,
+          "q": -0.3371802270412445,
+          "opponent_winning_replies": [],
+          "safe_next_turn": true,
+          "selected": false
+        },
+        {
+          "column": 4,
+          "probability": 0.025195403024554253,
+          "q": -0.20247843861579895,
+          "opponent_winning_replies": [
+            5,
+            6
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        },
+        {
+          "column": 1,
+          "probability": 0.007993265055119991,
+          "q": -0.7978054285049438,
+          "opponent_winning_replies": [],
+          "safe_next_turn": true,
+          "selected": true
+        }
+      ],
+      "prompt": "Player to move: O\n. . . . . . .\n. . . . . . .\n. . X O . . .\n. . O X . X .\n. . X O O X X\nO X O X O X O\n0 1 2 3 4 5 6\nFinal Answer: <column_index>"
+    },
+    {
+      "source": "held_out_test",
+      "dataset_index": 1153,
+      "category": "multiple_threats",
+      "player": "O",
+      "orientation": null,
+      "critical_columns": [
+        0,
+        4
+      ],
+      "chosen_column": 2,
+      "teacher_best_move": true,
+      "teacher_regret": 0.0,
+      "critical_move": false,
+      "top3": [
+        {
+          "column": 2,
+          "probability": 0.7390101552009583,
+          "q": 0.08635587245225906,
+          "opponent_winning_replies": [
+            1,
+            3,
+            5
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        },
+        {
+          "column": 4,
+          "probability": 0.18870502710342407,
+          "q": -0.6107269525527954,
+          "opponent_winning_replies": [
+            1
+          ],
+          "safe_next_turn": false,
+          "selected": true
+        },
+        {
+          "column": 5,
+          "probability": 0.03463588282465935,
+          "q": -0.6833094358444214,
+          "opponent_winning_replies": [
+            1,
+            5
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        }
+      ],
+      "prompt": null
+    },
+    {
+      "source": "held_out_test",
+      "dataset_index": 1254,
+      "category": "forced_block",
+      "player": "X",
+      "orientation": "horizontal",
+      "critical_columns": [
+        0
+      ],
+      "chosen_column": 6,
+      "teacher_best_move": false,
+      "teacher_regret": 5.238558957454398e-05,
+      "critical_move": false,
+      "top3": [
+        {
+          "column": 6,
+          "probability": 0.6073007583618164,
+          "q": -0.6037818789482117,
+          "opponent_winning_replies": [
+            1
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        },
+        {
+          "column": 5,
+          "probability": 0.25344571471214294,
+          "q": -0.8749768137931824,
+          "opponent_winning_replies": [
+            1,
+            6
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        },
+        {
+          "column": 1,
+          "probability": 0.08474012464284897,
+          "q": -0.9310687780380249,
+          "opponent_winning_replies": [
+            1,
+            2
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        }
+      ],
+      "prompt": "Player to move: X\n. . X X O . .\n. . O O O . X\n. . X O O . O\n. O O O X . X\nX X O X X O X\nO X O X X O X\n0 1 2 3 4 5 6\nFinal Answer: <column_index>"
+    },
+    {
+      "source": "held_out_test",
+      "dataset_index": 1262,
+      "category": "win_now",
+      "player": "O",
+      "orientation": "diagonal",
+      "critical_columns": [
+        5
+      ],
+      "chosen_column": 3,
+      "teacher_best_move": false,
+      "teacher_regret": 2.0,
+      "critical_move": false,
+      "top3": [
+        {
+          "column": 3,
+          "probability": 0.46555018424987793,
+          "q": -0.47851407527923584,
+          "opponent_winning_replies": [
+            2
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        },
+        {
+          "column": 5,
+          "probability": 0.35246220231056213,
+          "q": -0.6442211270332336,
+          "opponent_winning_replies": [],
+          "safe_next_turn": true,
+          "selected": true
+        },
+        {
+          "column": 1,
+          "probability": 0.06743260473012924,
+          "q": -0.8174371123313904,
+          "opponent_winning_replies": [
+            4
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        }
+      ],
+      "prompt": "Player to move: O\n. . O . . . .\n. . X . . . .\n. . O X X . .\n. . X X O X .\n. . X O O O X\n. . O X O O X\n0 1 2 3 4 5 6\nFinal Answer: <column_index>"
+    },
+    {
+      "source": "held_out_test",
+      "dataset_index": 1327,
+      "category": "win_now",
+      "player": "X",
+      "orientation": "diagonal",
+      "critical_columns": [
+        3
+      ],
+      "chosen_column": 1,
+      "teacher_best_move": false,
+      "teacher_regret": 2.0,
+      "critical_move": false,
+      "top3": [
+        {
+          "column": 1,
+          "probability": 0.9647431969642639,
+          "q": 0.2228759527206421,
+          "opponent_winning_replies": [
+            1,
+            4
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        },
+        {
+          "column": 3,
+          "probability": 0.022144170477986336,
+          "q": 0.07952190935611725,
+          "opponent_winning_replies": [],
+          "safe_next_turn": true,
+          "selected": true
+        },
+        {
+          "column": 5,
+          "probability": 0.008103929460048676,
+          "q": -0.3089984357357025,
+          "opponent_winning_replies": [
+            1,
+            2,
+            4
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        }
+      ],
+      "prompt": "Player to move: X\n. . O . X . X\n. O X . X X O\n. O O . O X X\nX O X X X O X\nO X O O X O O\nO O X O X X O\n0 1 2 3 4 5 6\nFinal Answer: <column_index>"
+    },
+    {
+      "source": "held_out_test",
+      "dataset_index": 1359,
+      "category": "win_now",
+      "player": "X",
+      "orientation": "diagonal",
+      "critical_columns": [
+        5
+      ],
+      "chosen_column": 4,
+      "teacher_best_move": false,
+      "teacher_regret": 0.5477700374784418,
+      "critical_move": false,
+      "top3": [
+        {
+          "column": 4,
+          "probability": 0.3908282220363617,
+          "q": 0.6116673350334167,
+          "opponent_winning_replies": [],
+          "safe_next_turn": true,
+          "selected": false
+        },
+        {
+          "column": 5,
+          "probability": 0.3811455965042114,
+          "q": 0.4922287166118622,
+          "opponent_winning_replies": [],
+          "safe_next_turn": true,
+          "selected": true
+        },
+        {
+          "column": 6,
+          "probability": 0.0823923870921135,
+          "q": 0.057318612933158875,
+          "opponent_winning_replies": [],
+          "safe_next_turn": true,
+          "selected": false
+        }
+      ],
+      "prompt": "Player to move: X\n. . . O . . .\n. . O O . . O\n. . X O . . X\n. . X X X O O\n. . O X O X X\n. . X O O X X\n0 1 2 3 4 5 6\nFinal Answer: <column_index>"
+    },
+    {
+      "source": "held_out_test",
+      "dataset_index": 1413,
+      "category": "win_now",
+      "player": "O",
+      "orientation": "diagonal",
+      "critical_columns": [
+        1
+      ],
+      "chosen_column": 3,
+      "teacher_best_move": false,
+      "teacher_regret": 2.0,
+      "critical_move": false,
+      "top3": [
+        {
+          "column": 3,
+          "probability": 0.38274455070495605,
+          "q": -0.17548944056034088,
+          "opponent_winning_replies": [],
+          "safe_next_turn": true,
+          "selected": false
+        },
+        {
+          "column": 5,
+          "probability": 0.37558114528656006,
+          "q": -0.37931859493255615,
+          "opponent_winning_replies": [],
+          "safe_next_turn": true,
+          "selected": false
+        },
+        {
+          "column": 2,
+          "probability": 0.13866591453552246,
+          "q": -0.5549846887588501,
+          "opponent_winning_replies": [
+            3
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        }
+      ],
+      "prompt": "Player to move: O\n. . . . . . .\n. . . . . . .\nO . . . O . .\nX . . X X . .\nO X O O X . .\nO O X O X X X\n0 1 2 3 4 5 6\nFinal Answer: <column_index>"
+    },
+    {
+      "source": "held_out_test",
+      "dataset_index": 1414,
+      "category": "win_now",
+      "player": "O",
+      "orientation": "diagonal",
+      "critical_columns": [
+        4
+      ],
+      "chosen_column": 2,
+      "teacher_best_move": false,
+      "teacher_regret": 2.0,
+      "critical_move": false,
+      "top3": [
+        {
+          "column": 2,
+          "probability": 0.40513214468955994,
+          "q": -0.7908685803413391,
+          "opponent_winning_replies": [],
+          "safe_next_turn": true,
+          "selected": false
+        },
+        {
+          "column": 4,
+          "probability": 0.2239699512720108,
+          "q": -0.7729479670524597,
+          "opponent_winning_replies": [],
+          "safe_next_turn": true,
+          "selected": true
+        },
+        {
+          "column": 6,
+          "probability": 0.153213769197464,
+          "q": -0.7965574264526367,
+          "opponent_winning_replies": [],
+          "safe_next_turn": true,
+          "selected": false
+        }
+      ],
+      "prompt": "Player to move: O\n. . . O . . .\n. X . O . O X\n. O . X X O O\nO X . X O X O\nX X . O X X X\nO O X X X O O\n0 1 2 3 4 5 6\nFinal Answer: <column_index>"
+    },
+    {
+      "source": "held_out_test",
+      "dataset_index": 1541,
+      "category": "win_now",
+      "player": "X",
+      "orientation": "horizontal",
+      "critical_columns": [
+        0
+      ],
+      "chosen_column": 5,
+      "teacher_best_move": false,
+      "teacher_regret": 1.6709670742068736,
+      "critical_move": false,
+      "top3": [
+        {
+          "column": 5,
+          "probability": 0.587295651435852,
+          "q": 0.16277039051055908,
+          "opponent_winning_replies": [],
+          "safe_next_turn": true,
+          "selected": false
+        },
+        {
+          "column": 4,
+          "probability": 0.34043997526168823,
+          "q": 0.09673955291509628,
+          "opponent_winning_replies": [],
+          "safe_next_turn": true,
+          "selected": false
+        },
+        {
+          "column": 0,
+          "probability": 0.06718950718641281,
+          "q": -0.28865179419517517,
+          "opponent_winning_replies": [],
+          "safe_next_turn": true,
+          "selected": true
+        }
+      ],
+      "prompt": "Player to move: X\n. O X O . . .\n. X X X O O .\nX X O X O O .\nO O O X X X .\nX O X O O O .\nX X O X X O .\n0 1 2 3 4 5 6\nFinal Answer: <column_index>"
+    },
+    {
+      "source": "held_out_test",
+      "dataset_index": 1570,
+      "category": "win_now",
+      "player": "X",
+      "orientation": "horizontal",
+      "critical_columns": [
+        1
+      ],
+      "chosen_column": 5,
+      "teacher_best_move": false,
+      "teacher_regret": 2.0,
+      "critical_move": false,
+      "top3": [
+        {
+          "column": 5,
+          "probability": 0.522696852684021,
+          "q": -0.417653352022171,
+          "opponent_winning_replies": [
+            2
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        },
+        {
+          "column": 0,
+          "probability": 0.3557088375091553,
+          "q": -0.6573866605758667,
+          "opponent_winning_replies": [
+            2
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        },
+        {
+          "column": 1,
+          "probability": 0.12159436196088791,
+          "q": -0.7675540447235107,
+          "opponent_winning_replies": [],
+          "safe_next_turn": true,
+          "selected": true
+        }
+      ],
+      "prompt": "Player to move: X\n. . O O X . X\n. . X X X . X\n. O O O X . O\n. X X O O X O\n. O O X O O O\nO X X X O X X\n0 1 2 3 4 5 6\nFinal Answer: <column_index>"
+    },
+    {
+      "source": "held_out_test",
+      "dataset_index": 1673,
+      "category": "win_now",
+      "player": "X",
+      "orientation": "mixed",
+      "critical_columns": [
+        4,
+        6
+      ],
+      "chosen_column": 0,
+      "teacher_best_move": true,
+      "teacher_regret": 0.0,
+      "critical_move": false,
+      "top3": [
+        {
+          "column": 0,
+          "probability": 0.6813172698020935,
+          "q": 0.7287406921386719,
+          "opponent_winning_replies": [],
+          "safe_next_turn": true,
+          "selected": false
+        },
+        {
+          "column": 6,
+          "probability": 0.1282564252614975,
+          "q": 0.06116902455687523,
+          "opponent_winning_replies": [],
+          "safe_next_turn": true,
+          "selected": true
+        },
+        {
+          "column": 4,
+          "probability": 0.08601325750350952,
+          "q": 0.42450615763664246,
+          "opponent_winning_replies": [],
+          "safe_next_turn": true,
+          "selected": false
+        }
+      ],
+      "prompt": "Player to move: X\n. . . . . . .\n. . . O . . .\n. . X O . O .\n. . O X X X .\nO X X O O X X\nO X O X O X O\n0 1 2 3 4 5 6\nFinal Answer: <column_index>"
+    },
+    {
+      "source": "held_out_test",
+      "dataset_index": 1739,
+      "category": "win_now",
+      "player": "X",
+      "orientation": "diagonal",
+      "critical_columns": [
+        3
+      ],
+      "chosen_column": 1,
+      "teacher_best_move": false,
+      "teacher_regret": 2.0,
+      "critical_move": false,
+      "top3": [
+        {
+          "column": 1,
+          "probability": 0.37099748849868774,
+          "q": 0.3775049149990082,
+          "opponent_winning_replies": [
+            6
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        },
+        {
+          "column": 5,
+          "probability": 0.3370583653450012,
+          "q": -0.1995834857225418,
+          "opponent_winning_replies": [
+            2
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        },
+        {
+          "column": 4,
+          "probability": 0.2560030519962311,
+          "q": -0.4873323142528534,
+          "opponent_winning_replies": [
+            2,
+            6
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        }
+      ],
+      "prompt": "Player to move: X\n. . . . . . .\n. . O . . . O\n. . X X . . X\n. X O O . . X\nX X X O O . O\nX O O X O O X\n0 1 2 3 4 5 6\nFinal Answer: <column_index>"
+    },
+    {
+      "source": "held_out_test",
+      "dataset_index": 1888,
+      "category": "forced_block",
+      "player": "O",
+      "orientation": "diagonal",
+      "critical_columns": [
+        4
+      ],
+      "chosen_column": 1,
+      "teacher_best_move": false,
+      "teacher_regret": 0.18224592202971235,
+      "critical_move": false,
+      "top3": [
+        {
+          "column": 1,
+          "probability": 0.7054768800735474,
+          "q": -0.6978117823600769,
+          "opponent_winning_replies": [
+            5
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        },
+        {
+          "column": 4,
+          "probability": 0.11111269146203995,
+          "q": -0.6427035331726074,
+          "opponent_winning_replies": [],
+          "safe_next_turn": true,
+          "selected": true
+        },
+        {
+          "column": 3,
+          "probability": 0.06819794327020645,
+          "q": -0.6736676096916199,
+          "opponent_winning_replies": [
+            5
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        }
+      ],
+      "prompt": "Player to move: O\n. . . . . . .\n. . O . . . .\n. . X O . X .\n. . X X O O .\n. . X O X X .\nX X O X O O O\n0 1 2 3 4 5 6\nFinal Answer: <column_index>"
+    },
+    {
+      "source": "held_out_test",
+      "dataset_index": 1915,
+      "category": "win_now",
+      "player": "O",
+      "orientation": "diagonal",
+      "critical_columns": [
+        6
+      ],
+      "chosen_column": 1,
+      "teacher_best_move": true,
+      "teacher_regret": 0.0,
+      "critical_move": false,
+      "top3": [
+        {
+          "column": 1,
+          "probability": 0.5552226305007935,
+          "q": 0.2225564867258072,
+          "opponent_winning_replies": [],
+          "safe_next_turn": true,
+          "selected": false
+        },
+        {
+          "column": 5,
+          "probability": 0.2974933087825775,
+          "q": 0.21234005689620972,
+          "opponent_winning_replies": [],
+          "safe_next_turn": true,
+          "selected": false
+        },
+        {
+          "column": 0,
+          "probability": 0.09061647206544876,
+          "q": -0.2885112464427948,
+          "opponent_winning_replies": [],
+          "safe_next_turn": true,
+          "selected": false
+        }
+      ],
+      "prompt": "Player to move: O\n. . X O X . .\n. . X O O . .\n. . O X X O .\n. O X O O X .\nX X O O O X X\nO X X O X X O\n0 1 2 3 4 5 6\nFinal Answer: <column_index>"
+    },
+    {
+      "source": "held_out_test",
+      "dataset_index": 1968,
+      "category": "forced_block",
+      "player": "O",
+      "orientation": "diagonal",
+      "critical_columns": [
+        4
+      ],
+      "chosen_column": 2,
+      "teacher_best_move": false,
+      "teacher_regret": 0.20403613837826085,
+      "critical_move": false,
+      "top3": [
+        {
+          "column": 2,
+          "probability": 0.5461601614952087,
+          "q": 0.8036641478538513,
+          "opponent_winning_replies": [
+            5
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        },
+        {
+          "column": 5,
+          "probability": 0.1430056244134903,
+          "q": 0.6486101746559143,
+          "opponent_winning_replies": [
+            5
+          ],
+          "safe_next_turn": false,
+          "selected": false
+        },
+        {
+          "column": 4,
+          "probability": 0.13294297456741333,
+          "q": 0.639478862285614,
+          "opponent_winning_replies": [],
+          "safe_next_turn": true,
+          "selected": true
+        }
+      ],
+      "prompt": "Player to move: O\n. . . O . . .\n. . . O . . .\n. . . X . . .\n. . . O . . .\n. X X O O X .\n. X X O X O X\n0 1 2 3 4 5 6\nFinal Answer: <column_index>"
+    }
+  ]
+}

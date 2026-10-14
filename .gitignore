@@ -1,0 +1,27 @@
+# Local environments, build products, caches, and secrets.
+**/.venv/
+**/__pycache__/
+**/*.py[cod]
+**/node_modules/
+**/.next/
+**/.DS_Store
+**/.env
+**/.env.*
+!**/.env.example
+
+# Local scratch outside the game workspace.
+/output/
+/tmp/
+
+# Independent upstream Git checkouts (see docs/EXTERNAL_RESOURCES.md).
+/start/othello_world/
+/start/connect_four_distillation/vendor/connect4/
+
+# Downloaded reference material; source catalog and notes stay tracked.
+/start/game_transformer_knowledge_corpus/repos/
+/start/game_transformer_knowledge_corpus/archives/
+/start/game_transformer_knowledge_corpus/papers/
+
+# Regenerable Connect Four training inputs and teacher-label cache.
+/start/connect_four_transformer/artifacts/cache/
+/start/connect_four_transformer/artifacts/data/

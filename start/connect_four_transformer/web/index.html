@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#161a1d">
+    <title>Connect Four · Human vs Transformer</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <a class="wordmark" href="/" aria-label="Connect Four home"><span class="mark" aria-hidden="true">●</span> FOUR / ONE</a>
+        <div class="top-note"><span class="live-dot"></span> LOCAL MODEL · CPU</div>
+      </header>
+
+      <section class="intro" aria-labelledby="title">
+        <div>
+          <p class="eyebrow">A small game, a real checkpoint</p>
+          <h1 id="title">Connect Four<span class="period">.</span></h1>
+          <p class="lede">Play the Transformer in your browser. It scores legal columns, checks immediate tactics, then drops its piece.</p>
+        </div>
+        <div class="session-card">
+          <div class="players">
+            <div class="player-chip"><span class="piece piece-x"></span><span><small>YOU</small><strong id="human-label">X</strong></span></div>
+            <span class="versus">VS</span>
+            <div class="player-chip"><span class="piece piece-o"></span><span><small>TRANSFORMER</small><strong id="bot-label">O</strong></span></div>
+          </div>
+          <div class="session-actions">
+            <label for="piece-select">Play as</label>
+            <select id="piece-select" aria-label="Choose your piece">
+              <option value="X">X — move first</option>
+              <option value="O">O — bot moves first</option>
+            </select>
+            <button id="new-game" class="new-game">New game <span aria-hidden="true">↗</span></button>
+          </div>
+        </div>
+      </section>
+
+      <section class="workspace" aria-label="Connect Four game">
+        <div class="board-column">
+          <div class="board-heading">
+            <div><span class="eyebrow">THE BOARD</span><span class="move-count" id="move-count">00 / 42</span></div>
+            <div id="turn-indicator" class="turn-indicator"><span class="turn-dot"></span><span id="turn-text">Loading game…</span></div>
+          </div>
+          <div class="board-frame">
+            <div id="drop-controls" class="drop-controls" aria-label="Choose a column"></div>
+            <div id="board" class="board" role="grid" aria-label="Connect Four board"></div>
+          </div>
+          <p class="board-hint" id="board-hint">Select a column above the board to drop your piece.</p>
+        </div>
+
+        <aside class="analysis" aria-labelledby="analysis-title">
+          <div class="analysis-head">
+            <div><p class="eyebrow">LIVE DECISION TRACE</p><h2 id="analysis-title">Inside the bot’s move</h2></div>
+            <span class="cpu-tag">CPU</span>
+          </div>
+          <p class="analysis-copy" id="analysis-copy">After your move, see the model’s three highest-scored legal columns and which one the tactical check selects.</p>
+          <div id="choices" class="choices" aria-live="polite">
+            <div class="empty-choice"><span>01</span><p>Waiting for the first bot move.</p></div>
+            <div class="empty-choice"><span>02</span><p>Policy scores and Q estimates appear here.</p></div>
+            <div class="empty-choice"><span>03</span><p>Timing separates model from safety scan.</p></div>
+          </div>
+          <div class="metrics">
+            <div class="metric"><span>MODEL FORWARD</span><strong id="forward-time">—</strong></div>
+            <div class="metric"><span>TACTICAL CHECK</span><strong id="scan-time">—</strong></div>
+            <div class="metric"><span>STATE VALUE</span><strong id="state-value">—</strong></div>
+          </div>
+          <p class="disclaimer">This is a small trained policy with a one-move safety pass—not a solved perfect-play engine.</p>
+        </aside>
+      </section>
+      <footer><span>CONNECT FOUR / HUMAN × TRANSFORMER</span><span>LOCALHOST · NO DATA LEAVES YOUR MACHINE</span></footer>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,71 @@
+{
+  "checkpoint": "connect_four_transformer/artifacts/checkpoints/candidate_tactical_v4b.pt",
+  "games_per_side": 30,
+  "opening_seed": 41026,
+  "opening_length_range": [
+    0,
+    4
+  ],
+  "results": [
+    {
+      "opponent": "random",
+      "model_side": "X",
+      "games": 30,
+      "wins": 30,
+      "draws": 0,
+      "losses": 0,
+      "model_move_median_ms": 0.59975,
+      "opponent_move_median_ms": 0.000916
+    },
+    {
+      "opponent": "random",
+      "model_side": "O",
+      "games": 30,
+      "wins": 30,
+      "draws": 0,
+      "losses": 0,
+      "model_move_median_ms": 0.5995625,
+      "opponent_move_median_ms": 0.000834
+    },
+    {
+      "opponent": "tactical",
+      "model_side": "X",
+      "games": 30,
+      "wins": 12,
+      "draws": 1,
+      "losses": 17,
+      "model_move_median_ms": 0.5875,
+      "opponent_move_median_ms": 0.049
+    },
+    {
+      "opponent": "tactical",
+      "model_side": "O",
+      "games": 30,
+      "wins": 13,
+      "draws": 6,
+      "losses": 11,
+      "model_move_median_ms": 0.566916,
+      "opponent_move_median_ms": 0.047437
+    },
+    {
+      "opponent": "alpha_beta_depth3",
+      "model_side": "X",
+      "games": 30,
+      "wins": 12,
+      "draws": 2,
+      "losses": 16,
+      "model_move_median_ms": 0.6972915,
+      "opponent_move_median_ms": 0.6094375000000001
+    },
+    {
+      "opponent": "alpha_beta_depth3",
+      "model_side": "O",
+      "games": 30,
+      "wins": 7,
+      "draws": 0,
+      "losses": 23,
+      "model_move_median_ms": 0.634125,
+      "opponent_move_median_ms": 0.4763335
+    }
+  ]
+}

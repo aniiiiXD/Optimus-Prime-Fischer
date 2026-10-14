@@ -1,0 +1,201 @@
+{
+  "model": "ConnectFourTransformer candidate policy/Q/value v0",
+  "config": {
+    "d_model": 64,
+    "n_heads": 4,
+    "n_blocks": 2,
+    "mlp_hidden": 128,
+    "dropout": 0.1,
+    "board_tokens": 42,
+    "action_count": 7
+  },
+  "parameters": 114819,
+  "dataset": {
+    "path": "connect_four_transformer/artifacts/data/positions_v0_2000.jsonl",
+    "extra_train": "connect_four_transformer/artifacts/data/tactics_v1.jsonl",
+    "rows": 2800,
+    "split": {
+      "train": 2200,
+      "validation": 300,
+      "test": 300
+    }
+  },
+  "training": {
+    "epochs": 30,
+    "best_epoch": 18,
+    "batch_size": 64,
+    "learning_rate": 0.0005,
+    "q_weight": 0.5,
+    "value_weight": 0.25,
+    "hard_tactical_targets": true,
+    "tactical_weight": 3.0,
+    "wall_seconds": 20.04950533399824,
+    "cpu_seconds": 30.178434,
+    "peak_rss_mib": 352.1875,
+    "curve": [
+      {
+        "epoch": 1,
+        "train_loss": 1.785976444157687,
+        "validation": {
+          "positions": 300,
+          "loss": 1.9148013067245484,
+          "policy_loss": 1.7320885499318441,
+          "q_loss": 0.22513079226017,
+          "value_loss": 0.2805893023808797,
+          "best_move_accuracy": 0.43333333333333335,
+          "top2_best_move_recall": 0.63,
+          "critical_move_accuracy": 0.3522727272727273,
+          "critical_positions": 88,
+          "mean_teacher_regret": 0.38886157035827634,
+          "q_mae": 0.5489192127851238,
+          "value_mae": 0.6583439000447591
+        }
+      },
+      {
+        "epoch": 5,
+        "train_loss": 1.678048706921664,
+        "validation": {
+          "positions": 300,
+          "loss": 2.035903959274292,
+          "policy_loss": 1.866566907564799,
+          "q_loss": 0.21092877248922984,
+          "value_loss": 0.2554909743865331,
+          "best_move_accuracy": 0.37,
+          "top2_best_move_recall": 0.5266666666666666,
+          "critical_move_accuracy": 0.3522727272727273,
+          "critical_positions": 88,
+          "mean_teacher_regret": 0.401986083984375,
+          "q_mae": 0.5197070768995629,
+          "value_mae": 0.6080856577555338
+        }
+      },
+      {
+        "epoch": 10,
+        "train_loss": 1.588505868478255,
+        "validation": {
+          "positions": 300,
+          "loss": 1.9510122950871784,
+          "policy_loss": 1.8012926054000855,
+          "q_loss": 0.19879689455032348,
+          "value_loss": 0.20128505329291027,
+          "best_move_accuracy": 0.42333333333333334,
+          "top2_best_move_recall": 0.6,
+          "critical_move_accuracy": 0.3522727272727273,
+          "critical_positions": 88,
+          "mean_teacher_regret": 0.35835665384928383,
+          "q_mae": 0.46998870934145603,
+          "value_mae": 0.5394398689270019
+        }
+      },
+      {
+        "epoch": 15,
+        "train_loss": 1.447176385792819,
+        "validation": {
+          "positions": 300,
+          "loss": 1.983791379928589,
+          "policy_loss": 1.8492554918924968,
+          "q_loss": 0.1743959883848826,
+          "value_loss": 0.1893514057000478,
+          "best_move_accuracy": 0.44,
+          "top2_best_move_recall": 0.6466666666666666,
+          "critical_move_accuracy": 0.4431818181818182,
+          "critical_positions": 88,
+          "mean_teacher_regret": 0.3191665077209473,
+          "q_mae": 0.4480583127515798,
+          "value_mae": 0.5173510996500651
+        }
+      },
+      {
+        "epoch": 20,
+        "train_loss": 1.3647071595625444,
+        "validation": {
+          "positions": 300,
+          "loss": 2.0459651788075766,
+          "policy_loss": 1.9143675327301026,
+          "q_loss": 0.17097256978352865,
+          "value_loss": 0.18444560587406159,
+          "best_move_accuracy": 0.44,
+          "top2_best_move_recall": 0.62,
+          "critical_move_accuracy": 0.5,
+          "critical_positions": 88,
+          "mean_teacher_regret": 0.29371846199035645,
+          "q_mae": 0.4294403118439989,
+          "value_mae": 0.5047606658935547
+        }
+      },
+      {
+        "epoch": 25,
+        "train_loss": 1.3165672397613526,
+        "validation": {
+          "positions": 300,
+          "loss": 2.0248606459299725,
+          "policy_loss": 1.8927632824579874,
+          "q_loss": 0.173013667066892,
+          "value_loss": 0.18236195663611093,
+          "best_move_accuracy": 0.44,
+          "top2_best_move_recall": 0.6333333333333333,
+          "critical_move_accuracy": 0.5,
+          "critical_positions": 88,
+          "mean_teacher_regret": 0.3157731119791667,
+          "q_mae": 0.44530622741192,
+          "value_mae": 0.5002753575642903
+        }
+      },
+      {
+        "epoch": 30,
+        "train_loss": 1.255774812264876,
+        "validation": {
+          "positions": 300,
+          "loss": 2.124784450531006,
+          "policy_loss": 1.9966051959991455,
+          "q_loss": 0.16659941653410593,
+          "value_loss": 0.1795180320739746,
+          "best_move_accuracy": 0.43333333333333335,
+          "top2_best_move_recall": 0.5933333333333334,
+          "critical_move_accuracy": 0.4431818181818182,
+          "critical_positions": 88,
+          "mean_teacher_regret": 0.3118107795715332,
+          "q_mae": 0.4353891177190638,
+          "value_mae": 0.4834634399414062
+        }
+      }
+    ]
+  },
+  "test": {
+    "positions": 300,
+    "loss": 1.9802443186442058,
+    "policy_loss": 1.8446398464838665,
+    "q_loss": 0.16706617712974547,
+    "value_loss": 0.2082855733235677,
+    "best_move_accuracy": 0.39,
+    "top2_best_move_recall": 0.56,
+    "critical_move_accuracy": 0.32967032967032966,
+    "critical_positions": 91,
+    "mean_teacher_regret": 0.35406575520833333,
+    "q_mae": 0.4687396537550086,
+    "value_mae": 0.537933521270752
+  },
+  "latency": {
+    "batch_1": {
+      "batch_size": 1,
+      "iterations": 300,
+      "median_ms": 0.363479,
+      "p95_ms": 0.398291,
+      "positions_per_second": 2751.1905777225093
+    },
+    "batch_64": {
+      "batch_size": 64,
+      "iterations": 300,
+      "median_ms": 3.4911874999999997,
+      "p95_ms": 4.086209,
+      "positions_per_second": 18331.871318856407
+    }
+  },
+  "environment": {
+    "python": "3.11.15",
+    "pytorch": "2.7.1",
+    "platform": "macOS-27.0.1-arm64-arm-64bit",
+    "logical_cpus": 10,
+    "torch_threads": 4
+  }
+}

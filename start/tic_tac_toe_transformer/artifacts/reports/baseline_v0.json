@@ -1,0 +1,288 @@
+{
+  "report_version": 1,
+  "created_at": "2026-10-13T05:32:51.231256+00:00",
+  "checkpoint": "/Users/anixd/Documents/Hyde/start/tic_tac_toe_transformer/artifacts/minimax_policy.pt",
+  "checkpoint_metadata": {
+    "epoch": 20,
+    "validation_accuracy": 0.952433628318584,
+    "config": {
+      "d_model": 32,
+      "n_heads": 4,
+      "n_blocks": 2,
+      "mlp_hidden": 64
+    }
+  },
+  "dataset": "/Users/anixd/Documents/Hyde/start/tic_tac_toe_transformer/artifacts/minimax_positions.jsonl",
+  "environment": {
+    "python": "3.11.15",
+    "pytorch": "2.7.1",
+    "platform": "macOS-27.0.1-arm64-arm-64bit",
+    "processor": "arm"
+  },
+  "positions": {
+    "scope": "all reachable nonterminal positions; diagnostic, not a held-out test set",
+    "positions": 4520,
+    "optimal": 4336,
+    "blunders": 184,
+    "regret_sum": 202.0,
+    "optimal_accuracy": 0.95929203539823,
+    "blunder_rate": 0.04070796460176991,
+    "mean_regret": 0.04469026548672567,
+    "losing_blunders": 95,
+    "losing_blunder_rate": 0.02101769911504425,
+    "by_ply": {
+      "0": {
+        "positions": 1,
+        "optimal": 1,
+        "blunders": 0,
+        "regret_sum": 0.0,
+        "optimal_accuracy": 1.0,
+        "blunder_rate": 0.0,
+        "mean_regret": 0.0
+      },
+      "1": {
+        "positions": 9,
+        "optimal": 8,
+        "blunders": 1,
+        "regret_sum": 1.0,
+        "optimal_accuracy": 0.8888888888888888,
+        "blunder_rate": 0.1111111111111111,
+        "mean_regret": 0.1111111111111111
+      },
+      "2": {
+        "positions": 72,
+        "optimal": 68,
+        "blunders": 4,
+        "regret_sum": 6.0,
+        "optimal_accuracy": 0.9444444444444444,
+        "blunder_rate": 0.05555555555555555,
+        "mean_regret": 0.08333333333333333
+      },
+      "3": {
+        "positions": 252,
+        "optimal": 213,
+        "blunders": 39,
+        "regret_sum": 47.0,
+        "optimal_accuracy": 0.8452380952380952,
+        "blunder_rate": 0.15476190476190477,
+        "mean_regret": 0.1865079365079365
+      },
+      "4": {
+        "positions": 756,
+        "optimal": 727,
+        "blunders": 29,
+        "regret_sum": 30.0,
+        "optimal_accuracy": 0.9616402116402116,
+        "blunder_rate": 0.03835978835978836,
+        "mean_regret": 0.03968253968253968
+      },
+      "5": {
+        "positions": 1140,
+        "optimal": 1092,
+        "blunders": 48,
+        "regret_sum": 51.0,
+        "optimal_accuracy": 0.9578947368421052,
+        "blunder_rate": 0.042105263157894736,
+        "mean_regret": 0.04473684210526316
+      },
+      "6": {
+        "positions": 1372,
+        "optimal": 1333,
+        "blunders": 39,
+        "regret_sum": 41.0,
+        "optimal_accuracy": 0.9715743440233237,
+        "blunder_rate": 0.028425655976676383,
+        "mean_regret": 0.02988338192419825
+      },
+      "7": {
+        "positions": 696,
+        "optimal": 672,
+        "blunders": 24,
+        "regret_sum": 26.0,
+        "optimal_accuracy": 0.9655172413793104,
+        "blunder_rate": 0.034482758620689655,
+        "mean_regret": 0.03735632183908046
+      },
+      "8": {
+        "positions": 222,
+        "optimal": 222,
+        "blunders": 0,
+        "regret_sum": 0.0,
+        "optimal_accuracy": 1.0,
+        "blunder_rate": 0.0,
+        "mean_regret": 0.0
+      }
+    },
+    "by_player": {
+      "O": {
+        "positions": 2097,
+        "optimal": 1985,
+        "blunders": 112,
+        "regret_sum": 125.0,
+        "optimal_accuracy": 0.9465903671912256,
+        "blunder_rate": 0.05340963280877444,
+        "mean_regret": 0.05960896518836433
+      },
+      "X": {
+        "positions": 2423,
+        "optimal": 2351,
+        "blunders": 72,
+        "regret_sum": 77.0,
+        "optimal_accuracy": 0.9702847709451093,
+        "blunder_rate": 0.029715229054890633,
+        "mean_regret": 0.03177878662814693
+      }
+    },
+    "chosen_square_counts": {
+      "1": 575,
+      "2": 345,
+      "3": 605,
+      "4": 336,
+      "5": 1051,
+      "6": 276,
+      "7": 523,
+      "8": 294,
+      "9": 515
+    },
+    "move_latency": {
+      "mean_ms": 0.23052430682969116,
+      "p50_ms": 0.22637499932898208,
+      "p95_ms": 0.24854405091900844,
+      "max_ms": 12.382917000650195
+    }
+  },
+  "tournaments": {
+    "transformer_X_vs_random": {
+      "x_agent": "transformer",
+      "o_agent": "random",
+      "games": 100,
+      "x_wins": 100,
+      "o_wins": 0,
+      "draws": 0,
+      "mean_game_length": 5.48,
+      "x_move_latency": {
+        "mean_ms": 0.22870756503026415,
+        "p50_ms": 0.2268329990329221,
+        "p95_ms": 0.24820440194162072,
+        "max_ms": 0.2814580002450384
+      },
+      "o_move_latency": {
+        "mean_ms": 0.001088745388447673,
+        "p50_ms": 0.0010420008038636297,
+        "p95_ms": 0.0014159995771478862,
+        "max_ms": 0.004208999598631635
+      }
+    },
+    "transformer_O_vs_random": {
+      "x_agent": "random",
+      "o_agent": "transformer",
+      "games": 100,
+      "x_wins": 3,
+      "o_wins": 81,
+      "draws": 16,
+      "mean_game_length": 6.67,
+      "x_move_latency": {
+        "mean_ms": 0.0009367084908726796,
+        "p50_ms": 0.000957999873207882,
+        "p95_ms": 0.0012079981388524175,
+        "max_ms": 0.0017079983081202954
+      },
+      "o_move_latency": {
+        "mean_ms": 0.22784299083322826,
+        "p50_ms": 0.22497949976241216,
+        "p95_ms": 0.2561750998211209,
+        "max_ms": 0.2973750015371479
+      }
+    },
+    "transformer_X_vs_minimax": {
+      "x_agent": "transformer",
+      "o_agent": "minimax",
+      "games": 1,
+      "x_wins": 0,
+      "o_wins": 0,
+      "draws": 1,
+      "mean_game_length": 9.0,
+      "x_move_latency": {
+        "mean_ms": 0.25979979982366785,
+        "p50_ms": 0.24745799964875914,
+        "p95_ms": 0.33030819904524833,
+        "max_ms": 0.3476249985396862
+      },
+      "o_move_latency": {
+        "mean_ms": 8.851416750985663,
+        "p50_ms": 0.335521001034067,
+        "p95_ms": 29.614445600964235,
+        "max_ms": 34.7288330012816
+      }
+    },
+    "transformer_O_vs_minimax": {
+      "x_agent": "minimax",
+      "o_agent": "transformer",
+      "games": 1,
+      "x_wins": 1,
+      "o_wins": 0,
+      "draws": 0,
+      "mean_game_length": 5.0,
+      "x_move_latency": {
+        "mean_ms": 117.04238933331605,
+        "p50_ms": 5.456083999888506,
+        "p95_ms": 311.5495714981079,
+        "max_ms": 345.55995899791014
+      },
+      "o_move_latency": {
+        "mean_ms": 0.38999999742372893,
+        "p50_ms": 0.38999999742372893,
+        "p95_ms": 0.48161279773921706,
+        "max_ms": 0.4917919977742713
+      }
+    }
+  },
+  "cpu": {
+    "batch_1": {
+      "batch_size": 1,
+      "warmup_iterations": 50,
+      "measured_iterations": 500,
+      "torch_threads": 4,
+      "parameter_count": 17601,
+      "parameter_memory_mib": 0.06714248657226562,
+      "estimated_flops_per_example": 353856,
+      "latency": {
+        "mean_ms": 0.2193801560861175,
+        "p50_ms": 0.21752050088252872,
+        "p95_ms": 0.23971429891389562,
+        "max_ms": 0.3268330001446884
+      },
+      "examples_per_second": 4555.732526556883,
+      "estimated_gflops_per_second": 1.6120732889173126,
+      "process_cpu_seconds": 0.11906900000000009,
+      "wall_seconds": 0.10975183399932575,
+      "average_cpu_percent": 108.48930324092039,
+      "average_cores": 1.084893032409204,
+      "peak_rss_mib": 193.390625,
+      "flops_note": "matmul estimate only; Python, norms, softmax, GELU and masking are excluded"
+    },
+    "batch_128": {
+      "batch_size": 128,
+      "warmup_iterations": 50,
+      "measured_iterations": 500,
+      "torch_threads": 4,
+      "parameter_count": 17601,
+      "parameter_memory_mib": 0.06714248657226562,
+      "estimated_flops_per_example": 353856,
+      "latency": {
+        "mean_ms": 2.2355246560036903,
+        "p50_ms": 2.2081665010773577,
+        "p95_ms": 2.4056434471276584,
+        "max_ms": 2.6220830004604068
+      },
+      "examples_per_second": 57252.501613287,
+      "estimated_gflops_per_second": 20.259141210871284,
+      "process_cpu_seconds": 1.52569,
+      "wall_seconds": 1.1178550839977106,
+      "average_cpu_percent": 136.48370185371223,
+      "average_cores": 1.3648370185371226,
+      "peak_rss_mib": 193.390625,
+      "flops_note": "matmul estimate only; Python, norms, softmax, GELU and masking are excluded"
+    }
+  }
+}

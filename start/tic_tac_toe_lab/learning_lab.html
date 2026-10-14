@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tic-Tac-Toe Learning Lab</title>
+  <style>
+    :root {
+      --paper: #e9eef3;
+      --panel: #f8fbfd;
+      --ink: #10243e;
+      --muted: #5b6d80;
+      --line: #b9c8d8;
+      --blue: #2856c6;
+      --mint: #1b9475;
+      --amber: #e59a24;
+      --coral: #cb4f4c;
+      --shadow: 7px 7px 0 #10243e;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background-color: var(--paper);
+      background-image: linear-gradient(#d7e0e9 1px, transparent 1px), linear-gradient(90deg, #d7e0e9 1px, transparent 1px);
+      background-size: 28px 28px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    a { color: inherit; }
+    a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; }
+    .page { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 74px;
+      border-bottom: 2px solid var(--ink);
+      font: 600 0.82rem/1.2 ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+    .topbar a { text-decoration: none; border-bottom: 1px solid currentColor; }
+    .stamp { color: var(--mint); }
+
+    .hero {
+      padding: 72px 0 58px;
+      display: grid;
+      grid-template-columns: 1.4fr 0.8fr;
+      gap: 48px;
+      align-items: end;
+    }
+    .eyebrow, .mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .eyebrow { margin: 0 0 16px; color: var(--blue); font-size: 0.82rem; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      max-width: 760px;
+      margin-bottom: 22px;
+      letter-spacing: -0.07em;
+      font-size: clamp(3.2rem, 8vw, 7.1rem);
+      line-height: 0.88;
+      font-weight: 780;
+    }
+    .intro { max-width: 59ch; color: var(--muted); font-size: 1.14rem; line-height: 1.62; }
+    .hero-note {
+      padding: 22px;
+      border: 2px solid var(--ink);
+      background: var(--amber);
+      box-shadow: var(--shadow);
+      transform: rotate(1.4deg);
+    }
+    .hero-note b { display: block; font-size: 2.4rem; letter-spacing: -0.06em; }
+    .hero-note p { margin: 6px 0 0; line-height: 1.35; }
+
+    .section { margin: 30px 0 80px; }
+    .section-head { display: flex; justify-content: space-between; gap: 24px; align-items: end; margin-bottom: 22px; border-bottom: 2px solid var(--ink); }
+    h2 { margin-bottom: 13px; font-size: clamp(1.8rem, 3vw, 2.9rem); letter-spacing: -0.05em; }
+    .section-head p { max-width: 52ch; margin-bottom: 15px; color: var(--muted); line-height: 1.45; }
+
+    .milestones { display: grid; grid-template-columns: repeat(4, 1fr); border: 2px solid var(--ink); background: var(--ink); gap: 2px; }
+    .milestone { min-height: 242px; padding: 20px; background: var(--panel); }
+    .milestone:nth-child(2) { background: #dce6ff; }
+    .milestone:nth-child(3) { background: #d7f1e8; }
+    .milestone:nth-child(4) { background: #ffe9bd; }
+    .step { color: var(--blue); font: 700 0.76rem/1 ui-monospace, monospace; }
+    .milestone h3 { margin: 36px 0 10px; font-size: 1.35rem; letter-spacing: -0.035em; }
+    .milestone p { margin: 0; color: #30465d; line-height: 1.45; font-size: 0.94rem; }
+
+    .stats { display: grid; grid-template-columns: 1.1fr 1fr 1fr 1.25fr; border: 2px solid var(--ink); background: var(--ink); gap: 2px; }
+    .stat { min-height: 142px; padding: 19px; background: var(--panel); }
+    .stat .value { display: block; margin-bottom: 8px; font-size: clamp(2rem, 4vw, 3.6rem); line-height: 0.92; letter-spacing: -0.07em; font-weight: 760; }
+    .stat small { color: var(--muted); font-size: 0.85rem; line-height: 1.25; }
+    .stat:nth-child(1) .value { color: var(--blue); }
+    .stat:nth-child(2) .value { color: var(--mint); }
+    .stat:nth-child(3) .value { color: var(--coral); }
+    .stat:nth-child(4) .value { color: var(--amber); }
+
+    .chart-grid { display: grid; grid-template-columns: 1.7fr 0.9fr; gap: 24px; align-items: start; }
+    .chart { border: 2px solid var(--ink); background: var(--panel); box-shadow: var(--shadow); }
+    .chart img { display: block; width: 100%; height: auto; border-bottom: 2px solid var(--ink); }
+    .caption { padding: 14px 16px; color: var(--muted); line-height: 1.45; }
+    .caption strong { color: var(--ink); }
+    .evidence { border: 2px solid var(--ink); background: var(--ink); }
+    .evidence > div { padding: 18px; border-bottom: 2px solid var(--ink); background: var(--panel); }
+    .evidence > div:last-child { border-bottom: 0; background: #dce6ff; }
+    .evidence h3 { margin-bottom: 7px; font-size: 1rem; }
+    .evidence p { margin: 0; color: var(--muted); line-height: 1.45; font-size: 0.92rem; }
+
+    .lab { display: grid; grid-template-columns: 0.94fr 1.06fr; gap: 28px; }
+    .formula-card, .board-card { padding: 25px; border: 2px solid var(--ink); background: var(--panel); }
+    .formula-card { box-shadow: var(--shadow); }
+    .formula {
+      margin: 28px 0;
+      padding: 16px;
+      overflow-x: auto;
+      background: var(--ink);
+      color: #f9fcff;
+      font: 600 0.95rem/1.65 ui-monospace, monospace;
+    }
+    .range-row { display: grid; grid-template-columns: 1fr auto; gap: 10px 18px; align-items: center; margin: 19px 0; }
+    input[type="range"] { grid-column: 1 / -1; width: 100%; accent-color: var(--blue); }
+    .answer { padding: 16px; background: #d7f1e8; border-left: 5px solid var(--mint); font: 600 0.95rem/1.5 ui-monospace, monospace; }
+    .board-card { background: #10243e; color: #f6fbff; }
+    .board-card h3 { margin-bottom: 18px; font-size: 1.55rem; letter-spacing: -0.04em; }
+    .board { display: grid; grid-template-columns: repeat(3, minmax(52px, 1fr)); max-width: 330px; margin: 0 auto 24px; border: 2px solid #f6fbff; }
+    .cell { aspect-ratio: 1; display: grid; place-items: center; border: 1px solid #f6fbff; font-size: 2.4rem; font-weight: 800; }
+    .cell.x { color: #8eb5ff; } .cell.o { color: #7ce0c3; }
+    .decision { padding: 15px; background: #1c3654; font: 0.88rem/1.6 ui-monospace, monospace; }
+    .decision b { color: #f2c46e; }
+
+    .compare { width: 100%; border-collapse: collapse; border: 2px solid var(--ink); background: var(--panel); text-align: left; }
+    .compare th, .compare td { padding: 15px 16px; border-bottom: 1px solid var(--line); vertical-align: top; line-height: 1.4; }
+    .compare th { color: var(--blue); font: 700 0.78rem/1.2 ui-monospace, monospace; }
+    .compare tr:last-child td { border-bottom: 0; }
+    .compare td:first-child { font-weight: 720; }
+
+    .lesson-intro { max-width: 64ch; color: var(--muted); font-size: 1.06rem; line-height: 1.58; }
+    .lesson-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 25px; }
+    .paper-card { padding: 24px; border: 2px solid var(--ink); background: var(--panel); }
+    .paper-card:nth-child(1) { box-shadow: var(--shadow); }
+    .paper-card h3 { margin-bottom: 10px; font-size: 1.45rem; letter-spacing: -0.04em; }
+    .paper-card p { color: var(--muted); line-height: 1.5; }
+    .game-strip { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 10px; align-items: center; margin: 22px 0; font: 700 0.85rem/1.25 ui-monospace, monospace; text-align: center; }
+    .game-strip div { min-height: 65px; display: grid; place-items: center; padding: 9px; border: 2px solid var(--ink); }
+    .game-strip .win { background: #d7f1e8; } .game-strip .loss { background: #ffe0dc; }
+    .calc { padding: 16px; background: #dce6ff; font: 0.9rem/1.65 ui-monospace, monospace; }
+    .calc strong { color: var(--blue); }
+    .lesson-button { margin-top: 16px; padding: 11px 14px; border: 2px solid var(--ink); color: #fff; background: var(--blue); box-shadow: 3px 3px 0 var(--ink); cursor: pointer; font: 700 0.8rem/1 ui-monospace, monospace; }
+    .lesson-button:active { transform: translate(3px, 3px); box-shadow: none; }
+    .mini-table { width: 100%; margin-top: 18px; border-collapse: collapse; font: 0.82rem/1.35 ui-monospace, monospace; }
+    .mini-table td, .mini-table th { padding: 8px; border-bottom: 1px solid var(--line); text-align: left; }
+    .mini-table tr:last-child td { border-bottom: 0; }
+    .two-step { margin-top: 18px; padding: 18px; border: 2px dashed var(--blue); background: #f2f6ff; font: 0.89rem/1.65 ui-monospace, monospace; }
+    .tree-card { grid-column: 1 / -1; padding: 25px; border: 2px solid var(--ink); background: #10243e; color: #f7fbff; }
+    .tree-card h3 { margin-bottom: 7px; font-size: 1.55rem; letter-spacing: -0.04em; }
+    .tree-card > p { color: #c6d4e4; }
+    .tree { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 24px; }
+    .branch { padding: 15px; border: 1px solid #8da6c2; }
+    .branch h4 { margin: 0 0 12px; color: #f2c46e; font: 700 0.85rem/1.2 ui-monospace, monospace; }
+    .leaves { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .leaf { padding: 12px; border: 1px solid #8da6c2; color: #dce8f5; font: 0.85rem/1.35 ui-monospace, monospace; }
+    .leaf.bad { border-color: #f18c88; color: #ffc9c7; } .leaf.good { border-color: #7ce0c3; color: #b4f5df; }
+    .tree-answer { margin-top: 18px; padding: 14px; border-left: 4px solid #f2c46e; background: #1c3654; line-height: 1.5; }
+
+    .files { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; border: 2px solid var(--ink); background: var(--ink); }
+    .file { padding: 18px; background: var(--panel); }
+    .file a { color: var(--blue); font: 700 0.98rem/1.3 ui-monospace, monospace; }
+    .file p { margin: 8px 0 0; color: var(--muted); line-height: 1.45; }
+
+    footer { padding: 30px 0 54px; color: var(--muted); font: 0.82rem/1.5 ui-monospace, monospace; }
+    @media (max-width: 800px) {
+      .hero, .chart-grid, .lab { grid-template-columns: 1fr; }
+      .hero { padding-top: 46px; }
+      .hero-note { max-width: 320px; justify-self: end; }
+      .milestones, .stats { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 520px) {
+      .page { width: min(100% - 22px, 1180px); }
+      .topbar { font-size: 0.7rem; }
+      .milestones, .stats, .files { grid-template-columns: 1fr; }
+      .lesson-grid, .tree { grid-template-columns: 1fr; }
+      .section-head { display: block; }
+      .compare { font-size: 0.86rem; }
+      .compare th, .compare td { padding: 11px 9px; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="topbar" aria-label="Page navigation">
+      <span>tic-tac-toe / learning dossier</span>
+      <a href="#methods">How it works</a>
+      <span class="stamp">CPU RUN · COMPLETE</span>
+    </nav>
+
+    <header class="hero">
+      <div>
+        <p class="eyebrow">A tiny game, three ways to think</p>
+        <h1>From random squares to learned choices.</h1>
+        <p class="intro">This project grew from a terminal game into a training lab: first a Q-table learner, then randomized self-play, then a compact neural network that learned the exact perfect-play policy.</p>
+      </div>
+      <aside class="hero-note">
+        <b>0 losses</b>
+        <p>in 100 games against a perfect Minimax opponent after the MLP training run.</p>
+      </aside>
+    </header>
+
+    <main>
+      <section class="section" aria-labelledby="journey-title">
+        <div class="section-head">
+          <h2 id="journey-title">What we built</h2>
+          <p>Each layer remains usable on its own. The later steps explain and strengthen the earlier ones.</p>
+        </div>
+        <div class="milestones">
+          <article class="milestone"><span class="step">01 / rules</span><h3>Playable game</h3><p>A reusable Python module handles legal moves, wins, draws, a terminal board, and two-player play.</p></article>
+          <article class="milestone"><span class="step">02 / values</span><h3>Q-learning</h3><p>Two agents learned state-action scores from wins, losses, and draws through self-play.</p></article>
+          <article class="milestone"><span class="step">03 / coverage</span><h3>Random starts</h3><p>Games began from varied legal openings so corner traps, forks, and blocks appeared often.</p></article>
+          <article class="milestone"><span class="step">04 / neural policy</span><h3>CPU MLP</h3><p>A 5,385-parameter neural network copied perfect Minimax moves for every legal board.</p></article>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="proof-title">
+        <div class="section-head"><h2 id="proof-title">Evidence from the runs</h2><p>These are real results from this workspace, not placeholder metrics.</p></div>
+        <div class="stats">
+          <div class="stat"><span class="value">1M</span><small>randomized-opening Q-learning games</small></div>
+          <div class="stat"><span class="value">6.84M</span><small>Q-value updates across both agents</small></div>
+          <div class="stat"><span class="value">4.48s</span><small>CPU time to train the MLP</small></div>
+          <div class="stat"><span class="value">99.98%</span><small>MLP agreement with optimal Minimax moves</small></div>
+        </div>
+      </section>
+
+      <section class="section chart-grid" aria-labelledby="charts-title">
+        <div class="chart">
+          <img src="training_progress.png" alt="Four training charts showing outcomes, exploration rate, game length, and total outcomes.">
+          <p class="caption"><strong>Self-play progression.</strong> Exploration falls as the agents become more consistent; draws dominate once both sides learn defensive play.</p>
+        </div>
+        <aside class="evidence" id="charts-title">
+          <div><h3>Saved Q-table</h3><p>The original learners are kept in <span class="mono">x_q_table.json</span> and <span class="mono">o_q_table.json</span>. They are lookup notebooks: board → move scores.</p></div>
+          <div><h3>Why the MLP came next</h3><p>A Q-table can leave rare tactical holes. An MLP shares its weights across similar patterns and can generalize.</p></div>
+          <div><h3>Important detail</h3><p>The MLP was trained by a perfect Minimax teacher. It is learned weights, but not trial-and-error reinforcement learning.</p></div>
+        </aside>
+      </section>
+
+      <section class="section" aria-labelledby="q-title">
+        <div class="section-head"><h2 id="q-title">One Q-learning update, slowly</h2><p>Q-learning changes a move score toward better evidence. Move the sliders to see the arithmetic.</p></div>
+        <div class="lab">
+          <div class="formula-card">
+            <div class="formula">new Q = old Q + α × (reward + γ × best next Q − old Q)</div>
+            <div class="range-row"><label for="old">Old move score</label><output id="old-out">0.20</output><input id="old" type="range" min="-1" max="1" step="0.01" value="0.20"></div>
+            <div class="range-row"><label for="reward">Immediate reward</label><output id="reward-out">0.00</output><input id="reward" type="range" min="-1" max="1" step="0.01" value="0"></div>
+            <div class="range-row"><label for="future">Best next score</label><output id="future-out">0.50</output><input id="future" type="range" min="-1" max="1" step="0.01" value="0.50"></div>
+            <div class="range-row"><label for="alpha">Learning rate α</label><output id="alpha-out">0.20</output><input id="alpha" type="range" min="0.01" max="1" step="0.01" value="0.20"></div>
+            <div class="answer" id="answer">New score: 0.255</div>
+          </div>
+          <div class="board-card">
+            <h3>Why a trap becomes a lesson</h3>
+            <div class="board" aria-label="Example board with X in the top corners and O in the bottom corners">
+              <div class="cell x">X</div><div class="cell"></div><div class="cell x">X</div>
+              <div class="cell"></div><div class="cell"></div><div class="cell"></div>
+              <div class="cell o">O</div><div class="cell"></div><div class="cell o">O</div>
+            </div>
+            <div class="decision"><b>Threat:</b> O can win through the bottom row.<br><b>Correct defence:</b> X must block square 8.<br><br>Randomized starting boards make this kind of position show up often during training, so bad replies receive loss signals instead of hiding in rare paths.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="methods" aria-labelledby="methods-title">
+        <div class="section-head"><h2 id="methods-title">The methods are different tools</h2><p>They can work together, but they solve the decision problem in different ways.</p></div>
+        <table class="compare">
+          <thead><tr><th>Method</th><th>What it stores or searches</th><th>Learning?</th><th>Where it shines</th></tr></thead>
+          <tbody>
+            <tr><td>Q-table</td><td>A separate score for every seen board and move.</td><td>Yes</td><td>Small games with manageable state spaces.</td></tr>
+            <tr><td>MLP</td><td>5,385 shared numeric weights that turn a board into move probabilities.</td><td>Yes</td><td>Recognizing similar patterns without storing every board separately.</td></tr>
+            <tr><td>Minimax</td><td>All future moves, assuming the opponent is perfect.</td><td>No</td><td>Tic-Tac-Toe: it can solve the whole game exactly.</td></tr>
+            <tr><td>MCTS</td><td>A growing tree of promising simulated futures.</td><td>Optional</td><td>Huge game trees, where Minimax cannot inspect everything.</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="section" id="notebook" aria-labelledby="notebook-title">
+        <div class="section-head"><h2 id="notebook-title">Start with a page in your notebook</h2><p>Do the tiny arithmetic by hand before thinking about 5,385 neural-network weights.</p></div>
+        <p class="lesson-intro">Q-learning is only a repeating correction. The agent makes a guess about a move, sees evidence, then shifts the guess a little closer to that evidence. Start with one decision and two outcomes.</p>
+        <div class="lesson-grid">
+          <article class="paper-card">
+            <h3>One state. Two actions.</h3>
+            <p>There is one state called <span class="mono">S</span>. Left always loses. Right always wins. Start both move scores at zero.</p>
+            <div class="game-strip"><div>state S</div><span>→</span><div class="loss">Left<br>reward −1</div><span>or</span><div class="win">Right<br>reward +1</div></div>
+            <div class="calc" id="one-step-calc"><strong>Try 0</strong><br>Q(S, Right) = 0.000<br>new Q = 0 + 0.2 × (1 − 0) = <strong>0.200</strong></div>
+            <button class="lesson-button" id="next-try" type="button">Show the next winning try</button>
+            <table class="mini-table"><thead><tr><th>winning tries</th><th>Q(S, Right)</th></tr></thead><tbody><tr><td>0</td><td>0.000</td></tr><tr><td>1</td><td>0.200</td></tr><tr><td>2</td><td>0.360</td></tr><tr><td>3</td><td>0.488</td></tr><tr><td>4</td><td>0.590</td></tr></tbody></table>
+            <p><strong>Paper takeaway:</strong> repeated wins make the number approach +1. Repeated losses make it approach −1.</p>
+          </article>
+
+          <article class="paper-card">
+            <h3>Then add a future.</h3>
+            <p>A good early move might have no reward yet. It is useful because it leads to a later state with a good move.</p>
+            <div class="two-step">state A<br>choose move 1<br>↓ reward now = 0<br>state B<br>choose move 2<br>↓ reward = +1</div>
+            <div class="calc"><strong>After move 2 wins:</strong><br>Q(B, move 2) = 0.200<br><br><strong>Update move 1:</strong><br>new Q(A, move 1)<br>= 0 + 0.2 × (0 + 0.95 × 0.2 − 0)<br>= <strong>0.038</strong></div>
+            <p>The winning value slowly travels backward: terminal win → late move → earlier move. That is how a Tic-Tac-Toe agent discovers blocks and forks without being handed a rule book.</p>
+          </article>
+
+          <article class="tree-card">
+            <h3>Minimax is not learning</h3>
+            <p>Minimax does not store weights or improve over time. It calculates a choice now by assuming both players act perfectly.</p>
+            <div class="tree">
+              <div class="branch"><h4>X tries move A · O chooses the minimum</h4><div class="leaves"><div class="leaf bad">O reply 1<br>X gets −1<br>loss</div><div class="leaf">O reply 2<br>X gets 0<br>draw</div></div><p>O picks −1 because it is worst for X.</p></div>
+              <div class="branch"><h4>X tries move B · O chooses the minimum</h4><div class="leaves"><div class="leaf">O reply 1<br>X gets 0<br>draw</div><div class="leaf good">O reply 2<br>X gets +1<br>win</div></div><p>O picks 0 because it is worst for X.</p></div>
+            </div>
+            <div class="tree-answer"><strong>X compares the branch values:</strong> max(−1, 0) = 0. X chooses move B and guarantees a draw. This is the Minimax pattern: <span class="mono">my turn = max</span>; <span class="mono">opponent turn = min</span>.</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="files-title">
+        <div class="section-head"><h2 id="files-title">Where the work lives</h2><p>Open any file to follow the project from game rules to neural-network training.</p></div>
+        <div class="files">
+          <div class="file"><a href="tic_tac_toe.py">tic_tac_toe.py</a><p>Board rules, turn handling, terminal game interface, and Minimax helper.</p></div>
+          <div class="file"><a href="q_learning.py">q_learning.py</a><p>Q-table agent, self-play loop, random openings, and model persistence.</p></div>
+          <div class="file"><a href="visualization.py">visualization.py</a><p>Learning charts and the top-three decision report.</p></div>
+          <div class="file"><a href="mlp_agent.py">mlp_agent.py</a><p>NumPy neural network, ReLU layers, softmax, backpropagation, and Adam.</p></div>
+          <div class="file"><a href="train_mlp.py">train_mlp.py</a><p>Exact Minimax dataset generator and the reproducible MLP training run.</p></div>
+          <div class="file"><a href="play_mlp_ai.py">play_mlp_ai.py</a><p>Direct terminal game against the saved neural model.</p></div>
+        </div>
+      </section>
+    </main>
+    <footer>Temporary explainer · generated from the current training artefacts · <a href="training_progress.png">open training chart</a></footer>
+  </div>
+  <script>
+    const ids = ['old', 'reward', 'future', 'alpha'];
+    const inputs = Object.fromEntries(ids.map(id => [id, document.getElementById(id)]));
+    const output = id => document.getElementById(`${id}-out`);
+    function updateQ() {
+      const old = Number(inputs.old.value);
+      const reward = Number(inputs.reward.value);
+      const future = Number(inputs.future.value);
+      const alpha = Number(inputs.alpha.value);
+      const gamma = 0.95;
+      const next = old + alpha * (reward + gamma * future - old);
+      ids.forEach(id => output(id).textContent = Number(inputs[id].value).toFixed(2));
+      document.getElementById('answer').textContent = `New score: ${next.toFixed(3)}  ·  target evidence: ${(reward + gamma * future).toFixed(3)}`;
+    }
+    ids.forEach(id => inputs[id].addEventListener('input', updateQ));
+    updateQ();
+    const values = [0, 0.2, 0.36, 0.488, 0.5904, 0.67232];
+    let tryNumber = 0;
+    document.getElementById('next-try').addEventListener('click', () => {
+      tryNumber = (tryNumber + 1) % values.length;
+      const old = values[Math.max(0, tryNumber - 1)];
+      const current = values[tryNumber];
+      document.getElementById('one-step-calc').innerHTML = `<strong>Try ${tryNumber}</strong><br>Q(S, Right) = ${old.toFixed(3)}<br>new Q = ${old.toFixed(3)} + 0.2 × (1 − ${old.toFixed(3)}) = <strong>${current.toFixed(3)}</strong>`;
+    });
+  </script>
+</body>
+</html>
