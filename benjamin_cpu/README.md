@@ -1,5 +1,8 @@
 # Benjamin 1v1 RL pipeline on CPU
 
+The separate direct Catanatron transfer experiment and its limits are in
+[`CATANATRON_TRANSFER_RESULT.md`](CATANATRON_TRANSFER_RESULT.md).
+
 This worktree runs the public [BenjaminL1/catan_rl](https://github.com/BenjaminL1/catan_rl) pipeline at commit `8c3bace` entirely on CPU. The upstream checkout is at `external/benjamin_catan_rl/`; it is ignored by this worktree's Git because the upstream source is fetched separately. The virtual environment is local to this worktree (`.venv/`).
 
 ## What was run
