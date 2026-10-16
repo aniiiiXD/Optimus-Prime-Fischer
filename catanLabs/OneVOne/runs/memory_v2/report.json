@@ -1,0 +1,1834 @@
+{
+  "data": "/Users/anixd/Documents/Hyde/catanLabs/OneVOne/data/bootstrap_20272000_64boards.jsonl.gz",
+  "engine": {
+    "source": "https://github.com/bcollazo/catanatron.git",
+    "commit": "ecf931181b9a65bb4116a2153fb78c16f1438e00",
+    "python_root": "/Users/anixd/Documents/Hyde-onevone-transformer/start/catan_lab/vendor/catanatron/catanatron"
+  },
+  "train_choices": 5565,
+  "holdout_choices": 1232,
+  "holdout_seeds": [
+    20272052,
+    20272053,
+    20272054,
+    20272055,
+    20272056,
+    20272057,
+    20272058,
+    20272059,
+    20272060,
+    20272061,
+    20272062,
+    20272063
+  ],
+  "teacher_games": 128,
+  "history_len": 4,
+  "width": 64,
+  "variants": {
+    "memoryless": {
+      "best_holdout_top1": 0.5316558441558441,
+      "epochs": [
+        {
+          "epoch": 1,
+          "choices": 1232,
+          "top1": 0.5008116883116883,
+          "nll": 1.3192614812355536
+        },
+        {
+          "epoch": 2,
+          "choices": 1232,
+          "top1": 0.49594155844155846,
+          "nll": 1.3084175478328357
+        },
+        {
+          "epoch": 3,
+          "choices": 1232,
+          "top1": 0.5113636363636364,
+          "nll": 1.2774692975081408
+        },
+        {
+          "epoch": 4,
+          "choices": 1232,
+          "top1": 0.5170454545454546,
+          "nll": 1.2475454869208398
+        },
+        {
+          "epoch": 5,
+          "choices": 1232,
+          "top1": 0.502435064935065,
+          "nll": 1.2630975014203554
+        },
+        {
+          "epoch": 6,
+          "choices": 1232,
+          "top1": 0.525974025974026,
+          "nll": 1.2475339886430021
+        },
+        {
+          "epoch": 7,
+          "choices": 1232,
+          "top1": 0.5316558441558441,
+          "nll": 1.244765273936383
+        },
+        {
+          "epoch": 8,
+          "choices": 1232,
+          "top1": 0.5211038961038961,
+          "nll": 1.2578902801910004
+        }
+      ],
+      "train_seconds": 3.98,
+      "parameter_count": 168897
+    },
+    "memory": {
+      "best_holdout_top1": 0.5340909090909091,
+      "epochs": [
+        {
+          "epoch": 1,
+          "choices": 1232,
+          "top1": 0.5032467532467533,
+          "nll": 1.320366340798217
+        },
+        {
+          "epoch": 2,
+          "choices": 1232,
+          "top1": 0.4943181818181818,
+          "nll": 1.3059048637167199
+        },
+        {
+          "epoch": 3,
+          "choices": 1232,
+          "top1": 0.5081168831168831,
+          "nll": 1.2657979246857878
+        },
+        {
+          "epoch": 4,
+          "choices": 1232,
+          "top1": 0.5097402597402597,
+          "nll": 1.2705531522825166
+        },
+        {
+          "epoch": 5,
+          "choices": 1232,
+          "top1": 0.5121753246753247,
+          "nll": 1.2520284095367828
+        },
+        {
+          "epoch": 6,
+          "choices": 1232,
+          "top1": 0.5227272727272727,
+          "nll": 1.2515254825740665
+        },
+        {
+          "epoch": 7,
+          "choices": 1232,
+          "top1": 0.5340909090909091,
+          "nll": 1.2445061299707982
+        },
+        {
+          "epoch": 8,
+          "choices": 1232,
+          "top1": 0.5211038961038961,
+          "nll": 1.2834954261779785
+        }
+      ],
+      "train_seconds": 4.43,
+      "parameter_count": 168897
+    }
+  },
+  "fresh_game_seeds": [
+    20269900,
+    20269901,
+    20269902,
+    20269903,
+    20269904,
+    20269905
+  ],
+  "fresh_games": {
+    "onevone": {
+      "games": 12,
+      "wins": 11,
+      "completed": 12,
+      "errors": [],
+      "capped": 0,
+      "median_game_decision_ms": 0.06841675,
+      "per_game": [
+        {
+          "seed": 20269900,
+          "seat": 0,
+          "status": "completed",
+          "ours_won": true,
+          "catanatron_won": false,
+          "ours_vp": 10,
+          "catanatron_vp": 5,
+          "actions": 136,
+          "turns": 46,
+          "wall_seconds": 0.212,
+          "move_counts": {
+            "ours": {
+              "BUILD_SETTLEMENT": 4,
+              "BUILD_ROAD": 6,
+              "ROLL": 23,
+              "END_TURN": 22,
+              "BUILD_CITY": 4,
+              "MOVE_ROBBER": 1,
+              "MARITIME_TRADE": 3,
+              "DISCARD_RESOURCE": 5,
+              "BUY_DEVELOPMENT_CARD": 3
+            },
+            "catanatron": {
+              "BUILD_SETTLEMENT": 2,
+              "BUILD_ROAD": 9,
+              "ROLL": 22,
+              "END_TURN": 22,
+              "MARITIME_TRADE": 6,
+              "MOVE_ROBBER": 3,
+              "BUILD_CITY": 1
+            }
+          },
+          "decision_ms": {
+            "ours": {
+              "count": 71,
+              "median": 0.164458,
+              "p95": 5.1525
+            },
+            "catanatron": {
+              "count": 65,
+              "median": 0.0055,
+              "p95": 8.018708
+            }
+          }
+        },
+        {
+          "seed": 20269900,
+          "seat": 1,
+          "status": "completed",
+          "ours_won": true,
+          "catanatron_won": false,
+          "ours_vp": 10,
+          "catanatron_vp": 8,
+          "actions": 167,
+          "turns": 55,
+          "wall_seconds": 0.322,
+          "move_counts": {
+            "ours": {
+              "BUILD_SETTLEMENT": 4,
+              "BUILD_ROAD": 9,
+              "ROLL": 27,
+              "END_TURN": 26,
+              "MARITIME_TRADE": 5,
+              "MOVE_ROBBER": 3,
+              "BUILD_CITY": 2,
+              "BUY_DEVELOPMENT_CARD": 3,
+              "PLAY_KNIGHT_CARD": 1
+            },
+            "catanatron": {
+              "BUILD_SETTLEMENT": 4,
+              "BUILD_ROAD": 6,
+              "ROLL": 27,
+              "END_TURN": 27,
+              "MOVE_ROBBER": 5,
+              "BUILD_CITY": 4,
+              "MARITIME_TRADE": 5,
+              "DISCARD_RESOURCE": 9
+            }
+          },
+          "decision_ms": {
+            "ours": {
+              "count": 80,
+              "median": 0.0030835000000000003,
+              "p95": 5.103958
+            },
+            "catanatron": {
+              "count": 87,
+              "median": 0.458875,
+              "p95": 9.59775
+            }
+          }
+        },
+        {
+          "seed": 20269901,
+          "seat": 0,
+          "status": "completed",
+          "ours_won": true,
+          "catanatron_won": false,
+          "ours_vp": 11,
+          "catanatron_vp": 8,
+          "actions": 278,
+          "turns": 84,
+          "wall_seconds": 0.607,
+          "move_counts": {
+            "ours": {
+              "BUILD_SETTLEMENT": 3,
+              "BUILD_ROAD": 6,
+              "ROLL": 41,
+              "MOVE_ROBBER": 9,
+              "END_TURN": 41,
+              "DISCARD_RESOURCE": 20,
+              "BUILD_CITY": 3,
+              "MARITIME_TRADE": 4,
+              "BUY_DEVELOPMENT_CARD": 8,
+              "PLAY_KNIGHT_CARD": 3,
+              "PLAY_MONOPOLY": 1
+            },
+            "catanatron": {
+              "BUILD_SETTLEMENT": 5,
+              "BUILD_ROAD": 15,
+              "ROLL": 41,
+              "END_TURN": 41,
+              "MOVE_ROBBER": 12,
+              "DISCARD_RESOURCE": 16,
+              "MARITIME_TRADE": 6,
+              "BUY_DEVELOPMENT_CARD": 1,
+              "PLAY_KNIGHT_CARD": 1,
+              "BUILD_CITY": 1
+            }
+          },
+          "decision_ms": {
+            "ours": {
+              "count": 139,
+              "median": 0.183666,
+              "p95": 2.372792
+            },
+            "catanatron": {
+              "count": 139,
+              "median": 0.341375,
+              "p95": 13.886667
+            }
+          }
+        },
+        {
+          "seed": 20269901,
+          "seat": 1,
+          "status": "completed",
+          "ours_won": false,
+          "catanatron_won": true,
+          "ours_vp": 3,
+          "catanatron_vp": 10,
+          "actions": 199,
+          "turns": 66,
+          "wall_seconds": 0.361,
+          "move_counts": {
+            "ours": {
+              "BUILD_SETTLEMENT": 2,
+              "BUILD_ROAD": 4,
+              "ROLL": 32,
+              "END_TURN": 32,
+              "MOVE_ROBBER": 6,
+              "DISCARD_RESOURCE": 12,
+              "BUILD_CITY": 1,
+              "MARITIME_TRADE": 1
+            },
+            "catanatron": {
+              "BUILD_SETTLEMENT": 5,
+              "BUILD_ROAD": 9,
+              "ROLL": 33,
+              "MOVE_ROBBER": 10,
+              "END_TURN": 32,
+              "DISCARD_RESOURCE": 12,
+              "MARITIME_TRADE": 5,
+              "BUILD_CITY": 3
+            }
+          },
+          "decision_ms": {
+            "ours": {
+              "count": 90,
+              "median": 0.005187499999999999,
+              "p95": 1.109958
+            },
+            "catanatron": {
+              "count": 109,
+              "median": 0.004125,
+              "p95": 11.340042
+            }
+          }
+        },
+        {
+          "seed": 20269902,
+          "seat": 0,
+          "status": "completed",
+          "ours_won": true,
+          "catanatron_won": false,
+          "ours_vp": 10,
+          "catanatron_vp": 2,
+          "actions": 97,
+          "turns": 34,
+          "wall_seconds": 0.161,
+          "move_counts": {
+            "ours": {
+              "BUILD_SETTLEMENT": 5,
+              "BUILD_ROAD": 8,
+              "ROLL": 17,
+              "MOVE_ROBBER": 2,
+              "END_TURN": 16,
+              "MARITIME_TRADE": 6,
+              "BUILD_CITY": 3
+            },
+            "catanatron": {
+              "BUILD_SETTLEMENT": 2,
+              "BUILD_ROAD": 4,
+              "ROLL": 16,
+              "END_TURN": 16,
+              "MOVE_ROBBER": 1,
+              "MARITIME_TRADE": 1
+            }
+          },
+          "decision_ms": {
+            "ours": {
+              "count": 57,
+              "median": 0.079125,
+              "p95": 6.579292
+            },
+            "catanatron": {
+              "count": 40,
+              "median": 0.001833,
+              "p95": 11.346334
+            }
+          }
+        },
+        {
+          "seed": 20269902,
+          "seat": 1,
+          "status": "completed",
+          "ours_won": true,
+          "catanatron_won": false,
+          "ours_vp": 11,
+          "catanatron_vp": 2,
+          "actions": 143,
+          "turns": 49,
+          "wall_seconds": 0.182,
+          "move_counts": {
+            "ours": {
+              "BUILD_SETTLEMENT": 6,
+              "BUILD_ROAD": 9,
+              "ROLL": 24,
+              "END_TURN": 23,
+              "MOVE_ROBBER": 5,
+              "MARITIME_TRADE": 2,
+              "BUILD_CITY": 3,
+              "DISCARD_RESOURCE": 4,
+              "BUY_DEVELOPMENT_CARD": 1,
+              "PLAY_KNIGHT_CARD": 1
+            },
+            "catanatron": {
+              "BUILD_SETTLEMENT": 2,
+              "BUILD_ROAD": 7,
+              "ROLL": 24,
+              "MOVE_ROBBER": 3,
+              "END_TURN": 24,
+              "MARITIME_TRADE": 5
+            }
+          },
+          "decision_ms": {
+            "ours": {
+              "count": 78,
+              "median": 0.09954199999999999,
+              "p95": 5.044334
+            },
+            "catanatron": {
+              "count": 65,
+              "median": 0.001667,
+              "p95": 5.541334
+            }
+          }
+        },
+        {
+          "seed": 20269903,
+          "seat": 0,
+          "status": "completed",
+          "ours_won": true,
+          "catanatron_won": false,
+          "ours_vp": 11,
+          "catanatron_vp": 7,
+          "actions": 202,
+          "turns": 68,
+          "wall_seconds": 0.358,
+          "move_counts": {
+            "ours": {
+              "BUILD_SETTLEMENT": 5,
+              "BUILD_ROAD": 7,
+              "ROLL": 33,
+              "END_TURN": 33,
+              "MOVE_ROBBER": 6,
+              "DISCARD_RESOURCE": 8,
+              "MARITIME_TRADE": 8,
+              "BUILD_CITY": 4,
+              "BUY_DEVELOPMENT_CARD": 3,
+              "PLAY_KNIGHT_CARD": 3
+            },
+            "catanatron": {
+              "BUILD_SETTLEMENT": 4,
+              "BUILD_ROAD": 7,
+              "ROLL": 33,
+              "END_TURN": 33,
+              "DISCARD_RESOURCE": 4,
+              "MOVE_ROBBER": 4,
+              "BUILD_CITY": 1,
+              "MARITIME_TRADE": 6
+            }
+          },
+          "decision_ms": {
+            "ours": {
+              "count": 110,
+              "median": 0.004958499999999999,
+              "p95": 3.59075
+            },
+            "catanatron": {
+              "count": 92,
+              "median": 0.0029375,
+              "p95": 12.333459
+            }
+          }
+        },
+        {
+          "seed": 20269903,
+          "seat": 1,
+          "status": "completed",
+          "ours_won": true,
+          "catanatron_won": false,
+          "ours_vp": 10,
+          "catanatron_vp": 5,
+          "actions": 119,
+          "turns": 41,
+          "wall_seconds": 0.326,
+          "move_counts": {
+            "ours": {
+              "BUILD_SETTLEMENT": 5,
+              "BUILD_ROAD": 7,
+              "ROLL": 20,
+              "END_TURN": 19,
+              "MOVE_ROBBER": 1,
+              "BUILD_CITY": 3,
+              "MARITIME_TRADE": 3
+            },
+            "catanatron": {
+              "BUILD_SETTLEMENT": 4,
+              "BUILD_ROAD": 5,
+              "ROLL": 20,
+              "END_TURN": 20,
+              "MOVE_ROBBER": 4,
+              "MARITIME_TRADE": 2,
+              "DISCARD_RESOURCE": 5,
+              "BUILD_CITY": 1
+            }
+          },
+          "decision_ms": {
+            "ours": {
+              "count": 58,
+              "median": 0.0044795,
+              "p95": 6.479833
+            },
+            "catanatron": {
+              "count": 61,
+              "median": 0.707083,
+              "p95": 16.126208
+            }
+          }
+        },
+        {
+          "seed": 20269904,
+          "seat": 0,
+          "status": "completed",
+          "ours_won": true,
+          "catanatron_won": false,
+          "ours_vp": 10,
+          "catanatron_vp": 7,
+          "actions": 256,
+          "turns": 86,
+          "wall_seconds": 0.55,
+          "move_counts": {
+            "ours": {
+              "BUILD_SETTLEMENT": 6,
+              "BUILD_ROAD": 15,
+              "ROLL": 43,
+              "END_TURN": 42,
+              "MARITIME_TRADE": 12,
+              "MOVE_ROBBER": 8,
+              "DISCARD_RESOURCE": 14,
+              "BUILD_CITY": 1,
+              "BUY_DEVELOPMENT_CARD": 2,
+              "PLAY_KNIGHT_CARD": 1
+            },
+            "catanatron": {
+              "BUILD_SETTLEMENT": 4,
+              "BUILD_ROAD": 9,
+              "ROLL": 42,
+              "END_TURN": 42,
+              "MARITIME_TRADE": 6,
+              "MOVE_ROBBER": 6,
+              "BUILD_CITY": 3
+            }
+          },
+          "decision_ms": {
+            "ours": {
+              "count": 144,
+              "median": 0.0577085,
+              "p95": 8.83525
+            },
+            "catanatron": {
+              "count": 112,
+              "median": 0.0018955,
+              "p95": 11.437791
+            }
+          }
+        },
+        {
+          "seed": 20269904,
+          "seat": 1,
+          "status": "completed",
+          "ours_won": true,
+          "catanatron_won": false,
+          "ours_vp": 10,
+          "catanatron_vp": 8,
+          "actions": 264,
+          "turns": 87,
+          "wall_seconds": 0.57,
+          "move_counts": {
+            "ours": {
+              "BUILD_SETTLEMENT": 5,
+              "BUILD_ROAD": 11,
+              "ROLL": 42,
+              "END_TURN": 42,
+              "MARITIME_TRADE": 9,
+              "MOVE_ROBBER": 7,
+              "DISCARD_RESOURCE": 8,
+              "BUY_DEVELOPMENT_CARD": 4,
+              "PLAY_KNIGHT_CARD": 3
+            },
+            "catanatron": {
+              "BUILD_SETTLEMENT": 6,
+              "BUILD_ROAD": 11,
+              "ROLL": 43,
+              "END_TURN": 43,
+              "MOVE_ROBBER": 9,
+              "MARITIME_TRADE": 9,
+              "BUILD_CITY": 2,
+              "DISCARD_RESOURCE": 10
+            }
+          },
+          "decision_ms": {
+            "ours": {
+              "count": 131,
+              "median": 0.107458,
+              "p95": 4.7955
+            },
+            "catanatron": {
+              "count": 133,
+              "median": 0.002042,
+              "p95": 11.283334
+            }
+          }
+        },
+        {
+          "seed": 20269905,
+          "seat": 0,
+          "status": "completed",
+          "ours_won": true,
+          "catanatron_won": false,
+          "ours_vp": 10,
+          "catanatron_vp": 9,
+          "actions": 223,
+          "turns": 72,
+          "wall_seconds": 0.915,
+          "move_counts": {
+            "ours": {
+              "BUILD_SETTLEMENT": 6,
+              "BUILD_ROAD": 10,
+              "ROLL": 35,
+              "END_TURN": 35,
+              "MOVE_ROBBER": 6,
+              "MARITIME_TRADE": 11,
+              "BUILD_CITY": 2,
+              "BUY_DEVELOPMENT_CARD": 4,
+              "PLAY_KNIGHT_CARD": 3
+            },
+            "catanatron": {
+              "BUILD_SETTLEMENT": 6,
+              "BUILD_ROAD": 12,
+              "ROLL": 35,
+              "END_TURN": 35,
+              "MARITIME_TRADE": 5,
+              "MOVE_ROBBER": 5,
+              "BUILD_CITY": 1,
+              "DISCARD_RESOURCE": 12
+            }
+          },
+          "decision_ms": {
+            "ours": {
+              "count": 112,
+              "median": 0.004521,
+              "p95": 6.038334
+            },
+            "catanatron": {
+              "count": 111,
+              "median": 0.900958,
+              "p95": 29.300125
+            }
+          }
+        },
+        {
+          "seed": 20269905,
+          "seat": 1,
+          "status": "completed",
+          "ours_won": true,
+          "catanatron_won": false,
+          "ours_vp": 10,
+          "catanatron_vp": 6,
+          "actions": 174,
+          "turns": 59,
+          "wall_seconds": 0.243,
+          "move_counts": {
+            "ours": {
+              "BUILD_SETTLEMENT": 5,
+              "BUILD_ROAD": 9,
+              "ROLL": 29,
+              "END_TURN": 28,
+              "MOVE_ROBBER": 9,
+              "MARITIME_TRADE": 7,
+              "BUY_DEVELOPMENT_CARD": 4,
+              "PLAY_KNIGHT_CARD": 4,
+              "BUILD_CITY": 1
+            },
+            "catanatron": {
+              "BUILD_SETTLEMENT": 5,
+              "BUILD_ROAD": 7,
+              "ROLL": 29,
+              "END_TURN": 29,
+              "MOVE_ROBBER": 3,
+              "MARITIME_TRADE": 4,
+              "BUILD_CITY": 1
+            }
+          },
+          "decision_ms": {
+            "ours": {
+              "count": 96,
+              "median": 0.149979,
+              "p95": 5.146292
+            },
+            "catanatron": {
+              "count": 78,
+              "median": 0.0020415,
+              "p95": 5.737584
+            }
+          }
+        }
+      ]
+    },
+    "memoryless": {
+      "games": 12,
+      "wins": 0,
+      "completed": 12,
+      "errors": [],
+      "capped": 0,
+      "median_game_decision_ms": 0.2355,
+      "per_game": [
+        {
+          "seed": 20269900,
+          "seat": 0,
+          "status": "completed",
+          "ours_won": false,
+          "catanatron_won": true,
+          "ours_vp": 4,
+          "catanatron_vp": 10,
+          "actions": 274,
+          "turns": 83,
+          "wall_seconds": 0.511,
+          "move_counts": {
+            "ours": {
+              "BUILD_SETTLEMENT": 2,
+              "BUILD_ROAD": 5,
+              "ROLL": 41,
+              "END_TURN": 41,
+              "BUILD_CITY": 2,
+              "MARITIME_TRADE": 4,
+              "MOVE_ROBBER": 2,
+              "DISCARD_RESOURCE": 47
+            },
+            "catanatron": {
+              "BUILD_SETTLEMENT": 5,
+              "BUILD_ROAD": 11,
+              "ROLL": 41,
+              "END_TURN": 40,
+              "MOVE_ROBBER": 10,
+              "MARITIME_TRADE": 7,
+              "DISCARD_RESOURCE": 13,
+              "BUILD_CITY": 3
+            }
+          },
+          "decision_ms": {
+            "ours": {
+              "count": 144,
+              "median": 0.210646,
+              "p95": 1.020334
+            },
+            "catanatron": {
+              "count": 130,
+              "median": 0.003958,
+              "p95": 13.621375
+            }
+          }
+        },
+        {
+          "seed": 20269900,
+          "seat": 1,
+          "status": "completed",
+          "ours_won": false,
+          "catanatron_won": true,
+          "ours_vp": 3,
+          "catanatron_vp": 10,
+          "actions": 221,
+          "turns": 70,
+          "wall_seconds": 0.518,
+          "move_counts": {
+            "ours": {
+              "BUILD_SETTLEMENT": 2,
+              "BUILD_ROAD": 5,
+              "ROLL": 34,
+              "END_TURN": 34,
+              "DISCARD_RESOURCE": 32,
+              "MOVE_ROBBER": 6,
+              "BUILD_CITY": 1,
+              "MARITIME_TRADE": 3
+            },
+            "catanatron": {
+              "BUILD_SETTLEMENT": 6,
+              "BUILD_ROAD": 11,
+              "ROLL": 35,
+              "END_TURN": 34,
+              "DISCARD_RESOURCE": 4,
+              "MOVE_ROBBER": 2,
+              "MARITIME_TRADE": 8,
+              "BUILD_CITY": 2,
+              "BUY_DEVELOPMENT_CARD": 1,
+              "PLAY_KNIGHT_CARD": 1
+            }
+          },
+          "decision_ms": {
+            "ours": {
+              "count": 117,
+              "median": 0.633667,
+              "p95": 1.206417
+            },
+            "catanatron": {
+              "count": 104,
+              "median": 0.0029585,
+              "p95": 20.960833
+            }
+          }
+        },
+        {
+          "seed": 20269901,
+          "seat": 0,
+          "status": "completed",
+          "ours_won": false,
+          "catanatron_won": true,
+          "ours_vp": 2,
+          "catanatron_vp": 10,
+          "actions": 194,
+          "turns": 63,
+          "wall_seconds": 0.268,
+          "move_counts": {
+            "ours": {
+              "BUILD_SETTLEMENT": 2,
+              "BUILD_ROAD": 2,
+              "ROLL": 31,
+              "MOVE_ROBBER": 9,
+              "END_TURN": 31,
+              "DISCARD_RESOURCE": 33
+            },
+            "catanatron": {
+              "BUILD_SETTLEMENT": 4,
+              "BUILD_ROAD": 7,
+              "ROLL": 31,
+              "END_TURN": 30,
+              "MOVE_ROBBER": 5,
+              "BUILD_CITY": 3,
+              "MARITIME_TRADE": 5,
+              "BUY_DEVELOPMENT_CARD": 1
+            }
+          },
+          "decision_ms": {
+            "ours": {
+              "count": 108,
+              "median": 0.620729,
+              "p95": 1.317041
+            },
+            "catanatron": {
+              "count": 86,
+              "median": 0.0030210000000000002,
+              "p95": 9.488584
+            }
+          }
+        },
+        {
+          "seed": 20269901,
+          "seat": 1,
+          "status": "completed",
+          "ours_won": false,
+          "catanatron_won": true,
+          "ours_vp": 3,
+          "catanatron_vp": 10,
+          "actions": 212,
+          "turns": 70,
+          "wall_seconds": 0.388,
+          "move_counts": {
+            "ours": {
+              "BUILD_SETTLEMENT": 2,
+              "BUILD_ROAD": 2,
+              "ROLL": 34,
+              "END_TURN": 34,
+              "MOVE_ROBBER": 5,
+              "DISCARD_RESOURCE": 19,
+              "MARITIME_TRADE": 1,
+              "BUILD_CITY": 1
+            },
+            "catanatron": {
+              "BUILD_SETTLEMENT": 4,
+              "BUILD_ROAD": 9,
+              "ROLL": 35,
+              "MOVE_ROBBER": 10,
+              "END_TURN": 34,
+              "MARITIME_TRADE": 10,
+              "BUILD_CITY": 4,
+              "DISCARD_RESOURCE": 8
+            }
+          },
+          "decision_ms": {
+            "ours": {
+              "count": 98,
+              "median": 0.15912500000000002,
+              "p95": 1.401583
+            },
+            "catanatron": {
+              "count": 114,
+              "median": 0.0030204999999999997,
+              "p95": 17.118084
+            }
+          }
+        },
+        {
+          "seed": 20269902,
+          "seat": 0,
+          "status": "completed",
+          "ours_won": false,
+          "catanatron_won": true,
+          "ours_vp": 3,
+          "catanatron_vp": 10,
+          "actions": 152,
+          "turns": 49,
+          "wall_seconds": 0.344,
+          "move_counts": {
+            "ours": {
+              "BUILD_SETTLEMENT": 3,
+              "BUILD_ROAD": 4,
+              "ROLL": 24,
+              "MOVE_ROBBER": 2,
+              "END_TURN": 24,
+              "MARITIME_TRADE": 10,
+              "DISCARD_RESOURCE": 4
+            },
+            "catanatron": {
+              "BUILD_SETTLEMENT": 4,
+              "BUILD_ROAD": 6,
+              "ROLL": 24,
+              "END_TURN": 23,
+              "MOVE_ROBBER": 2,
+              "DISCARD_RESOURCE": 8,
+              "BUILD_CITY": 4,
+              "MARITIME_TRADE": 10
+            }
+          },
+          "decision_ms": {
+            "ours": {
+              "count": 71,
+              "median": 0.1655,
+              "p95": 1.256958
+            },
+            "catanatron": {
+              "count": 81,
+              "median": 1.959833,
+              "p95": 15.290917
+            }
+          }
+        },
+        {
+          "seed": 20269902,
+          "seat": 1,
+          "status": "completed",
+          "ours_won": false,
+          "catanatron_won": true,
+          "ours_vp": 6,
+          "catanatron_vp": 10,
+          "actions": 162,
+          "turns": 56,
+          "wall_seconds": 0.356,
+          "move_counts": {
+            "ours": {
+              "BUILD_SETTLEMENT": 4,
+              "BUILD_ROAD": 9,
+              "ROLL": 27,
+              "END_TURN": 27,
+              "MOVE_ROBBER": 2,
+              "MARITIME_TRADE": 8,
+              "BUILD_CITY": 2
+            },
+            "catanatron": {
+              "BUILD_SETTLEMENT": 4,
+              "BUILD_ROAD": 5,
+              "ROLL": 28,
+              "MOVE_ROBBER": 3,
+              "END_TURN": 27,
+              "MARITIME_TRADE": 12,
+              "BUILD_CITY": 4
+            }
+          },
+          "decision_ms": {
+            "ours": {
+              "count": 79,
+              "median": 0.195416,
+              "p95": 1.431042
+            },
+            "catanatron": {
+              "count": 83,
+              "median": 1.005208,
+              "p95": 15.13075
+            }
+          }
+        },
+        {
+          "seed": 20269903,
+          "seat": 0,
+          "status": "completed",
+          "ours_won": false,
+          "catanatron_won": true,
+          "ours_vp": 4,
+          "catanatron_vp": 10,
+          "actions": 193,
+          "turns": 61,
+          "wall_seconds": 0.572,
+          "move_counts": {
+            "ours": {
+              "BUILD_SETTLEMENT": 3,
+              "BUILD_ROAD": 6,
+              "ROLL": 30,
+              "END_TURN": 30,
+              "MOVE_ROBBER": 4,
+              "DISCARD_RESOURCE": 28,
+              "BUILD_CITY": 1,
+              "MARITIME_TRADE": 3
+            },
+            "catanatron": {
+              "BUILD_SETTLEMENT": 4,
+              "BUILD_ROAD": 8,
+              "ROLL": 30,
+              "END_TURN": 29,
+              "MOVE_ROBBER": 2,
+              "MARITIME_TRADE": 9,
+              "BUILD_CITY": 4,
+              "BUY_DEVELOPMENT_CARD": 2
+            }
+          },
+          "decision_ms": {
+            "ours": {
+              "count": 105,
+              "median": 0.610167,
+              "p95": 1.237041
+            },
+            "catanatron": {
+              "count": 88,
+              "median": 0.6805209999999999,
+              "p95": 22.358791
+            }
+          }
+        },
+        {
+          "seed": 20269903,
+          "seat": 1,
+          "status": "completed",
+          "ours_won": false,
+          "catanatron_won": true,
+          "ours_vp": 4,
+          "catanatron_vp": 10,
+          "actions": 120,
+          "turns": 36,
+          "wall_seconds": 0.232,
+          "move_counts": {
+            "ours": {
+              "BUILD_SETTLEMENT": 2,
+              "BUILD_ROAD": 5,
+              "ROLL": 17,
+              "END_TURN": 17,
+              "DISCARD_RESOURCE": 11,
+              "MOVE_ROBBER": 1,
+              "BUILD_CITY": 2,
+              "MARITIME_TRADE": 3
+            },
+            "catanatron": {
+              "BUILD_SETTLEMENT": 4,
+              "BUILD_ROAD": 8,
+              "ROLL": 18,
+              "END_TURN": 17,
+              "MOVE_ROBBER": 3,
+              "BUILD_CITY": 4,
+              "MARITIME_TRADE": 2,
+              "DISCARD_RESOURCE": 6
+            }
+          },
+          "decision_ms": {
+            "ours": {
+              "count": 58,
+              "median": 0.6020205000000001,
+              "p95": 1.066875
+            },
+            "catanatron": {
+              "count": 62,
+              "median": 0.003271,
+              "p95": 13.431417
+            }
+          }
+        },
+        {
+          "seed": 20269904,
+          "seat": 0,
+          "status": "completed",
+          "ours_won": false,
+          "catanatron_won": true,
+          "ours_vp": 7,
+          "catanatron_vp": 10,
+          "actions": 279,
+          "turns": 91,
+          "wall_seconds": 0.426,
+          "move_counts": {
+            "ours": {
+              "BUILD_SETTLEMENT": 5,
+              "BUILD_ROAD": 15,
+              "ROLL": 45,
+              "END_TURN": 45,
+              "MARITIME_TRADE": 9,
+              "MOVE_ROBBER": 11,
+              "DISCARD_RESOURCE": 14,
+              "BUY_DEVELOPMENT_CARD": 1,
+              "PLAY_KNIGHT_CARD": 1
+            },
+            "catanatron": {
+              "BUILD_SETTLEMENT": 6,
+              "BUILD_ROAD": 9,
+              "ROLL": 45,
+              "END_TURN": 44,
+              "DISCARD_RESOURCE": 8,
+              "MOVE_ROBBER": 6,
+              "MARITIME_TRADE": 11,
+              "BUILD_CITY": 4
+            }
+          },
+          "decision_ms": {
+            "ours": {
+              "count": 146,
+              "median": 0.2357085,
+              "p95": 1.386333
+            },
+            "catanatron": {
+              "count": 133,
+              "median": 0.003125,
+              "p95": 13.161584
+            }
+          }
+        },
+        {
+          "seed": 20269904,
+          "seat": 1,
+          "status": "completed",
+          "ours_won": false,
+          "catanatron_won": true,
+          "ours_vp": 5,
+          "catanatron_vp": 10,
+          "actions": 216,
+          "turns": 76,
+          "wall_seconds": 0.414,
+          "move_counts": {
+            "ours": {
+              "BUILD_SETTLEMENT": 3,
+              "BUILD_ROAD": 13,
+              "ROLL": 37,
+              "END_TURN": 37,
+              "MARITIME_TRADE": 7,
+              "MOVE_ROBBER": 6
+            },
+            "catanatron": {
+              "BUILD_SETTLEMENT": 6,
+              "BUILD_ROAD": 9,
+              "ROLL": 38,
+              "END_TURN": 37,
+              "MOVE_ROBBER": 8,
+              "BUILD_CITY": 4,
+              "MARITIME_TRADE": 11
+            }
+          },
+          "decision_ms": {
+            "ours": {
+              "count": 103,
+              "median": 0.163459,
+              "p95": 1.398375
+            },
+            "catanatron": {
+              "count": 113,
+              "median": 0.002833,
+              "p95": 11.141709
+            }
+          }
+        },
+        {
+          "seed": 20269905,
+          "seat": 0,
+          "status": "completed",
+          "ours_won": false,
+          "catanatron_won": true,
+          "ours_vp": 6,
+          "catanatron_vp": 10,
+          "actions": 278,
+          "turns": 91,
+          "wall_seconds": 0.759,
+          "move_counts": {
+            "ours": {
+              "BUILD_SETTLEMENT": 5,
+              "BUILD_ROAD": 13,
+              "ROLL": 45,
+              "END_TURN": 45,
+              "MOVE_ROBBER": 6,
+              "MARITIME_TRADE": 4,
+              "DISCARD_RESOURCE": 30,
+              "BUILD_CITY": 1
+            },
+            "catanatron": {
+              "BUILD_SETTLEMENT": 5,
+              "BUILD_ROAD": 15,
+              "ROLL": 45,
+              "END_TURN": 44,
+              "DISCARD_RESOURCE": 4,
+              "MOVE_ROBBER": 5,
+              "MARITIME_TRADE": 8,
+              "BUILD_CITY": 3
+            }
+          },
+          "decision_ms": {
+            "ours": {
+              "count": 149,
+              "median": 0.581375,
+              "p95": 1.390042
+            },
+            "catanatron": {
+              "count": 129,
+              "median": 0.008917,
+              "p95": 19.849041
+            }
+          }
+        },
+        {
+          "seed": 20269905,
+          "seat": 1,
+          "status": "completed",
+          "ours_won": false,
+          "catanatron_won": true,
+          "ours_vp": 2,
+          "catanatron_vp": 10,
+          "actions": 245,
+          "turns": 86,
+          "wall_seconds": 0.597,
+          "move_counts": {
+            "ours": {
+              "BUILD_SETTLEMENT": 2,
+              "BUILD_ROAD": 3,
+              "ROLL": 42,
+              "END_TURN": 42,
+              "MOVE_ROBBER": 4,
+              "DISCARD_RESOURCE": 25,
+              "MARITIME_TRADE": 2
+            },
+            "catanatron": {
+              "BUILD_SETTLEMENT": 4,
+              "BUILD_ROAD": 15,
+              "ROLL": 43,
+              "END_TURN": 42,
+              "MARITIME_TRADE": 12,
+              "MOVE_ROBBER": 5,
+              "BUILD_CITY": 4
+            }
+          },
+          "decision_ms": {
+            "ours": {
+              "count": 120,
+              "median": 0.2352915,
+              "p95": 1.299
+            },
+            "catanatron": {
+              "count": 125,
+              "median": 0.003167,
+              "p95": 14.582083
+            }
+          }
+        }
+      ]
+    },
+    "memory": {
+      "games": 12,
+      "wins": 1,
+      "completed": 12,
+      "errors": [],
+      "capped": 0,
+      "median_game_decision_ms": 0.37183299999999997,
+      "per_game": [
+        {
+          "seed": 20269900,
+          "seat": 0,
+          "status": "completed",
+          "ours_won": false,
+          "catanatron_won": true,
+          "ours_vp": 4,
+          "catanatron_vp": 10,
+          "actions": 274,
+          "turns": 83,
+          "wall_seconds": 0.477,
+          "move_counts": {
+            "ours": {
+              "BUILD_SETTLEMENT": 2,
+              "BUILD_ROAD": 5,
+              "ROLL": 41,
+              "END_TURN": 41,
+              "BUILD_CITY": 2,
+              "MARITIME_TRADE": 4,
+              "MOVE_ROBBER": 2,
+              "DISCARD_RESOURCE": 47
+            },
+            "catanatron": {
+              "BUILD_SETTLEMENT": 5,
+              "BUILD_ROAD": 11,
+              "ROLL": 41,
+              "END_TURN": 40,
+              "MOVE_ROBBER": 10,
+              "MARITIME_TRADE": 7,
+              "DISCARD_RESOURCE": 13,
+              "BUILD_CITY": 3
+            }
+          },
+          "decision_ms": {
+            "ours": {
+              "count": 144,
+              "median": 0.258479,
+              "p95": 1.075333
+            },
+            "catanatron": {
+              "count": 130,
+              "median": 0.003771,
+              "p95": 13.844833
+            }
+          }
+        },
+        {
+          "seed": 20269900,
+          "seat": 1,
+          "status": "completed",
+          "ours_won": false,
+          "catanatron_won": true,
+          "ours_vp": 3,
+          "catanatron_vp": 10,
+          "actions": 221,
+          "turns": 70,
+          "wall_seconds": 0.569,
+          "move_counts": {
+            "ours": {
+              "BUILD_SETTLEMENT": 2,
+              "BUILD_ROAD": 5,
+              "ROLL": 34,
+              "END_TURN": 34,
+              "DISCARD_RESOURCE": 32,
+              "MOVE_ROBBER": 6,
+              "BUILD_CITY": 1,
+              "MARITIME_TRADE": 3
+            },
+            "catanatron": {
+              "BUILD_SETTLEMENT": 6,
+              "BUILD_ROAD": 11,
+              "ROLL": 35,
+              "END_TURN": 34,
+              "DISCARD_RESOURCE": 4,
+              "MOVE_ROBBER": 2,
+              "MARITIME_TRADE": 8,
+              "BUILD_CITY": 2,
+              "BUY_DEVELOPMENT_CARD": 1,
+              "PLAY_KNIGHT_CARD": 1
+            }
+          },
+          "decision_ms": {
+            "ours": {
+              "count": 117,
+              "median": 0.619625,
+              "p95": 1.257417
+            },
+            "catanatron": {
+              "count": 104,
+              "median": 0.0035205,
+              "p95": 19.212125
+            }
+          }
+        },
+        {
+          "seed": 20269901,
+          "seat": 0,
+          "status": "completed",
+          "ours_won": false,
+          "catanatron_won": true,
+          "ours_vp": 2,
+          "catanatron_vp": 10,
+          "actions": 194,
+          "turns": 63,
+          "wall_seconds": 0.236,
+          "move_counts": {
+            "ours": {
+              "BUILD_SETTLEMENT": 2,
+              "BUILD_ROAD": 2,
+              "ROLL": 31,
+              "MOVE_ROBBER": 9,
+              "END_TURN": 31,
+              "DISCARD_RESOURCE": 33
+            },
+            "catanatron": {
+              "BUILD_SETTLEMENT": 4,
+              "BUILD_ROAD": 7,
+              "ROLL": 31,
+              "END_TURN": 30,
+              "MOVE_ROBBER": 5,
+              "BUILD_CITY": 3,
+              "MARITIME_TRADE": 5,
+              "BUY_DEVELOPMENT_CARD": 1
+            }
+          },
+          "decision_ms": {
+            "ours": {
+              "count": 108,
+              "median": 0.551104,
+              "p95": 1.135
+            },
+            "catanatron": {
+              "count": 86,
+              "median": 0.0021665,
+              "p95": 8.078417
+            }
+          }
+        },
+        {
+          "seed": 20269901,
+          "seat": 1,
+          "status": "completed",
+          "ours_won": false,
+          "catanatron_won": true,
+          "ours_vp": 3,
+          "catanatron_vp": 10,
+          "actions": 212,
+          "turns": 70,
+          "wall_seconds": 0.288,
+          "move_counts": {
+            "ours": {
+              "BUILD_SETTLEMENT": 2,
+              "BUILD_ROAD": 2,
+              "ROLL": 34,
+              "END_TURN": 34,
+              "MOVE_ROBBER": 5,
+              "DISCARD_RESOURCE": 19,
+              "MARITIME_TRADE": 1,
+              "BUILD_CITY": 1
+            },
+            "catanatron": {
+              "BUILD_SETTLEMENT": 4,
+              "BUILD_ROAD": 9,
+              "ROLL": 35,
+              "MOVE_ROBBER": 10,
+              "END_TURN": 34,
+              "MARITIME_TRADE": 10,
+              "BUILD_CITY": 4,
+              "DISCARD_RESOURCE": 8
+            }
+          },
+          "decision_ms": {
+            "ours": {
+              "count": 98,
+              "median": 0.1384795,
+              "p95": 1.00375
+            },
+            "catanatron": {
+              "count": 114,
+              "median": 0.0023125000000000003,
+              "p95": 10.97675
+            }
+          }
+        },
+        {
+          "seed": 20269902,
+          "seat": 0,
+          "status": "completed",
+          "ours_won": false,
+          "catanatron_won": true,
+          "ours_vp": 3,
+          "catanatron_vp": 10,
+          "actions": 152,
+          "turns": 49,
+          "wall_seconds": 0.28,
+          "move_counts": {
+            "ours": {
+              "BUILD_SETTLEMENT": 3,
+              "BUILD_ROAD": 4,
+              "ROLL": 24,
+              "MOVE_ROBBER": 2,
+              "END_TURN": 24,
+              "MARITIME_TRADE": 10,
+              "DISCARD_RESOURCE": 4
+            },
+            "catanatron": {
+              "BUILD_SETTLEMENT": 4,
+              "BUILD_ROAD": 6,
+              "ROLL": 24,
+              "END_TURN": 23,
+              "MOVE_ROBBER": 2,
+              "DISCARD_RESOURCE": 8,
+              "BUILD_CITY": 4,
+              "MARITIME_TRADE": 10
+            }
+          },
+          "decision_ms": {
+            "ours": {
+              "count": 71,
+              "median": 0.139666,
+              "p95": 0.970583
+            },
+            "catanatron": {
+              "count": 81,
+              "median": 1.664,
+              "p95": 13.403
+            }
+          }
+        },
+        {
+          "seed": 20269902,
+          "seat": 1,
+          "status": "completed",
+          "ours_won": false,
+          "catanatron_won": true,
+          "ours_vp": 9,
+          "catanatron_vp": 10,
+          "actions": 211,
+          "turns": 68,
+          "wall_seconds": 0.463,
+          "move_counts": {
+            "ours": {
+              "BUILD_SETTLEMENT": 5,
+              "BUILD_ROAD": 10,
+              "ROLL": 33,
+              "END_TURN": 33,
+              "MOVE_ROBBER": 3,
+              "MARITIME_TRADE": 9,
+              "BUILD_CITY": 2,
+              "DISCARD_RESOURCE": 13
+            },
+            "catanatron": {
+              "BUILD_SETTLEMENT": 6,
+              "BUILD_ROAD": 7,
+              "ROLL": 34,
+              "MOVE_ROBBER": 5,
+              "END_TURN": 33,
+              "MARITIME_TRADE": 14,
+              "BUILD_CITY": 4
+            }
+          },
+          "decision_ms": {
+            "ours": {
+              "count": 108,
+              "median": 0.485187,
+              "p95": 1.133125
+            },
+            "catanatron": {
+              "count": 103,
+              "median": 0.444875,
+              "p95": 14.160292
+            }
+          }
+        },
+        {
+          "seed": 20269903,
+          "seat": 0,
+          "status": "completed",
+          "ours_won": false,
+          "catanatron_won": true,
+          "ours_vp": 4,
+          "catanatron_vp": 10,
+          "actions": 193,
+          "turns": 61,
+          "wall_seconds": 0.483,
+          "move_counts": {
+            "ours": {
+              "BUILD_SETTLEMENT": 3,
+              "BUILD_ROAD": 6,
+              "ROLL": 30,
+              "END_TURN": 30,
+              "MOVE_ROBBER": 4,
+              "DISCARD_RESOURCE": 28,
+              "BUILD_CITY": 1,
+              "MARITIME_TRADE": 3
+            },
+            "catanatron": {
+              "BUILD_SETTLEMENT": 4,
+              "BUILD_ROAD": 8,
+              "ROLL": 30,
+              "END_TURN": 29,
+              "MOVE_ROBBER": 2,
+              "MARITIME_TRADE": 9,
+              "BUILD_CITY": 4,
+              "BUY_DEVELOPMENT_CARD": 2
+            }
+          },
+          "decision_ms": {
+            "ours": {
+              "count": 105,
+              "median": 0.500667,
+              "p95": 1.018167
+            },
+            "catanatron": {
+              "count": 88,
+              "median": 0.5896874999999999,
+              "p95": 19.562
+            }
+          }
+        },
+        {
+          "seed": 20269903,
+          "seat": 1,
+          "status": "completed",
+          "ours_won": false,
+          "catanatron_won": true,
+          "ours_vp": 4,
+          "catanatron_vp": 10,
+          "actions": 120,
+          "turns": 36,
+          "wall_seconds": 0.22,
+          "move_counts": {
+            "ours": {
+              "BUILD_SETTLEMENT": 2,
+              "BUILD_ROAD": 5,
+              "ROLL": 17,
+              "END_TURN": 17,
+              "DISCARD_RESOURCE": 11,
+              "MOVE_ROBBER": 1,
+              "BUILD_CITY": 2,
+              "MARITIME_TRADE": 3
+            },
+            "catanatron": {
+              "BUILD_SETTLEMENT": 4,
+              "BUILD_ROAD": 8,
+              "ROLL": 18,
+              "END_TURN": 17,
+              "MOVE_ROBBER": 3,
+              "BUILD_CITY": 4,
+              "MARITIME_TRADE": 2,
+              "DISCARD_RESOURCE": 6
+            }
+          },
+          "decision_ms": {
+            "ours": {
+              "count": 58,
+              "median": 0.50975,
+              "p95": 1.151667
+            },
+            "catanatron": {
+              "count": 62,
+              "median": 0.0022295,
+              "p95": 11.649542
+            }
+          }
+        },
+        {
+          "seed": 20269904,
+          "seat": 0,
+          "status": "completed",
+          "ours_won": true,
+          "catanatron_won": false,
+          "ours_vp": 10,
+          "catanatron_vp": 6,
+          "actions": 263,
+          "turns": 84,
+          "wall_seconds": 0.352,
+          "move_counts": {
+            "ours": {
+              "BUILD_SETTLEMENT": 6,
+              "BUILD_ROAD": 12,
+              "ROLL": 42,
+              "END_TURN": 41,
+              "MARITIME_TRADE": 9,
+              "MOVE_ROBBER": 9,
+              "DISCARD_RESOURCE": 18,
+              "BUILD_CITY": 1,
+              "BUY_DEVELOPMENT_CARD": 2,
+              "PLAY_KNIGHT_CARD": 1
+            },
+            "catanatron": {
+              "BUILD_SETTLEMENT": 5,
+              "BUILD_ROAD": 8,
+              "ROLL": 41,
+              "END_TURN": 41,
+              "DISCARD_RESOURCE": 14,
+              "MOVE_ROBBER": 6,
+              "MARITIME_TRADE": 6,
+              "BUILD_CITY": 1
+            }
+          },
+          "decision_ms": {
+            "ours": {
+              "count": 141,
+              "median": 0.155292,
+              "p95": 1.145875
+            },
+            "catanatron": {
+              "count": 122,
+              "median": 0.0022085,
+              "p95": 9.344083
+            }
+          }
+        },
+        {
+          "seed": 20269904,
+          "seat": 1,
+          "status": "completed",
+          "ours_won": false,
+          "catanatron_won": true,
+          "ours_vp": 6,
+          "catanatron_vp": 10,
+          "actions": 292,
+          "turns": 98,
+          "wall_seconds": 0.551,
+          "move_counts": {
+            "ours": {
+              "BUILD_SETTLEMENT": 3,
+              "BUILD_ROAD": 15,
+              "ROLL": 48,
+              "END_TURN": 48,
+              "MARITIME_TRADE": 11,
+              "MOVE_ROBBER": 10,
+              "BUY_DEVELOPMENT_CARD": 2,
+              "PLAY_KNIGHT_CARD": 1
+            },
+            "catanatron": {
+              "BUILD_SETTLEMENT": 6,
+              "BUILD_ROAD": 15,
+              "ROLL": 49,
+              "END_TURN": 48,
+              "MOVE_ROBBER": 7,
+              "BUILD_CITY": 4,
+              "MARITIME_TRADE": 16,
+              "DISCARD_RESOURCE": 9
+            }
+          },
+          "decision_ms": {
+            "ours": {
+              "count": 138,
+              "median": 0.135792,
+              "p95": 1.143
+            },
+            "catanatron": {
+              "count": 154,
+              "median": 0.0020210000000000002,
+              "p95": 14.2715
+            }
+          }
+        },
+        {
+          "seed": 20269905,
+          "seat": 0,
+          "status": "completed",
+          "ours_won": false,
+          "catanatron_won": true,
+          "ours_vp": 9,
+          "catanatron_vp": 10,
+          "actions": 306,
+          "turns": 101,
+          "wall_seconds": 0.579,
+          "move_counts": {
+            "ours": {
+              "BUILD_SETTLEMENT": 6,
+              "BUILD_ROAD": 11,
+              "ROLL": 50,
+              "END_TURN": 50,
+              "MOVE_ROBBER": 6,
+              "MARITIME_TRADE": 7,
+              "DISCARD_RESOURCE": 33,
+              "BUILD_CITY": 3
+            },
+            "catanatron": {
+              "BUILD_SETTLEMENT": 6,
+              "BUILD_ROAD": 15,
+              "ROLL": 50,
+              "END_TURN": 49,
+              "DISCARD_RESOURCE": 4,
+              "MOVE_ROBBER": 6,
+              "MARITIME_TRADE": 8,
+              "BUILD_CITY": 2
+            }
+          },
+          "decision_ms": {
+            "ours": {
+              "count": 166,
+              "median": 0.499604,
+              "p95": 1.075459
+            },
+            "catanatron": {
+              "count": 140,
+              "median": 0.002646,
+              "p95": 16.09625
+            }
+          }
+        },
+        {
+          "seed": 20269905,
+          "seat": 1,
+          "status": "completed",
+          "ours_won": false,
+          "catanatron_won": true,
+          "ours_vp": 2,
+          "catanatron_vp": 10,
+          "actions": 245,
+          "turns": 86,
+          "wall_seconds": 0.525,
+          "move_counts": {
+            "ours": {
+              "BUILD_SETTLEMENT": 2,
+              "BUILD_ROAD": 3,
+              "ROLL": 42,
+              "END_TURN": 42,
+              "MOVE_ROBBER": 4,
+              "DISCARD_RESOURCE": 25,
+              "MARITIME_TRADE": 2
+            },
+            "catanatron": {
+              "BUILD_SETTLEMENT": 4,
+              "BUILD_ROAD": 15,
+              "ROLL": 43,
+              "END_TURN": 42,
+              "MARITIME_TRADE": 12,
+              "MOVE_ROBBER": 5,
+              "BUILD_CITY": 4
+            }
+          },
+          "decision_ms": {
+            "ours": {
+              "count": 120,
+              "median": 0.2059585,
+              "p95": 1.087042
+            },
+            "catanatron": {
+              "count": 125,
+              "median": 0.00225,
+              "p95": 14.640833
+            }
+          }
+        }
+      ]
+    }
+  },
+  "total_seconds": 30.91
+}
