@@ -82,3 +82,21 @@ The target head represents adjacent tile resources and dice numbers, ports,
 roads, nearby buildings, current production, hand, and VP. It uses no fixed
 weights for preferred locations. Results are in
 `reports/SETTLEMENT_TARGET_EXPERIMENT.md`.
+
+## Isolated experiment branch
+
+This branch adds optional heuristic switches to `evaluate_win_rate.py` and a
+12-epoch target-head training run. It uses symlinks to read the original
+dataset and calibrated checkpoints; generated files stay in this worktree.
+
+```bash
+/Users/anixd/Documents/Hyde/start/.venv/bin/python \
+  catanLabs/FromScratch/StrategyOne/evaluate_win_rate.py \
+  --checkpoint catanLabs/FromScratch/StrategyOne/runs/calibrated_ranker_v1/model.pt \
+  --settlement-target-checkpoint catanLabs/FromScratch/StrategyOne/runs/settlement_target_v1/epoch_4.pt \
+  --settlement-heuristic pips --games-total 128 --seed 20266900
+```
+
+Alternatively, use `--buy-dev-end-hand-threshold 8` with no settlement
+heuristic. These are experiment switches and are disabled by default. See
+`reports/LONG_TRAINING_AND_HEURISTICS.md` for matched results.

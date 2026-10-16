@@ -16,6 +16,7 @@ import torch
 from train_legal_ranker import HERE, LegalRanker, encode_action, encode_state, stable_edge_index
 from train_calibrated_ranker import ActionCalibrationAdapter
 from settlement_target_head import SettlementTargetHead, settlement_features
+from heuristic_experiments import own_hand_size, settlement_pips
 
 
 CATANATRON_ROOT = HERE.parents[2] / "start/catan_lab/vendor/catanatron/catanatron"
@@ -28,16 +29,20 @@ from generate_dataset import action_json, make_bot, observation  # noqa: E402
 
 
 class MLPPlayer:
-    def __init__(self, color: Color, model: LegalRanker, edge_index: dict[tuple[int, int], int], device: torch.device, adapter: ActionCalibrationAdapter | None = None, settlement_head: SettlementTargetHead | None = None):
+    def __init__(self, color: Color, model: LegalRanker, edge_index: dict[tuple[int, int], int], device: torch.device, adapter: ActionCalibrationAdapter | None = None, settlement_head: SettlementTargetHead | None = None, settlement_heuristic: str = "none", buy_dev_end_hand_threshold: int | None = None):
         self.color = color
         self.model = model
         self.edge_index = edge_index
         self.device = device
         self.adapter = adapter
         self.settlement_head = settlement_head
+        self.settlement_heuristic = settlement_heuristic
+        self.buy_dev_end_hand_threshold = buy_dev_end_hand_threshold
         self.latencies_ms: list[float] = []
         self.settlement_reranks = 0
         self.settlement_changes = 0
+        self.settlement_heuristic_changes = 0
+        self.buy_dev_heuristic_changes = 0
 
     @torch.no_grad()
     def decide(self, game: Game, playable_actions: list[Any]) -> Any:
@@ -69,6 +74,34 @@ class MLPPlayer:
                 self.settlement_reranks += 1
                 self.settlement_changes += refined_choice != choice
                 choice = refined_choice
+        if self.settlement_heuristic == "pips" and playable_actions[choice].action_type.name == "BUILD_SETTLEMENT":
+            candidate_indices = [
+                index for index, action in enumerate(playable_actions)
+                if action.action_type.name == "BUILD_SETTLEMENT"
+            ]
+            if len(candidate_indices) > 1:
+                refined_choice = max(
+                    candidate_indices,
+                    key=lambda index: (
+                        settlement_pips(visible, int(playable_actions[index].value)),
+                        float(scores[0, index]),
+                    ),
+                )
+                self.settlement_heuristic_changes += refined_choice != choice
+                choice = refined_choice
+        if (
+            self.buy_dev_end_hand_threshold is not None
+            and playable_actions[choice].action_type.name == "END_TURN"
+            and own_hand_size(visible) >= self.buy_dev_end_hand_threshold
+        ):
+            buy_index = next(
+                (index for index, action in enumerate(playable_actions)
+                 if action.action_type.name == "BUY_DEVELOPMENT_CARD"),
+                None,
+            )
+            if buy_index is not None:
+                self.buy_dev_heuristic_changes += 1
+                choice = buy_index
         self.latencies_ms.append((time.perf_counter_ns() - started) / 1_000_000)
         return playable_actions[choice]
 
@@ -77,6 +110,8 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--checkpoint", type=Path, default=HERE / "runs/legal_ranker_v1/model.pt")
     parser.add_argument("--settlement-target-checkpoint", type=Path, help="Optional learned settlement-location classifier.")
+    parser.add_argument("--settlement-heuristic", choices=("none", "pips"), default="none")
+    parser.add_argument("--buy-dev-end-hand-threshold", type=int, help="If ending with at least this many cards, buy a legal development card.")
     games = parser.add_mutually_exclusive_group()
     games.add_argument("--games-per-opponent", type=int, default=10)
     games.add_argument("--games-total", type=int, help="Run this many sealed games, cycling opponents and seats.")
@@ -88,6 +123,8 @@ def main() -> int:
         parser.error("--games-per-opponent must be at least 2 so seats can rotate")
     if args.games_total is not None and args.games_total < 1:
         parser.error("--games-total must be positive")
+    if args.buy_dev_end_hand_threshold is not None and args.buy_dev_end_hand_threshold < 1:
+        parser.error("--buy-dev-end-hand-threshold must be positive")
     install_v5_protocol()
     device = torch.device("mps" if args.device == "mps" and torch.backends.mps.is_available() else "cpu")
     checkpoint = torch.load(args.checkpoint, map_location=device, weights_only=True)
@@ -121,7 +158,7 @@ def main() -> int:
     opponents = ("F_BASE", "F_CONTENDER", "VP", "W", "R")
     results = []
     all_latencies = []
-    settlement_reranks = settlement_changes = 0
+    settlement_reranks = settlement_changes = settlement_heuristic_changes = buy_dev_heuristic_changes = 0
     if args.games_total is None:
         schedule = [
             opponent_code for opponent_code in opponents for _ in range(args.games_per_opponent)
@@ -134,7 +171,10 @@ def main() -> int:
         game = Game([RandomPlayer(color) for color in colors], seed=seed, vps_to_win=10)
         mlp_color = game.state.colors[game_index % 2]
         opponent_color = next(color for color in colors if color != mlp_color)
-        mlp = MLPPlayer(mlp_color, model, edge_index, device, adapter, settlement_head)
+        mlp = MLPPlayer(
+            mlp_color, model, edge_index, device, adapter, settlement_head,
+            args.settlement_heuristic, args.buy_dev_end_hand_threshold,
+        )
         policies = {mlp_color: mlp, opponent_color: make_bot(opponent_code, opponent_color)}
         error = None
         for _ in range(10_000):
@@ -149,6 +189,8 @@ def main() -> int:
         all_latencies.extend(mlp.latencies_ms)
         settlement_reranks += mlp.settlement_reranks
         settlement_changes += mlp.settlement_changes
+        settlement_heuristic_changes += mlp.settlement_heuristic_changes
+        buy_dev_heuristic_changes += mlp.buy_dev_heuristic_changes
         results.append(
             {
                 "opponent": opponent_code,
@@ -166,7 +208,7 @@ def main() -> int:
         summary[opponent_code] = {
             "games": len(matches),
             "wins": sum(row["mlp_won"] for row in matches),
-            "win_rate": sum(row["mlp_won"] for row in matches) / len(matches),
+            "win_rate": sum(row["mlp_won"] for row in matches) / len(matches) if matches else None,
             "completed": sum(row["completed"] for row in matches),
         }
     report = {
@@ -177,6 +219,10 @@ def main() -> int:
         "settlement_target_checkpoint": str(args.settlement_target_checkpoint) if args.settlement_target_checkpoint else None,
         "settlement_target_reranks": settlement_reranks,
         "settlement_target_changes": settlement_changes,
+        "settlement_heuristic": args.settlement_heuristic,
+        "settlement_heuristic_changes": settlement_heuristic_changes,
+        "buy_dev_end_hand_threshold": args.buy_dev_end_hand_threshold,
+        "buy_dev_heuristic_changes": buy_dev_heuristic_changes,
         "summary": summary,
         "latency_ms": {
             "median": statistics.median(all_latencies),
