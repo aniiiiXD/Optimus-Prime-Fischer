@@ -1,0 +1,64 @@
+rollout:
+  n_envs: 8
+  n_steps: 64
+  vec_env_mode: serial
+  max_turns: 400
+  opponent_type: heuristic
+  engine_backend: python
+  ruleset: R1
+ppo:
+  n_epochs: 2
+  batch_size: 256
+  clip_range: 0.2
+  clip_range_vf: 0.2
+  target_kl: 0.02
+  kl_approx: k3
+  advantage_norm: rollout
+  use_value_clipping: true
+gae:
+  gamma: 0.995
+  gae_lambda: 0.95
+loss:
+  value_coef: 0.5
+  entropy_coef_start: 0.04
+  entropy_coef_end: 0.005
+  entropy_anneal_start_update: 50
+  entropy_anneal_end_update: 200
+  belief_coef: 0.05
+  opp_action_coef: 0.03
+  setup_entropy_coef: 0.0
+optimizer:
+  lr_start: 0.0003
+  lr_end: 1.0e-05
+  weight_decay: 0.0001
+  betas:
+  - 0.9
+  - 0.999
+  eps: 1.0e-05
+  grad_clip_max_norm: 1.0
+  lr_anneal_total_updates: 0
+checkpoint:
+  save_every_updates: 8
+  keep_last_n: 3
+  save_optimizer_state: true
+eval:
+  eval_every_updates: 16
+  eval_games: 20
+  eval_seeds:
+  - 20261019
+  eval_opponents:
+  - heuristic
+league:
+  random_weight: 0.0
+  heuristic_weight: 1.0
+  snapshot_weight: 0.0
+  require_heuristic_floor: true
+  add_snapshot_every_n_updates: 8
+  maxlen: 100
+total_steps: 8192
+seed: 42
+device: cpu
+torch_compile: false
+run_name: fixed_cpu_256
+output_dir: runs/benjamin_cpu_pilot
+init_policy_checkpoint: runs/benjamin_cpu_pilot/bc_model_256/best_ckpt.pt

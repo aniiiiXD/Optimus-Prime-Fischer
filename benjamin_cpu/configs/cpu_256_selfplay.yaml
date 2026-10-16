@@ -1,0 +1,64 @@
+checkpoint:
+  keep_last_n: 3
+  save_every_updates: 4
+  save_optimizer_state: true
+device: cpu
+eval:
+  eval_every_updates: 8
+  eval_games: 20
+  eval_opponents:
+  - heuristic
+  eval_seeds:
+  - 20261019
+gae:
+  gae_lambda: 0.95
+  gamma: 0.995
+init_policy_checkpoint: runs/benjamin_cpu_pilot/fixed_cpu_256/checkpoints/ckpt_000000015.pt
+league:
+  add_snapshot_every_n_updates: 2
+  heuristic_weight: 0.5
+  maxlen: 100
+  random_weight: 0.0
+  require_heuristic_floor: true
+  snapshot_weight: 0.5
+loss:
+  belief_coef: 0.05
+  entropy_anneal_end_update: 200
+  entropy_anneal_start_update: 50
+  entropy_coef_end: 0.005
+  entropy_coef_start: 0.04
+  opp_action_coef: 0.03
+  setup_entropy_coef: 0.0
+  value_coef: 0.5
+optimizer:
+  betas:
+  - 0.9
+  - 0.999
+  eps: 1.0e-05
+  grad_clip_max_norm: 1.0
+  lr_anneal_total_updates: 0
+  lr_end: 1.0e-05
+  lr_start: 0.0003
+  weight_decay: 0.0001
+output_dir: runs/benjamin_cpu_pilot
+ppo:
+  advantage_norm: rollout
+  batch_size: 256
+  clip_range: 0.2
+  clip_range_vf: 0.2
+  kl_approx: k3
+  n_epochs: 2
+  target_kl: 0.02
+  use_value_clipping: true
+rollout:
+  engine_backend: python
+  max_turns: 400
+  n_envs: 8
+  n_steps: 64
+  opponent_type: heuristic
+  ruleset: R1
+  vec_env_mode: serial
+run_name: selfplay_cpu_256
+seed: 42
+torch_compile: false
+total_steps: 4096
