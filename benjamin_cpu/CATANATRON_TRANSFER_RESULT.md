@@ -45,12 +45,33 @@ has imperfect opponent hand estimates because Catanatron does not expose the
 same broadcast tracker. Those domain differences, along with the very short
 training run, limit what can be inferred about the original architecture.
 
+## Direct Benjamin vs OneVOne: 50 fresh games
+
+Using the latest CPU self-play checkpoint, we sampled 25 fresh random board
+seeds and swapped seats on each board. Under the same Catanatron 10-VP rules:
+
+| Agent | Wins / 50 | Mean VP |
+| --- | ---: | ---: |
+| Benjamin CPU self-play checkpoint | **0** | 3.16 |
+| Plain OneVOne | **50** | 10.20 |
+
+All 50 games completed, with no errors or caps. Benjamin won 0/25 from each
+seat. Across all games it built exactly 100 settlements (the two setup
+settlements in every game) and zero cities; OneVOne built 248 settlements and
+102 cities in total. This identifies stalled expansion in these transferred
+games, but does not isolate whether limited training or the cross-engine
+observation/rule differences caused it. Exact seeds and per-game moves are
+saved in `reports/benjamin_vs_onevone_50.meta.json` and `.jsonl`.
+
 ## Artifacts
 
 - `catanatron_adapter.py`: geometry, public observation and legal action bridge.
 - `evaluate_catanatron.py`: reproducible paired-seat runner.
 - `reports/heldout_206_seeds.json`: exact held-out split; first 20 used here.
 - `reports/catanatron_{bc,fixed,selfplay}_v3.jsonl`: per-game results.
+- `evaluate_vs_onevone.py`: paired-seat direct head-to-head runner.
+- `reports/benjamin_vs_onevone_50.{meta,summary}.json` and `.jsonl`: direct
+  head-to-head seed list, summary and per-game results.
 - The checkpoints remain in the ignored upstream source checkout under
   `external/benjamin_catan_rl/runs/benjamin_cpu_pilot/`.
 
