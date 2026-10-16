@@ -100,3 +100,38 @@ dataset and calibrated checkpoints; generated files stay in this worktree.
 Alternatively, use `--buy-dev-end-hand-threshold 8` with no settlement
 heuristic. These are experiment switches and are disabled by default. See
 `reports/LONG_TRAINING_AND_HEURISTICS.md` for matched results.
+
+## History and search experiments
+
+`history_experiment.py` trains a public-history Transformer residual and a
+state-only residual control from the same external teacher games. The frozen
+calibrated agent supplies the base scores. Both variants are evaluated on
+fresh games with `evaluate_win_rate.py --history-checkpoint PATH`.
+
+`--same-turn-search` enables a bounded search for a winning sequence of
+deterministic builds and maritime trades before ending the current turn.
+`--same-turn-depth` controls its depth (default 4). The search uses the live
+player's own information and the public board; it does not simulate unknown
+opponent cards or future dice. The switch is disabled by default.
+
+`loss_counterfactual_search.py` replays lost games from earlier positions. It
+uses root UCB sampling, then evaluates candidates under separate matched
+chance seeds. These copied simulator states contain the opponent's actual
+hidden cards, so the resulting scores are **offline oracle diagnostics**, not
+valid live-agent win rates or training labels for a deployed policy.
+Results and limitations are in `reports/HISTORY_AND_SEARCH_EXPERIMENTS.md`.
+
+```bash
+/Users/anixd/Documents/Hyde/start/.venv/bin/python \
+  catanLabs/FromScratch/StrategyOne/history_experiment.py
+
+/Users/anixd/Documents/Hyde/start/.venv/bin/python \
+  catanLabs/FromScratch/StrategyOne/evaluate_win_rate.py \
+  --checkpoint catanLabs/FromScratch/StrategyOne/runs/calibrated_ranker_v1/model.pt \
+  --settlement-target-checkpoint catanLabs/FromScratch/StrategyOne/runs/settlement_target_v1/epoch_4.pt \
+  --same-turn-search --games-total 64 --seed 20267300
+
+/Users/anixd/Documents/Hyde/start/.venv/bin/python \
+  catanLabs/FromScratch/StrategyOne/loss_counterfactual_search.py \
+  --games 6 --simulations 12 --validation-rollouts 8
+```
