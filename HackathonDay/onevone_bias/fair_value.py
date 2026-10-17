@@ -42,10 +42,7 @@ class FairValueAgent:
         # incrementing a Knight only represents an unknown card's count.
         score = self.value_fn(after, self.color)
         own_vp = game.state.player_state[prefix + "ACTUAL_VICTORY_POINTS"]
-        # A purchased card is usually not an instant point. At 9 VP, the old
-        # fixed bonus repeatedly preferred an uncertain draw over saving the
-        # same resources for a deterministic city/settlement finish.
-        if self.config.get("dev_buy_vp_threshold", 7) <= own_vp < 9:
+        if own_vp >= self.config.get("dev_buy_vp_threshold", 7):
             score += self.config.get("dev_buy_late_bonus", 0.0)
         return score
 
