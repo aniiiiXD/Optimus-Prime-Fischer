@@ -14,6 +14,27 @@ pinning; other platforms use the OS scheduler.
 
 Nano is the local evaluation default. Quick evaluation is uncapped; add
 `--clocked` to enforce the official clock. Learning strategies remain experiments.
+
+The optional lookahead learner now trains on one action followed by the same
+replanning policy used in play. Old v1 lookahead checkpoints must be retrained.
+Use `--beam-width 8` to keep more search paths within the existing expansion
+quota, and `--reply-check` to compare two choices through an opponent turn and
+our next roll. The reply check runs at most once per game, requires 250 ms of
+remaining clock allowance, and keeps the current choice if a simulation is
+incomplete. Neither option changes Nano's defaults.
+
+```bash
+PYTHONHASHSEED=0 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 \
+  python catanLabs/OneVOne/hackathon/lookahead_learning.py \
+  --output catanLabs/OneVOne/reports/my_search_run \
+  --beam-width 8 --reply-check --repeats 8
+```
+
+This trains on separate boards, checks the model's actual proposed choices,
+and evaluates the calibrated model with the official clock. To compare search
+changes separately, run `catanLabs/OneVOne/hackathon/search_improvement_experiment.py --output`
+with a fresh output directory from the same working directory.
+
 See [experiment results](../reports/experiment_summary_20261017.json)
 for what helped and what failed. `critic_agent.py` uses its cached heuristic by
 default; the saved `warm_agent.py` and `online_agent.py` profiles under

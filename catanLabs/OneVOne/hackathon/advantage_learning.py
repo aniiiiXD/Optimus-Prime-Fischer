@@ -82,14 +82,26 @@ def _sample_nonterminal(game, perspective, seed):
     raise ValueError("Could not sample hidden cards consistent with the live position")
 
 
-def _rollout(game, action, perspective, config, rollout_seed, opponent_name="F"):
+def _rollout(game, action, perspective, config, rollout_seed, opponent_name="F", continuation=(),
+             lookahead=False, model_path=None, gate_margin=None, reply_used=False):
     """Fork one hidden-information world and preserve the engine's global RNG."""
     rng_state = random.getstate()
     try:
         random.seed(rollout_seed ^ 0x937BD)
         world = _sample_nonterminal(game, perspective, rollout_seed)
         world.execute(action)
-        focal = LearningPlayer(perspective, config)
+        for followup in continuation:
+            if world.winning_color() is not None:
+                break
+            world.execute(followup)
+        if lookahead:
+            from catanLabs.OneVOne.lookahead_value import LookaheadPlayer
+            focal = LookaheadPlayer(perspective, config, model_path)
+            focal.reply_used = reply_used
+            if focal.model is not None and gate_margin is not None:
+                focal.model["gate"]["margin"] = gate_margin
+        else:
+            focal = LearningPlayer(perspective, config)
         enemy = next(color for color in world.state.colors if color != perspective)
         opponent = _Opponent(opponent_name, enemy, rollout_seed ^ 0x64F2)
         steps = 0
@@ -103,11 +115,14 @@ def _rollout(game, action, perspective, config, rollout_seed, opponent_name="F")
                     state = random.getstate()
                     try:
                         decision_world = masked_copy(world, perspective, random.Random(rollout_seed + steps + 1))
-                        selected = focal.decide(decision_world, actions)
+                        selected = (focal.decide(decision_world, actions, capture=False) if lookahead
+                                    else focal.decide(decision_world, actions))
                     finally:
                         random.setstate(state)
             else:
                 selected = opponent.choose(world, actions, rollout_seed + steps + 1)
+            if lookahead and selected.action_type.name == "ROLL":
+                random.seed(rollout_seed * 10007 + world.state.num_turns)
             world.execute(selected)
             steps += 1
         winner = world.winning_color()

@@ -100,6 +100,9 @@ class Agent:
                 or not 1 <= self.search_depth <= 8):
             raise ValueError("nano.search_depth must be an integer from 1 through 8")
         self.plan_observer = plan_observer
+        self.beam_width = config.get("beam_width", 4)
+        if type(self.beam_width) is not int or not 1 <= self.beam_width <= 16:
+            raise ValueError("nano.beam_width must be an integer from 1 through 16")
         self.map_signature = None
         self.layout_cache = {}
         self.opening_scores = {}
@@ -690,7 +693,7 @@ class Agent:
                 if counts.get(key, 0) < 2:
                     frontier.append(item)
                     counts[key] = counts.get(key, 0) + 1
-                if len(frontier) == 4:
+                if len(frontier) == self.beam_width:
                     break
             if not frontier or expanded >= quota:
                 break

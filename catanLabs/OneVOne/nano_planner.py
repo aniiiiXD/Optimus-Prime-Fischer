@@ -26,11 +26,12 @@ class NanoPlanner:
     def _observe(self, score, state, root):
         self.captured.append((float(score), state, root))
 
-    def plan(self, game, actions):
+    def plan(self, game, actions, cpu_left=None):
         actions = list(actions)
         if not actions:
             raise ValueError("Cannot plan without legal actions")
         obs = Obs(game, self.color)
+        obs.cpu_left = cpu_left
         self.captured = []
         nano = self.nano
         self.last_index = nano.decide(obs, actions)
@@ -48,6 +49,7 @@ class NanoPlanner:
 
         self.economy.clear()
         current = self.economy(world)
+        self.current_features = current.copy()
         keyed = {action_key(action): i for i, action in enumerate(actions)}
         by_root = [[] for _ in actions]
         for score, state, root in self.captured:
