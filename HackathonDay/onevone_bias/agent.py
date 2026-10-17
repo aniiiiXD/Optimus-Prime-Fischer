@@ -7,9 +7,10 @@ only information permitted by the official observation contract.
 from __future__ import annotations
 
 import random
+from time import process_time
 
 from catanatron.models.enums import ActionType
-from bias_exploit import guaranteed_win
+from bias_exploit import guaranteed_win, two_trade_conversion
 from onevone import create_agent
 
 
@@ -27,12 +28,22 @@ class Agent:
         # baseline can also choose an uncertain dev draw at 9 VP instead of a
         # certain trade/build win. Check that narrow case without looking at
         # a hidden card or exceeding the official CPU clock.
-        if (obs.my_actual_vps >= 8
+        if (obs.my_actual_vps >= 5
                 and chosen.action_type in (ActionType.END_TURN,
                                            ActionType.BUY_DEVELOPMENT_CARD)):
-            winner = guaranteed_win(world, obs.me, obs.cpu_left)
+            started = process_time()
+            winner = (guaranteed_win(world, obs.me, obs.cpu_left)
+                      if obs.my_actual_vps >= 8 else None)
             if winner is not None:
                 chosen = winner
+            else:
+                remaining = (None if obs.cpu_left is None else
+                             obs.cpu_left - (process_time() - started))
+                conversion = two_trade_conversion(world, obs.me,
+                                                  self.policy.value_fn,
+                                                  remaining)
+                if conversion is not None:
+                    chosen = conversion
         # Fail visibly if the adapter returns an action outside the supplied
         # list; the official harness records such faults in its results.
         return playable_actions.index(chosen)
