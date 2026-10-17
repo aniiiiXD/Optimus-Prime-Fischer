@@ -1,5 +1,8 @@
 # Hackathon Day
 
+The [depth-three OneVOne experiment](DEPTH_THREE_RESULT.md) lives on this
+branch. Its tested candidate was not promoted to the frozen baseline.
+
 This is a fresh log recording work done after the reset. Documentation entries
 are labeled separately from experimental results. Earlier experiments remain in their original folders;
 they are not part of this report.
