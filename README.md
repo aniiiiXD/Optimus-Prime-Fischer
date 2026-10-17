@@ -5,6 +5,9 @@ and profiling. The [Catan labs](catanLabs/README.md) hold the new pinned-engine
 benchmark for our from-scratch Catan agent. Start with the [project map](start/README.md); the shared Python
 setup is in `start/scripts/setup_env.sh`.
 
+Use the [observe-agents skill](.agents/skills/observe-agents/SKILL.md) to trace
+what a running agent sees, how it chooses an action, and how its results were measured.
+
 The repository keeps source code, study notes, reports, and the small trained
 checkpoints needed to play. It deliberately omits the Python environment,
 Node build/install directories, large training datasets and caches, downloaded
