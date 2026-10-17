@@ -10,14 +10,16 @@ from catanLabs.OneVOne.learning import LearningPlayer
 
 
 class Agent(BaseAgent):
-    def __init__(self, model=None, trace_path=None):
+    def __init__(self, model=None, trace_path=None, config_path=None):
         super().__init__()
         self.model = model
         self.requests = 0
         self.trace_path = Path(trace_path) if trace_path else None
         if self.trace_path is not None:
             self.trace_path.mkdir(parents=True, exist_ok=True)
-        config = TRAINED_CONFIG if TRAINED_CONFIG.is_file() else DEFAULT_CONFIG
+        config = Path(config_path) if config_path is not None else (
+            TRAINED_CONFIG if TRAINED_CONFIG.is_file() else DEFAULT_CONFIG
+        )
         self.config = json.loads(config.read_text())
 
     def decide(self, obs, playable_actions):

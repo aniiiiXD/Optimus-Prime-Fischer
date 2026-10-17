@@ -72,7 +72,34 @@ def hidden_belief(unseen, n, public):
 class Agent:
     """Fixed-work planner; returns an index in the supplied legal action list."""
 
-    def __init__(self):
+    def __init__(self, config=None, plan_observer=None):
+        config = dict(config or {})
+        resource_weights = config.get("resource_weights", (0.88, 0.83, 0.78, 1.20, 1.18))
+        if isinstance(resource_weights, (str, bytes)):
+            raise ValueError("nano.resource_weights must contain five positive finite values")
+        try:
+            resource_weights = tuple(resource_weights)
+        except TypeError as exc:
+            raise ValueError("nano.resource_weights must contain five positive finite values") from exc
+        if any(isinstance(value, bool) for value in resource_weights):
+            raise ValueError("nano.resource_weights must contain five positive finite values")
+        try:
+            resource_weights = tuple(float(value) for value in resource_weights)
+        except (TypeError, ValueError, OverflowError) as exc:
+            raise ValueError("nano.resource_weights must contain five positive finite values") from exc
+        if len(resource_weights) != 5 or any(not (0 < value < float("inf")) for value in resource_weights):
+            raise ValueError("nano.resource_weights must contain five positive finite values")
+        self.resource_weights = resource_weights
+        self.production_scale = self._positive_scale(config, "production_scale")
+        self.expansion_scale = self._positive_scale(config, "expansion_scale")
+        self.army_scale = self._positive_scale(config, "army_scale")
+        self.vp_scale = self._positive_scale(config, "vp_scale")
+        self.search_depth = config.get("search_depth")
+        if self.search_depth is not None and (
+                isinstance(self.search_depth, bool) or not isinstance(self.search_depth, int)
+                or not 1 <= self.search_depth <= 8):
+            raise ValueError("nano.search_depth must be an integer from 1 through 8")
+        self.plan_observer = plan_observer
         self.map_signature = None
         self.layout_cache = {}
         self.opening_scores = {}
@@ -91,6 +118,19 @@ class Agent:
                         distance[nxt] = distance[node] + 1
                         queue.append(nxt)
             self.distances.append(distance)
+
+    @staticmethod
+    def _positive_scale(config, name):
+        value = config.get(name, 1.0)
+        if isinstance(value, bool) or not isinstance(value, (int, float)):
+            raise ValueError(f"nano.{name} must be positive and finite")
+        try:
+            value = float(value)
+        except (OverflowError, ValueError) as exc:
+            raise ValueError(f"nano.{name} must be positive and finite") from exc
+        if not (0 < value < float("inf")):
+            raise ValueError(f"nano.{name} must be positive and finite")
+        return value
 
     def _init_map(self, board):
         signature = (tuple((c, t.resource, t.number) for c, t in sorted(board.map.land_tiles.items())),
@@ -209,9 +249,8 @@ class Agent:
             prod[RID[tile.resource]] -= 0.60 * blocked * PIPS[tile.number] / 36.0
         return prod
 
-    @staticmethod
-    def _economy(prod, rates):
-        weights = (0.88, 0.83, 0.78, 1.20, 1.18)
+    def _economy(self, prod, rates):
+        weights = self.resource_weights
         value = 0.0
         surplus = sum(max(0.0, prod[j] - 0.10) / rates[j] * 0.20 for j in range(5))
         for r in range(5):
@@ -306,23 +345,23 @@ class Agent:
         ep = ps[self.ek + "VICTORY_POINTS"] + self.belief[1][1]
         point_value = 1.45 + 0.14 * max(points, ep)
         economy_scale = max(0.65, 1.25 - 0.055 * max(points, ep))
-        score = point_value * points - (1.10 + 0.12 * ep) * ep
-        score += economy_scale * (self._economy(prod, own[2]) - 0.82 * self._economy(eprod, enemy[2]))
+        score = self.vp_scale * (point_value * points - (1.10 + 0.12 * ep) * ep)
+        score += economy_scale * self.production_scale * (self._economy(prod, own[2]) - 0.82 * self._economy(eprod, enemy[2]))
         score += self._hand_value(hand(ps, self.mk), own, st.resource_freqdeck)
         score -= 0.55 * self._hand_value(hand(ps, self.ek), enemy, st.resource_freqdeck)
         if ps[self.mk + "SETTLEMENTS_AVAILABLE"] > 0:
             options = sorted((q * exp(-0.73 * d) for d, q, _ in own[5]), reverse=True)
-            score += 0.28 * sum(q * w for q, w in zip(options[:3], (1.0, 0.40, 0.15)))
+            score += self.expansion_scale * 0.28 * sum(q * w for q, w in zip(options[:3], (1.0, 0.40, 0.15)))
         if enemy[5]:
-            score -= 0.13 * max(q * exp(-0.73 * d) for d, q, _ in enemy[5])
+            score -= self.expansion_scale * 0.13 * max(q * exp(-0.73 * d) for d, q, _ in enemy[5])
         knights, played = ps[self.mk + "KNIGHT_IN_HAND"], ps[self.mk + "PLAYED_KNIGHT"]
         enemy_army = ps[self.ek + "PLAYED_KNIGHT"] if ps[self.ek + "HAS_ARMY"] else 2
         needed = max(0, enemy_army + 1 - played)
         if not ps[self.mk + "HAS_ARMY"]:
-            score += 0.28 * min(played, 2) + 0.32 * min(knights, needed)
-            score += 0.42 * min(1.0, (played + min(knights, 2)) / max(3, enemy_army + 1))
+            score += self.army_scale * (0.28 * min(played, 2) + 0.32 * min(knights, needed))
+            score += self.army_scale * 0.42 * min(1.0, (played + min(knights, 2)) / max(3, enemy_army + 1))
         else:
-            score += 0.13 * knights
+            score += self.army_scale * 0.13 * knights
         score += 0.30 * ps[self.mk + "YEAR_OF_PLENTY_IN_HAND"]
         score += 0.30 * ps[self.mk + "ROAD_BUILDING_IN_HAND"]
         eh = hand(ps, self.ek)
@@ -550,22 +589,31 @@ class Agent:
                     g = game.copy()
                     g.execute(action)
                     if g.state.player_state[self.mk + "ACTUAL_VICTORY_POINTS"] >= 10:
+                        if self.plan_observer is not None:
+                            self.plan_observer(10000.0, g, action)
                         return action
         end = next((a for a in actions if a.action_type == AT.END_TURN), None)
         baseline = self._value(game)
         candidates = [(baseline, game, end)] if end is not None else []
         frontier, seen, expanded = [], set(), 0
         for path in self._trade_plans(game, actions):
+            if self.search_depth is not None and len(path) > self.search_depth:
+                continue
             g = game.copy()
             first = next(a for a in actions if a.action_type == AT.MARITIME_TRADE and a.value == path[0])
             for offer in path:
                 trade = next(a for a in g.playable_actions if a.action_type == AT.MARITIME_TRADE and a.value == offer)
                 g.execute(trade)
-            frontier.append((self._value(g), g, first, len(path)))
+            score = self._value(g) - (0.0001 * len(path) if self.search_depth is not None else 0.0)
+            frontier.append((score, g, first, len(path)))
+            if self.search_depth is not None:
+                candidates.append((score, g, first))
         frontier.insert(0, (baseline, game, None, 0))
-        for _ in range(5):
+        for _ in range(5 if self.search_depth is None else self.search_depth):
             children = []
             for _, state, first, depth in frontier:
+                if self.search_depth is not None and depth >= self.search_depth:
+                    continue
                 available = actions if first is None else sorted(state.playable_actions, key=action_key)
                 ranked = []
                 spatial = self._layout(state.state.board)[self.me]
@@ -618,6 +666,10 @@ class Agent:
                     successor = state.copy()
                     successor.execute(action)
                     if successor.state.player_state[self.mk + "ACTUAL_VICTORY_POINTS"] >= 10:
+                        if self.plan_observer is not None:
+                            for score, candidate_state, candidate_root in candidates:
+                                self.plan_observer(score, candidate_state, candidate_root)
+                            self.plan_observer(10000.0, successor, root)
                         return root
                     if action.action_type == AT.PLAY_KNIGHT_CARD:
                         _, score = self._robber(successor, sorted(successor.playable_actions, key=action_key))
@@ -644,6 +696,9 @@ class Agent:
                 break
         # Compare robust purchase threats on a small set of finalists, including
         # saving. This avoids charging an expensive dice integration at every node.
+        if self.plan_observer is not None:
+            for score, state, root in candidates:
+                self.plan_observer(score, state, root)
         candidates.sort(key=lambda x: (-x[0], action_key(x[2])))
         finalists, roots = [], set()
         for item in candidates:
@@ -758,4 +813,3 @@ class Agent:
         else:
             chosen = self._turn_search(game, actions)
         return int(playable_actions.index(chosen))
-

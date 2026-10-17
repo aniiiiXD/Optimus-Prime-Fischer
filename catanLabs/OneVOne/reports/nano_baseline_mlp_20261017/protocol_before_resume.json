@@ -1,0 +1,41 @@
+{
+  "opponents": [
+    "F",
+    "Nano",
+    "OneVOne"
+  ],
+  "clock": "unclocked",
+  "both_seats": true,
+  "baseline": "Nano full purchase planner",
+  "model": "MLP advantage ensemble; tanh hidden layer of 32 units",
+  "tuning_seed": 2031500000,
+  "tuning_validation_seed": 2031600000,
+  "learning_seed": 2031700000,
+  "fresh_test_seed": 2031900000,
+  "arguments": {
+    "output": "/mnt/d/hackathon/Optimus-Prime-Fischer/catanLabs/OneVOne/reports/nano_baseline_mlp_20261017",
+    "workers": 4,
+    "games": 40,
+    "tune_games": 8,
+    "validation_games": 24,
+    "generations": 2,
+    "population": 4,
+    "practice_boards": 24,
+    "calibration_boards": 8,
+    "positions": 4,
+    "rollouts": 3
+  },
+  "source_sha256": {
+    "catanLabs/OneVOne/learning.py": "91df4fba7e07a124ceaa20cde084183136ff3a0e778f641b82e15bbe202e357d",
+    "catanLabs/OneVOne/action_planner.py": "068484896bd5bce43bc38751eb46802fdc96c4e6f1fb631e96ac68dddb951cee",
+    "catanLabs/OneVOne/hackathon/learning_agent.py": "11f36113d1152b51a0bf3f93abf7fdabe2e009778b2f9fe9b3d63dce5bf0c634",
+    "catanLabs/OneVOne/hackathon/action_learning.py": "83a950269649c4138d9a560573ae07839cc442fe43068db7bbbb504ea111995a",
+    "catanLabs/OneVOne/hackathon/tune_then_learn.py": "ccd973354f0001127cce4ef5190474030b03f7509ca909531587521839cbed42",
+    "catanLabs/OneVOne/hackathon/advantage_learning.py": "141149fb37f8fdfb34d64fe0758257bc3a5ec479681a163f0d19e8c1e63ea556",
+    "catanLabs/OneVOne/hackathon/critic_experiment.py": "2d160239b9c7857336b87fabfb15ddc6dd05f6efc57deb1639b984a85cbd4d38",
+    "catanLabs/OneVOne/configs/default.json": "5e0c8bb3da04bbff18e33b39100a76f222d72fd9c3dedd750a98cbc9ca73b887",
+    "my_team/nano.py": "ffe8927096d7936f080a4105b44dbdd4de69a54c7b2895e9a6772fa3a5d88ce7",
+    "catanLabs/OneVOne/nano_planner.py": "7818fb14ae09d583ba182e4ff79fe6809dcffc9cf5f7b6ac410ec2bead9a1546"
+  },
+  "policy": "Identical all-legal-root planner, search depth and budgets; only scoring differs."
+}

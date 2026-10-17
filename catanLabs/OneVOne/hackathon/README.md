@@ -12,8 +12,9 @@ and environment on the native filesystem. Results record the runtime, source
 hashes, seeds, CPU failures, and individual games. Linux uses physical-core
 pinning; other platforms use the OS scheduler.
 
-All strategies are retained as experiments; none has replaced the original
-OneVOne defaults. See [experiment results](../reports/experiment_summary_20261017.json)
+Nano is the local evaluation default. Quick evaluation is uncapped; add
+`--clocked` to enforce the official clock. Learning strategies remain experiments.
+See [experiment results](../reports/experiment_summary_20261017.json)
 for what helped and what failed. `critic_agent.py` uses its cached heuristic by
 default; the saved `warm_agent.py` and `online_agent.py` profiles under
 `reports/critic_fast_20261017` load the respective learned checkpoints.
@@ -41,6 +42,22 @@ disables both seats' game CPU budgets; omit it to use the official clock.
 Reports count only ML changes accepted by the harness and preserve
 failures, CPU usage, source hashes and checkpoints. This is an experiment;
 the default OneVOne agent stays unchanged.
+
+For CMA-ES tuning followed by a confidence-gated MLP ensemble:
+
+```bash
+PYTHONHASHSEED=0 catanLabs/OneVOne/hackathon/.venv/bin/python \
+  catanLabs/OneVOne/hackathon/tune_then_learn.py \
+  --output catanLabs/OneVOne/reports/mlp_league_new --games 40
+```
+
+Nano is the baseline. This uses F, Nano and OneVOne opponents, separate boards for tuning, training,
+gate calibration and final testing, and uncapped games. Counterfactuals continue
+with our actual planner. The MLP overrides it only when the calibrated gate
+permits; its checkpoint must match the frozen heuristic config. Every legal
+root and Nano's full purchase search remain available to both variants.
+The pipeline also screens a four-action horizon (`nano.search_depth: 4`) against
+native search before tuning. Pruning limits extra lookahead, not legal actions.
 
 Run from the workspace root. Requires `git` and `uv`; setup downloads Python
 3.11 and installs an isolated runtime. It does not need Torch or the old local
@@ -70,7 +87,7 @@ Additional arguments go directly to the unmodified official evaluator. Opponent
 paths supplied with `--b` are relative to `hackathon/vendor/kit`; absolute paths
 also work. The kit supplies F and random, not O.
 
-`agent.py` adapts the existing OneVOne strategy: sample a world through the
+`agent.py` retains the legacy OneVOne strategy: sample a world through the
 official observation API, choose a move, return its index. It uses the existing
 default/promoted config and preserves the strategy and search budgets. The
 official harness enforces masking, process isolation, decision timeouts, and

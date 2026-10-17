@@ -1,0 +1,809 @@
+{
+  "dimensions": [
+    "production",
+    "expansion",
+    "army",
+    "early_wood_brick",
+    "early_wheat",
+    "early_ore",
+    "building_readiness",
+    "public_vp"
+  ],
+  "history": [
+    {
+      "generation": 0,
+      "seed": 2031000000,
+      "incumbent": {
+        "games": 8,
+        "wins": 5,
+        "win_rate": 0.625,
+        "ci95": 0.33548006647191425,
+        "no_winner": 0,
+        "mean_cpu_s": 0.56375,
+        "worst_cpu_s": 0.86,
+        "decisions": 392,
+        "games_over_budget": 0,
+        "random_moves": 0,
+        "errors": 0,
+        "timeouts": 0,
+        "crashes": 0
+      },
+      "trials": [
+        {
+          "vector": [
+            0.17745427756606777,
+            -0.34499744158996376,
+            1.6674263490887613,
+            0.44840682117642316,
+            0.9003530045205013,
+            0.35989907292111645,
+            1.1461697954787549,
+            -0.5524498973794969
+          ],
+          "config": {
+            "agent": "onevone_tactical_v1",
+            "rules": {
+              "players": 2,
+              "target_vp": 10,
+              "discard_limit": 7,
+              "friendly_robber": false,
+              "number_placement": "official_spiral",
+              "trade_offers": true,
+              "status": "provisional_local_target"
+            },
+            "value_weights": {
+              "reachable_production_0": 70822.2165388178,
+              "reachable_production_1": 21246.66496164534,
+              "buildable_nodes": 7082.221653881779,
+              "hand_synergy": 3146.119521461382,
+              "army_size": 158955.4112896018,
+              "production": 119417345.61372544,
+              "enemy_production": -119417345.61372544,
+              "public_vps": 84075867.54898913
+            },
+            "dev_buy_vp_threshold": 7,
+            "dev_buy_late_bonus": 30000,
+            "tactical_min_vp": 0,
+            "tactical_max_roots": 64,
+            "tactical_max_followups": 256,
+            "robber_weights": {
+              "robber": 9.0
+            },
+            "onevone_robber": {
+              "own_production_cost": 1.2,
+              "opponent_lead_sensitivity": 0.12,
+              "min_opponent_pressure": 0.8,
+              "max_opponent_pressure": 1.45,
+              "theft_base": 0.2,
+              "theft_per_public_card": 0.08,
+              "max_theft_cards": 8
+            },
+            "economy_weights": [
+              0.3131631146061236,
+              0.3131631146061236,
+              0.1,
+              0.7381414546320384,
+              0.4299554280328048,
+              0.05,
+              0.05,
+              0.1,
+              0.35,
+              0.35,
+              0.25,
+              0.49575551577172455,
+              0.2832888661552712,
+              0.6292239042922765,
+              0.7865298803653455,
+              -0.15,
+              -0.1,
+              0.5298513709653393,
+              0.0,
+              0.0
+            ]
+          },
+          "agent": "tuning_g0_c0_agent.py",
+          "summary": {
+            "games": 8,
+            "wins": 6,
+            "win_rate": 0.75,
+            "ci95": 0.3000624934909393,
+            "no_winner": 0,
+            "mean_cpu_s": 0.66625,
+            "worst_cpu_s": 0.88,
+            "decisions": 442,
+            "games_over_budget": 0,
+            "random_moves": 0,
+            "errors": 0,
+            "timeouts": 0,
+            "crashes": 0
+          }
+        },
+        {
+          "vector": [
+            -0.011930610217733232,
+            -0.536571838686505,
+            -0.7912327756549365,
+            -0.16866133075577716,
+            0.872245396772364,
+            -0.24924357882961495,
+            0.7567369878670317,
+            0.7932515114498917
+          ],
+          "config": {
+            "agent": "onevone_tactical_v1",
+            "rules": {
+              "players": 2,
+              "target_vp": 10,
+              "discard_limit": 7,
+              "friendly_robber": false,
+              "number_placement": "official_spiral",
+              "trade_offers": true,
+              "status": "provisional_local_target"
+            },
+            "value_weights": {
+              "reachable_production_0": 58474.94356179005,
+              "reachable_production_1": 17542.483068537014,
+              "buildable_nodes": 5847.494356179005,
+              "hand_synergy": 2131.310370253224,
+              "army_size": 13598.569535641147,
+              "production": 98814027.73217589,
+              "enemy_production": -98814027.73217589,
+              "public_vps": 1863686100.2587233
+            },
+            "dev_buy_vp_threshold": 7,
+            "dev_buy_late_bonus": 30000,
+            "tactical_min_vp": 0,
+            "tactical_max_roots": 64,
+            "tactical_max_followups": 256,
+            "robber_weights": {
+              "robber": 9.0
+            },
+            "onevone_robber": {
+              "own_production_cost": 1.2,
+              "opponent_lead_sensitivity": 0.12,
+              "min_opponent_pressure": 0.8,
+              "max_opponent_pressure": 1.45,
+              "theft_base": 0.2,
+              "theft_per_public_card": 0.08,
+              "max_theft_cards": 8
+            },
+            "economy_weights": [
+              0.16895899220296198,
+              0.16895899220296198,
+              0.1,
+              0.7176829311385203,
+              0.2338170321995419,
+              0.05,
+              0.05,
+              0.1,
+              0.35,
+              0.35,
+              0.25,
+              0.4093246049325303,
+              0.2338997742471602,
+              0.42626207405064487,
+              0.532827592563306,
+              -0.15,
+              -0.1,
+              0.04532856511880382,
+              0.0,
+              0.0
+            ]
+          },
+          "agent": "tuning_g0_c1_agent.py",
+          "summary": {
+            "games": 8,
+            "wins": 6,
+            "win_rate": 0.75,
+            "ci95": 0.3000624934909393,
+            "no_winner": 0,
+            "mean_cpu_s": 0.67125,
+            "worst_cpu_s": 0.92,
+            "decisions": 413,
+            "games_over_budget": 0,
+            "random_moves": 0,
+            "errors": 0,
+            "timeouts": 0,
+            "crashes": 0
+          }
+        },
+        {
+          "vector": [
+            0.5946613364163751,
+            0.17061595540225916,
+            -0.8565817669371402,
+            0.8146209239594424,
+            0.04355295994148918,
+            1.1547944931572753,
+            0.7475171811597547,
+            0.037648191617462655
+          ],
+          "config": {
+            "agent": "onevone_tactical_v1",
+            "rules": {
+              "players": 2,
+              "target_vp": 10,
+              "discard_limit": 7,
+              "friendly_robber": false,
+              "number_placement": "official_spiral",
+              "trade_offers": true,
+              "status": "provisional_local_target"
+            },
+            "value_weights": {
+              "reachable_production_0": 118603.51711459909,
+              "reachable_production_1": 35581.05513437973,
+              "buildable_nodes": 11860.351711459909,
+              "hand_synergy": 2111.7504086960676,
+              "army_size": 12738.330718131827,
+              "production": 181241704.1362377,
+              "enemy_production": -181241704.1362377,
+              "public_vps": 327166965.82942593
+            },
+            "dev_buy_vp_threshold": 7,
+            "dev_buy_late_bonus": 30000,
+            "tactical_min_vp": 0,
+            "tactical_max_roots": 64,
+            "tactical_max_followups": 256,
+            "robber_weights": {
+              "robber": 9.0
+            },
+            "onevone_robber": {
+              "own_production_cost": 1.2,
+              "opponent_lead_sensitivity": 0.12,
+              "min_opponent_pressure": 0.8,
+              "max_opponent_pressure": 1.45,
+              "theft_base": 0.2,
+              "theft_per_public_card": 0.08,
+              "max_theft_cards": 8
+            },
+            "economy_weights": [
+              0.4516638870561271,
+              0.4516638870561271,
+              0.1,
+              0.3133545930950898,
+              0.9520113603048309,
+              0.05,
+              0.05,
+              0.1,
+              0.35,
+              0.35,
+              0.25,
+              0.8302246198021935,
+              0.4744140684583964,
+              0.4223500817392135,
+              0.5279376021740169,
+              -0.15,
+              -0.1,
+              0.04246110239377276,
+              0.0,
+              0.0
+            ]
+          },
+          "agent": "tuning_g0_c2_agent.py",
+          "summary": {
+            "games": 8,
+            "wins": 5,
+            "win_rate": 0.625,
+            "ci95": 0.33548006647191425,
+            "no_winner": 0,
+            "mean_cpu_s": 0.7025,
+            "worst_cpu_s": 1.03,
+            "decisions": 443,
+            "games_over_budget": 0,
+            "random_moves": 0,
+            "errors": 0,
+            "timeouts": 0,
+            "crashes": 0
+          }
+        },
+        {
+          "vector": [
+            0.01231372903028898,
+            0.2395725189485866,
+            0.33770467828307577,
+            -0.19782495120828214,
+            0.15601336815319583,
+            -0.018762235366043187,
+            -0.1777608711527201,
+            -0.564918641970971
+          ],
+          "config": {
+            "agent": "onevone_tactical_v1",
+            "rules": {
+              "players": 2,
+              "target_vp": 10,
+              "discard_limit": 7,
+              "friendly_robber": false,
+              "number_placement": "official_spiral",
+              "trade_offers": true,
+              "status": "provisional_local_target"
+            },
+            "value_weights": {
+              "reachable_production_0": 127070.58315355338,
+              "reachable_production_1": 38121.174946066014,
+              "buildable_nodes": 12707.058315355338,
+              "hand_synergy": 837.1425844969184,
+              "army_size": 42051.794460067526,
+              "production": 101238985.51361203,
+              "enemy_production": -101238985.51361203,
+              "public_vps": 81696342.29391263
+            },
+            "dev_buy_vp_threshold": 7,
+            "dev_buy_late_bonus": 30000,
+            "tactical_min_vp": 0,
+            "tactical_max_roots": 64,
+            "tactical_max_followups": 256,
+            "robber_weights": {
+              "robber": 9.0
+            },
+            "onevone_robber": {
+              "own_production_cost": 1.2,
+              "opponent_lead_sensitivity": 0.12,
+              "min_opponent_pressure": 0.8,
+              "max_opponent_pressure": 1.45,
+              "theft_base": 0.2,
+              "theft_per_public_card": 0.08,
+              "max_theft_cards": 8
+            },
+            "economy_weights": [
+              0.16410269409180744,
+              0.16410269409180744,
+              0.1,
+              0.35065254847261523,
+              0.294423803919282,
+              0.05,
+              0.05,
+              0.1,
+              0.35,
+              0.35,
+              0.25,
+              0.8894940820748736,
+              0.5082823326142135,
+              0.16742851689938368,
+              0.2092856461242296,
+              -0.15,
+              -0.1,
+              0.1401726482002251,
+              0.0,
+              0.0
+            ]
+          },
+          "agent": "tuning_g0_c3_agent.py",
+          "summary": {
+            "games": 8,
+            "wins": 5,
+            "win_rate": 0.625,
+            "ci95": 0.33548006647191425,
+            "no_winner": 0,
+            "mean_cpu_s": 0.6075,
+            "worst_cpu_s": 0.88,
+            "decisions": 395,
+            "games_over_budget": 0,
+            "random_moves": 0,
+            "errors": 0,
+            "timeouts": 0,
+            "crashes": 0
+          }
+        }
+      ],
+      "retained": "tuning_g0_c0_agent.py"
+    },
+    {
+      "generation": 1,
+      "seed": 2031001000,
+      "incumbent": {
+        "games": 8,
+        "wins": 2,
+        "win_rate": 0.25,
+        "ci95": 0.3000624934909393,
+        "no_winner": 0,
+        "mean_cpu_s": 0.6625,
+        "worst_cpu_s": 1.24,
+        "decisions": 449,
+        "games_over_budget": 0,
+        "random_moves": 0,
+        "errors": 0,
+        "timeouts": 0,
+        "crashes": 0
+      },
+      "trials": [
+        {
+          "vector": [
+            0.12805195374023823,
+            -0.6220873425760487,
+            0.8482248994155814,
+            0.5253869102837072,
+            0.7388351228517775,
+            0.2593685534753031,
+            1.2476652593404276,
+            0.2760070598811183
+          ],
+          "config": {
+            "agent": "onevone_tactical_v1",
+            "rules": {
+              "players": 2,
+              "target_vp": 10,
+              "discard_limit": 7,
+              "friendly_robber": false,
+              "number_placement": "official_spiral",
+              "trade_offers": true,
+              "status": "provisional_local_target"
+            },
+            "value_weights": {
+              "reachable_production_0": 53682.27343632624,
+              "reachable_production_1": 16104.682030897873,
+              "buildable_nodes": 5368.227343632624,
+              "hand_synergy": 3482.203417398167,
+              "army_size": 70064.92282033103,
+              "production": 113661205.24104428,
+              "enemy_production": -113661205.24104428,
+              "public_vps": 566406612.1469219
+            },
+            "dev_buy_vp_threshold": 7,
+            "dev_buy_late_bonus": 30000,
+            "tactical_min_vp": 0,
+            "tactical_max_roots": 64,
+            "tactical_max_followups": 256,
+            "robber_weights": {
+              "robber": 9.0
+            },
+            "onevone_robber": {
+              "own_production_cost": 1.2,
+              "opponent_lead_sensitivity": 0.12,
+              "min_opponent_pressure": 0.8,
+              "max_opponent_pressure": 1.45,
+              "theft_base": 0.2,
+              "theft_per_public_card": 0.08,
+              "max_theft_cards": 8
+            },
+            "economy_weights": [
+              0.33822260616770256,
+              0.33822260616770256,
+              0.1,
+              0.628048628575638,
+              0.3888334209523191,
+              0.05,
+              0.05,
+              0.1,
+              0.35,
+              0.35,
+              0.25,
+              0.3757759140542837,
+              0.214729093745305,
+              0.6964406834796334,
+              0.8705508543495417,
+              -0.15,
+              -0.1,
+              0.23354974273443677,
+              0.0,
+              0.0
+            ]
+          },
+          "agent": "tuning_g1_c0_agent.py",
+          "summary": {
+            "games": 8,
+            "wins": 2,
+            "win_rate": 0.25,
+            "ci95": 0.3000624934909393,
+            "no_winner": 0,
+            "mean_cpu_s": 0.68125,
+            "worst_cpu_s": 1.29,
+            "decisions": 449,
+            "games_over_budget": 0,
+            "random_moves": 0,
+            "errors": 0,
+            "timeouts": 0,
+            "crashes": 0
+          }
+        },
+        {
+          "vector": [
+            -0.8679728225618503,
+            -1.6618376200673233,
+            1.3070514446062143,
+            -0.0632976344594734,
+            0.10343109870657397,
+            -0.19428110641451465,
+            1.2358035785308004,
+            -0.36279028383599154
+          ],
+          "config": {
+            "agent": "onevone_tactical_v1",
+            "rules": {
+              "players": 2,
+              "target_vp": 10,
+              "discard_limit": 7,
+              "friendly_robber": false,
+              "number_placement": "official_spiral",
+              "trade_offers": true,
+              "status": "provisional_local_target"
+            },
+            "value_weights": {
+              "reachable_production_0": 18978.989773471993,
+              "reachable_production_1": 5693.696932041598,
+              "buildable_nodes": 1897.8989773471994,
+              "hand_synergy": 3441.1426383091684,
+              "army_size": 110857.8584578811,
+              "production": 41980169.97878113,
+              "enemy_production": -41980169.97878113,
+              "public_vps": 130116080.01281899
+            },
+            "dev_buy_vp_threshold": 7,
+            "dev_buy_late_bonus": 30000,
+            "tactical_min_vp": 0,
+            "tactical_max_roots": 64,
+            "tactical_max_followups": 256,
+            "robber_weights": {
+              "robber": 9.0
+            },
+            "onevone_robber": {
+              "own_production_cost": 1.2,
+              "opponent_lead_sensitivity": 0.12,
+              "min_opponent_pressure": 0.8,
+              "max_opponent_pressure": 1.45,
+              "theft_base": 0.2,
+              "theft_per_public_card": 0.08,
+              "max_theft_cards": 8
+            },
+            "economy_weights": [
+              0.18773281066809813,
+              0.18773281066809813,
+              0.1,
+              0.3326908143923734,
+              0.24702792038649962,
+              0.05,
+              0.05,
+              0.1,
+              0.35,
+              0.35,
+              0.25,
+              0.13285292841430393,
+              0.07591595909388799,
+              0.6882285276618337,
+              0.8602856595772921,
+              -0.15,
+              -0.1,
+              0.3695261948596037,
+              0.0,
+              0.0
+            ]
+          },
+          "agent": "tuning_g1_c1_agent.py",
+          "summary": {
+            "games": 8,
+            "wins": 2,
+            "win_rate": 0.25,
+            "ci95": 0.3000624934909393,
+            "no_winner": 0,
+            "mean_cpu_s": 0.6862499999999999,
+            "worst_cpu_s": 1.33,
+            "decisions": 467,
+            "games_over_budget": 0,
+            "random_moves": 0,
+            "errors": 0,
+            "timeouts": 0,
+            "crashes": 0
+          }
+        },
+        {
+          "vector": [
+            -0.1984308212198209,
+            -0.3171083346749859,
+            1.7454592388895598,
+            -0.855632421765324,
+            0.7509576860197582,
+            -0.06259180842911286,
+            1.8132246964696712,
+            -0.4125163638969
+          ],
+          "config": {
+            "agent": "onevone_tactical_v1",
+            "rules": {
+              "players": 2,
+              "target_vp": 10,
+              "discard_limit": 7,
+              "friendly_robber": false,
+              "number_placement": "official_spiral",
+              "trade_offers": true,
+              "status": "provisional_local_target"
+            },
+            "value_weights": {
+              "reachable_production_0": 72825.18559238999,
+              "reachable_production_1": 21847.555677716995,
+              "buildable_nodes": 7282.518559238999,
+              "hand_synergy": 6130.183574925811,
+              "army_size": 171855.94907839142,
+              "production": 82001649.6519228,
+              "enemy_production": -82001649.6519228,
+              "public_vps": 116039244.03410865
+            },
+            "dev_buy_vp_threshold": 7,
+            "dev_buy_late_bonus": 30000,
+            "tactical_min_vp": 0,
+            "tactical_max_roots": 64,
+            "tactical_max_followups": 256,
+            "robber_weights": {
+              "robber": 9.0
+            },
+            "onevone_robber": {
+              "own_production_cost": 1.2,
+              "opponent_lead_sensitivity": 0.12,
+              "min_opponent_pressure": 0.8,
+              "max_opponent_pressure": 1.45,
+              "theft_base": 0.2,
+              "theft_per_public_card": 0.08,
+              "max_theft_cards": 8
+            },
+            "economy_weights": [
+              0.08500286355308752,
+              0.08500286355308752,
+              0.1,
+              0.6357085227176779,
+              0.28179804622044785,
+              0.05,
+              0.05,
+              0.1,
+              0.35,
+              0.35,
+              0.25,
+              0.5097762991467298,
+              0.29130074236955994,
+              1.2260367149851623,
+              1.5325458937314527,
+              -0.15,
+              -0.1,
+              0.5728531635946381,
+              0.0,
+              0.0
+            ]
+          },
+          "agent": "tuning_g1_c2_agent.py",
+          "summary": {
+            "games": 8,
+            "wins": 2,
+            "win_rate": 0.25,
+            "ci95": 0.3000624934909393,
+            "no_winner": 0,
+            "mean_cpu_s": 0.6675,
+            "worst_cpu_s": 1.28,
+            "decisions": 452,
+            "games_over_budget": 0,
+            "random_moves": 0,
+            "errors": 0,
+            "timeouts": 0,
+            "crashes": 0
+          }
+        },
+        {
+          "vector": [
+            1.0396721276000211,
+            0.73704298740353,
+            0.44229617100263374,
+            -0.37597474877771947,
+            0.6156041136823691,
+            -0.036430374691784756,
+            0.7454601528544447,
+            -0.42473817355443655
+          ],
+          "config": {
+            "agent": "onevone_tactical_v1",
+            "rules": {
+              "players": 2,
+              "target_vp": 10,
+              "discard_limit": 7,
+              "friendly_robber": false,
+              "number_placement": "official_spiral",
+              "trade_offers": true,
+              "status": "provisional_local_target"
+            },
+            "value_weights": {
+              "reachable_production_0": 208974.69611011373,
+              "reachable_production_1": 62692.40883303412,
+              "buildable_nodes": 20897.469611011373,
+              "hand_synergy": 2107.410943063603,
+              "army_size": 46688.29788553654,
+              "production": 282828954.4233238,
+              "enemy_production": -282828954.4233238,
+              "public_vps": 112819216.97465073
+            },
+            "dev_buy_vp_threshold": 7,
+            "dev_buy_late_bonus": 30000,
+            "tactical_min_vp": 0,
+            "tactical_max_roots": 64,
+            "tactical_max_followups": 256,
+            "robber_weights": {
+              "robber": 9.0
+            },
+            "onevone_robber": {
+              "own_production_cost": 1.2,
+              "opponent_lead_sensitivity": 0.12,
+              "min_opponent_pressure": 0.8,
+              "max_opponent_pressure": 1.45,
+              "theft_base": 0.2,
+              "theft_per_public_card": 0.08,
+              "max_theft_cards": 8
+            },
+            "economy_weights": [
+              0.137323934161866,
+              0.137323934161866,
+              0.1,
+              0.5552323020014879,
+              0.2892675678113402,
+              0.05,
+              0.05,
+              0.1,
+              0.35,
+              0.35,
+              0.25,
+              1.462822872770796,
+              0.835898784440455,
+              0.42148218861272063,
+              0.5268527357659007,
+              -0.15,
+              -0.1,
+              0.15562765961845515,
+              0.0,
+              0.0
+            ]
+          },
+          "agent": "tuning_g1_c3_agent.py",
+          "summary": {
+            "games": 8,
+            "wins": 3,
+            "win_rate": 0.375,
+            "ci95": 0.33548006647191425,
+            "no_winner": 0,
+            "mean_cpu_s": 0.7062499999999999,
+            "worst_cpu_s": 1.24,
+            "decisions": 438,
+            "games_over_budget": 0,
+            "random_moves": 0,
+            "errors": 0,
+            "timeouts": 0,
+            "crashes": 0
+          }
+        }
+      ],
+      "retained": "tuning_g1_c3_agent.py"
+    }
+  ],
+  "accepted": false,
+  "validation": {
+    "baseline": {
+      "games": 24,
+      "wins": 16,
+      "win_rate": 0.6666666666666666,
+      "ci95": 0.18860108793527774,
+      "no_winner": 0,
+      "mean_cpu_s": 0.77625,
+      "worst_cpu_s": 1.32,
+      "decisions": 953,
+      "games_over_budget": 0,
+      "random_moves": 0,
+      "errors": 0,
+      "timeouts": 0,
+      "crashes": 0
+    },
+    "candidate": {
+      "games": 24,
+      "wins": 14,
+      "win_rate": 0.5833333333333334,
+      "ci95": 0.19724373904535625,
+      "no_winner": 0,
+      "mean_cpu_s": 0.7579166666666667,
+      "worst_cpu_s": 1.35,
+      "decisions": 1040,
+      "games_over_budget": 0,
+      "random_moves": 0,
+      "errors": 0,
+      "timeouts": 0,
+      "crashes": 0
+    },
+    "win_rate_difference": -0.08333333333333333,
+    "board_bootstrap_ci95": [
+      -0.20833333333333334,
+      0.0
+    ]
+  },
+  "reason": "No fresh validation gain; retained the starting heuristic."
+}

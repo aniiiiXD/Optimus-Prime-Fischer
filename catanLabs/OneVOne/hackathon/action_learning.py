@@ -34,6 +34,7 @@ class AuditedSeat(match.Seat):
 
     def __init__(self, color, agent, clocked=True):
         super().__init__(color, agent, clocked=False if os.environ.get("ONEVONE_UNCLOCKED") == "1" else clocked)
+        self._audit_focal = color == match.COLORS[0]
 
     def decide(self, game, playable_actions):
         directory = os.environ.get("ONEVONE_AUDIT_DIR")
@@ -49,7 +50,7 @@ class AuditedSeat(match.Seat):
         if requested:
             request = self._audit_requests[pid] = self._audit_requests.get(pid, 0) + 1
         accepted = bool(requested and not self.over and self.errors == errors and self.random_moves == random_moves)
-        row = {"pid": pid, "request": request, "accepted": accepted,
+        row = {"pid": pid, "request": request, "accepted": accepted, "focal": self._audit_focal,
                "action": f"{action.action_type.name}:{action.value!r}",
                "arm_agentpath": str(self.agent.path), "arm": os.environ.get("ONEVONE_AUDIT_ARM"),
                "fallback": self.random_moves > random_moves, "over": self.over,
@@ -297,7 +298,7 @@ def trace_summary(output, arm):
     for path in (output / "audits").glob("*.jsonl"):
         for line in path.read_text().splitlines():
             row = json.loads(line)
-            if row.get("arm") != arm:
+            if row.get("arm") != arm or not row.get("focal", True):
                 continue
             agentpath = row["arm_agentpath"]
             if agentpath not in path_matches:

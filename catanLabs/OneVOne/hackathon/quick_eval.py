@@ -3,23 +3,27 @@
 import argparse
 from datetime import datetime
 import hashlib
+import os
 from pathlib import Path
 import platform
 import sys
 import time
 
 import critic_experiment as experiment
+import action_learning  # Install the same optional clock wrapper in spawned workers.
 
 
 def main():
     experiment.ensure_hash_seed()
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--a", type=Path, default=experiment.HERE / "agent.py")
+    parser.add_argument("--a", type=Path, default=experiment.HERE.parents[2] / "my_team/nano.py")
+    parser.add_argument("--clocked", action="store_true", help="Enforce the official clock; local iteration is uncapped by default")
     parser.add_argument("--games", type=int, default=8)
     parser.add_argument("--workers", type=int, default=4)
     parser.add_argument("--seed", type=int, default=1040000)
     parser.add_argument("--output", type=Path)
     args = parser.parse_args()
+    os.environ["ONEVONE_UNCLOCKED"] = "0" if args.clocked else "1"
     if args.games < 2 or args.games % 2 or args.workers < 1:
         parser.error("games must be positive and even; workers must be positive")
     output = args.output or experiment.HERE.parent / "reports/quick_eval" / datetime.now().strftime("%Y%m%d-%H%M%S-%f")
@@ -32,7 +36,8 @@ def main():
     source_hashes = {str(path): hashlib.sha256(path.read_bytes()).hexdigest() for path in sorted(source_paths)}
     metadata = {"runtime": {"platform": platform.platform(), "python": sys.version, "executable": sys.executable},
                 "seed0": args.seed, "games": args.games, "workers": args.workers,
-                "agent": str(args.a.resolve()), "opponent": "F", "source_sha256": source_hashes}
+                "agent": str(args.a.resolve()), "opponent": "F",
+                "clock": "official" if args.clocked else "unclocked", "source_sha256": source_hashes}
     experiment.write_json(output / "manifest.json", metadata)
     start = time.perf_counter()
     result, _ = experiment.run(output.resolve(), "eval", args.a.resolve(strict=True), args.games, args.seed)

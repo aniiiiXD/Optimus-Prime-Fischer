@@ -12,6 +12,7 @@ from catanLabs.Competitive.tactical_vp_agent import ROOT_TYPES, POINT_TYPES
 from catanLabs.OneVOne.agent import OneVOneAgent
 from catanLabs.OneVOne.learning import (
     POSITION_FEATURES, PositionFeatures, HEURISTIC_WEIGHTS, normalize_scores,
+    checked_vector,
 )
 from catanLabs.OneVOne.policy_features import ACTION_TYPES
 
@@ -73,13 +74,14 @@ def _description(action):
 class ActionPlanner:
     def __init__(self, color, config):
         self.color = color
+        self.economy_weights = checked_vector(config.get("economy_weights", HEURISTIC_WEIGHTS))
         self.original = OneVOneAgent(color, config)
         self.base = _CachedValue(color, self.original.weights)
         self.position = PositionFeatures(color)
 
     def _evaluate(self, game):
         features = self.position(game)
-        score = self.base(game, self.color) + 1e7 * float(features @ HEURISTIC_WEIGHTS)
+        score = self.base(game, self.color) + 1e7 * float(features @ self.economy_weights)
         return score, features
 
     def _outcome(self, game, action):

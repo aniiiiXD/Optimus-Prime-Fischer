@@ -81,7 +81,7 @@ def agent_file(output, name, checkpoint=None, exploration=0.0, blend=0.25):
     return path
 
 
-def shard(path, indices, seed, collect, cpu):
+def shard(path, indices, seed, collect, cpu, opponent=None):
     global COLLECT
     COLLECT = collect
     if cpu is not None:
@@ -89,7 +89,7 @@ def shard(path, indices, seed, collect, cpu):
         match.sandbox.CPU = str(cpu)
     match.Game = ObservedGame
     PROBES.clear()
-    records, _ = match.play_chunk(str(path), str(HERE / "vendor/kit/examples/f_agent.py"), [seed + i // 2 for i in indices], indices)
+    records, _ = match.play_chunk(str(path), str(opponent or HERE / "vendor/kit/examples/f_agent.py"), [seed + i // 2 for i in indices], indices)
     rows, metrics = [], []
     for record, probe in zip(records, PROBES):
         focal = match.COLORS[0 if record["a_first"] else 1]
@@ -99,7 +99,7 @@ def shard(path, indices, seed, collect, cpu):
     return records, rows, metrics
 
 
-def run(output, name, path, games, seed, collect=False, game_start=0):
+def run(output, name, path, games, seed, collect=False, game_start=0, opponent=None):
     records, all_rows, metrics = [], [], []
     saved = output / f"{name}.json"
     if saved.exists() and not collect:
@@ -118,13 +118,13 @@ def run(output, name, path, games, seed, collect=False, game_start=0):
         cpus = [None] * (psutil.cpu_count(logical=False) or 1)
     count = min(WORKERS, len(cpus), max(1, len(indices) // 2))
     if len(indices) <= 2:
-        batches = [shard(path, indices, seed, collect, None)] if indices else []
+        batches = [shard(path, indices, seed, collect, None, opponent)] if indices else []
     else:
         # Keep the two seats of every board together and give each worker its own core.
         paired = [indices[i:i + 2] for i in range(0, len(indices), 2)]
         groups = [[game for pair in paired[i::count] for game in pair] for i in range(count)]
         with ProcessPoolExecutor(max_workers=count, mp_context=mp.get_context("spawn")) as pool:
-            futures = [pool.submit(shard, path, group, seed, collect, cpus[i]) for i, group in enumerate(groups)]
+            futures = [pool.submit(shard, path, group, seed, collect, cpus[i], opponent) for i, group in enumerate(groups)]
             batches = []
             for future in as_completed(futures):
                 batches.append(future.result())

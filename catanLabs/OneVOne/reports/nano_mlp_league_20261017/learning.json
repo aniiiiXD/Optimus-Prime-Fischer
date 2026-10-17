@@ -1,0 +1,129 @@
+{
+  "pairs_total": 238,
+  "training_pairs": 160,
+  "training_boards": [
+    2031200000,
+    2031200001,
+    2031200002,
+    2031200003,
+    2031200004,
+    2031200005,
+    2031200006,
+    2031200007,
+    2031200008,
+    2031200009,
+    2031200010,
+    2031200011,
+    2031200012,
+    2031200013,
+    2031200014,
+    2031200015
+  ],
+  "calibration_boards": [
+    2031200016,
+    2031200017,
+    2031200018,
+    2031200019,
+    2031200020,
+    2031200021,
+    2031200022,
+    2031200023
+  ],
+  "calibration_positions": 32,
+  "l2_cv_mse": {
+    "0.1": 0.06813478984880962,
+    "1.0": 0.058576247233316746,
+    "10.0": 0.05181629987703494
+  },
+  "selected_l2": 10.0,
+  "ensemble_size": 8,
+  "gate_calibration": {
+    "positions": 32,
+    "boards": 8,
+    "overrides": 0,
+    "fallback": 32,
+    "mean_advantage": null,
+    "board_bootstrap_lower95": null,
+    "harmful": 0,
+    "beneficial": 0,
+    "tied": 0,
+    "reason": "insufficient calibration evidence",
+    "thresholds": [
+      {
+        "margin": 0.0,
+        "overrides": 10,
+        "fallback": 22,
+        "override_boards": 7,
+        "mean_advantage": -0.020833333333333332,
+        "board_bootstrap_lower95": -0.041666666666666664,
+        "harmful": 2,
+        "beneficial": 0,
+        "tied": 8
+      },
+      {
+        "margin": 0.05,
+        "overrides": 0,
+        "fallback": 32,
+        "override_boards": 0,
+        "mean_advantage": 0.0,
+        "board_bootstrap_lower95": 0.0,
+        "harmful": 0,
+        "beneficial": 0,
+        "tied": 0
+      },
+      {
+        "margin": 0.1,
+        "overrides": 0,
+        "fallback": 32,
+        "override_boards": 0,
+        "mean_advantage": 0.0,
+        "board_bootstrap_lower95": 0.0,
+        "harmful": 0,
+        "beneficial": 0,
+        "tied": 0
+      },
+      {
+        "margin": 0.2,
+        "overrides": 0,
+        "fallback": 32,
+        "override_boards": 0,
+        "mean_advantage": 0.0,
+        "board_bootstrap_lower95": 0.0,
+        "harmful": 0,
+        "beneficial": 0,
+        "tied": 0
+      }
+    ]
+  },
+  "confidence_note": "Ensemble spread and gate are empirical heuristics, not rigorous confidence bounds.",
+  "collection": {
+    "train": {
+      "practice_games": 16,
+      "opponent_counts": {
+        "F": 6,
+        "Nano": 5,
+        "OneVOne": 5
+      },
+      "board_errors": [],
+      "positions": 64,
+      "pairs": 160,
+      "rollouts_attempted": 528,
+      "rollouts_completed": 528,
+      "rollout_errors": 0
+    },
+    "calibration": {
+      "practice_games": 8,
+      "opponent_counts": {
+        "F": 3,
+        "Nano": 3,
+        "OneVOne": 2
+      },
+      "board_errors": [],
+      "positions": 32,
+      "pairs": 78,
+      "rollouts_attempted": 261,
+      "rollouts_completed": 261,
+      "rollout_errors": 0
+    }
+  }
+}

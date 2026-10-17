@@ -1,0 +1,52 @@
+{
+  "baseline": "Nano",
+  "default_evaluation_agent": "my_team/nano.py",
+  "wins_out_of_40": {
+    "nano": 22,
+    "heuristic": 22,
+    "learned": 22
+  },
+  "mean_cpu_seconds_per_game": {
+    "nano": 0.5925,
+    "heuristic": 1.312,
+    "learned": 1.33525
+  },
+  "training": {
+    "positions": 63,
+    "rollouts": 543,
+    "pairs": 173,
+    "different_mean_outcomes": 53
+  },
+  "calibration": {
+    "positions": 32,
+    "rollouts": 273,
+    "gate_enabled": false,
+    "proposed_overrides": 3,
+    "better": 0,
+    "worse": 1,
+    "tied": 2
+  },
+  "executed_ml_changes": {
+    "changed": 0,
+    "decisions": 2216,
+    "rate": 0.0
+  },
+  "tuning": {
+    "accepted": false,
+    "reason": "No candidate beat the incumbent on its practice batch; native priorities retained."
+  },
+  "depth_four": {
+    "native_wins": 5,
+    "depth_four_wins": 5,
+    "games_each": 8,
+    "native_mean_cpu_s": 1.41625,
+    "depth_four_mean_cpu_s": 1.3475,
+    "accepted": false
+  },
+  "conclusion": "The trained MLP did not earn an override on held-out Nano decisions. Native Nano remains the default; the extra scoring path increased CPU without improving wins.",
+  "limitations": [
+    "Small uncapped local evaluation; no official-clock or Mac claim.",
+    "Some neural fits reached the 300-iteration cap.",
+    "Three repeats per alternative reduce noise but do not establish individual move quality."
+  ]
+}
