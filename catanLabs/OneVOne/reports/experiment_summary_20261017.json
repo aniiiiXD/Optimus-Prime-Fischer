@@ -1,0 +1,109 @@
+{
+  "default_agent_changed": false,
+  "all_strategies_experimental": true,
+  "helped": [
+    {
+      "change": "Interpreter and environment on native filesystem",
+      "paired_board_screen_games": 8,
+      "linux_python_on_windows_filesystem_s": 33.85,
+      "linux_python_on_linux_filesystem_s": 6.676,
+      "note": "Workflow timing only; clock-limited policies can choose different moves across runtimes."
+    },
+    {
+      "change": "Clock-bounded search",
+      "overruns_before": 160,
+      "overruns_after": 1,
+      "accepted": false,
+      "reason": "Reduced clock failures but lost more games."
+    }
+  ],
+  "full_evaluation": {
+    "runtime": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.5 (tags/v3.12.5:ff3bc82, Aug  6 2024, 20:45:27) [MSC v.1940 64 bit (AMD64)]",
+    "opponent": "official F",
+    "seed0": 1260000,
+    "boards": 250,
+    "seats_per_board": 2,
+    "baseline": {
+      "games": 500,
+      "wins": 228,
+      "win_rate": 0.456,
+      "ci95": 0.04365690466352373,
+      "no_winner": 0,
+      "mean_cpu_s": 0.66596875,
+      "worst_cpu_s": 1.390625,
+      "decisions": 22475,
+      "games_over_budget": 160,
+      "random_moves": 3633,
+      "errors": 0,
+      "timeouts": 0,
+      "crashes": 0
+    },
+    "clock_candidate": {
+      "games": 500,
+      "wins": 176,
+      "win_rate": 0.352,
+      "ci95": 0.0418629572199576,
+      "no_winner": 0,
+      "mean_cpu_s": 0.54159375,
+      "worst_cpu_s": 1.515625,
+      "decisions": 29066,
+      "games_over_budget": 1,
+      "random_moves": 12,
+      "errors": 0,
+      "timeouts": 0,
+      "crashes": 0
+    },
+    "paired_difference": {
+      "win_rate_difference": -0.104,
+      "board_bootstrap_ci95": [
+        -0.154,
+        -0.058
+      ]
+    }
+  },
+  "did_not_help": {
+    "learned_critic": {
+      "matched_games": 24,
+      "baseline_wins": 15,
+      "critic_wins": 8,
+      "promoted": false
+    },
+    "online_critic": {
+      "screen_games": 24,
+      "warm_wins": 12,
+      "online_wins": 11,
+      "updates_after_games": [
+        7,
+        15
+      ],
+      "promoted": false
+    },
+    "resource_priorities": {
+      "validation_games": 32,
+      "control_wins": 20,
+      "expansion_wins": 14,
+      "tuned_wins": 13,
+      "promoted": false
+    },
+    "resource_threat_awareness": {
+      "validation_games": 32,
+      "control_wins": 19,
+      "hand_aware_wins": 18,
+      "tuned_wins": 18,
+      "promoted": false
+    },
+    "cma_es": {
+      "generations": 2,
+      "candidates": 8,
+      "games_per_candidate": 8,
+      "outcome": "All candidates matched control outcomes and turn counts in each generation; no weights accepted."
+    }
+  },
+  "not_checked": [
+    "Cache-only agent with original search budgets",
+    "macOS runtime",
+    "Private O opponent"
+  ],
+  "provenance": "Full raw records and per-run source hashes remain in the accompanying report directories. Portable saved profiles resolve imports and checkpoints relative to this checkout."
+}

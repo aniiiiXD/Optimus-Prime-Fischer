@@ -1,0 +1,1 @@
+For every agent/game task, including training and policy changes, use `.agents/skills/observe-agents/SKILL.md` as the observation and evaluation workflow. Apply its Catan reference when working on Catan, and distinguish recorded behavior from proposed changes.

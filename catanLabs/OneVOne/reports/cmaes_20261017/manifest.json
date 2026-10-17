@@ -1,0 +1,336 @@
+{
+  "method": "CMA-ES/pycma",
+  "cma_version": "4.5.0",
+  "source": "https://cma-es.github.io/index.html",
+  "opponent": "official F",
+  "dimensions": [
+    "log production",
+    "log expansion",
+    "log army",
+    "log10 VP / 1e8"
+  ],
+  "search_budget": {
+    "tactical_roots": 8,
+    "tactical_followups": 16
+  },
+  "training_seed0": 1200000,
+  "validation_seed0": 1220000,
+  "confirmation_seed0": 1240000,
+  "starting_point": "Default production/expansion/army; economy-scaled VP seed of 3e8. Original 3e14 VP control is retained separately.",
+  "objective": "Win rate first; CPU overruns break ties",
+  "arguments": {
+    "generations": 2,
+    "population": 4,
+    "games": 8,
+    "validation_games": 24,
+    "confirm_games": 100,
+    "workers": 4,
+    "output": "/mnt/d/hackathon/Optimus-Prime-Fischer/catanLabs/OneVOne/reports/cmaes_20261017"
+  },
+  "generations": [
+    {
+      "incumbent": {
+        "games": 8,
+        "wins": 4,
+        "win_rate": 0.5,
+        "ci95": 0.3464823227814083,
+        "no_winner": 0,
+        "mean_cpu_s": 0.4525,
+        "worst_cpu_s": 0.78,
+        "decisions": 428,
+        "games_over_budget": 0,
+        "random_moves": 0,
+        "errors": 0,
+        "timeouts": 0,
+        "crashes": 0
+      },
+      "trials": [
+        {
+          "vector": [
+            0.16575953401279123,
+            -1.11279075708143,
+            0.3743500254294661,
+            1.8515463421805696
+          ],
+          "weights": {
+            "production": 118028924.81768274,
+            "reachable_production_0": 32864.05242339693,
+            "reachable_production_1": 9859.21572701908,
+            "buildable_nodes": 3286.4052423396934,
+            "army_size": 43621.380434239916,
+            "public_vps": 7104709780.528846
+          },
+          "summary": {
+            "games": 8,
+            "wins": 4,
+            "win_rate": 0.5,
+            "ci95": 0.3464823227814083,
+            "no_winner": 0,
+            "mean_cpu_s": 0.46499999999999997,
+            "worst_cpu_s": 0.73,
+            "decisions": 428,
+            "games_over_budget": 0,
+            "random_moves": 0,
+            "errors": 0,
+            "timeouts": 0,
+            "crashes": 0
+          },
+          "agent": "/mnt/d/hackathon/Optimus-Prime-Fischer/catanLabs/OneVOne/reports/cmaes_20261017/g0_candidate0.py"
+        },
+        {
+          "vector": [
+            0.6223142809367296,
+            1.1319975077493745,
+            -0.06702064957255523,
+            0.04258335377504957
+          ],
+          "weights": {
+            "production": 186323510.55316806,
+            "reachable_production_0": 310184.62779796077,
+            "reachable_production_1": 93055.38833938824,
+            "buildable_nodes": 31018.46277979608,
+            "army_size": 28055.276704649936,
+            "public_vps": 110301991.52206407
+          },
+          "summary": {
+            "games": 8,
+            "wins": 4,
+            "win_rate": 0.5,
+            "ci95": 0.3464823227814083,
+            "no_winner": 0,
+            "mean_cpu_s": 0.44499999999999995,
+            "worst_cpu_s": 0.78,
+            "decisions": 428,
+            "games_over_budget": 0,
+            "random_moves": 0,
+            "errors": 0,
+            "timeouts": 0,
+            "crashes": 0
+          },
+          "agent": "/mnt/d/hackathon/Optimus-Prime-Fischer/catanLabs/OneVOne/reports/cmaes_20261017/g0_candidate1.py"
+        },
+        {
+          "vector": [
+            0.08920502702714635,
+            -0.2626731749029444,
+            1.3027867677660623,
+            1.8599454104015993
+          ],
+          "weights": {
+            "production": 109330479.03797121,
+            "reachable_production_0": 76899.31825172789,
+            "reachable_production_1": 23069.795475518367,
+            "buildable_nodes": 7689.931825172789,
+            "army_size": 110386.09219671022,
+            "public_vps": 7243449062.292085
+          },
+          "summary": {
+            "games": 8,
+            "wins": 4,
+            "win_rate": 0.5,
+            "ci95": 0.3464823227814083,
+            "no_winner": 0,
+            "mean_cpu_s": 0.44625000000000004,
+            "worst_cpu_s": 0.83,
+            "decisions": 428,
+            "games_over_budget": 0,
+            "random_moves": 0,
+            "errors": 0,
+            "timeouts": 0,
+            "crashes": 0
+          },
+          "agent": "/mnt/d/hackathon/Optimus-Prime-Fischer/catanLabs/OneVOne/reports/cmaes_20261017/g0_candidate2.py"
+        },
+        {
+          "vector": [
+            -1.0912874035816973,
+            -0.08283063988631245,
+            0.3239118660100336,
+            -0.44670262098887137
+          ],
+          "weights": {
+            "production": 33578392.58929311,
+            "reachable_production_0": 92050.70311949417,
+            "reachable_production_1": 27615.21093584825,
+            "buildable_nodes": 9205.070311949416,
+            "army_size": 41475.76362796064,
+            "public_vps": 35751756.11021924
+          },
+          "summary": {
+            "games": 8,
+            "wins": 4,
+            "win_rate": 0.5,
+            "ci95": 0.3464823227814083,
+            "no_winner": 0,
+            "mean_cpu_s": 0.45375,
+            "worst_cpu_s": 0.84,
+            "decisions": 428,
+            "games_over_budget": 0,
+            "random_moves": 0,
+            "errors": 0,
+            "timeouts": 0,
+            "crashes": 0
+          },
+          "agent": "/mnt/d/hackathon/Optimus-Prime-Fischer/catanLabs/OneVOne/reports/cmaes_20261017/g0_candidate3.py"
+        }
+      ],
+      "retained_weights": null
+    },
+    {
+      "incumbent": {
+        "games": 8,
+        "wins": 5,
+        "win_rate": 0.625,
+        "ci95": 0.33548006647191425,
+        "no_winner": 0,
+        "mean_cpu_s": 0.42374999999999996,
+        "worst_cpu_s": 0.7,
+        "decisions": 461,
+        "games_over_budget": 0,
+        "random_moves": 0,
+        "errors": 0,
+        "timeouts": 0,
+        "crashes": 0
+      },
+      "trials": [
+        {
+          "vector": [
+            0.9112464853921256,
+            -0.6233804732888899,
+            0.09317904712603875,
+            2.7780813221280347
+          ],
+          "weights": {
+            "production": 248742113.5912204,
+            "reachable_production_0": 53612.90010387112,
+            "reachable_production_1": 16083.870031161336,
+            "buildable_nodes": 5361.290010387112,
+            "army_size": 32929.747506897416,
+            "public_vps": 59990339832.20385
+          },
+          "summary": {
+            "games": 8,
+            "wins": 5,
+            "win_rate": 0.625,
+            "ci95": 0.33548006647191425,
+            "no_winner": 0,
+            "mean_cpu_s": 0.4674999999999999,
+            "worst_cpu_s": 0.76,
+            "decisions": 461,
+            "games_over_budget": 0,
+            "random_moves": 0,
+            "errors": 0,
+            "timeouts": 0,
+            "crashes": 0
+          },
+          "agent": "/mnt/d/hackathon/Optimus-Prime-Fischer/catanLabs/OneVOne/reports/cmaes_20261017/g1_candidate0.py"
+        },
+        {
+          "vector": [
+            0.08609914166830987,
+            -0.3838371117941009,
+            0.9641051953725785,
+            0.72693587030128
+          ],
+          "weights": {
+            "production": 108991437.887872,
+            "reachable_production_0": 68124.23844922753,
+            "reachable_production_1": 20437.27153476826,
+            "buildable_nodes": 6812.423844922753,
+            "army_size": 78673.20104464688,
+            "public_vps": 533256146.8908381
+          },
+          "summary": {
+            "games": 8,
+            "wins": 5,
+            "win_rate": 0.625,
+            "ci95": 0.33548006647191425,
+            "no_winner": 0,
+            "mean_cpu_s": 0.4325,
+            "worst_cpu_s": 0.74,
+            "decisions": 461,
+            "games_over_budget": 0,
+            "random_moves": 0,
+            "errors": 0,
+            "timeouts": 0,
+            "crashes": 0
+          },
+          "agent": "/mnt/d/hackathon/Optimus-Prime-Fischer/catanLabs/OneVOne/reports/cmaes_20261017/g1_candidate1.py"
+        },
+        {
+          "vector": [
+            -0.5119984319898243,
+            -0.739863809610672,
+            0.3117748825092852,
+            1.9047056372685836
+          ],
+          "weights": {
+            "production": 59929672.754816875,
+            "reachable_production_0": 47717.88982758559,
+            "reachable_production_1": 14315.366948275678,
+            "buildable_nodes": 4771.7889827585595,
+            "army_size": 40975.41546982123,
+            "public_vps": 8029816805.37781
+          },
+          "summary": {
+            "games": 8,
+            "wins": 5,
+            "win_rate": 0.625,
+            "ci95": 0.33548006647191425,
+            "no_winner": 0,
+            "mean_cpu_s": 0.43875,
+            "worst_cpu_s": 0.8,
+            "decisions": 461,
+            "games_over_budget": 0,
+            "random_moves": 0,
+            "errors": 0,
+            "timeouts": 0,
+            "crashes": 0
+          },
+          "agent": "/mnt/d/hackathon/Optimus-Prime-Fischer/catanLabs/OneVOne/reports/cmaes_20261017/g1_candidate2.py"
+        },
+        {
+          "vector": [
+            0.3781040144657727,
+            -0.6977601379388705,
+            0.7331784306126239,
+            0.45362728540815245
+          ],
+          "weights": {
+            "production": 145951474.56273726,
+            "reachable_production_0": 49769.88329838361,
+            "reachable_production_1": 14930.964989515083,
+            "buildable_nodes": 4976.988329838361,
+            "army_size": 62450.598005527536,
+            "public_vps": 284202101.80354553
+          },
+          "summary": {
+            "games": 8,
+            "wins": 5,
+            "win_rate": 0.625,
+            "ci95": 0.33548006647191425,
+            "no_winner": 0,
+            "mean_cpu_s": 0.43,
+            "worst_cpu_s": 0.7,
+            "decisions": 461,
+            "games_over_budget": 0,
+            "random_moves": 0,
+            "errors": 0,
+            "timeouts": 0,
+            "crashes": 0
+          },
+          "agent": "/mnt/d/hackathon/Optimus-Prime-Fischer/catanLabs/OneVOne/reports/cmaes_20261017/g1_candidate3.py"
+        }
+      ],
+      "retained_weights": null
+    }
+  ],
+  "source_sha256": {
+    "tune_cmaes.py": "55fbb26d7bfe77bb820e74282cd9ef47e209d0d1cbbbceebe720cf4af7fb4fdf",
+    "critic_agent.py": "4918e0d47fe714971f2b95599b41ff458c0a4c2b05bc240373f99bb4af38ba41",
+    "critic_experiment.py": "1a08744ce86634ac6cb0f4bdf0e947eae397d7e8a7a773e01ba32c3705ef7610"
+  },
+  "accepted": false,
+  "reason": "No training-batch improvement; original priorities retained",
+  "best_weights": null
+}

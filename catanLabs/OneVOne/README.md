@@ -1,5 +1,13 @@
 # OneVOne Catan agent
 
+For the official hackathon scoring harness, use the
+[evaluation setup](hackathon/README.md):
+
+```bash
+./catanLabs/OneVOne/hackathon/setup.sh
+./catanLabs/OneVOne/hackathon/evaluate.sh --games 20
+```
+
 The [1v1 experiment catalog](experiment_catalog/README.md) indexes every
 two-player bot and research arm, including the separate StrategyOne and
 invest/convert worktree experiments.

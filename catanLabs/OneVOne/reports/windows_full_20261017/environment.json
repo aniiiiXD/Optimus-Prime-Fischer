@@ -1,0 +1,32 @@
+{
+  "python": "3.12.5 (tags/v3.12.5:ff3bc82, Aug  6 2024, 20:45:27) [MSC v.1940 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "packages": {
+    "catanatron": "3.3.0",
+    "networkx": "3.6.1",
+    "psutil": "7.2.2",
+    "numpy": "2.4.6"
+  },
+  "engine_source": {
+    "url": "https://github.com/bcollazo/catanatron.git",
+    "vcs_info": {
+      "commit_id": "d3f4ad05bb78d8b2309631d6d3cfa8fcb6fda816",
+      "requested_revision": "d3f4ad05bb78d8b2309631d6d3cfa8fcb6fda816",
+      "vcs": "git"
+    }
+  },
+  "clock": {
+    "base_s": 0.3,
+    "per_decision_s": 0.0125,
+    "max_s": 1.5,
+    "flat_cap_s": null
+  },
+  "candidate": {
+    "entrypoint": "critic_agent.py",
+    "checkpoint": null,
+    "weight_overrides": null,
+    "tactical_roots": 8,
+    "tactical_followups": 16
+  },
+  "linux_memory_cap_enforced": false
+}

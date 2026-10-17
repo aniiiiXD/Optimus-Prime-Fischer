@@ -1,0 +1,141 @@
+baseline: 6/24 games completed
+baseline: 12/24 games completed
+baseline: 18/24 games completed
+baseline: 24/24 games completed
+baseline: 15/24 wins, 3 overruns
+warm_collection: 10/40 games completed
+warm_collection: 20/40 games completed
+warm_collection: 30/40 games completed
+warm_collection: 40/40 games completed
+baseline: 15/24 wins, 3 overruns
+warm_collection: 10/40 games completed
+warm_collection: 20/40 games completed
+warm_collection: 30/40 games completed
+warm_collection: 40/40 games completed
+warm_collection: 23/40 wins, 0 overruns
+critic epoch 5: held-out log loss 0.9361
+critic epoch 10: held-out log loss 1.1327
+critic epoch 15: held-out log loss 1.2830
+critic epoch 20: held-out log loss 1.3961
+online_game_000: 0/1 wins, 0 overruns
+online_game_001: 1/1 wins, 0 overruns
+online_game_002: 1/1 wins, 0 overruns
+online_game_003: 0/1 wins, 0 overruns
+online_game_004: 1/1 wins, 0 overruns
+online_game_005: 0/1 wins, 0 overruns
+online_game_006: 0/1 wins, 0 overruns
+online update 1 after game 7; four losses observed
+online_game_007: 1/1 wins, 0 overruns
+online_game_008: 1/1 wins, 0 overruns
+online_game_009: 0/1 wins, 0 overruns
+online_game_010: 0/1 wins, 0 overruns
+online_game_011: 1/1 wins, 0 overruns
+online_game_012: 0/1 wins, 0 overruns
+online_game_013: 1/1 wins, 0 overruns
+online_game_014: 0/1 wins, 0 overruns
+online update 2 after game 15; four losses observed
+online_game_015: 0/1 wins, 0 overruns
+clock_control: 6/24 games completed
+clock_control: 12/24 games completed
+clock_control: 18/24 games completed
+clock_control: 24/24 games completed
+clock_control: 15/24 wins, 0 overruns
+warm_screen: 6/24 games completed
+warm_screen: 12/24 games completed
+warm_screen: 18/24 games completed
+warm_screen: 24/24 games completed
+warm_screen: 12/24 wins, 0 overruns
+online_screen: 6/24 games completed
+online_screen: 12/24 games completed
+online_screen: 18/24 games completed
+online_screen: 24/24 games completed
+online_screen: 11/24 wins, 0 overruns
+frozen_critic: 6/24 games completed
+frozen_critic: 12/24 games completed
+frozen_critic: 18/24 games completed
+frozen_critic: 24/24 games completed
+frozen_critic: 8/24 wins, 0 overruns
+{
+  "baseline": {
+    "games": 24,
+    "wins": 15,
+    "win_rate": 0.625,
+    "ci95": 0.19368950668531323,
+    "no_winner": 0,
+    "mean_cpu_s": 0.5708333333333333,
+    "worst_cpu_s": 1.04,
+    "decisions": 1147,
+    "games_over_budget": 3,
+    "random_moves": 66,
+    "errors": 0,
+    "timeouts": 0,
+    "crashes": 0
+  },
+  "clock_control_separate_screen": {
+    "games": 24,
+    "wins": 15,
+    "win_rate": 0.625,
+    "ci95": 0.19368950668531323,
+    "no_winner": 0,
+    "mean_cpu_s": 0.40708333333333324,
+    "worst_cpu_s": 0.84,
+    "decisions": 1196,
+    "games_over_budget": 0,
+    "random_moves": 0,
+    "errors": 0,
+    "timeouts": 0,
+    "crashes": 0
+  },
+  "warm_screen": {
+    "games": 24,
+    "wins": 12,
+    "win_rate": 0.5,
+    "ci95": 0.20004166232729287,
+    "no_winner": 0,
+    "mean_cpu_s": 0.4437500000000001,
+    "worst_cpu_s": 0.84,
+    "decisions": 1044,
+    "games_over_budget": 0,
+    "random_moves": 0,
+    "errors": 0,
+    "timeouts": 0,
+    "crashes": 0
+  },
+  "online_screen": {
+    "games": 24,
+    "wins": 11,
+    "win_rate": 0.4583333333333333,
+    "ci95": 0.1993458631327677,
+    "no_winner": 0,
+    "mean_cpu_s": 0.47666666666666674,
+    "worst_cpu_s": 0.98,
+    "decisions": 1088,
+    "games_over_budget": 0,
+    "random_moves": 0,
+    "errors": 0,
+    "timeouts": 0,
+    "crashes": 0
+  },
+  "selected": "warm",
+  "critic": {
+    "games": 24,
+    "wins": 8,
+    "win_rate": 0.3333333333333333,
+    "ci95": 0.18860108793527774,
+    "no_winner": 0,
+    "mean_cpu_s": 0.5087500000000001,
+    "worst_cpu_s": 0.87,
+    "decisions": 1193,
+    "games_over_budget": 0,
+    "random_moves": 0,
+    "errors": 0,
+    "timeouts": 0,
+    "crashes": 0
+  },
+  "win_rate_difference": -0.2916666666666667,
+  "board_bootstrap_ci95": [
+    -0.5416666666666666,
+    -0.041666666666666664
+  ],
+  "promotable": false
+}

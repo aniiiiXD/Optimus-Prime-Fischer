@@ -1,0 +1,131 @@
+{
+  "method": "warm-start online episodic coordinate search, not neural PPO",
+  "opponent": "F",
+  "training_seed0": 993000,
+  "screen_seed0": 995000,
+  "confirmation_seed0": 997000,
+  "boards": {
+    "output": "/mnt/d/hackathon/Optimus-Prime-Fischer/catanLabs/OneVOne/reports/resource_learning_20261017",
+    "train_boards": 4,
+    "screen_boards": 16,
+    "confirm_boards": 32
+  },
+  "updates": [
+    {
+      "axis": 0,
+      "parameters": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "wins": [
+        4,
+        4,
+        4
+      ]
+    },
+    {
+      "axis": 1,
+      "parameters": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "wins": [
+        6,
+        6,
+        6
+      ]
+    },
+    {
+      "axis": 2,
+      "parameters": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "wins": [
+        3,
+        4,
+        5
+      ]
+    }
+  ],
+  "source_sha256": {
+    "hackathon/resource_policy.py": "f1969bec7746938344cd8c9cbe3096db156738e46f92a0e58d3e6bbb152166c8",
+    "hackathon/resource_experiments.py": "fea7adf7ba912104f633e4274ed43d6b035b2e3d04c9deac73da25dab4fc3d63",
+    "hackathon/agent.py": "1d3cd6a911f70ee16f27b358e0ff2ac374cfadf58fd7d742286883c52a2d9875",
+    "configs/default.json": "5e0c8bb3da04bbff18e33b39100a76f222d72fd9c3dedd750a98cbc9ca73b887",
+    "hackathon/requirements.txt": "6cedf5a9d871cf0da03bfbd3956171d2b6a91b5dde7a9909ee418a7d7cef86f4"
+  },
+  "parameters": [
+    0.0,
+    0.0,
+    1.0
+  ],
+  "selected": "exact_monopoly",
+  "screen": {
+    "baseline": {
+      "games": 32,
+      "wins": 19,
+      "win_rate": 0.59375,
+      "ci95": 0.17016866058964852,
+      "no_winner": 0,
+      "mean_cpu_s": 0.533125,
+      "worst_cpu_s": 1.03,
+      "decisions": 1704,
+      "games_over_budget": 3,
+      "random_moves": 65,
+      "errors": 0,
+      "timeouts": 0,
+      "crashes": 0
+    },
+    "exact_monopoly": {
+      "games": 32,
+      "wins": 19,
+      "win_rate": 0.59375,
+      "ci95": 0.17016866058964852,
+      "no_winner": 0,
+      "mean_cpu_s": 0.5334375000000001,
+      "worst_cpu_s": 1.0,
+      "decisions": 1702,
+      "games_over_budget": 3,
+      "random_moves": 64,
+      "errors": 0,
+      "timeouts": 0,
+      "crashes": 0
+    },
+    "resource_aware": {
+      "games": 32,
+      "wins": 18,
+      "win_rate": 0.5625,
+      "ci95": 0.17188238620492793,
+      "no_winner": 0,
+      "mean_cpu_s": 0.5796875,
+      "worst_cpu_s": 1.07,
+      "decisions": 1760,
+      "games_over_budget": 5,
+      "random_moves": 79,
+      "errors": 0,
+      "timeouts": 0,
+      "crashes": 0
+    },
+    "online_trained": {
+      "games": 32,
+      "wins": 18,
+      "win_rate": 0.5625,
+      "ci95": 0.17188238620492793,
+      "no_winner": 0,
+      "mean_cpu_s": 0.570625,
+      "worst_cpu_s": 1.0,
+      "decisions": 1763,
+      "games_over_budget": 4,
+      "random_moves": 77,
+      "errors": 0,
+      "timeouts": 0,
+      "crashes": 0
+    }
+  },
+  "confirmation_skipped": "No candidate improved screen wins over baseline; redirected further compute to resource-priority tuning.",
+  "promotable": false
+}
