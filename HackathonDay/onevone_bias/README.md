@@ -1,19 +1,15 @@
-# OneVOne: official-harness diagnostic copy
+# Opponent-bias diagnostic candidate
 
-`agent.py` is the official entry point. The other four Python files contain
-the copied heuristic and its helper classes. `config.json` holds the frozen
-parameters. No training is performed.
+This isolated copy of `onevone_baseline` tests two observed decision gaps:
 
-See [the adaptation plan](../ONEVONE_ADAPTATION_PLAN.md) and
-`PROVENANCE.json`. This directory imports no modules from `catanLabs`.
+- a bounded, deterministic search for a guaranteed win before ending a turn or
+  buying an uncertain development card at 8 or 9 VP;
+- exact Monopoly scoring from the opponent's public resource hand, instead of
+  a production-based estimate.
 
-From the official kit root, with the separate environment active:
+The search never resolves hidden dice, development draws, or robber theft. It
+uses `obs.cpu_left` to leave clock headroom. The official adapter remains
+`agent.py`; all imports are inside this folder and the pinned kit.
 
-```sh
-python -m catan_kit.evaluate --a ../onevone_baseline/agent.py --b examples/f_agent.py --games 20 --seed0 2026101700
-python -m catan_kit.evaluate --a ../onevone_baseline/agent.py --b examples/f_agent.py --games 200 --seed0 2026101800
-```
-
-Both commands enforce the official CPU clock. The first covers 10 paired
-boards; the second covers 100 different paired boards. Results belong to
-these rules and F opponent, with CPU measured on the local development machine.
+See [the measured experiment](../OPPONENT_BIAS_RESULT.md). This is a diagnostic
+copy derived from pre-event private work, **not a competition submission**.
