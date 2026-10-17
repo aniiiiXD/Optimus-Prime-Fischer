@@ -127,7 +127,7 @@ def main():
     write_json(output / "protocol.json", protocol)
     started = time.monotonic()
     report = {"promotion_supported": False}
-    with ProcessPoolExecutor(max_workers=min(4, args.workers), mp_context=mp.get_context("spawn")) as pool:
+    with ProcessPoolExecutor(max_workers=args.workers, mp_context=mp.get_context("spawn")) as pool:
         smoke = stage(pool, output, "smoke", agents, opponents, 2, args.seed)
         if any(smoke["nano"]["summary"][key] for key in ("errors", "timeouts", "crashes")):
             raise RuntimeError("Frozen Nano had an agent error; inspect smoke records")
@@ -153,7 +153,7 @@ def main():
     if report["training"]["failures"]:
         raise RuntimeError("Incomplete training rollouts; inspect checkpoints")
     ml_agent = profile(output, "ml", base, output / "model.json")
-    with ProcessPoolExecutor(max_workers=min(4, args.workers), mp_context=mp.get_context("spawn")) as pool:
+    with ProcessPoolExecutor(max_workers=args.workers, mp_context=mp.get_context("spawn")) as pool:
         ml_smoke = stage(pool, output, "ml_smoke", {"nano": control, "ml": ml_agent}, opponents, 2, args.seed + 40000)
         report["ml_smoke"] = {name: r["summary"] for name, r in ml_smoke.items()}
         if model["gate"]["enabled"] and not faults(ml_smoke["ml"]):
