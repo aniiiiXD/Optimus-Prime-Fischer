@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import unittest
+import random
 
 import torch
 from torch import nn
@@ -87,6 +88,57 @@ class HybridSearchTests(unittest.TestCase):
         game = ConnectFour.from_moves([0, 6, 1, 6, 2, 5, 3])
         with self.assertRaises(ValueError):
             self.make_agent().evaluate(game)
+
+    def test_fast_tactical_check_matches_engine_on_random_positions(self) -> None:
+        rng = random.Random(5172)
+        for _ in range(200):
+            game = ConnectFour()
+            for _ in range(rng.randrange(1, 34)):
+                if game.is_terminal:
+                    break
+                game.step(rng.choice(game.legal_actions()))
+            if game.is_terminal:
+                continue
+            before = game.snapshot()
+            for player in (1, -1):
+                for action in game.legal_actions():
+                    trial = game.copy()
+                    trial.current_player = player
+                    expected = trial.step(action).winner == player
+                    actual = TransformerGuidedSearchAgent._winning_drop(game, action, player)
+                    self.assertEqual(actual, expected)
+            self.assertEqual(game.snapshot(), before)
+
+    def test_fast_heuristic_matches_reference_windows(self) -> None:
+        rng = random.Random(2074)
+
+        def reference(game: ConnectFour) -> int:
+            board = game.board
+            player = game.current_player
+            score = 3 * sum(board[row * 7 + 3] == player for row in range(6))
+            score -= 3 * sum(board[row * 7 + 3] == -player for row in range(6))
+            weights = (0, 1, 8, 70, 1_000)
+            for row in range(6):
+                for column in range(7):
+                    for dr, dc in ((0, 1), (1, 0), (1, 1), (1, -1)):
+                        end_row, end_column = row + 3 * dr, column + 3 * dc
+                        if not (0 <= end_row < 6 and 0 <= end_column < 7):
+                            continue
+                        cells = [board[(row + i * dr) * 7 + column + i * dc] for i in range(4)]
+                        own, opponent = cells.count(player), cells.count(-player)
+                        if not opponent:
+                            score += weights[own]
+                        elif not own:
+                            score -= weights[opponent]
+            return max(-5_000, min(5_000, score))
+
+        for _ in range(200):
+            game = ConnectFour()
+            for _ in range(rng.randrange(0, 34)):
+                if game.is_terminal:
+                    break
+                game.step(rng.choice(game.legal_actions()))
+            self.assertEqual(TransformerGuidedSearchAgent._heuristic(game), reference(game))
 
 
 if __name__ == "__main__":

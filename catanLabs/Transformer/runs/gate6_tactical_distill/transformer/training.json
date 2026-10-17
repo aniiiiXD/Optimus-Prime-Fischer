@@ -1,0 +1,60 @@
+{
+  "device": "cpu",
+  "optimizer_budget_seconds": 590.0,
+  "optimizer_elapsed_seconds": 591.305,
+  "budget_respected": true,
+  "epochs": 24,
+  "stopped_reason": "cpu_time_cap",
+  "best_epoch": 22,
+  "parameters": 77569,
+  "examples": 30929,
+  "train_examples": 15082,
+  "forced_training_rows_excluded": 10121,
+  "include_forced_training": false,
+  "learning_rate": 0.0004,
+  "initialization": null,
+  "validation_examples": 2764,
+  "unique_games": 102,
+  "heldout_games": [
+    4,
+    7,
+    16,
+    17,
+    18,
+    23,
+    48,
+    73,
+    75,
+    78
+  ],
+  "sealed_final_games": [
+    9,
+    22,
+    50,
+    54,
+    56,
+    61,
+    64,
+    66,
+    70,
+    76
+  ],
+  "split": "audited disjoint board-seed split",
+  "split_file": "catanLabs/Transformer/runs/gate6_tactical_distill/tactical_selfplay_100.split.json",
+  "split_file_sha256": "e27fd67aa55097ab2409462bc0a7b2cab90e3728ff473af1ad463e60f6b4274e",
+  "validation": {
+    "loss": 0.5354759769053259,
+    "accuracy": 0.8104196816208393,
+    "examples": 2764
+  },
+  "architecture": {
+    "width": 64,
+    "layers": 2,
+    "heads": 4
+  },
+  "checkpoint": "catanLabs/Transformer/runs/gate6_tactical_distill/transformer/best.pt",
+  "dataset": "catanLabs/Transformer/runs/gate6_tactical_distill/tactical_selfplay_100.npz",
+  "dataset_sha256": "4f947f1e2ec5eb65d15863b4976d975ebc1f4382f6aa8e5695226b1b656cd1bf",
+  "dataset_schema": "catanlabs-transformer-dataset-v3",
+  "feature_schema": "visible-state-tokens-v3"
+}

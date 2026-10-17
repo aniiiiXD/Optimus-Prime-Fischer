@@ -48,6 +48,16 @@ from .model import ConnectFourTransformer
 from .search import CENTER_FIRST, WIN_SCORE, NodeBudgetExceeded
 
 
+_WINDOWS = tuple(
+    tuple((row + offset * dr) * 7 + column + offset * dc for offset in range(4))
+    for row in range(6)
+    for column in range(7)
+    for dr, dc in ((0, 1), (1, 0), (1, 1), (1, -1))
+    if 0 <= row + 3 * dr < 6 and 0 <= column + 3 * dc < 7
+)
+_DIRECTIONS = ((0, 1), (1, 0), (1, 1), (1, -1))
+
+
 @dataclass
 class HybridSearchStats:
     nodes: int = 0
@@ -171,23 +181,31 @@ class TransformerGuidedSearchAgent:
         return answer
 
     @staticmethod
-    def _immediate_wins(game: ConnectFour, player: int) -> list[int]:
-        """Find winning drops in place, undoing each probe instead of cloning.
+    def _winning_drop(game: ConnectFour, action: int, player: int) -> bool:
+        """Check a legal drop without allocating a Move or changing the board."""
+        row = 5 - game.column_heights[action]
+        if row < 0:
+            return False
+        board = game.board
+        for dr, dc in _DIRECTIONS:
+            length = 1
+            for sign in (-1, 1):
+                rr, cc = row + sign * dr, action + sign * dc
+                while 0 <= rr < 6 and 0 <= cc < 7 and board[rr * 7 + cc] == player:
+                    length += 1
+                    if length >= 4:
+                        return True
+                    rr += sign * dr
+                    cc += sign * dc
+        return False
 
-        This routine sits at most alpha-beta leaves, where copies multiply
-        quickly; ``ConnectFour.step/undo`` keeps the tactical check exact with
-        much less allocation overhead.
-        """
-        wins: list[int] = []
-        original_player = game.current_player
-        for action in game.legal_actions():
-            game.current_player = player
-            result = game.step(action)
-            game.undo()
-            game.current_player = original_player
-            if result.winner == player:
-                wins.append(action)
-        return wins
+    @staticmethod
+    def _immediate_wins(game: ConnectFour, player: int) -> list[int]:
+        """Find immediate wins while preserving the mutable search state."""
+        return [
+            action for action in game.legal_actions()
+            if TransformerGuidedSearchAgent._winning_drop(game, action, player)
+        ]
 
     @classmethod
     def _safe_root_actions(cls, game: ConnectFour, actions: list[int]) -> list[int]:
@@ -212,21 +230,15 @@ class TransformerGuidedSearchAgent:
         player = game.current_player
         score = 3 * sum(board[row * 7 + 3] == player for row in range(6))
         score -= 3 * sum(board[row * 7 + 3] == -player for row in range(6))
-        directions = ((0, 1), (1, 0), (1, 1), (1, -1))
         weights = (0, 1, 8, 70, 1_000)
-        for row in range(6):
-            for column in range(7):
-                for dr, dc in directions:
-                    end_row = row + 3 * dr
-                    end_column = column + 3 * dc
-                    if not (0 <= end_row < 6 and 0 <= end_column < 7):
-                        continue
-                    window = [board[(row + i * dr) * 7 + column + i * dc] for i in range(4)]
-                    own, opponent = window.count(player), window.count(-player)
-                    if opponent == 0:
-                        score += weights[own]
-                    elif own == 0:
-                        score -= weights[opponent]
+        for a, b, c, d in _WINDOWS:
+            v0, v1, v2, v3 = board[a], board[b], board[c], board[d]
+            own = (v0 == player) + (v1 == player) + (v2 == player) + (v3 == player)
+            opponent = (v0 == -player) + (v1 == -player) + (v2 == -player) + (v3 == -player)
+            if opponent == 0:
+                score += weights[own]
+            elif own == 0:
+                score -= weights[opponent]
         return max(-5_000, min(5_000, score))
 
     @staticmethod
@@ -237,10 +249,7 @@ class TransformerGuidedSearchAgent:
         for action in CENTER_FIRST:
             if action not in legal:
                 continue
-            actor = game.current_player
-            result = game.step(action)
-            game.undo()
-            (wins if result.winner == actor else remaining).append(action)
+            (wins if TransformerGuidedSearchAgent._winning_drop(game, action, game.current_player) else remaining).append(action)
         return wins + remaining
 
     @torch.inference_mode()

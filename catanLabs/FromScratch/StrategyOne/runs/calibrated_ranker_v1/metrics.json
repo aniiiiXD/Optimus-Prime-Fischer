@@ -1,0 +1,39 @@
+{
+  "config": {
+    "dataset": "/Users/anixd/Documents/Hyde/catanLabs/FromScratch/StrategyOne/data/catanatron_diverse.jsonl",
+    "base_checkpoint": "/Users/anixd/Documents/Hyde/catanLabs/FromScratch/StrategyOne/runs/legal_ranker_v1/model.pt",
+    "output": "catanLabs/FromScratch/StrategyOne/runs/calibrated_ranker_v1",
+    "epochs": 1,
+    "batch_size": 128,
+    "negatives": 4,
+    "learning_rate": 0.0003,
+    "pairwise_weight": 1.0,
+    "test_modulus": 5,
+    "device": "mps"
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "steps": 429,
+      "imitation_loss": 1.404462,
+      "buy_end_pairwise_loss": 0.200656,
+      "full_legal_accuracy": 0.744821,
+      "nonforced_accuracy": 0.472555,
+      "buy_development_accuracy": 0.450867,
+      "buy_development_examples": 173,
+      "predicted_action_types": {
+        "BUILD_SETTLEMENT": 880,
+        "BUILD_ROAD": 1466,
+        "ROLL": 6634,
+        "END_TURN": 7079,
+        "MOVE_ROBBER": 1208,
+        "DISCARD_RESOURCE": 1664,
+        "PLAY_KNIGHT_CARD": 159,
+        "BUY_DEVELOPMENT_CARD": 508,
+        "BUILD_CITY": 333,
+        "MARITIME_TRADE": 84,
+        "PLAY_YEAR_OF_PLENTY": 18
+      }
+    }
+  ]
+}

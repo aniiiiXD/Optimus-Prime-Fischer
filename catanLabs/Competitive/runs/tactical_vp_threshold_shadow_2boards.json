@@ -1,0 +1,3305 @@
+{
+  "probe": "FairValue-played matched tactical VP threshold shadow",
+  "seed": 20274000,
+  "boards": 2,
+  "thresholds": [
+    7,
+    5,
+    0
+  ],
+  "opponents": [
+    "value",
+    "alphabeta1",
+    "alphabeta1"
+  ],
+  "config": {
+    "value_weights": {
+      "reachable_production_0": 100000,
+      "reachable_production_1": 30000,
+      "buildable_nodes": 10000,
+      "hand_synergy": 1000,
+      "army_size": 30000
+    },
+    "dev_buy_vp_threshold": 7,
+    "dev_buy_late_bonus": 30000,
+    "tactical_min_vp": 7,
+    "tactical_max_roots": 64,
+    "tactical_max_followups": 256
+  },
+  "visibility_checks_by_vp_bucket": {
+    "0-4": 3,
+    "5-6": 3,
+    "7-9": 3
+  },
+  "by_threshold": {
+    "7": {
+      "eligible_decisions": 49,
+      "found_lines": 10,
+      "override_decisions": 5,
+      "planned_followups_checked": 5,
+      "planned_followups_matched": 4,
+      "games_with_overrides": 3,
+      "turns_with_overrides": 5,
+      "truncated_scans": 0,
+      "roots": 428,
+      "followups": 1349,
+      "by_vp_bucket": {
+        "0-4": {
+          "eligible_decisions": 0,
+          "override_decisions": 0,
+          "planned_followups_checked": 0,
+          "planned_followups_matched": 0,
+          "games_with_overrides": 0,
+          "turns_with_overrides": 0,
+          "truncated_scans": 0,
+          "scan_latency_ms": {
+            "median": null,
+            "p95": null,
+            "max": null
+          }
+        },
+        "5-6": {
+          "eligible_decisions": 0,
+          "override_decisions": 0,
+          "planned_followups_checked": 0,
+          "planned_followups_matched": 0,
+          "games_with_overrides": 0,
+          "turns_with_overrides": 0,
+          "truncated_scans": 0,
+          "scan_latency_ms": {
+            "median": null,
+            "p95": null,
+            "max": null
+          }
+        },
+        "7-9": {
+          "eligible_decisions": 49,
+          "override_decisions": 5,
+          "planned_followups_checked": 5,
+          "planned_followups_matched": 4,
+          "games_with_overrides": 3,
+          "turns_with_overrides": 5,
+          "truncated_scans": 0,
+          "scan_latency_ms": {
+            "median": 1.853,
+            "p95": 20.812,
+            "max": 34.074
+          }
+        }
+      },
+      "scan_latency_ms": {
+        "median": 1.853,
+        "p95": 20.812,
+        "max": 34.074
+      }
+    },
+    "5": {
+      "eligible_decisions": 79,
+      "found_lines": 25,
+      "override_decisions": 11,
+      "planned_followups_checked": 11,
+      "planned_followups_matched": 10,
+      "games_with_overrides": 5,
+      "turns_with_overrides": 10,
+      "truncated_scans": 0,
+      "roots": 633,
+      "followups": 1792,
+      "by_vp_bucket": {
+        "0-4": {
+          "eligible_decisions": 0,
+          "override_decisions": 0,
+          "planned_followups_checked": 0,
+          "planned_followups_matched": 0,
+          "games_with_overrides": 0,
+          "turns_with_overrides": 0,
+          "truncated_scans": 0,
+          "scan_latency_ms": {
+            "median": null,
+            "p95": null,
+            "max": null
+          }
+        },
+        "5-6": {
+          "eligible_decisions": 30,
+          "override_decisions": 6,
+          "planned_followups_checked": 6,
+          "planned_followups_matched": 6,
+          "games_with_overrides": 4,
+          "turns_with_overrides": 5,
+          "truncated_scans": 0,
+          "scan_latency_ms": {
+            "median": 1.213,
+            "p95": 7.544,
+            "max": 21.406
+          }
+        },
+        "7-9": {
+          "eligible_decisions": 49,
+          "override_decisions": 5,
+          "planned_followups_checked": 5,
+          "planned_followups_matched": 4,
+          "games_with_overrides": 3,
+          "turns_with_overrides": 5,
+          "truncated_scans": 0,
+          "scan_latency_ms": {
+            "median": 1.853,
+            "p95": 20.812,
+            "max": 34.074
+          }
+        }
+      },
+      "scan_latency_ms": {
+        "median": 1.399,
+        "p95": 17.13,
+        "max": 34.074
+      }
+    },
+    "0": {
+      "eligible_decisions": 189,
+      "found_lines": 61,
+      "override_decisions": 27,
+      "planned_followups_checked": 27,
+      "planned_followups_matched": 26,
+      "games_with_overrides": 8,
+      "turns_with_overrides": 25,
+      "truncated_scans": 0,
+      "roots": 1191,
+      "followups": 2343,
+      "by_vp_bucket": {
+        "0-4": {
+          "eligible_decisions": 110,
+          "override_decisions": 16,
+          "planned_followups_checked": 16,
+          "planned_followups_matched": 16,
+          "games_with_overrides": 8,
+          "turns_with_overrides": 15,
+          "truncated_scans": 0,
+          "scan_latency_ms": {
+            "median": 0.673,
+            "p95": 3.185,
+            "max": 5.865
+          }
+        },
+        "5-6": {
+          "eligible_decisions": 30,
+          "override_decisions": 6,
+          "planned_followups_checked": 6,
+          "planned_followups_matched": 6,
+          "games_with_overrides": 4,
+          "turns_with_overrides": 5,
+          "truncated_scans": 0,
+          "scan_latency_ms": {
+            "median": 1.213,
+            "p95": 7.544,
+            "max": 21.406
+          }
+        },
+        "7-9": {
+          "eligible_decisions": 49,
+          "override_decisions": 5,
+          "planned_followups_checked": 5,
+          "planned_followups_matched": 4,
+          "games_with_overrides": 3,
+          "turns_with_overrides": 5,
+          "truncated_scans": 0,
+          "scan_latency_ms": {
+            "median": 1.853,
+            "p95": 20.812,
+            "max": 34.074
+          }
+        }
+      },
+      "scan_latency_ms": {
+        "median": 0.882,
+        "p95": 9.934,
+        "max": 34.074
+      }
+    }
+  },
+  "examples": [
+    {
+      "seed": 20274000,
+      "seat": 0,
+      "turn": 38,
+      "vp": 4,
+      "baseline": "MARITIME_TRADE",
+      "root": "MARITIME_TRADE",
+      "line": {
+        "first": [
+          "MARITIME_TRADE",
+          "('WHEAT', 'WHEAT', 'WHEAT', None, 'BRICK')"
+        ],
+        "second": [
+          "BUILD_SETTLEMENT",
+          "42"
+        ],
+        "result_vp": 5
+      },
+      "continuation_match": true,
+      "scan_ms": 1.453
+    },
+    {
+      "seed": 20274000,
+      "seat": 0,
+      "turn": 42,
+      "vp": 5,
+      "baseline": "END_TURN",
+      "root": "MARITIME_TRADE",
+      "line": {
+        "first": [
+          "MARITIME_TRADE",
+          "('WHEAT', 'WHEAT', 'WHEAT', None, 'WOOD')"
+        ],
+        "second": [
+          "BUILD_ROAD",
+          "(17, 18)"
+        ],
+        "result_vp": 7
+      },
+      "continuation_match": true,
+      "scan_ms": 1.176
+    },
+    {
+      "seed": 20274000,
+      "seat": 1,
+      "turn": 31,
+      "vp": 3,
+      "baseline": "MARITIME_TRADE",
+      "root": "MARITIME_TRADE",
+      "line": {
+        "first": [
+          "MARITIME_TRADE",
+          "('WOOD', 'WOOD', 'WOOD', 'WOOD', 'WHEAT')"
+        ],
+        "second": [
+          "BUILD_CITY",
+          "23"
+        ],
+        "result_vp": 4
+      },
+      "continuation_match": true,
+      "scan_ms": 1.467
+    },
+    {
+      "seed": 20274000,
+      "seat": 1,
+      "turn": 67,
+      "vp": 4,
+      "baseline": "MARITIME_TRADE",
+      "root": "MARITIME_TRADE",
+      "line": {
+        "first": [
+          "MARITIME_TRADE",
+          "('SHEEP', 'SHEEP', 'SHEEP', 'SHEEP', 'ORE')"
+        ],
+        "second": [
+          "BUILD_CITY",
+          "2"
+        ],
+        "result_vp": 5
+      },
+      "continuation_match": true,
+      "scan_ms": 1.273
+    },
+    {
+      "seed": 20274000,
+      "seat": 1,
+      "turn": 87,
+      "vp": 6,
+      "baseline": "MARITIME_TRADE",
+      "root": "MARITIME_TRADE",
+      "line": {
+        "first": [
+          "MARITIME_TRADE",
+          "('ORE', 'ORE', 'ORE', 'ORE', 'WHEAT')"
+        ],
+        "second": [
+          "BUILD_CITY",
+          "23"
+        ],
+        "result_vp": 7
+      },
+      "continuation_match": true,
+      "scan_ms": 1.47
+    },
+    {
+      "seed": 20274000,
+      "seat": 1,
+      "turn": 87,
+      "vp": 6,
+      "baseline": "MARITIME_TRADE",
+      "root": "MARITIME_TRADE",
+      "line": {
+        "first": [
+          "MARITIME_TRADE",
+          "('ORE', 'ORE', 'ORE', 'ORE', 'BRICK')"
+        ],
+        "second": [
+          "BUILD_SETTLEMENT",
+          "49"
+        ],
+        "result_vp": 7
+      },
+      "continuation_match": true,
+      "scan_ms": 1.536
+    },
+    {
+      "seed": 20274000,
+      "seat": 2,
+      "turn": 28,
+      "vp": 2,
+      "baseline": "MARITIME_TRADE",
+      "root": "MARITIME_TRADE",
+      "line": {
+        "first": [
+          "MARITIME_TRADE",
+          "('WOOD', 'WOOD', 'WOOD', 'WOOD', 'WHEAT')"
+        ],
+        "second": [
+          "BUILD_CITY",
+          "8"
+        ],
+        "result_vp": 3
+      },
+      "continuation_match": true,
+      "scan_ms": 0.517
+    },
+    {
+      "seed": 20274000,
+      "seat": 2,
+      "turn": 68,
+      "vp": 3,
+      "baseline": "MARITIME_TRADE",
+      "root": "MARITIME_TRADE",
+      "line": {
+        "first": [
+          "MARITIME_TRADE",
+          "('WOOD', 'WOOD', 'WOOD', 'WOOD', 'WHEAT')"
+        ],
+        "second": [
+          "BUILD_CITY",
+          "8"
+        ],
+        "result_vp": 4
+      },
+      "continuation_match": true,
+      "scan_ms": 2.636
+    },
+    {
+      "seed": 20274000,
+      "seat": 2,
+      "turn": 72,
+      "vp": 3,
+      "baseline": "MARITIME_TRADE",
+      "root": "MARITIME_TRADE",
+      "line": {
+        "first": [
+          "MARITIME_TRADE",
+          "('ORE', 'ORE', 'ORE', 'ORE', 'BRICK')"
+        ],
+        "second": [
+          "BUILD_SETTLEMENT",
+          "28"
+        ],
+        "result_vp": 4
+      },
+      "continuation_match": true,
+      "scan_ms": 1.573
+    },
+    {
+      "seed": 20274000,
+      "seat": 3,
+      "turn": 33,
+      "vp": 4,
+      "baseline": "MARITIME_TRADE",
+      "root": "MARITIME_TRADE",
+      "line": {
+        "first": [
+          "MARITIME_TRADE",
+          "('SHEEP', 'SHEEP', 'SHEEP', 'SHEEP', 'ORE')"
+        ],
+        "second": [
+          "BUILD_CITY",
+          "12"
+        ],
+        "result_vp": 5
+      },
+      "continuation_match": true,
+      "scan_ms": 2.156
+    },
+    {
+      "seed": 20274000,
+      "seat": 3,
+      "turn": 37,
+      "vp": 4,
+      "baseline": "BUILD_CITY",
+      "root": "BUILD_CITY",
+      "line": {
+        "first": [
+          "BUILD_CITY",
+          "12"
+        ],
+        "second": [
+          "BUILD_CITY",
+          "2"
+        ],
+        "result_vp": 6
+      },
+      "continuation_match": true,
+      "scan_ms": 1.041
+    },
+    {
+      "seed": 20274000,
+      "seat": 3,
+      "turn": 53,
+      "vp": 6,
+      "baseline": "MARITIME_TRADE",
+      "root": "MARITIME_TRADE",
+      "line": {
+        "first": [
+          "MARITIME_TRADE",
+          "('WOOD', 'WOOD', 'WOOD', 'WOOD', 'BRICK')"
+        ],
+        "second": [
+          "BUILD_SETTLEMENT",
+          "32"
+        ],
+        "result_vp": 7
+      },
+      "continuation_match": true,
+      "scan_ms": 1.321
+    },
+    {
+      "seed": 20274000,
+      "seat": 3,
+      "turn": 65,
+      "vp": 7,
+      "baseline": "BUILD_ROAD",
+      "root": "MARITIME_TRADE",
+      "line": {
+        "first": [
+          "MARITIME_TRADE",
+          "('ORE', 'ORE', 'ORE', 'ORE', 'SHEEP')"
+        ],
+        "second": [
+          "BUILD_SETTLEMENT",
+          "30"
+        ],
+        "result_vp": 8
+      },
+      "continuation_match": true,
+      "scan_ms": 5.591
+    },
+    {
+      "seed": 20274000,
+      "seat": 3,
+      "turn": 69,
+      "vp": 7,
+      "baseline": "BUILD_CITY",
+      "root": "BUILD_CITY",
+      "line": {
+        "first": [
+          "BUILD_CITY",
+          "32"
+        ],
+        "second": [
+          "BUILD_SETTLEMENT",
+          "30"
+        ],
+        "result_vp": 9
+      },
+      "continuation_match": true,
+      "scan_ms": 9.813
+    },
+    {
+      "seed": 20274001,
+      "seat": 0,
+      "turn": 34,
+      "vp": 2,
+      "baseline": "MARITIME_TRADE",
+      "root": "MARITIME_TRADE",
+      "line": {
+        "first": [
+          "MARITIME_TRADE",
+          "('SHEEP', 'SHEEP', 'SHEEP', 'SHEEP', 'WOOD')"
+        ],
+        "second": [
+          "BUILD_SETTLEMENT",
+          "7"
+        ],
+        "result_vp": 3
+      },
+      "continuation_match": true,
+      "scan_ms": 2.145
+    },
+    {
+      "seed": 20274001,
+      "seat": 0,
+      "turn": 46,
+      "vp": 3,
+      "baseline": "MARITIME_TRADE",
+      "root": "MARITIME_TRADE",
+      "line": {
+        "first": [
+          "MARITIME_TRADE",
+          "('WHEAT', 'WHEAT', 'WHEAT', 'WHEAT', 'WOOD')"
+        ],
+        "second": [
+          "BUILD_SETTLEMENT",
+          "5"
+        ],
+        "result_vp": 4
+      },
+      "continuation_match": true,
+      "scan_ms": 1.355
+    },
+    {
+      "seed": 20274001,
+      "seat": 1,
+      "turn": 19,
+      "vp": 3,
+      "baseline": "BUILD_ROAD",
+      "root": "BUILD_ROAD",
+      "line": {
+        "first": [
+          "BUILD_ROAD",
+          "(19, 46)"
+        ],
+        "second": [
+          "BUILD_SETTLEMENT",
+          "46"
+        ],
+        "result_vp": 4
+      },
+      "continuation_match": true,
+      "scan_ms": 5.865
+    },
+    {
+      "seed": 20274001,
+      "seat": 1,
+      "turn": 35,
+      "vp": 4,
+      "baseline": "MARITIME_TRADE",
+      "root": "MARITIME_TRADE",
+      "line": {
+        "first": [
+          "MARITIME_TRADE",
+          "('WHEAT', 'WHEAT', 'WHEAT', 'WHEAT', 'WOOD')"
+        ],
+        "second": [
+          "BUILD_SETTLEMENT",
+          "9"
+        ],
+        "result_vp": 5
+      },
+      "continuation_match": true,
+      "scan_ms": 1.204
+    },
+    {
+      "seed": 20274001,
+      "seat": 1,
+      "turn": 47,
+      "vp": 9,
+      "baseline": "BUILD_ROAD",
+      "root": "MARITIME_TRADE",
+      "line": {
+        "first": [
+          "MARITIME_TRADE",
+          "('WHEAT', 'WHEAT', 'WHEAT', 'WHEAT', 'SHEEP')"
+        ],
+        "second": [
+          "BUILD_SETTLEMENT",
+          "5"
+        ],
+        "result_vp": 10
+      },
+      "continuation_match": true,
+      "scan_ms": 4.895
+    },
+    {
+      "seed": 20274001,
+      "seat": 1,
+      "turn": 51,
+      "vp": 9,
+      "baseline": "MARITIME_TRADE",
+      "root": "MARITIME_TRADE",
+      "line": {
+        "first": [
+          "MARITIME_TRADE",
+          "('WOOD', 'WOOD', 'WOOD', 'WOOD', 'BRICK')"
+        ],
+        "second": [
+          "BUILD_SETTLEMENT",
+          "47"
+        ],
+        "result_vp": 10
+      },
+      "continuation_match": false,
+      "scan_ms": 1.539
+    },
+    {
+      "seed": 20274001,
+      "seat": 2,
+      "turn": 64,
+      "vp": 3,
+      "baseline": "MARITIME_TRADE",
+      "root": "MARITIME_TRADE",
+      "line": {
+        "first": [
+          "MARITIME_TRADE",
+          "('SHEEP', 'SHEEP', 'SHEEP', 'SHEEP', 'WHEAT')"
+        ],
+        "second": [
+          "BUILD_CITY",
+          "11"
+        ],
+        "result_vp": 4
+      },
+      "continuation_match": true,
+      "scan_ms": 0.962
+    },
+    {
+      "seed": 20274001,
+      "seat": 2,
+      "turn": 72,
+      "vp": 3,
+      "baseline": "MARITIME_TRADE",
+      "root": "MARITIME_TRADE",
+      "line": {
+        "first": [
+          "MARITIME_TRADE",
+          "('BRICK', 'BRICK', None, None, 'WHEAT')"
+        ],
+        "second": [
+          "BUILD_CITY",
+          "11"
+        ],
+        "result_vp": 4
+      },
+      "continuation_match": true,
+      "scan_ms": 1.333
+    },
+    {
+      "seed": 20274001,
+      "seat": 2,
+      "turn": 72,
+      "vp": 3,
+      "baseline": "END_TURN",
+      "root": "MARITIME_TRADE",
+      "line": {
+        "first": [
+          "MARITIME_TRADE",
+          "('BRICK', 'BRICK', None, None, 'WHEAT')"
+        ],
+        "second": [
+          "BUILD_CITY",
+          "11"
+        ],
+        "result_vp": 4
+      },
+      "continuation_match": true,
+      "scan_ms": 0.654
+    },
+    {
+      "seed": 20274001,
+      "seat": 3,
+      "turn": 29,
+      "vp": 2,
+      "baseline": "MARITIME_TRADE",
+      "root": "MARITIME_TRADE",
+      "line": {
+        "first": [
+          "MARITIME_TRADE",
+          "('SHEEP', 'SHEEP', 'SHEEP', 'SHEEP', 'BRICK')"
+        ],
+        "second": [
+          "BUILD_SETTLEMENT",
+          "5"
+        ],
+        "result_vp": 3
+      },
+      "continuation_match": true,
+      "scan_ms": 1.219
+    },
+    {
+      "seed": 20274001,
+      "seat": 3,
+      "turn": 69,
+      "vp": 5,
+      "baseline": "END_TURN",
+      "root": "MARITIME_TRADE",
+      "line": {
+        "first": [
+          "MARITIME_TRADE",
+          "('WOOD', 'WOOD', 'WOOD', 'WOOD', 'WHEAT')"
+        ],
+        "second": [
+          "BUILD_CITY",
+          "5"
+        ],
+        "result_vp": 6
+      },
+      "continuation_match": true,
+      "scan_ms": 0.448
+    },
+    {
+      "seed": 20274001,
+      "seat": 3,
+      "turn": 77,
+      "vp": 6,
+      "baseline": "MARITIME_TRADE",
+      "root": "MARITIME_TRADE",
+      "line": {
+        "first": [
+          "MARITIME_TRADE",
+          "('SHEEP', 'SHEEP', 'SHEEP', 'SHEEP', 'BRICK')"
+        ],
+        "second": [
+          "BUILD_SETTLEMENT",
+          "52"
+        ],
+        "result_vp": 7
+      },
+      "continuation_match": true,
+      "scan_ms": 2.062
+    },
+    {
+      "seed": 20274001,
+      "seat": 3,
+      "turn": 97,
+      "vp": 8,
+      "baseline": "MARITIME_TRADE",
+      "root": "MARITIME_TRADE",
+      "line": {
+        "first": [
+          "MARITIME_TRADE",
+          "('SHEEP', 'SHEEP', 'SHEEP', 'SHEEP', 'WOOD')"
+        ],
+        "second": [
+          "BUILD_SETTLEMENT",
+          "50"
+        ],
+        "result_vp": 9
+      },
+      "continuation_match": true,
+      "scan_ms": 1.464
+    }
+  ],
+  "decisions": [
+    {
+      "seed": 20274000,
+      "seat": 0,
+      "turn": 6,
+      "vp": 2,
+      "scan_ms": 0.514709,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 7,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 0,
+      "turn": 14,
+      "vp": 2,
+      "scan_ms": 0.787791,
+      "found_line": true,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 9,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 0,
+      "turn": 18,
+      "vp": 3,
+      "scan_ms": 0.642791,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 8,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 0,
+      "turn": 22,
+      "vp": 3,
+      "scan_ms": 0.863792,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 4,
+      "followups": 8
+    },
+    {
+      "seed": 20274000,
+      "seat": 0,
+      "turn": 26,
+      "vp": 3,
+      "scan_ms": 1.218583,
+      "found_line": true,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 13,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 0,
+      "turn": 34,
+      "vp": 4,
+      "scan_ms": 0.931958,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 4,
+      "followups": 8
+    },
+    {
+      "seed": 20274000,
+      "seat": 0,
+      "turn": 34,
+      "vp": 4,
+      "scan_ms": 0.691,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 8,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 0,
+      "turn": 38,
+      "vp": 4,
+      "scan_ms": 1.453417,
+      "found_line": true,
+      "override": true,
+      "continuation_match": true,
+      "truncated": false,
+      "roots": 8,
+      "followups": 9
+    },
+    {
+      "seed": 20274000,
+      "seat": 0,
+      "turn": 38,
+      "vp": 4,
+      "scan_ms": 4.778167,
+      "found_line": true,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 17,
+      "followups": 36
+    },
+    {
+      "seed": 20274000,
+      "seat": 0,
+      "turn": 38,
+      "vp": 5,
+      "scan_ms": 0.874375,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 4,
+      "followups": 8
+    },
+    {
+      "seed": 20274000,
+      "seat": 0,
+      "turn": 38,
+      "vp": 5,
+      "scan_ms": 0.66575,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 8,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 0,
+      "turn": 42,
+      "vp": 5,
+      "scan_ms": 1.176334,
+      "found_line": true,
+      "override": true,
+      "continuation_match": true,
+      "truncated": false,
+      "roots": 4,
+      "followups": 9
+    },
+    {
+      "seed": 20274000,
+      "seat": 0,
+      "turn": 46,
+      "vp": 5,
+      "scan_ms": 1.203958,
+      "found_line": true,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 13,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 0,
+      "turn": 50,
+      "vp": 7,
+      "scan_ms": 1.217042,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 8,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 0,
+      "turn": 54,
+      "vp": 7,
+      "scan_ms": 1.877875,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 8,
+      "followups": 9
+    },
+    {
+      "seed": 20274000,
+      "seat": 0,
+      "turn": 58,
+      "vp": 7,
+      "scan_ms": 1.853167,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 8,
+      "followups": 9
+    },
+    {
+      "seed": 20274000,
+      "seat": 0,
+      "turn": 58,
+      "vp": 7,
+      "scan_ms": 1.698875,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 13,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 0,
+      "turn": 66,
+      "vp": 7,
+      "scan_ms": 34.073708,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 17,
+      "followups": 150
+    },
+    {
+      "seed": 20274000,
+      "seat": 0,
+      "turn": 66,
+      "vp": 7,
+      "scan_ms": 16.655416,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 17,
+      "followups": 72
+    },
+    {
+      "seed": 20274000,
+      "seat": 0,
+      "turn": 66,
+      "vp": 7,
+      "scan_ms": 2.465083,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 8,
+      "followups": 9
+    },
+    {
+      "seed": 20274000,
+      "seat": 0,
+      "turn": 66,
+      "vp": 7,
+      "scan_ms": 2.383917,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 13,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 0,
+      "turn": 70,
+      "vp": 7,
+      "scan_ms": 23.58275,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 18,
+      "followups": 80
+    },
+    {
+      "seed": 20274000,
+      "seat": 0,
+      "turn": 70,
+      "vp": 7,
+      "scan_ms": 5.873792,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 8,
+      "followups": 20
+    },
+    {
+      "seed": 20274000,
+      "seat": 0,
+      "turn": 70,
+      "vp": 7,
+      "scan_ms": 13.917708,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 14,
+      "followups": 40
+    },
+    {
+      "seed": 20274000,
+      "seat": 0,
+      "turn": 70,
+      "vp": 7,
+      "scan_ms": 3.192708,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 4,
+      "followups": 10
+    },
+    {
+      "seed": 20274000,
+      "seat": 0,
+      "turn": 74,
+      "vp": 7,
+      "scan_ms": 2.943875,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 8,
+      "followups": 9
+    },
+    {
+      "seed": 20274000,
+      "seat": 0,
+      "turn": 78,
+      "vp": 7,
+      "scan_ms": 2.702833,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 4,
+      "followups": 9
+    },
+    {
+      "seed": 20274000,
+      "seat": 0,
+      "turn": 78,
+      "vp": 7,
+      "scan_ms": 2.68425,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 4,
+      "followups": 9
+    },
+    {
+      "seed": 20274000,
+      "seat": 0,
+      "turn": 82,
+      "vp": 7,
+      "scan_ms": 13.482834,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 21,
+      "followups": 36
+    },
+    {
+      "seed": 20274000,
+      "seat": 0,
+      "turn": 82,
+      "vp": 7,
+      "scan_ms": 0.258208,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 4,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 1,
+      "turn": 11,
+      "vp": 2,
+      "scan_ms": 0.746792,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 4,
+      "followups": 8
+    },
+    {
+      "seed": 20274000,
+      "seat": 1,
+      "turn": 15,
+      "vp": 2,
+      "scan_ms": 0.798917,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 4,
+      "followups": 8
+    },
+    {
+      "seed": 20274000,
+      "seat": 1,
+      "turn": 15,
+      "vp": 2,
+      "scan_ms": 0.578125,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 8,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 1,
+      "turn": 15,
+      "vp": 2,
+      "scan_ms": 0.002292,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 0,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 1,
+      "turn": 19,
+      "vp": 2,
+      "scan_ms": 0.281042,
+      "found_line": true,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 2,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 1,
+      "turn": 23,
+      "vp": 3,
+      "scan_ms": 0.704917,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 9,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 1,
+      "turn": 31,
+      "vp": 3,
+      "scan_ms": 1.956542,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 8,
+      "followups": 18
+    },
+    {
+      "seed": 20274000,
+      "seat": 1,
+      "turn": 31,
+      "vp": 3,
+      "scan_ms": 1.466583,
+      "found_line": true,
+      "override": true,
+      "continuation_match": true,
+      "truncated": false,
+      "roots": 4,
+      "followups": 12
+    },
+    {
+      "seed": 20274000,
+      "seat": 1,
+      "turn": 31,
+      "vp": 3,
+      "scan_ms": 1.028375,
+      "found_line": true,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 11,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 1,
+      "turn": 39,
+      "vp": 4,
+      "scan_ms": 0.930083,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 4,
+      "followups": 9
+    },
+    {
+      "seed": 20274000,
+      "seat": 1,
+      "turn": 39,
+      "vp": 4,
+      "scan_ms": 0.002583,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 0,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 1,
+      "turn": 43,
+      "vp": 4,
+      "scan_ms": 0.003417,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 0,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 1,
+      "turn": 55,
+      "vp": 4,
+      "scan_ms": 0.003292,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 0,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 1,
+      "turn": 59,
+      "vp": 4,
+      "scan_ms": 0.002916,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 0,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 1,
+      "turn": 63,
+      "vp": 4,
+      "scan_ms": 0.913375,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 4,
+      "followups": 9
+    },
+    {
+      "seed": 20274000,
+      "seat": 1,
+      "turn": 67,
+      "vp": 4,
+      "scan_ms": 1.27325,
+      "found_line": true,
+      "override": true,
+      "continuation_match": true,
+      "truncated": false,
+      "roots": 4,
+      "followups": 11
+    },
+    {
+      "seed": 20274000,
+      "seat": 1,
+      "turn": 67,
+      "vp": 4,
+      "scan_ms": 0.814459,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 9,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 1,
+      "turn": 71,
+      "vp": 4,
+      "scan_ms": 0.605667,
+      "found_line": true,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 6,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 1,
+      "turn": 75,
+      "vp": 5,
+      "scan_ms": 1.240333,
+      "found_line": true,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 11,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 1,
+      "turn": 75,
+      "vp": 6,
+      "scan_ms": 0.002417,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 0,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 1,
+      "turn": 79,
+      "vp": 6,
+      "scan_ms": 0.004958,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 0,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 1,
+      "turn": 83,
+      "vp": 6,
+      "scan_ms": 0.2345,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 4,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 1,
+      "turn": 87,
+      "vp": 6,
+      "scan_ms": 1.470167,
+      "found_line": true,
+      "override": true,
+      "continuation_match": true,
+      "truncated": false,
+      "roots": 4,
+      "followups": 11
+    },
+    {
+      "seed": 20274000,
+      "seat": 1,
+      "turn": 87,
+      "vp": 6,
+      "scan_ms": 4.524958,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 13,
+      "followups": 36
+    },
+    {
+      "seed": 20274000,
+      "seat": 1,
+      "turn": 87,
+      "vp": 6,
+      "scan_ms": 1.535833,
+      "found_line": true,
+      "override": true,
+      "continuation_match": true,
+      "truncated": false,
+      "roots": 4,
+      "followups": 11
+    },
+    {
+      "seed": 20274000,
+      "seat": 1,
+      "turn": 87,
+      "vp": 6,
+      "scan_ms": 1.121375,
+      "found_line": true,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 11,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 2,
+      "turn": 16,
+      "vp": 2,
+      "scan_ms": 0.258917,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 4,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 2,
+      "turn": 16,
+      "vp": 2,
+      "scan_ms": 0.002416,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 0,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 2,
+      "turn": 20,
+      "vp": 2,
+      "scan_ms": 0.0025,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 0,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 2,
+      "turn": 24,
+      "vp": 2,
+      "scan_ms": 0.002583,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 0,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 2,
+      "turn": 28,
+      "vp": 2,
+      "scan_ms": 0.516791,
+      "found_line": true,
+      "override": true,
+      "continuation_match": true,
+      "truncated": false,
+      "roots": 4,
+      "followups": 2
+    },
+    {
+      "seed": 20274000,
+      "seat": 2,
+      "turn": 28,
+      "vp": 2,
+      "scan_ms": 0.0025,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 0,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 2,
+      "turn": 32,
+      "vp": 2,
+      "scan_ms": 0.601042,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 8,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 2,
+      "turn": 32,
+      "vp": 2,
+      "scan_ms": 0.002375,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 0,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 2,
+      "turn": 36,
+      "vp": 2,
+      "scan_ms": 0.002542,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 0,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 2,
+      "turn": 40,
+      "vp": 2,
+      "scan_ms": 0.87325,
+      "found_line": true,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 10,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 2,
+      "turn": 44,
+      "vp": 3,
+      "scan_ms": 0.736916,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 9,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 2,
+      "turn": 52,
+      "vp": 3,
+      "scan_ms": 0.27775,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 4,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 2,
+      "turn": 52,
+      "vp": 3,
+      "scan_ms": 0.002584,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 0,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 2,
+      "turn": 56,
+      "vp": 3,
+      "scan_ms": 0.240833,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 4,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 2,
+      "turn": 60,
+      "vp": 3,
+      "scan_ms": 0.229792,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 4,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 2,
+      "turn": 64,
+      "vp": 3,
+      "scan_ms": 1.036583,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 4,
+      "followups": 10
+    },
+    {
+      "seed": 20274000,
+      "seat": 2,
+      "turn": 68,
+      "vp": 3,
+      "scan_ms": 2.636,
+      "found_line": true,
+      "override": true,
+      "continuation_match": true,
+      "truncated": false,
+      "roots": 8,
+      "followups": 23
+    },
+    {
+      "seed": 20274000,
+      "seat": 2,
+      "turn": 68,
+      "vp": 3,
+      "scan_ms": 4.403333,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 14,
+      "followups": 40
+    },
+    {
+      "seed": 20274000,
+      "seat": 2,
+      "turn": 68,
+      "vp": 3,
+      "scan_ms": 0.233292,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 4,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 2,
+      "turn": 72,
+      "vp": 3,
+      "scan_ms": 1.573375,
+      "found_line": true,
+      "override": true,
+      "continuation_match": true,
+      "truncated": false,
+      "roots": 4,
+      "followups": 11
+    },
+    {
+      "seed": 20274000,
+      "seat": 2,
+      "turn": 72,
+      "vp": 3,
+      "scan_ms": 1.174792,
+      "found_line": true,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 11,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 2,
+      "turn": 76,
+      "vp": 4,
+      "scan_ms": 1.005333,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 10,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 2,
+      "turn": 80,
+      "vp": 4,
+      "scan_ms": 0.351209,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 4,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 2,
+      "turn": 80,
+      "vp": 4,
+      "scan_ms": 0.002458,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 0,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 2,
+      "turn": 84,
+      "vp": 4,
+      "scan_ms": 0.002792,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 0,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 2,
+      "turn": 88,
+      "vp": 4,
+      "scan_ms": 1.22675,
+      "found_line": true,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 11,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 2,
+      "turn": 92,
+      "vp": 5,
+      "scan_ms": 10.014,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 18,
+      "followups": 80
+    },
+    {
+      "seed": 20274000,
+      "seat": 2,
+      "turn": 92,
+      "vp": 5,
+      "scan_ms": 2.722042,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 8,
+      "followups": 22
+    },
+    {
+      "seed": 20274000,
+      "seat": 2,
+      "turn": 92,
+      "vp": 5,
+      "scan_ms": 1.306208,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 4,
+      "followups": 11
+    },
+    {
+      "seed": 20274000,
+      "seat": 3,
+      "turn": 9,
+      "vp": 2,
+      "scan_ms": 0.603708,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 8,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 3,
+      "turn": 13,
+      "vp": 2,
+      "scan_ms": 0.830209,
+      "found_line": true,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 10,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 3,
+      "turn": 29,
+      "vp": 3,
+      "scan_ms": 2.831708,
+      "found_line": true,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 7,
+      "followups": 21
+    },
+    {
+      "seed": 20274000,
+      "seat": 3,
+      "turn": 29,
+      "vp": 4,
+      "scan_ms": 0.929875,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 4,
+      "followups": 9
+    },
+    {
+      "seed": 20274000,
+      "seat": 3,
+      "turn": 33,
+      "vp": 4,
+      "scan_ms": 2.155583,
+      "found_line": true,
+      "override": true,
+      "continuation_match": true,
+      "truncated": false,
+      "roots": 7,
+      "followups": 20
+    },
+    {
+      "seed": 20274000,
+      "seat": 3,
+      "turn": 33,
+      "vp": 4,
+      "scan_ms": 3.473333,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 13,
+      "followups": 36
+    },
+    {
+      "seed": 20274000,
+      "seat": 3,
+      "turn": 33,
+      "vp": 4,
+      "scan_ms": 0.226334,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 4,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 3,
+      "turn": 37,
+      "vp": 4,
+      "scan_ms": 1.041125,
+      "found_line": true,
+      "override": true,
+      "continuation_match": true,
+      "truncated": false,
+      "roots": 10,
+      "followups": 2
+    },
+    {
+      "seed": 20274000,
+      "seat": 3,
+      "turn": 37,
+      "vp": 5,
+      "scan_ms": 0.174583,
+      "found_line": true,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 1,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 3,
+      "turn": 41,
+      "vp": 6,
+      "scan_ms": 0.218084,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 4,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 3,
+      "turn": 49,
+      "vp": 6,
+      "scan_ms": 0.002792,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 0,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 3,
+      "turn": 53,
+      "vp": 6,
+      "scan_ms": 1.320625,
+      "found_line": true,
+      "override": true,
+      "continuation_match": true,
+      "truncated": false,
+      "roots": 4,
+      "followups": 11
+    },
+    {
+      "seed": 20274000,
+      "seat": 3,
+      "turn": 53,
+      "vp": 6,
+      "scan_ms": 0.957542,
+      "found_line": true,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 11,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 3,
+      "turn": 57,
+      "vp": 7,
+      "scan_ms": 14.383833,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 18,
+      "followups": 143
+    },
+    {
+      "seed": 20274000,
+      "seat": 3,
+      "turn": 57,
+      "vp": 7,
+      "scan_ms": 13.757166,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 18,
+      "followups": 143
+    },
+    {
+      "seed": 20274000,
+      "seat": 3,
+      "turn": 57,
+      "vp": 7,
+      "scan_ms": 4.562375,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 14,
+      "followups": 40
+    },
+    {
+      "seed": 20274000,
+      "seat": 3,
+      "turn": 57,
+      "vp": 7,
+      "scan_ms": 1.096708,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 4,
+      "followups": 10
+    },
+    {
+      "seed": 20274000,
+      "seat": 3,
+      "turn": 57,
+      "vp": 7,
+      "scan_ms": 0.002458,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 0,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 3,
+      "turn": 61,
+      "vp": 7,
+      "scan_ms": 1.157084,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 4,
+      "followups": 10
+    },
+    {
+      "seed": 20274000,
+      "seat": 3,
+      "turn": 65,
+      "vp": 7,
+      "scan_ms": 5.590959,
+      "found_line": true,
+      "override": true,
+      "continuation_match": true,
+      "truncated": false,
+      "roots": 14,
+      "followups": 41
+    },
+    {
+      "seed": 20274000,
+      "seat": 3,
+      "turn": 65,
+      "vp": 7,
+      "scan_ms": 1.162875,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 4,
+      "followups": 10
+    },
+    {
+      "seed": 20274000,
+      "seat": 3,
+      "turn": 69,
+      "vp": 7,
+      "scan_ms": 9.81325,
+      "found_line": true,
+      "override": true,
+      "continuation_match": true,
+      "truncated": false,
+      "roots": 16,
+      "followups": 67
+    },
+    {
+      "seed": 20274000,
+      "seat": 3,
+      "turn": 69,
+      "vp": 8,
+      "scan_ms": 1.193791,
+      "found_line": true,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 11,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 3,
+      "turn": 73,
+      "vp": 9,
+      "scan_ms": 0.298375,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 4,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 3,
+      "turn": 81,
+      "vp": 9,
+      "scan_ms": 0.246708,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 4,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 3,
+      "turn": 85,
+      "vp": 9,
+      "scan_ms": 0.553375,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 8,
+      "followups": 0
+    },
+    {
+      "seed": 20274000,
+      "seat": 3,
+      "turn": 85,
+      "vp": 9,
+      "scan_ms": 2.294542,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 8,
+      "followups": 18
+    },
+    {
+      "seed": 20274000,
+      "seat": 3,
+      "turn": 85,
+      "vp": 9,
+      "scan_ms": 0.001958,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 0,
+      "followups": 0
+    },
+    {
+      "seed": 20274001,
+      "seat": 0,
+      "turn": 18,
+      "vp": 2,
+      "scan_ms": 0.619375,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 8,
+      "followups": 0
+    },
+    {
+      "seed": 20274001,
+      "seat": 0,
+      "turn": 18,
+      "vp": 2,
+      "scan_ms": 0.002375,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 0,
+      "followups": 0
+    },
+    {
+      "seed": 20274001,
+      "seat": 0,
+      "turn": 22,
+      "vp": 2,
+      "scan_ms": 0.002833,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 0,
+      "followups": 0
+    },
+    {
+      "seed": 20274001,
+      "seat": 0,
+      "turn": 26,
+      "vp": 2,
+      "scan_ms": 0.002625,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 0,
+      "followups": 0
+    },
+    {
+      "seed": 20274001,
+      "seat": 0,
+      "turn": 30,
+      "vp": 2,
+      "scan_ms": 0.002833,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 0,
+      "followups": 0
+    },
+    {
+      "seed": 20274001,
+      "seat": 0,
+      "turn": 34,
+      "vp": 2,
+      "scan_ms": 2.145084,
+      "found_line": true,
+      "override": true,
+      "continuation_match": true,
+      "truncated": false,
+      "roots": 8,
+      "followups": 19
+    },
+    {
+      "seed": 20274001,
+      "seat": 0,
+      "turn": 34,
+      "vp": 2,
+      "scan_ms": 3.999834,
+      "found_line": true,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 14,
+      "followups": 36
+    },
+    {
+      "seed": 20274001,
+      "seat": 0,
+      "turn": 38,
+      "vp": 3,
+      "scan_ms": 0.76325,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 9,
+      "followups": 0
+    },
+    {
+      "seed": 20274001,
+      "seat": 0,
+      "turn": 46,
+      "vp": 3,
+      "scan_ms": 1.35475,
+      "found_line": true,
+      "override": true,
+      "continuation_match": true,
+      "truncated": false,
+      "roots": 4,
+      "followups": 11
+    },
+    {
+      "seed": 20274001,
+      "seat": 0,
+      "turn": 46,
+      "vp": 3,
+      "scan_ms": 1.0125,
+      "found_line": true,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 11,
+      "followups": 0
+    },
+    {
+      "seed": 20274001,
+      "seat": 1,
+      "turn": 7,
+      "vp": 2,
+      "scan_ms": 0.002833,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 0,
+      "followups": 0
+    },
+    {
+      "seed": 20274001,
+      "seat": 1,
+      "turn": 11,
+      "vp": 2,
+      "scan_ms": 0.002542,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 0,
+      "followups": 0
+    },
+    {
+      "seed": 20274001,
+      "seat": 1,
+      "turn": 15,
+      "vp": 2,
+      "scan_ms": 0.273667,
+      "found_line": true,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 2,
+      "followups": 0
+    },
+    {
+      "seed": 20274001,
+      "seat": 1,
+      "turn": 19,
+      "vp": 3,
+      "scan_ms": 5.864625,
+      "found_line": true,
+      "override": true,
+      "continuation_match": true,
+      "truncated": false,
+      "roots": 8,
+      "followups": 69
+    },
+    {
+      "seed": 20274001,
+      "seat": 1,
+      "turn": 19,
+      "vp": 3,
+      "scan_ms": 0.839625,
+      "found_line": true,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 10,
+      "followups": 0
+    },
+    {
+      "seed": 20274001,
+      "seat": 1,
+      "turn": 27,
+      "vp": 4,
+      "scan_ms": 0.003,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 0,
+      "followups": 0
+    },
+    {
+      "seed": 20274001,
+      "seat": 1,
+      "turn": 31,
+      "vp": 4,
+      "scan_ms": 0.720875,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 9,
+      "followups": 0
+    },
+    {
+      "seed": 20274001,
+      "seat": 1,
+      "turn": 31,
+      "vp": 4,
+      "scan_ms": 0.002458,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 0,
+      "followups": 0
+    },
+    {
+      "seed": 20274001,
+      "seat": 1,
+      "turn": 35,
+      "vp": 4,
+      "scan_ms": 1.204333,
+      "found_line": true,
+      "override": true,
+      "continuation_match": true,
+      "truncated": false,
+      "roots": 4,
+      "followups": 11
+    },
+    {
+      "seed": 20274001,
+      "seat": 1,
+      "turn": 35,
+      "vp": 4,
+      "scan_ms": 0.925292,
+      "found_line": true,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 11,
+      "followups": 0
+    },
+    {
+      "seed": 20274001,
+      "seat": 1,
+      "turn": 39,
+      "vp": 5,
+      "scan_ms": 1.398667,
+      "found_line": true,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 7,
+      "followups": 10
+    },
+    {
+      "seed": 20274001,
+      "seat": 1,
+      "turn": 43,
+      "vp": 6,
+      "scan_ms": 21.406167,
+      "found_line": true,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 20,
+      "followups": 187
+    },
+    {
+      "seed": 20274001,
+      "seat": 1,
+      "turn": 43,
+      "vp": 7,
+      "scan_ms": 8.844209,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 14,
+      "followups": 99
+    },
+    {
+      "seed": 20274001,
+      "seat": 1,
+      "turn": 43,
+      "vp": 7,
+      "scan_ms": 0.858375,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 10,
+      "followups": 0
+    },
+    {
+      "seed": 20274001,
+      "seat": 1,
+      "turn": 47,
+      "vp": 7,
+      "scan_ms": 26.783125,
+      "found_line": true,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 19,
+      "followups": 164
+    },
+    {
+      "seed": 20274001,
+      "seat": 1,
+      "turn": 47,
+      "vp": 9,
+      "scan_ms": 4.89475,
+      "found_line": true,
+      "override": true,
+      "continuation_match": true,
+      "truncated": false,
+      "roots": 14,
+      "followups": 34
+    },
+    {
+      "seed": 20274001,
+      "seat": 1,
+      "turn": 47,
+      "vp": 9,
+      "scan_ms": 1.412459,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 4,
+      "followups": 11
+    },
+    {
+      "seed": 20274001,
+      "seat": 1,
+      "turn": 47,
+      "vp": 9,
+      "scan_ms": 1.2275,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 11,
+      "followups": 0
+    },
+    {
+      "seed": 20274001,
+      "seat": 1,
+      "turn": 51,
+      "vp": 9,
+      "scan_ms": 1.538542,
+      "found_line": true,
+      "override": true,
+      "continuation_match": false,
+      "truncated": false,
+      "roots": 1,
+      "followups": 12
+    },
+    {
+      "seed": 20274001,
+      "seat": 1,
+      "turn": 51,
+      "vp": 9,
+      "scan_ms": 0.069959,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 0,
+      "followups": 0
+    },
+    {
+      "seed": 20274001,
+      "seat": 2,
+      "turn": 12,
+      "vp": 2,
+      "scan_ms": 0.546833,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 7,
+      "followups": 0
+    },
+    {
+      "seed": 20274001,
+      "seat": 2,
+      "turn": 20,
+      "vp": 2,
+      "scan_ms": 0.22,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 4,
+      "followups": 0
+    },
+    {
+      "seed": 20274001,
+      "seat": 2,
+      "turn": 24,
+      "vp": 2,
+      "scan_ms": 0.730042,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 4,
+      "followups": 7
+    },
+    {
+      "seed": 20274001,
+      "seat": 2,
+      "turn": 40,
+      "vp": 2,
+      "scan_ms": 0.002958,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 0,
+      "followups": 0
+    },
+    {
+      "seed": 20274001,
+      "seat": 2,
+      "turn": 44,
+      "vp": 2,
+      "scan_ms": 0.002709,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 0,
+      "followups": 0
+    },
+    {
+      "seed": 20274001,
+      "seat": 2,
+      "turn": 48,
+      "vp": 2,
+      "scan_ms": 0.778959,
+      "found_line": true,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 8,
+      "followups": 0
+    },
+    {
+      "seed": 20274001,
+      "seat": 2,
+      "turn": 56,
+      "vp": 3,
+      "scan_ms": 0.332167,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 4,
+      "followups": 0
+    },
+    {
+      "seed": 20274001,
+      "seat": 2,
+      "turn": 56,
+      "vp": 3,
+      "scan_ms": 0.002542,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 0,
+      "followups": 0
+    },
+    {
+      "seed": 20274001,
+      "seat": 2,
+      "turn": 60,
+      "vp": 3,
+      "scan_ms": 0.245667,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 4,
+      "followups": 0
+    },
+    {
+      "seed": 20274001,
+      "seat": 2,
+      "turn": 64,
+      "vp": 3,
+      "scan_ms": 0.961833,
+      "found_line": true,
+      "override": true,
+      "continuation_match": true,
+      "truncated": false,
+      "roots": 8,
+      "followups": 3
+    },
+    {
+      "seed": 20274001,
+      "seat": 2,
+      "turn": 64,
+      "vp": 3,
+      "scan_ms": 0.832458,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 4,
+      "followups": 7
+    },
+    {
+      "seed": 20274001,
+      "seat": 2,
+      "turn": 72,
+      "vp": 3,
+      "scan_ms": 1.332708,
+      "found_line": true,
+      "override": true,
+      "continuation_match": true,
+      "truncated": false,
+      "roots": 4,
+      "followups": 10
+    },
+    {
+      "seed": 20274001,
+      "seat": 2,
+      "turn": 72,
+      "vp": 3,
+      "scan_ms": 0.6545,
+      "found_line": true,
+      "override": true,
+      "continuation_match": true,
+      "truncated": false,
+      "roots": 4,
+      "followups": 3
+    },
+    {
+      "seed": 20274001,
+      "seat": 2,
+      "turn": 76,
+      "vp": 3,
+      "scan_ms": 0.003792,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 0,
+      "followups": 0
+    },
+    {
+      "seed": 20274001,
+      "seat": 3,
+      "turn": 13,
+      "vp": 2,
+      "scan_ms": 0.861041,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 4,
+      "followups": 8
+    },
+    {
+      "seed": 20274001,
+      "seat": 3,
+      "turn": 13,
+      "vp": 2,
+      "scan_ms": 0.625458,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 8,
+      "followups": 0
+    },
+    {
+      "seed": 20274001,
+      "seat": 3,
+      "turn": 21,
+      "vp": 2,
+      "scan_ms": 0.003292,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 0,
+      "followups": 0
+    },
+    {
+      "seed": 20274001,
+      "seat": 3,
+      "turn": 25,
+      "vp": 2,
+      "scan_ms": 0.230959,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 4,
+      "followups": 0
+    },
+    {
+      "seed": 20274001,
+      "seat": 3,
+      "turn": 29,
+      "vp": 2,
+      "scan_ms": 1.218625,
+      "found_line": true,
+      "override": true,
+      "continuation_match": true,
+      "truncated": false,
+      "roots": 4,
+      "followups": 10
+    },
+    {
+      "seed": 20274001,
+      "seat": 3,
+      "turn": 29,
+      "vp": 2,
+      "scan_ms": 0.882125,
+      "found_line": true,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 10,
+      "followups": 0
+    },
+    {
+      "seed": 20274001,
+      "seat": 3,
+      "turn": 33,
+      "vp": 3,
+      "scan_ms": 0.233458,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 4,
+      "followups": 0
+    },
+    {
+      "seed": 20274001,
+      "seat": 3,
+      "turn": 37,
+      "vp": 3,
+      "scan_ms": 0.951416,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 4,
+      "followups": 9
+    },
+    {
+      "seed": 20274001,
+      "seat": 3,
+      "turn": 37,
+      "vp": 3,
+      "scan_ms": 0.721459,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 9,
+      "followups": 0
+    },
+    {
+      "seed": 20274001,
+      "seat": 3,
+      "turn": 37,
+      "vp": 3,
+      "scan_ms": 0.002458,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 0,
+      "followups": 0
+    },
+    {
+      "seed": 20274001,
+      "seat": 3,
+      "turn": 41,
+      "vp": 3,
+      "scan_ms": 0.409083,
+      "found_line": true,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 3,
+      "followups": 0
+    },
+    {
+      "seed": 20274001,
+      "seat": 3,
+      "turn": 45,
+      "vp": 4,
+      "scan_ms": 1.121917,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 4,
+      "followups": 10
+    },
+    {
+      "seed": 20274001,
+      "seat": 3,
+      "turn": 45,
+      "vp": 4,
+      "scan_ms": 0.820083,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 10,
+      "followups": 0
+    },
+    {
+      "seed": 20274001,
+      "seat": 3,
+      "turn": 49,
+      "vp": 4,
+      "scan_ms": 0.003042,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 0,
+      "followups": 0
+    },
+    {
+      "seed": 20274001,
+      "seat": 3,
+      "turn": 61,
+      "vp": 4,
+      "scan_ms": 3.814666,
+      "found_line": true,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 10,
+      "followups": 28
+    },
+    {
+      "seed": 20274001,
+      "seat": 3,
+      "turn": 61,
+      "vp": 5,
+      "scan_ms": 1.221333,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 4,
+      "followups": 10
+    },
+    {
+      "seed": 20274001,
+      "seat": 3,
+      "turn": 65,
+      "vp": 5,
+      "scan_ms": 1.239542,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 4,
+      "followups": 10
+    },
+    {
+      "seed": 20274001,
+      "seat": 3,
+      "turn": 65,
+      "vp": 5,
+      "scan_ms": 0.964917,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 10,
+      "followups": 0
+    },
+    {
+      "seed": 20274001,
+      "seat": 3,
+      "turn": 69,
+      "vp": 5,
+      "scan_ms": 0.448042,
+      "found_line": true,
+      "override": true,
+      "continuation_match": true,
+      "truncated": false,
+      "roots": 4,
+      "followups": 1
+    },
+    {
+      "seed": 20274001,
+      "seat": 3,
+      "turn": 73,
+      "vp": 5,
+      "scan_ms": 2.0935,
+      "found_line": true,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 5,
+      "followups": 13
+    },
+    {
+      "seed": 20274001,
+      "seat": 3,
+      "turn": 73,
+      "vp": 6,
+      "scan_ms": 0.002583,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 0,
+      "followups": 0
+    },
+    {
+      "seed": 20274001,
+      "seat": 3,
+      "turn": 77,
+      "vp": 6,
+      "scan_ms": 2.061792,
+      "found_line": true,
+      "override": true,
+      "continuation_match": true,
+      "truncated": false,
+      "roots": 8,
+      "followups": 13
+    },
+    {
+      "seed": 20274001,
+      "seat": 3,
+      "turn": 77,
+      "vp": 6,
+      "scan_ms": 1.76125,
+      "found_line": true,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 17,
+      "followups": 0
+    },
+    {
+      "seed": 20274001,
+      "seat": 3,
+      "turn": 77,
+      "vp": 7,
+      "scan_ms": 1.0755,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 4,
+      "followups": 10
+    },
+    {
+      "seed": 20274001,
+      "seat": 3,
+      "turn": 89,
+      "vp": 7,
+      "scan_ms": 0.003583,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 0,
+      "followups": 0
+    },
+    {
+      "seed": 20274001,
+      "seat": 3,
+      "turn": 93,
+      "vp": 7,
+      "scan_ms": 3.452333,
+      "found_line": true,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 12,
+      "followups": 23
+    },
+    {
+      "seed": 20274001,
+      "seat": 3,
+      "turn": 93,
+      "vp": 8,
+      "scan_ms": 1.529625,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 8,
+      "followups": 10
+    },
+    {
+      "seed": 20274001,
+      "seat": 3,
+      "turn": 93,
+      "vp": 8,
+      "scan_ms": 1.169125,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 4,
+      "followups": 10
+    },
+    {
+      "seed": 20274001,
+      "seat": 3,
+      "turn": 97,
+      "vp": 8,
+      "scan_ms": 2.690042,
+      "found_line": true,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 8,
+      "followups": 21
+    },
+    {
+      "seed": 20274001,
+      "seat": 3,
+      "turn": 97,
+      "vp": 8,
+      "scan_ms": 1.4635,
+      "found_line": true,
+      "override": true,
+      "continuation_match": true,
+      "truncated": false,
+      "roots": 4,
+      "followups": 11
+    },
+    {
+      "seed": 20274001,
+      "seat": 3,
+      "turn": 97,
+      "vp": 8,
+      "scan_ms": 1.165375,
+      "found_line": true,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 11,
+      "followups": 0
+    },
+    {
+      "seed": 20274001,
+      "seat": 3,
+      "turn": 101,
+      "vp": 9,
+      "scan_ms": 0.002041,
+      "found_line": false,
+      "override": false,
+      "continuation_match": null,
+      "truncated": false,
+      "roots": 0,
+      "followups": 0
+    }
+  ],
+  "games": [
+    {
+      "seed": 20274000,
+      "seat": 0,
+      "status": "completed",
+      "actions": 326,
+      "wall_seconds": 0.551
+    },
+    {
+      "seed": 20274000,
+      "seat": 1,
+      "status": "completed",
+      "actions": 329,
+      "wall_seconds": 0.391
+    },
+    {
+      "seed": 20274000,
+      "seat": 2,
+      "status": "completed",
+      "actions": 352,
+      "wall_seconds": 0.503
+    },
+    {
+      "seed": 20274000,
+      "seat": 3,
+      "status": "completed",
+      "actions": 323,
+      "wall_seconds": 0.53
+    },
+    {
+      "seed": 20274001,
+      "seat": 0,
+      "status": "completed",
+      "actions": 149,
+      "wall_seconds": 0.188
+    },
+    {
+      "seed": 20274001,
+      "seat": 1,
+      "status": "completed",
+      "actions": 160,
+      "wall_seconds": 0.266
+    },
+    {
+      "seed": 20274001,
+      "seat": 2,
+      "status": "completed",
+      "actions": 301,
+      "wall_seconds": 0.383
+    },
+    {
+      "seed": 20274001,
+      "seat": 3,
+      "status": "completed",
+      "actions": 382,
+      "wall_seconds": 0.548
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "strategy": "pinned Catanatron web bot: AlphaBeta depth=2, pruning=True, base value",
+  "engine": {
+    "source": "https://github.com/bcollazo/catanatron.git",
+    "commit": "ecf931181b9a65bb4116a2153fb78c16f1438e00",
+    "python_root": "/Users/anixd/Documents/Hyde/start/catan_lab/vendor/catanatron/catanatron"
+  },
+  "rules": {
+    "players": 2,
+    "vps_to_win": 10,
+    "discard_limit": 7,
+    "friendly_robber": false,
+    "number_placement": "official_spiral"
+  },
+  "seed_start": 20268100,
+  "boards_per_opponent": 1,
+  "seat_rotation": "both seats per seed",
+  "caps": {
+    "max_game_seconds": 120.0,
+    "max_actions": 10000,
+    "max_turns": 500
+  },
+  "results": {
+    "F_BASE": {
+      "summary": {
+        "games": 2,
+        "wins": 0,
+        "completed": 2,
+        "capped": 0,
+        "errors": 0,
+        "median_decision_ms": 0.001708,
+        "p95_decision_ms": 10.904166,
+        "max_decision_ms": 37.408,
+        "decisions": 217
+      },
+      "games": [
+        {
+          "seed": 20268100,
+          "seat": 0,
+          "opponent": "F_BASE",
+          "status": "completed",
+          "won": false,
+          "winner": "RED",
+          "candidate_vp": 4,
+          "opponent_vp": 10,
+          "actions": 203,
+          "turns": 71,
+          "wall_seconds": 0.239
+        },
+        {
+          "seed": 20268100,
+          "seat": 1,
+          "opponent": "F_BASE",
+          "status": "completed",
+          "won": false,
+          "winner": "BLUE",
+          "candidate_vp": 6,
+          "opponent_vp": 10,
+          "actions": 252,
+          "turns": 86,
+          "wall_seconds": 0.367
+        }
+      ]
+    }
+  }
+}

@@ -3,7 +3,10 @@
 from __future__ import annotations
 
 import argparse
+import atexit
 from collections import Counter
+from concurrent.futures import Future, ProcessPoolExecutor
+from contextlib import ExitStack
 import json
 import math
 from pathlib import Path
@@ -28,6 +31,25 @@ ROOT = Path(__file__).parent
 DEFAULT_OUTPUT = ROOT / "artifacts" / "data" / "pons_exact_v1.jsonl"
 DEFAULT_CACHE = ROOT / "artifacts" / "cache" / "pons_labels.sqlite3"
 SOLVER_REVISION = "PascalPons/connect4@d6ba50d8aaf2308c769d9bf2abd42d90f34baf41"
+_WORKER_ORACLE: PonsOracle | None = None
+
+
+def _start_worker(timeout: float) -> None:
+    global _WORKER_ORACLE
+    _WORKER_ORACLE = PonsOracle(timeout_seconds=timeout)
+    _WORKER_ORACLE.__enter__()
+    atexit.register(_WORKER_ORACLE.__exit__, None, None, None)
+
+
+def _query_worker(history: str) -> tuple[list[int] | None, float]:
+    if _WORKER_ORACLE is None:
+        raise RuntimeError("Pons worker was not initialized")
+    started = time.perf_counter()
+    try:
+        scores = _WORKER_ORACLE.analyze(history)["scores"]
+    except TimeoutError:
+        return None, time.perf_counter() - started
+    return scores, time.perf_counter() - started
 
 
 def canonical_moves(game: ConnectFour, moves: list[int]) -> tuple[int, ...]:
@@ -107,6 +129,20 @@ def cache_key(candidate: dict[str, Any]) -> str:
     return f"{SOLVER_REVISION}:exact:{candidate['current_player']}:{board}"
 
 
+def balance_phases(candidates: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Interleave opening, middle, and late positions before the solve budget."""
+    buckets = [[], [], []]
+    for candidate in candidates:
+        ply = int(candidate["ply"])
+        buckets[0 if ply < 20 else 1 if ply < 30 else 2].append(candidate)
+    ordered = []
+    while any(buckets):
+        for bucket in buckets:
+            if bucket:
+                ordered.append(bucket.pop())
+    return ordered
+
+
 def row_from_scores(candidate: dict[str, Any], scores: list[int]) -> dict[str, Any]:
     moves = tuple(candidate["moves"])
     game = ConnectFour.from_moves(moves)
@@ -161,7 +197,11 @@ def build_dataset(
     output: Path,
     cache_path: Path,
     progress_every: int,
+    workers: int = 1,
+    phase_balanced: bool = False,
 ) -> dict[str, Any]:
+    if workers < 1:
+        raise ValueError("workers must be positive")
     candidates = collect_candidates(
         positions,
         candidate_pool=candidate_pool,
@@ -170,29 +210,71 @@ def build_dataset(
         seed=seed,
         max_games=max_games,
     )
+    if phase_balanced:
+        candidates = balance_phases(candidates)
     cache = open_cache(cache_path)
     rows: list[dict[str, Any]] = []
     durations: list[float] = []
     cache_hits = 0
     timeouts = 0
     solver_queries = 0
+    uncommitted = 0
     started = time.perf_counter()
     try:
-        with PonsOracle(timeout_seconds=timeout) as oracle:
+        with ExitStack() as stack:
+            oracle = stack.enter_context(PonsOracle(timeout_seconds=timeout)) if workers == 1 else None
+            executor = (
+                stack.enter_context(ProcessPoolExecutor(max_workers=workers, initializer=_start_worker, initargs=(timeout,)))
+                if workers > 1 else None
+            )
+            pending: dict[int, Future[tuple[list[int] | None, float]]] = {}
+            prefetched_cache: dict[int, list[int]] = {}
+            next_to_submit = 0
+
+            def prefetch(index: int) -> None:
+                nonlocal next_to_submit
+                if executor is None:
+                    return
+                while next_to_submit < min(len(candidates), index + 2 * workers):
+                    position = next_to_submit
+                    next_to_submit += 1
+                    candidate = candidates[position]
+                    existing = cache.execute(
+                        "SELECT scores FROM labels WHERE state_key = ?", (cache_key(candidate),)
+                    ).fetchone()
+                    if existing:
+                        prefetched_cache[position] = json.loads(existing[0])
+                    else:
+                        history = "".join(str(action + 1) for action in candidate["moves"])
+                        pending[position] = executor.submit(_query_worker, history)
+
             for index, candidate in enumerate(candidates, start=1):
+                prefetch(index - 1)
                 key = cache_key(candidate)
-                cached = cache.execute(
-                    "SELECT scores FROM labels WHERE state_key = ?", (key,)
-                ).fetchone()
+                if executor is not None:
+                    scores = prefetched_cache.pop(index - 1, None)
+                    cached = scores is not None
+                else:
+                    existing = cache.execute(
+                        "SELECT scores FROM labels WHERE state_key = ?", (key,)
+                    ).fetchone()
+                    cached = existing is not None
+                    scores = json.loads(existing[0]) if existing else None
                 if cached:
-                    scores = json.loads(cached[0])
                     cache_hits += 1
                 else:
-                    history = "".join(str(action + 1) for action in candidate["moves"])
-                    query_started = time.perf_counter()
-                    try:
-                        answer = oracle.analyze(history)
-                    except TimeoutError:
+                    if executor is not None:
+                        scores, elapsed = pending.pop(index - 1).result()
+                    else:
+                        assert oracle is not None
+                        history = "".join(str(action + 1) for action in candidate["moves"])
+                        query_started = time.perf_counter()
+                        try:
+                            scores = oracle.analyze(history)["scores"]
+                        except TimeoutError:
+                            scores = None
+                        elapsed = time.perf_counter() - query_started
+                    if scores is None:
                         timeouts += 1
                         if index % progress_every == 0 or index == len(candidates):
                             print(
@@ -201,21 +283,25 @@ def build_dataset(
                                 flush=True,
                             )
                         continue
-                    elapsed = time.perf_counter() - query_started
                     durations.append(elapsed)
                     solver_queries += 1
-                    scores = answer["scores"]
+                    game = ConnectFour.from_moves(candidate["moves"])
+                    legal = game.legal_actions()
+                    best_score = max(scores[action] for action in legal)
                     cache.execute(
                         "INSERT OR REPLACE INTO labels "
                         "(state_key, scores, best_columns, best_score) VALUES (?, ?, ?, ?)",
                         (
                             key,
                             json.dumps(scores),
-                            json.dumps(answer["best_columns"]),
-                            answer["best_score"],
+                            json.dumps([action + 1 for action in legal if scores[action] == best_score]),
+                            best_score,
                         ),
                     )
-                    cache.commit()
+                    uncommitted += 1
+                    if uncommitted >= 64:
+                        cache.commit()
+                        uncommitted = 0
                 rows.append(row_from_scores(candidate, scores))
                 if len(rows) >= positions:
                     break
@@ -226,6 +312,7 @@ def build_dataset(
                         flush=True,
                     )
     finally:
+        cache.commit()
         cache.close()
 
     if len(rows) < positions:
@@ -246,6 +333,8 @@ def build_dataset(
         "max_ply": max_ply,
         "timeout_seconds": timeout,
         "solver_queries": solver_queries,
+        "workers": workers,
+        "phase_balanced": phase_balanced,
         "cache_hits": cache_hits,
         "timeouts": timeouts,
         "wall_seconds": time.perf_counter() - started,
@@ -254,6 +343,7 @@ def build_dataset(
         if durations
         else 0.0,
         "source_policies": dict(Counter(row["source_policy"] for row in rows)),
+        "ply_buckets": dict(Counter("early_under_20" if row["ply"] < 20 else "middle_20_29" if row["ply"] < 30 else "late_30_plus" for row in rows)),
         "score_distribution": dict(Counter(str(row["teacher_best_score"]) for row in rows)),
         "output": str(output),
     }
@@ -272,6 +362,8 @@ def main() -> None:
     parser.add_argument("--seed", type=int, default=2047)
     parser.add_argument("--max-games", type=int, default=20_000)
     parser.add_argument("--timeout", type=float, default=2.0, help="per exact solver query")
+    parser.add_argument("--workers", type=int, default=1, help="independent Pons solver processes")
+    parser.add_argument("--phase-balanced", action="store_true", help="interleave early/middle/late candidates")
     parser.add_argument("--progress-every", type=int, default=25)
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     parser.add_argument("--cache", type=Path, default=DEFAULT_CACHE)
@@ -282,8 +374,8 @@ def main() -> None:
         parser.error("require positions > 0 and candidate-pool >= positions")
     if args.min_ply < 1 or args.max_ply < args.min_ply or args.max_ply > 41:
         parser.error("require 1 <= min-ply <= max-ply <= 41")
-    if args.timeout <= 0 or args.progress_every <= 0 or args.max_games <= 0:
-        parser.error("timeout, progress-every, and max-games must be positive")
+    if args.timeout <= 0 or args.progress_every <= 0 or args.max_games <= 0 or args.workers <= 0:
+        parser.error("timeout, progress-every, max-games, and workers must be positive")
     build_dataset(
         positions=args.positions,
         candidate_pool=args.candidate_pool,
@@ -295,6 +387,8 @@ def main() -> None:
         output=args.output,
         cache_path=args.cache,
         progress_every=args.progress_every,
+        workers=args.workers,
+        phase_balanced=args.phase_balanced,
     )
 
 

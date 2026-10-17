@@ -1,0 +1,71 @@
+{
+  "protocol": "catanLabs-four-player-v5-canonical-actions-and-chance-mixed",
+  "rules": {
+    "players": 4,
+    "target_vp": 10,
+    "discard_limit": 7,
+    "friendly_robber": false,
+    "number_placement": "official_spiral",
+    "player_trade_offers": false,
+    "isolated_copy_rng": true,
+    "forced_search_outcomes": true
+  },
+  "tiers": {
+    "mixed_diverse": {
+      "boards": 24,
+      "games": 96,
+      "candidate_wins": 44,
+      "reference_wins": 43,
+      "candidate_win_rate": 0.4583333333333333,
+      "reference_win_rate": 0.4479166666666667,
+      "win_rate_difference": 0.010416666666666666,
+      "board_bootstrap_95_difference": [
+        0.0,
+        0.03125
+      ],
+      "mean_vp_difference": 0.010416666666666666,
+      "candidate_mean_vp": 8.0,
+      "reference_mean_vp": 7.989583333333333,
+      "candidate_latency_ms": {
+        "samples": 8153,
+        "median": 0.337833,
+        "p95": 3.838542
+      },
+      "reference_latency_ms": {
+        "samples": 8162,
+        "median": 0.338021,
+        "p95": 3.732292
+      },
+      "candidate_errors": 0,
+      "reference_errors": 0
+    },
+    "mixed_strong": {
+      "boards": 24,
+      "games": 96,
+      "candidate_wins": 32,
+      "reference_wins": 32,
+      "candidate_win_rate": 0.3333333333333333,
+      "reference_win_rate": 0.3333333333333333,
+      "win_rate_difference": 0.0,
+      "board_bootstrap_95_difference": [
+        0.0,
+        0.0
+      ],
+      "mean_vp_difference": -0.020833333333333332,
+      "candidate_mean_vp": 7.1875,
+      "reference_mean_vp": 7.208333333333333,
+      "candidate_latency_ms": {
+        "samples": 8507,
+        "median": 0.344291,
+        "p95": 3.730834
+      },
+      "reference_latency_ms": {
+        "samples": 8487,
+        "median": 0.345959,
+        "p95": 3.601125
+      },
+      "candidate_errors": 0,
+      "reference_errors": 0
+    }
+  }
+}

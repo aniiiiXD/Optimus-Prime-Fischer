@@ -13,6 +13,8 @@ parent of the Tic-Tac-Toe or Connect Four projects.
 | [`connect_four_engine/`](connect_four_engine/README.md) | Independent game rules and terminal play |
 | [`connect_four_transformer/`](connect_four_transformer/README.md) | Models, datasets, checkpoints, evaluation, browser UI |
 | [`connect_four_distillation/`](connect_four_distillation/README.md) | Isolated strong-solver teacher experiment |
+| [`othello_pipeline/`](othello_pipeline/README.md) | Neural-engine teacher, CPU Othello Transformer, pilot and evaluation |
+| [`catan_lab/`](catan_lab/README.md) | Pinned Catan agents, pretrained CPU pilots, rule/architecture audit and benchmark harness |
 | `othello_world/` | Optional upstream OthelloGPT checkout and local study lab; [not included in this repository](../docs/EXTERNAL_RESOURCES.md#restore-othello-research-checkout) |
 | [`transformer_games_lab/`](transformer_games_lab/README.md) | Reusable game adapters, search, tournaments, CPU profiler, Next.js UI |
 | [`game_transformer_knowledge_corpus/`](game_transformer_knowledge_corpus/README.md) | Research notes and source catalog; large downloads are optional |

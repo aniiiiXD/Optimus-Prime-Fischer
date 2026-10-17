@@ -1,0 +1,516 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#e7edf0">
+  <title>Connect Four field notes — what actually helped</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #24323d;
+      --ink-soft: #52636f;
+      --muted: #71818b;
+      --fog: #e7edf0;
+      --paper: #f7f9fa;
+      --line: #d3dde2;
+      --line-dark: #465863;
+      --lake: #6f899a;
+      --mint: #a8c9bc;
+      --lilac: #bcb9d2;
+      --gold: #cfb967;
+      --rust: #be7d71;
+      --shadow: 0 22px 60px rgba(36, 50, 61, .08);
+      font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(ellipse at 90% 2%, rgba(188, 185, 210, .20), transparent 29rem),
+        var(--fog);
+      color: var(--ink);
+      line-height: 1.62;
+    }
+    a { color: inherit; }
+    a:focus-visible, summary:focus-visible {
+      outline: 3px solid var(--lake);
+      outline-offset: 4px;
+      border-radius: 3px;
+    }
+    .page { width: min(1160px, calc(100% - 44px)); margin: 0 auto; }
+    .mono { font-family: ui-monospace, "SFMono-Regular", Menlo, monospace; }
+
+    .masthead {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 72px;
+      border-bottom: 1px solid var(--line);
+      color: var(--ink-soft);
+      font-size: .78rem;
+    }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: -.02em; }
+    .brand-mark { width: 24px; height: 24px; border-radius: 8px; background: var(--ink); position: relative; }
+    .brand-mark::before, .brand-mark::after { content: ""; position: absolute; width: 7px; height: 7px; border-radius: 50%; background: var(--mint); top: 5px; left: 5px; }
+    .brand-mark::after { background: var(--gold); left: 13px; top: 12px; }
+    .masthead nav { display: flex; gap: 22px; }
+    .masthead nav a { text-decoration: none; }
+    .masthead nav a:hover { color: var(--ink); }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(280px, .7fr);
+      align-items: center;
+      gap: clamp(38px, 8vw, 108px);
+      padding: clamp(58px, 9vw, 116px) 0 68px;
+    }
+    .kicker { display: inline-flex; align-items: center; gap: 9px; color: var(--lake); font-size: .78rem; font-weight: 700; }
+    .kicker::before { content: ""; width: 23px; height: 1px; background: var(--lake); }
+    h1 {
+      max-width: 760px;
+      margin: 18px 0 22px;
+      font-size: clamp(3rem, 7.4vw, 6.4rem);
+      line-height: .99;
+      letter-spacing: -.075em;
+      font-weight: 690;
+    }
+    .hero-copy > p { max-width: 620px; margin: 0; color: var(--ink-soft); font-size: clamp(1.06rem, 1.6vw, 1.26rem); }
+    .hero-copy .small-note { margin-top: 26px; font-size: .82rem; color: var(--muted); }
+
+    .board-figure {
+      margin: 0;
+      padding: 20px;
+      background: var(--ink);
+      border-radius: 18px 18px 18px 5px;
+      box-shadow: var(--shadow);
+      transform: rotate(1.5deg);
+    }
+    .board-top { display: flex; justify-content: space-between; align-items: center; color: #d9e2e6; font-size: .72rem; margin-bottom: 13px; }
+    .board-top span:last-child { color: var(--mint); }
+    .board {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 7px;
+      padding: 11px;
+      background: #354955;
+      border-radius: 10px 10px 5px 5px;
+    }
+    .hole {
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #253640;
+      box-shadow: inset 0 2px 5px rgba(0, 0, 0, .2);
+    }
+    .disc { width: 75%; height: 75%; border-radius: 50%; background: transparent; }
+    .disc.mint { background: var(--mint); box-shadow: inset -3px -4px 0 rgba(47, 81, 71, .16); }
+    .disc.lilac { background: var(--lilac); box-shadow: inset -3px -4px 0 rgba(69, 65, 100, .16); }
+    .disc.gold { background: var(--gold); box-shadow: inset -3px -4px 0 rgba(93, 76, 24, .16); }
+    .board-figure figcaption { display: flex; justify-content: space-between; gap: 12px; margin-top: 12px; color: #b8c6cc; font-size: .68rem; }
+    .board-figure figcaption strong { color: #f1f4f5; font-weight: 600; }
+
+    .results {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      margin: 0 0 100px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      box-shadow: 0 10px 28px rgba(36, 50, 61, .035);
+    }
+    .result { min-height: 132px; padding: 22px 24px; border-right: 1px solid var(--line); }
+    .result:last-child { border-right: 0; }
+    .result .value { display: block; font-size: clamp(1.8rem, 3.4vw, 2.6rem); line-height: 1.05; letter-spacing: -.06em; font-weight: 700; }
+    .result .label { display: block; margin-top: 8px; color: var(--ink-soft); font-size: .81rem; line-height: 1.35; }
+    .result small { display: block; margin-top: 6px; color: var(--muted); font-size: .67rem; }
+    .evidence-note { margin: -83px 0 91px; color: var(--muted); font-size: .73rem; }
+
+    .lab-report { margin-bottom: 104px; padding: 32px; border: 1px solid #c4d2d8; border-radius: 16px; background: #f1f5f6; box-shadow: 0 16px 36px rgba(36, 50, 61, .045); }
+    .lab-report .section-head { margin-bottom: 25px; }
+    .report-date { color: var(--lake); font-size: .76rem; font-weight: 700; }
+    .speed-case { display: grid; grid-template-columns: 185px 1fr; gap: 27px; align-items: center; padding: 23px 26px; border-radius: 11px; background: #30434f; color: #f4f7f7; }
+    .speed-number { font-size: clamp(3.3rem, 6vw, 5.1rem); font-weight: 700; letter-spacing: -.08em; line-height: 1; }
+    .speed-number small { display: block; margin-top: 7px; color: #bfd4d1; font-size: .76rem; font-weight: 600; letter-spacing: 0; }
+    .speed-bars { display: grid; grid-template-columns: 78px 1fr 79px; align-items: center; gap: 10px 12px; font-size: .76rem; }
+    .speed-track { height: 10px; overflow: hidden; border-radius: 10px; background: rgba(255, 255, 255, .12); }
+    .speed-track i { display: block; height: 100%; border-radius: inherit; background: #b9c5d2; }
+    .speed-track i.fast { background: var(--mint); }
+    .speed-bars strong { font-size: .84rem; text-align: right; }
+    .report-caption { margin: 11px 0 0; color: var(--muted); font-size: .73rem; }
+    .report-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 34px; margin-top: 34px; }
+    .report-block h3 { margin: 0 0 10px; font-size: 1.13rem; letter-spacing: -.035em; }
+    .report-block p { margin: 0; color: var(--ink-soft); font-size: .83rem; }
+    .phase-rail { display: flex; height: 23px; overflow: hidden; border-radius: 6px; margin: 18px 0 9px; }
+    .phase-rail span:nth-child(1) { width: 34.85%; background: var(--lake); }
+    .phase-rail span:nth-child(2) { width: 34.9%; background: var(--mint); }
+    .phase-rail span:nth-child(3) { width: 30.25%; background: var(--gold); }
+    .phase-key { display: flex; flex-wrap: wrap; gap: 8px 17px; color: var(--ink-soft); font-size: .7rem; }
+    .phase-key b { color: var(--ink); }
+    .report-block .cpu-rule { margin-top: 17px; padding-left: 13px; border-left: 2px solid var(--lake); }
+    .report-table-wrap { overflow-x: auto; margin-top: 32px; }
+    .report-table { width: 100%; border-collapse: collapse; font-size: .78rem; }
+    .report-table th, .report-table td { padding: 10px 12px; border-bottom: 1px solid var(--line); text-align: left; white-space: nowrap; }
+    .report-table th { color: var(--muted); font-weight: 600; }
+    .report-table td:first-child { font-weight: 700; }
+    .report-table .champion { background: #e4eee9; }
+    .report-table .champion td:first-child::before { content: "●"; margin-right: 7px; color: #4d826e; }
+    .report-verdict { margin-top: 19px; padding: 15px 18px; border-left: 3px solid var(--gold); background: #e6ecef; color: var(--ink-soft); font-size: .82rem; }
+    .report-verdict strong { color: var(--ink); }
+    .report-verdict a { font-weight: 700; }
+
+    section { scroll-margin-top: 32px; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 25px; margin-bottom: 28px; }
+    h2 { margin: 0; font-size: clamp(1.85rem, 4vw, 3rem); letter-spacing: -.06em; line-height: 1.08; }
+    .section-head p { max-width: 435px; margin: 0; color: var(--ink-soft); font-size: .9rem; }
+
+    .recipe { margin-bottom: 104px; }
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      overflow: hidden;
+      border-radius: 12px;
+      background: #dce5e9;
+      border: 1px solid #cbd8df;
+    }
+    .flow-step { min-height: 138px; padding: 20px 18px; position: relative; border-right: 1px solid #c6d3da; }
+    .flow-step:last-child { border-right: 0; background: rgba(168, 201, 188, .27); }
+    .flow-step:not(:last-child)::after { content: "›"; position: absolute; z-index: 1; right: -8px; top: 49px; width: 17px; height: 26px; display: grid; place-items: center; background: #dce5e9; color: var(--lake); font-size: 1.5rem; line-height: 1; }
+    .flow-step .mono { display: block; color: var(--lake); font-size: .66rem; margin-bottom: 10px; }
+    .flow-step strong { display: block; font-size: .92rem; line-height: 1.2; }
+    .flow-step p { margin: 8px 0 0; color: var(--ink-soft); font-size: .74rem; line-height: 1.4; }
+    .flow-caption { display: flex; justify-content: space-between; gap: 15px; margin-top: 11px; color: var(--muted); font-size: .72rem; }
+
+    .strategy-section { margin-bottom: 106px; }
+    .ledger { border-top: 1px solid var(--line-dark); }
+    .lesson {
+      display: grid;
+      grid-template-columns: 78px minmax(210px, .8fr) minmax(0, 1.55fr) 130px;
+      gap: 22px;
+      align-items: start;
+      padding: 25px 0 27px;
+      border-bottom: 1px solid var(--line);
+    }
+    .lesson-icon { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 15px 15px 15px 5px; background: #d9e5e8; color: var(--ink); font-size: 1.22rem; }
+    .lesson:nth-child(2n) .lesson-icon { background: #e4e1ee; }
+    .lesson:nth-child(3n) .lesson-icon { background: #dce9e2; }
+    .lesson h3 { margin: 0; font-size: 1.08rem; line-height: 1.25; letter-spacing: -.03em; }
+    .lesson .claim { margin: 7px 0 0; color: var(--lake); font-size: .72rem; font-weight: 700; }
+    .lesson-copy { margin: 0; color: var(--ink-soft); font-size: .87rem; }
+    .lesson-copy strong { color: var(--ink); font-weight: 650; }
+    .tag { display: inline-flex; justify-self: end; align-items: center; min-height: 25px; padding: 3px 9px; border-radius: 999px; background: #e0ebe5; color: #3c6858; font-size: .66rem; font-weight: 700; white-space: nowrap; }
+    .tag.test { background: #e8e5ef; color: #625e80; }
+
+    .split {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(285px, .72fr);
+      gap: clamp(36px, 7vw, 90px);
+      align-items: start;
+      margin-bottom: 105px;
+    }
+    .changed-minds { border-top: 1px solid var(--line-dark); }
+    .finding { display: grid; grid-template-columns: 105px 1fr; gap: 17px; padding: 17px 0; border-bottom: 1px solid var(--line); }
+    .finding .version { color: var(--lake); font-size: .73rem; font-weight: 700; }
+    .finding p { margin: 0; color: var(--ink-soft); font-size: .84rem; }
+    .finding strong { color: var(--ink); }
+    .caution {
+      padding: 24px 25px;
+      background: #e1e7eb;
+      border-left: 3px solid var(--gold);
+      border-radius: 0 11px 11px 0;
+    }
+    .caution h3 { margin: 0 0 14px; font-size: 1.2rem; letter-spacing: -.04em; }
+    .caution p { color: var(--ink-soft); font-size: .84rem; margin: 0 0 14px; }
+    .caution p:last-child { margin-bottom: 0; }
+    .caution strong { color: var(--ink); }
+
+    .measurement { margin-bottom: 100px; }
+    .metric-table { width: 100%; border-collapse: collapse; margin-top: 28px; font-size: .83rem; }
+    .metric-table th, .metric-table td { padding: 13px 15px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+    .metric-table th { color: var(--muted); font-weight: 600; font-size: .7rem; }
+    .metric-table td:first-child { font-weight: 700; }
+    .metric-table td:nth-child(2) { font-family: ui-monospace, "SFMono-Regular", Menlo, monospace; white-space: nowrap; }
+    .metric-table tr:last-child td { border-bottom-color: var(--line-dark); }
+    .measure-caption { color: var(--muted); font-size: .72rem; margin-top: 12px; }
+
+    .sources { padding: 30px 0 64px; border-top: 1px solid var(--line-dark); }
+    .sources-inner { display: grid; grid-template-columns: .7fr 1.3fr; gap: 40px; }
+    .sources h2 { font-size: 1.4rem; }
+    .sources p { color: var(--ink-soft); margin: 8px 0 0; font-size: .81rem; }
+    .source-links { display: flex; flex-wrap: wrap; gap: 9px; align-content: start; }
+    .source-links a { padding: 8px 11px; border: 1px solid var(--line); border-radius: 7px; background: rgba(247, 249, 250, .7); font-size: .73rem; text-decoration: none; }
+    .source-links a:hover { border-color: var(--lake); background: var(--paper); }
+    footer { display: flex; justify-content: space-between; gap: 20px; padding: 18px 0 30px; border-top: 1px solid var(--line); color: var(--muted); font-size: .69rem; }
+
+    @media (max-width: 820px) {
+      .hero { grid-template-columns: 1fr minmax(220px, .72fr); gap: 35px; }
+      .results { grid-template-columns: repeat(2, 1fr); }
+      .result:nth-child(2) { border-right: 0; }
+      .result:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .evidence-note { margin-top: -82px; }
+      .report-grid { gap: 24px; }
+      .lesson { grid-template-columns: 56px minmax(170px, .7fr) minmax(0, 1.3fr); gap: 14px; }
+      .tag { grid-column: 2 / -1; justify-self: start; margin-top: -4px; }
+      .split { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .page { width: min(100% - 30px, 520px); }
+      .masthead { min-height: 60px; flex-wrap: wrap; padding-top: 12px; }
+      .masthead nav { width: 100%; gap: 14px; overflow-x: auto; white-space: nowrap; padding: 8px 0 12px; font-size: .68rem; }
+      .hero { grid-template-columns: 1fr; padding: 55px 0 44px; gap: 36px; }
+      h1 { font-size: clamp(3.2rem, 15vw, 5rem); }
+      .board-figure { width: min(100%, 360px); justify-self: center; }
+      .results { margin-bottom: 89px; }
+      .result { min-height: 114px; padding: 17px; }
+      .result .value { font-size: 1.9rem; }
+      .result .label { font-size: .73rem; }
+      .evidence-note { margin: -74px 0 75px; }
+      .lab-report { padding: 20px; margin-bottom: 83px; }
+      .speed-case { grid-template-columns: 1fr; gap: 16px; padding: 18px; }
+      .speed-bars { grid-template-columns: 58px 1fr 64px; gap: 8px; }
+      .report-grid { grid-template-columns: 1fr; }
+      .section-head { display: block; }
+      .section-head p { margin-top: 13px; }
+      .flow { grid-template-columns: 1fr; }
+      .flow-step { min-height: 95px; border-right: 0; border-bottom: 1px solid #c6d3da; padding: 15px 18px; }
+      .flow-step:last-child { border-bottom: 0; }
+      .flow-step:not(:last-child)::after { content: "⌄"; top: auto; right: 17px; bottom: -13px; width: 24px; height: 24px; font-size: 1.2rem; }
+      .flow-step .mono { margin-bottom: 4px; }
+      .flow-step p { margin-top: 4px; }
+      .flow-caption { display: block; }
+      .flow-caption span { display: block; margin-top: 5px; }
+      .lesson { grid-template-columns: 43px 1fr; gap: 11px 13px; padding: 20px 0; }
+      .lesson-icon { width: 38px; height: 38px; border-radius: 13px 13px 13px 4px; }
+      .lesson-copy { grid-column: 2; }
+      .tag { grid-column: 2; }
+      .finding { grid-template-columns: 79px 1fr; gap: 10px; }
+      .metric-table { font-size: .74rem; }
+      .metric-table th, .metric-table td { padding: 10px 7px; }
+      .metric-table td:nth-child(2) { white-space: normal; }
+      .sources-inner { grid-template-columns: 1fr; gap: 20px; }
+      footer { display: block; }
+      footer span { display: block; margin-top: 5px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="masthead">
+      <div class="brand"><span class="brand-mark" aria-hidden="true"></span> Hyde · game lab</div>
+      <nav aria-label="Page sections">
+        <a href="#recipe">Current recipe</a>
+        <a href="#cpu-report">CPU report</a>
+        <a href="#strategies">Strategies</a>
+        <a href="#evidence">Evidence</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <span class="kicker">Connect Four · CPU experiments</span>
+          <h1 id="page-title">Let the model suggest. Let search protect.</h1>
+          <p>After a long day of games, training runs, and painful losses, this is what held up: teach the small Transformer from stronger move labels, give it exact tactical guardrails, and let a search look ahead.</p>
+          <p class="small-note">A field guide to what we tried, what earned its place, and what still needs proof.</p>
+        </div>
+        <figure class="board-figure" aria-label="A small Connect Four board illustration with a four-piece line">
+          <div class="board-top"><span class="mono">BOARD STUDY / 07</span><span>four in a row wins</span></div>
+          <div class="board" aria-hidden="true">
+            <span class="hole"><i class="disc"></i></span><span class="hole"><i class="disc"></i></span><span class="hole"><i class="disc"></i></span><span class="hole"><i class="disc"></i></span><span class="hole"><i class="disc"></i></span><span class="hole"><i class="disc"></i></span><span class="hole"><i class="disc"></i></span>
+            <span class="hole"><i class="disc"></i></span><span class="hole"><i class="disc"></i></span><span class="hole"><i class="disc"></i></span><span class="hole"><i class="disc"></i></span><span class="hole"><i class="disc"></i></span><span class="hole"><i class="disc"></i></span><span class="hole"><i class="disc"></i></span>
+            <span class="hole"><i class="disc"></i></span><span class="hole"><i class="disc"></i></span><span class="hole"><i class="disc lilac"></i></span><span class="hole"><i class="disc mint"></i></span><span class="hole"><i class="disc"></i></span><span class="hole"><i class="disc"></i></span><span class="hole"><i class="disc"></i></span>
+            <span class="hole"><i class="disc"></i></span><span class="hole"><i class="disc gold"></i></span><span class="hole"><i class="disc mint"></i></span><span class="hole"><i class="disc mint"></i></span><span class="hole"><i class="disc mint"></i></span><span class="hole"><i class="disc mint"></i></span><span class="hole"><i class="disc"></i></span>
+            <span class="hole"><i class="disc lilac"></i></span><span class="hole"><i class="disc gold"></i></span><span class="hole"><i class="disc lilac"></i></span><span class="hole"><i class="disc gold"></i></span><span class="hole"><i class="disc mint"></i></span><span class="hole"><i class="disc gold"></i></span><span class="hole"><i class="disc"></i></span>
+            <span class="hole"><i class="disc gold"></i></span><span class="hole"><i class="disc lilac"></i></span><span class="hole"><i class="disc gold"></i></span><span class="hole"><i class="disc mint"></i></span><span class="hole"><i class="disc gold"></i></span><span class="hole"><i class="disc lilac"></i></span><span class="hole"><i class="disc"></i></span>
+          </div>
+          <figcaption><strong>A move is more than a column.</strong><span class="mono">policy + rules + lookahead</span></figcaption>
+        </figure>
+      </section>
+
+      <section class="results" aria-label="Key measured results">
+        <div class="result"><span class="value">85.0%</span><span class="label">score rate for Transformer-guided depth-5 search</span><small>against our local depth-3 search</small></div>
+        <div class="result"><span class="value">+13.6 pt</span><span class="label">paired score advantage over plain depth-5 search</span><small>opening-bootstrap interval: +6.9 to +20.0</small></div>
+        <div class="result"><span class="value">58.3%</span><span class="label">v5's held-out teacher-best move rate</span><small>v4b: 49.3% on that same split</small></div>
+        <div class="result"><span class="value">100%</span><span class="label">guarded wins / safe blocks in the measured critical set</span><small>153 positions with a real one-ply answer</small></div>
+      </section>
+      <p class="evidence-note">These are internal CPU benchmarks, not a claim of perfect play: the 85% figure is versus our depth-3 alpha-beta opponent, on 90 paired openings with colors swapped.</p>
+
+      <section class="lab-report" id="cpu-report" aria-labelledby="cpu-report-title">
+        <div class="section-head">
+          <div><span class="report-date">15 October 2026 · controlled CPU follow-up</span><h2 id="cpu-report-title">Faster decisions. No new champion.</h2></div>
+          <p>We optimized the live search, generated exact labels, tried more parameters, and checked every new weight against a separate holdout.</p>
+        </div>
+        <div class="speed-case" aria-label="Search median improved 2.46 times">
+          <div class="speed-number">2.46×<small>faster median search</small></div>
+          <div class="speed-bars" aria-label="Reference search 46.6 milliseconds; optimized search 18.9 milliseconds">
+            <span>Before</span><span class="speed-track"><i style="width:100%"></i></span><strong>46.6 ms</strong>
+            <span>Now</span><span class="speed-track"><i class="fast" style="width:40.6%"></i></span><strong>18.9 ms</strong>
+          </div>
+        </div>
+        <p class="report-caption">Same v3 weights, 16 fixed boards, depth 5 and 5,000-node cap. Chosen moves, reasons, completed depth and node counts were identical. P95 fell from 299.1 to 121.6 ms. A second seed also sped up 2.18×.</p>
+        <div class="report-grid">
+          <div class="report-block">
+            <h3>The new teacher data</h3>
+            <p>4,000 mirror-deduplicated positions with exact Pons move scores; 13.0 seconds of labeling, three solver timeouts. We deliberately spread examples across game phases.</p>
+            <div class="phase-rail" role="img" aria-label="Early 1,394; middle 1,396; late 1,210 positions"><span></span><span></span><span></span></div>
+            <div class="phase-key"><span><b>1,394</b> early</span><span><b>1,396</b> middle</span><span><b>1,210</b> late</span></div>
+          </div>
+          <div class="report-block">
+            <h3>Where CPU parallelism pays</h3>
+            <p>One tiny forward pass was fastest on <b>one thread</b> (0.296 ms). A batch of 128 was faster on <b>four threads</b> (20.0k positions/s versus 11.8k/s). Four Pons processes did not beat one on our short queries.</p>
+            <p class="cpu-rule">PyTorch already vectorizes the model's matrix work. We sped up branchy game-rule code directly; no custom NEON kernel is claimed here.</p>
+          </div>
+        </div>
+        <div class="report-table-wrap">
+          <table class="report-table">
+            <caption style="text-align:left; padding:0 0 10px; font-weight:700;">Four checkpoints, one 492-position external holdout</caption>
+            <thead><tr><th>Candidate</th><th>Parameters</th><th>CPU fit</th><th>Teacher-best</th><th>Regret ↓</th><th>Raw critical</th></tr></thead>
+            <tbody>
+              <tr class="champion"><td>Existing Pons v3 · keep</td><td>114,819</td><td>earlier 5 min</td><td>65.4%</td><td>0.209</td><td>77.3%</td></tr>
+              <tr><td>Fresh width 64</td><td>114,819</td><td>90 s</td><td>57.1%</td><td>0.293</td><td>56.5%</td></tr>
+              <tr><td>Fresh width 96</td><td>329,955</td><td>91 s</td><td>53.9%</td><td>0.308</td><td>53.9%</td></tr>
+              <tr><td>v3 + 60 s fine-tune</td><td>114,819</td><td>60 s</td><td>63.8%</td><td>0.213</td><td>76.0%</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="report-caption">We removed 508 holdout positions whose opening group appeared in any known v3 ancestor training set. All four models saw the same remaining 492. V3 inherited earlier training, so this is a promotion test, not an equal-total-compute contest. Teacher agreement is not a full-game win rate.</p>
+        <div class="report-verdict"><strong>Decision:</strong> keep the search speedup and v3 weights; keep the new dataset for further experiments. A larger model improved its own internal test but regressed on the external one. <a href="../connect_four_transformer/CPU_OPTIMIZATION_REPORT.md">Read the full methods and next gate</a>.</div>
+      </section>
+
+      <section class="recipe" id="recipe" aria-labelledby="recipe-title">
+        <div class="section-head">
+          <h2 id="recipe-title">The current play recipe</h2>
+          <p>Each part has one job. The neural net is useful, but it is not asked to be the rules engine and the search tree at once.</p>
+        </div>
+        <div class="flow" role="list" aria-label="How a move is chosen">
+          <div class="flow-step" role="listitem"><span class="mono">01 · READ</span><strong>Encode the board</strong><p>42 board cells, side-to-move, and legal columns.</p></div>
+          <div class="flow-step" role="listitem"><span class="mono">02 · RANK</span><strong>Transformer scores moves</strong><p>Policy and Q estimates order the candidates.</p></div>
+          <div class="flow-step" role="listitem"><span class="mono">03 · GUARD</span><strong>Rules catch urgent tactics</strong><p>Take a win; reject replies that leave a one-move loss.</p></div>
+          <div class="flow-step" role="listitem"><span class="mono">04 · SEARCH</span><strong>Alpha-beta looks ahead</strong><p>Depth 5, capped at 5,000 nodes in the measured setup.</p></div>
+          <div class="flow-step" role="listitem"><span class="mono">05 · CHOOSE</span><strong>Use the best searched line</strong><p>Hand-built leaf score; learned leaf-value weight is zero.</p></div>
+        </div>
+        <div class="flow-caption"><span><strong>Current candidate:</strong> Pons phase-v3 checkpoint + Transformer-guided search.</span><span>Latest fixed-board speed test: 18.9 ms median · 121.6 ms P95</span></div>
+      </section>
+
+      <section class="strategy-section" id="strategies" aria-labelledby="strategies-title">
+        <div class="section-head">
+          <h2 id="strategies-title">Strategies that earned their keep</h2>
+          <p>These are the practical rules we learned from the runs—not a promise that any one trick makes the model unbeatable.</p>
+        </div>
+        <div class="ledger">
+          <article class="lesson">
+            <div class="lesson-icon" aria-hidden="true">✳</div>
+            <div><h3>Teach moves, not just endings</h3><p class="claim">Search distillation before sparse-reward RL</p></div>
+            <p class="lesson-copy">A bounded alpha-beta teacher scores legal actions and supplies policy, Q, and value targets. That gives the CPU model useful feedback on each position instead of waiting for one win/loss signal at game end. <strong>Our training so far is supervised distillation, not RL.</strong></p>
+            <span class="tag">keep</span>
+          </article>
+          <article class="lesson">
+            <div class="lesson-icon" aria-hidden="true">◉</div>
+            <div><h3>Collect different kinds of boards</h3><p class="claim">Phase balance + mixed trajectories</p></div>
+            <p class="lesson-copy">Mix random, center-biased, tactical, shallow-search, edge-biased, safe, and longer games. Sample openings, middlegames, and endgames; otherwise the net mostly memorizes one familiar opening or motif.</p>
+            <span class="tag">keep</span>
+          </article>
+          <article class="lesson">
+            <div class="lesson-icon" aria-hidden="true">⌁</div>
+            <div><h3>Replay mistakes, but keep the basics</h3><p class="claim">High regret + broad replay data</p></div>
+            <p class="lesson-copy">Mine states where the model's move is far below the teacher's best value, then label those again. Keep ordinary and earlier examples in the mix: training only on scary mistakes can make the model forget normal play.</p>
+            <span class="tag">keep</span>
+          </article>
+          <article class="lesson">
+            <div class="lesson-icon" aria-hidden="true">⊙</div>
+            <div><h3>Make tactical labels physically true</h3><p class="claim">A threatened column is not always a safe block</p></div>
+            <p class="lesson-copy">For every reply, simulate the drop and check the opponent's next wins. A real forced block must remove <strong>all</strong> immediate winning replies; if no move can, call it an unavoidable loss—not a missed block. Exact rules also take an immediate win ahead of neural preference.</p>
+            <span class="tag">keep</span>
+          </article>
+          <article class="lesson">
+            <div class="lesson-icon" aria-hidden="true">↔</div>
+            <div><h3>Reuse equivalent work carefully</h3><p class="claim">Mirror-canonical states + persistent labels</p></div>
+            <p class="lesson-copy">Left-right mirror boards share one teacher lookup, but the side to move stays in the key. Cache labels by board, player, and teacher settings; deduplicate exact states, not merely similar-looking boards. Split by opening group before adding extra training rows.</p>
+            <span class="tag">keep</span>
+          </article>
+          <article class="lesson">
+            <div class="lesson-icon" aria-hidden="true">⌕</div>
+            <div><h3>Use the model to steer a small search</h3><p class="claim">Neural ordering; adversarial lookahead</p></div>
+            <p class="lesson-copy">The Transformer ranks root moves, then alpha-beta considers the opponent's replies. Search found stronger play than the plain model in our local suite. The measured setting used handcrafted leaf evaluation: learned leaf values added cost without earning a promotion.</p>
+            <span class="tag">best measured</span>
+          </article>
+          <article class="lesson">
+            <div class="lesson-icon" aria-hidden="true">◇</div>
+            <div><h3>Keep every experiment in its own lane</h3><p class="claim">A better loss curve is not a stronger player</p></div>
+            <p class="lesson-copy">Save separate checkpoints, compare on the same held-out positions, swap colors on identical openings, and report regret, tactical misses, W/D/L, latency, and memory. We caught both a tactical-label bug and a candidate that looked good on its collected games but regressed on external holdout.</p>
+            <span class="tag">keep</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="split" aria-labelledby="changed-title">
+        <div>
+          <div class="section-head">
+            <h2 id="changed-title">What changed our minds</h2>
+          </div>
+          <div class="changed-minds">
+            <div class="finding"><span class="version">v4b → v5</span><p><strong>More unique, balanced states helped.</strong> Held-out teacher-best agreement rose from 49.3% to 58.3%, and regret fell from 0.278 to 0.209. But Q/value MAE got worse and the game results stayed uneven by color.</p></div>
+            <div class="finding"><span class="version">Pons v1 → v3</span><p><strong>Exact teacher labels need phase coverage.</strong> Late-game-only v1 did not raise overall search-opponent score. Phase-spread v3 learned Pons choices better, but still did not beat v5 against depth-3 search in that tournament.</p></div>
+            <div class="finding"><span class="version">DAGGER v1</span><p><strong>Learning from our own games is promising, not automatic.</strong> The hybrid result was 2.5 points higher than the prior model, but its confidence interval included no gain and its exact-teacher holdout regressed, so we did not promote it.</p></div>
+          </div>
+        </div>
+        <aside class="caution" aria-label="Important benchmark limits">
+          <h3>What that human win means</h3>
+          <p>It counts. Our 85% result is only against <strong>our local depth-3 search bot</strong>, not against you, the website bot, or a perfect-play solver. Those are different opponents.</p>
+          <p>A single game is a great bug-hunt: save the move history, mark the first high-regret choice, and identify the tactical motif. It is not enough by itself to rank checkpoints.</p>
+          <p>So: strong measured baseline, still beatable, and not a solved Connect Four player.</p>
+        </aside>
+      </section>
+
+      <section class="measurement" id="evidence" aria-labelledby="evidence-title">
+        <div class="section-head">
+          <h2 id="evidence-title">Measure the player, not the story</h2>
+          <p>Every candidate needs to pass several views of the same problem. One attractive number can hide a bad side, a lost block, or a too-slow search.</p>
+        </div>
+        <table class="metric-table">
+          <thead><tr><th>View</th><th>What to record</th><th>What it catches</th></tr></thead>
+          <tbody>
+            <tr><td>Move quality</td><td>teacher-best %, mean regret</td><td>A confident move can still be strategically worse than the teacher's choice.</td></tr>
+            <tr><td>Must-do tactics</td><td>win-now and safe-block accuracy, by motif</td><td>Separates a true tactical miss from an already-lost position.</td></tr>
+            <tr><td>Whole games</td><td>W–D–L, score rate, as X and O</td><td>Reveals color bias and whether better imitation actually wins more.</td></tr>
+            <tr><td>Fair comparison</td><td>same openings, swapped colors, multiple seeds</td><td>Stops lucky opening samples from deciding the result.</td></tr>
+            <tr><td>CPU cost</td><td>median / P95 move time, nodes, model calls, RSS</td><td>Shows the strength-versus-latency price of search.</td></tr>
+          </tbody>
+        </table>
+        <p class="measure-caption">A score rate is (wins + 0.5 × draws) ÷ games. Teacher regret is the teacher's value for its best move minus the value for our chosen move; smaller is better.</p>
+      </section>
+
+      <section class="sources" aria-labelledby="sources-title">
+        <div class="sources-inner">
+          <div><h2 id="sources-title">Open the lab notebook</h2><p>These local notes and JSON reports hold the detailed commands, splits, confidence intervals, training times, and per-game records behind this summary.</p></div>
+          <div class="source-links">
+            <a href="../connect_four_transformer/COMPETITION_READINESS.md">Current CPU candidate</a>
+            <a href="../connect_four_transformer/HYBRID_SEARCH.md">How hybrid search works</a>
+            <a href="../connect_four_transformer/STRATEGY_V4.md">Hard-example replay</a>
+            <a href="../connect_four_transformer/STRATEGY_V5_UNIQUE_5MIN.md">Unique states + caching</a>
+            <a href="../connect_four_transformer/BENCHMARK_PROTOCOL.md">Benchmark protocol</a>
+            <a href="../connect_four_distillation/README.md">Pons teacher experiments</a>
+            <a href="../connect_four_transformer/CPU_OPTIMIZATION_REPORT.md">15 October CPU report</a>
+            <a href="../connect_four_transformer/artifacts/reports/cpu_search_hotpath_v1.json">Search speed data</a>
+            <a href="../connect_four_transformer/artifacts/reports/cpu_sweep_v3.json">CPU thread sweep</a>
+            <a href="../connect_four_distillation/artifacts/reports/benchmark_balanced_cpu_all_full_lineage_holdout.json">Four-model holdout</a>
+            <a href="../connect_four_transformer/artifacts/reports/competition_candidate_v1_90opening_pairs.json">Paired search report</a>
+            <a href="../connect_four_transformer/artifacts/reports/pons_holdout_after_dagger_v1.json">Pons holdout report</a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer><span>Built from our saved Connect Four experiments.</span><span>One loss is a lesson. A benchmark is evidence.</span></footer>
+  </div>
+</body>
+</html>

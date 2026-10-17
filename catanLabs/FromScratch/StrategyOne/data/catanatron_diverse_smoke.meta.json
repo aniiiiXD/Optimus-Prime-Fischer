@@ -1,0 +1,179 @@
+{
+  "schema_version": "catanatron-diverse-metadata-v1",
+  "teachers": [
+    "Catanatron ValueFunctionPlayer(base, epsilon=None)",
+    "Catanatron ValueFunctionPlayer(contender, epsilon=None)",
+    "Catanatron VictoryPointPlayer"
+  ],
+  "opponents": [
+    "F_BASE",
+    "F_CONTENDER",
+    "VP",
+    "W",
+    "R"
+  ],
+  "engine": {
+    "url": "https://github.com/bcollazo/catanatron.git",
+    "commit": "ecf931181b9a65bb4116a2153fb78c16f1438e00",
+    "purpose": "Simulator, classical teachers, observations and evaluation"
+  },
+  "rules": {
+    "players": 2,
+    "vps_to_win": 10,
+    "number_placement": "official_spiral"
+  },
+  "rows": 2035,
+  "games": [
+    {
+      "game_id": 0,
+      "seed": 20261016,
+      "teacher_seat": 0,
+      "teacher": "Catanatron ValueFunctionPlayer(base, epsilon=None)",
+      "opponent": "F_BASE",
+      "teacher_won": false,
+      "termination_reason": "win",
+      "teacher_decisions": 142
+    },
+    {
+      "game_id": 1,
+      "seed": 20261017,
+      "teacher_seat": 1,
+      "teacher": "Catanatron ValueFunctionPlayer(contender, epsilon=None)",
+      "opponent": "F_BASE",
+      "teacher_won": false,
+      "termination_reason": "win",
+      "teacher_decisions": 83
+    },
+    {
+      "game_id": 2,
+      "seed": 20261018,
+      "teacher_seat": 0,
+      "teacher": "Catanatron VictoryPointPlayer",
+      "opponent": "F_BASE",
+      "teacher_won": false,
+      "termination_reason": "win",
+      "teacher_decisions": 63
+    },
+    {
+      "game_id": 3,
+      "seed": 20261019,
+      "teacher_seat": 1,
+      "teacher": "Catanatron ValueFunctionPlayer(base, epsilon=None)",
+      "opponent": "F_CONTENDER",
+      "teacher_won": false,
+      "termination_reason": "win",
+      "teacher_decisions": 108
+    },
+    {
+      "game_id": 4,
+      "seed": 20261020,
+      "teacher_seat": 0,
+      "teacher": "Catanatron ValueFunctionPlayer(contender, epsilon=None)",
+      "opponent": "F_CONTENDER",
+      "teacher_won": false,
+      "termination_reason": "win",
+      "teacher_decisions": 141
+    },
+    {
+      "game_id": 5,
+      "seed": 20261021,
+      "teacher_seat": 1,
+      "teacher": "Catanatron VictoryPointPlayer",
+      "opponent": "F_CONTENDER",
+      "teacher_won": false,
+      "termination_reason": "win",
+      "teacher_decisions": 80
+    },
+    {
+      "game_id": 6,
+      "seed": 20261022,
+      "teacher_seat": 0,
+      "teacher": "Catanatron ValueFunctionPlayer(base, epsilon=None)",
+      "opponent": "VP",
+      "teacher_won": true,
+      "termination_reason": "win",
+      "teacher_decisions": 107
+    },
+    {
+      "game_id": 7,
+      "seed": 20261023,
+      "teacher_seat": 1,
+      "teacher": "Catanatron ValueFunctionPlayer(contender, epsilon=None)",
+      "opponent": "VP",
+      "teacher_won": true,
+      "termination_reason": "win",
+      "teacher_decisions": 106
+    },
+    {
+      "game_id": 8,
+      "seed": 20261024,
+      "teacher_seat": 0,
+      "teacher": "Catanatron VictoryPointPlayer",
+      "opponent": "VP",
+      "teacher_won": true,
+      "termination_reason": "win",
+      "teacher_decisions": 226
+    },
+    {
+      "game_id": 9,
+      "seed": 20261025,
+      "teacher_seat": 1,
+      "teacher": "Catanatron ValueFunctionPlayer(base, epsilon=None)",
+      "opponent": "W",
+      "teacher_won": true,
+      "termination_reason": "win",
+      "teacher_decisions": 77
+    },
+    {
+      "game_id": 10,
+      "seed": 20261026,
+      "teacher_seat": 0,
+      "teacher": "Catanatron ValueFunctionPlayer(contender, epsilon=None)",
+      "opponent": "W",
+      "teacher_won": true,
+      "termination_reason": "win",
+      "teacher_decisions": 107
+    },
+    {
+      "game_id": 11,
+      "seed": 20261027,
+      "teacher_seat": 1,
+      "teacher": "Catanatron VictoryPointPlayer",
+      "opponent": "W",
+      "teacher_won": false,
+      "termination_reason": "win",
+      "teacher_decisions": 256
+    },
+    {
+      "game_id": 12,
+      "seed": 20261028,
+      "teacher_seat": 0,
+      "teacher": "Catanatron ValueFunctionPlayer(base, epsilon=None)",
+      "opponent": "R",
+      "teacher_won": true,
+      "termination_reason": "win",
+      "teacher_decisions": 123
+    },
+    {
+      "game_id": 13,
+      "seed": 20261029,
+      "teacher_seat": 1,
+      "teacher": "Catanatron ValueFunctionPlayer(contender, epsilon=None)",
+      "opponent": "R",
+      "teacher_won": true,
+      "termination_reason": "win",
+      "teacher_decisions": 122
+    },
+    {
+      "game_id": 14,
+      "seed": 20261030,
+      "teacher_seat": 0,
+      "teacher": "Catanatron VictoryPointPlayer",
+      "opponent": "R",
+      "teacher_won": true,
+      "termination_reason": "win",
+      "teacher_decisions": 294
+    }
+  ],
+  "note": "Every saved label is a move from the pinned external Catanatron implementation. The game contract remains provisional until the organizer publishes the official interface."
+}

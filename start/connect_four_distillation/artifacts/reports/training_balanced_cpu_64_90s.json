@@ -1,0 +1,237 @@
+{
+  "model": "ConnectFourTransformer candidate policy/Q/value v0",
+  "config": {
+    "d_model": 64,
+    "n_heads": 4,
+    "n_blocks": 2,
+    "mlp_hidden": 128,
+    "dropout": 0.1,
+    "board_tokens": 42,
+    "action_count": 7
+  },
+  "parameters": 114819,
+  "dataset": {
+    "path": "connect_four_distillation/artifacts/data/pons_exact_phases_v3.jsonl",
+    "extra_train": [
+      "connect_four_distillation/artifacts/data/pons_balanced_cpu_v1_4000.jsonl"
+    ],
+    "rows": 5167,
+    "split": {
+      "train": 4478,
+      "validation": 345,
+      "test": 344
+    },
+    "duplicate_extras_skipped": 20,
+    "excluded_primary_rows": 710,
+    "excluded_external_extra_rows": 1039,
+    "exclude_datasets": [
+      "connect_four_distillation/artifacts/data/pons_exact_holdout_v2.jsonl"
+    ],
+    "heldout_opening_group_extras_skipped": 64
+  },
+  "training": {
+    "epochs": 71,
+    "epoch_limit": null,
+    "time_budget_seconds": 90.0,
+    "fit_wall_seconds": 90.27975370801869,
+    "optimizer_step_wall_seconds": 88.24102521390887,
+    "best_epoch": 29,
+    "batch_size": 128,
+    "loader_workers": 0,
+    "learning_rate": 0.0005,
+    "q_weight": 0.5,
+    "value_weight": 0.25,
+    "hard_tactical_targets": true,
+    "tactical_weight": 3.0,
+    "selection_metric": "balanced",
+    "best_validation_balanced_score": 0.6932476178012338,
+    "init_checkpoint": null,
+    "wall_seconds": 90.27975370801869,
+    "total_run_wall_seconds": 92.00402587500867,
+    "cpu_seconds": 140.122887,
+    "peak_rss_mib": 423.453125,
+    "curve": [
+      {
+        "epoch": 1,
+        "train_loss": 1.7836974610064167,
+        "validation": {
+          "positions": 345,
+          "loss": 1.8146930853525798,
+          "policy_loss": 1.6392030156177022,
+          "q_loss": 0.24458110781683437,
+          "value_loss": 0.21279813876186593,
+          "best_move_accuracy": 0.4753623188405797,
+          "top2_best_move_recall": 0.7130434782608696,
+          "critical_move_accuracy": 0.45098039215686275,
+          "critical_positions": 102,
+          "mean_teacher_regret": 0.33985517197760984,
+          "q_mae": 0.588761711308152,
+          "value_mae": 0.5826139035432235
+        }
+      },
+      {
+        "epoch": 10,
+        "train_loss": 1.6615454918468249,
+        "validation": {
+          "positions": 345,
+          "loss": 1.7463477221088133,
+          "policy_loss": 1.614127723030422,
+          "q_loss": 0.18759901847528374,
+          "value_loss": 0.15368191755336263,
+          "best_move_accuracy": 0.4782608695652174,
+          "top2_best_move_recall": 0.7275362318840579,
+          "critical_move_accuracy": 0.39215686274509803,
+          "critical_positions": 102,
+          "mean_teacher_regret": 0.37700498276862543,
+          "q_mae": 0.5154534774075098,
+          "value_mae": 0.4528912862141927
+        }
+      },
+      {
+        "epoch": 20,
+        "train_loss": 1.449181278670883,
+        "validation": {
+          "positions": 345,
+          "loss": 1.5819878733676414,
+          "policy_loss": 1.4545924007028774,
+          "q_loss": 0.18038287205972534,
+          "value_loss": 0.14881622609884843,
+          "best_move_accuracy": 0.5826086956521739,
+          "top2_best_move_recall": 0.7971014492753623,
+          "critical_move_accuracy": 0.6274509803921569,
+          "critical_positions": 102,
+          "mean_teacher_regret": 0.26656394073928613,
+          "q_mae": 0.4915656930929088,
+          "value_mae": 0.4431591863217561
+        }
+      },
+      {
+        "epoch": 30,
+        "train_loss": 1.3734838912507261,
+        "validation": {
+          "positions": 345,
+          "loss": 1.5799842285073322,
+          "policy_loss": 1.4512027343114218,
+          "q_loss": 0.18089166663695072,
+          "value_loss": 0.15334270548993262,
+          "best_move_accuracy": 0.5797101449275363,
+          "top2_best_move_recall": 0.8057971014492754,
+          "critical_move_accuracy": 0.6470588235294118,
+          "critical_positions": 102,
+          "mean_teacher_regret": 0.26396397023961166,
+          "q_mae": 0.4821141785928282,
+          "value_mae": 0.45916857512100884
+        }
+      },
+      {
+        "epoch": 40,
+        "train_loss": 1.3075213728338653,
+        "validation": {
+          "positions": 345,
+          "loss": 1.5691286256347878,
+          "policy_loss": 1.4438845824504245,
+          "q_loss": 0.17737088890179345,
+          "value_loss": 0.14623439273108607,
+          "best_move_accuracy": 0.5826086956521739,
+          "top2_best_move_recall": 0.8,
+          "critical_move_accuracy": 0.6568627450980392,
+          "critical_positions": 102,
+          "mean_teacher_regret": 0.2717454385066378,
+          "q_mae": 0.48229281295131204,
+          "value_mae": 0.44511965323185576
+        }
+      },
+      {
+        "epoch": 50,
+        "train_loss": 1.2449190085250492,
+        "validation": {
+          "positions": 345,
+          "loss": 1.5846129320669866,
+          "policy_loss": 1.4603259601454803,
+          "q_loss": 0.17530206618965535,
+          "value_loss": 0.14654371133749036,
+          "best_move_accuracy": 0.5942028985507246,
+          "top2_best_move_recall": 0.7797101449275362,
+          "critical_move_accuracy": 0.6568627450980392,
+          "critical_positions": 102,
+          "mean_teacher_regret": 0.27645635743072067,
+          "q_mae": 0.48889388212881024,
+          "value_mae": 0.4460378453351449
+        }
+      },
+      {
+        "epoch": 60,
+        "train_loss": 1.1869951069701086,
+        "validation": {
+          "positions": 345,
+          "loss": 1.6899316891379979,
+          "policy_loss": 1.5657680915749592,
+          "q_loss": 0.1735588386438895,
+          "value_loss": 0.14953675162101138,
+          "best_move_accuracy": 0.5855072463768116,
+          "top2_best_move_recall": 0.7623188405797101,
+          "critical_move_accuracy": 0.5882352941176471,
+          "critical_positions": 102,
+          "mean_teacher_regret": 0.2740451868029608,
+          "q_mae": 0.4725913963955529,
+          "value_mae": 0.4462317425271739
+        }
+      },
+      {
+        "epoch": 70,
+        "train_loss": 1.1209055018669902,
+        "validation": {
+          "positions": 345,
+          "loss": 1.7143063417379407,
+          "policy_loss": 1.5917935253917308,
+          "q_loss": 0.17214344031568887,
+          "value_loss": 0.14576441382152447,
+          "best_move_accuracy": 0.5768115942028985,
+          "top2_best_move_recall": 0.7536231884057971,
+          "critical_move_accuracy": 0.6078431372549019,
+          "critical_positions": 102,
+          "mean_teacher_regret": 0.29407848413439763,
+          "q_mae": 0.47389158175758206,
+          "value_mae": 0.43367500858030456
+        }
+      }
+    ]
+  },
+  "test": {
+    "positions": 344,
+    "loss": 1.6417634792106097,
+    "policy_loss": 1.5045935026434964,
+    "q_loss": 0.1883795885152595,
+    "value_loss": 0.1719207302775494,
+    "best_move_accuracy": 0.5348837209302325,
+    "top2_best_move_recall": 0.7674418604651163,
+    "critical_move_accuracy": 0.5590551181102362,
+    "critical_positions": 127,
+    "mean_teacher_regret": 0.30505516362744706,
+    "q_mae": 0.49664972191552564,
+    "value_mae": 0.47728637207386104
+  },
+  "latency": {
+    "batch_1": {
+      "batch_size": 1,
+      "iterations": 300,
+      "median_ms": 0.5392085,
+      "p95_ms": 0.6155,
+      "positions_per_second": 1854.5701709079142
+    },
+    "batch_64": {
+      "batch_size": 64,
+      "iterations": 300,
+      "median_ms": 4.327458,
+      "p95_ms": 5.633625,
+      "positions_per_second": 14789.282761380931
+    }
+  },
+  "environment": {
+    "python": "3.11.15",
+    "pytorch": "2.7.1",
+    "platform": "macOS-27.0.1-arm64-arm-64bit",
+    "logical_cpus": 10,
+    "torch_threads": 4
+  }
+}

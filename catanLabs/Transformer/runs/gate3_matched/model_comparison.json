@@ -1,0 +1,396 @@
+{
+  "description": "Audited validation imitation comparison; not game strength",
+  "dataset": "catanLabs/Transformer/runs/gate2_native_v2/dataset.npz",
+  "dataset_sha256": "bc558d4bbbd75d5f4d82fdbc80ad3884bf2eb4c140f89833275f9e84f1d03280",
+  "split_file": "catanLabs/Transformer/runs/gate2_native_v2/dataset.split.json",
+  "split_file_sha256": "f9e151e0481cbf146f05b1feb4a4d5a03658fdc8e8e1080228521e383d95c6fb",
+  "validation_games": [
+    9,
+    15,
+    28,
+    42,
+    52,
+    54,
+    61,
+    67,
+    77,
+    89
+  ],
+  "evaluated_games": [
+    9,
+    15,
+    28,
+    42,
+    52,
+    54,
+    61,
+    67,
+    77,
+    89
+  ],
+  "final_games_evaluated": 0,
+  "rows": 3060,
+  "nonforced_rows": 1723,
+  "sample_limited": false,
+  "max_validation_rows": null,
+  "latency_samples": 200,
+  "cpu_threads": 4,
+  "transformer": {
+    "checkpoint": "catanLabs/Transformer/runs/gate3_matched/transformer/best.pt",
+    "checkpoint_sha256": "7a28240e136bbcf62e597a4131c4598241e451a803889b8d28e396e77cbf6081",
+    "correct": 2374,
+    "agreement": 0.7758169934640523,
+    "nonforced_agreement": 0.6018572257690076,
+    "by_phase": {
+      "BUILD_INITIAL_ROAD": {
+        "count": 80,
+        "agreement_count": 41,
+        "agreement": 0.5125,
+        "nonforced_count": 80,
+        "nonforced_agreement": 0.5125
+      },
+      "BUILD_INITIAL_SETTLEMENT": {
+        "count": 80,
+        "agreement_count": 16,
+        "agreement": 0.2,
+        "nonforced_count": 80,
+        "nonforced_agreement": 0.2
+      },
+      "DISCARD": {
+        "count": 460,
+        "agreement_count": 341,
+        "agreement": 0.741304347826087,
+        "nonforced_count": 460,
+        "nonforced_agreement": 0.741304347826087
+      },
+      "MOVE_ROBBER": {
+        "count": 165,
+        "agreement_count": 27,
+        "agreement": 0.16363636363636364,
+        "nonforced_count": 165,
+        "nonforced_agreement": 0.16363636363636364
+      },
+      "PLAY_TURN": {
+        "count": 2275,
+        "agreement_count": 1949,
+        "agreement": 0.8567032967032967,
+        "nonforced_count": 938,
+        "nonforced_agreement": 0.652452025586354
+      }
+    },
+    "by_teacher_action_type": {
+      "BUILD_CITY": {
+        "count": 50,
+        "agreement_count": 39,
+        "agreement": 0.78,
+        "nonforced_count": 50,
+        "nonforced_agreement": 0.78
+      },
+      "BUILD_ROAD": {
+        "count": 333,
+        "agreement_count": 88,
+        "agreement": 0.26426426426426425,
+        "nonforced_count": 333,
+        "nonforced_agreement": 0.26426426426426425
+      },
+      "BUILD_SETTLEMENT": {
+        "count": 152,
+        "agreement_count": 82,
+        "agreement": 0.5394736842105263,
+        "nonforced_count": 152,
+        "nonforced_agreement": 0.5394736842105263
+      },
+      "BUY_DEVELOPMENT_CARD": {
+        "count": 55,
+        "agreement_count": 54,
+        "agreement": 0.9818181818181818,
+        "nonforced_count": 55,
+        "nonforced_agreement": 0.9818181818181818
+      },
+      "DISCARD_RESOURCE": {
+        "count": 460,
+        "agreement_count": 341,
+        "agreement": 0.741304347826087,
+        "nonforced_count": 460,
+        "nonforced_agreement": 0.741304347826087
+      },
+      "END_TURN": {
+        "count": 786,
+        "agreement_count": 768,
+        "agreement": 0.9770992366412213,
+        "nonforced_count": 247,
+        "nonforced_agreement": 0.9271255060728745
+      },
+      "MARITIME_TRADE": {
+        "count": 204,
+        "agreement_count": 124,
+        "agreement": 0.6078431372549019,
+        "nonforced_count": 204,
+        "nonforced_agreement": 0.6078431372549019
+      },
+      "MOVE_ROBBER": {
+        "count": 165,
+        "agreement_count": 27,
+        "agreement": 0.16363636363636364,
+        "nonforced_count": 165,
+        "nonforced_agreement": 0.16363636363636364
+      },
+      "PLAY_KNIGHT_CARD": {
+        "count": 47,
+        "agreement_count": 47,
+        "agreement": 1.0,
+        "nonforced_count": 47,
+        "nonforced_agreement": 1.0
+      },
+      "PLAY_MONOPOLY": {
+        "count": 4,
+        "agreement_count": 1,
+        "agreement": 0.25,
+        "nonforced_count": 4,
+        "nonforced_agreement": 0.25
+      },
+      "PLAY_YEAR_OF_PLENTY": {
+        "count": 1,
+        "agreement_count": 0,
+        "agreement": 0.0,
+        "nonforced_count": 1,
+        "nonforced_agreement": 0.0
+      },
+      "ROLL": {
+        "count": 803,
+        "agreement_count": 803,
+        "agreement": 1.0,
+        "nonforced_count": 5,
+        "nonforced_agreement": 1.0
+      }
+    },
+    "latency": {
+      "scope": "single-row model forward only; excludes visible snapshot and encoding",
+      "samples": 200,
+      "warmups": 20,
+      "p50_ms": 0.33135400000000004,
+      "p95_ms": 0.38579614999999995
+    }
+  },
+  "mlp": {
+    "checkpoint": "catanLabs/Transformer/runs/gate3_matched/mlp/best.pt",
+    "checkpoint_sha256": "1957cce9e60f6121198aeb93cccdb9caf8b707804be1965480404548fa565681",
+    "correct": 2144,
+    "agreement": 0.7006535947712418,
+    "nonforced_agreement": 0.4683691236215902,
+    "by_phase": {
+      "BUILD_INITIAL_ROAD": {
+        "count": 80,
+        "agreement_count": 41,
+        "agreement": 0.5125,
+        "nonforced_count": 80,
+        "nonforced_agreement": 0.5125
+      },
+      "BUILD_INITIAL_SETTLEMENT": {
+        "count": 80,
+        "agreement_count": 13,
+        "agreement": 0.1625,
+        "nonforced_count": 80,
+        "nonforced_agreement": 0.1625
+      },
+      "DISCARD": {
+        "count": 460,
+        "agreement_count": 192,
+        "agreement": 0.41739130434782606,
+        "nonforced_count": 460,
+        "nonforced_agreement": 0.41739130434782606
+      },
+      "MOVE_ROBBER": {
+        "count": 165,
+        "agreement_count": 34,
+        "agreement": 0.20606060606060606,
+        "nonforced_count": 165,
+        "nonforced_agreement": 0.20606060606060606
+      },
+      "PLAY_TURN": {
+        "count": 2275,
+        "agreement_count": 1864,
+        "agreement": 0.8193406593406594,
+        "nonforced_count": 938,
+        "nonforced_agreement": 0.5618336886993603
+      }
+    },
+    "by_teacher_action_type": {
+      "BUILD_CITY": {
+        "count": 50,
+        "agreement_count": 40,
+        "agreement": 0.8,
+        "nonforced_count": 50,
+        "nonforced_agreement": 0.8
+      },
+      "BUILD_ROAD": {
+        "count": 333,
+        "agreement_count": 128,
+        "agreement": 0.3843843843843844,
+        "nonforced_count": 333,
+        "nonforced_agreement": 0.3843843843843844
+      },
+      "BUILD_SETTLEMENT": {
+        "count": 152,
+        "agreement_count": 75,
+        "agreement": 0.4934210526315789,
+        "nonforced_count": 152,
+        "nonforced_agreement": 0.4934210526315789
+      },
+      "BUY_DEVELOPMENT_CARD": {
+        "count": 55,
+        "agreement_count": 35,
+        "agreement": 0.6363636363636364,
+        "nonforced_count": 55,
+        "nonforced_agreement": 0.6363636363636364
+      },
+      "DISCARD_RESOURCE": {
+        "count": 460,
+        "agreement_count": 192,
+        "agreement": 0.41739130434782606,
+        "nonforced_count": 460,
+        "nonforced_agreement": 0.41739130434782606
+      },
+      "END_TURN": {
+        "count": 786,
+        "agreement_count": 728,
+        "agreement": 0.926208651399491,
+        "nonforced_count": 247,
+        "nonforced_agreement": 0.7651821862348178
+      },
+      "MARITIME_TRADE": {
+        "count": 204,
+        "agreement_count": 61,
+        "agreement": 0.29901960784313725,
+        "nonforced_count": 204,
+        "nonforced_agreement": 0.29901960784313725
+      },
+      "MOVE_ROBBER": {
+        "count": 165,
+        "agreement_count": 34,
+        "agreement": 0.20606060606060606,
+        "nonforced_count": 165,
+        "nonforced_agreement": 0.20606060606060606
+      },
+      "PLAY_KNIGHT_CARD": {
+        "count": 47,
+        "agreement_count": 47,
+        "agreement": 1.0,
+        "nonforced_count": 47,
+        "nonforced_agreement": 1.0
+      },
+      "PLAY_MONOPOLY": {
+        "count": 4,
+        "agreement_count": 1,
+        "agreement": 0.25,
+        "nonforced_count": 4,
+        "nonforced_agreement": 0.25
+      },
+      "PLAY_YEAR_OF_PLENTY": {
+        "count": 1,
+        "agreement_count": 0,
+        "agreement": 0.0,
+        "nonforced_count": 1,
+        "nonforced_agreement": 0.0
+      },
+      "ROLL": {
+        "count": 803,
+        "agreement_count": 803,
+        "agreement": 1.0,
+        "nonforced_count": 5,
+        "nonforced_agreement": 1.0
+      }
+    },
+    "latency": {
+      "scope": "single-row model forward only; excludes visible snapshot and encoding",
+      "samples": 200,
+      "warmups": 20,
+      "p50_ms": 0.1332505,
+      "p95_ms": 0.14953334999999998
+    }
+  },
+  "overlap": {
+    "rows": 3060,
+    "both_correct": 2014,
+    "transformer_only_correct": 360,
+    "mlp_only_correct": 130,
+    "both_wrong": 556
+  },
+  "nonforced_overlap": {
+    "rows": 1723,
+    "both_correct": 677,
+    "transformer_only_correct": 360,
+    "mlp_only_correct": 130,
+    "both_wrong": 556
+  },
+  "phase_overlap": {
+    "BUILD_INITIAL_ROAD": {
+      "rows": 80,
+      "both_correct": 32,
+      "transformer_only_correct": 9,
+      "mlp_only_correct": 9,
+      "both_wrong": 30
+    },
+    "BUILD_INITIAL_SETTLEMENT": {
+      "rows": 80,
+      "both_correct": 6,
+      "transformer_only_correct": 10,
+      "mlp_only_correct": 7,
+      "both_wrong": 57
+    },
+    "DISCARD": {
+      "rows": 460,
+      "both_correct": 160,
+      "transformer_only_correct": 181,
+      "mlp_only_correct": 32,
+      "both_wrong": 87
+    },
+    "MOVE_ROBBER": {
+      "rows": 165,
+      "both_correct": 20,
+      "transformer_only_correct": 7,
+      "mlp_only_correct": 14,
+      "both_wrong": 124
+    },
+    "PLAY_TURN": {
+      "rows": 2275,
+      "both_correct": 1796,
+      "transformer_only_correct": 153,
+      "mlp_only_correct": 68,
+      "both_wrong": 258
+    }
+  },
+  "examples": [
+    {
+      "dataset_row": 2784,
+      "game_id": 9,
+      "phase": "BUILD_INITIAL_SETTLEMENT",
+      "legal_action_count": 54,
+      "teacher": "BUILD_SETTLEMENT node 18",
+      "transformer": "BUILD_SETTLEMENT node 18",
+      "mlp": "BUILD_SETTLEMENT node 16",
+      "meaning": "Model/teacher choice difference only; no outcome or strategic-regret claim."
+    },
+    {
+      "dataset_row": 2811,
+      "game_id": 9,
+      "phase": "PLAY_TURN",
+      "legal_action_count": 5,
+      "teacher": "MARITIME_TRADE offer (WHEAT x4) for SHEEP",
+      "transformer": "MARITIME_TRADE offer (WHEAT x4) for BRICK",
+      "mlp": "END_TURN",
+      "meaning": "Model/teacher choice difference only; no outcome or strategic-regret claim."
+    },
+    {
+      "dataset_row": 2931,
+      "game_id": 9,
+      "phase": "MOVE_ROBBER",
+      "legal_action_count": 19,
+      "teacher": "MOVE_ROBBER tile 17, victim relative seat 2",
+      "transformer": "MOVE_ROBBER tile 15, victim relative seat 1",
+      "mlp": "MOVE_ROBBER tile 3, victim relative seat 1",
+      "meaning": "Model/teacher choice difference only; no outcome or strategic-regret claim."
+    }
+  ],
+  "output": "catanLabs/Transformer/runs/gate3_matched/model_comparison.json"
+}

@@ -1,0 +1,32 @@
+{
+  "device": "cpu",
+  "optimizer_budget_seconds": 2.0,
+  "optimizer_elapsed_seconds": 2.435,
+  "budget_respected": true,
+  "epochs": 1,
+  "best_epoch": 1,
+  "parameters": 77569,
+  "examples": 4000,
+  "train_examples": 3082,
+  "validation_examples": 918,
+  "unique_games": 14,
+  "heldout_games": [
+    11,
+    12,
+    13
+  ],
+  "split": "held-out complete games",
+  "validation": {
+    "loss": 0.9101374938856802,
+    "accuracy": 0.6220043572984749,
+    "examples": 918
+  },
+  "architecture": {
+    "width": 64,
+    "layers": 2,
+    "heads": 4
+  },
+  "checkpoint": "catanLabs/Transformer/runs/pilot_smoke/best.pt",
+  "dataset": "catanLabs/Transformer/runs/pilot/dataset.npz",
+  "dataset_sha256": "767ca88f57e13c7fdebc69db371a0286e0dcf178ffc54874d97fa18712e9e402"
+}

@@ -1,0 +1,6381 @@
+{
+  "sources": {
+    "benjamin": {
+      "url": "https://github.com/BenjaminL1/catan_rl.git",
+      "commit": "8c3bace788379f0549bf437bedc338577c01cd3b",
+      "purpose": "Transformer/GNN architecture and 1v1 PPO study"
+    },
+    "catanatron": {
+      "url": "https://github.com/bcollazo/catanatron.git",
+      "commit": "ecf931181b9a65bb4116a2153fb78c16f1438e00",
+      "purpose": "Simulator, classical teachers, observations and evaluation"
+    },
+    "eli": {
+      "url": "https://github.com/Eli6th/catan-rl.git",
+      "commit": "021279c56834b6203480e5292e1de7246e47bd68",
+      "purpose": "Rust engine, pretrained MLP and policy-guided search"
+    },
+    "settlers": {
+      "url": "https://github.com/Catan-RL/settlers.git",
+      "commit": "44824311f2499f785e34392f68156918f8a757d1",
+      "purpose": "Charlesworth fork, pretrained attention/PPO policy"
+    },
+    "catanatron_1v1": {
+      "url": "https://github.com/PeterLP123/catanatron-1v1.git",
+      "commit": "37b60be720e66b65f236f366be5e0ad119aacb66",
+      "purpose": "Imitation, DAgger and masked PPO training reference"
+    }
+  },
+  "checkpoints": [
+    {
+      "source": "eli",
+      "source_commit": "021279c56834b6203480e5292e1de7246e47bd68",
+      "git_path": "models/catan-512-best.pt",
+      "git_blob": "5dbdadea2ae10d91b3fd7dfdab10c9f4b973e5cc",
+      "file": "eli_best.pt",
+      "bytes": 13310309,
+      "sha256": "c4258f235c673efe6968b0aa4de66a1411f01012fa14fe71f548dfff681525a3"
+    },
+    {
+      "source": "eli",
+      "source_commit": "021279c56834b6203480e5292e1de7246e47bd68",
+      "git_path": "models/catan-512.ctnn",
+      "git_blob": "22e5706a8ec0c235a4ba461b4ad709e5157bfc5f",
+      "file": "eli.ctnn",
+      "bytes": 4438528,
+      "sha256": "21f3b380786a53998172896caac44191dea3d44efd11d3bf8c92150d8b18c8a5"
+    },
+    {
+      "source": "settlers",
+      "source_commit": "44824311f2499f785e34392f68156918f8a757d1",
+      "git_path": "RL/results/default_after_update_3825.pt",
+      "git_blob": "bc389c3320104174ee4600302bad3bf2d3358cd5",
+      "file": "settlers_3825.pt",
+      "bytes": 7805063,
+      "sha256": "1c2f9d837e818898003df8619aa3062a30d3f2774f9da25ed3d47c5800bc9d3c"
+    }
+  ],
+  "caution": "Different rules/opponents: no cross-repository Elo or strength ranking. Wilson intervals are approximate, not adjusted for shared map seeds.",
+  "experiments": [
+    {
+      "agent": "benjamin",
+      "trained": false,
+      "notes": "No public checkpoint in pinned Git tree; untrained legal-action/latency smoke only.",
+      "parameters": 1380763,
+      "validated_actions": 256,
+      "validation_scope": "fields consumed by the environment in this phase",
+      "schema_contract_mismatches": [
+        {
+          "action": [
+            6,
+            3,
+            7,
+            14,
+            4,
+            1
+          ],
+          "tile_mask_legal_count": 0
+        },
+        {
+          "action": [
+            6,
+            26,
+            60,
+            14,
+            1,
+            4
+          ],
+          "tile_mask_legal_count": 0
+        }
+      ],
+      "fixed_state_model_sample_latency": {
+        "samples": 100,
+        "median_ms": 0.891292,
+        "p95_ms": 0.9637128500000001,
+        "p99_ms": 1.0190557500000004,
+        "mean_ms": 0.8988209,
+        "max_ms": 1.069917
+      },
+      "rules": {
+        "players": 2,
+        "target_vp": 15,
+        "epoch": "R0",
+        "p2p_trade": false
+      },
+      "latency_scope": "observation/mask conversion + full six-head policy sample; excludes environment step",
+      "status": "ok",
+      "games": [
+        {
+          "seat": 0,
+          "seed": 20261015,
+          "winner": null,
+          "student_won": false,
+          "smoke_only": true,
+          "terminated": false,
+          "truncated": false
+        },
+        {
+          "seat": 1,
+          "seed": 20261015,
+          "winner": null,
+          "student_won": false,
+          "smoke_only": true,
+          "terminated": false,
+          "truncated": false
+        }
+      ],
+      "completed_games": 0,
+      "capped_games": 2,
+      "wins": 0,
+      "win_rate_completed": null,
+      "win_rate_all_attempts": 0.0,
+      "win_rate_wilson95": null,
+      "by_seat": {
+        "0": {
+          "attempted": 1,
+          "completed": 0,
+          "wins": 0
+        },
+        "1": {
+          "attempted": 1,
+          "completed": 0,
+          "wins": 0
+        }
+      },
+      "decision_latency": {
+        "samples": 256,
+        "median_ms": 0.950187,
+        "p95_ms": 1.01749,
+        "p99_ms": 1.0442205,
+        "mean_ms": 0.9591312109375,
+        "max_ms": 1.242208
+      },
+      "benchmark_wall_s": 0.3210892080096528,
+      "process_cpu_s": 0.310859,
+      "average_busy_cores": 0.9681421618837303,
+      "peak_process_rss_mib": 218.578125,
+      "torch_version": "2.7.1",
+      "numpy_version": "2.2.6",
+      "seed": 20261015,
+      "torch_threads": 1,
+      "process_wall_s": 1.171161625010427,
+      "raw_report": "artifacts/reports/benjamin_checked.json",
+      "raw_report_sha256": "7ea5aaba23dba727f52abb4d34786b2070ff6ff031cca4a2fde1a857af4ba1f6",
+      "protocol": {
+        "agents": [
+          "benjamin"
+        ],
+        "games": 2,
+        "threads": 1,
+        "seconds": 30.0,
+        "seed": 20261015,
+        "classical_policy": "weighted",
+        "classical_opponents": "random"
+      }
+    },
+    {
+      "agent": "catanatron_1v1",
+      "trained": false,
+      "validated_actions": 7452,
+      "policy": "ValueFunctionPlayer",
+      "search_depth": null,
+      "opponents": "random legal bots",
+      "rules": {
+        "players": 2,
+        "target_vp": 15
+      },
+      "latency_scope": "classical policy decide; excludes game execute",
+      "status": "ok",
+      "games": [
+        {
+          "seed": 20261015,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261015,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261016,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261016,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261017,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261017,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261018,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261018,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261019,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261019,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261020,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261020,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261021,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261021,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261022,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261022,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261023,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261023,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261024,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261024,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261025,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261025,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261026,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261026,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261027,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261027,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261028,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261028,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261029,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261029,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261030,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261030,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        }
+      ],
+      "completed_games": 32,
+      "capped_games": 0,
+      "wins": 32,
+      "win_rate_completed": 1.0,
+      "win_rate_all_attempts": 1.0,
+      "win_rate_wilson95": [
+        0.8928208017449346,
+        1.0
+      ],
+      "by_seat": {
+        "0": {
+          "attempted": 16,
+          "completed": 16,
+          "wins": 16
+        },
+        "1": {
+          "attempted": 16,
+          "completed": 16,
+          "wins": 16
+        }
+      },
+      "decision_latency": {
+        "samples": 4391,
+        "median_ms": 0.174375,
+        "p95_ms": 3.5235624999999997,
+        "p99_ms": 5.359750000000006,
+        "mean_ms": 0.6591509626508768,
+        "max_ms": 25.926042
+      },
+      "benchmark_wall_s": 3.0443140419956762,
+      "process_cpu_s": 3.0450299999999997,
+      "average_busy_cores": 1.000235178760945,
+      "peak_process_rss_mib": 221.375,
+      "torch_version": "2.7.1",
+      "numpy_version": "2.2.6",
+      "seed": 20261015,
+      "torch_threads": 1,
+      "process_wall_s": 3.607525999977952,
+      "raw_report": "artifacts/reports/baselines_final.json",
+      "raw_report_sha256": "128a45b3a6320204c5187e0cd922067c39e48de394e2804d00539b8149dcca74",
+      "protocol": {
+        "agents": [
+          "benjamin",
+          "catanatron",
+          "catanatron_1v1",
+          "settlers",
+          "eli"
+        ],
+        "games": 32,
+        "threads": 1,
+        "seconds": 60.0,
+        "seed": 20261015,
+        "classical_policy": "weighted",
+        "classical_opponents": "random"
+      }
+    },
+    {
+      "agent": "settlers",
+      "trained": true,
+      "checkpoint_sha256": "1c2f9d837e818898003df8619aa3062a30d3f2774f9da25ed3d47c5800bc9d3c",
+      "parameters": 1928995,
+      "validated_actions": 11718,
+      "opponents": "three zero-logit, uniformly sampled conditional-head policies",
+      "rules": {
+        "players": 4,
+        "target_vp": 10,
+        "p2p_trade": false
+      },
+      "compatibility": [
+        "headless ui.display shim",
+        "np.int alias restored within worker"
+      ],
+      "latency_scope": "observation/mask conversion + attention + all conditional heads + action decoding",
+      "status": "ok",
+      "games": [
+        {
+          "seed": 20261015,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261015,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261015,
+          "seat": 2,
+          "winner": 2,
+          "student_won": true
+        },
+        {
+          "seed": 20261015,
+          "seat": 3,
+          "winner": 3,
+          "student_won": true
+        },
+        {
+          "seed": 20261016,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261016,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261016,
+          "seat": 2,
+          "winner": 2,
+          "student_won": true
+        },
+        {
+          "seed": 20261016,
+          "seat": 3,
+          "winner": 3,
+          "student_won": true
+        },
+        {
+          "seed": 20261017,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261017,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261017,
+          "seat": 2,
+          "winner": 2,
+          "student_won": true
+        },
+        {
+          "seed": 20261017,
+          "seat": 3,
+          "winner": 3,
+          "student_won": true
+        },
+        {
+          "seed": 20261018,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261018,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261018,
+          "seat": 2,
+          "winner": 2,
+          "student_won": true
+        },
+        {
+          "seed": 20261018,
+          "seat": 3,
+          "winner": 3,
+          "student_won": true
+        },
+        {
+          "seed": 20261019,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261019,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261019,
+          "seat": 2,
+          "winner": 2,
+          "student_won": true
+        },
+        {
+          "seed": 20261019,
+          "seat": 3,
+          "winner": 3,
+          "student_won": true
+        },
+        {
+          "seed": 20261020,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261020,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261020,
+          "seat": 2,
+          "winner": 2,
+          "student_won": true
+        },
+        {
+          "seed": 20261020,
+          "seat": 3,
+          "winner": 3,
+          "student_won": true
+        },
+        {
+          "seed": 20261021,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261021,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261021,
+          "seat": 2,
+          "winner": 2,
+          "student_won": true
+        },
+        {
+          "seed": 20261021,
+          "seat": 3,
+          "winner": 3,
+          "student_won": true
+        },
+        {
+          "seed": 20261022,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261022,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261022,
+          "seat": 2,
+          "winner": 2,
+          "student_won": true
+        },
+        {
+          "seed": 20261022,
+          "seat": 3,
+          "winner": 3,
+          "student_won": true
+        }
+      ],
+      "completed_games": 32,
+      "capped_games": 0,
+      "wins": 32,
+      "win_rate_completed": 1.0,
+      "win_rate_all_attempts": 1.0,
+      "win_rate_wilson95": [
+        0.8928208017449346,
+        1.0
+      ],
+      "by_seat": {
+        "0": {
+          "attempted": 8,
+          "completed": 8,
+          "wins": 8
+        },
+        "1": {
+          "attempted": 8,
+          "completed": 8,
+          "wins": 8
+        },
+        "2": {
+          "attempted": 8,
+          "completed": 8,
+          "wins": 8
+        },
+        "3": {
+          "attempted": 8,
+          "completed": 8,
+          "wins": 8
+        }
+      },
+      "decision_latency": {
+        "samples": 3667,
+        "median_ms": 1.843834,
+        "p95_ms": 1.9226543999999999,
+        "p99_ms": 2.0052767800000004,
+        "mean_ms": 1.8580533883283339,
+        "max_ms": 9.115292
+      },
+      "benchmark_wall_s": 23.91337675001705,
+      "process_cpu_s": 23.895459000000002,
+      "average_busy_cores": 0.9992508063497542,
+      "peak_process_rss_mib": 215.5625,
+      "torch_version": "2.7.1",
+      "numpy_version": "2.2.6",
+      "seed": 20261015,
+      "torch_threads": 1,
+      "process_wall_s": 24.440538499999093,
+      "raw_report": "artifacts/reports/baselines_final.json",
+      "raw_report_sha256": "128a45b3a6320204c5187e0cd922067c39e48de394e2804d00539b8149dcca74",
+      "protocol": {
+        "agents": [
+          "benjamin",
+          "catanatron",
+          "catanatron_1v1",
+          "settlers",
+          "eli"
+        ],
+        "games": 32,
+        "threads": 1,
+        "seconds": 60.0,
+        "seed": 20261015,
+        "classical_policy": "weighted",
+        "classical_opponents": "random"
+      }
+    },
+    {
+      "agent": "eli",
+      "trained": true,
+      "checkpoint_sha256": "c4258f235c673efe6968b0aa4de66a1411f01012fa14fe71f548dfff681525a3",
+      "checkpoint_training_steps": 46497792,
+      "parameters": 1108268,
+      "validated_actions": 24753,
+      "opponents": "three heuristic-v1 bots",
+      "rules": {
+        "players": 4,
+        "target_vp": 7,
+        "visibility": "perfect",
+        "p2p_trade": "bounded offer menu"
+      },
+      "fixed_state_model_forward_latency": {
+        "samples": 100,
+        "median_ms": 0.027521,
+        "p95_ms": 0.028835100000000002,
+        "p99_ms": 0.029278750000000017,
+        "mean_ms": 0.02774496,
+        "max_ms": 0.032125
+      },
+      "latency_scope": "tensor views + masked MLP + argmax; excludes environment and scripted opponents",
+      "status": "ok",
+      "games": [
+        {
+          "seat": 0,
+          "seed": 20261015,
+          "winner": 2,
+          "student_won": false,
+          "capped": false,
+          "decisions": 70
+        },
+        {
+          "seat": 1,
+          "seed": 20261015,
+          "winner": 2,
+          "student_won": false,
+          "capped": false,
+          "decisions": 70
+        },
+        {
+          "seat": 2,
+          "seed": 20261015,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 141
+        },
+        {
+          "seat": 3,
+          "seed": 20261015,
+          "winner": 1,
+          "student_won": false,
+          "capped": false,
+          "decisions": 96
+        },
+        {
+          "seat": 0,
+          "seed": 20261016,
+          "winner": 1,
+          "student_won": false,
+          "capped": false,
+          "decisions": 64
+        },
+        {
+          "seat": 1,
+          "seed": 20261016,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 62
+        },
+        {
+          "seat": 2,
+          "seed": 20261016,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 63
+        },
+        {
+          "seat": 3,
+          "seed": 20261016,
+          "winner": 2,
+          "student_won": false,
+          "capped": false,
+          "decisions": 73
+        },
+        {
+          "seat": 0,
+          "seed": 20261017,
+          "winner": 2,
+          "student_won": false,
+          "capped": false,
+          "decisions": 70
+        },
+        {
+          "seat": 1,
+          "seed": 20261017,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 78
+        },
+        {
+          "seat": 2,
+          "seed": 20261017,
+          "winner": 3,
+          "student_won": false,
+          "capped": false,
+          "decisions": 47
+        },
+        {
+          "seat": 3,
+          "seed": 20261017,
+          "winner": 2,
+          "student_won": false,
+          "capped": false,
+          "decisions": 136
+        },
+        {
+          "seat": 0,
+          "seed": 20261018,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 82
+        },
+        {
+          "seat": 1,
+          "seed": 20261018,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 141
+        },
+        {
+          "seat": 2,
+          "seed": 20261018,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 186
+        },
+        {
+          "seat": 3,
+          "seed": 20261018,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 115
+        },
+        {
+          "seat": 0,
+          "seed": 20261019,
+          "winner": 3,
+          "student_won": false,
+          "capped": false,
+          "decisions": 134
+        },
+        {
+          "seat": 1,
+          "seed": 20261019,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 58
+        },
+        {
+          "seat": 2,
+          "seed": 20261019,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 51
+        },
+        {
+          "seat": 3,
+          "seed": 20261019,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 79
+        },
+        {
+          "seat": 0,
+          "seed": 20261020,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 33
+        },
+        {
+          "seat": 1,
+          "seed": 20261020,
+          "winner": 2,
+          "student_won": false,
+          "capped": false,
+          "decisions": 78
+        },
+        {
+          "seat": 2,
+          "seed": 20261020,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 45
+        },
+        {
+          "seat": 3,
+          "seed": 20261020,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 77
+        },
+        {
+          "seat": 0,
+          "seed": 20261021,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 87
+        },
+        {
+          "seat": 1,
+          "seed": 20261021,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 84
+        },
+        {
+          "seat": 2,
+          "seed": 20261021,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 56
+        },
+        {
+          "seat": 3,
+          "seed": 20261021,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 71
+        },
+        {
+          "seat": 0,
+          "seed": 20261022,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 124
+        },
+        {
+          "seat": 1,
+          "seed": 20261022,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 125
+        },
+        {
+          "seat": 2,
+          "seed": 20261022,
+          "winner": 3,
+          "student_won": false,
+          "capped": false,
+          "decisions": 63
+        },
+        {
+          "seat": 3,
+          "seed": 20261022,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 114
+        },
+        {
+          "seat": 0,
+          "seed": 20261023,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 61
+        },
+        {
+          "seat": 1,
+          "seed": 20261023,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 73
+        },
+        {
+          "seat": 2,
+          "seed": 20261023,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 71
+        },
+        {
+          "seat": 3,
+          "seed": 20261023,
+          "winner": 1,
+          "student_won": false,
+          "capped": false,
+          "decisions": 99
+        },
+        {
+          "seat": 0,
+          "seed": 20261024,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 84
+        },
+        {
+          "seat": 1,
+          "seed": 20261024,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 54
+        },
+        {
+          "seat": 2,
+          "seed": 20261024,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 54
+        },
+        {
+          "seat": 3,
+          "seed": 20261024,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 95
+        },
+        {
+          "seat": 0,
+          "seed": 20261025,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 72
+        },
+        {
+          "seat": 1,
+          "seed": 20261025,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 63
+        },
+        {
+          "seat": 2,
+          "seed": 20261025,
+          "winner": 3,
+          "student_won": false,
+          "capped": false,
+          "decisions": 82
+        },
+        {
+          "seat": 3,
+          "seed": 20261025,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 69
+        },
+        {
+          "seat": 0,
+          "seed": 20261026,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 95
+        },
+        {
+          "seat": 1,
+          "seed": 20261026,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 73
+        },
+        {
+          "seat": 2,
+          "seed": 20261026,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 95
+        },
+        {
+          "seat": 3,
+          "seed": 20261026,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 93
+        },
+        {
+          "seat": 0,
+          "seed": 20261027,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 81
+        },
+        {
+          "seat": 1,
+          "seed": 20261027,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 130
+        },
+        {
+          "seat": 2,
+          "seed": 20261027,
+          "winner": 3,
+          "student_won": false,
+          "capped": false,
+          "decisions": 168
+        },
+        {
+          "seat": 3,
+          "seed": 20261027,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 66
+        },
+        {
+          "seat": 0,
+          "seed": 20261028,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 124
+        },
+        {
+          "seat": 1,
+          "seed": 20261028,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 107
+        },
+        {
+          "seat": 2,
+          "seed": 20261028,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 110
+        },
+        {
+          "seat": 3,
+          "seed": 20261028,
+          "winner": 2,
+          "student_won": false,
+          "capped": false,
+          "decisions": 84
+        },
+        {
+          "seat": 0,
+          "seed": 20261029,
+          "winner": 1,
+          "student_won": false,
+          "capped": false,
+          "decisions": 202
+        },
+        {
+          "seat": 1,
+          "seed": 20261029,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 66
+        },
+        {
+          "seat": 2,
+          "seed": 20261029,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 174
+        },
+        {
+          "seat": 3,
+          "seed": 20261029,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 174
+        },
+        {
+          "seat": 0,
+          "seed": 20261030,
+          "winner": 3,
+          "student_won": false,
+          "capped": false,
+          "decisions": 145
+        },
+        {
+          "seat": 1,
+          "seed": 20261030,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 118
+        },
+        {
+          "seat": 2,
+          "seed": 20261030,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 148
+        },
+        {
+          "seat": 3,
+          "seed": 20261030,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 103
+        },
+        {
+          "seat": 0,
+          "seed": 20261031,
+          "winner": 3,
+          "student_won": false,
+          "capped": false,
+          "decisions": 113
+        },
+        {
+          "seat": 1,
+          "seed": 20261031,
+          "winner": 3,
+          "student_won": false,
+          "capped": false,
+          "decisions": 56
+        },
+        {
+          "seat": 2,
+          "seed": 20261031,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 60
+        },
+        {
+          "seat": 3,
+          "seed": 20261031,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 73
+        },
+        {
+          "seat": 0,
+          "seed": 20261032,
+          "winner": 2,
+          "student_won": false,
+          "capped": false,
+          "decisions": 49
+        },
+        {
+          "seat": 1,
+          "seed": 20261032,
+          "winner": 2,
+          "student_won": false,
+          "capped": false,
+          "decisions": 72
+        },
+        {
+          "seat": 2,
+          "seed": 20261032,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 113
+        },
+        {
+          "seat": 3,
+          "seed": 20261032,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 118
+        },
+        {
+          "seat": 0,
+          "seed": 20261033,
+          "winner": 1,
+          "student_won": false,
+          "capped": false,
+          "decisions": 110
+        },
+        {
+          "seat": 1,
+          "seed": 20261033,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 58
+        },
+        {
+          "seat": 2,
+          "seed": 20261033,
+          "winner": 1,
+          "student_won": false,
+          "capped": false,
+          "decisions": 80
+        },
+        {
+          "seat": 3,
+          "seed": 20261033,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 90
+        },
+        {
+          "seat": 0,
+          "seed": 20261034,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 143
+        },
+        {
+          "seat": 1,
+          "seed": 20261034,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 46
+        },
+        {
+          "seat": 2,
+          "seed": 20261034,
+          "winner": 3,
+          "student_won": false,
+          "capped": false,
+          "decisions": 117
+        },
+        {
+          "seat": 3,
+          "seed": 20261034,
+          "winner": 2,
+          "student_won": false,
+          "capped": false,
+          "decisions": 201
+        },
+        {
+          "seat": 0,
+          "seed": 20261035,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 70
+        },
+        {
+          "seat": 1,
+          "seed": 20261035,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 41
+        },
+        {
+          "seat": 2,
+          "seed": 20261035,
+          "winner": 1,
+          "student_won": false,
+          "capped": false,
+          "decisions": 59
+        },
+        {
+          "seat": 3,
+          "seed": 20261035,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 51
+        },
+        {
+          "seat": 0,
+          "seed": 20261036,
+          "winner": 3,
+          "student_won": false,
+          "capped": false,
+          "decisions": 79
+        },
+        {
+          "seat": 1,
+          "seed": 20261036,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 97
+        },
+        {
+          "seat": 2,
+          "seed": 20261036,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 99
+        },
+        {
+          "seat": 3,
+          "seed": 20261036,
+          "winner": 1,
+          "student_won": false,
+          "capped": false,
+          "decisions": 94
+        },
+        {
+          "seat": 0,
+          "seed": 20261037,
+          "winner": 1,
+          "student_won": false,
+          "capped": false,
+          "decisions": 48
+        },
+        {
+          "seat": 1,
+          "seed": 20261037,
+          "winner": 3,
+          "student_won": false,
+          "capped": false,
+          "decisions": 75
+        },
+        {
+          "seat": 2,
+          "seed": 20261037,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 76
+        },
+        {
+          "seat": 3,
+          "seed": 20261037,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 93
+        },
+        {
+          "seat": 0,
+          "seed": 20261038,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 83
+        },
+        {
+          "seat": 1,
+          "seed": 20261038,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 85
+        },
+        {
+          "seat": 2,
+          "seed": 20261038,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 88
+        },
+        {
+          "seat": 3,
+          "seed": 20261038,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 38
+        },
+        {
+          "seat": 0,
+          "seed": 20261039,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 106
+        },
+        {
+          "seat": 1,
+          "seed": 20261039,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 72
+        },
+        {
+          "seat": 2,
+          "seed": 20261039,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 79
+        },
+        {
+          "seat": 3,
+          "seed": 20261039,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 72
+        },
+        {
+          "seat": 0,
+          "seed": 20261040,
+          "winner": 2,
+          "student_won": false,
+          "capped": false,
+          "decisions": 69
+        },
+        {
+          "seat": 1,
+          "seed": 20261040,
+          "winner": 3,
+          "student_won": false,
+          "capped": false,
+          "decisions": 61
+        },
+        {
+          "seat": 2,
+          "seed": 20261040,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 89
+        },
+        {
+          "seat": 3,
+          "seed": 20261040,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 78
+        },
+        {
+          "seat": 0,
+          "seed": 20261041,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 209
+        },
+        {
+          "seat": 1,
+          "seed": 20261041,
+          "winner": 2,
+          "student_won": false,
+          "capped": false,
+          "decisions": 116
+        },
+        {
+          "seat": 2,
+          "seed": 20261041,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 63
+        },
+        {
+          "seat": 3,
+          "seed": 20261041,
+          "winner": 1,
+          "student_won": false,
+          "capped": false,
+          "decisions": 129
+        },
+        {
+          "seat": 0,
+          "seed": 20261042,
+          "winner": 1,
+          "student_won": false,
+          "capped": false,
+          "decisions": 70
+        },
+        {
+          "seat": 1,
+          "seed": 20261042,
+          "winner": 2,
+          "student_won": false,
+          "capped": false,
+          "decisions": 56
+        },
+        {
+          "seat": 2,
+          "seed": 20261042,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 95
+        },
+        {
+          "seat": 3,
+          "seed": 20261042,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 69
+        },
+        {
+          "seat": 0,
+          "seed": 20261043,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 105
+        },
+        {
+          "seat": 1,
+          "seed": 20261043,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 112
+        },
+        {
+          "seat": 2,
+          "seed": 20261043,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 195
+        },
+        {
+          "seat": 3,
+          "seed": 20261043,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 138
+        },
+        {
+          "seat": 0,
+          "seed": 20261044,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 127
+        },
+        {
+          "seat": 1,
+          "seed": 20261044,
+          "winner": 2,
+          "student_won": false,
+          "capped": false,
+          "decisions": 102
+        },
+        {
+          "seat": 2,
+          "seed": 20261044,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 112
+        },
+        {
+          "seat": 3,
+          "seed": 20261044,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 197
+        },
+        {
+          "seat": 0,
+          "seed": 20261045,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 178
+        },
+        {
+          "seat": 1,
+          "seed": 20261045,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 152
+        },
+        {
+          "seat": 2,
+          "seed": 20261045,
+          "winner": 1,
+          "student_won": false,
+          "capped": false,
+          "decisions": 80
+        },
+        {
+          "seat": 3,
+          "seed": 20261045,
+          "winner": 1,
+          "student_won": false,
+          "capped": false,
+          "decisions": 82
+        },
+        {
+          "seat": 0,
+          "seed": 20261046,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 131
+        },
+        {
+          "seat": 1,
+          "seed": 20261046,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 124
+        },
+        {
+          "seat": 2,
+          "seed": 20261046,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 110
+        },
+        {
+          "seat": 3,
+          "seed": 20261046,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 83
+        },
+        {
+          "seat": 0,
+          "seed": 20261047,
+          "winner": 2,
+          "student_won": false,
+          "capped": false,
+          "decisions": 81
+        },
+        {
+          "seat": 1,
+          "seed": 20261047,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 65
+        },
+        {
+          "seat": 2,
+          "seed": 20261047,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 105
+        },
+        {
+          "seat": 3,
+          "seed": 20261047,
+          "winner": 2,
+          "student_won": false,
+          "capped": false,
+          "decisions": 72
+        },
+        {
+          "seat": 0,
+          "seed": 20261048,
+          "winner": 3,
+          "student_won": false,
+          "capped": false,
+          "decisions": 110
+        },
+        {
+          "seat": 1,
+          "seed": 20261048,
+          "winner": 3,
+          "student_won": false,
+          "capped": false,
+          "decisions": 127
+        },
+        {
+          "seat": 2,
+          "seed": 20261048,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 76
+        },
+        {
+          "seat": 3,
+          "seed": 20261048,
+          "winner": 2,
+          "student_won": false,
+          "capped": false,
+          "decisions": 59
+        },
+        {
+          "seat": 0,
+          "seed": 20261049,
+          "winner": 3,
+          "student_won": false,
+          "capped": false,
+          "decisions": 153
+        },
+        {
+          "seat": 1,
+          "seed": 20261049,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 111
+        },
+        {
+          "seat": 2,
+          "seed": 20261049,
+          "winner": 1,
+          "student_won": false,
+          "capped": false,
+          "decisions": 180
+        },
+        {
+          "seat": 3,
+          "seed": 20261049,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 119
+        },
+        {
+          "seat": 0,
+          "seed": 20261050,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 124
+        },
+        {
+          "seat": 1,
+          "seed": 20261050,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 63
+        },
+        {
+          "seat": 2,
+          "seed": 20261050,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 50
+        },
+        {
+          "seat": 3,
+          "seed": 20261050,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 80
+        },
+        {
+          "seat": 0,
+          "seed": 20261051,
+          "winner": 3,
+          "student_won": false,
+          "capped": false,
+          "decisions": 105
+        },
+        {
+          "seat": 1,
+          "seed": 20261051,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 125
+        },
+        {
+          "seat": 2,
+          "seed": 20261051,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 39
+        },
+        {
+          "seat": 3,
+          "seed": 20261051,
+          "winner": 2,
+          "student_won": false,
+          "capped": false,
+          "decisions": 163
+        },
+        {
+          "seat": 0,
+          "seed": 20261052,
+          "winner": 2,
+          "student_won": false,
+          "capped": false,
+          "decisions": 163
+        },
+        {
+          "seat": 1,
+          "seed": 20261052,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 144
+        },
+        {
+          "seat": 2,
+          "seed": 20261052,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 219
+        },
+        {
+          "seat": 3,
+          "seed": 20261052,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 69
+        },
+        {
+          "seat": 0,
+          "seed": 20261053,
+          "winner": 2,
+          "student_won": false,
+          "capped": false,
+          "decisions": 139
+        },
+        {
+          "seat": 1,
+          "seed": 20261053,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 56
+        },
+        {
+          "seat": 2,
+          "seed": 20261053,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 113
+        },
+        {
+          "seat": 3,
+          "seed": 20261053,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 101
+        },
+        {
+          "seat": 0,
+          "seed": 20261054,
+          "winner": 2,
+          "student_won": false,
+          "capped": false,
+          "decisions": 97
+        },
+        {
+          "seat": 1,
+          "seed": 20261054,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 72
+        },
+        {
+          "seat": 2,
+          "seed": 20261054,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 92
+        },
+        {
+          "seat": 3,
+          "seed": 20261054,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 69
+        },
+        {
+          "seat": 0,
+          "seed": 20261055,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 65
+        },
+        {
+          "seat": 1,
+          "seed": 20261055,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 88
+        },
+        {
+          "seat": 2,
+          "seed": 20261055,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 65
+        },
+        {
+          "seat": 3,
+          "seed": 20261055,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 56
+        },
+        {
+          "seat": 0,
+          "seed": 20261056,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 76
+        },
+        {
+          "seat": 1,
+          "seed": 20261056,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 50
+        },
+        {
+          "seat": 2,
+          "seed": 20261056,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 52
+        },
+        {
+          "seat": 3,
+          "seed": 20261056,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 63
+        },
+        {
+          "seat": 0,
+          "seed": 20261057,
+          "winner": 1,
+          "student_won": false,
+          "capped": false,
+          "decisions": 96
+        },
+        {
+          "seat": 1,
+          "seed": 20261057,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 54
+        },
+        {
+          "seat": 2,
+          "seed": 20261057,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 50
+        },
+        {
+          "seat": 3,
+          "seed": 20261057,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 79
+        },
+        {
+          "seat": 0,
+          "seed": 20261058,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 67
+        },
+        {
+          "seat": 1,
+          "seed": 20261058,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 83
+        },
+        {
+          "seat": 2,
+          "seed": 20261058,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 225
+        },
+        {
+          "seat": 3,
+          "seed": 20261058,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 65
+        },
+        {
+          "seat": 0,
+          "seed": 20261059,
+          "winner": 3,
+          "student_won": false,
+          "capped": false,
+          "decisions": 110
+        },
+        {
+          "seat": 1,
+          "seed": 20261059,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 72
+        },
+        {
+          "seat": 2,
+          "seed": 20261059,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 98
+        },
+        {
+          "seat": 3,
+          "seed": 20261059,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 115
+        },
+        {
+          "seat": 0,
+          "seed": 20261060,
+          "winner": 2,
+          "student_won": false,
+          "capped": false,
+          "decisions": 95
+        },
+        {
+          "seat": 1,
+          "seed": 20261060,
+          "winner": 2,
+          "student_won": false,
+          "capped": false,
+          "decisions": 73
+        },
+        {
+          "seat": 2,
+          "seed": 20261060,
+          "winner": 1,
+          "student_won": false,
+          "capped": false,
+          "decisions": 88
+        },
+        {
+          "seat": 3,
+          "seed": 20261060,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 62
+        },
+        {
+          "seat": 0,
+          "seed": 20261061,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 97
+        },
+        {
+          "seat": 1,
+          "seed": 20261061,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 127
+        },
+        {
+          "seat": 2,
+          "seed": 20261061,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 60
+        },
+        {
+          "seat": 3,
+          "seed": 20261061,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 126
+        },
+        {
+          "seat": 0,
+          "seed": 20261062,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 74
+        },
+        {
+          "seat": 1,
+          "seed": 20261062,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 131
+        },
+        {
+          "seat": 2,
+          "seed": 20261062,
+          "winner": 3,
+          "student_won": false,
+          "capped": false,
+          "decisions": 141
+        },
+        {
+          "seat": 3,
+          "seed": 20261062,
+          "winner": 1,
+          "student_won": false,
+          "capped": false,
+          "decisions": 245
+        },
+        {
+          "seat": 0,
+          "seed": 20261063,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 54
+        },
+        {
+          "seat": 1,
+          "seed": 20261063,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 50
+        },
+        {
+          "seat": 2,
+          "seed": 20261063,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 79
+        },
+        {
+          "seat": 3,
+          "seed": 20261063,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 55
+        },
+        {
+          "seat": 0,
+          "seed": 20261064,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 38
+        },
+        {
+          "seat": 1,
+          "seed": 20261064,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 94
+        },
+        {
+          "seat": 2,
+          "seed": 20261064,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 70
+        },
+        {
+          "seat": 3,
+          "seed": 20261064,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 44
+        },
+        {
+          "seat": 0,
+          "seed": 20261065,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 154
+        },
+        {
+          "seat": 1,
+          "seed": 20261065,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 99
+        },
+        {
+          "seat": 2,
+          "seed": 20261065,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 96
+        },
+        {
+          "seat": 3,
+          "seed": 20261065,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 130
+        },
+        {
+          "seat": 0,
+          "seed": 20261066,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 58
+        },
+        {
+          "seat": 1,
+          "seed": 20261066,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 126
+        },
+        {
+          "seat": 2,
+          "seed": 20261066,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 172
+        },
+        {
+          "seat": 3,
+          "seed": 20261066,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 94
+        },
+        {
+          "seat": 0,
+          "seed": 20261067,
+          "winner": 1,
+          "student_won": false,
+          "capped": false,
+          "decisions": 97
+        },
+        {
+          "seat": 1,
+          "seed": 20261067,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 80
+        },
+        {
+          "seat": 2,
+          "seed": 20261067,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 102
+        },
+        {
+          "seat": 3,
+          "seed": 20261067,
+          "winner": 1,
+          "student_won": false,
+          "capped": false,
+          "decisions": 115
+        },
+        {
+          "seat": 0,
+          "seed": 20261068,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 78
+        },
+        {
+          "seat": 1,
+          "seed": 20261068,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 108
+        },
+        {
+          "seat": 2,
+          "seed": 20261068,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 68
+        },
+        {
+          "seat": 3,
+          "seed": 20261068,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 82
+        },
+        {
+          "seat": 0,
+          "seed": 20261069,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 112
+        },
+        {
+          "seat": 1,
+          "seed": 20261069,
+          "winner": 3,
+          "student_won": false,
+          "capped": false,
+          "decisions": 157
+        },
+        {
+          "seat": 2,
+          "seed": 20261069,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 136
+        },
+        {
+          "seat": 3,
+          "seed": 20261069,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 32
+        },
+        {
+          "seat": 0,
+          "seed": 20261070,
+          "winner": 3,
+          "student_won": false,
+          "capped": false,
+          "decisions": 218
+        },
+        {
+          "seat": 1,
+          "seed": 20261070,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 105
+        },
+        {
+          "seat": 2,
+          "seed": 20261070,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 110
+        },
+        {
+          "seat": 3,
+          "seed": 20261070,
+          "winner": 1,
+          "student_won": false,
+          "capped": false,
+          "decisions": 140
+        },
+        {
+          "seat": 0,
+          "seed": 20261071,
+          "winner": 2,
+          "student_won": false,
+          "capped": false,
+          "decisions": 102
+        },
+        {
+          "seat": 1,
+          "seed": 20261071,
+          "winner": 2,
+          "student_won": false,
+          "capped": false,
+          "decisions": 114
+        },
+        {
+          "seat": 2,
+          "seed": 20261071,
+          "winner": 3,
+          "student_won": false,
+          "capped": false,
+          "decisions": 111
+        },
+        {
+          "seat": 3,
+          "seed": 20261071,
+          "winner": 2,
+          "student_won": false,
+          "capped": false,
+          "decisions": 78
+        },
+        {
+          "seat": 0,
+          "seed": 20261072,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 84
+        },
+        {
+          "seat": 1,
+          "seed": 20261072,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 122
+        },
+        {
+          "seat": 2,
+          "seed": 20261072,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 167
+        },
+        {
+          "seat": 3,
+          "seed": 20261072,
+          "winner": 1,
+          "student_won": false,
+          "capped": false,
+          "decisions": 157
+        },
+        {
+          "seat": 0,
+          "seed": 20261073,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 81
+        },
+        {
+          "seat": 1,
+          "seed": 20261073,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 63
+        },
+        {
+          "seat": 2,
+          "seed": 20261073,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 147
+        },
+        {
+          "seat": 3,
+          "seed": 20261073,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 59
+        },
+        {
+          "seat": 0,
+          "seed": 20261074,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 139
+        },
+        {
+          "seat": 1,
+          "seed": 20261074,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 124
+        },
+        {
+          "seat": 2,
+          "seed": 20261074,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 55
+        },
+        {
+          "seat": 3,
+          "seed": 20261074,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 125
+        },
+        {
+          "seat": 0,
+          "seed": 20261075,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 115
+        },
+        {
+          "seat": 1,
+          "seed": 20261075,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 88
+        },
+        {
+          "seat": 2,
+          "seed": 20261075,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 45
+        },
+        {
+          "seat": 3,
+          "seed": 20261075,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 51
+        },
+        {
+          "seat": 0,
+          "seed": 20261076,
+          "winner": 1,
+          "student_won": false,
+          "capped": false,
+          "decisions": 148
+        },
+        {
+          "seat": 1,
+          "seed": 20261076,
+          "winner": 2,
+          "student_won": false,
+          "capped": false,
+          "decisions": 102
+        },
+        {
+          "seat": 2,
+          "seed": 20261076,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 60
+        },
+        {
+          "seat": 3,
+          "seed": 20261076,
+          "winner": 1,
+          "student_won": false,
+          "capped": false,
+          "decisions": 138
+        },
+        {
+          "seat": 0,
+          "seed": 20261077,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 87
+        },
+        {
+          "seat": 1,
+          "seed": 20261077,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 130
+        },
+        {
+          "seat": 2,
+          "seed": 20261077,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 134
+        },
+        {
+          "seat": 3,
+          "seed": 20261077,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 95
+        },
+        {
+          "seat": 0,
+          "seed": 20261078,
+          "winner": 2,
+          "student_won": false,
+          "capped": false,
+          "decisions": 56
+        },
+        {
+          "seat": 1,
+          "seed": 20261078,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 69
+        },
+        {
+          "seat": 2,
+          "seed": 20261078,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 49
+        },
+        {
+          "seat": 3,
+          "seed": 20261078,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 74
+        }
+      ],
+      "completed_games": 256,
+      "capped_games": 0,
+      "wins": 151,
+      "win_rate_completed": 0.58984375,
+      "win_rate_all_attempts": 0.58984375,
+      "win_rate_wilson95": [
+        0.5286958295312871,
+        0.6483351962671893
+      ],
+      "by_seat": {
+        "0": {
+          "attempted": 64,
+          "completed": 64,
+          "wins": 36
+        },
+        "1": {
+          "attempted": 64,
+          "completed": 64,
+          "wins": 38
+        },
+        "2": {
+          "attempted": 64,
+          "completed": 64,
+          "wins": 40
+        },
+        "3": {
+          "attempted": 64,
+          "completed": 64,
+          "wins": 37
+        }
+      },
+      "decision_latency": {
+        "samples": 24753,
+        "median_ms": 0.029875,
+        "p95_ms": 0.0315,
+        "p99_ms": 0.034416,
+        "mean_ms": 0.030025125520138973,
+        "max_ms": 0.097625
+      },
+      "benchmark_wall_s": 0.8002682079968508,
+      "process_cpu_s": 0.800775,
+      "average_busy_cores": 1.0006345272723256,
+      "peak_process_rss_mib": 217.734375,
+      "torch_version": "2.7.1",
+      "numpy_version": "2.2.6",
+      "checkpoint_training_config": {
+        "hidden": 512,
+        "visibility": "perfect",
+        "victory_target": 7,
+        "seed": 0,
+        "train_seats": "policy,heuristic,policy,heuristic_v2"
+      },
+      "raw_report": "artifacts/reports/eli_256.json",
+      "raw_report_sha256": "44a7d537b2d8fd8defa536815084ae8a92ef1b82fa821b8ec3d474308736784a",
+      "protocol": {
+        "agents": [
+          "eli"
+        ],
+        "games": 256,
+        "threads": 1,
+        "seconds": 60.0,
+        "seed": 20261015,
+        "classical_policy": "weighted",
+        "classical_opponents": "random"
+      }
+    },
+    {
+      "agent": "eli",
+      "trained": true,
+      "checkpoint_sha256": "c4258f235c673efe6968b0aa4de66a1411f01012fa14fe71f548dfff681525a3",
+      "checkpoint_training_steps": 46497792,
+      "parameters": 1108268,
+      "validated_actions": 25043,
+      "opponents": "three heuristic-v1 bots",
+      "rules": {
+        "players": 4,
+        "target_vp": 7,
+        "visibility": "realistic",
+        "p2p_trade": "bounded offer menu"
+      },
+      "fixed_state_model_forward_latency": {
+        "samples": 100,
+        "median_ms": 0.0275835,
+        "p95_ms": 0.028379150000000002,
+        "p99_ms": 0.02868059000000001,
+        "mean_ms": 0.02765252,
+        "max_ms": 0.030125
+      },
+      "latency_scope": "tensor views + masked MLP + argmax; excludes environment and scripted opponents",
+      "status": "ok",
+      "games": [
+        {
+          "seat": 0,
+          "seed": 20261015,
+          "winner": 2,
+          "student_won": false,
+          "capped": false,
+          "decisions": 100
+        },
+        {
+          "seat": 1,
+          "seed": 20261015,
+          "winner": 2,
+          "student_won": false,
+          "capped": false,
+          "decisions": 64
+        },
+        {
+          "seat": 2,
+          "seed": 20261015,
+          "winner": 1,
+          "student_won": false,
+          "capped": false,
+          "decisions": 91
+        },
+        {
+          "seat": 3,
+          "seed": 20261015,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 68
+        },
+        {
+          "seat": 0,
+          "seed": 20261016,
+          "winner": 1,
+          "student_won": false,
+          "capped": false,
+          "decisions": 58
+        },
+        {
+          "seat": 1,
+          "seed": 20261016,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 59
+        },
+        {
+          "seat": 2,
+          "seed": 20261016,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 67
+        },
+        {
+          "seat": 3,
+          "seed": 20261016,
+          "winner": 2,
+          "student_won": false,
+          "capped": false,
+          "decisions": 106
+        },
+        {
+          "seat": 0,
+          "seed": 20261017,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 54
+        },
+        {
+          "seat": 1,
+          "seed": 20261017,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 74
+        },
+        {
+          "seat": 2,
+          "seed": 20261017,
+          "winner": 3,
+          "student_won": false,
+          "capped": false,
+          "decisions": 47
+        },
+        {
+          "seat": 3,
+          "seed": 20261017,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 112
+        },
+        {
+          "seat": 0,
+          "seed": 20261018,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 82
+        },
+        {
+          "seat": 1,
+          "seed": 20261018,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 143
+        },
+        {
+          "seat": 2,
+          "seed": 20261018,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 129
+        },
+        {
+          "seat": 3,
+          "seed": 20261018,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 145
+        },
+        {
+          "seat": 0,
+          "seed": 20261019,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 115
+        },
+        {
+          "seat": 1,
+          "seed": 20261019,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 58
+        },
+        {
+          "seat": 2,
+          "seed": 20261019,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 48
+        },
+        {
+          "seat": 3,
+          "seed": 20261019,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 57
+        },
+        {
+          "seat": 0,
+          "seed": 20261020,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 35
+        },
+        {
+          "seat": 1,
+          "seed": 20261020,
+          "winner": 2,
+          "student_won": false,
+          "capped": false,
+          "decisions": 76
+        },
+        {
+          "seat": 2,
+          "seed": 20261020,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 47
+        },
+        {
+          "seat": 3,
+          "seed": 20261020,
+          "winner": 1,
+          "student_won": false,
+          "capped": false,
+          "decisions": 79
+        },
+        {
+          "seat": 0,
+          "seed": 20261021,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 154
+        },
+        {
+          "seat": 1,
+          "seed": 20261021,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 84
+        },
+        {
+          "seat": 2,
+          "seed": 20261021,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 50
+        },
+        {
+          "seat": 3,
+          "seed": 20261021,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 71
+        },
+        {
+          "seat": 0,
+          "seed": 20261022,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 118
+        },
+        {
+          "seat": 1,
+          "seed": 20261022,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 83
+        },
+        {
+          "seat": 2,
+          "seed": 20261022,
+          "winner": 3,
+          "student_won": false,
+          "capped": false,
+          "decisions": 46
+        },
+        {
+          "seat": 3,
+          "seed": 20261022,
+          "winner": 2,
+          "student_won": false,
+          "capped": false,
+          "decisions": 121
+        },
+        {
+          "seat": 0,
+          "seed": 20261023,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 65
+        },
+        {
+          "seat": 1,
+          "seed": 20261023,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 51
+        },
+        {
+          "seat": 2,
+          "seed": 20261023,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 85
+        },
+        {
+          "seat": 3,
+          "seed": 20261023,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 102
+        },
+        {
+          "seat": 0,
+          "seed": 20261024,
+          "winner": 3,
+          "student_won": false,
+          "capped": false,
+          "decisions": 83
+        },
+        {
+          "seat": 1,
+          "seed": 20261024,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 98
+        },
+        {
+          "seat": 2,
+          "seed": 20261024,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 68
+        },
+        {
+          "seat": 3,
+          "seed": 20261024,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 76
+        },
+        {
+          "seat": 0,
+          "seed": 20261025,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 72
+        },
+        {
+          "seat": 1,
+          "seed": 20261025,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 73
+        },
+        {
+          "seat": 2,
+          "seed": 20261025,
+          "winner": 3,
+          "student_won": false,
+          "capped": false,
+          "decisions": 82
+        },
+        {
+          "seat": 3,
+          "seed": 20261025,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 67
+        },
+        {
+          "seat": 0,
+          "seed": 20261026,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 95
+        },
+        {
+          "seat": 1,
+          "seed": 20261026,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 96
+        },
+        {
+          "seat": 2,
+          "seed": 20261026,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 92
+        },
+        {
+          "seat": 3,
+          "seed": 20261026,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 85
+        },
+        {
+          "seat": 0,
+          "seed": 20261027,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 81
+        },
+        {
+          "seat": 1,
+          "seed": 20261027,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 123
+        },
+        {
+          "seat": 2,
+          "seed": 20261027,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 136
+        },
+        {
+          "seat": 3,
+          "seed": 20261027,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 64
+        },
+        {
+          "seat": 0,
+          "seed": 20261028,
+          "winner": 1,
+          "student_won": false,
+          "capped": false,
+          "decisions": 126
+        },
+        {
+          "seat": 1,
+          "seed": 20261028,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 120
+        },
+        {
+          "seat": 2,
+          "seed": 20261028,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 79
+        },
+        {
+          "seat": 3,
+          "seed": 20261028,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 120
+        },
+        {
+          "seat": 0,
+          "seed": 20261029,
+          "winner": 1,
+          "student_won": false,
+          "capped": false,
+          "decisions": 160
+        },
+        {
+          "seat": 1,
+          "seed": 20261029,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 86
+        },
+        {
+          "seat": 2,
+          "seed": 20261029,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 166
+        },
+        {
+          "seat": 3,
+          "seed": 20261029,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 189
+        },
+        {
+          "seat": 0,
+          "seed": 20261030,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 106
+        },
+        {
+          "seat": 1,
+          "seed": 20261030,
+          "winner": 2,
+          "student_won": false,
+          "capped": false,
+          "decisions": 125
+        },
+        {
+          "seat": 2,
+          "seed": 20261030,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 190
+        },
+        {
+          "seat": 3,
+          "seed": 20261030,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 170
+        },
+        {
+          "seat": 0,
+          "seed": 20261031,
+          "winner": 3,
+          "student_won": false,
+          "capped": false,
+          "decisions": 103
+        },
+        {
+          "seat": 1,
+          "seed": 20261031,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 72
+        },
+        {
+          "seat": 2,
+          "seed": 20261031,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 61
+        },
+        {
+          "seat": 3,
+          "seed": 20261031,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 136
+        },
+        {
+          "seat": 0,
+          "seed": 20261032,
+          "winner": 2,
+          "student_won": false,
+          "capped": false,
+          "decisions": 51
+        },
+        {
+          "seat": 1,
+          "seed": 20261032,
+          "winner": 2,
+          "student_won": false,
+          "capped": false,
+          "decisions": 72
+        },
+        {
+          "seat": 2,
+          "seed": 20261032,
+          "winner": 1,
+          "student_won": false,
+          "capped": false,
+          "decisions": 122
+        },
+        {
+          "seat": 3,
+          "seed": 20261032,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 143
+        },
+        {
+          "seat": 0,
+          "seed": 20261033,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 86
+        },
+        {
+          "seat": 1,
+          "seed": 20261033,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 88
+        },
+        {
+          "seat": 2,
+          "seed": 20261033,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 74
+        },
+        {
+          "seat": 3,
+          "seed": 20261033,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 109
+        },
+        {
+          "seat": 0,
+          "seed": 20261034,
+          "winner": 3,
+          "student_won": false,
+          "capped": false,
+          "decisions": 138
+        },
+        {
+          "seat": 1,
+          "seed": 20261034,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 61
+        },
+        {
+          "seat": 2,
+          "seed": 20261034,
+          "winner": 3,
+          "student_won": false,
+          "capped": false,
+          "decisions": 220
+        },
+        {
+          "seat": 3,
+          "seed": 20261034,
+          "winner": 2,
+          "student_won": false,
+          "capped": false,
+          "decisions": 198
+        },
+        {
+          "seat": 0,
+          "seed": 20261035,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 75
+        },
+        {
+          "seat": 1,
+          "seed": 20261035,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 50
+        },
+        {
+          "seat": 2,
+          "seed": 20261035,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 47
+        },
+        {
+          "seat": 3,
+          "seed": 20261035,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 46
+        },
+        {
+          "seat": 0,
+          "seed": 20261036,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 88
+        },
+        {
+          "seat": 1,
+          "seed": 20261036,
+          "winner": 2,
+          "student_won": false,
+          "capped": false,
+          "decisions": 122
+        },
+        {
+          "seat": 2,
+          "seed": 20261036,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 107
+        },
+        {
+          "seat": 3,
+          "seed": 20261036,
+          "winner": 1,
+          "student_won": false,
+          "capped": false,
+          "decisions": 96
+        },
+        {
+          "seat": 0,
+          "seed": 20261037,
+          "winner": 1,
+          "student_won": false,
+          "capped": false,
+          "decisions": 48
+        },
+        {
+          "seat": 1,
+          "seed": 20261037,
+          "winner": 3,
+          "student_won": false,
+          "capped": false,
+          "decisions": 75
+        },
+        {
+          "seat": 2,
+          "seed": 20261037,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 60
+        },
+        {
+          "seat": 3,
+          "seed": 20261037,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 112
+        },
+        {
+          "seat": 0,
+          "seed": 20261038,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 59
+        },
+        {
+          "seat": 1,
+          "seed": 20261038,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 82
+        },
+        {
+          "seat": 2,
+          "seed": 20261038,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 88
+        },
+        {
+          "seat": 3,
+          "seed": 20261038,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 38
+        },
+        {
+          "seat": 0,
+          "seed": 20261039,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 123
+        },
+        {
+          "seat": 1,
+          "seed": 20261039,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 73
+        },
+        {
+          "seat": 2,
+          "seed": 20261039,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 79
+        },
+        {
+          "seat": 3,
+          "seed": 20261039,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 56
+        },
+        {
+          "seat": 0,
+          "seed": 20261040,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 78
+        },
+        {
+          "seat": 1,
+          "seed": 20261040,
+          "winner": 3,
+          "student_won": false,
+          "capped": false,
+          "decisions": 72
+        },
+        {
+          "seat": 2,
+          "seed": 20261040,
+          "winner": 3,
+          "student_won": false,
+          "capped": false,
+          "decisions": 72
+        },
+        {
+          "seat": 3,
+          "seed": 20261040,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 61
+        },
+        {
+          "seat": 0,
+          "seed": 20261041,
+          "winner": 2,
+          "student_won": false,
+          "capped": false,
+          "decisions": 163
+        },
+        {
+          "seat": 1,
+          "seed": 20261041,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 180
+        },
+        {
+          "seat": 2,
+          "seed": 20261041,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 60
+        },
+        {
+          "seat": 3,
+          "seed": 20261041,
+          "winner": 1,
+          "student_won": false,
+          "capped": false,
+          "decisions": 107
+        },
+        {
+          "seat": 0,
+          "seed": 20261042,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 76
+        },
+        {
+          "seat": 1,
+          "seed": 20261042,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 59
+        },
+        {
+          "seat": 2,
+          "seed": 20261042,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 127
+        },
+        {
+          "seat": 3,
+          "seed": 20261042,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 82
+        },
+        {
+          "seat": 0,
+          "seed": 20261043,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 81
+        },
+        {
+          "seat": 1,
+          "seed": 20261043,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 76
+        },
+        {
+          "seat": 2,
+          "seed": 20261043,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 112
+        },
+        {
+          "seat": 3,
+          "seed": 20261043,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 170
+        },
+        {
+          "seat": 0,
+          "seed": 20261044,
+          "winner": 2,
+          "student_won": false,
+          "capped": false,
+          "decisions": 132
+        },
+        {
+          "seat": 1,
+          "seed": 20261044,
+          "winner": 2,
+          "student_won": false,
+          "capped": false,
+          "decisions": 125
+        },
+        {
+          "seat": 2,
+          "seed": 20261044,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 161
+        },
+        {
+          "seat": 3,
+          "seed": 20261044,
+          "winner": 2,
+          "student_won": false,
+          "capped": false,
+          "decisions": 166
+        },
+        {
+          "seat": 0,
+          "seed": 20261045,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 142
+        },
+        {
+          "seat": 1,
+          "seed": 20261045,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 178
+        },
+        {
+          "seat": 2,
+          "seed": 20261045,
+          "winner": 1,
+          "student_won": false,
+          "capped": false,
+          "decisions": 62
+        },
+        {
+          "seat": 3,
+          "seed": 20261045,
+          "winner": 1,
+          "student_won": false,
+          "capped": false,
+          "decisions": 81
+        },
+        {
+          "seat": 0,
+          "seed": 20261046,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 128
+        },
+        {
+          "seat": 1,
+          "seed": 20261046,
+          "winner": 3,
+          "student_won": false,
+          "capped": false,
+          "decisions": 198
+        },
+        {
+          "seat": 2,
+          "seed": 20261046,
+          "winner": 1,
+          "student_won": false,
+          "capped": false,
+          "decisions": 112
+        },
+        {
+          "seat": 3,
+          "seed": 20261046,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 226
+        },
+        {
+          "seat": 0,
+          "seed": 20261047,
+          "winner": 1,
+          "student_won": false,
+          "capped": false,
+          "decisions": 112
+        },
+        {
+          "seat": 1,
+          "seed": 20261047,
+          "winner": 3,
+          "student_won": false,
+          "capped": false,
+          "decisions": 54
+        },
+        {
+          "seat": 2,
+          "seed": 20261047,
+          "winner": 3,
+          "student_won": false,
+          "capped": false,
+          "decisions": 62
+        },
+        {
+          "seat": 3,
+          "seed": 20261047,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 147
+        },
+        {
+          "seat": 0,
+          "seed": 20261048,
+          "winner": 3,
+          "student_won": false,
+          "capped": false,
+          "decisions": 70
+        },
+        {
+          "seat": 1,
+          "seed": 20261048,
+          "winner": 3,
+          "student_won": false,
+          "capped": false,
+          "decisions": 64
+        },
+        {
+          "seat": 2,
+          "seed": 20261048,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 73
+        },
+        {
+          "seat": 3,
+          "seed": 20261048,
+          "winner": 2,
+          "student_won": false,
+          "capped": false,
+          "decisions": 101
+        },
+        {
+          "seat": 0,
+          "seed": 20261049,
+          "winner": 2,
+          "student_won": false,
+          "capped": false,
+          "decisions": 151
+        },
+        {
+          "seat": 1,
+          "seed": 20261049,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 106
+        },
+        {
+          "seat": 2,
+          "seed": 20261049,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 151
+        },
+        {
+          "seat": 3,
+          "seed": 20261049,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 131
+        },
+        {
+          "seat": 0,
+          "seed": 20261050,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 164
+        },
+        {
+          "seat": 1,
+          "seed": 20261050,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 166
+        },
+        {
+          "seat": 2,
+          "seed": 20261050,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 86
+        },
+        {
+          "seat": 3,
+          "seed": 20261050,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 81
+        },
+        {
+          "seat": 0,
+          "seed": 20261051,
+          "winner": 1,
+          "student_won": false,
+          "capped": false,
+          "decisions": 71
+        },
+        {
+          "seat": 1,
+          "seed": 20261051,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 116
+        },
+        {
+          "seat": 2,
+          "seed": 20261051,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 39
+        },
+        {
+          "seat": 3,
+          "seed": 20261051,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 105
+        },
+        {
+          "seat": 0,
+          "seed": 20261052,
+          "winner": 1,
+          "student_won": false,
+          "capped": false,
+          "decisions": 69
+        },
+        {
+          "seat": 1,
+          "seed": 20261052,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 131
+        },
+        {
+          "seat": 2,
+          "seed": 20261052,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 102
+        },
+        {
+          "seat": 3,
+          "seed": 20261052,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 51
+        },
+        {
+          "seat": 0,
+          "seed": 20261053,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 178
+        },
+        {
+          "seat": 1,
+          "seed": 20261053,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 56
+        },
+        {
+          "seat": 2,
+          "seed": 20261053,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 108
+        },
+        {
+          "seat": 3,
+          "seed": 20261053,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 67
+        },
+        {
+          "seat": 0,
+          "seed": 20261054,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 88
+        },
+        {
+          "seat": 1,
+          "seed": 20261054,
+          "winner": 2,
+          "student_won": false,
+          "capped": false,
+          "decisions": 131
+        },
+        {
+          "seat": 2,
+          "seed": 20261054,
+          "winner": 3,
+          "student_won": false,
+          "capped": false,
+          "decisions": 84
+        },
+        {
+          "seat": 3,
+          "seed": 20261054,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 138
+        },
+        {
+          "seat": 0,
+          "seed": 20261055,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 65
+        },
+        {
+          "seat": 1,
+          "seed": 20261055,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 86
+        },
+        {
+          "seat": 2,
+          "seed": 20261055,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 65
+        },
+        {
+          "seat": 3,
+          "seed": 20261055,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 80
+        },
+        {
+          "seat": 0,
+          "seed": 20261056,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 53
+        },
+        {
+          "seat": 1,
+          "seed": 20261056,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 79
+        },
+        {
+          "seat": 2,
+          "seed": 20261056,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 71
+        },
+        {
+          "seat": 3,
+          "seed": 20261056,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 63
+        },
+        {
+          "seat": 0,
+          "seed": 20261057,
+          "winner": 1,
+          "student_won": false,
+          "capped": false,
+          "decisions": 88
+        },
+        {
+          "seat": 1,
+          "seed": 20261057,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 83
+        },
+        {
+          "seat": 2,
+          "seed": 20261057,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 50
+        },
+        {
+          "seat": 3,
+          "seed": 20261057,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 86
+        },
+        {
+          "seat": 0,
+          "seed": 20261058,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 65
+        },
+        {
+          "seat": 1,
+          "seed": 20261058,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 60
+        },
+        {
+          "seat": 2,
+          "seed": 20261058,
+          "winner": 1,
+          "student_won": false,
+          "capped": false,
+          "decisions": 102
+        },
+        {
+          "seat": 3,
+          "seed": 20261058,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 67
+        },
+        {
+          "seat": 0,
+          "seed": 20261059,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 98
+        },
+        {
+          "seat": 1,
+          "seed": 20261059,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 69
+        },
+        {
+          "seat": 2,
+          "seed": 20261059,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 95
+        },
+        {
+          "seat": 3,
+          "seed": 20261059,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 121
+        },
+        {
+          "seat": 0,
+          "seed": 20261060,
+          "winner": 2,
+          "student_won": false,
+          "capped": false,
+          "decisions": 104
+        },
+        {
+          "seat": 1,
+          "seed": 20261060,
+          "winner": 2,
+          "student_won": false,
+          "capped": false,
+          "decisions": 66
+        },
+        {
+          "seat": 2,
+          "seed": 20261060,
+          "winner": 1,
+          "student_won": false,
+          "capped": false,
+          "decisions": 85
+        },
+        {
+          "seat": 3,
+          "seed": 20261060,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 51
+        },
+        {
+          "seat": 0,
+          "seed": 20261061,
+          "winner": 1,
+          "student_won": false,
+          "capped": false,
+          "decisions": 122
+        },
+        {
+          "seat": 1,
+          "seed": 20261061,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 92
+        },
+        {
+          "seat": 2,
+          "seed": 20261061,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 105
+        },
+        {
+          "seat": 3,
+          "seed": 20261061,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 103
+        },
+        {
+          "seat": 0,
+          "seed": 20261062,
+          "winner": 1,
+          "student_won": false,
+          "capped": false,
+          "decisions": 91
+        },
+        {
+          "seat": 1,
+          "seed": 20261062,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 114
+        },
+        {
+          "seat": 2,
+          "seed": 20261062,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 118
+        },
+        {
+          "seat": 3,
+          "seed": 20261062,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 215
+        },
+        {
+          "seat": 0,
+          "seed": 20261063,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 91
+        },
+        {
+          "seat": 1,
+          "seed": 20261063,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 50
+        },
+        {
+          "seat": 2,
+          "seed": 20261063,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 52
+        },
+        {
+          "seat": 3,
+          "seed": 20261063,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 53
+        },
+        {
+          "seat": 0,
+          "seed": 20261064,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 64
+        },
+        {
+          "seat": 1,
+          "seed": 20261064,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 62
+        },
+        {
+          "seat": 2,
+          "seed": 20261064,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 48
+        },
+        {
+          "seat": 3,
+          "seed": 20261064,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 46
+        },
+        {
+          "seat": 0,
+          "seed": 20261065,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 80
+        },
+        {
+          "seat": 1,
+          "seed": 20261065,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 106
+        },
+        {
+          "seat": 2,
+          "seed": 20261065,
+          "winner": 3,
+          "student_won": false,
+          "capped": false,
+          "decisions": 114
+        },
+        {
+          "seat": 3,
+          "seed": 20261065,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 116
+        },
+        {
+          "seat": 0,
+          "seed": 20261066,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 67
+        },
+        {
+          "seat": 1,
+          "seed": 20261066,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 96
+        },
+        {
+          "seat": 2,
+          "seed": 20261066,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 171
+        },
+        {
+          "seat": 3,
+          "seed": 20261066,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 185
+        },
+        {
+          "seat": 0,
+          "seed": 20261067,
+          "winner": 1,
+          "student_won": false,
+          "capped": false,
+          "decisions": 82
+        },
+        {
+          "seat": 1,
+          "seed": 20261067,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 143
+        },
+        {
+          "seat": 2,
+          "seed": 20261067,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 123
+        },
+        {
+          "seat": 3,
+          "seed": 20261067,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 112
+        },
+        {
+          "seat": 0,
+          "seed": 20261068,
+          "winner": 3,
+          "student_won": false,
+          "capped": false,
+          "decisions": 76
+        },
+        {
+          "seat": 1,
+          "seed": 20261068,
+          "winner": 2,
+          "student_won": false,
+          "capped": false,
+          "decisions": 96
+        },
+        {
+          "seat": 2,
+          "seed": 20261068,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 102
+        },
+        {
+          "seat": 3,
+          "seed": 20261068,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 84
+        },
+        {
+          "seat": 0,
+          "seed": 20261069,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 129
+        },
+        {
+          "seat": 1,
+          "seed": 20261069,
+          "winner": 3,
+          "student_won": false,
+          "capped": false,
+          "decisions": 154
+        },
+        {
+          "seat": 2,
+          "seed": 20261069,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 101
+        },
+        {
+          "seat": 3,
+          "seed": 20261069,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 32
+        },
+        {
+          "seat": 0,
+          "seed": 20261070,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 95
+        },
+        {
+          "seat": 1,
+          "seed": 20261070,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 54
+        },
+        {
+          "seat": 2,
+          "seed": 20261070,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 111
+        },
+        {
+          "seat": 3,
+          "seed": 20261070,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 109
+        },
+        {
+          "seat": 0,
+          "seed": 20261071,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 123
+        },
+        {
+          "seat": 1,
+          "seed": 20261071,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 145
+        },
+        {
+          "seat": 2,
+          "seed": 20261071,
+          "winner": 1,
+          "student_won": false,
+          "capped": false,
+          "decisions": 92
+        },
+        {
+          "seat": 3,
+          "seed": 20261071,
+          "winner": 1,
+          "student_won": false,
+          "capped": false,
+          "decisions": 156
+        },
+        {
+          "seat": 0,
+          "seed": 20261072,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 87
+        },
+        {
+          "seat": 1,
+          "seed": 20261072,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 139
+        },
+        {
+          "seat": 2,
+          "seed": 20261072,
+          "winner": 1,
+          "student_won": false,
+          "capped": false,
+          "decisions": 147
+        },
+        {
+          "seat": 3,
+          "seed": 20261072,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 137
+        },
+        {
+          "seat": 0,
+          "seed": 20261073,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 126
+        },
+        {
+          "seat": 1,
+          "seed": 20261073,
+          "winner": 0,
+          "student_won": false,
+          "capped": false,
+          "decisions": 61
+        },
+        {
+          "seat": 2,
+          "seed": 20261073,
+          "winner": 1,
+          "student_won": false,
+          "capped": false,
+          "decisions": 155
+        },
+        {
+          "seat": 3,
+          "seed": 20261073,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 63
+        },
+        {
+          "seat": 0,
+          "seed": 20261074,
+          "winner": 3,
+          "student_won": false,
+          "capped": false,
+          "decisions": 134
+        },
+        {
+          "seat": 1,
+          "seed": 20261074,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 91
+        },
+        {
+          "seat": 2,
+          "seed": 20261074,
+          "winner": 3,
+          "student_won": false,
+          "capped": false,
+          "decisions": 82
+        },
+        {
+          "seat": 3,
+          "seed": 20261074,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 112
+        },
+        {
+          "seat": 0,
+          "seed": 20261075,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 100
+        },
+        {
+          "seat": 1,
+          "seed": 20261075,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 115
+        },
+        {
+          "seat": 2,
+          "seed": 20261075,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 43
+        },
+        {
+          "seat": 3,
+          "seed": 20261075,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 59
+        },
+        {
+          "seat": 0,
+          "seed": 20261076,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 160
+        },
+        {
+          "seat": 1,
+          "seed": 20261076,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 124
+        },
+        {
+          "seat": 2,
+          "seed": 20261076,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 57
+        },
+        {
+          "seat": 3,
+          "seed": 20261076,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 108
+        },
+        {
+          "seat": 0,
+          "seed": 20261077,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 106
+        },
+        {
+          "seat": 1,
+          "seed": 20261077,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 136
+        },
+        {
+          "seat": 2,
+          "seed": 20261077,
+          "winner": 3,
+          "student_won": false,
+          "capped": false,
+          "decisions": 201
+        },
+        {
+          "seat": 3,
+          "seed": 20261077,
+          "winner": 3,
+          "student_won": true,
+          "capped": false,
+          "decisions": 95
+        },
+        {
+          "seat": 0,
+          "seed": 20261078,
+          "winner": 0,
+          "student_won": true,
+          "capped": false,
+          "decisions": 63
+        },
+        {
+          "seat": 1,
+          "seed": 20261078,
+          "winner": 1,
+          "student_won": true,
+          "capped": false,
+          "decisions": 57
+        },
+        {
+          "seat": 2,
+          "seed": 20261078,
+          "winner": 2,
+          "student_won": true,
+          "capped": false,
+          "decisions": 46
+        },
+        {
+          "seat": 3,
+          "seed": 20261078,
+          "winner": 2,
+          "student_won": false,
+          "capped": false,
+          "decisions": 137
+        }
+      ],
+      "completed_games": 256,
+      "capped_games": 0,
+      "wins": 156,
+      "win_rate_completed": 0.609375,
+      "win_rate_all_attempts": 0.609375,
+      "win_rate_wilson95": [
+        0.548413925119398,
+        0.6671021062874427
+      ],
+      "by_seat": {
+        "0": {
+          "attempted": 64,
+          "completed": 64,
+          "wins": 41
+        },
+        "1": {
+          "attempted": 64,
+          "completed": 64,
+          "wins": 41
+        },
+        "2": {
+          "attempted": 64,
+          "completed": 64,
+          "wins": 33
+        },
+        "3": {
+          "attempted": 64,
+          "completed": 64,
+          "wins": 41
+        }
+      },
+      "decision_latency": {
+        "samples": 25043,
+        "median_ms": 0.029458,
+        "p95_ms": 0.031375,
+        "p99_ms": 0.03225,
+        "mean_ms": 0.029706609192189436,
+        "max_ms": 0.07325
+      },
+      "benchmark_wall_s": 0.7982780000020284,
+      "process_cpu_s": 0.798578,
+      "average_busy_cores": 1.0003758089261772,
+      "peak_process_rss_mib": 218.671875,
+      "torch_version": "2.7.1",
+      "numpy_version": "2.2.6",
+      "checkpoint_training_config": {
+        "hidden": 512,
+        "visibility": "perfect",
+        "victory_target": 7,
+        "seed": 0,
+        "train_seats": "policy,heuristic,policy,heuristic_v2"
+      },
+      "raw_report": "artifacts/reports/eli_256.json",
+      "raw_report_sha256": "44a7d537b2d8fd8defa536815084ae8a92ef1b82fa821b8ec3d474308736784a",
+      "protocol": {
+        "agents": [
+          "eli"
+        ],
+        "games": 256,
+        "threads": 1,
+        "seconds": 60.0,
+        "seed": 20261015,
+        "classical_policy": "weighted",
+        "classical_opponents": "random"
+      }
+    },
+    {
+      "agent": "catanatron",
+      "trained": false,
+      "validated_actions": 39916,
+      "policy": "WeightedRandomPlayer",
+      "search_depth": null,
+      "opponents": "weighted legal bots",
+      "rules": {
+        "players": 4,
+        "target_vp": 10
+      },
+      "latency_scope": "classical policy decide; excludes game execute",
+      "status": "ok",
+      "games": [
+        {
+          "seed": 20261015,
+          "seat": 0,
+          "winner": 3,
+          "student_won": false
+        },
+        {
+          "seed": 20261015,
+          "seat": 1,
+          "winner": 3,
+          "student_won": false
+        },
+        {
+          "seed": 20261015,
+          "seat": 2,
+          "winner": 3,
+          "student_won": false
+        },
+        {
+          "seed": 20261015,
+          "seat": 3,
+          "winner": 3,
+          "student_won": true
+        },
+        {
+          "seed": 20261016,
+          "seat": 0,
+          "winner": 2,
+          "student_won": false
+        },
+        {
+          "seed": 20261016,
+          "seat": 1,
+          "winner": 2,
+          "student_won": false
+        },
+        {
+          "seed": 20261016,
+          "seat": 2,
+          "winner": 2,
+          "student_won": true
+        },
+        {
+          "seed": 20261016,
+          "seat": 3,
+          "winner": 2,
+          "student_won": false
+        },
+        {
+          "seed": 20261017,
+          "seat": 0,
+          "winner": 1,
+          "student_won": false
+        },
+        {
+          "seed": 20261017,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261017,
+          "seat": 2,
+          "winner": 1,
+          "student_won": false
+        },
+        {
+          "seed": 20261017,
+          "seat": 3,
+          "winner": 1,
+          "student_won": false
+        },
+        {
+          "seed": 20261018,
+          "seat": 0,
+          "winner": 1,
+          "student_won": false
+        },
+        {
+          "seed": 20261018,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261018,
+          "seat": 2,
+          "winner": 1,
+          "student_won": false
+        },
+        {
+          "seed": 20261018,
+          "seat": 3,
+          "winner": 1,
+          "student_won": false
+        },
+        {
+          "seed": 20261019,
+          "seat": 0,
+          "winner": 3,
+          "student_won": false
+        },
+        {
+          "seed": 20261019,
+          "seat": 1,
+          "winner": 3,
+          "student_won": false
+        },
+        {
+          "seed": 20261019,
+          "seat": 2,
+          "winner": 3,
+          "student_won": false
+        },
+        {
+          "seed": 20261019,
+          "seat": 3,
+          "winner": 3,
+          "student_won": true
+        },
+        {
+          "seed": 20261020,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261020,
+          "seat": 1,
+          "winner": 0,
+          "student_won": false
+        },
+        {
+          "seed": 20261020,
+          "seat": 2,
+          "winner": 0,
+          "student_won": false
+        },
+        {
+          "seed": 20261020,
+          "seat": 3,
+          "winner": 0,
+          "student_won": false
+        },
+        {
+          "seed": 20261021,
+          "seat": 0,
+          "winner": 2,
+          "student_won": false
+        },
+        {
+          "seed": 20261021,
+          "seat": 1,
+          "winner": 2,
+          "student_won": false
+        },
+        {
+          "seed": 20261021,
+          "seat": 2,
+          "winner": 2,
+          "student_won": true
+        },
+        {
+          "seed": 20261021,
+          "seat": 3,
+          "winner": 2,
+          "student_won": false
+        },
+        {
+          "seed": 20261022,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261022,
+          "seat": 1,
+          "winner": 0,
+          "student_won": false
+        },
+        {
+          "seed": 20261022,
+          "seat": 2,
+          "winner": 0,
+          "student_won": false
+        },
+        {
+          "seed": 20261022,
+          "seat": 3,
+          "winner": 0,
+          "student_won": false
+        },
+        {
+          "seed": 20261023,
+          "seat": 0,
+          "winner": 2,
+          "student_won": false
+        },
+        {
+          "seed": 20261023,
+          "seat": 1,
+          "winner": 2,
+          "student_won": false
+        },
+        {
+          "seed": 20261023,
+          "seat": 2,
+          "winner": 2,
+          "student_won": true
+        },
+        {
+          "seed": 20261023,
+          "seat": 3,
+          "winner": 2,
+          "student_won": false
+        },
+        {
+          "seed": 20261024,
+          "seat": 0,
+          "winner": 3,
+          "student_won": false
+        },
+        {
+          "seed": 20261024,
+          "seat": 1,
+          "winner": 3,
+          "student_won": false
+        },
+        {
+          "seed": 20261024,
+          "seat": 2,
+          "winner": 3,
+          "student_won": false
+        },
+        {
+          "seed": 20261024,
+          "seat": 3,
+          "winner": 3,
+          "student_won": true
+        },
+        {
+          "seed": 20261025,
+          "seat": 0,
+          "winner": 3,
+          "student_won": false
+        },
+        {
+          "seed": 20261025,
+          "seat": 1,
+          "winner": 3,
+          "student_won": false
+        },
+        {
+          "seed": 20261025,
+          "seat": 2,
+          "winner": 3,
+          "student_won": false
+        },
+        {
+          "seed": 20261025,
+          "seat": 3,
+          "winner": 3,
+          "student_won": true
+        },
+        {
+          "seed": 20261026,
+          "seat": 0,
+          "winner": 2,
+          "student_won": false
+        },
+        {
+          "seed": 20261026,
+          "seat": 1,
+          "winner": 2,
+          "student_won": false
+        },
+        {
+          "seed": 20261026,
+          "seat": 2,
+          "winner": 2,
+          "student_won": true
+        },
+        {
+          "seed": 20261026,
+          "seat": 3,
+          "winner": 2,
+          "student_won": false
+        },
+        {
+          "seed": 20261027,
+          "seat": 0,
+          "winner": 1,
+          "student_won": false
+        },
+        {
+          "seed": 20261027,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261027,
+          "seat": 2,
+          "winner": 1,
+          "student_won": false
+        },
+        {
+          "seed": 20261027,
+          "seat": 3,
+          "winner": 1,
+          "student_won": false
+        },
+        {
+          "seed": 20261028,
+          "seat": 0,
+          "winner": 1,
+          "student_won": false
+        },
+        {
+          "seed": 20261028,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261028,
+          "seat": 2,
+          "winner": 1,
+          "student_won": false
+        },
+        {
+          "seed": 20261028,
+          "seat": 3,
+          "winner": 1,
+          "student_won": false
+        },
+        {
+          "seed": 20261029,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261029,
+          "seat": 1,
+          "winner": 0,
+          "student_won": false
+        },
+        {
+          "seed": 20261029,
+          "seat": 2,
+          "winner": 0,
+          "student_won": false
+        },
+        {
+          "seed": 20261029,
+          "seat": 3,
+          "winner": 0,
+          "student_won": false
+        },
+        {
+          "seed": 20261030,
+          "seat": 0,
+          "winner": 1,
+          "student_won": false
+        },
+        {
+          "seed": 20261030,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261030,
+          "seat": 2,
+          "winner": 1,
+          "student_won": false
+        },
+        {
+          "seed": 20261030,
+          "seat": 3,
+          "winner": 1,
+          "student_won": false
+        }
+      ],
+      "completed_games": 64,
+      "capped_games": 0,
+      "wins": 16,
+      "win_rate_completed": 0.25,
+      "win_rate_all_attempts": 0.25,
+      "win_rate_wilson95": [
+        0.1601492653097078,
+        0.36816276458669345
+      ],
+      "by_seat": {
+        "0": {
+          "attempted": 16,
+          "completed": 16,
+          "wins": 3
+        },
+        "1": {
+          "attempted": 16,
+          "completed": 16,
+          "wins": 5
+        },
+        "2": {
+          "attempted": 16,
+          "completed": 16,
+          "wins": 4
+        },
+        "3": {
+          "attempted": 16,
+          "completed": 16,
+          "wins": 4
+        }
+      },
+      "decision_latency": {
+        "samples": 9979,
+        "median_ms": 0.0005,
+        "p95_ms": 0.002292,
+        "p99_ms": 0.16293025999999847,
+        "mean_ms": 0.0037703858102014227,
+        "max_ms": 0.2845
+      },
+      "benchmark_wall_s": 0.6527789579995442,
+      "process_cpu_s": 0.65463,
+      "average_busy_cores": 1.002837165594509,
+      "peak_process_rss_mib": 196.96875,
+      "torch_version": "2.7.1",
+      "numpy_version": "2.2.6",
+      "seed": 20261015,
+      "torch_threads": 1,
+      "process_wall_s": 1.2041776249825489,
+      "raw_report": "artifacts/reports/weighted_vs_weighted.json",
+      "raw_report_sha256": "2b005872c926ac24a123cec68d6ce93e2f8f114c4e2adc151979accb7855cfc8",
+      "protocol": {
+        "agents": [
+          "catanatron"
+        ],
+        "games": 64,
+        "threads": 1,
+        "seconds": 45.0,
+        "seed": 20261015,
+        "classical_policy": "weighted",
+        "classical_opponents": "weighted"
+      }
+    },
+    {
+      "agent": "catanatron",
+      "trained": false,
+      "validated_actions": 18850,
+      "policy": "ValueFunctionPlayer",
+      "search_depth": null,
+      "opponents": "weighted legal bots",
+      "rules": {
+        "players": 4,
+        "target_vp": 10
+      },
+      "latency_scope": "classical policy decide; excludes game execute",
+      "status": "ok",
+      "games": [
+        {
+          "seed": 20261015,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261015,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261015,
+          "seat": 2,
+          "winner": 0,
+          "student_won": false
+        },
+        {
+          "seed": 20261015,
+          "seat": 3,
+          "winner": 3,
+          "student_won": true
+        },
+        {
+          "seed": 20261016,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261016,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261016,
+          "seat": 2,
+          "winner": 2,
+          "student_won": true
+        },
+        {
+          "seed": 20261016,
+          "seat": 3,
+          "winner": 3,
+          "student_won": true
+        },
+        {
+          "seed": 20261017,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261017,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261017,
+          "seat": 2,
+          "winner": 1,
+          "student_won": false
+        },
+        {
+          "seed": 20261017,
+          "seat": 3,
+          "winner": 3,
+          "student_won": true
+        },
+        {
+          "seed": 20261018,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261018,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261018,
+          "seat": 2,
+          "winner": 2,
+          "student_won": true
+        },
+        {
+          "seed": 20261018,
+          "seat": 3,
+          "winner": 3,
+          "student_won": true
+        },
+        {
+          "seed": 20261019,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261019,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261019,
+          "seat": 2,
+          "winner": 2,
+          "student_won": true
+        },
+        {
+          "seed": 20261019,
+          "seat": 3,
+          "winner": 3,
+          "student_won": true
+        },
+        {
+          "seed": 20261020,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261020,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261020,
+          "seat": 2,
+          "winner": 2,
+          "student_won": true
+        },
+        {
+          "seed": 20261020,
+          "seat": 3,
+          "winner": 3,
+          "student_won": true
+        },
+        {
+          "seed": 20261021,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261021,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261021,
+          "seat": 2,
+          "winner": 0,
+          "student_won": false
+        },
+        {
+          "seed": 20261021,
+          "seat": 3,
+          "winner": 3,
+          "student_won": true
+        },
+        {
+          "seed": 20261022,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261022,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261022,
+          "seat": 2,
+          "winner": 2,
+          "student_won": true
+        },
+        {
+          "seed": 20261022,
+          "seat": 3,
+          "winner": 3,
+          "student_won": true
+        },
+        {
+          "seed": 20261023,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261023,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261023,
+          "seat": 2,
+          "winner": 2,
+          "student_won": true
+        },
+        {
+          "seed": 20261023,
+          "seat": 3,
+          "winner": 3,
+          "student_won": true
+        },
+        {
+          "seed": 20261024,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261024,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261024,
+          "seat": 2,
+          "winner": 2,
+          "student_won": true
+        },
+        {
+          "seed": 20261024,
+          "seat": 3,
+          "winner": 3,
+          "student_won": true
+        },
+        {
+          "seed": 20261025,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261025,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261025,
+          "seat": 2,
+          "winner": 2,
+          "student_won": true
+        },
+        {
+          "seed": 20261025,
+          "seat": 3,
+          "winner": 3,
+          "student_won": true
+        },
+        {
+          "seed": 20261026,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261026,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261026,
+          "seat": 2,
+          "winner": 2,
+          "student_won": true
+        },
+        {
+          "seed": 20261026,
+          "seat": 3,
+          "winner": 3,
+          "student_won": true
+        },
+        {
+          "seed": 20261027,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261027,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261027,
+          "seat": 2,
+          "winner": 2,
+          "student_won": true
+        },
+        {
+          "seed": 20261027,
+          "seat": 3,
+          "winner": 3,
+          "student_won": true
+        },
+        {
+          "seed": 20261028,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261028,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261028,
+          "seat": 2,
+          "winner": 2,
+          "student_won": true
+        },
+        {
+          "seed": 20261028,
+          "seat": 3,
+          "winner": 3,
+          "student_won": true
+        },
+        {
+          "seed": 20261029,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261029,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261029,
+          "seat": 2,
+          "winner": 2,
+          "student_won": true
+        },
+        {
+          "seed": 20261029,
+          "seat": 3,
+          "winner": 3,
+          "student_won": true
+        },
+        {
+          "seed": 20261030,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261030,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261030,
+          "seat": 2,
+          "winner": 2,
+          "student_won": true
+        },
+        {
+          "seed": 20261030,
+          "seat": 3,
+          "winner": 3,
+          "student_won": true
+        }
+      ],
+      "completed_games": 64,
+      "capped_games": 0,
+      "wins": 61,
+      "win_rate_completed": 0.953125,
+      "win_rate_all_attempts": 0.953125,
+      "win_rate_wilson95": [
+        0.8710034625990662,
+        0.9839309832137065
+      ],
+      "by_seat": {
+        "0": {
+          "attempted": 16,
+          "completed": 16,
+          "wins": 16
+        },
+        "1": {
+          "attempted": 16,
+          "completed": 16,
+          "wins": 16
+        },
+        "2": {
+          "attempted": 16,
+          "completed": 16,
+          "wins": 13
+        },
+        "3": {
+          "attempted": 16,
+          "completed": 16,
+          "wins": 16
+        }
+      },
+      "decision_latency": {
+        "samples": 6170,
+        "median_ms": 0.3485,
+        "p95_ms": 3.990074999999995,
+        "p99_ms": 5.692325809999989,
+        "mean_ms": 0.8394100189627228,
+        "max_ms": 30.419
+      },
+      "benchmark_wall_s": 5.589976666000439,
+      "process_cpu_s": 5.589208,
+      "average_busy_cores": 0.9998632076578978,
+      "peak_process_rss_mib": 222.421875,
+      "torch_version": "2.7.1",
+      "numpy_version": "2.2.6",
+      "seed": 20261015,
+      "torch_threads": 1,
+      "process_wall_s": 6.145013542001834,
+      "raw_report": "artifacts/reports/value_vs_weighted.json",
+      "raw_report_sha256": "0963c6ef695cd7c56fd0f0dc909e198e4ce0a4720adb9814f72524ef8538b8d3",
+      "protocol": {
+        "agents": [
+          "catanatron"
+        ],
+        "games": 64,
+        "threads": 1,
+        "seconds": 45.0,
+        "seed": 20261015,
+        "classical_policy": "value",
+        "classical_opponents": "weighted"
+      }
+    },
+    {
+      "agent": "catanatron",
+      "trained": false,
+      "validated_actions": 19195,
+      "policy": "AlphaBetaPlayer",
+      "search_depth": 1,
+      "opponents": "weighted legal bots",
+      "rules": {
+        "players": 4,
+        "target_vp": 10
+      },
+      "latency_scope": "classical policy decide; excludes game execute",
+      "status": "ok",
+      "games": [
+        {
+          "seed": 20261015,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261015,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261015,
+          "seat": 2,
+          "winner": 2,
+          "student_won": true
+        },
+        {
+          "seed": 20261015,
+          "seat": 3,
+          "winner": 3,
+          "student_won": true
+        },
+        {
+          "seed": 20261016,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261016,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261016,
+          "seat": 2,
+          "winner": 2,
+          "student_won": true
+        },
+        {
+          "seed": 20261016,
+          "seat": 3,
+          "winner": 3,
+          "student_won": true
+        },
+        {
+          "seed": 20261017,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261017,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261017,
+          "seat": 2,
+          "winner": 2,
+          "student_won": true
+        },
+        {
+          "seed": 20261017,
+          "seat": 3,
+          "winner": 3,
+          "student_won": true
+        },
+        {
+          "seed": 20261018,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261018,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261018,
+          "seat": 2,
+          "winner": 2,
+          "student_won": true
+        },
+        {
+          "seed": 20261018,
+          "seat": 3,
+          "winner": 3,
+          "student_won": true
+        },
+        {
+          "seed": 20261019,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261019,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261019,
+          "seat": 2,
+          "winner": 2,
+          "student_won": true
+        },
+        {
+          "seed": 20261019,
+          "seat": 3,
+          "winner": 3,
+          "student_won": true
+        },
+        {
+          "seed": 20261020,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261020,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261020,
+          "seat": 2,
+          "winner": 2,
+          "student_won": true
+        },
+        {
+          "seed": 20261020,
+          "seat": 3,
+          "winner": 3,
+          "student_won": true
+        },
+        {
+          "seed": 20261021,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261021,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261021,
+          "seat": 2,
+          "winner": 2,
+          "student_won": true
+        },
+        {
+          "seed": 20261021,
+          "seat": 3,
+          "winner": 3,
+          "student_won": true
+        },
+        {
+          "seed": 20261022,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261022,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261022,
+          "seat": 2,
+          "winner": 2,
+          "student_won": true
+        },
+        {
+          "seed": 20261022,
+          "seat": 3,
+          "winner": 3,
+          "student_won": true
+        },
+        {
+          "seed": 20261023,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261023,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261023,
+          "seat": 2,
+          "winner": 2,
+          "student_won": true
+        },
+        {
+          "seed": 20261023,
+          "seat": 3,
+          "winner": 3,
+          "student_won": true
+        },
+        {
+          "seed": 20261024,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261024,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261024,
+          "seat": 2,
+          "winner": 2,
+          "student_won": true
+        },
+        {
+          "seed": 20261024,
+          "seat": 3,
+          "winner": 3,
+          "student_won": true
+        },
+        {
+          "seed": 20261025,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261025,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261025,
+          "seat": 2,
+          "winner": 2,
+          "student_won": true
+        },
+        {
+          "seed": 20261025,
+          "seat": 3,
+          "winner": 3,
+          "student_won": true
+        },
+        {
+          "seed": 20261026,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261026,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261026,
+          "seat": 2,
+          "winner": 2,
+          "student_won": true
+        },
+        {
+          "seed": 20261026,
+          "seat": 3,
+          "winner": 3,
+          "student_won": true
+        },
+        {
+          "seed": 20261027,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261027,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261027,
+          "seat": 2,
+          "winner": 2,
+          "student_won": true
+        },
+        {
+          "seed": 20261027,
+          "seat": 3,
+          "winner": 3,
+          "student_won": true
+        },
+        {
+          "seed": 20261028,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261028,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261028,
+          "seat": 2,
+          "winner": 2,
+          "student_won": true
+        },
+        {
+          "seed": 20261028,
+          "seat": 3,
+          "winner": 3,
+          "student_won": true
+        },
+        {
+          "seed": 20261029,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261029,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261029,
+          "seat": 2,
+          "winner": 2,
+          "student_won": true
+        },
+        {
+          "seed": 20261029,
+          "seat": 3,
+          "winner": 3,
+          "student_won": true
+        },
+        {
+          "seed": 20261030,
+          "seat": 0,
+          "winner": 0,
+          "student_won": true
+        },
+        {
+          "seed": 20261030,
+          "seat": 1,
+          "winner": 1,
+          "student_won": true
+        },
+        {
+          "seed": 20261030,
+          "seat": 2,
+          "winner": 2,
+          "student_won": true
+        },
+        {
+          "seed": 20261030,
+          "seat": 3,
+          "winner": 3,
+          "student_won": true
+        }
+      ],
+      "completed_games": 64,
+      "capped_games": 0,
+      "wins": 64,
+      "win_rate_completed": 1.0,
+      "win_rate_all_attempts": 1.0,
+      "win_rate_wilson95": [
+        0.9433759402071974,
+        0.9999999999999999
+      ],
+      "by_seat": {
+        "0": {
+          "attempted": 16,
+          "completed": 16,
+          "wins": 16
+        },
+        "1": {
+          "attempted": 16,
+          "completed": 16,
+          "wins": 16
+        },
+        "2": {
+          "attempted": 16,
+          "completed": 16,
+          "wins": 16
+        },
+        "3": {
+          "attempted": 16,
+          "completed": 16,
+          "wins": 16
+        }
+      },
+      "decision_latency": {
+        "samples": 6128,
+        "median_ms": 0.41641649999999997,
+        "p95_ms": 5.145991549999995,
+        "p99_ms": 7.31337635999999,
+        "mean_ms": 1.1742213337140992,
+        "max_ms": 31.172167
+      },
+      "benchmark_wall_s": 7.599624833004782,
+      "process_cpu_s": 7.598129000000001,
+      "average_busy_cores": 0.9998031701514679,
+      "peak_process_rss_mib": 225.703125,
+      "torch_version": "2.7.1",
+      "numpy_version": "2.2.6",
+      "seed": 20261015,
+      "torch_threads": 1,
+      "process_wall_s": 8.158287708007265,
+      "raw_report": "artifacts/reports/ab1_vs_weighted.json",
+      "raw_report_sha256": "b1804eca71b6d228366c24f7ecdd55422dd07368f92b5aeef6cb2ce117ea0f93",
+      "protocol": {
+        "agents": [
+          "catanatron"
+        ],
+        "games": 64,
+        "threads": 1,
+        "seconds": 45.0,
+        "seed": 20261015,
+        "classical_policy": "alphabeta",
+        "classical_opponents": "weighted"
+      }
+    }
+  ]
+}

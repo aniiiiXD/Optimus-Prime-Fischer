@@ -1,0 +1,236 @@
+{
+  "protocol": "catanLabs-four-player-v5-canonical-actions-and-chance-paired-1v1",
+  "created_utc": "2026-10-16T03:17:56Z",
+  "engine": {
+    "source": "https://github.com/bcollazo/catanatron.git",
+    "commit": "ecf931181b9a65bb4116a2153fb78c16f1438e00",
+    "python_root": "/Users/anixd/Documents/Hyde/start/catan_lab/vendor/catanatron/catanatron"
+  },
+  "rules": {
+    "players": 2,
+    "target_vp": 10,
+    "discard_limit": 7,
+    "friendly_robber": false,
+    "number_placement": "official_spiral",
+    "trade_offers": true,
+    "status": "provisional_local_target",
+    "vps_to_win": 10
+  },
+  "candidate": {
+    "file": "/Users/anixd/Documents/Hyde/catanLabs/OneVOne/agent.py",
+    "sha256": "c9c7a502219e02a6869c9d02805e708d4a431ac35291ba40ff42c45294c328ab",
+    "config": "/Users/anixd/Documents/Hyde/catanLabs/OneVOne/configs/default.json",
+    "config_sha256": "5e0c8bb3da04bbff18e33b39100a76f222d72fd9c3dedd750a98cbc9ca73b887"
+  },
+  "opponents": [
+    "value",
+    "alphabeta1",
+    "tactical"
+  ],
+  "boards_per_opponent": 1,
+  "first_seed": 20271000,
+  "seat_protocol": "same seed and rules, candidate in each of the two engine seats",
+  "caps": {
+    "max_actions": 15000,
+    "max_turns": 500,
+    "max_game_seconds": 45.0
+  },
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "python": "3.11.15",
+  "python_hash_seed": "0",
+  "runner_sha256": "21d7629d7fbd9fb778e1e93e694ec2c69fbffca536b592618a11a43afe8c1f71",
+  "tiers": {
+    "value": {
+      "summary": {
+        "attempts": 2,
+        "completed": 2,
+        "capped": 0,
+        "errors": 0,
+        "wins": 2,
+        "win_rate_all_attempts": 1.0,
+        "win_rate_wilson95": [
+          0.34238022750665303,
+          1.0
+        ],
+        "mean_final_vp": 10.0,
+        "mean_vp_margin": 4.0,
+        "candidate_decision_latency_ms": {
+          "samples": 248,
+          "median": 0.0842915,
+          "p95": 3.021291,
+          "max": 12.231667
+        },
+        "by_seat": {
+          "0": {
+            "attempts": 1,
+            "wins": 1,
+            "win_rate": 1.0
+          },
+          "1": {
+            "attempts": 1,
+            "wins": 1,
+            "win_rate": 1.0
+          }
+        }
+      },
+      "games": [
+        {
+          "seed": 20271000,
+          "seat": 0,
+          "candidate_color": "BLUE",
+          "opponent": "value",
+          "status": "completed",
+          "winner": "BLUE",
+          "won": true,
+          "candidate_vp": 10,
+          "opponent_vp": 5,
+          "actions": 254,
+          "turns": 78,
+          "wall_seconds": 0.141
+        },
+        {
+          "seed": 20271000,
+          "seat": 1,
+          "candidate_color": "RED",
+          "opponent": "value",
+          "status": "completed",
+          "winner": "RED",
+          "won": true,
+          "candidate_vp": 10,
+          "opponent_vp": 7,
+          "actions": 228,
+          "turns": 71,
+          "wall_seconds": 0.093
+        }
+      ]
+    },
+    "alphabeta1": {
+      "summary": {
+        "attempts": 2,
+        "completed": 2,
+        "capped": 0,
+        "errors": 0,
+        "wins": 2,
+        "win_rate_all_attempts": 1.0,
+        "win_rate_wilson95": [
+          0.34238022750665303,
+          1.0
+        ],
+        "mean_final_vp": 10.0,
+        "mean_vp_margin": 2.5,
+        "candidate_decision_latency_ms": {
+          "samples": 266,
+          "median": 0.09722900000000001,
+          "p95": 2.936458,
+          "max": 8.688959
+        },
+        "by_seat": {
+          "0": {
+            "attempts": 1,
+            "wins": 1,
+            "win_rate": 1.0
+          },
+          "1": {
+            "attempts": 1,
+            "wins": 1,
+            "win_rate": 1.0
+          }
+        }
+      },
+      "games": [
+        {
+          "seed": 20271000,
+          "seat": 0,
+          "candidate_color": "BLUE",
+          "opponent": "alphabeta1",
+          "status": "completed",
+          "winner": "BLUE",
+          "won": true,
+          "candidate_vp": 10,
+          "opponent_vp": 6,
+          "actions": 227,
+          "turns": 70,
+          "wall_seconds": 0.152
+        },
+        {
+          "seed": 20271000,
+          "seat": 1,
+          "candidate_color": "RED",
+          "opponent": "alphabeta1",
+          "status": "completed",
+          "winner": "RED",
+          "won": true,
+          "candidate_vp": 10,
+          "opponent_vp": 9,
+          "actions": 283,
+          "turns": 87,
+          "wall_seconds": 0.164
+        }
+      ]
+    },
+    "tactical": {
+      "summary": {
+        "attempts": 2,
+        "completed": 2,
+        "capped": 0,
+        "errors": 0,
+        "wins": 1,
+        "win_rate_all_attempts": 0.5,
+        "win_rate_wilson95": [
+          0.09453120573423074,
+          0.9054687942657693
+        ],
+        "mean_final_vp": 9.0,
+        "mean_vp_margin": 0.0,
+        "candidate_decision_latency_ms": {
+          "samples": 235,
+          "median": 0.154333,
+          "p95": 122.559834,
+          "max": 371.929833
+        },
+        "by_seat": {
+          "0": {
+            "attempts": 1,
+            "wins": 1,
+            "win_rate": 1.0
+          },
+          "1": {
+            "attempts": 1,
+            "wins": 0,
+            "win_rate": 0.0
+          }
+        }
+      },
+      "games": [
+        {
+          "seed": 20271000,
+          "seat": 0,
+          "candidate_color": "BLUE",
+          "opponent": "tactical",
+          "status": "completed",
+          "winner": "BLUE",
+          "won": true,
+          "candidate_vp": 11,
+          "opponent_vp": 8,
+          "actions": 245,
+          "turns": 76,
+          "wall_seconds": 2.364
+        },
+        {
+          "seed": 20271000,
+          "seat": 1,
+          "candidate_color": "RED",
+          "opponent": "tactical",
+          "status": "completed",
+          "winner": "BLUE",
+          "won": false,
+          "candidate_vp": 7,
+          "opponent_vp": 10,
+          "actions": 214,
+          "turns": 72,
+          "wall_seconds": 5.115
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "purpose": "Held-out attribution for teacher BUY_DEVELOPMENT_CARD choices. Positive masked-margin change means the observed group suppresses BUY relative to END.",
+  "checkpoint": "catanLabs/FromScratch/StrategyOne/runs/ppo_actor_critic_preliminary/latest.pt",
+  "holdout_modulus": 10,
+  "examples": 99,
+  "buy_development_exact_accuracy": 0.0,
+  "predicted_action_types": {
+    "END_TURN": 98,
+    "PLAY_KNIGHT_CARD": 1
+  },
+  "mean_buy_rank_among_legal_actions": 2.787879,
+  "mean_buy_minus_end_score": -1.504554,
+  "mean_top_minus_buy_score": 1.511295,
+  "state_group_ablation": {
+    "tiles_and_robber": {
+      "mean_margin_change_when_masked": -1.262139,
+      "mean_absolute_margin_change_when_masked": 1.263915,
+      "mean_gradient_times_input": 0.962868
+    },
+    "building_layout": {
+      "mean_margin_change_when_masked": 0.270957,
+      "mean_absolute_margin_change_when_masked": 0.287536,
+      "mean_gradient_times_input": -0.210312
+    },
+    "road_layout": {
+      "mean_margin_change_when_masked": 0.109595,
+      "mean_absolute_margin_change_when_masked": 0.228659,
+      "mean_gradient_times_input": -0.021742
+    },
+    "ports": {
+      "mean_margin_change_when_masked": -0.313074,
+      "mean_absolute_margin_change_when_masked": 0.425422,
+      "mean_gradient_times_input": 0.312347
+    },
+    "own_resources": {
+      "mean_margin_change_when_masked": 0.01321,
+      "mean_absolute_margin_change_when_masked": 0.015297,
+      "mean_gradient_times_input": -0.01238
+    },
+    "own_development_cards": {
+      "mean_margin_change_when_masked": -0.011107,
+      "mean_absolute_margin_change_when_masked": 0.012029,
+      "mean_gradient_times_input": 0.011855
+    },
+    "own_vp": {
+      "mean_margin_change_when_masked": -0.015844,
+      "mean_absolute_margin_change_when_masked": 0.01628,
+      "mean_gradient_times_input": 0.016431
+    },
+    "opponent_public": {
+      "mean_margin_change_when_masked": -0.201802,
+      "mean_absolute_margin_change_when_masked": 0.201802,
+      "mean_gradient_times_input": 0.205248
+    },
+    "bank_resources": {
+      "mean_margin_change_when_masked": -0.171002,
+      "mean_absolute_margin_change_when_masked": 0.171002,
+      "mean_gradient_times_input": 0.191792
+    },
+    "turn_phase": {
+      "mean_margin_change_when_masked": -0.129707,
+      "mean_absolute_margin_change_when_masked": 0.130124,
+      "mean_gradient_times_input": 0.132813
+    }
+  },
+  "first_layer_action_type_l2_norm": {
+    "ROLL": 0.406018,
+    "MOVE_ROBBER": 0.38426,
+    "DISCARD_RESOURCE": 0.392093,
+    "BUILD_ROAD": 0.482421,
+    "BUILD_SETTLEMENT": 0.8175,
+    "BUILD_CITY": 0.713419,
+    "BUY_DEVELOPMENT_CARD": 0.473763,
+    "PLAY_KNIGHT_CARD": 0.416264,
+    "PLAY_YEAR_OF_PLENTY": 0.386558,
+    "PLAY_MONOPOLY": 0.389113,
+    "PLAY_ROAD_BUILDING": 0.442598,
+    "MARITIME_TRADE": 0.389467,
+    "OFFER_TRADE": 0.352579,
+    "ACCEPT_TRADE": 0.351304,
+    "REJECT_TRADE": 0.34742,
+    "CONFIRM_TRADE": 0.36145,
+    "CANCEL_TRADE": 0.355344,
+    "END_TURN": 0.382453
+  },
+  "interpretation": "Action-type norms are capacity diagnostics only; use held-out score/rank and state-group ablations to identify behavioural failures."
+}

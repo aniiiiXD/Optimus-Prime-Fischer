@@ -1,0 +1,198 @@
+{
+  "checkpoint": "/Users/anixd/Documents/Hyde/start/connect_four_distillation/artifacts/checkpoints/candidate_pons_phases_v3_5min.pt",
+  "dataset": "/Users/anixd/Documents/Hyde/start/connect_four_distillation/artifacts/data/pons_exact_phases_v3.jsonl",
+  "model_config": {
+    "d_model": 64,
+    "n_heads": 4,
+    "n_blocks": 2,
+    "mlp_hidden": 128,
+    "dropout": 0.1,
+    "board_tokens": 42,
+    "action_count": 7
+  },
+  "machine": "macOS-27.0.1-arm64-arm-64bit",
+  "pytorch": "2.7.1",
+  "peak_rss_mib": 372.328125,
+  "results": [
+    {
+      "mode": "forward",
+      "threads": 1,
+      "batch_size": 1,
+      "repeats": 12,
+      "median_ms": 0.29581250000000003,
+      "p95_ms": 0.301334,
+      "positions_per_second": 3380.5197549123172,
+      "mean_cpu_cores": 0.9998926443077499
+    },
+    {
+      "mode": "forward",
+      "threads": 2,
+      "batch_size": 1,
+      "repeats": 12,
+      "median_ms": 0.363708,
+      "p95_ms": 0.389917,
+      "positions_per_second": 2749.4583567037294,
+      "mean_cpu_cores": 1.025224269238856
+    },
+    {
+      "mode": "forward",
+      "threads": 4,
+      "batch_size": 1,
+      "repeats": 12,
+      "median_ms": 0.388729,
+      "p95_ms": 0.403833,
+      "positions_per_second": 2572.48623076745,
+      "mean_cpu_cores": 1.1217029571819717
+    },
+    {
+      "mode": "forward",
+      "threads": 1,
+      "batch_size": 32,
+      "repeats": 12,
+      "median_ms": 2.81775,
+      "p95_ms": 2.956459,
+      "positions_per_second": 11356.578830627273,
+      "mean_cpu_cores": 0.9985807966536878
+    },
+    {
+      "mode": "forward",
+      "threads": 2,
+      "batch_size": 32,
+      "repeats": 12,
+      "median_ms": 2.3760000000000003,
+      "p95_ms": 2.417708,
+      "positions_per_second": 13468.013468013467,
+      "mean_cpu_cores": 1.3353587882011375
+    },
+    {
+      "mode": "forward",
+      "threads": 4,
+      "batch_size": 32,
+      "repeats": 12,
+      "median_ms": 2.3488955000000002,
+      "p95_ms": 2.836834,
+      "positions_per_second": 13623.424286010168,
+      "mean_cpu_cores": 1.661668871246643
+    },
+    {
+      "mode": "forward",
+      "threads": 1,
+      "batch_size": 128,
+      "repeats": 12,
+      "median_ms": 10.8330625,
+      "p95_ms": 14.930333,
+      "positions_per_second": 11815.680007384799,
+      "mean_cpu_cores": 0.9843940086998852
+    },
+    {
+      "mode": "forward",
+      "threads": 2,
+      "batch_size": 128,
+      "repeats": 12,
+      "median_ms": 7.9318124999999995,
+      "p95_ms": 8.094292,
+      "positions_per_second": 16137.547376466604,
+      "mean_cpu_cores": 1.4461786438543565
+    },
+    {
+      "mode": "forward",
+      "threads": 4,
+      "batch_size": 128,
+      "repeats": 12,
+      "median_ms": 6.4134375,
+      "p95_ms": 6.959542,
+      "positions_per_second": 19958.09579496175,
+      "mean_cpu_cores": 2.0072123777520843
+    },
+    {
+      "mode": "train_step",
+      "threads": 1,
+      "batch_size": 1,
+      "repeats": 12,
+      "median_ms": 1.4683125000000001,
+      "p95_ms": 1.735958,
+      "positions_per_second": 681.0539309581577,
+      "mean_cpu_cores": 0.9969041526408573
+    },
+    {
+      "mode": "train_step",
+      "threads": 2,
+      "batch_size": 1,
+      "repeats": 12,
+      "median_ms": 1.7604585,
+      "p95_ms": 1.855958,
+      "positions_per_second": 568.0338389118517,
+      "mean_cpu_cores": 1.0079304340537565
+    },
+    {
+      "mode": "train_step",
+      "threads": 4,
+      "batch_size": 1,
+      "repeats": 12,
+      "median_ms": 1.9191875,
+      "p95_ms": 1.98025,
+      "positions_per_second": 521.0538313739538,
+      "mean_cpu_cores": 1.0726910245631789
+    },
+    {
+      "mode": "train_step",
+      "threads": 1,
+      "batch_size": 32,
+      "repeats": 12,
+      "median_ms": 9.9919165,
+      "p95_ms": 10.368375,
+      "positions_per_second": 3202.588812666719,
+      "mean_cpu_cores": 0.9985779355020882
+    },
+    {
+      "mode": "train_step",
+      "threads": 2,
+      "batch_size": 32,
+      "repeats": 12,
+      "median_ms": 9.4398545,
+      "p95_ms": 9.696833,
+      "positions_per_second": 3389.8827571971583,
+      "mean_cpu_cores": 1.1950460485513332
+    },
+    {
+      "mode": "train_step",
+      "threads": 4,
+      "batch_size": 32,
+      "repeats": 12,
+      "median_ms": 9.046271,
+      "p95_ms": 9.363667,
+      "positions_per_second": 3537.369154649468,
+      "mean_cpu_cores": 1.458360539550354
+    },
+    {
+      "mode": "train_step",
+      "threads": 1,
+      "batch_size": 128,
+      "repeats": 12,
+      "median_ms": 36.638771000000006,
+      "p95_ms": 57.605959,
+      "positions_per_second": 3493.566964896284,
+      "mean_cpu_cores": 0.9816759958721349
+    },
+    {
+      "mode": "train_step",
+      "threads": 2,
+      "batch_size": 128,
+      "repeats": 12,
+      "median_ms": 30.4256875,
+      "p95_ms": 30.925875,
+      "positions_per_second": 4206.971494070594,
+      "mean_cpu_cores": 1.296262271674158
+    },
+    {
+      "mode": "train_step",
+      "threads": 4,
+      "batch_size": 128,
+      "repeats": 12,
+      "median_ms": 29.876625,
+      "p95_ms": 30.289084,
+      "positions_per_second": 4284.28579198621,
+      "mean_cpu_cores": 1.6146499494084687
+    }
+  ]
+}

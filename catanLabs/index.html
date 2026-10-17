@@ -1,0 +1,711 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f2f5f2">
+  <meta name="description" content="Catan lab progress: reproducible tournaments, a fair CPU strategy, a first Transformer, and a CPU PPO plus rollout reproduction.">
+  <title>Catan Lab | Competitive CPU strategy</title>
+  <style>
+    /* Editorial project report. Design variance 6, motion 2, visual density 4. */
+    :root {
+      color-scheme: light;
+      --paper: #f2f5f2;
+      --paper-raised: #fbfcfa;
+      --ink: #1d2823;
+      --muted: #56625b;
+      --soft: #e4eae5;
+      --line: #cbd4cd;
+      --accent: #17634f;
+      --accent-dark: #104b3c;
+      --accent-wash: #e0eee7;
+      --radius: 12px;
+      --content: 1160px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 16px;
+      line-height: 1.58;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: var(--accent-dark); text-underline-offset: 0.18em; }
+    a:hover { color: var(--accent-dark); }
+    a:focus-visible, summary:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 4px;
+      border-radius: 3px;
+    }
+    .wrap { width: min(var(--content), calc(100% - 48px)); margin-inline: auto; }
+
+    .topbar {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      border-bottom: 1px solid var(--line);
+    }
+    .brand {
+      color: var(--ink);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    .top-meta { color: var(--muted); font-size: 0.88rem; }
+    .nav { display: flex; align-items: center; gap: 22px; }
+    .nav a { font-size: 0.86rem; text-decoration: none; color: var(--muted); }
+    .nav a:hover { color: var(--accent-dark); }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(250px, 0.65fr);
+      gap: clamp(36px, 7vw, 92px);
+      align-items: end;
+      padding: clamp(56px, 9vw, 108px) 0 54px;
+    }
+    .eyebrow {
+      margin: 0 0 18px;
+      color: var(--accent-dark);
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      max-width: 760px;
+      margin-bottom: 22px;
+      font-size: clamp(3rem, 6.4vw, 5.8rem);
+      font-weight: 750;
+      letter-spacing: -0.075em;
+      line-height: 0.98;
+    }
+    .hero-copy {
+      max-width: 650px;
+      margin-bottom: 0;
+      color: #3f4c45;
+      font-size: clamp(1.04rem, 1.8vw, 1.25rem);
+      line-height: 1.6;
+    }
+    .hero-aside {
+      padding: 22px 0 4px 24px;
+      border-left: 2px solid var(--accent);
+    }
+    .hero-aside h2 {
+      margin-bottom: 12px;
+      font-size: 1.05rem;
+      letter-spacing: -0.02em;
+    }
+    .hero-aside p { margin-bottom: 16px; color: var(--muted); font-size: 0.94rem; }
+    .text-link { font-size: 0.91rem; font-weight: 750; }
+
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 82px;
+    }
+    .fact { padding: 23px 24px 25px 0; }
+    .fact + .fact { padding-left: 24px; border-left: 1px solid var(--line); }
+    .fact strong {
+      display: block;
+      margin-bottom: 2px;
+      color: var(--accent-dark);
+      font-size: clamp(2.2rem, 4vw, 3rem);
+      font-weight: 720;
+      letter-spacing: -0.07em;
+      line-height: 1.1;
+    }
+    .fact span { color: var(--muted); font-size: 0.9rem; }
+
+    section { margin: 0 0 94px; scroll-margin-top: 24px; }
+    .section-head { max-width: 800px; margin-bottom: 27px; }
+    .section-head h2 {
+      max-width: 560px;
+      margin-bottom: 0;
+      font-size: clamp(2rem, 4vw, 3.35rem);
+      font-weight: 720;
+      letter-spacing: -0.065em;
+      line-height: 1.04;
+    }
+    .section-head p { max-width: 670px; margin: 14px 0 0; color: var(--muted); }
+
+    .status-band {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 24px;
+      align-items: start;
+      padding: 25px 28px;
+      background: var(--accent-wash);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+    .status-band strong { font-size: 0.84rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    .status-band p { margin: 0; color: #34443b; }
+
+    .deliverables {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0 40px;
+      margin-top: 34px;
+    }
+    .deliverable {
+      display: grid;
+      grid-template-columns: 38px 1fr;
+      gap: 16px;
+      padding: 21px 0;
+      border-top: 1px solid var(--line);
+    }
+    .deliverable-mark {
+      color: var(--accent);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+    .deliverable h3 { margin-bottom: 5px; font-size: 1.05rem; letter-spacing: -0.025em; }
+    .deliverable p { margin-bottom: 8px; color: var(--muted); font-size: 0.91rem; }
+    .deliverable a { font-size: 0.84rem; font-weight: 700; }
+
+    .results {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--paper-raised);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .results th, .results td { padding: 15px 18px; text-align: left; vertical-align: top; }
+    .results thead { background: #e8eee9; }
+    .results th {
+      color: #435149;
+      font-size: 0.74rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+    .results tbody tr + tr { border-top: 1px solid var(--soft); }
+    .results td:first-child { font-weight: 720; white-space: nowrap; }
+    .score { color: var(--accent-dark); font-size: 1.08rem; font-weight: 800; white-space: nowrap; }
+    .results td:last-child { color: var(--muted); font-size: 0.9rem; }
+    .caption { margin: 12px 2px 0; color: var(--muted); font-size: 0.86rem; }
+    .interpretation {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 26px;
+      margin-top: 25px;
+    }
+    .interpretation article { padding: 19px 20px; background: #e8eee9; border-radius: var(--radius); }
+    .interpretation h3 { margin-bottom: 7px; font-size: 0.98rem; }
+    .interpretation p { margin-bottom: 0; color: var(--muted); font-size: 0.9rem; }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .flow-step {
+      position: relative;
+      min-height: 185px;
+      padding: 22px 22px 22px 0;
+    }
+    .flow-step + .flow-step { padding-left: 20px; border-left: 1px solid var(--line); }
+    .flow-step:not(:last-child)::after {
+      content: "→";
+      position: absolute;
+      z-index: 1;
+      top: 18px;
+      right: -10px;
+      padding: 0 3px;
+      background: var(--paper);
+      color: var(--accent);
+      font-size: 1.12rem;
+      font-weight: 700;
+    }
+    .flow-step span { display: block; margin-bottom: 18px; color: var(--accent); font-size: 0.74rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+    .flow-step h3 { margin-bottom: 8px; font-size: 1rem; line-height: 1.25; }
+    .flow-step p { margin-bottom: 0; color: var(--muted); font-size: 0.85rem; line-height: 1.5; }
+    .flow-note { margin: 16px 0 0; color: var(--muted); font-size: 0.88rem; }
+
+    .coverage {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: clamp(30px, 6vw, 76px);
+      align-items: start;
+    }
+    .target-box {
+      padding: 24px;
+      background: var(--accent-dark);
+      color: #f4f8f5;
+      border-radius: var(--radius);
+    }
+    .target-box .target-label { margin: 0 0 8px; color: #c3d8ce; font-size: 0.76rem; font-weight: 750; letter-spacing: 0.1em; text-transform: uppercase; }
+    .target-box strong { display: block; font-size: clamp(2.8rem, 5vw, 4.2rem); letter-spacing: -0.075em; line-height: 1; }
+    .target-box p { margin: 12px 0 0; color: #d7e6de; font-size: 0.91rem; }
+    .coverage-list { margin: 0; padding: 0; list-style: none; }
+    .coverage-list li { display: grid; grid-template-columns: 145px 1fr; gap: 20px; padding: 13px 0; border-top: 1px solid var(--line); }
+    .coverage-list strong { font-size: 0.92rem; }
+    .coverage-list span { color: var(--muted); font-size: 0.9rem; }
+
+    .research-table {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 36px;
+    }
+    .research-item { padding: 20px 0; border-top: 1px solid var(--line); }
+    .research-item h3 { margin-bottom: 6px; font-size: 1.03rem; }
+    .research-item p { margin-bottom: 8px; color: var(--muted); font-size: 0.9rem; }
+    .research-item a { font-size: 0.83rem; font-weight: 700; }
+    .research-label { display: inline-block; margin-bottom: 8px; color: var(--accent); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
+
+    .risk-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .risk { padding-top: 15px; border-top: 2px solid var(--accent); }
+    .risk h3 { margin-bottom: 7px; font-size: 1rem; }
+    .risk p { margin-bottom: 0; color: var(--muted); font-size: 0.9rem; }
+
+    .next-steps { counter-reset: next; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin: 0; padding: 0; list-style: none; }
+    .next-steps li { counter-increment: next; padding-top: 17px; border-top: 1px solid var(--line); }
+    .next-steps li::before { content: counter(next, decimal-leading-zero); display: block; margin-bottom: 14px; color: var(--accent); font-size: 0.77rem; font-weight: 800; letter-spacing: 0.1em; }
+    .next-steps strong { display: block; margin-bottom: 7px; font-size: 1rem; }
+    .next-steps span { color: var(--muted); font-size: 0.88rem; }
+
+    details { margin-top: 30px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    summary { padding: 17px 0; cursor: pointer; color: var(--accent-dark); font-weight: 750; }
+    .reference-list { columns: 2; column-gap: 42px; margin: 0 0 20px; padding-left: 19px; }
+    .reference-list li { break-inside: avoid; margin: 0 0 9px; color: var(--muted); font-size: 0.88rem; }
+    footer { padding: 24px 0 38px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.84rem; }
+    footer p { margin: 0; }
+
+    @media (max-width: 900px) {
+      .flow { grid-template-columns: repeat(3, 1fr); }
+      .flow-step:nth-child(4) { border-left: 0; padding-left: 0; }
+      .flow-step:nth-child(3)::after { content: ""; }
+      .risk-list { grid-template-columns: 1fr 1fr; }
+      .next-steps { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 680px) {
+      .wrap { width: min(100% - 34px, var(--content)); }
+      .topbar { min-height: 64px; }
+      .nav { display: none; }
+      .top-meta { font-size: 0.78rem; }
+      .hero { grid-template-columns: 1fr; padding: 58px 0 42px; gap: 32px; }
+      h1 { font-size: clamp(3rem, 15vw, 4.8rem); }
+      .hero-aside { max-width: 460px; }
+      .facts { margin-bottom: 64px; }
+      .fact { padding: 18px 12px 18px 0; }
+      .fact + .fact { padding-left: 12px; }
+      .fact strong { font-size: 2.15rem; }
+      .fact span { font-size: 0.76rem; }
+      section { margin-bottom: 70px; }
+      .status-band { grid-template-columns: 1fr; gap: 8px; padding: 20px; }
+      .deliverables, .interpretation, .coverage, .research-table { grid-template-columns: 1fr; }
+      .results { display: block; overflow-x: auto; white-space: normal; }
+      .results th, .results td { padding: 12px 13px; }
+      .flow { grid-template-columns: 1fr 1fr; }
+      .flow-step { min-height: 160px; padding: 17px 14px 17px 0; }
+      .flow-step + .flow-step { padding-left: 14px; }
+      .flow-step:nth-child(odd) { border-left: 0; padding-left: 0; }
+      .flow-step:nth-child(even)::after { content: ""; }
+      .flow-step:nth-child(3)::after { content: "→"; }
+      .coverage-list li { grid-template-columns: 115px 1fr; gap: 12px; }
+      .risk-list, .next-steps { grid-template-columns: 1fr 1fr; }
+      .reference-list { columns: 1; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+    @media print {
+      :root { --paper: #fff; --paper-raised: #fff; }
+      body { font-size: 10pt; background: #fff; }
+      .wrap { width: 100%; }
+      .topbar { min-height: auto; padding: 10px 0; }
+      .nav, .hero-aside .text-link { display: none; }
+      .hero { padding: 32px 0 24px; }
+      section { margin-bottom: 40px; break-inside: avoid; }
+      .flow-step { min-height: 140px; }
+      a { color: inherit; }
+      details:not([open]) > :not(summary) { display: block; }
+      summary { list-style: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="wrap topbar">
+    <a class="brand" href="#top">Catan Lab</a>
+    <div class="top-meta">CPU strategy and corrected tournament · 15 October 2026</div>
+    <nav class="nav" aria-label="Page sections">
+      <a href="#built">What exists</a>
+      <a href="#evidence">Evidence</a>
+      <a href="#competitive">Current strategy</a>
+      <a href="#search-experiment">Search test</a>
+      <a href="#external-rl">CPU RL</a>
+      <a href="#transformer-run">Transformer result</a>
+      <a href="#plan">Learning plan</a>
+      <a href="#next">Next</a>
+    </nav>
+  </header>
+
+  <main id="top" class="wrap">
+    <section class="hero" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">A CPU-first Catan research lab</p>
+        <h1 id="page-title">A testable Catan<br>learning lab.</h1>
+        <p class="hero-copy">We now have a CPU Catan strategy that wins 33.3% against three Value bots and plays near the equal-seat share against three AlphaBeta1 bots. The first Transformer remains an earlier, weaker baseline. Both were tested in seeded four-player games.</p>
+      </div>
+      <aside class="hero-aside" aria-label="Current state">
+        <h2>Current state</h2>
+        <p>A fair value-search policy is the current CPU incumbent. It uses visible information and legal actions, with no neural checkpoint.</p>
+        <a class="text-link" href="./Competitive/RESULTS.md">Open the corrected results <span aria-hidden="true">↗</span></a>
+      </aside>
+    </section>
+
+    <div class="facts" aria-label="Project facts">
+      <div class="fact"><strong>32 / 96</strong><span>wins against three Value bots</span></div>
+      <div class="fact"><strong>28 / 96</strong><span>wins against three AlphaBeta1 bots</span></div>
+      <div class="fact"><strong>384</strong><span>completed games in the corrected four-tier exam</span></div>
+    </div>
+
+    <section id="built" aria-labelledby="built-title">
+      <div class="section-head">
+        <h2 id="built-title">What we have achieved</h2>
+        <p>The engine, first model, corrected tournament, and stronger CPU strategy now sit together with their reports.</p>
+      </div>
+
+      <div class="status-band">
+        <strong>Honest status</strong>
+        <p>The selected fair policy won 32/96 against Value and 28/96 against AlphaBeta1 on fresh v5 boards. Its paired advantage over Value was positive on this test; the AlphaBeta1 difference remains uncertain. The earlier Transformer still needs substantial improvement.</p>
+      </div>
+
+      <div class="deliverables">
+        <article class="deliverable">
+          <div class="deliverable-mark">READY</div>
+          <div>
+            <h3>Game playground</h3>
+            <p>Catanatron is pinned as the source of game rules, legal actions, and fast simulated games.</p>
+            <a href="./Catanatron/README.md">Engine notes</a>
+          </div>
+        </article>
+        <article class="deliverable">
+          <div class="deliverable-mark">READY</div>
+          <div>
+            <h3>Repeatable tournament</h3>
+            <p>Seeded four-player games rotate the candidate through all seats and record results, latency, rules, and code/checkpoint hashes.</p>
+            <a href="./Benchmarks%26Evals/README.md">Benchmark protocol</a>
+          </div>
+        </article>
+        <article class="deliverable">
+          <div class="deliverable-mark">MAPPED</div>
+          <div>
+            <h3>Public-agent audit</h3>
+            <p>Five codebases were inspected for architectures, checkpoints, rules, action interfaces, and CPU behavior.</p>
+            <a href="../start/catan_lab/FINDINGS.md">Source audit and CPU pilot</a>
+          </div>
+        </article>
+        <article class="deliverable">
+          <div class="deliverable-mark">PILOT</div>
+          <div>
+            <h3>First Transformer run</h3>
+            <p>4,000 unique positions, depth-one alpha-beta labels, a 77,569-parameter policy, and a four-tier tournament.</p>
+            <a href="./Transformer/runs/pilot/RESULTS.md">Training and tournament results</a>
+          </div>
+        </article>
+        <article class="deliverable">
+          <div class="deliverable-mark">READY</div>
+          <div>
+            <h3>Competitive CPU policy</h3>
+            <p>Visible-state value search, resource and reachability tuning, card timing, and four-tier plus mixed-opponent evaluation.</p>
+            <a href="./Competitive/RESULTS.md">Strategy and held-out results</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="evidence" aria-labelledby="evidence-title">
+      <div class="section-head">
+        <h2 id="evidence-title">What the bot results actually say</h2>
+        <p>The early teacher check below explains the starting point. The corrected strategy tournament appears in the next section.</p>
+      </div>
+
+      <table class="results">
+        <thead>
+          <tr><th>Candidate bot</th><th>Result</th><th>Test setup</th><th>What it tells us</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Weighted</td><td class="score">16 / 64<br><small>25.0%</small></td>
+            <td>4 players, 10 VP; three weighted opponents</td>
+            <td>Matches the equal-seat share in this same-policy setup.</td>
+          </tr>
+          <tr>
+            <td>Value heuristic</td><td class="score">61 / 64<br><small>95.3%</small></td>
+            <td>Same rules; three weighted opponents</td>
+            <td>A much better first teacher than weighted, but the opponents are weak.</td>
+          </tr>
+          <tr>
+            <td>Alpha-beta depth 1</td><td class="score">64 / 64<br><small>100%</small></td>
+            <td>Same rules; three weighted opponents</td>
+            <td>Shallow action evaluation works here; this is not evidence of deep search strength.</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="caption">Source: historical local Catanatron CPU pilot under protocol v1. These results are teacher-selection evidence; the corrected v5 exam below is the current benchmark.</p>
+
+      <div class="interpretation">
+        <article>
+          <h3>CPU looks practical for compact policies</h3>
+          <p>Two inspected attention policies ran at about 0.95 ms and 1.84 ms per decision on this Mac. The setups differ, so we still need a fair speed comparison.</p>
+        </article>
+        <article>
+          <h3>Strength is measured in games</h3>
+          <p>The current policy passed a corrected four-tier exam and two mixed-opponent tests with fresh board seeds and all four seats.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="competitive" aria-labelledby="competitive-title">
+      <div class="section-head">
+        <h2 id="competitive-title">Current CPU strategy: competitive, measured honestly</h2>
+        <p>After fixing chance simulation in the evaluator, we tested 24 new boards per tier with four seat rotations: 96 games against each set of three identical opponents. The original Value bot played the same board and seat grid.</p>
+      </div>
+
+      <table class="results">
+        <thead><tr><th>Three opponents</th><th>Selected policy wins</th><th>Value bot wins</th><th>Mean points</th><th>Median / p95 latency</th></tr></thead>
+        <tbody>
+          <tr><td>Random</td><td class="score">96 / 96<br><small>100%</small></td><td>96 / 96</td><td>10.15</td><td>0.454 / 5.024 ms</td></tr>
+          <tr><td>Weighted</td><td class="score">95 / 96<br><small>99.0%</small></td><td>95 / 96</td><td>10.09</td><td>0.459 / 5.343 ms</td></tr>
+          <tr><td>Value</td><td class="score">32 / 96<br><small>33.3%</small></td><td>24 / 96</td><td>7.10</td><td>0.412 / 4.749 ms</td></tr>
+          <tr><td>AlphaBeta1</td><td class="score">28 / 96<br><small>29.2%</small></td><td>27 / 96</td><td>7.08</td><td>0.388 / 4.088 ms</td></tr>
+        </tbody>
+      </table>
+      <p class="caption">Corrected protocol v5, board seeds 20261900–20261923. All 384 selected-policy games completed without illegal actions or agent errors. The +8.3-point difference against Value has a board-bootstrap 95% range of +2.1 to +14.6 points; the +1.0-point difference against AlphaBeta1 has a range of −9.4 to +10.4 points.</p>
+
+      <div class="interpretation">
+        <article><h3>Mixed opponents also tested</h3><p>On another 24 boards, the policy won 38/96 against Weighted + Value + AlphaBeta1, and 31/96 against Value + two AlphaBeta1 bots. The Value candidate won 34/96 and 25/96 on the same boards.</p></article>
+        <article><h3>Visible information check</h3><p>Changing hidden opponent hands, deck order, and RNG left the policy's action unchanged in over 100 checked decisions. Dice are averaged and development draws stay unknown.</p></article>
+      </div>
+      <p class="caption"><a href="./Competitive/RESULTS.md">Full strategy report</a> · <a href="./Competitive/README.md">Run the agent</a> · <a href="./Competitive/runs/fair_candidate_v5.json">Four-tier JSON</a> · <a href="./Competitive/runs/mixed_candidate_v3.json">Mixed-opponent JSON</a></p>
+    </section>
+
+    <section id="search-experiment" aria-labelledby="search-experiment-title">
+      <div class="section-head">
+        <h2 id="search-experiment-title">New test: let the policy plan one action ahead</h2>
+        <p>We searched after promising roads, trades, and resource cards, then checked the result on fresh boards against the existing fair policy.</p>
+      </div>
+      <table class="results">
+        <thead><tr><th>Three opponents</th><th>Search, 48 boards</th><th>Existing policy</th><th>Paired difference</th></tr></thead>
+        <tbody>
+          <tr><td>Value</td><td class="score">72 / 192<br><small>37.5%</small></td><td>63 / 192</td><td>+4.7 points; 95% range −3.1 to +12.0</td></tr>
+          <tr><td>AlphaBeta1</td><td class="score">88 / 192<br><small>45.8%</small></td><td>64 / 192</td><td>+12.5 points; 95% range +5.7 to +19.3</td></tr>
+        </tbody>
+      </table>
+      <p class="caption">Two independent 24-board sets, all seats rotated. Every game completed without an illegal move or agent error. The AlphaBeta1 gain held up; the Value difference remains uncertain.</p>
+      <div class="interpretation">
+        <article><h3>Mixed games expose a limit</h3><p>Search won 59/96 in a Weighted + Value + AlphaBeta1 table, versus 50/96 for the old policy. Against Value + two AlphaBeta1 bots it won 36/96, versus 38/96. It remains an experimental specialist.</p></article>
+        <article><h3>Transformer prior tested</h3><p>Using the first trained Transformer to choose search branches won 35/96 versus Value and 40/96 versus AlphaBeta1 on one 24-board set. It showed no clear gain over fair-policy search and took more CPU time.</p></article>
+      </div>
+      <p class="caption"><a href="./Competitive/SEARCH_EXPERIMENT.md">Full search experiment</a> · <a href="./Competitive/guided_search_agent.py">Agent code</a> · <a href="./Competitive/runs/guided_search_pooled_v5.json">Pooled comparison JSON</a></p>
+    </section>
+
+    <section id="external-rl" aria-labelledby="external-rl-title">
+      <div class="section-head">
+        <h2 id="external-rl-title">The published CPU PPO + rollout agent, run here</h2>
+        <p>We built the open-source Rust engine and loaded its shipped PPO network on this Apple M5. The agent ranks legal moves with the network, then runs full-game simulations for its eight favorite moves. These are local measurements with every seat rotated.</p>
+      </div>
+      <table class="results">
+        <thead><tr><th>Upstream rules</th><th>Shipped search wins</th><th>95% Wilson range</th><th>What it establishes</th></tr></thead>
+        <tbody>
+          <tr><td>First to 7 VP</td><td class="score">145 / 192<br><small>75.5%</small></td><td>69.0–81.1%</td><td>Comparable to the published 82% setup, with all seats rotated.</td></tr>
+          <tr><td>First to 10 VP</td><td class="score">153 / 192<br><small>79.7%</small></td><td>73.4–84.8%</td><td>Strong against this upstream heuristic on the longer game.</td></tr>
+          <tr><td>First to 10 VP, evolved heuristic</td><td class="score">88 / 128<br><small>68.8%</small></td><td>60.3–76.1%</td><td>Still ahead against a stronger frozen upstream bot.</td></tr>
+        </tbody>
+      </table>
+      <p class="caption">This upstream model has about 1.1 million parameters and was trained for far longer than ten minutes. Its search reads opponents' private hands and clones the real hidden state. It runs on a different engine and action codec, so these numbers are not Catanatron tournament results or a fair hidden-information submission score.</p>
+      <table class="results">
+        <thead><tr><th>10-point opponent</th><th>Shipped raw policy</th><th>Shipped search</th><th>CPU-fine-tuned raw policy</th><th>Fine-tuned search</th></tr></thead>
+        <tbody>
+          <tr><td>3× Heuristic-v1</td><td>90 / 192<br><small>46.9%</small></td><td class="score">153 / 192<br><small>79.7%</small></td><td>126 / 192<br><small>65.6%</small></td><td>148 / 192<br><small>77.1%</small></td></tr>
+          <tr><td>3× evolved Heuristic-v2</td><td>52 / 128<br><small>40.6%</small></td><td class="score">88 / 128<br><small>68.8%</small></td><td>81 / 128<br><small>63.3%</small></td><td>87 / 128<br><small>68.0%</small></td></tr>
+        </tbody>
+      </table>
+      <div class="status-band">
+        <strong>Trade search</strong>
+        <p>Allowing the fine-tuned network to search legal trade offers won <strong>164/192 (85.4%)</strong> against three evolved upstream heuristics across two board sets, versus 146/192 for shipped search on the same boards. The paired gain was +9.4 points, 95% board-bootstrap interval +2.6 to +16.2. On a separate Heuristic-v1 holdout it won 59/64 versus 53/64, a smaller uncertain gain. Its 128-game confirmation took 458 seconds versus 245 seconds for shipped search. This is a slower upstream-engine specialist with perfect-information search.</p>
+      </div>
+      <div class="interpretation">
+        <article><h3>CPU training worked</h3><p>A Rust environment and masked PPO added 9.51 million decisions in about 482 CPU seconds. The new raw policy gained 18.8 points against Heuristic-v1 and 22.7 against Heuristic-v2 on matched seeds; both paired intervals excluded zero.</p></article>
+        <article><h3>Search needed the right actions</h3><p>The original AlphaBot filters trade proposals before it searches. The stronger raw policy did not improve this filtered search: 148 versus 153 wins against Heuristic-v1, and 87 versus 88 against Heuristic-v2. Enabling legal trade proposals in search produced the stronger evolved-bot result above.</p></article>
+      </div>
+      <div class="status-band">
+        <strong>Catanatron transfer check</strong>
+        <p>We mapped the fine-tuned PPO policy into the fair Catanatron 10-point arena and masked it to visible information and legal moves. On 16 matched boards with four seats, it won <strong>8/64 against Value</strong> and <strong>8/64 against AlphaBeta1</strong>; the current fair-value agent won 21/64 and 19/64. No illegal actions occurred. The upstream search result did not carry over as a strong standalone policy. <a href="./External/TRANSFER_EXPERIMENT.md">Read the transfer report</a>.</p>
+      </div>
+      <p class="caption"><a href="./External/README.md">CPU reproduction and rules</a> · <a href="./External/reports/pretrained_7_h.json">7-point JSON</a> · <a href="./External/reports/finetuned_policy_gain_10_v2.json">CPU policy gain JSON</a> · <a href="./External/reports/trade_search_vs_pretrained_pooled_10_v2.json">Trade-search comparison JSON</a> · <a href="https://github.com/Eli6th/catan-rl" target="_blank" rel="noreferrer">Upstream source ↗</a></p>
+    </section>
+
+    <section id="transformer-run" aria-labelledby="transformer-run-title">
+      <div class="section-head">
+        <h2 id="transformer-run-title">First Transformer: trained, not promoted</h2>
+        <p>We trained from random weights for 590.5 seconds on CPU. This historical v1 pilot used four board seeds disjoint from training and rotated the model through every seat against each opponent tier.</p>
+      </div>
+
+      <table class="results">
+        <thead><tr><th>Three opponents</th><th>Wins</th><th>Mean VP</th><th>Decision latency</th><th>Read</th></tr></thead>
+        <tbody>
+          <tr><td>Random</td><td class="score">4 / 16<br><small>25.0% · 95% range 10.2–49.5%</small></td><td>5.31</td><td>0.784 ms median<br>0.899 ms p95</td><td>At the 25% four-player share in this small sample; two games hit the turn cap.</td></tr>
+          <tr><td>Weighted</td><td class="score">3 / 16<br><small>18.8% · 95% range 6.6–43.0%</small></td><td>5.94</td><td>0.782 ms median<br>0.908 ms p95</td><td>One game reached the 500-turn cap and counted as a non-win.</td></tr>
+          <tr><td>Value</td><td class="score">0 / 16<br><small>0% · 95% range 0–19.4%</small></td><td>3.31</td><td>0.798 ms median<br>0.963 ms p95</td><td>It did not beat the stronger heuristic.</td></tr>
+          <tr><td>Alpha-beta depth 1</td><td class="score">0 / 16<br><small>0% · 95% range 0–19.4%</small></td><td>3.56</td><td>0.801 ms median<br>1.006 ms p95</td><td>It did not match the teacher it was trained to imitate.</td></tr>
+        </tbody>
+      </table>
+      <p class="caption">61 of 64 games completed; three hit the 500-turn cap and counted as non-wins. There were no illegal actions or agent errors. Wilson ranges are descriptive: seat rotations share board seeds and the sample is small.</p>
+
+      <div class="interpretation">
+        <article>
+          <h3>What the model learned</h3>
+          <p>It learned a player-relative observation and legal-action scoring policy from 4,000 unique positions across 14 games. Validation action agreement was 41.6% on three whole held-out games.</p>
+        </article>
+        <article>
+          <h3>What it did not prove</h3>
+          <p>Imitating a shallow search bot did not reproduce its playing strength. The best held-out-loss checkpoint was epoch 8; later epochs overfit. This checkpoint is not promoted.</p>
+        </article>
+      </div>
+      <p class="caption">
+        <a href="./Transformer/README.md">Model and run instructions</a> ·
+        <a href="./Transformer/runs/pilot/RESULTS.md">Readable results</a> ·
+        <a href="./Transformer/runs/pilot/training.json">Training metrics</a> ·
+        <a href="./Transformer/runs/pilot/tournament.json">Tournament JSON</a> ·
+        <a href="./Transformer/runs/pilot/dataset.json">Dataset manifest</a> ·
+        <a href="./Transformer/runs/pilot/best.pt">Checkpoint</a>
+      </p>
+    </section>
+
+    <section id="plan" aria-labelledby="plan-title">
+      <div class="section-head">
+        <h2 id="plan-title">How the learning loop will work</h2>
+        <p>Start with examples that teach a legal, sensible policy. Use reinforcement learning only after that baseline can finish games reliably.</p>
+      </div>
+
+      <div class="flow" role="list" aria-label="Planned Catan learning pipeline">
+        <article class="flow-step" role="listitem"><span>Play</span><h3>Engine and mixed bots</h3><p>Generate games with varied seats, seeds, and strategies.</p></article>
+        <article class="flow-step" role="listitem"><span>Record</span><h3>Unique observations</h3><p>Keep player-visible state, phase, legal actions, and outcome.</p></article>
+        <article class="flow-step" role="listitem"><span>Label</span><h3>Teacher decisions</h3><p>Cache value or search choices, plus action scores when affordable.</p></article>
+        <article class="flow-step" role="listitem"><span>Compare</span><h3>MLP versus Transformer</h3><p>Same data, split, training budget, and parameter range.</p></article>
+        <article class="flow-step" role="listitem"><span>Improve</span><h3>PPO and opponent league</h3><p>Fine-tune the best supervised policy against frozen styles.</p></article>
+        <article class="flow-step" role="listitem"><span>Promote</span><h3>Locked tournament</h3><p>Keep a model only if it wins more on held-out games.</p></article>
+      </div>
+      <p class="flow-note">The fair CPU strategy is now the teacher and playing-strength target for the next model. A Transformer must match or exceed it in games before promotion.</p>
+    </section>
+
+    <section aria-labelledby="data-title">
+      <div class="section-head">
+        <h2 id="data-title">A good dataset needs more than different boards</h2>
+        <p>Like the Connect Four work, we will seek unique positions and tactical patterns. In Catan, a position also depends on the phase, resources, player perspective, and public opponent state.</p>
+      </div>
+
+      <div class="coverage">
+        <div class="target-box">
+          <p class="target-label">First pipeline pilot</p>
+          <strong>4,000</strong>
+          <p>unique decision observations collected and deduplicated across 14 completed games.</p>
+        </div>
+        <ul class="coverage-list">
+          <li><strong>Setup and growth</strong><span>Production balance, first settlement, road paths, expansion races.</span></li>
+          <li><strong>Economy</strong><span>Scarce resources, bank ratios, ports, hand limits, build timing.</span></li>
+          <li><strong>Dice and robber</strong><span>Production odds, discards, blocking, and Knight decisions.</span></li>
+          <li><strong>Victory race</strong><span>City upgrades, Longest Road, Largest Army, hidden-point uncertainty.</span></li>
+          <li><strong>Trading, if required</strong><span>Offer value, accept/reject/counter, and opponent-specific responses.</span></li>
+        </ul>
+      </div>
+      <p class="flow-note">Split train, validation, and test data by whole games and board seeds. Do not let near-identical positions leak across the split.</p>
+    </section>
+
+    <section aria-labelledby="research-title">
+      <div class="section-head">
+        <h2 id="research-title">What public work suggests</h2>
+        <p>The useful lesson is not “Transformers always win.” Different Catan projects use different rules and solve different subproblems, so we need same-rules comparisons of our own.</p>
+      </div>
+      <div class="research-table">
+        <article class="research-item">
+          <span class="research-label">Four-player trading</span>
+          <h3>A small specialist can learn negotiation</h3>
+          <p>A 2015 deep-RL study trained a roughly 14k-parameter MLP for trade offers and replies. It reported 53.36% against three heuristic traders over 10,000 test games. The rest of play stayed with JSettlers.</p>
+          <a href="https://arxiv.org/abs/1511.08099" target="_blank" rel="noreferrer">Read the paper ↗</a>
+        </article>
+        <article class="research-item">
+          <span class="research-label">Board policy</span>
+          <h3>Board-aware networks have precedent</h3>
+          <p>Cross-dimensional neural networks combine board and player features, but that study is two-player and excludes player trading. Deep Catan explores CNNs with Expert Iteration and search.</p>
+          <a href="https://arxiv.org/abs/2008.07079" target="_blank" rel="noreferrer">Cross-dimensional Catan paper ↗</a>
+        </article>
+        <article class="research-item">
+          <span class="research-label">Modern agents</span>
+          <h3>Attention, PPO, and graph encoders are runnable ideas</h3>
+          <p>Public projects include four-player PPO with attention and a tile Transformer plus graph encoder. Their checkpoints and results use different rules, so scores cannot be compared directly.</p>
+          <a href="../start/catan_lab/FINDINGS.md">See what we inspected locally</a>
+        </article>
+        <article class="research-item">
+          <span class="research-label">Code-evolved strategy</span>
+          <h3>LLMs can help write strategies, too</h3>
+          <p>HexMachina evolves executable strategy code and reports results in two-player Catanatron games. That is a different route from training a neural policy with gradient descent.</p>
+          <a href="https://arxiv.org/abs/2506.04651" target="_blank" rel="noreferrer">Read the preprint ↗</a>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="gaps-title">
+      <div class="section-head">
+        <h2 id="gaps-title">What must be fixed before final claims</h2>
+        <p>These are the current limits of our exam. Addressing them makes later model scores more trustworthy.</p>
+      </div>
+      <div class="risk-list">
+        <article class="risk"><h3>Hidden-information boundary</h3><p>The selected policy passed a hidden-state perturbation check on over 100 decisions. The harness still passes a full game object, so a restricted observation interface remains the stronger guarantee.</p></article>
+        <article class="risk"><h3>Player-to-player offers</h3><p>The current action protocol omits negotiation. Add it if the target Catan rules expect resource offers between players.</p></article>
+        <article class="risk"><h3>Rules and opponent mix</h3><p>Two mixed-bot compositions are now tested. The intended competition rules still need to be matched before treating these scores as transferable.</p></article>
+      </div>
+    </section>
+
+    <section id="next" aria-labelledby="next-title">
+      <div class="section-head">
+        <h2 id="next-title">The next four moves</h2>
+        <p>The stronger CPU strategy gives the next model a concrete target: win at least as often under the corrected protocol.</p>
+      </div>
+      <ol class="next-steps">
+        <li><strong>Keep the incumbent</strong><span>The fair strategy and its parameters stay fixed for future comparisons.</span></li>
+        <li><strong>Collect stronger examples</strong><span>Generate varied states from the selected policy and mixed opponents.</span></li>
+        <li><strong>Compare compact models</strong><span>Give an MLP and Transformer the same data and CPU budget.</span></li>
+        <li><strong>Test new seeds</strong><span>Promote a trained model only after it matches the incumbent in playing strength.</span></li>
+      </ol>
+
+      <details>
+        <summary>Open the source list and project notes</summary>
+        <ul class="reference-list">
+          <li><a href="./README.md">Catan labs overview</a></li>
+          <li><a href="./ML_RESEARCH_AND_PLAN.md">Full ML research and experiment plan</a></li>
+          <li><a href="./Benchmarks%26Evals/README.md">Benchmark and eval protocol</a></li>
+          <li><a href="./Transformer/runs/pilot/RESULTS.md">First Transformer run results</a></li>
+          <li><a href="./Competitive/RESULTS.md">Competitive CPU strategy and corrected results</a></li>
+          <li><a href="../start/catan_lab/FINDINGS.md">Local source audit and CPU measurements</a></li>
+          <li><a href="../start/connect_four_transformer/DATASET_PLAN.md">Connect Four dataset plan we are adapting</a></li>
+          <li><a href="https://rlg.mlanctot.info/2022/papers/AAAI22-RLG_paper_31.pdf" target="_blank" rel="noreferrer">Deep Catan and Expert Iteration paper</a></li>
+          <li><a href="https://github.com/henrycharlesworth/settlers_of_catan_RL" target="_blank" rel="noreferrer">Charlesworth four-player PPO project</a></li>
+          <li><a href="https://github.com/BenjaminL1/catan_rl" target="_blank" rel="noreferrer">BenjaminL1 Transformer and graph-policy code</a></li>
+          <li><a href="https://github.com/Eli6th/catan-rl" target="_blank" rel="noreferrer">Eli6th fast engine and MLP policy</a></li>
+          <li><a href="https://github.com/OrgadYron/catan_43k_games_dataset" target="_blank" rel="noreferrer">Public 43,947-game log dataset</a></li>
+        </ul>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap"><p>Catan Lab · Research snapshot, 15 October 2026 · Built from the local project notes and linked public sources.</p></div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,94 @@
+{
+  "schema": "catanlabs-transformer-dataset-v2",
+  "dataset_schema": "catanlabs-transformer-dataset-v2",
+  "raw_schema": "catanlabs-visible-raw-v2",
+  "raw_file": "catanLabs/Transformer/runs/gate2_raw_smoke/dataset.raw.jsonl.gz",
+  "raw_records": 555,
+  "raw_sha256": "7536e3a5d300de703a19cf4ee25f52d78f6579c3174ed7b14a2c08fa64da7f70",
+  "feature_schema": "visible-state-tokens-v2",
+  "benchmark_protocol": "catanLabs-four-player-v5-canonical-actions-and-chance",
+  "rules_manifest_sha256": "6996bcc8f1680bbb483f64cf7281305b925bc97974e50ef8136d25d66ce2bf3e",
+  "seed": 20266311,
+  "teacher": "fair",
+  "teacher_depth": null,
+  "teacher_config": "/Users/anixd/Documents/Hyde/catanLabs/Competitive/configs/fair_army_finish.json",
+  "teacher_config_sha256": "5f908a453c87556463170378ef92d4ce79f03ecfdf0f1c304daae93fd3222ab3",
+  "raw_teacher_config_sha256": "5f908a453c87556463170378ef92d4ce79f03ecfdf0f1c304daae93fd3222ab3",
+  "raw_teacher_source_sha256": "5078de2b4bf5c0e6db96e847de9013bb6509d9db8b7fa4962fa23f48b55bb9de",
+  "teacher_source_sha256": "5078de2b4bf5c0e6db96e847de9013bb6509d9db8b7fa4962fa23f48b55bb9de",
+  "teacher_information_boundary": "fair policy uses public game state and own private state; hidden perturbation smoke tested",
+  "collector_sha256": "8580d17f2520a5c9e9d364fd2c4135388651c17737c172eb4d425d4f41a08249",
+  "visible_snapshot_sha256": "e51b7360a72f060ffccd3cd3106c90bd68e4e72bea9f5d53949bf6aa414e9e83",
+  "encoder_sha256": "44f216bb9227e2b35f23e0b0dedd93d25b8bdf5d922728f50c6bdfbd1cd28af2",
+  "teacher_action_contract": "Selected before the real action executes; never trained from future outcomes.",
+  "outcome_contract": "Post-game analysis only; incomplete games use -1; excluded from action-policy inputs.",
+  "chance_contract": {
+    "isolated_copy_rng": true,
+    "forced_search_outcomes": true,
+    "canonical_action_order": true,
+    "python_hash_seed": "0"
+  },
+  "engine": {
+    "source": "https://github.com/bcollazo/catanatron.git",
+    "commit": "ecf931181b9a65bb4116a2153fb78c16f1438e00",
+    "python_root": "/Users/anixd/Documents/Hyde/start/catan_lab/vendor/catanatron/catanatron"
+  },
+  "unique_examples": 555,
+  "unique_key": "player-relative visible state tokens + sorted legal actions",
+  "feature_boundary": "own private cards; public board/opponents/bank; no opponent hands or unplayed card identities",
+  "max_legal_actions": 54,
+  "games": [
+    {
+      "game_id": 0,
+      "seed": 20266311,
+      "behavior_by_input_color": [
+        "random",
+        "weighted",
+        "value",
+        "fair"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 212,
+      "turns": 63,
+      "wall_seconds": 0.621
+    },
+    {
+      "game_id": 1,
+      "seed": 20266312,
+      "behavior_by_input_color": [
+        "weighted",
+        "value",
+        "fair",
+        "alphabeta1"
+      ],
+      "status": "completed",
+      "winner": "ORANGE",
+      "actions": 343,
+      "turns": 93,
+      "wall_seconds": 1.054
+    }
+  ],
+  "phases": {
+    "BUILD_INITIAL_SETTLEMENT": 16,
+    "BUILD_INITIAL_ROAD": 16,
+    "PLAY_TURN": 429,
+    "MOVE_ROBBER": 31,
+    "DISCARD": 63
+  },
+  "trajectory_policies": {
+    "value": 169,
+    "fair": 151,
+    "weighted": 120,
+    "random": 44,
+    "alphabeta1": 71
+  },
+  "collection_wall_seconds": 1.739,
+  "profile_seconds": {
+    "observation_encoding": 0.237984,
+    "teacher_scoring": 0.556039,
+    "behavior_decision": 0.249522,
+    "game_stepping": 0.011254
+  },
+  "dataset_sha256": "25cd86b9759637fe6a3954dc22b1eaf3f05e99edade1dc8cdf31746be3c5040a"
+}

@@ -1,7 +1,8 @@
 # Hyde game-learning workspace
 
 CPU-first experiments in game engines, small Transformers, training, evaluation,
-and profiling. Start with the [project map](start/README.md); the shared Python
+and profiling. The [Catan labs](catanLabs/README.md) hold the new pinned-engine
+benchmark for our from-scratch Catan agent. Start with the [project map](start/README.md); the shared Python
 setup is in `start/scripts/setup_env.sh`.
 
 The repository keeps source code, study notes, reports, and the small trained

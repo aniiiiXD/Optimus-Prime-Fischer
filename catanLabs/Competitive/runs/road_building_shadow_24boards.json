@@ -1,0 +1,1241 @@
+{
+  "probe": "Road Building shadowed against FairValue",
+  "seed": 20272400,
+  "boards": 24,
+  "seats_per_board": 4,
+  "config": {
+    "value_weights": {
+      "reachable_production_0": 100000,
+      "reachable_production_1": 30000,
+      "buildable_nodes": 10000,
+      "hand_synergy": 1000,
+      "army_size": 30000
+    },
+    "dev_buy_vp_threshold": 7,
+    "dev_buy_late_bonus": 30000,
+    "road_building_max_first_roads": 64,
+    "road_building_max_second_roads": 256,
+    "road_building_score_margin": 0
+  },
+  "totals": {
+    "own_decisions": 7978,
+    "card_available": 133,
+    "overrides": 83,
+    "first_roads": 1205,
+    "second_roads": 10517,
+    "truncated": 0,
+    "visibility_checks": 8
+  },
+  "scan_latency_ms": {
+    "median": 18.211,
+    "p95": 49.372,
+    "max": 68.44,
+    "samples": [
+      28.506,
+      30.666,
+      30.61,
+      18.532,
+      68.44,
+      39.934,
+      47.197,
+      45.013,
+      42.52,
+      44.982,
+      47.699,
+      42.535,
+      41.29,
+      46.149,
+      44.998,
+      41.623,
+      44.057,
+      46.302,
+      42.265,
+      42.14,
+      41.668,
+      4.733,
+      2.339,
+      4.806,
+      2.41,
+      2.408,
+      4.52,
+      2.585,
+      4.803,
+      2.654,
+      24.047,
+      24.106,
+      16.725,
+      15.239,
+      15.191,
+      14.696,
+      14.842,
+      15.848,
+      16.727,
+      15.824,
+      15.877,
+      15.561,
+      16.62,
+      15.837,
+      15.678,
+      15.718,
+      15.381,
+      16.245,
+      15.618,
+      0.181,
+      52.198,
+      18.481,
+      18.579,
+      23.073,
+      19.333,
+      19.015,
+      18.211,
+      18.409,
+      18.801,
+      14.581,
+      14.412,
+      14.291,
+      15.818,
+      14.867,
+      14.793,
+      14.559,
+      14.155,
+      14.338,
+      16.727,
+      0.174,
+      40.296,
+      39.544,
+      40.394,
+      40.639,
+      39.811,
+      46.008,
+      49.553,
+      0.209,
+      18.575,
+      13.807,
+      13.965,
+      15.088,
+      14.38,
+      13.956,
+      13.869,
+      15.799,
+      20.144,
+      16.296,
+      15.852,
+      15.954,
+      18.527,
+      19.965,
+      16.454,
+      65.754,
+      38.687,
+      37.408,
+      7.806,
+      6.939,
+      6.411,
+      7.061,
+      6.682,
+      6.517,
+      6.509,
+      6.686,
+      6.543,
+      6.312,
+      3.28,
+      0.198,
+      51.509,
+      52.764,
+      54.441,
+      49.251,
+      3.466,
+      5.88,
+      3.663,
+      3.497,
+      30.478,
+      24.677,
+      24.966,
+      28.605,
+      24.826,
+      29.602,
+      24.296,
+      25.334,
+      24.725,
+      24.906,
+      22.304,
+      21.287,
+      22.148,
+      21.662,
+      25.981,
+      26.27,
+      22.848
+    ]
+  },
+  "examples": [
+    {
+      "seed": 20272400,
+      "seat": 3,
+      "turn": 105,
+      "baseline": "PLAY_KNIGHT_CARD",
+      "override": false,
+      "best_line": {
+        "first_road": "(0, 20)",
+        "second_road": "(19, 20)",
+        "result_vp": 9
+      },
+      "baseline_score": 2700000008559844.0,
+      "best_score": 2700000008535677.5,
+      "scan_ms": 28.506
+    },
+    {
+      "seed": 20272400,
+      "seat": 3,
+      "turn": 109,
+      "baseline": "ROLL",
+      "override": true,
+      "best_line": {
+        "first_road": "(0, 20)",
+        "second_road": "(19, 20)",
+        "result_vp": 9
+      },
+      "baseline_score": 2700000022449360.5,
+      "best_score": 2700000022455182.5,
+      "scan_ms": 30.666
+    },
+    {
+      "seed": 20272400,
+      "seat": 3,
+      "turn": 109,
+      "baseline": "BUY_DEVELOPMENT_CARD",
+      "override": false,
+      "best_line": {
+        "first_road": "(0, 20)",
+        "second_road": "(19, 20)",
+        "result_vp": 9
+      },
+      "baseline_score": 2700000036367730.5,
+      "best_score": 2700000036343872.0,
+      "scan_ms": 30.61
+    },
+    {
+      "seed": 20272401,
+      "seat": 1,
+      "turn": 99,
+      "baseline": "PLAY_KNIGHT_CARD",
+      "override": false,
+      "best_line": {
+        "first_road": "(0, 20)",
+        "second_road": "(0, 5)",
+        "result_vp": 9
+      },
+      "baseline_score": 2400000050198458.0,
+      "best_score": 2400000050168458.0,
+      "scan_ms": 18.532
+    },
+    {
+      "seed": 20272405,
+      "seat": 2,
+      "turn": 48,
+      "baseline": "ROLL",
+      "override": true,
+      "best_line": {
+        "first_road": "(24, 25)",
+        "second_road": "(25, 26)",
+        "result_vp": 7
+      },
+      "baseline_score": 2100000119638763.8,
+      "best_score": 2100000119684275.8,
+      "scan_ms": 68.44
+    },
+    {
+      "seed": 20272405,
+      "seat": 2,
+      "turn": 48,
+      "baseline": "BUILD_ROAD",
+      "override": true,
+      "best_line": {
+        "first_road": "(24, 25)",
+        "second_road": "(25, 26)",
+        "result_vp": 7
+      },
+      "baseline_score": 2100000119663175.8,
+      "best_score": 2100000119684278.8,
+      "scan_ms": 39.934
+    },
+    {
+      "seed": 20272405,
+      "seat": 2,
+      "turn": 48,
+      "baseline": "BUILD_ROAD",
+      "override": false,
+      "best_line": {
+        "first_road": "(25, 26)",
+        "second_road": "(26, 27)",
+        "result_vp": 7
+      },
+      "baseline_score": 2100000119684289.8,
+      "best_score": 2100000119684277.0,
+      "scan_ms": 47.197
+    },
+    {
+      "seed": 20272405,
+      "seat": 2,
+      "turn": 48,
+      "baseline": "MARITIME_TRADE",
+      "override": false,
+      "best_line": {
+        "first_road": "(26, 27)",
+        "second_road": "(8, 27)",
+        "result_vp": 7
+      },
+      "baseline_score": 2100000119684512.8,
+      "best_score": 2100000119684280.2,
+      "scan_ms": 45.013
+    },
+    {
+      "seed": 20272405,
+      "seat": 2,
+      "turn": 48,
+      "baseline": "BUILD_SETTLEMENT",
+      "override": false,
+      "best_line": {
+        "first_road": "(26, 27)",
+        "second_road": "(8, 27)",
+        "result_vp": 7
+      },
+      "baseline_score": 2400000133562923.0,
+      "best_score": 2100000119684503.2,
+      "scan_ms": 42.52
+    },
+    {
+      "seed": 20272405,
+      "seat": 2,
+      "turn": 48,
+      "baseline": "END_TURN",
+      "override": false,
+      "best_line": {
+        "first_road": "(26, 27)",
+        "second_road": "(27, 28)",
+        "result_vp": 8
+      },
+      "baseline_score": 2400000133562923.0,
+      "best_score": 2400000133562913.5,
+      "scan_ms": 44.982
+    },
+    {
+      "seed": 20272405,
+      "seat": 2,
+      "turn": 52,
+      "baseline": "ROLL",
+      "override": false,
+      "best_line": {
+        "first_road": "(26, 27)",
+        "second_road": "(27, 28)",
+        "result_vp": 8
+      },
+      "baseline_score": 2400000133563093.5,
+      "best_score": 2400000133563040.5,
+      "scan_ms": 47.699
+    },
+    {
+      "seed": 20272405,
+      "seat": 2,
+      "turn": 52,
+      "baseline": "MARITIME_TRADE",
+      "override": false,
+      "best_line": {
+        "first_road": "(26, 27)",
+        "second_road": "(27, 28)",
+        "result_vp": 8
+      },
+      "baseline_score": 2400000133563276.0,
+      "best_score": 2400000133563043.5,
+      "scan_ms": 42.535
+    },
+    {
+      "seed": 20272405,
+      "seat": 2,
+      "turn": 52,
+      "baseline": "END_TURN",
+      "override": false,
+      "best_line": {
+        "first_road": "(26, 27)",
+        "second_road": "(27, 28)",
+        "result_vp": 8
+      },
+      "baseline_score": 2400000133563276.0,
+      "best_score": 2400000133563266.5,
+      "scan_ms": 41.29
+    },
+    {
+      "seed": 20272405,
+      "seat": 2,
+      "turn": 56,
+      "baseline": "ROLL",
+      "override": false,
+      "best_line": {
+        "first_road": "(26, 27)",
+        "second_road": "(27, 28)",
+        "result_vp": 8
+      },
+      "baseline_score": 2400000133563599.0,
+      "best_score": 2400000133563566.5,
+      "scan_ms": 46.149
+    },
+    {
+      "seed": 20272405,
+      "seat": 2,
+      "turn": 56,
+      "baseline": "MARITIME_TRADE",
+      "override": false,
+      "best_line": {
+        "first_road": "(26, 27)",
+        "second_road": "(27, 28)",
+        "result_vp": 8
+      },
+      "baseline_score": 2400000133563704.0,
+      "best_score": 2400000133563566.5,
+      "scan_ms": 44.998
+    },
+    {
+      "seed": 20272405,
+      "seat": 2,
+      "turn": 56,
+      "baseline": "BUILD_SETTLEMENT",
+      "override": false,
+      "best_line": {
+        "first_road": "(26, 27)",
+        "second_road": "(27, 28)",
+        "result_vp": 8
+      },
+      "baseline_score": 2700000147417669.5,
+      "best_score": 2400000133563694.5,
+      "scan_ms": 41.623
+    },
+    {
+      "seed": 20272405,
+      "seat": 2,
+      "turn": 56,
+      "baseline": "END_TURN",
+      "override": false,
+      "best_line": {
+        "first_road": "(26, 27)",
+        "second_road": "(27, 28)",
+        "result_vp": 9
+      },
+      "baseline_score": 2700000147417669.5,
+      "best_score": 2700000147417660.0,
+      "scan_ms": 44.057
+    },
+    {
+      "seed": 20272405,
+      "seat": 2,
+      "turn": 60,
+      "baseline": "ROLL",
+      "override": false,
+      "best_line": {
+        "first_road": "(26, 27)",
+        "second_road": "(27, 28)",
+        "result_vp": 9
+      },
+      "baseline_score": 2700000147418064.5,
+      "best_score": 2700000147418037.0,
+      "scan_ms": 46.302
+    },
+    {
+      "seed": 20272405,
+      "seat": 2,
+      "turn": 60,
+      "baseline": "BUY_DEVELOPMENT_CARD",
+      "override": false,
+      "best_line": {
+        "first_road": "(26, 27)",
+        "second_road": "(27, 28)",
+        "result_vp": 9
+      },
+      "baseline_score": 2700000147447731.5,
+      "best_score": 2700000147418040.0,
+      "scan_ms": 42.265
+    },
+    {
+      "seed": 20272405,
+      "seat": 2,
+      "turn": 60,
+      "baseline": "MARITIME_TRADE",
+      "override": false,
+      "best_line": {
+        "first_road": "(26, 27)",
+        "second_road": "(27, 28)",
+        "result_vp": 9
+      },
+      "baseline_score": 2700000147417954.5,
+      "best_score": 2700000147417722.0,
+      "scan_ms": 42.14
+    }
+  ],
+  "games": [
+    {
+      "seed": 20272400,
+      "seat": 0,
+      "status": "completed",
+      "actions": 431,
+      "candidate_vp": 7,
+      "wall_seconds": 0.575
+    },
+    {
+      "seed": 20272400,
+      "seat": 1,
+      "status": "completed",
+      "actions": 331,
+      "candidate_vp": 3,
+      "wall_seconds": 0.496
+    },
+    {
+      "seed": 20272400,
+      "seat": 2,
+      "status": "completed",
+      "actions": 286,
+      "candidate_vp": 10,
+      "wall_seconds": 0.306
+    },
+    {
+      "seed": 20272400,
+      "seat": 3,
+      "status": "completed",
+      "actions": 438,
+      "candidate_vp": 10,
+      "wall_seconds": 0.813
+    },
+    {
+      "seed": 20272401,
+      "seat": 0,
+      "status": "completed",
+      "actions": 299,
+      "candidate_vp": 6,
+      "wall_seconds": 0.503
+    },
+    {
+      "seed": 20272401,
+      "seat": 1,
+      "status": "completed",
+      "actions": 375,
+      "candidate_vp": 9,
+      "wall_seconds": 0.546
+    },
+    {
+      "seed": 20272401,
+      "seat": 2,
+      "status": "completed",
+      "actions": 361,
+      "candidate_vp": 8,
+      "wall_seconds": 0.596
+    },
+    {
+      "seed": 20272401,
+      "seat": 3,
+      "status": "completed",
+      "actions": 228,
+      "candidate_vp": 3,
+      "wall_seconds": 0.364
+    },
+    {
+      "seed": 20272402,
+      "seat": 0,
+      "status": "completed",
+      "actions": 446,
+      "candidate_vp": 7,
+      "wall_seconds": 0.678
+    },
+    {
+      "seed": 20272402,
+      "seat": 1,
+      "status": "completed",
+      "actions": 414,
+      "candidate_vp": 8,
+      "wall_seconds": 0.649
+    },
+    {
+      "seed": 20272402,
+      "seat": 2,
+      "status": "completed",
+      "actions": 305,
+      "candidate_vp": 3,
+      "wall_seconds": 0.406
+    },
+    {
+      "seed": 20272402,
+      "seat": 3,
+      "status": "completed",
+      "actions": 279,
+      "candidate_vp": 10,
+      "wall_seconds": 0.348
+    },
+    {
+      "seed": 20272403,
+      "seat": 0,
+      "status": "completed",
+      "actions": 306,
+      "candidate_vp": 6,
+      "wall_seconds": 0.343
+    },
+    {
+      "seed": 20272403,
+      "seat": 1,
+      "status": "completed",
+      "actions": 317,
+      "candidate_vp": 7,
+      "wall_seconds": 0.337
+    },
+    {
+      "seed": 20272403,
+      "seat": 2,
+      "status": "completed",
+      "actions": 397,
+      "candidate_vp": 10,
+      "wall_seconds": 0.539
+    },
+    {
+      "seed": 20272403,
+      "seat": 3,
+      "status": "completed",
+      "actions": 301,
+      "candidate_vp": 11,
+      "wall_seconds": 0.324
+    },
+    {
+      "seed": 20272404,
+      "seat": 0,
+      "status": "completed",
+      "actions": 197,
+      "candidate_vp": 5,
+      "wall_seconds": 0.315
+    },
+    {
+      "seed": 20272404,
+      "seat": 1,
+      "status": "completed",
+      "actions": 321,
+      "candidate_vp": 10,
+      "wall_seconds": 0.46
+    },
+    {
+      "seed": 20272404,
+      "seat": 2,
+      "status": "completed",
+      "actions": 237,
+      "candidate_vp": 5,
+      "wall_seconds": 0.39
+    },
+    {
+      "seed": 20272404,
+      "seat": 3,
+      "status": "completed",
+      "actions": 182,
+      "candidate_vp": 2,
+      "wall_seconds": 0.307
+    },
+    {
+      "seed": 20272405,
+      "seat": 0,
+      "status": "completed",
+      "actions": 181,
+      "candidate_vp": 3,
+      "wall_seconds": 0.239
+    },
+    {
+      "seed": 20272405,
+      "seat": 1,
+      "status": "completed",
+      "actions": 193,
+      "candidate_vp": 4,
+      "wall_seconds": 0.311
+    },
+    {
+      "seed": 20272405,
+      "seat": 2,
+      "status": "completed",
+      "actions": 197,
+      "candidate_vp": 10,
+      "wall_seconds": 1.229
+    },
+    {
+      "seed": 20272405,
+      "seat": 3,
+      "status": "completed",
+      "actions": 404,
+      "candidate_vp": 8,
+      "wall_seconds": 0.638
+    },
+    {
+      "seed": 20272406,
+      "seat": 0,
+      "status": "completed",
+      "actions": 470,
+      "candidate_vp": 6,
+      "wall_seconds": 0.519
+    },
+    {
+      "seed": 20272406,
+      "seat": 1,
+      "status": "completed",
+      "actions": 443,
+      "candidate_vp": 10,
+      "wall_seconds": 0.532
+    },
+    {
+      "seed": 20272406,
+      "seat": 2,
+      "status": "completed",
+      "actions": 356,
+      "candidate_vp": 5,
+      "wall_seconds": 0.413
+    },
+    {
+      "seed": 20272406,
+      "seat": 3,
+      "status": "completed",
+      "actions": 348,
+      "candidate_vp": 4,
+      "wall_seconds": 0.445
+    },
+    {
+      "seed": 20272407,
+      "seat": 0,
+      "status": "completed",
+      "actions": 257,
+      "candidate_vp": 5,
+      "wall_seconds": 0.289
+    },
+    {
+      "seed": 20272407,
+      "seat": 1,
+      "status": "completed",
+      "actions": 258,
+      "candidate_vp": 10,
+      "wall_seconds": 0.332
+    },
+    {
+      "seed": 20272407,
+      "seat": 2,
+      "status": "completed",
+      "actions": 290,
+      "candidate_vp": 4,
+      "wall_seconds": 0.361
+    },
+    {
+      "seed": 20272407,
+      "seat": 3,
+      "status": "completed",
+      "actions": 254,
+      "candidate_vp": 4,
+      "wall_seconds": 0.25
+    },
+    {
+      "seed": 20272408,
+      "seat": 0,
+      "status": "completed",
+      "actions": 371,
+      "candidate_vp": 5,
+      "wall_seconds": 0.523
+    },
+    {
+      "seed": 20272408,
+      "seat": 1,
+      "status": "completed",
+      "actions": 317,
+      "candidate_vp": 10,
+      "wall_seconds": 0.718
+    },
+    {
+      "seed": 20272408,
+      "seat": 2,
+      "status": "completed",
+      "actions": 392,
+      "candidate_vp": 8,
+      "wall_seconds": 0.588
+    },
+    {
+      "seed": 20272408,
+      "seat": 3,
+      "status": "completed",
+      "actions": 332,
+      "candidate_vp": 5,
+      "wall_seconds": 0.476
+    },
+    {
+      "seed": 20272409,
+      "seat": 0,
+      "status": "completed",
+      "actions": 476,
+      "candidate_vp": 10,
+      "wall_seconds": 0.796
+    },
+    {
+      "seed": 20272409,
+      "seat": 1,
+      "status": "completed",
+      "actions": 523,
+      "candidate_vp": 11,
+      "wall_seconds": 0.813
+    },
+    {
+      "seed": 20272409,
+      "seat": 2,
+      "status": "completed",
+      "actions": 466,
+      "candidate_vp": 5,
+      "wall_seconds": 0.634
+    },
+    {
+      "seed": 20272409,
+      "seat": 3,
+      "status": "completed",
+      "actions": 433,
+      "candidate_vp": 8,
+      "wall_seconds": 0.806
+    },
+    {
+      "seed": 20272410,
+      "seat": 0,
+      "status": "completed",
+      "actions": 361,
+      "candidate_vp": 10,
+      "wall_seconds": 0.619
+    },
+    {
+      "seed": 20272410,
+      "seat": 1,
+      "status": "completed",
+      "actions": 390,
+      "candidate_vp": 8,
+      "wall_seconds": 0.559
+    },
+    {
+      "seed": 20272410,
+      "seat": 2,
+      "status": "completed",
+      "actions": 346,
+      "candidate_vp": 4,
+      "wall_seconds": 0.525
+    },
+    {
+      "seed": 20272410,
+      "seat": 3,
+      "status": "completed",
+      "actions": 464,
+      "candidate_vp": 10,
+      "wall_seconds": 0.627
+    },
+    {
+      "seed": 20272411,
+      "seat": 0,
+      "status": "completed",
+      "actions": 272,
+      "candidate_vp": 4,
+      "wall_seconds": 0.319
+    },
+    {
+      "seed": 20272411,
+      "seat": 1,
+      "status": "completed",
+      "actions": 334,
+      "candidate_vp": 10,
+      "wall_seconds": 0.368
+    },
+    {
+      "seed": 20272411,
+      "seat": 2,
+      "status": "completed",
+      "actions": 380,
+      "candidate_vp": 4,
+      "wall_seconds": 0.437
+    },
+    {
+      "seed": 20272411,
+      "seat": 3,
+      "status": "completed",
+      "actions": 315,
+      "candidate_vp": 3,
+      "wall_seconds": 0.361
+    },
+    {
+      "seed": 20272412,
+      "seat": 0,
+      "status": "completed",
+      "actions": 158,
+      "candidate_vp": 10,
+      "wall_seconds": 0.521
+    },
+    {
+      "seed": 20272412,
+      "seat": 1,
+      "status": "completed",
+      "actions": 252,
+      "candidate_vp": 7,
+      "wall_seconds": 0.338
+    },
+    {
+      "seed": 20272412,
+      "seat": 2,
+      "status": "completed",
+      "actions": 183,
+      "candidate_vp": 3,
+      "wall_seconds": 0.234
+    },
+    {
+      "seed": 20272412,
+      "seat": 3,
+      "status": "completed",
+      "actions": 175,
+      "candidate_vp": 4,
+      "wall_seconds": 0.26
+    },
+    {
+      "seed": 20272413,
+      "seat": 0,
+      "status": "completed",
+      "actions": 305,
+      "candidate_vp": 10,
+      "wall_seconds": 0.434
+    },
+    {
+      "seed": 20272413,
+      "seat": 1,
+      "status": "completed",
+      "actions": 286,
+      "candidate_vp": 4,
+      "wall_seconds": 0.404
+    },
+    {
+      "seed": 20272413,
+      "seat": 2,
+      "status": "completed",
+      "actions": 272,
+      "candidate_vp": 6,
+      "wall_seconds": 0.327
+    },
+    {
+      "seed": 20272413,
+      "seat": 3,
+      "status": "completed",
+      "actions": 298,
+      "candidate_vp": 6,
+      "wall_seconds": 0.427
+    },
+    {
+      "seed": 20272414,
+      "seat": 0,
+      "status": "completed",
+      "actions": 240,
+      "candidate_vp": 10,
+      "wall_seconds": 0.292
+    },
+    {
+      "seed": 20272414,
+      "seat": 1,
+      "status": "completed",
+      "actions": 278,
+      "candidate_vp": 2,
+      "wall_seconds": 0.365
+    },
+    {
+      "seed": 20272414,
+      "seat": 2,
+      "status": "completed",
+      "actions": 421,
+      "candidate_vp": 9,
+      "wall_seconds": 0.562
+    },
+    {
+      "seed": 20272414,
+      "seat": 3,
+      "status": "completed",
+      "actions": 266,
+      "candidate_vp": 10,
+      "wall_seconds": 0.336
+    },
+    {
+      "seed": 20272415,
+      "seat": 0,
+      "status": "completed",
+      "actions": 369,
+      "candidate_vp": 4,
+      "wall_seconds": 0.469
+    },
+    {
+      "seed": 20272415,
+      "seat": 1,
+      "status": "completed",
+      "actions": 411,
+      "candidate_vp": 8,
+      "wall_seconds": 0.48
+    },
+    {
+      "seed": 20272415,
+      "seat": 2,
+      "status": "completed",
+      "actions": 324,
+      "candidate_vp": 10,
+      "wall_seconds": 0.377
+    },
+    {
+      "seed": 20272415,
+      "seat": 3,
+      "status": "completed",
+      "actions": 361,
+      "candidate_vp": 10,
+      "wall_seconds": 0.396
+    },
+    {
+      "seed": 20272416,
+      "seat": 0,
+      "status": "completed",
+      "actions": 340,
+      "candidate_vp": 4,
+      "wall_seconds": 0.463
+    },
+    {
+      "seed": 20272416,
+      "seat": 1,
+      "status": "completed",
+      "actions": 213,
+      "candidate_vp": 2,
+      "wall_seconds": 0.263
+    },
+    {
+      "seed": 20272416,
+      "seat": 2,
+      "status": "completed",
+      "actions": 311,
+      "candidate_vp": 7,
+      "wall_seconds": 0.394
+    },
+    {
+      "seed": 20272416,
+      "seat": 3,
+      "status": "completed",
+      "actions": 214,
+      "candidate_vp": 11,
+      "wall_seconds": 0.243
+    },
+    {
+      "seed": 20272417,
+      "seat": 0,
+      "status": "completed",
+      "actions": 386,
+      "candidate_vp": 8,
+      "wall_seconds": 0.485
+    },
+    {
+      "seed": 20272417,
+      "seat": 1,
+      "status": "completed",
+      "actions": 403,
+      "candidate_vp": 10,
+      "wall_seconds": 0.539
+    },
+    {
+      "seed": 20272417,
+      "seat": 2,
+      "status": "completed",
+      "actions": 400,
+      "candidate_vp": 10,
+      "wall_seconds": 0.467
+    },
+    {
+      "seed": 20272417,
+      "seat": 3,
+      "status": "completed",
+      "actions": 348,
+      "candidate_vp": 6,
+      "wall_seconds": 0.51
+    },
+    {
+      "seed": 20272418,
+      "seat": 0,
+      "status": "completed",
+      "actions": 442,
+      "candidate_vp": 10,
+      "wall_seconds": 0.577
+    },
+    {
+      "seed": 20272418,
+      "seat": 1,
+      "status": "completed",
+      "actions": 275,
+      "candidate_vp": 4,
+      "wall_seconds": 0.391
+    },
+    {
+      "seed": 20272418,
+      "seat": 2,
+      "status": "completed",
+      "actions": 353,
+      "candidate_vp": 7,
+      "wall_seconds": 0.559
+    },
+    {
+      "seed": 20272418,
+      "seat": 3,
+      "status": "completed",
+      "actions": 338,
+      "candidate_vp": 11,
+      "wall_seconds": 0.46
+    },
+    {
+      "seed": 20272419,
+      "seat": 0,
+      "status": "completed",
+      "actions": 342,
+      "candidate_vp": 10,
+      "wall_seconds": 0.357
+    },
+    {
+      "seed": 20272419,
+      "seat": 1,
+      "status": "completed",
+      "actions": 444,
+      "candidate_vp": 10,
+      "wall_seconds": 0.861
+    },
+    {
+      "seed": 20272419,
+      "seat": 2,
+      "status": "completed",
+      "actions": 356,
+      "candidate_vp": 3,
+      "wall_seconds": 0.471
+    },
+    {
+      "seed": 20272419,
+      "seat": 3,
+      "status": "completed",
+      "actions": 356,
+      "candidate_vp": 5,
+      "wall_seconds": 0.51
+    },
+    {
+      "seed": 20272420,
+      "seat": 0,
+      "status": "completed",
+      "actions": 181,
+      "candidate_vp": 5,
+      "wall_seconds": 0.211
+    },
+    {
+      "seed": 20272420,
+      "seat": 1,
+      "status": "completed",
+      "actions": 316,
+      "candidate_vp": 10,
+      "wall_seconds": 0.709
+    },
+    {
+      "seed": 20272420,
+      "seat": 2,
+      "status": "completed",
+      "actions": 297,
+      "candidate_vp": 5,
+      "wall_seconds": 0.4
+    },
+    {
+      "seed": 20272420,
+      "seat": 3,
+      "status": "completed",
+      "actions": 314,
+      "candidate_vp": 5,
+      "wall_seconds": 0.859
+    },
+    {
+      "seed": 20272421,
+      "seat": 0,
+      "status": "completed",
+      "actions": 261,
+      "candidate_vp": 10,
+      "wall_seconds": 0.3
+    },
+    {
+      "seed": 20272421,
+      "seat": 1,
+      "status": "completed",
+      "actions": 329,
+      "candidate_vp": 6,
+      "wall_seconds": 0.466
+    },
+    {
+      "seed": 20272421,
+      "seat": 2,
+      "status": "completed",
+      "actions": 345,
+      "candidate_vp": 10,
+      "wall_seconds": 0.522
+    },
+    {
+      "seed": 20272421,
+      "seat": 3,
+      "status": "completed",
+      "actions": 327,
+      "candidate_vp": 10,
+      "wall_seconds": 0.374
+    },
+    {
+      "seed": 20272422,
+      "seat": 0,
+      "status": "completed",
+      "actions": 290,
+      "candidate_vp": 4,
+      "wall_seconds": 0.323
+    },
+    {
+      "seed": 20272422,
+      "seat": 1,
+      "status": "completed",
+      "actions": 367,
+      "candidate_vp": 11,
+      "wall_seconds": 0.423
+    },
+    {
+      "seed": 20272422,
+      "seat": 2,
+      "status": "completed",
+      "actions": 313,
+      "candidate_vp": 4,
+      "wall_seconds": 0.446
+    },
+    {
+      "seed": 20272422,
+      "seat": 3,
+      "status": "completed",
+      "actions": 274,
+      "candidate_vp": 10,
+      "wall_seconds": 0.338
+    },
+    {
+      "seed": 20272423,
+      "seat": 0,
+      "status": "completed",
+      "actions": 387,
+      "candidate_vp": 9,
+      "wall_seconds": 0.511
+    },
+    {
+      "seed": 20272423,
+      "seat": 1,
+      "status": "completed",
+      "actions": 335,
+      "candidate_vp": 9,
+      "wall_seconds": 0.403
+    },
+    {
+      "seed": 20272423,
+      "seat": 2,
+      "status": "completed",
+      "actions": 258,
+      "candidate_vp": 5,
+      "wall_seconds": 0.334
+    },
+    {
+      "seed": 20272423,
+      "seat": 3,
+      "status": "completed",
+      "actions": 297,
+      "candidate_vp": 5,
+      "wall_seconds": 0.366
+    }
+  ]
+}

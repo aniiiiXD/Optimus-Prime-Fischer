@@ -39,6 +39,9 @@ held-out metrics, CPU profile, tournament, playable checkpoint
 | [`test_data_pipeline.py`](test_data_pipeline.py) | regression checks for mirror identity, move-history canonicalization, and cache invalidation |
 | [`benchmark_models.py`](benchmark_models.py) | same-test-set and same-opening comparison across saved checkpoints |
 | [`BENCHMARK_PROTOCOL.md`](BENCHMARK_PROTOCOL.md) | benchmark metrics, reproducible seeds, and checkpoint inventory |
+| [`cpu_search_bench.py`](cpu_search_bench.py) | fixed-board before/after benchmark for the hybrid search hotpath |
+| [`cpu_sweep.py`](cpu_sweep.py) | batch/thread CPU forward and optimizer-step sweep |
+| [`CPU_OPTIMIZATION_REPORT.md`](CPU_OPTIMIZATION_REPORT.md) | measured search, data, model-size and holdout results from 15 October |
 
 ## Move selection with one-ply simulation
 

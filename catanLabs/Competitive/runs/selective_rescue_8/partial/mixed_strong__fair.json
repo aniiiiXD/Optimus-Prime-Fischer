@@ -1,0 +1,646 @@
+{
+  "schema": "catanlabs-selective-rescue-partial-v1",
+  "status": "unverified_partial",
+  "arm": "fair",
+  "mix": "mixed_strong",
+  "attempts_recorded": 32,
+  "expected_games": 32,
+  "protocol": "catanLabs-four-player-v5-canonical-actions-and-chance-selective-rescue",
+  "rules": {
+    "players": 4,
+    "target_vp": 10,
+    "discard_limit": 7,
+    "friendly_robber": false,
+    "number_placement": "official_spiral",
+    "player_trade_offers": false,
+    "isolated_copy_rng": true,
+    "forced_search_outcomes": true,
+    "frozen_model_sha256": "29b0f7418a873f34a02157dbde10b7f28f4d47ef2356d74076b55173efef3bbd",
+    "fair_config_sha256": "5f908a453c87556463170378ef92d4ce79f03ecfdf0f1c304daae93fd3222ab3"
+  },
+  "candidate": {
+    "type": "fair",
+    "file": "/Users/anixd/Documents/Hyde/catanLabs/Competitive/fair_value_agent.py",
+    "sha256": "5078de2b4bf5c0e6db96e847de9013bb6509d9db8b7fa4962fa23f48b55bb9de",
+    "checkpoint": "/Users/anixd/Documents/Hyde/catanLabs/Competitive/configs/fair_army_finish.json",
+    "checkpoint_sha256": "5f908a453c87556463170378ef92d4ce79f03ecfdf0f1c304daae93fd3222ab3"
+  },
+  "first_seed": 20273500,
+  "boards_per_mix": 8,
+  "split_file_sha256": "7096dbb1901d09562c7f982dc5964b92b1ffac2407375e589daef5384b41a2df",
+  "runner_sha256": "cb893621cbf7f0c9aa4f431650048430e3c54278379bbc72854e3964ac2d1e1c",
+  "tier": {
+    "summary": {
+      "attempts": 32,
+      "completed": 32,
+      "wins": 12,
+      "win_rate_all_attempts": 0.375,
+      "win_rate_wilson95": [
+        0.22933887309454212,
+        0.5474559264692255
+      ],
+      "mean_final_vp": 7.3125,
+      "decision_latency_ms": {
+        "samples": 2725,
+        "median": 0.332417,
+        "p95": 3.6325
+      },
+      "by_seat": {
+        "0": {
+          "attempts": 8,
+          "wins": 4
+        },
+        "1": {
+          "attempts": 8,
+          "wins": 1
+        },
+        "2": {
+          "attempts": 8,
+          "wins": 4
+        },
+        "3": {
+          "attempts": 8,
+          "wins": 3
+        }
+      }
+    },
+    "games": [
+      {
+        "seed": 20273500,
+        "seat": 0,
+        "color": "ORANGE",
+        "opponent": "mixed_strong",
+        "opponent_assignments": {
+          "WHITE": "value",
+          "RED": "alphabeta1",
+          "BLUE": "alphabeta1"
+        },
+        "status": "completed",
+        "winner": "RED",
+        "won": false,
+        "candidate_vp": 5,
+        "actions": 298,
+        "turns": 84,
+        "wall_seconds": 0.339
+      },
+      {
+        "seed": 20273500,
+        "seat": 1,
+        "color": "WHITE",
+        "opponent": "mixed_strong",
+        "opponent_assignments": {
+          "ORANGE": "alphabeta1",
+          "RED": "alphabeta1",
+          "BLUE": "value"
+        },
+        "status": "completed",
+        "winner": "RED",
+        "won": false,
+        "candidate_vp": 4,
+        "actions": 293,
+        "turns": 80,
+        "wall_seconds": 0.333
+      },
+      {
+        "seed": 20273500,
+        "seat": 2,
+        "color": "RED",
+        "opponent": "mixed_strong",
+        "opponent_assignments": {
+          "ORANGE": "alphabeta1",
+          "WHITE": "value",
+          "BLUE": "alphabeta1"
+        },
+        "status": "completed",
+        "winner": "RED",
+        "won": true,
+        "candidate_vp": 10,
+        "actions": 367,
+        "turns": 104,
+        "wall_seconds": 0.509
+      },
+      {
+        "seed": 20273500,
+        "seat": 3,
+        "color": "BLUE",
+        "opponent": "mixed_strong",
+        "opponent_assignments": {
+          "ORANGE": "value",
+          "WHITE": "alphabeta1",
+          "RED": "alphabeta1"
+        },
+        "status": "completed",
+        "winner": "ORANGE",
+        "won": false,
+        "candidate_vp": 8,
+        "actions": 380,
+        "turns": 102,
+        "wall_seconds": 0.473
+      },
+      {
+        "seed": 20273501,
+        "seat": 0,
+        "color": "RED",
+        "opponent": "mixed_strong",
+        "opponent_assignments": {
+          "WHITE": "alphabeta1",
+          "BLUE": "alphabeta1",
+          "ORANGE": "value"
+        },
+        "status": "completed",
+        "winner": "RED",
+        "won": true,
+        "candidate_vp": 10,
+        "actions": 417,
+        "turns": 114,
+        "wall_seconds": 0.546
+      },
+      {
+        "seed": 20273501,
+        "seat": 1,
+        "color": "WHITE",
+        "opponent": "mixed_strong",
+        "opponent_assignments": {
+          "RED": "alphabeta1",
+          "BLUE": "value",
+          "ORANGE": "alphabeta1"
+        },
+        "status": "completed",
+        "winner": "RED",
+        "won": false,
+        "candidate_vp": 8,
+        "actions": 507,
+        "turns": 134,
+        "wall_seconds": 0.691
+      },
+      {
+        "seed": 20273501,
+        "seat": 2,
+        "color": "BLUE",
+        "opponent": "mixed_strong",
+        "opponent_assignments": {
+          "RED": "value",
+          "WHITE": "alphabeta1",
+          "ORANGE": "alphabeta1"
+        },
+        "status": "completed",
+        "winner": "BLUE",
+        "won": true,
+        "candidate_vp": 10,
+        "actions": 385,
+        "turns": 104,
+        "wall_seconds": 0.516
+      },
+      {
+        "seed": 20273501,
+        "seat": 3,
+        "color": "ORANGE",
+        "opponent": "mixed_strong",
+        "opponent_assignments": {
+          "RED": "alphabeta1",
+          "WHITE": "alphabeta1",
+          "BLUE": "value"
+        },
+        "status": "completed",
+        "winner": "RED",
+        "won": false,
+        "candidate_vp": 4,
+        "actions": 388,
+        "turns": 106,
+        "wall_seconds": 0.57
+      },
+      {
+        "seed": 20273502,
+        "seat": 0,
+        "color": "ORANGE",
+        "opponent": "mixed_strong",
+        "opponent_assignments": {
+          "RED": "alphabeta1",
+          "WHITE": "value",
+          "BLUE": "alphabeta1"
+        },
+        "status": "completed",
+        "winner": "ORANGE",
+        "won": true,
+        "candidate_vp": 10,
+        "actions": 276,
+        "turns": 78,
+        "wall_seconds": 0.28
+      },
+      {
+        "seed": 20273502,
+        "seat": 1,
+        "color": "RED",
+        "opponent": "mixed_strong",
+        "opponent_assignments": {
+          "ORANGE": "value",
+          "WHITE": "alphabeta1",
+          "BLUE": "alphabeta1"
+        },
+        "status": "completed",
+        "winner": "ORANGE",
+        "won": false,
+        "candidate_vp": 7,
+        "actions": 362,
+        "turns": 98,
+        "wall_seconds": 0.453
+      },
+      {
+        "seed": 20273502,
+        "seat": 2,
+        "color": "WHITE",
+        "opponent": "mixed_strong",
+        "opponent_assignments": {
+          "ORANGE": "alphabeta1",
+          "RED": "alphabeta1",
+          "BLUE": "value"
+        },
+        "status": "completed",
+        "winner": "BLUE",
+        "won": false,
+        "candidate_vp": 3,
+        "actions": 275,
+        "turns": 77,
+        "wall_seconds": 0.256
+      },
+      {
+        "seed": 20273502,
+        "seat": 3,
+        "color": "BLUE",
+        "opponent": "mixed_strong",
+        "opponent_assignments": {
+          "ORANGE": "alphabeta1",
+          "RED": "value",
+          "WHITE": "alphabeta1"
+        },
+        "status": "completed",
+        "winner": "BLUE",
+        "won": true,
+        "candidate_vp": 10,
+        "actions": 214,
+        "turns": 61,
+        "wall_seconds": 0.263
+      },
+      {
+        "seed": 20273503,
+        "seat": 0,
+        "color": "BLUE",
+        "opponent": "mixed_strong",
+        "opponent_assignments": {
+          "WHITE": "value",
+          "RED": "alphabeta1",
+          "ORANGE": "alphabeta1"
+        },
+        "status": "completed",
+        "winner": "ORANGE",
+        "won": false,
+        "candidate_vp": 6,
+        "actions": 197,
+        "turns": 57,
+        "wall_seconds": 0.237
+      },
+      {
+        "seed": 20273503,
+        "seat": 1,
+        "color": "WHITE",
+        "opponent": "mixed_strong",
+        "opponent_assignments": {
+          "BLUE": "alphabeta1",
+          "RED": "alphabeta1",
+          "ORANGE": "value"
+        },
+        "status": "completed",
+        "winner": "RED",
+        "won": false,
+        "candidate_vp": 5,
+        "actions": 229,
+        "turns": 64,
+        "wall_seconds": 0.287
+      },
+      {
+        "seed": 20273503,
+        "seat": 2,
+        "color": "RED",
+        "opponent": "mixed_strong",
+        "opponent_assignments": {
+          "BLUE": "alphabeta1",
+          "WHITE": "value",
+          "ORANGE": "alphabeta1"
+        },
+        "status": "completed",
+        "winner": "ORANGE",
+        "won": false,
+        "candidate_vp": 4,
+        "actions": 258,
+        "turns": 73,
+        "wall_seconds": 0.331
+      },
+      {
+        "seed": 20273503,
+        "seat": 3,
+        "color": "ORANGE",
+        "opponent": "mixed_strong",
+        "opponent_assignments": {
+          "BLUE": "value",
+          "WHITE": "alphabeta1",
+          "RED": "alphabeta1"
+        },
+        "status": "completed",
+        "winner": "ORANGE",
+        "won": true,
+        "candidate_vp": 10,
+        "actions": 244,
+        "turns": 69,
+        "wall_seconds": 0.227
+      },
+      {
+        "seed": 20273504,
+        "seat": 0,
+        "color": "ORANGE",
+        "opponent": "mixed_strong",
+        "opponent_assignments": {
+          "BLUE": "alphabeta1",
+          "RED": "alphabeta1",
+          "WHITE": "value"
+        },
+        "status": "completed",
+        "winner": "ORANGE",
+        "won": true,
+        "candidate_vp": 10,
+        "actions": 431,
+        "turns": 118,
+        "wall_seconds": 0.568
+      },
+      {
+        "seed": 20273504,
+        "seat": 1,
+        "color": "BLUE",
+        "opponent": "mixed_strong",
+        "opponent_assignments": {
+          "ORANGE": "alphabeta1",
+          "RED": "value",
+          "WHITE": "alphabeta1"
+        },
+        "status": "completed",
+        "winner": "RED",
+        "won": false,
+        "candidate_vp": 3,
+        "actions": 481,
+        "turns": 124,
+        "wall_seconds": 0.55
+      },
+      {
+        "seed": 20273504,
+        "seat": 2,
+        "color": "RED",
+        "opponent": "mixed_strong",
+        "opponent_assignments": {
+          "ORANGE": "value",
+          "BLUE": "alphabeta1",
+          "WHITE": "alphabeta1"
+        },
+        "status": "completed",
+        "winner": "RED",
+        "won": true,
+        "candidate_vp": 10,
+        "actions": 429,
+        "turns": 116,
+        "wall_seconds": 0.553
+      },
+      {
+        "seed": 20273504,
+        "seat": 3,
+        "color": "WHITE",
+        "opponent": "mixed_strong",
+        "opponent_assignments": {
+          "ORANGE": "alphabeta1",
+          "BLUE": "alphabeta1",
+          "RED": "value"
+        },
+        "status": "completed",
+        "winner": "RED",
+        "won": false,
+        "candidate_vp": 7,
+        "actions": 413,
+        "turns": 116,
+        "wall_seconds": 0.523
+      },
+      {
+        "seed": 20273505,
+        "seat": 0,
+        "color": "RED",
+        "opponent": "mixed_strong",
+        "opponent_assignments": {
+          "BLUE": "alphabeta1",
+          "ORANGE": "value",
+          "WHITE": "alphabeta1"
+        },
+        "status": "completed",
+        "winner": "WHITE",
+        "won": false,
+        "candidate_vp": 5,
+        "actions": 322,
+        "turns": 81,
+        "wall_seconds": 0.496
+      },
+      {
+        "seed": 20273505,
+        "seat": 1,
+        "color": "BLUE",
+        "opponent": "mixed_strong",
+        "opponent_assignments": {
+          "RED": "value",
+          "ORANGE": "alphabeta1",
+          "WHITE": "alphabeta1"
+        },
+        "status": "completed",
+        "winner": "BLUE",
+        "won": true,
+        "candidate_vp": 10,
+        "actions": 342,
+        "turns": 87,
+        "wall_seconds": 0.487
+      },
+      {
+        "seed": 20273505,
+        "seat": 2,
+        "color": "ORANGE",
+        "opponent": "mixed_strong",
+        "opponent_assignments": {
+          "RED": "alphabeta1",
+          "BLUE": "alphabeta1",
+          "WHITE": "value"
+        },
+        "status": "completed",
+        "winner": "WHITE",
+        "won": false,
+        "candidate_vp": 8,
+        "actions": 232,
+        "turns": 65,
+        "wall_seconds": 0.421
+      },
+      {
+        "seed": 20273505,
+        "seat": 3,
+        "color": "WHITE",
+        "opponent": "mixed_strong",
+        "opponent_assignments": {
+          "RED": "alphabeta1",
+          "BLUE": "value",
+          "ORANGE": "alphabeta1"
+        },
+        "status": "completed",
+        "winner": "WHITE",
+        "won": true,
+        "candidate_vp": 10,
+        "actions": 239,
+        "turns": 65,
+        "wall_seconds": 0.393
+      },
+      {
+        "seed": 20273506,
+        "seat": 0,
+        "color": "ORANGE",
+        "opponent": "mixed_strong",
+        "opponent_assignments": {
+          "RED": "value",
+          "BLUE": "alphabeta1",
+          "WHITE": "alphabeta1"
+        },
+        "status": "completed",
+        "winner": "BLUE",
+        "won": false,
+        "candidate_vp": 6,
+        "actions": 382,
+        "turns": 100,
+        "wall_seconds": 0.429
+      },
+      {
+        "seed": 20273506,
+        "seat": 1,
+        "color": "RED",
+        "opponent": "mixed_strong",
+        "opponent_assignments": {
+          "ORANGE": "alphabeta1",
+          "BLUE": "alphabeta1",
+          "WHITE": "value"
+        },
+        "status": "completed",
+        "winner": "BLUE",
+        "won": false,
+        "candidate_vp": 2,
+        "actions": 262,
+        "turns": 76,
+        "wall_seconds": 0.338
+      },
+      {
+        "seed": 20273506,
+        "seat": 2,
+        "color": "BLUE",
+        "opponent": "mixed_strong",
+        "opponent_assignments": {
+          "ORANGE": "alphabeta1",
+          "RED": "value",
+          "WHITE": "alphabeta1"
+        },
+        "status": "completed",
+        "winner": "BLUE",
+        "won": true,
+        "candidate_vp": 10,
+        "actions": 294,
+        "turns": 84,
+        "wall_seconds": 0.4
+      },
+      {
+        "seed": 20273506,
+        "seat": 3,
+        "color": "WHITE",
+        "opponent": "mixed_strong",
+        "opponent_assignments": {
+          "ORANGE": "value",
+          "RED": "alphabeta1",
+          "BLUE": "alphabeta1"
+        },
+        "status": "completed",
+        "winner": "ORANGE",
+        "won": false,
+        "candidate_vp": 9,
+        "actions": 349,
+        "turns": 94,
+        "wall_seconds": 0.463
+      },
+      {
+        "seed": 20273507,
+        "seat": 0,
+        "color": "ORANGE",
+        "opponent": "mixed_strong",
+        "opponent_assignments": {
+          "WHITE": "alphabeta1",
+          "BLUE": "alphabeta1",
+          "RED": "value"
+        },
+        "status": "completed",
+        "winner": "ORANGE",
+        "won": true,
+        "candidate_vp": 10,
+        "actions": 385,
+        "turns": 98,
+        "wall_seconds": 0.508
+      },
+      {
+        "seed": 20273507,
+        "seat": 1,
+        "color": "WHITE",
+        "opponent": "mixed_strong",
+        "opponent_assignments": {
+          "ORANGE": "alphabeta1",
+          "BLUE": "value",
+          "RED": "alphabeta1"
+        },
+        "status": "completed",
+        "winner": "BLUE",
+        "won": false,
+        "candidate_vp": 8,
+        "actions": 247,
+        "turns": 72,
+        "wall_seconds": 0.291
+      },
+      {
+        "seed": 20273507,
+        "seat": 2,
+        "color": "BLUE",
+        "opponent": "mixed_strong",
+        "opponent_assignments": {
+          "ORANGE": "value",
+          "WHITE": "alphabeta1",
+          "RED": "alphabeta1"
+        },
+        "status": "completed",
+        "winner": "RED",
+        "won": false,
+        "candidate_vp": 7,
+        "actions": 405,
+        "turns": 109,
+        "wall_seconds": 0.535
+      },
+      {
+        "seed": 20273507,
+        "seat": 3,
+        "color": "RED",
+        "opponent": "mixed_strong",
+        "opponent_assignments": {
+          "ORANGE": "alphabeta1",
+          "WHITE": "alphabeta1",
+          "BLUE": "value"
+        },
+        "status": "completed",
+        "winner": "ORANGE",
+        "won": false,
+        "candidate_vp": 5,
+        "actions": 344,
+        "turns": 94,
+        "wall_seconds": 0.435
+      }
+    ]
+  }
+}

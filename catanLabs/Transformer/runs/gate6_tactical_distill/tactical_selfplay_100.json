@@ -1,0 +1,1591 @@
+{
+  "schema": "catanlabs-transformer-dataset-v3",
+  "dataset_schema": "catanlabs-transformer-dataset-v3",
+  "raw_schema": "catanlabs-visible-raw-v2",
+  "raw_file": "catanLabs/Transformer/runs/gate6_tactical_distill/tactical_selfplay_100.raw.jsonl.gz",
+  "raw_records": 30929,
+  "raw_sha256": "e07398cdf89eca6e660d8d7e7124804b5bc6ff5de55737afe6de9ba8eb96b402",
+  "feature_schema": "visible-state-tokens-v3",
+  "benchmark_protocol": "catanLabs-four-player-v5-canonical-actions-and-chance",
+  "rules_manifest_sha256": "6996bcc8f1680bbb483f64cf7281305b925bc97974e50ef8136d25d66ce2bf3e",
+  "seed": 20274800,
+  "teacher": "tactical",
+  "teacher_depth": null,
+  "teacher_config": "/Users/anixd/Documents/Hyde/catanLabs/Competitive/configs/tactical_vp_min0.json",
+  "teacher_config_sha256": "eb27b07bedac18a63dbc143617eeedd173cee7401f969816febda561f64349dc",
+  "raw_teacher_config_sha256": "eb27b07bedac18a63dbc143617eeedd173cee7401f969816febda561f64349dc",
+  "raw_teacher_source_sha256": "864e06be6403788bbead134c224a54d2f5e928cedb61093cae93aee61645e2fe",
+  "teacher_source_sha256": "864e06be6403788bbead134c224a54d2f5e928cedb61093cae93aee61645e2fe",
+  "teacher_information_boundary": "tactical policy uses public game state and own private state; its exact scan does not sample hidden outcomes",
+  "collector_sha256": "9dfb8f705786fad6de16aec182d3a7d45e2abdafe7c3032c3d60b79959d57242",
+  "visible_snapshot_sha256": "e51b7360a72f060ffccd3cd3106c90bd68e4e72bea9f5d53949bf6aa414e9e83",
+  "encoder_sha256": "d7d8c74c973ac4460507f3fbc12e616d67e9eb5bf61409961f9424a60ea2a712",
+  "teacher_action_contract": "Selected before the real action executes; never trained from future outcomes.",
+  "outcome_contract": "Post-game analysis only; incomplete games use -1; excluded from action-policy inputs.",
+  "chance_contract": {
+    "isolated_copy_rng": true,
+    "forced_search_outcomes": true,
+    "canonical_action_order": true,
+    "python_hash_seed": "0"
+  },
+  "engine": {
+    "source": "https://github.com/bcollazo/catanatron.git",
+    "commit": "ecf931181b9a65bb4116a2153fb78c16f1438e00",
+    "python_root": "/Users/anixd/Documents/Hyde/start/catan_lab/vendor/catanatron/catanatron"
+  },
+  "unique_examples": 30929,
+  "unique_key": "player-relative visible state tokens + sorted legal actions",
+  "feature_boundary": "own private cards; public board/opponents/bank; no opponent hands or unplayed card identities",
+  "max_legal_actions": 54,
+  "games": [
+    {
+      "game_id": 0,
+      "seed": 20274800,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 320,
+      "turns": 90,
+      "wall_seconds": 0.884
+    },
+    {
+      "game_id": 1,
+      "seed": 20274801,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 276,
+      "turns": 78,
+      "wall_seconds": 0.686
+    },
+    {
+      "game_id": 2,
+      "seed": 20274802,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 207,
+      "turns": 62,
+      "wall_seconds": 0.531
+    },
+    {
+      "game_id": 3,
+      "seed": 20274803,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 144,
+      "turns": 47,
+      "wall_seconds": 0.516
+    },
+    {
+      "game_id": 4,
+      "seed": 20274804,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "ORANGE",
+      "actions": 325,
+      "turns": 90,
+      "wall_seconds": 0.993
+    },
+    {
+      "game_id": 5,
+      "seed": 20274805,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 333,
+      "turns": 90,
+      "wall_seconds": 0.88
+    },
+    {
+      "game_id": 6,
+      "seed": 20274806,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "BLUE",
+      "actions": 317,
+      "turns": 87,
+      "wall_seconds": 0.962
+    },
+    {
+      "game_id": 7,
+      "seed": 20274807,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "ORANGE",
+      "actions": 253,
+      "turns": 66,
+      "wall_seconds": 0.732
+    },
+    {
+      "game_id": 8,
+      "seed": 20274808,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 302,
+      "turns": 85,
+      "wall_seconds": 0.903
+    },
+    {
+      "game_id": 9,
+      "seed": 20274809,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 318,
+      "turns": 81,
+      "wall_seconds": 0.937
+    },
+    {
+      "game_id": 10,
+      "seed": 20274810,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "ORANGE",
+      "actions": 396,
+      "turns": 98,
+      "wall_seconds": 1.252
+    },
+    {
+      "game_id": 11,
+      "seed": 20274811,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "BLUE",
+      "actions": 377,
+      "turns": 98,
+      "wall_seconds": 1.135
+    },
+    {
+      "game_id": 12,
+      "seed": 20274812,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 216,
+      "turns": 61,
+      "wall_seconds": 0.537
+    },
+    {
+      "game_id": 13,
+      "seed": 20274813,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "BLUE",
+      "actions": 307,
+      "turns": 85,
+      "wall_seconds": 1.055
+    },
+    {
+      "game_id": 14,
+      "seed": 20274814,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 233,
+      "turns": 69,
+      "wall_seconds": 0.783
+    },
+    {
+      "game_id": 15,
+      "seed": 20274815,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 282,
+      "turns": 79,
+      "wall_seconds": 0.893
+    },
+    {
+      "game_id": 16,
+      "seed": 20274816,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "BLUE",
+      "actions": 218,
+      "turns": 61,
+      "wall_seconds": 0.964
+    },
+    {
+      "game_id": 17,
+      "seed": 20274817,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 249,
+      "turns": 77,
+      "wall_seconds": 0.76
+    },
+    {
+      "game_id": 18,
+      "seed": 20274818,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 225,
+      "turns": 66,
+      "wall_seconds": 0.766
+    },
+    {
+      "game_id": 19,
+      "seed": 20274819,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 195,
+      "turns": 59,
+      "wall_seconds": 0.591
+    },
+    {
+      "game_id": 20,
+      "seed": 20274820,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 260,
+      "turns": 72,
+      "wall_seconds": 0.792
+    },
+    {
+      "game_id": 21,
+      "seed": 20274821,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "BLUE",
+      "actions": 245,
+      "turns": 77,
+      "wall_seconds": 0.717
+    },
+    {
+      "game_id": 22,
+      "seed": 20274822,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 216,
+      "turns": 59,
+      "wall_seconds": 0.866
+    },
+    {
+      "game_id": 23,
+      "seed": 20274823,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 338,
+      "turns": 92,
+      "wall_seconds": 1.178
+    },
+    {
+      "game_id": 24,
+      "seed": 20274824,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 220,
+      "turns": 64,
+      "wall_seconds": 0.63
+    },
+    {
+      "game_id": 25,
+      "seed": 20274825,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "BLUE",
+      "actions": 291,
+      "turns": 78,
+      "wall_seconds": 0.942
+    },
+    {
+      "game_id": 26,
+      "seed": 20274826,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "BLUE",
+      "actions": 275,
+      "turns": 78,
+      "wall_seconds": 0.806
+    },
+    {
+      "game_id": 27,
+      "seed": 20274827,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 138,
+      "turns": 44,
+      "wall_seconds": 0.577
+    },
+    {
+      "game_id": 28,
+      "seed": 20274828,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "BLUE",
+      "actions": 274,
+      "turns": 72,
+      "wall_seconds": 0.737
+    },
+    {
+      "game_id": 29,
+      "seed": 20274829,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 247,
+      "turns": 65,
+      "wall_seconds": 0.823
+    },
+    {
+      "game_id": 30,
+      "seed": 20274830,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "ORANGE",
+      "actions": 328,
+      "turns": 97,
+      "wall_seconds": 0.838
+    },
+    {
+      "game_id": 31,
+      "seed": 20274831,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 408,
+      "turns": 102,
+      "wall_seconds": 1.1
+    },
+    {
+      "game_id": 32,
+      "seed": 20274832,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 263,
+      "turns": 77,
+      "wall_seconds": 0.594
+    },
+    {
+      "game_id": 33,
+      "seed": 20274833,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 287,
+      "turns": 78,
+      "wall_seconds": 0.835
+    },
+    {
+      "game_id": 34,
+      "seed": 20274834,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "ORANGE",
+      "actions": 278,
+      "turns": 81,
+      "wall_seconds": 0.765
+    },
+    {
+      "game_id": 35,
+      "seed": 20274835,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "ORANGE",
+      "actions": 304,
+      "turns": 78,
+      "wall_seconds": 0.833
+    },
+    {
+      "game_id": 36,
+      "seed": 20274836,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 238,
+      "turns": 67,
+      "wall_seconds": 0.87
+    },
+    {
+      "game_id": 37,
+      "seed": 20274837,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 386,
+      "turns": 106,
+      "wall_seconds": 1.293
+    },
+    {
+      "game_id": 38,
+      "seed": 20274838,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "ORANGE",
+      "actions": 325,
+      "turns": 81,
+      "wall_seconds": 1.036
+    },
+    {
+      "game_id": 39,
+      "seed": 20274839,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "BLUE",
+      "actions": 447,
+      "turns": 113,
+      "wall_seconds": 1.322
+    },
+    {
+      "game_id": 40,
+      "seed": 20274840,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "BLUE",
+      "actions": 300,
+      "turns": 79,
+      "wall_seconds": 1.05
+    },
+    {
+      "game_id": 41,
+      "seed": 20274841,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 411,
+      "turns": 105,
+      "wall_seconds": 1.521
+    },
+    {
+      "game_id": 42,
+      "seed": 20274842,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "ORANGE",
+      "actions": 325,
+      "turns": 84,
+      "wall_seconds": 1.076
+    },
+    {
+      "game_id": 43,
+      "seed": 20274843,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "ORANGE",
+      "actions": 349,
+      "turns": 93,
+      "wall_seconds": 1.121
+    },
+    {
+      "game_id": 44,
+      "seed": 20274844,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 284,
+      "turns": 79,
+      "wall_seconds": 0.823
+    },
+    {
+      "game_id": 45,
+      "seed": 20274845,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 143,
+      "turns": 47,
+      "wall_seconds": 0.495
+    },
+    {
+      "game_id": 46,
+      "seed": 20274846,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "ORANGE",
+      "actions": 304,
+      "turns": 88,
+      "wall_seconds": 0.844
+    },
+    {
+      "game_id": 47,
+      "seed": 20274847,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 272,
+      "turns": 77,
+      "wall_seconds": 0.985
+    },
+    {
+      "game_id": 48,
+      "seed": 20274848,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 329,
+      "turns": 95,
+      "wall_seconds": 1.069
+    },
+    {
+      "game_id": 49,
+      "seed": 20274849,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 299,
+      "turns": 82,
+      "wall_seconds": 0.804
+    },
+    {
+      "game_id": 50,
+      "seed": 20274850,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 331,
+      "turns": 82,
+      "wall_seconds": 0.918
+    },
+    {
+      "game_id": 51,
+      "seed": 20274851,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 318,
+      "turns": 82,
+      "wall_seconds": 0.775
+    },
+    {
+      "game_id": 52,
+      "seed": 20274852,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "BLUE",
+      "actions": 306,
+      "turns": 84,
+      "wall_seconds": 0.792
+    },
+    {
+      "game_id": 53,
+      "seed": 20274853,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "ORANGE",
+      "actions": 345,
+      "turns": 95,
+      "wall_seconds": 1.214
+    },
+    {
+      "game_id": 54,
+      "seed": 20274854,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 277,
+      "turns": 76,
+      "wall_seconds": 0.998
+    },
+    {
+      "game_id": 55,
+      "seed": 20274855,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "ORANGE",
+      "actions": 332,
+      "turns": 94,
+      "wall_seconds": 0.924
+    },
+    {
+      "game_id": 56,
+      "seed": 20274856,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "ORANGE",
+      "actions": 190,
+      "turns": 54,
+      "wall_seconds": 0.633
+    },
+    {
+      "game_id": 57,
+      "seed": 20274857,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 417,
+      "turns": 113,
+      "wall_seconds": 1.135
+    },
+    {
+      "game_id": 58,
+      "seed": 20274858,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "BLUE",
+      "actions": 214,
+      "turns": 61,
+      "wall_seconds": 0.583
+    },
+    {
+      "game_id": 59,
+      "seed": 20274859,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "BLUE",
+      "actions": 292,
+      "turns": 79,
+      "wall_seconds": 0.737
+    },
+    {
+      "game_id": 60,
+      "seed": 20274860,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 297,
+      "turns": 81,
+      "wall_seconds": 1.198
+    },
+    {
+      "game_id": 61,
+      "seed": 20274861,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 322,
+      "turns": 89,
+      "wall_seconds": 1.048
+    },
+    {
+      "game_id": 62,
+      "seed": 20274862,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 300,
+      "turns": 81,
+      "wall_seconds": 0.973
+    },
+    {
+      "game_id": 63,
+      "seed": 20274863,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "ORANGE",
+      "actions": 357,
+      "turns": 91,
+      "wall_seconds": 1.169
+    },
+    {
+      "game_id": 64,
+      "seed": 20274864,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "BLUE",
+      "actions": 335,
+      "turns": 96,
+      "wall_seconds": 1.042
+    },
+    {
+      "game_id": 65,
+      "seed": 20274865,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 195,
+      "turns": 58,
+      "wall_seconds": 0.602
+    },
+    {
+      "game_id": 66,
+      "seed": 20274866,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 178,
+      "turns": 54,
+      "wall_seconds": 0.598
+    },
+    {
+      "game_id": 67,
+      "seed": 20274867,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "ORANGE",
+      "actions": 360,
+      "turns": 97,
+      "wall_seconds": 1.007
+    },
+    {
+      "game_id": 68,
+      "seed": 20274868,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 481,
+      "turns": 121,
+      "wall_seconds": 1.375
+    },
+    {
+      "game_id": 69,
+      "seed": 20274869,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "ORANGE",
+      "actions": 377,
+      "turns": 102,
+      "wall_seconds": 1.177
+    },
+    {
+      "game_id": 70,
+      "seed": 20274870,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 339,
+      "turns": 95,
+      "wall_seconds": 1.064
+    },
+    {
+      "game_id": 71,
+      "seed": 20274871,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 191,
+      "turns": 57,
+      "wall_seconds": 0.732
+    },
+    {
+      "game_id": 72,
+      "seed": 20274872,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 488,
+      "turns": 128,
+      "wall_seconds": 1.583
+    },
+    {
+      "game_id": 73,
+      "seed": 20274873,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 267,
+      "turns": 78,
+      "wall_seconds": 0.718
+    },
+    {
+      "game_id": 74,
+      "seed": 20274874,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 251,
+      "turns": 72,
+      "wall_seconds": 0.822
+    },
+    {
+      "game_id": 75,
+      "seed": 20274875,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 277,
+      "turns": 74,
+      "wall_seconds": 0.908
+    },
+    {
+      "game_id": 76,
+      "seed": 20274876,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 456,
+      "turns": 114,
+      "wall_seconds": 1.394
+    },
+    {
+      "game_id": 77,
+      "seed": 20274877,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 305,
+      "turns": 88,
+      "wall_seconds": 0.858
+    },
+    {
+      "game_id": 78,
+      "seed": 20274878,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 283,
+      "turns": 74,
+      "wall_seconds": 0.833
+    },
+    {
+      "game_id": 79,
+      "seed": 20274879,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "BLUE",
+      "actions": 320,
+      "turns": 90,
+      "wall_seconds": 0.963
+    },
+    {
+      "game_id": 80,
+      "seed": 20274880,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "BLUE",
+      "actions": 215,
+      "turns": 65,
+      "wall_seconds": 0.606
+    },
+    {
+      "game_id": 81,
+      "seed": 20274881,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "BLUE",
+      "actions": 191,
+      "turns": 54,
+      "wall_seconds": 0.542
+    },
+    {
+      "game_id": 82,
+      "seed": 20274882,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 367,
+      "turns": 94,
+      "wall_seconds": 1.024
+    },
+    {
+      "game_id": 83,
+      "seed": 20274883,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 281,
+      "turns": 81,
+      "wall_seconds": 0.897
+    },
+    {
+      "game_id": 84,
+      "seed": 20274884,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 387,
+      "turns": 107,
+      "wall_seconds": 1.133
+    },
+    {
+      "game_id": 85,
+      "seed": 20274885,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 432,
+      "turns": 110,
+      "wall_seconds": 1.413
+    },
+    {
+      "game_id": 86,
+      "seed": 20274886,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 268,
+      "turns": 75,
+      "wall_seconds": 1.161
+    },
+    {
+      "game_id": 87,
+      "seed": 20274887,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 384,
+      "turns": 99,
+      "wall_seconds": 0.955
+    },
+    {
+      "game_id": 88,
+      "seed": 20274888,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 263,
+      "turns": 70,
+      "wall_seconds": 0.881
+    },
+    {
+      "game_id": 89,
+      "seed": 20274889,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 278,
+      "turns": 81,
+      "wall_seconds": 0.87
+    },
+    {
+      "game_id": 90,
+      "seed": 20274890,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 344,
+      "turns": 95,
+      "wall_seconds": 1.042
+    },
+    {
+      "game_id": 91,
+      "seed": 20274891,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 265,
+      "turns": 74,
+      "wall_seconds": 0.694
+    },
+    {
+      "game_id": 92,
+      "seed": 20274892,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 374,
+      "turns": 95,
+      "wall_seconds": 1.219
+    },
+    {
+      "game_id": 93,
+      "seed": 20274893,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 437,
+      "turns": 110,
+      "wall_seconds": 1.284
+    },
+    {
+      "game_id": 94,
+      "seed": 20274894,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 464,
+      "turns": 124,
+      "wall_seconds": 1.344
+    },
+    {
+      "game_id": 95,
+      "seed": 20274895,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 333,
+      "turns": 88,
+      "wall_seconds": 0.952
+    },
+    {
+      "game_id": 96,
+      "seed": 20274896,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 295,
+      "turns": 75,
+      "wall_seconds": 0.73
+    },
+    {
+      "game_id": 97,
+      "seed": 20274897,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "BLUE",
+      "actions": 437,
+      "turns": 108,
+      "wall_seconds": 1.397
+    },
+    {
+      "game_id": 98,
+      "seed": 20274898,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "ORANGE",
+      "actions": 225,
+      "turns": 63,
+      "wall_seconds": 0.632
+    },
+    {
+      "game_id": 99,
+      "seed": 20274899,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "ORANGE",
+      "actions": 370,
+      "turns": 91,
+      "wall_seconds": 1.687
+    },
+    {
+      "game_id": 100,
+      "seed": 20274900,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 342,
+      "turns": 92,
+      "wall_seconds": 1.184
+    },
+    {
+      "game_id": 101,
+      "seed": 20274901,
+      "behavior_by_input_color": [
+        "tactical",
+        "tactical",
+        "tactical",
+        "tactical"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 299,
+      "turns": 85,
+      "wall_seconds": 1.038
+    }
+  ],
+  "phases": {
+    "BUILD_INITIAL_SETTLEMENT": 816,
+    "BUILD_INITIAL_ROAD": 816,
+    "PLAY_TURN": 22935,
+    "DISCARD": 4835,
+    "MOVE_ROBBER": 1527
+  },
+  "trajectory_policies": {
+    "tactical": 30929
+  },
+  "trajectory_mode": "tactical",
+  "collection_wall_seconds": 99.107,
+  "profile_seconds": {
+    "observation_encoding": 15.150424,
+    "teacher_scoring": 49.162695,
+    "behavior_decision": 0.0,
+    "game_stepping": 0.540475
+  },
+  "dataset_sha256": "4f947f1e2ec5eb65d15863b4976d975ebc1f4382f6aa8e5695226b1b656cd1bf"
+}

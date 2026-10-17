@@ -1,0 +1,51 @@
+{
+  "device": "cpu",
+  "optimizer_budget_seconds": 20.0,
+  "optimizer_elapsed_seconds": 21.253,
+  "budget_respected": true,
+  "epochs": 2,
+  "best_epoch": 2,
+  "parameters": 13857,
+  "examples": 29676,
+  "train_examples": 23583,
+  "validation_examples": 6093,
+  "unique_games": 100,
+  "heldout_games": [
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94,
+    95,
+    96,
+    97,
+    98,
+    99
+  ],
+  "split": "held-out complete games",
+  "validation": {
+    "loss": 0.8695112317922803,
+    "accuracy": 0.3538486788117512,
+    "examples": 6093
+  },
+  "architecture": {
+    "width": 32,
+    "layers": 1,
+    "heads": 4
+  },
+  "checkpoint": "catanLabs/Transformer/runs/gate1_profile/short_update/best.pt",
+  "dataset": "catanLabs/Transformer/runs/gate1_profile/dataset.npz",
+  "dataset_sha256": "0716a25b8883aa32179e65009f885ddfe9c3a5dbfcdeaf4ee4bb4c15907e436d",
+  "dataset_schema": "catanlabs-transformer-dataset-v2",
+  "feature_schema": "visible-state-tokens-v2"
+}

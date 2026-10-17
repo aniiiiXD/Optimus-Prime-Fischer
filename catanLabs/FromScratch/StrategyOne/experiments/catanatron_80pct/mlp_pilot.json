@@ -1,0 +1,4388 @@
+{
+  "candidate": "StrategyOne calibrated MLP + settlement head + same-turn search",
+  "opponent": "pinned Catanatron web bot (AlphaBeta depth=2, pruning=True)",
+  "engine": {
+    "source": "https://github.com/bcollazo/catanatron.git",
+    "commit": "ecf931181b9a65bb4116a2153fb78c16f1438e00",
+    "python_root": "/Users/anixd/Documents/Hyde/start/catan_lab/vendor/catanatron/catanatron"
+  },
+  "config": "/Users/anixd/Documents/Hyde-catan-experiments/catanLabs/FromScratch/StrategyOne/runs/calibrated_ranker_v1/model.pt",
+  "settlement_head": "/Users/anixd/Documents/Hyde-catan-experiments/catanLabs/FromScratch/StrategyOne/runs/settlement_target_v1/epoch_4.pt",
+  "dataset_meta": "/Users/anixd/Documents/Hyde/catanLabs/FromScratch/StrategyOne/data/catanatron_diverse.meta.json",
+  "fraction": 0.8,
+  "selection_seed": 20268116,
+  "selected_boards": [
+    {
+      "game_id": 0,
+      "seed": 20262001
+    },
+    {
+      "game_id": 1,
+      "seed": 20262002
+    }
+  ],
+  "rules": {
+    "players": 2,
+    "target_vp": 10,
+    "number_placement": "official_spiral",
+    "discard_limit": 7,
+    "friendly_robber": false
+  },
+  "seat_protocol": "both seats per selected board seed",
+  "caps": {
+    "max_game_seconds": 60.0,
+    "max_actions": 10000,
+    "max_turns": 500
+  },
+  "games": [
+    {
+      "seed": 20262001,
+      "seat": 0,
+      "status": "completed",
+      "ours_won": false,
+      "catanatron_won": true,
+      "ours_vp": 2,
+      "catanatron_vp": 10,
+      "actions": 254,
+      "turns": 85,
+      "wall_seconds": 0.368,
+      "move_counts": {
+        "ours": {
+          "BUILD_SETTLEMENT": 2,
+          "BUILD_ROAD": 6,
+          "ROLL": 42,
+          "END_TURN": 42,
+          "MOVE_ROBBER": 5,
+          "DISCARD_RESOURCE": 28
+        },
+        "catanatron": {
+          "BUILD_SETTLEMENT": 5,
+          "BUILD_ROAD": 10,
+          "ROLL": 42,
+          "MOVE_ROBBER": 10,
+          "END_TURN": 41,
+          "BUILD_CITY": 3,
+          "MARITIME_TRADE": 4,
+          "DISCARD_RESOURCE": 14
+        }
+      },
+      "decision_ms": {
+        "ours": {
+          "count": 125,
+          "median": 0.263667,
+          "p95": 0.361666
+        },
+        "catanatron": {
+          "count": 129,
+          "median": 0.002083,
+          "p95": 11.70875
+        }
+      },
+      "trace": [
+        {
+          "ply": 0,
+          "turn": 0,
+          "actor": "ours",
+          "action": "BUILD_SETTLEMENT",
+          "value": "8"
+        },
+        {
+          "ply": 1,
+          "turn": 0,
+          "actor": "ours",
+          "action": "BUILD_ROAD",
+          "value": "(8, 9)"
+        },
+        {
+          "ply": 2,
+          "turn": 1,
+          "actor": "catanatron",
+          "action": "BUILD_SETTLEMENT",
+          "value": "16"
+        },
+        {
+          "ply": 3,
+          "turn": 1,
+          "actor": "catanatron",
+          "action": "BUILD_ROAD",
+          "value": "(16, 18)"
+        },
+        {
+          "ply": 4,
+          "turn": 1,
+          "actor": "catanatron",
+          "action": "BUILD_SETTLEMENT",
+          "value": "1"
+        },
+        {
+          "ply": 5,
+          "turn": 1,
+          "actor": "catanatron",
+          "action": "BUILD_ROAD",
+          "value": "(0, 1)"
+        },
+        {
+          "ply": 6,
+          "turn": 2,
+          "actor": "ours",
+          "action": "BUILD_SETTLEMENT",
+          "value": "15"
+        },
+        {
+          "ply": 7,
+          "turn": 2,
+          "actor": "ours",
+          "action": "BUILD_ROAD",
+          "value": "(15, 17)"
+        },
+        {
+          "ply": 8,
+          "turn": 2,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 9,
+          "turn": 2,
+          "actor": "ours",
+          "action": "BUILD_ROAD",
+          "value": "(17, 18)"
+        },
+        {
+          "ply": 10,
+          "turn": 2,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 11,
+          "turn": 3,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 12,
+          "turn": 3,
+          "actor": "catanatron",
+          "action": "MOVE_ROBBER",
+          "value": "((-1, 1, 0), C.BLUE)"
+        },
+        {
+          "ply": 13,
+          "turn": 3,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 14,
+          "turn": 4,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 15,
+          "turn": 4,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 16,
+          "turn": 5,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 17,
+          "turn": 5,
+          "actor": "catanatron",
+          "action": "BUILD_ROAD",
+          "value": "(0, 20)"
+        },
+        {
+          "ply": 18,
+          "turn": 5,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 19,
+          "turn": 6,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 20,
+          "turn": 6,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 21,
+          "turn": 7,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 22,
+          "turn": 7,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 23,
+          "turn": 8,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 24,
+          "turn": 8,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 25,
+          "turn": 9,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 26,
+          "turn": 9,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 27,
+          "turn": 10,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 28,
+          "turn": 10,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 29,
+          "turn": 11,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 30,
+          "turn": 11,
+          "actor": "catanatron",
+          "action": "MOVE_ROBBER",
+          "value": "((1, -1, 0), C.BLUE)"
+        },
+        {
+          "ply": 31,
+          "turn": 11,
+          "actor": "catanatron",
+          "action": "BUILD_CITY",
+          "value": "16"
+        },
+        {
+          "ply": 32,
+          "turn": 11,
+          "actor": "catanatron",
+          "action": "BUILD_ROAD",
+          "value": "(20, 22)"
+        },
+        {
+          "ply": 33,
+          "turn": 11,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 34,
+          "turn": 12,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 35,
+          "turn": 12,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 36,
+          "turn": 13,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 37,
+          "turn": 13,
+          "actor": "catanatron",
+          "action": "MOVE_ROBBER",
+          "value": "((-1, 1, 0), C.BLUE)"
+        },
+        {
+          "ply": 38,
+          "turn": 13,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 39,
+          "turn": 14,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 40,
+          "turn": 14,
+          "actor": "ours",
+          "action": "MOVE_ROBBER",
+          "value": "((-1, 2, -1), C.RED)"
+        },
+        {
+          "ply": 41,
+          "turn": 14,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 42,
+          "turn": 15,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 43,
+          "turn": 15,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 44,
+          "turn": 16,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 45,
+          "turn": 16,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 46,
+          "turn": 17,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 47,
+          "turn": 17,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 48,
+          "turn": 18,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 49,
+          "turn": 18,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 50,
+          "turn": 19,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 51,
+          "turn": 19,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WOOD'"
+        },
+        {
+          "ply": 52,
+          "turn": 19,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'SHEEP'"
+        },
+        {
+          "ply": 53,
+          "turn": 19,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WHEAT'"
+        },
+        {
+          "ply": 54,
+          "turn": 19,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WHEAT'"
+        },
+        {
+          "ply": 55,
+          "turn": 19,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WHEAT'"
+        },
+        {
+          "ply": 56,
+          "turn": 19,
+          "actor": "catanatron",
+          "action": "MOVE_ROBBER",
+          "value": "((-1, 1, 0), C.BLUE)"
+        },
+        {
+          "ply": 57,
+          "turn": 19,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 58,
+          "turn": 20,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 59,
+          "turn": 20,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 60,
+          "turn": 21,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 61,
+          "turn": 21,
+          "actor": "catanatron",
+          "action": "BUILD_ROAD",
+          "value": "(18, 40)"
+        },
+        {
+          "ply": 62,
+          "turn": 21,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 63,
+          "turn": 22,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 64,
+          "turn": 22,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 65,
+          "turn": 23,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 66,
+          "turn": 23,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 67,
+          "turn": 24,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 68,
+          "turn": 24,
+          "actor": "ours",
+          "action": "MOVE_ROBBER",
+          "value": "((-1, 2, -1), C.RED)"
+        },
+        {
+          "ply": 69,
+          "turn": 24,
+          "actor": "ours",
+          "action": "BUILD_ROAD",
+          "value": "(9, 10)"
+        },
+        {
+          "ply": 70,
+          "turn": 24,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 71,
+          "turn": 25,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 72,
+          "turn": 25,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 73,
+          "turn": 26,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 74,
+          "turn": 26,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 75,
+          "turn": 27,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 76,
+          "turn": 27,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 77,
+          "turn": 28,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 78,
+          "turn": 28,
+          "actor": "ours",
+          "action": "BUILD_ROAD",
+          "value": "(10, 11)"
+        },
+        {
+          "ply": 79,
+          "turn": 28,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 80,
+          "turn": 29,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 81,
+          "turn": 29,
+          "actor": "catanatron",
+          "action": "BUILD_CITY",
+          "value": "1"
+        },
+        {
+          "ply": 82,
+          "turn": 29,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 83,
+          "turn": 30,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 84,
+          "turn": 30,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 85,
+          "turn": 31,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 86,
+          "turn": 31,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 87,
+          "turn": 32,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 88,
+          "turn": 32,
+          "actor": "ours",
+          "action": "MOVE_ROBBER",
+          "value": "((1, 0, -1), C.RED)"
+        },
+        {
+          "ply": 89,
+          "turn": 32,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 90,
+          "turn": 33,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 91,
+          "turn": 33,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 92,
+          "turn": 34,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 93,
+          "turn": 34,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 94,
+          "turn": 35,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 95,
+          "turn": 35,
+          "actor": "catanatron",
+          "action": "BUILD_ROAD",
+          "value": "(19, 20)"
+        },
+        {
+          "ply": 96,
+          "turn": 35,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 97,
+          "turn": 36,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 98,
+          "turn": 36,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 99,
+          "turn": 37,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 100,
+          "turn": 37,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WOOD'"
+        },
+        {
+          "ply": 101,
+          "turn": 37,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WHEAT'"
+        },
+        {
+          "ply": 102,
+          "turn": 37,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WHEAT'"
+        },
+        {
+          "ply": 103,
+          "turn": 37,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WHEAT'"
+        },
+        {
+          "ply": 104,
+          "turn": 37,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WHEAT'"
+        },
+        {
+          "ply": 105,
+          "turn": 37,
+          "actor": "catanatron",
+          "action": "MOVE_ROBBER",
+          "value": "((-1, 1, 0), C.BLUE)"
+        },
+        {
+          "ply": 106,
+          "turn": 37,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 107,
+          "turn": 38,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 108,
+          "turn": 38,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 109,
+          "turn": 39,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 110,
+          "turn": 39,
+          "actor": "catanatron",
+          "action": "BUILD_ROAD",
+          "value": "(1, 2)"
+        },
+        {
+          "ply": 111,
+          "turn": 39,
+          "actor": "catanatron",
+          "action": "BUILD_ROAD",
+          "value": "(2, 3)"
+        },
+        {
+          "ply": 112,
+          "turn": 39,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 113,
+          "turn": 40,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 114,
+          "turn": 40,
+          "actor": "ours",
+          "action": "BUILD_ROAD",
+          "value": "(11, 12)"
+        },
+        {
+          "ply": 115,
+          "turn": 40,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 116,
+          "turn": 41,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 117,
+          "turn": 41,
+          "actor": "catanatron",
+          "action": "MARITIME_TRADE",
+          "value": "('ORE', 'ORE', 'ORE', 'ORE', 'BRICK')"
+        },
+        {
+          "ply": 118,
+          "turn": 41,
+          "actor": "catanatron",
+          "action": "BUILD_ROAD",
+          "value": "(3, 12)"
+        },
+        {
+          "ply": 119,
+          "turn": 41,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 120,
+          "turn": 42,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 121,
+          "turn": 42,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 122,
+          "turn": 43,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 123,
+          "turn": 43,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 124,
+          "turn": 44,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 125,
+          "turn": 44,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 126,
+          "turn": 45,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 127,
+          "turn": 45,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 128,
+          "turn": 46,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 129,
+          "turn": 46,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 130,
+          "turn": 47,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 131,
+          "turn": 47,
+          "actor": "catanatron",
+          "action": "MARITIME_TRADE",
+          "value": "('SHEEP', 'SHEEP', 'SHEEP', 'SHEEP', 'WHEAT')"
+        },
+        {
+          "ply": 132,
+          "turn": 47,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 133,
+          "turn": 48,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 134,
+          "turn": 48,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 135,
+          "turn": 49,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 136,
+          "turn": 49,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 137,
+          "turn": 50,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 138,
+          "turn": 50,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 139,
+          "turn": 51,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 140,
+          "turn": 51,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'SHEEP'"
+        },
+        {
+          "ply": 141,
+          "turn": 51,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WOOD'"
+        },
+        {
+          "ply": 142,
+          "turn": 51,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WOOD'"
+        },
+        {
+          "ply": 143,
+          "turn": 51,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WHEAT'"
+        },
+        {
+          "ply": 144,
+          "turn": 51,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WHEAT'"
+        },
+        {
+          "ply": 145,
+          "turn": 51,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WHEAT'"
+        },
+        {
+          "ply": 146,
+          "turn": 51,
+          "actor": "catanatron",
+          "action": "MOVE_ROBBER",
+          "value": "((1, -1, 0), C.BLUE)"
+        },
+        {
+          "ply": 147,
+          "turn": 51,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 148,
+          "turn": 52,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 149,
+          "turn": 52,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 150,
+          "turn": 53,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 151,
+          "turn": 53,
+          "actor": "catanatron",
+          "action": "DISCARD_RESOURCE",
+          "value": "'ORE'"
+        },
+        {
+          "ply": 152,
+          "turn": 53,
+          "actor": "catanatron",
+          "action": "DISCARD_RESOURCE",
+          "value": "'ORE'"
+        },
+        {
+          "ply": 153,
+          "turn": 53,
+          "actor": "catanatron",
+          "action": "DISCARD_RESOURCE",
+          "value": "'ORE'"
+        },
+        {
+          "ply": 154,
+          "turn": 53,
+          "actor": "catanatron",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WHEAT'"
+        },
+        {
+          "ply": 155,
+          "turn": 53,
+          "actor": "catanatron",
+          "action": "MOVE_ROBBER",
+          "value": "((-1, 1, 0), C.BLUE)"
+        },
+        {
+          "ply": 156,
+          "turn": 53,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 157,
+          "turn": 54,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 158,
+          "turn": 54,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 159,
+          "turn": 55,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 160,
+          "turn": 55,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 161,
+          "turn": 56,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 162,
+          "turn": 56,
+          "actor": "ours",
+          "action": "MOVE_ROBBER",
+          "value": "((-1, 2, -1), C.RED)"
+        },
+        {
+          "ply": 163,
+          "turn": 56,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 164,
+          "turn": 57,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 165,
+          "turn": 57,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 166,
+          "turn": 58,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 167,
+          "turn": 58,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 168,
+          "turn": 59,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 169,
+          "turn": 59,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 170,
+          "turn": 60,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 171,
+          "turn": 60,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 172,
+          "turn": 61,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 173,
+          "turn": 61,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 174,
+          "turn": 62,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 175,
+          "turn": 62,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 176,
+          "turn": 63,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 177,
+          "turn": 63,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WOOD'"
+        },
+        {
+          "ply": 178,
+          "turn": 63,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WOOD'"
+        },
+        {
+          "ply": 179,
+          "turn": 63,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WOOD'"
+        },
+        {
+          "ply": 180,
+          "turn": 63,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WHEAT'"
+        },
+        {
+          "ply": 181,
+          "turn": 63,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WHEAT'"
+        },
+        {
+          "ply": 182,
+          "turn": 63,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WHEAT'"
+        },
+        {
+          "ply": 183,
+          "turn": 63,
+          "actor": "catanatron",
+          "action": "DISCARD_RESOURCE",
+          "value": "'ORE'"
+        },
+        {
+          "ply": 184,
+          "turn": 63,
+          "actor": "catanatron",
+          "action": "DISCARD_RESOURCE",
+          "value": "'ORE'"
+        },
+        {
+          "ply": 185,
+          "turn": 63,
+          "actor": "catanatron",
+          "action": "DISCARD_RESOURCE",
+          "value": "'ORE'"
+        },
+        {
+          "ply": 186,
+          "turn": 63,
+          "actor": "catanatron",
+          "action": "DISCARD_RESOURCE",
+          "value": "'ORE'"
+        },
+        {
+          "ply": 187,
+          "turn": 63,
+          "actor": "catanatron",
+          "action": "DISCARD_RESOURCE",
+          "value": "'SHEEP'"
+        },
+        {
+          "ply": 188,
+          "turn": 63,
+          "actor": "catanatron",
+          "action": "MOVE_ROBBER",
+          "value": "((-1, 1, 0), C.BLUE)"
+        },
+        {
+          "ply": 189,
+          "turn": 63,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 190,
+          "turn": 64,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 191,
+          "turn": 64,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 192,
+          "turn": 65,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 193,
+          "turn": 65,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 194,
+          "turn": 66,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 195,
+          "turn": 66,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 196,
+          "turn": 67,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 197,
+          "turn": 67,
+          "actor": "catanatron",
+          "action": "MARITIME_TRADE",
+          "value": "('ORE', 'ORE', 'ORE', 'ORE', 'BRICK')"
+        },
+        {
+          "ply": 198,
+          "turn": 67,
+          "actor": "catanatron",
+          "action": "BUILD_SETTLEMENT",
+          "value": "3"
+        },
+        {
+          "ply": 199,
+          "turn": 67,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 200,
+          "turn": 68,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 201,
+          "turn": 68,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 202,
+          "turn": 69,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 203,
+          "turn": 69,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 204,
+          "turn": 70,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 205,
+          "turn": 70,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 206,
+          "turn": 71,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 207,
+          "turn": 71,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 208,
+          "turn": 72,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 209,
+          "turn": 72,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 210,
+          "turn": 73,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 211,
+          "turn": 73,
+          "actor": "catanatron",
+          "action": "MARITIME_TRADE",
+          "value": "('WOOD', 'WOOD', 'WOOD', 'WOOD', 'BRICK')"
+        },
+        {
+          "ply": 212,
+          "turn": 73,
+          "actor": "catanatron",
+          "action": "BUILD_SETTLEMENT",
+          "value": "20"
+        },
+        {
+          "ply": 213,
+          "turn": 73,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 214,
+          "turn": 74,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 215,
+          "turn": 74,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 216,
+          "turn": 75,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 217,
+          "turn": 75,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 218,
+          "turn": 76,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 219,
+          "turn": 76,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 220,
+          "turn": 77,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 221,
+          "turn": 77,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'SHEEP'"
+        },
+        {
+          "ply": 222,
+          "turn": 77,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'SHEEP'"
+        },
+        {
+          "ply": 223,
+          "turn": 77,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WOOD'"
+        },
+        {
+          "ply": 224,
+          "turn": 77,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WOOD'"
+        },
+        {
+          "ply": 225,
+          "turn": 77,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WHEAT'"
+        },
+        {
+          "ply": 226,
+          "turn": 77,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WHEAT'"
+        },
+        {
+          "ply": 227,
+          "turn": 77,
+          "actor": "catanatron",
+          "action": "MOVE_ROBBER",
+          "value": "((1, -1, 0), C.BLUE)"
+        },
+        {
+          "ply": 228,
+          "turn": 77,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 229,
+          "turn": 78,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 230,
+          "turn": 78,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 231,
+          "turn": 79,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 232,
+          "turn": 79,
+          "actor": "catanatron",
+          "action": "DISCARD_RESOURCE",
+          "value": "'ORE'"
+        },
+        {
+          "ply": 233,
+          "turn": 79,
+          "actor": "catanatron",
+          "action": "DISCARD_RESOURCE",
+          "value": "'ORE'"
+        },
+        {
+          "ply": 234,
+          "turn": 79,
+          "actor": "catanatron",
+          "action": "DISCARD_RESOURCE",
+          "value": "'SHEEP'"
+        },
+        {
+          "ply": 235,
+          "turn": 79,
+          "actor": "catanatron",
+          "action": "DISCARD_RESOURCE",
+          "value": "'ORE'"
+        },
+        {
+          "ply": 236,
+          "turn": 79,
+          "actor": "catanatron",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WHEAT'"
+        },
+        {
+          "ply": 237,
+          "turn": 79,
+          "actor": "catanatron",
+          "action": "MOVE_ROBBER",
+          "value": "((-1, 1, 0), C.BLUE)"
+        },
+        {
+          "ply": 238,
+          "turn": 79,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 239,
+          "turn": 80,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 240,
+          "turn": 80,
+          "actor": "ours",
+          "action": "MOVE_ROBBER",
+          "value": "((-1, 0, 1), C.RED)"
+        },
+        {
+          "ply": 241,
+          "turn": 80,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 242,
+          "turn": 81,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 243,
+          "turn": 81,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 244,
+          "turn": 82,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 245,
+          "turn": 82,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 246,
+          "turn": 83,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 247,
+          "turn": 83,
+          "actor": "catanatron",
+          "action": "BUILD_SETTLEMENT",
+          "value": "40"
+        },
+        {
+          "ply": 248,
+          "turn": 83,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 249,
+          "turn": 84,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 250,
+          "turn": 84,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 251,
+          "turn": 85,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 252,
+          "turn": 85,
+          "actor": "catanatron",
+          "action": "BUILD_ROAD",
+          "value": "(19, 46)"
+        },
+        {
+          "ply": 253,
+          "turn": 85,
+          "actor": "catanatron",
+          "action": "BUILD_CITY",
+          "value": "20"
+        }
+      ],
+      "game_id": 0
+    },
+    {
+      "seed": 20262001,
+      "seat": 1,
+      "status": "completed",
+      "ours_won": false,
+      "catanatron_won": true,
+      "ours_vp": 3,
+      "catanatron_vp": 10,
+      "actions": 336,
+      "turns": 104,
+      "wall_seconds": 0.377,
+      "move_counts": {
+        "ours": {
+          "BUILD_SETTLEMENT": 2,
+          "BUILD_ROAD": 7,
+          "ROLL": 51,
+          "MOVE_ROBBER": 10,
+          "END_TURN": 51,
+          "DISCARD_RESOURCE": 56,
+          "BUILD_CITY": 1
+        },
+        "catanatron": {
+          "BUILD_SETTLEMENT": 6,
+          "BUILD_ROAD": 10,
+          "ROLL": 52,
+          "END_TURN": 51,
+          "MOVE_ROBBER": 10,
+          "MARITIME_TRADE": 14,
+          "BUILD_CITY": 2,
+          "DISCARD_RESOURCE": 13
+        }
+      },
+      "decision_ms": {
+        "ours": {
+          "count": 178,
+          "median": 0.24656250000000002,
+          "p95": 0.364083
+        },
+        "catanatron": {
+          "count": 158,
+          "median": 0.31727099999999997,
+          "p95": 8.240584
+        }
+      },
+      "trace": [
+        {
+          "ply": 0,
+          "turn": 0,
+          "actor": "catanatron",
+          "action": "BUILD_SETTLEMENT",
+          "value": "16"
+        },
+        {
+          "ply": 1,
+          "turn": 0,
+          "actor": "catanatron",
+          "action": "BUILD_ROAD",
+          "value": "(16, 21)"
+        },
+        {
+          "ply": 2,
+          "turn": 1,
+          "actor": "ours",
+          "action": "BUILD_SETTLEMENT",
+          "value": "8"
+        },
+        {
+          "ply": 3,
+          "turn": 1,
+          "actor": "ours",
+          "action": "BUILD_ROAD",
+          "value": "(8, 9)"
+        },
+        {
+          "ply": 4,
+          "turn": 1,
+          "actor": "ours",
+          "action": "BUILD_SETTLEMENT",
+          "value": "15"
+        },
+        {
+          "ply": 5,
+          "turn": 1,
+          "actor": "ours",
+          "action": "BUILD_ROAD",
+          "value": "(15, 17)"
+        },
+        {
+          "ply": 6,
+          "turn": 2,
+          "actor": "catanatron",
+          "action": "BUILD_SETTLEMENT",
+          "value": "1"
+        },
+        {
+          "ply": 7,
+          "turn": 2,
+          "actor": "catanatron",
+          "action": "BUILD_ROAD",
+          "value": "(0, 1)"
+        },
+        {
+          "ply": 8,
+          "turn": 2,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 9,
+          "turn": 2,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 10,
+          "turn": 3,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 11,
+          "turn": 3,
+          "actor": "ours",
+          "action": "MOVE_ROBBER",
+          "value": "((-1, 2, -1), C.BLUE)"
+        },
+        {
+          "ply": 12,
+          "turn": 3,
+          "actor": "ours",
+          "action": "BUILD_ROAD",
+          "value": "(9, 10)"
+        },
+        {
+          "ply": 13,
+          "turn": 3,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 14,
+          "turn": 4,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 15,
+          "turn": 4,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 16,
+          "turn": 5,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 17,
+          "turn": 5,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 18,
+          "turn": 6,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 19,
+          "turn": 6,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 20,
+          "turn": 7,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 21,
+          "turn": 7,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 22,
+          "turn": 8,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 23,
+          "turn": 8,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 24,
+          "turn": 9,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 25,
+          "turn": 9,
+          "actor": "ours",
+          "action": "BUILD_ROAD",
+          "value": "(10, 11)"
+        },
+        {
+          "ply": 26,
+          "turn": 9,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 27,
+          "turn": 10,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 28,
+          "turn": 10,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 29,
+          "turn": 11,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 30,
+          "turn": 11,
+          "actor": "ours",
+          "action": "MOVE_ROBBER",
+          "value": "((1, 0, -1), C.BLUE)"
+        },
+        {
+          "ply": 31,
+          "turn": 11,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 32,
+          "turn": 12,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 33,
+          "turn": 12,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 34,
+          "turn": 13,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 35,
+          "turn": 13,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WHEAT'"
+        },
+        {
+          "ply": 36,
+          "turn": 13,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WHEAT'"
+        },
+        {
+          "ply": 37,
+          "turn": 13,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WHEAT'"
+        },
+        {
+          "ply": 38,
+          "turn": 13,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WHEAT'"
+        },
+        {
+          "ply": 39,
+          "turn": 13,
+          "actor": "ours",
+          "action": "MOVE_ROBBER",
+          "value": "((-1, 2, -1), C.BLUE)"
+        },
+        {
+          "ply": 40,
+          "turn": 13,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 41,
+          "turn": 14,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 42,
+          "turn": 14,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 43,
+          "turn": 15,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 44,
+          "turn": 15,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 45,
+          "turn": 16,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 46,
+          "turn": 16,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 47,
+          "turn": 17,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 48,
+          "turn": 17,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 49,
+          "turn": 18,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 50,
+          "turn": 18,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 51,
+          "turn": 19,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 52,
+          "turn": 19,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'BRICK'"
+        },
+        {
+          "ply": 53,
+          "turn": 19,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WHEAT'"
+        },
+        {
+          "ply": 54,
+          "turn": 19,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WHEAT'"
+        },
+        {
+          "ply": 55,
+          "turn": 19,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WHEAT'"
+        },
+        {
+          "ply": 56,
+          "turn": 19,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WHEAT'"
+        },
+        {
+          "ply": 57,
+          "turn": 19,
+          "actor": "ours",
+          "action": "MOVE_ROBBER",
+          "value": "((1, 0, -1), C.BLUE)"
+        },
+        {
+          "ply": 58,
+          "turn": 19,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 59,
+          "turn": 20,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 60,
+          "turn": 20,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 61,
+          "turn": 21,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 62,
+          "turn": 21,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 63,
+          "turn": 22,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 64,
+          "turn": 22,
+          "actor": "catanatron",
+          "action": "BUILD_ROAD",
+          "value": "(0, 20)"
+        },
+        {
+          "ply": 65,
+          "turn": 22,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 66,
+          "turn": 23,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 67,
+          "turn": 23,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 68,
+          "turn": 24,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 69,
+          "turn": 24,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'BRICK'"
+        },
+        {
+          "ply": 70,
+          "turn": 24,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WHEAT'"
+        },
+        {
+          "ply": 71,
+          "turn": 24,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WHEAT'"
+        },
+        {
+          "ply": 72,
+          "turn": 24,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WHEAT'"
+        },
+        {
+          "ply": 73,
+          "turn": 24,
+          "actor": "catanatron",
+          "action": "MOVE_ROBBER",
+          "value": "((-1, 1, 0), C.RED)"
+        },
+        {
+          "ply": 74,
+          "turn": 24,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 75,
+          "turn": 25,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 76,
+          "turn": 25,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 77,
+          "turn": 26,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 78,
+          "turn": 26,
+          "actor": "catanatron",
+          "action": "BUILD_SETTLEMENT",
+          "value": "20"
+        },
+        {
+          "ply": 79,
+          "turn": 26,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 80,
+          "turn": 27,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 81,
+          "turn": 27,
+          "actor": "ours",
+          "action": "BUILD_ROAD",
+          "value": "(11, 12)"
+        },
+        {
+          "ply": 82,
+          "turn": 27,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 83,
+          "turn": 28,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 84,
+          "turn": 28,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 85,
+          "turn": 29,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 86,
+          "turn": 29,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 87,
+          "turn": 30,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 88,
+          "turn": 30,
+          "actor": "catanatron",
+          "action": "MARITIME_TRADE",
+          "value": "('ORE', 'ORE', 'ORE', 'ORE', 'BRICK')"
+        },
+        {
+          "ply": 89,
+          "turn": 30,
+          "actor": "catanatron",
+          "action": "BUILD_ROAD",
+          "value": "(20, 22)"
+        },
+        {
+          "ply": 90,
+          "turn": 30,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 91,
+          "turn": 31,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 92,
+          "turn": 31,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 93,
+          "turn": 32,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 94,
+          "turn": 32,
+          "actor": "catanatron",
+          "action": "MOVE_ROBBER",
+          "value": "((1, -1, 0), C.RED)"
+        },
+        {
+          "ply": 95,
+          "turn": 32,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 96,
+          "turn": 33,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 97,
+          "turn": 33,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 98,
+          "turn": 34,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 99,
+          "turn": 34,
+          "actor": "catanatron",
+          "action": "MARITIME_TRADE",
+          "value": "('ORE', 'ORE', 'ORE', 'ORE', 'BRICK')"
+        },
+        {
+          "ply": 100,
+          "turn": 34,
+          "actor": "catanatron",
+          "action": "BUILD_ROAD",
+          "value": "(21, 43)"
+        },
+        {
+          "ply": 101,
+          "turn": 34,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 102,
+          "turn": 35,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 103,
+          "turn": 35,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 104,
+          "turn": 36,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 105,
+          "turn": 36,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 106,
+          "turn": 37,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 107,
+          "turn": 37,
+          "actor": "ours",
+          "action": "MOVE_ROBBER",
+          "value": "((-1, 2, -1), C.BLUE)"
+        },
+        {
+          "ply": 108,
+          "turn": 37,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 109,
+          "turn": 38,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 110,
+          "turn": 38,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 111,
+          "turn": 39,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 112,
+          "turn": 39,
+          "actor": "ours",
+          "action": "BUILD_ROAD",
+          "value": "(17, 18)"
+        },
+        {
+          "ply": 113,
+          "turn": 39,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 114,
+          "turn": 40,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 115,
+          "turn": 40,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 116,
+          "turn": 41,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 117,
+          "turn": 41,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 118,
+          "turn": 42,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 119,
+          "turn": 42,
+          "actor": "catanatron",
+          "action": "MARITIME_TRADE",
+          "value": "('ORE', 'ORE', 'ORE', 'ORE', 'WOOD')"
+        },
+        {
+          "ply": 120,
+          "turn": 42,
+          "actor": "catanatron",
+          "action": "BUILD_ROAD",
+          "value": "(43, 44)"
+        },
+        {
+          "ply": 121,
+          "turn": 42,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 122,
+          "turn": 43,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 123,
+          "turn": 43,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 124,
+          "turn": 44,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 125,
+          "turn": 44,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 126,
+          "turn": 45,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 127,
+          "turn": 45,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 128,
+          "turn": 46,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 129,
+          "turn": 46,
+          "actor": "catanatron",
+          "action": "MARITIME_TRADE",
+          "value": "('SHEEP', 'SHEEP', 'SHEEP', 'SHEEP', 'BRICK')"
+        },
+        {
+          "ply": 130,
+          "turn": 46,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 131,
+          "turn": 47,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 132,
+          "turn": 47,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 133,
+          "turn": 48,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 134,
+          "turn": 48,
+          "actor": "catanatron",
+          "action": "MARITIME_TRADE",
+          "value": "('SHEEP', 'SHEEP', 'SHEEP', 'SHEEP', 'WOOD')"
+        },
+        {
+          "ply": 135,
+          "turn": 48,
+          "actor": "catanatron",
+          "action": "BUILD_ROAD",
+          "value": "(22, 49)"
+        },
+        {
+          "ply": 136,
+          "turn": 48,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 137,
+          "turn": 49,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 138,
+          "turn": 49,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 139,
+          "turn": 50,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 140,
+          "turn": 50,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 141,
+          "turn": 51,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 142,
+          "turn": 51,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'SHEEP'"
+        },
+        {
+          "ply": 143,
+          "turn": 51,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WOOD'"
+        },
+        {
+          "ply": 144,
+          "turn": 51,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WOOD'"
+        },
+        {
+          "ply": 145,
+          "turn": 51,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WOOD'"
+        },
+        {
+          "ply": 146,
+          "turn": 51,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WHEAT'"
+        },
+        {
+          "ply": 147,
+          "turn": 51,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WHEAT'"
+        },
+        {
+          "ply": 148,
+          "turn": 51,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WHEAT'"
+        },
+        {
+          "ply": 149,
+          "turn": 51,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WHEAT'"
+        },
+        {
+          "ply": 150,
+          "turn": 51,
+          "actor": "ours",
+          "action": "MOVE_ROBBER",
+          "value": "((1, 0, -1), C.BLUE)"
+        },
+        {
+          "ply": 151,
+          "turn": 51,
+          "actor": "ours",
+          "action": "BUILD_CITY",
+          "value": "8"
+        },
+        {
+          "ply": 152,
+          "turn": 51,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 153,
+          "turn": 52,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 154,
+          "turn": 52,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 155,
+          "turn": 53,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 156,
+          "turn": 53,
+          "actor": "ours",
+          "action": "MOVE_ROBBER",
+          "value": "((-1, 2, -1), C.BLUE)"
+        },
+        {
+          "ply": 157,
+          "turn": 53,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 158,
+          "turn": 54,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 159,
+          "turn": 54,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 160,
+          "turn": 55,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 161,
+          "turn": 55,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 162,
+          "turn": 56,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 163,
+          "turn": 56,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'SHEEP'"
+        },
+        {
+          "ply": 164,
+          "turn": 56,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WOOD'"
+        },
+        {
+          "ply": 165,
+          "turn": 56,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WHEAT'"
+        },
+        {
+          "ply": 166,
+          "turn": 56,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WHEAT'"
+        },
+        {
+          "ply": 167,
+          "turn": 56,
+          "actor": "catanatron",
+          "action": "MOVE_ROBBER",
+          "value": "((-1, 1, 0), C.RED)"
+        },
+        {
+          "ply": 168,
+          "turn": 56,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 169,
+          "turn": 57,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 170,
+          "turn": 57,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 171,
+          "turn": 58,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 172,
+          "turn": 58,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 173,
+          "turn": 59,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 174,
+          "turn": 59,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 175,
+          "turn": 60,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 176,
+          "turn": 60,
+          "actor": "catanatron",
+          "action": "MARITIME_TRADE",
+          "value": "('SHEEP', 'SHEEP', 'SHEEP', 'SHEEP', 'BRICK')"
+        },
+        {
+          "ply": 177,
+          "turn": 60,
+          "actor": "catanatron",
+          "action": "BUILD_ROAD",
+          "value": "(48, 49)"
+        },
+        {
+          "ply": 178,
+          "turn": 60,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 179,
+          "turn": 61,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 180,
+          "turn": 61,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 181,
+          "turn": 62,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 182,
+          "turn": 62,
+          "actor": "catanatron",
+          "action": "MOVE_ROBBER",
+          "value": "((1, -1, 0), C.RED)"
+        },
+        {
+          "ply": 183,
+          "turn": 62,
+          "actor": "catanatron",
+          "action": "BUILD_CITY",
+          "value": "16"
+        },
+        {
+          "ply": 184,
+          "turn": 62,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 185,
+          "turn": 63,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 186,
+          "turn": 63,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 187,
+          "turn": 64,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 188,
+          "turn": 64,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 189,
+          "turn": 65,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 190,
+          "turn": 65,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 191,
+          "turn": 66,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 192,
+          "turn": 66,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 193,
+          "turn": 67,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 194,
+          "turn": 67,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 195,
+          "turn": 68,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 196,
+          "turn": 68,
+          "actor": "catanatron",
+          "action": "DISCARD_RESOURCE",
+          "value": "'SHEEP'"
+        },
+        {
+          "ply": 197,
+          "turn": 68,
+          "actor": "catanatron",
+          "action": "DISCARD_RESOURCE",
+          "value": "'SHEEP'"
+        },
+        {
+          "ply": 198,
+          "turn": 68,
+          "actor": "catanatron",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WHEAT'"
+        },
+        {
+          "ply": 199,
+          "turn": 68,
+          "actor": "catanatron",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WHEAT'"
+        },
+        {
+          "ply": 200,
+          "turn": 68,
+          "actor": "catanatron",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WHEAT'"
+        },
+        {
+          "ply": 201,
+          "turn": 68,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'SHEEP'"
+        },
+        {
+          "ply": 202,
+          "turn": 68,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'SHEEP'"
+        },
+        {
+          "ply": 203,
+          "turn": 68,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'SHEEP'"
+        },
+        {
+          "ply": 204,
+          "turn": 68,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'SHEEP'"
+        },
+        {
+          "ply": 205,
+          "turn": 68,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WOOD'"
+        },
+        {
+          "ply": 206,
+          "turn": 68,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WOOD'"
+        },
+        {
+          "ply": 207,
+          "turn": 68,
+          "actor": "catanatron",
+          "action": "MOVE_ROBBER",
+          "value": "((-1, 1, 0), C.RED)"
+        },
+        {
+          "ply": 208,
+          "turn": 68,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 209,
+          "turn": 69,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 210,
+          "turn": 69,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 211,
+          "turn": 70,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 212,
+          "turn": 70,
+          "actor": "catanatron",
+          "action": "BUILD_CITY",
+          "value": "20"
+        },
+        {
+          "ply": 213,
+          "turn": 70,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 214,
+          "turn": 71,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 215,
+          "turn": 71,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 216,
+          "turn": 72,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 217,
+          "turn": 72,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 218,
+          "turn": 73,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 219,
+          "turn": 73,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 220,
+          "turn": 74,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 221,
+          "turn": 74,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 222,
+          "turn": 75,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 223,
+          "turn": 75,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 224,
+          "turn": 76,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 225,
+          "turn": 76,
+          "actor": "catanatron",
+          "action": "DISCARD_RESOURCE",
+          "value": "'SHEEP'"
+        },
+        {
+          "ply": 226,
+          "turn": 76,
+          "actor": "catanatron",
+          "action": "DISCARD_RESOURCE",
+          "value": "'SHEEP'"
+        },
+        {
+          "ply": 227,
+          "turn": 76,
+          "actor": "catanatron",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WOOD'"
+        },
+        {
+          "ply": 228,
+          "turn": 76,
+          "actor": "catanatron",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WOOD'"
+        },
+        {
+          "ply": 229,
+          "turn": 76,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'SHEEP'"
+        },
+        {
+          "ply": 230,
+          "turn": 76,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'SHEEP'"
+        },
+        {
+          "ply": 231,
+          "turn": 76,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WOOD'"
+        },
+        {
+          "ply": 232,
+          "turn": 76,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WHEAT'"
+        },
+        {
+          "ply": 233,
+          "turn": 76,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WHEAT'"
+        },
+        {
+          "ply": 234,
+          "turn": 76,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WHEAT'"
+        },
+        {
+          "ply": 235,
+          "turn": 76,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WHEAT'"
+        },
+        {
+          "ply": 236,
+          "turn": 76,
+          "actor": "catanatron",
+          "action": "MOVE_ROBBER",
+          "value": "((1, -1, 0), C.RED)"
+        },
+        {
+          "ply": 237,
+          "turn": 76,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 238,
+          "turn": 77,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 239,
+          "turn": 77,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 240,
+          "turn": 78,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 241,
+          "turn": 78,
+          "actor": "catanatron",
+          "action": "MOVE_ROBBER",
+          "value": "((-1, 1, 0), C.RED)"
+        },
+        {
+          "ply": 242,
+          "turn": 78,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 243,
+          "turn": 79,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 244,
+          "turn": 79,
+          "actor": "catanatron",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WHEAT'"
+        },
+        {
+          "ply": 245,
+          "turn": 79,
+          "actor": "catanatron",
+          "action": "DISCARD_RESOURCE",
+          "value": "'ORE'"
+        },
+        {
+          "ply": 246,
+          "turn": 79,
+          "actor": "catanatron",
+          "action": "DISCARD_RESOURCE",
+          "value": "'ORE'"
+        },
+        {
+          "ply": 247,
+          "turn": 79,
+          "actor": "catanatron",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WOOD'"
+        },
+        {
+          "ply": 248,
+          "turn": 79,
+          "actor": "ours",
+          "action": "MOVE_ROBBER",
+          "value": "((-1, 2, -1), C.BLUE)"
+        },
+        {
+          "ply": 249,
+          "turn": 79,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 250,
+          "turn": 80,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 251,
+          "turn": 80,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 252,
+          "turn": 81,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 253,
+          "turn": 81,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 254,
+          "turn": 82,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 255,
+          "turn": 82,
+          "actor": "catanatron",
+          "action": "BUILD_SETTLEMENT",
+          "value": "49"
+        },
+        {
+          "ply": 256,
+          "turn": 82,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 257,
+          "turn": 83,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 258,
+          "turn": 83,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 259,
+          "turn": 84,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 260,
+          "turn": 84,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 261,
+          "turn": 85,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 262,
+          "turn": 85,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 263,
+          "turn": 86,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 264,
+          "turn": 86,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 265,
+          "turn": 87,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 266,
+          "turn": 87,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 267,
+          "turn": 88,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 268,
+          "turn": 88,
+          "actor": "catanatron",
+          "action": "MARITIME_TRADE",
+          "value": "('SHEEP', 'SHEEP', 'SHEEP', None, 'BRICK')"
+        },
+        {
+          "ply": 269,
+          "turn": 88,
+          "actor": "catanatron",
+          "action": "MARITIME_TRADE",
+          "value": "('SHEEP', 'SHEEP', 'SHEEP', None, 'WOOD')"
+        },
+        {
+          "ply": 270,
+          "turn": 88,
+          "actor": "catanatron",
+          "action": "BUILD_SETTLEMENT",
+          "value": "43"
+        },
+        {
+          "ply": 271,
+          "turn": 88,
+          "actor": "catanatron",
+          "action": "MARITIME_TRADE",
+          "value": "('SHEEP', 'SHEEP', 'SHEEP', None, 'BRICK')"
+        },
+        {
+          "ply": 272,
+          "turn": 88,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 273,
+          "turn": 89,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 274,
+          "turn": 89,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 275,
+          "turn": 90,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 276,
+          "turn": 90,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'BRICK'"
+        },
+        {
+          "ply": 277,
+          "turn": 90,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'BRICK'"
+        },
+        {
+          "ply": 278,
+          "turn": 90,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'SHEEP'"
+        },
+        {
+          "ply": 279,
+          "turn": 90,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'SHEEP'"
+        },
+        {
+          "ply": 280,
+          "turn": 90,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'SHEEP'"
+        },
+        {
+          "ply": 281,
+          "turn": 90,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WHEAT'"
+        },
+        {
+          "ply": 282,
+          "turn": 90,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WHEAT'"
+        },
+        {
+          "ply": 283,
+          "turn": 90,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WHEAT'"
+        },
+        {
+          "ply": 284,
+          "turn": 90,
+          "actor": "catanatron",
+          "action": "MOVE_ROBBER",
+          "value": "((-1, 1, 0), C.RED)"
+        },
+        {
+          "ply": 285,
+          "turn": 90,
+          "actor": "catanatron",
+          "action": "MARITIME_TRADE",
+          "value": "('WHEAT', 'WHEAT', 'WHEAT', None, 'WOOD')"
+        },
+        {
+          "ply": 286,
+          "turn": 90,
+          "actor": "catanatron",
+          "action": "BUILD_ROAD",
+          "value": "(1, 2)"
+        },
+        {
+          "ply": 287,
+          "turn": 90,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 288,
+          "turn": 91,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 289,
+          "turn": 91,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 290,
+          "turn": 92,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 291,
+          "turn": 92,
+          "actor": "catanatron",
+          "action": "MARITIME_TRADE",
+          "value": "('ORE', 'ORE', 'ORE', None, 'WHEAT')"
+        },
+        {
+          "ply": 292,
+          "turn": 92,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 293,
+          "turn": 93,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 294,
+          "turn": 93,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 295,
+          "turn": 94,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 296,
+          "turn": 94,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'SHEEP'"
+        },
+        {
+          "ply": 297,
+          "turn": 94,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'SHEEP'"
+        },
+        {
+          "ply": 298,
+          "turn": 94,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WOOD'"
+        },
+        {
+          "ply": 299,
+          "turn": 94,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WHEAT'"
+        },
+        {
+          "ply": 300,
+          "turn": 94,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WHEAT'"
+        },
+        {
+          "ply": 301,
+          "turn": 94,
+          "actor": "catanatron",
+          "action": "MOVE_ROBBER",
+          "value": "((1, -1, 0), C.RED)"
+        },
+        {
+          "ply": 302,
+          "turn": 94,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 303,
+          "turn": 95,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 304,
+          "turn": 95,
+          "actor": "ours",
+          "action": "MOVE_ROBBER",
+          "value": "((0, 2, -2), C.BLUE)"
+        },
+        {
+          "ply": 305,
+          "turn": 95,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 306,
+          "turn": 96,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 307,
+          "turn": 96,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 308,
+          "turn": 97,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 309,
+          "turn": 97,
+          "actor": "ours",
+          "action": "BUILD_ROAD",
+          "value": "(12, 13)"
+        },
+        {
+          "ply": 310,
+          "turn": 97,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 311,
+          "turn": 98,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 312,
+          "turn": 98,
+          "actor": "catanatron",
+          "action": "MARITIME_TRADE",
+          "value": "('ORE', 'ORE', 'ORE', None, 'WOOD')"
+        },
+        {
+          "ply": 313,
+          "turn": 98,
+          "actor": "catanatron",
+          "action": "BUILD_ROAD",
+          "value": "(2, 3)"
+        },
+        {
+          "ply": 314,
+          "turn": 98,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 315,
+          "turn": 99,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 316,
+          "turn": 99,
+          "actor": "ours",
+          "action": "MOVE_ROBBER",
+          "value": "((-1, 2, -1), C.BLUE)"
+        },
+        {
+          "ply": 317,
+          "turn": 99,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 318,
+          "turn": 100,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 319,
+          "turn": 100,
+          "actor": "catanatron",
+          "action": "MARITIME_TRADE",
+          "value": "('SHEEP', 'SHEEP', 'SHEEP', None, 'BRICK')"
+        },
+        {
+          "ply": 320,
+          "turn": 100,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 321,
+          "turn": 101,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 322,
+          "turn": 101,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 323,
+          "turn": 102,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 324,
+          "turn": 102,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'BRICK'"
+        },
+        {
+          "ply": 325,
+          "turn": 102,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'SHEEP'"
+        },
+        {
+          "ply": 326,
+          "turn": 102,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WHEAT'"
+        },
+        {
+          "ply": 327,
+          "turn": 102,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WHEAT'"
+        },
+        {
+          "ply": 328,
+          "turn": 102,
+          "actor": "ours",
+          "action": "DISCARD_RESOURCE",
+          "value": "'WHEAT'"
+        },
+        {
+          "ply": 329,
+          "turn": 102,
+          "actor": "catanatron",
+          "action": "MOVE_ROBBER",
+          "value": "((-1, 1, 0), C.RED)"
+        },
+        {
+          "ply": 330,
+          "turn": 102,
+          "actor": "catanatron",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 331,
+          "turn": 103,
+          "actor": "ours",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 332,
+          "turn": 103,
+          "actor": "ours",
+          "action": "END_TURN",
+          "value": "None"
+        },
+        {
+          "ply": 333,
+          "turn": 104,
+          "actor": "catanatron",
+          "action": "ROLL",
+          "value": "None"
+        },
+        {
+          "ply": 334,
+          "turn": 104,
+          "actor": "catanatron",
+          "action": "MARITIME_TRADE",
+          "value": "('ORE', 'ORE', 'ORE', None, 'WOOD')"
+        },
+        {
+          "ply": 335,
+          "turn": 104,
+          "actor": "catanatron",
+          "action": "BUILD_SETTLEMENT",
+          "value": "3"
+        }
+      ],
+      "game_id": 0
+    },
+    {
+      "seed": 20262002,
+      "seat": 0,
+      "status": "completed",
+      "ours_won": false,
+      "catanatron_won": true,
+      "ours_vp": 4,
+      "catanatron_vp": 10,
+      "actions": 233,
+      "turns": 75,
+      "wall_seconds": 0.441,
+      "move_counts": {
+        "ours": {
+          "BUILD_SETTLEMENT": 2,
+          "BUILD_ROAD": 3,
+          "ROLL": 37,
+          "END_TURN": 37,
+          "DISCARD_RESOURCE": 35,
+          "BUILD_CITY": 2,
+          "MOVE_ROBBER": 7
+        },
+        "catanatron": {
+          "BUILD_SETTLEMENT": 5,
+          "BUILD_ROAD": 15,
+          "ROLL": 37,
+          "END_TURN": 36,
+          "MOVE_ROBBER": 2,
+          "MARITIME_TRADE": 12,
+          "BUILD_CITY": 3
+        }
+      },
+      "decision_ms": {
+        "ours": {
+          "count": 123,
+          "median": 0.258042,
+          "p95": 0.370542
+        },
+        "catanatron": {
+          "count": 110,
+          "median": 0.0018955,
+          "p95": 19.214917
+        }
+      },
+      "game_id": 1
+    },
+    {
+      "seed": 20262002,
+      "seat": 1,
+      "status": "completed",
+      "ours_won": true,
+      "catanatron_won": false,
+      "ours_vp": 10,
+      "catanatron_vp": 6,
+      "actions": 175,
+      "turns": 51,
+      "wall_seconds": 0.214,
+      "move_counts": {
+        "ours": {
+          "BUILD_SETTLEMENT": 3,
+          "BUILD_ROAD": 8,
+          "ROLL": 25,
+          "END_TURN": 24,
+          "MOVE_ROBBER": 9,
+          "DISCARD_RESOURCE": 25,
+          "BUILD_CITY": 3,
+          "BUY_DEVELOPMENT_CARD": 3,
+          "PLAY_KNIGHT_CARD": 1
+        },
+        "catanatron": {
+          "BUILD_SETTLEMENT": 3,
+          "BUILD_ROAD": 4,
+          "ROLL": 25,
+          "END_TURN": 25,
+          "BUILD_CITY": 3,
+          "MOVE_ROBBER": 4,
+          "DISCARD_RESOURCE": 9,
+          "MARITIME_TRADE": 1
+        }
+      },
+      "decision_ms": {
+        "ours": {
+          "count": 101,
+          "median": 0.260917,
+          "p95": 3.763
+        },
+        "catanatron": {
+          "count": 74,
+          "median": 0.21100000000000002,
+          "p95": 7.746459
+        }
+      },
+      "game_id": 1
+    }
+  ],
+  "summary": {
+    "games": 4,
+    "completed": 4,
+    "capped": 0,
+    "errors": 0,
+    "ours_wins": 1,
+    "catanatron_wins": 3,
+    "move_counts": {
+      "ours": {
+        "BUILD_SETTLEMENT": 9,
+        "BUILD_ROAD": 24,
+        "ROLL": 155,
+        "END_TURN": 154,
+        "MOVE_ROBBER": 31,
+        "DISCARD_RESOURCE": 144,
+        "BUILD_CITY": 6,
+        "BUY_DEVELOPMENT_CARD": 3,
+        "PLAY_KNIGHT_CARD": 1
+      },
+      "catanatron": {
+        "BUILD_SETTLEMENT": 19,
+        "BUILD_ROAD": 39,
+        "ROLL": 156,
+        "MOVE_ROBBER": 26,
+        "END_TURN": 153,
+        "BUILD_CITY": 11,
+        "MARITIME_TRADE": 31,
+        "DISCARD_RESOURCE": 36
+      }
+    }
+  }
+}

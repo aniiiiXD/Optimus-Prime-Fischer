@@ -1,0 +1,54 @@
+{
+  "device": "cpu",
+  "optimizer_budget_seconds": 590.0,
+  "optimizer_elapsed_seconds": 55.523,
+  "budget_respected": true,
+  "epochs": 25,
+  "stopped_reason": "validation_plateau",
+  "best_epoch": 19,
+  "parameters": 13729,
+  "examples": 29899,
+  "train_examples": 23932,
+  "validation_examples": 3060,
+  "heldout_games": [
+    9,
+    15,
+    28,
+    42,
+    52,
+    54,
+    61,
+    67,
+    77,
+    89
+  ],
+  "sealed_final_games": [
+    12,
+    18,
+    19,
+    22,
+    35,
+    63,
+    69,
+    84,
+    88,
+    91
+  ],
+  "split": "audited disjoint board-seed split",
+  "validation": {
+    "loss": 0.7416129213143018,
+    "accuracy": 0.7006535947712418,
+    "examples": 3060
+  },
+  "architecture": {
+    "type": "action_mlp",
+    "width": 32
+  },
+  "checkpoint": "catanLabs/Transformer/runs/gate3_matched/mlp/best.pt",
+  "dataset": "catanLabs/Transformer/runs/gate2_native_v2/dataset.npz",
+  "dataset_sha256": "bc558d4bbbd75d5f4d82fdbc80ad3884bf2eb4c140f89833275f9e84f1d03280",
+  "dataset_schema": "catanlabs-transformer-dataset-v2",
+  "feature_schema": "visible-state-tokens-v2",
+  "split_file": "catanLabs/Transformer/runs/gate2_native_v2/dataset.split.json",
+  "split_file_sha256": "f9e151e0481cbf146f05b1feb4a4d5a03658fdc8e8e1080228521e383d95c6fb"
+}

@@ -1,0 +1,269 @@
+diff --git a/rust/catan-env/src/alpha.rs b/rust/catan-env/src/alpha.rs
+index 49f2f18..4c3cad9 100644
+--- a/rust/catan-env/src/alpha.rs
++++ b/rust/catan-env/src/alpha.rs
+@@ -28,6 +28,7 @@ pub struct AlphaBot {
+     pub root_k: usize,
+     pub samples: usize,
+     pub depth: u32,
++    allow_trade_offers: bool,
+     obs: Vec<f32>,
+     scratch: NetScratch,
+     sim_valid: Vec<Action>,
+@@ -43,6 +44,7 @@ impl AlphaBot {
+             root_k,
+             samples,
+             depth,
++            allow_trade_offers: false,
+             obs: vec![0.0; OBS_DIM],
+             scratch,
+             sim_valid: Vec::with_capacity(256),
+@@ -50,6 +52,11 @@ impl AlphaBot {
+         }
+     }
+ 
++    pub fn with_trade_offers(mut self, enabled: bool) -> Self {
++        self.allow_trade_offers = enabled;
++        self
++    }
++
+     /// Random playout, then value-head leaf evaluation.
+     ///
+     /// `depth == 0` is the in-distribution mode: play out only until `me` is
+@@ -104,7 +111,7 @@ impl Player for AlphaBot {
+             let filtered: Vec<Action> = valid_actions
+                 .iter()
+                 .copied()
+-                .filter(|a| !matches!(a, Action::ProposeTrade { .. }))
++                .filter(|a| self.allow_trade_offers || !matches!(a, Action::ProposeTrade { .. }))
+                 .collect();
+             if filtered.is_empty() {
+                 valid_actions.to_vec()
+diff --git a/rust/catan-sim/src/main.rs b/rust/catan-sim/src/main.rs
+index 12f86be..b9a0ecf 100644
+--- a/rust/catan-sim/src/main.rs
++++ b/rust/catan-sim/src/main.rs
+@@ -10,8 +10,12 @@ use rand::{Rng, SeedableRng};
+ use rayon::prelude::*;
+ 
+ use catan_core::eval::GreedyValuePlayer;
+-use catan_core::game::{CatanGame, GamePhase};
++use catan_core::game::{Action, CatanGame, GamePhase};
+ use catan_core::players::{HeuristicPlayer, Player, RandomPlayer, RolloutBot};
++use catan_env::codec::encode_action;
++use catan_env::net::{MlpNet, NetScratch};
++use catan_env::obs::{encode_obs, Visibility, OBS_DIM};
++use std::sync::Arc;
+ 
+ mod evolve;
+ mod golden;
+@@ -24,6 +28,9 @@ enum Strategy {
+     Rollout,
+     GreedyValue,
+     Alpha,
++    AlphaWithTrades,
++    Policy,
++    PolicyWithTrades,
+ }
+ 
+ impl Strategy {
+@@ -34,13 +41,49 @@ impl Strategy {
+             Strategy::HeuristicV2 => "HeuristicV2",
+             Strategy::Rollout => "RolloutBot",
+             Strategy::Alpha => "AlphaBot",
++            Strategy::AlphaWithTrades => "AlphaBotWithTrades",
++            Strategy::Policy => "PolicyOnly",
++            Strategy::PolicyWithTrades => "PolicyWithTrades",
+             Strategy::GreedyValue => "GreedyValue",
+         }
+     }
+ }
+ 
++/// The same CTNN policy prior as AlphaBot, choosing its highest-logit legal
++/// action without any rollout. AlphaBot also excludes trade proposals.
++struct PolicyBot {
++    net: Arc<MlpNet>,
++    obs: Vec<f32>,
++    scratch: NetScratch,
++    allow_trade_offers: bool,
++}
++
++impl PolicyBot {
++    fn new(net: Arc<MlpNet>, allow_trade_offers: bool) -> Self {
++        let scratch = NetScratch::new(&net);
++        Self { net, obs: vec![0.0; OBS_DIM], scratch, allow_trade_offers }
++    }
++}
++
++impl Player for PolicyBot {
++    fn choose_action(&mut self, game: &CatanGame, valid_actions: &[Action]) -> Action {
++        encode_obs(game, game.current_player(), Visibility::Perfect, &mut self.obs);
++        self.net.trunk(&self.obs, &mut self.scratch);
++        let mut best = None;
++        for &action in valid_actions {
++            if !self.allow_trade_offers && matches!(action, Action::ProposeTrade { .. }) { continue; }
++            let score = self.net.logit_from(&self.scratch, encode_action(game, &action));
++            if best.is_none_or(|(previous, _)| score > previous) {
++                best = Some((score, action));
++            }
++        }
++        best.map(|(_, action)| action).unwrap_or(valid_actions[0])
++    }
++}
++
+ struct Config {
+     games: usize,
++    victory_target: i32,
+     strategies: Vec<Strategy>,
+     seed: u64,
+     single_thread: bool,
+@@ -61,6 +104,7 @@ struct GameOutcome {
+ 
+ fn parse_args() -> Config {
+     let mut games = 1000usize;
++    let mut victory_target = 10i32;
+     let mut strategies = vec![Strategy::Random; 4];
+     let mut seed = 0u64;
+     let mut single_thread = false;
+@@ -79,6 +123,11 @@ fn parse_args() -> Config {
+                 i += 1;
+                 games = args[i].parse().expect("invalid --games");
+             }
++            "--victory-target" => {
++                i += 1;
++                victory_target = args[i].parse().expect("invalid --victory-target");
++                assert!((3..=20).contains(&victory_target), "victory target must be 3-20");
++            }
+             "--players" | "-p" => {
+                 i += 1;
+                 strategies = args[i]
+@@ -89,6 +138,9 @@ fn parse_args() -> Config {
+                         "V" | "HEURISTIC_V2" => Strategy::HeuristicV2,
+                         "O" | "ROLLOUT" => Strategy::Rollout,
+                         "A" | "ALPHA" => Strategy::Alpha,
++                        "T" | "ALPHA_TRADES" => Strategy::AlphaWithTrades,
++                        "P" | "POLICY" => Strategy::Policy,
++                        "Q" | "POLICY_TRADES" => Strategy::PolicyWithTrades,
+                         "G" | "GREEDY" => Strategy::GreedyValue,
+                         other => panic!("unknown player type: {other}"),
+                     })
+@@ -144,7 +196,7 @@ fn parse_args() -> Config {
+             }
+             "--help" | "-h" => {
+                 println!(
+-                    "catan-sim --games N --players R,R,H,H [--seed S] [--single-thread]\n\
++                    "catan-sim --games N --players R,R,H,H [--seed S] [--victory-target 7|10] [--single-thread]\n\
+                      catan-sim ... --record-replays <dir>        (write a .ctrp replay per game)\n\
+                      catan-sim --dump-replay <file.ctrp>         (print a replay as JSON)\n\
+                      catan-sim --games N --record-golden <dir>   (regenerate test fixtures)"
+@@ -157,6 +209,7 @@ fn parse_args() -> Config {
+     }
+     Config {
+         games,
++        victory_target,
+         strategies,
+         seed,
+         single_thread,
+@@ -274,6 +327,21 @@ fn make_players(
+                     alpha_cfg.1,
+                     alpha_cfg.2,
+                 )),
++                Strategy::AlphaWithTrades => Box::new(catan_env::alpha::AlphaBot::new(
++                    player_seed,
++                    net.as_ref().expect("--net <file.ctnn> required for T seats").clone(),
++                    alpha_cfg.0,
++                    alpha_cfg.1,
++                    alpha_cfg.2,
++                ).with_trade_offers(true)),
++                Strategy::Policy => Box::new(PolicyBot::new(
++                    net.as_ref().expect("--net <file.ctnn> required for P seats").clone(),
++                    false,
++                )),
++                Strategy::PolicyWithTrades => Box::new(PolicyBot::new(
++                    net.as_ref().expect("--net <file.ctnn> required for Q seats").clone(),
++                    true,
++                )),
+                 Strategy::GreedyValue => Box::new(GreedyValuePlayer::new(player_seed)),
+             }
+         })
+@@ -284,6 +352,7 @@ fn make_players(
+ fn run_one(
+     game_seed: u64,
+     game_idx: usize,
++    victory_target: i32,
+     strategies: &[Strategy],
+     record_dir: Option<&std::path::Path>,
+     metrics: Option<&MetricsWriter>,
+@@ -291,7 +360,7 @@ fn run_one(
+     net: &Option<std::sync::Arc<catan_env::net::MlpNet>>,
+     alpha_cfg: (usize, usize, u32),
+ ) -> GameOutcome {
+-    let mut game = CatanGame::new(strategies.len(), game_seed);
++    let mut game = CatanGame::new_with_target(strategies.len(), game_seed, victory_target);
+     game.record_history = false; // bulk simulation never reads the history
+     let mut players = make_players(game_seed, strategies, rollout_cfg, net, alpha_cfg);
+     let mut record = record_dir.map(|_| catan_core::replay::GameRecord::start(&game));
+@@ -381,7 +450,7 @@ fn profile_step_breakdown(config: &Config) {
+ 
+     for _ in 0..config.games {
+         let game_seed = seed_rng.gen();
+-        let mut game = CatanGame::new(n, game_seed);
++        let mut game = CatanGame::new_with_target(n, game_seed, config.victory_target);
+         game.record_history = false;
+         let mut players = make_players(game_seed, &config.strategies, config.rollout_cfg, &config.net, config.alpha_cfg);
+         let mut valid = Vec::with_capacity(128);
+@@ -498,6 +567,7 @@ fn main() {
+             "t": "run",
+             "source": "catan-sim",
+             "games": config.games,
++            "victory_target": config.victory_target,
+             "players": config.strategies.iter().map(|s| s.name()).collect::<Vec<_>>(),
+             "seed": config.seed,
+             "unix_ms": std::time::SystemTime::now()
+@@ -511,13 +581,13 @@ fn main() {
+         seeds
+             .iter()
+             .enumerate()
+-            .map(|(i, &s)| run_one(s, i, &config.strategies, record_dir, metrics_ref, config.rollout_cfg, &config.net, config.alpha_cfg))
++            .map(|(i, &s)| run_one(s, i, config.victory_target, &config.strategies, record_dir, metrics_ref, config.rollout_cfg, &config.net, config.alpha_cfg))
+             .collect()
+     } else {
+         seeds
+             .par_iter()
+             .enumerate()
+-            .map(|(i, &s)| run_one(s, i, &config.strategies, record_dir, metrics_ref, config.rollout_cfg, &config.net, config.alpha_cfg))
++            .map(|(i, &s)| run_one(s, i, config.victory_target, &config.strategies, record_dir, metrics_ref, config.rollout_cfg, &config.net, config.alpha_cfg))
+             .collect()
+     };
+     let elapsed = start.elapsed();
+@@ -539,6 +609,7 @@ fn main() {
+     let secs = elapsed.as_secs_f64();
+     println!("=== catan-sim results ===");
+     println!("games:        {}", config.games);
++    println!("victory target: {}", config.victory_target);
+     println!(
+         "players:      {}",
+         config
+diff --git a/training/ppo.py b/training/ppo.py
+index 408bb99..ff89c8c 100644
+--- a/training/ppo.py
++++ b/training/ppo.py
+@@ -151,6 +151,7 @@ def evaluate_vs(net, device, opponent: str, episodes: int, seed: int, args) -> d
+ def main():
+     args = parse_args()
+     torch.manual_seed(args.seed)
++    np.random.seed(args.seed)
+     torch.set_num_threads(4)
+     device = torch.device(args.device)
+ 
+@@ -181,6 +182,10 @@ def main():
+         assert ck["obs_version"] == catan_py.OBS_VERSION, "obs version mismatch"
+         net.load_state_dict(ck["model_state"])
+         optimizer.load_state_dict(ck["optimizer_state"])
++        # A resumed experiment may intentionally choose a new learning rate.
++        # Loading Adam state also restores its old param-group rate.
++        for group in optimizer.param_groups:
++            group["lr"] = args.lr
+         print(f"resumed from {args.resume} at step {ck['global_step']:,}")
+     print(f"net params: {sum(p.numel() for p in net.parameters()):,} | device {device}")
+     print(f"run dir: {run_dir}\nmetrics: {metrics_path}")

@@ -1,0 +1,86 @@
+{
+  "schema": "catanlabs-native-dataset-audit-v1",
+  "dataset": "/Users/anixd/Documents/Hyde/catanLabs/Transformer/runs/gate2_native_v3/dataset.npz",
+  "dataset_sha256": "5e1939e12f36353700dc4b94180e225eb0418153215df2b786d6bbf412661bea",
+  "manifest": "/Users/anixd/Documents/Hyde/catanLabs/Transformer/runs/gate2_native_v3/dataset.json",
+  "rules_manifest": "/Users/anixd/Documents/Hyde/catanLabs/rules_manifest.json",
+  "rules_manifest_sha256": "6996bcc8f1680bbb483f64cf7281305b925bc97974e50ef8136d25d66ce2bf3e",
+  "completed_games": 100,
+  "distinct_completed_board_seeds": 100,
+  "unique_decisions": 29899,
+  "phase_counts": {
+    "BUILD_INITIAL_ROAD": 800,
+    "BUILD_INITIAL_SETTLEMENT": 800,
+    "DISCARD": 4120,
+    "MOVE_ROBBER": 1589,
+    "PLAY_TURN": 22590
+  },
+  "behavior_counts": {
+    "alphabeta1": 6551,
+    "fair": 6736,
+    "random": 4839,
+    "value": 6805,
+    "weighted": 4968
+  },
+  "raw": {
+    "status": "checked",
+    "path": "catanLabs/Transformer/runs/gate2_native_v2/dataset.raw.jsonl.gz",
+    "sha256": "5b3dab22c9dc87cb6397ff03363c9961b2aad0d567fb86b82ae3210b0b2516c6",
+    "records": 29899,
+    "duplicates": 0,
+    "reconstructed_samples": 64,
+    "sample_size": 64,
+    "hidden_field_errors": 0,
+    "metadata_errors": 0,
+    "phase_mismatches": 0,
+    "teacher_counts": {
+      "fair": 29899
+    },
+    "actor_seat_counts": {
+      "0": 7440,
+      "1": 7331,
+      "2": 7525,
+      "3": 7603
+    },
+    "target_action_kinds": {
+      "BUILD_CITY": 507,
+      "BUILD_ROAD": 3033,
+      "BUILD_SETTLEMENT": 1480,
+      "BUY_DEVELOPMENT_CARD": 576,
+      "DISCARD_RESOURCE": 4120,
+      "END_TURN": 8103,
+      "MARITIME_TRADE": 1876,
+      "MOVE_ROBBER": 1589,
+      "PLAY_KNIGHT_CARD": 625,
+      "PLAY_MONOPOLY": 40,
+      "PLAY_YEAR_OF_PLENTY": 35,
+      "ROLL": 7915
+    }
+  },
+  "migration": {
+    "schema": "catanlabs-visible-v2-to-v3-migration-v1",
+    "source_dataset": "/Users/anixd/Documents/Hyde/catanLabs/Transformer/runs/gate2_native_v2/dataset.npz",
+    "source_dataset_sha256": "bc558d4bbbd75d5f4d82fdbc80ad3884bf2eb4c140f89833275f9e84f1d03280",
+    "source_manifest": "/Users/anixd/Documents/Hyde/catanLabs/Transformer/runs/gate2_native_v2/dataset.json",
+    "source_manifest_sha256": "029d0cd711e63e11f680648ae2449fd318afd844859ff9e4bffadc99dd18dcc8",
+    "source_audit": "/Users/anixd/Documents/Hyde/catanLabs/Transformer/runs/gate2_native_v2/dataset.audit.json",
+    "source_audit_sha256": "2d61c0729387497d0a7d05261c4f43ff0310a464cdae439487c04a65fe65a7ec",
+    "source_split": "/Users/anixd/Documents/Hyde/catanLabs/Transformer/runs/gate2_native_v2/dataset.split.json",
+    "source_split_file_sha256": "f9e151e0481cbf146f05b1feb4a4d5a03658fdc8e8e1080228521e383d95c6fb",
+    "source_split_membership_sha256": "8bec87c4392193f49cc5df435412d503ed13eb1d03ebc6ea1a1b47aa4d1597bc",
+    "source_feature_schema": "visible-state-tokens-v2",
+    "raw_sha256": "5b3dab22c9dc87cb6397ff03363c9961b2aad0d567fb86b82ae3210b0b2516c6",
+    "encoder_sha256": "d7d8c74c973ac4460507f3fbc12e616d67e9eb5bf61409961f9424a60ea2a712",
+    "description": "Re-encode immutable visible snapshots; labels, outcomes, games and board membership copied unchanged."
+  },
+  "split_row_counts": {
+    "train": 23932,
+    "validation": 3060,
+    "final": 2907
+  },
+  "split_membership_sha256": "8bec87c4392193f49cc5df435412d503ed13eb1d03ebc6ea1a1b47aa4d1597bc",
+  "gate2_pass": true,
+  "failures": [],
+  "split_file": "/Users/anixd/Documents/Hyde/catanLabs/Transformer/runs/gate2_native_v3/dataset.split.json",
+  "split_file_sha256": "fab3be26faaff4f470ce437f6a25bbc67ed4984c272925cb57079599ae423126"
+}

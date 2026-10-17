@@ -1,0 +1,142 @@
+{
+  "schema": "catanlabs-phase-rescue-partial-v1",
+  "status": "unverified_partial",
+  "arm": "model",
+  "mix": "mixed_strong",
+  "attempts_recorded": 4,
+  "expected_games": 4,
+  "protocol": "catanLabs-four-player-v5-canonical-actions-and-chance-phase-rescue",
+  "rules": {
+    "players": 4,
+    "target_vp": 10,
+    "discard_limit": 7,
+    "friendly_robber": false,
+    "number_placement": "official_spiral",
+    "player_trade_offers": false,
+    "isolated_copy_rng": true,
+    "forced_search_outcomes": true,
+    "frozen_model_sha256": "29b0f7418a873f34a02157dbde10b7f28f4d47ef2356d74076b55173efef3bbd",
+    "fair_config_sha256": "5f908a453c87556463170378ef92d4ce79f03ecfdf0f1c304daae93fd3222ab3"
+  },
+  "candidate": {
+    "type": "model",
+    "file": "/Users/anixd/Documents/Hyde/catanLabs/Transformer/agent.py",
+    "sha256": "711957c8cfcac85f7e1c9b1c8b87729fa38629eb979f59404a51b52ea2d7277a",
+    "checkpoint": "/Users/anixd/Documents/Hyde/catanLabs/Transformer/runs/gate5_dagger_finetune/best.pt",
+    "checkpoint_sha256": "29b0f7418a873f34a02157dbde10b7f28f4d47ef2356d74076b55173efef3bbd"
+  },
+  "first_seed": 20272952,
+  "boards_per_mix": 1,
+  "split_file_sha256": "7096dbb1901d09562c7f982dc5964b92b1ffac2407375e589daef5384b41a2df",
+  "runner_sha256": "6f8822e0b33c539d48a187333de9458c8aae4d119519c415f8def54a044c531a",
+  "tier": {
+    "summary": {
+      "attempts": 4,
+      "completed": 4,
+      "wins": 0,
+      "win_rate_all_attempts": 0.0,
+      "win_rate_wilson95": [
+        0.0,
+        0.4898908364545973
+      ],
+      "mean_final_vp": 4.25,
+      "decision_latency_ms": {
+        "samples": 314,
+        "median": 0.8655415,
+        "p95": 1.114417
+      },
+      "by_seat": {
+        "0": {
+          "attempts": 1,
+          "wins": 0
+        },
+        "1": {
+          "attempts": 1,
+          "wins": 0
+        },
+        "2": {
+          "attempts": 1,
+          "wins": 0
+        },
+        "3": {
+          "attempts": 1,
+          "wins": 0
+        }
+      }
+    },
+    "games": [
+      {
+        "seed": 20272952,
+        "seat": 0,
+        "color": "WHITE",
+        "opponent": "mixed_strong",
+        "opponent_assignments": {
+          "BLUE": "value",
+          "ORANGE": "alphabeta1",
+          "RED": "alphabeta1"
+        },
+        "status": "completed",
+        "winner": "BLUE",
+        "won": false,
+        "candidate_vp": 5,
+        "actions": 395,
+        "turns": 103,
+        "wall_seconds": 0.525
+      },
+      {
+        "seed": 20272952,
+        "seat": 1,
+        "color": "BLUE",
+        "opponent": "mixed_strong",
+        "opponent_assignments": {
+          "WHITE": "alphabeta1",
+          "ORANGE": "alphabeta1",
+          "RED": "value"
+        },
+        "status": "completed",
+        "winner": "WHITE",
+        "won": false,
+        "candidate_vp": 5,
+        "actions": 354,
+        "turns": 94,
+        "wall_seconds": 0.477
+      },
+      {
+        "seed": 20272952,
+        "seat": 2,
+        "color": "ORANGE",
+        "opponent": "mixed_strong",
+        "opponent_assignments": {
+          "WHITE": "alphabeta1",
+          "BLUE": "value",
+          "RED": "alphabeta1"
+        },
+        "status": "completed",
+        "winner": "RED",
+        "won": false,
+        "candidate_vp": 2,
+        "actions": 247,
+        "turns": 65,
+        "wall_seconds": 0.327
+      },
+      {
+        "seed": 20272952,
+        "seat": 3,
+        "color": "RED",
+        "opponent": "mixed_strong",
+        "opponent_assignments": {
+          "WHITE": "value",
+          "BLUE": "alphabeta1",
+          "ORANGE": "alphabeta1"
+        },
+        "status": "completed",
+        "winner": "WHITE",
+        "won": false,
+        "candidate_vp": 5,
+        "actions": 298,
+        "turns": 78,
+        "wall_seconds": 0.365
+      }
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "protocol": "catanLabs-four-player-v5-canonical-actions-and-chance-fair-head-to-head",
+  "rules": {
+    "players": 4,
+    "target_vp": 10,
+    "discard_limit": 7,
+    "friendly_robber": false,
+    "number_placement": "official_spiral",
+    "player_trade_offers": false,
+    "isolated_copy_rng": true,
+    "forced_search_outcomes": true,
+    "opponent_composition": [
+      "fair",
+      "value",
+      "alphabeta1"
+    ],
+    "fair_config_sha256": "5f908a453c87556463170378ef92d4ce79f03ecfdf0f1c304daae93fd3222ab3"
+  },
+  "tiers": {
+    "fair_value_alphabeta1": {
+      "boards": 24,
+      "games": 96,
+      "candidate_wins": 33,
+      "reference_wins": 28,
+      "candidate_win_rate": 0.34375,
+      "reference_win_rate": 0.2916666666666667,
+      "win_rate_difference": 0.052083333333333336,
+      "board_bootstrap_95_difference": [
+        0.010416666666666666,
+        0.09375
+      ],
+      "mean_vp_difference": 0.11458333333333333,
+      "candidate_mean_vp": 7.09375,
+      "reference_mean_vp": 6.979166666666667,
+      "candidate_latency_ms": {
+        "samples": 7906,
+        "median": 0.3629165,
+        "p95": 5.545417
+      },
+      "reference_latency_ms": {
+        "samples": 8058,
+        "median": 0.395896,
+        "p95": 4.79975
+      },
+      "candidate_errors": 0,
+      "reference_errors": 0
+    }
+  }
+}

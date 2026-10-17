@@ -1,0 +1,196 @@
+{
+  "probe": "Road Building shadowed against FairValue",
+  "seed": 20271202,
+  "boards": 4,
+  "seats_per_board": 4,
+  "config": {
+    "value_weights": {
+      "reachable_production_0": 100000,
+      "reachable_production_1": 30000,
+      "buildable_nodes": 10000,
+      "hand_synergy": 1000,
+      "army_size": 30000
+    },
+    "dev_buy_vp_threshold": 7,
+    "dev_buy_late_bonus": 30000,
+    "road_building_max_first_roads": 64,
+    "road_building_max_second_roads": 256,
+    "road_building_score_margin": 0
+  },
+  "totals": {
+    "own_decisions": 1494,
+    "card_available": 2,
+    "overrides": 0,
+    "first_roads": 9,
+    "second_roads": 78,
+    "truncated": 0,
+    "visibility_checks": 2
+  },
+  "scan_latency_ms": {
+    "median": 11.223,
+    "p95": null,
+    "max": 22.224,
+    "samples": [
+      22.224,
+      0.222
+    ]
+  },
+  "examples": [
+    {
+      "seed": 20271203,
+      "seat": 1,
+      "turn": 115,
+      "baseline": "PLAY_KNIGHT_CARD",
+      "override": false,
+      "best_line": {
+        "first_road": "(19, 20)",
+        "second_road": "(40, 44)",
+        "result_vp": 8
+      },
+      "baseline_score": 2100000133505986.0,
+      "best_score": 2100000133476006.0,
+      "scan_ms": 22.224
+    },
+    {
+      "seed": 20271203,
+      "seat": 1,
+      "turn": 119,
+      "baseline": "PLAY_KNIGHT_CARD",
+      "override": false,
+      "best_line": null,
+      "baseline_score": 2700000091869339.0,
+      "best_score": null,
+      "scan_ms": 0.222
+    }
+  ],
+  "games": [
+    {
+      "seed": 20271202,
+      "seat": 0,
+      "status": "completed",
+      "actions": 383,
+      "candidate_vp": 10,
+      "wall_seconds": 0.387
+    },
+    {
+      "seed": 20271202,
+      "seat": 1,
+      "status": "completed",
+      "actions": 327,
+      "candidate_vp": 10,
+      "wall_seconds": 0.386
+    },
+    {
+      "seed": 20271202,
+      "seat": 2,
+      "status": "completed",
+      "actions": 489,
+      "candidate_vp": 8,
+      "wall_seconds": 0.728
+    },
+    {
+      "seed": 20271202,
+      "seat": 3,
+      "status": "completed",
+      "actions": 461,
+      "candidate_vp": 7,
+      "wall_seconds": 0.591
+    },
+    {
+      "seed": 20271203,
+      "seat": 0,
+      "status": "completed",
+      "actions": 382,
+      "candidate_vp": 4,
+      "wall_seconds": 0.553
+    },
+    {
+      "seed": 20271203,
+      "seat": 1,
+      "status": "completed",
+      "actions": 436,
+      "candidate_vp": 10,
+      "wall_seconds": 0.854
+    },
+    {
+      "seed": 20271203,
+      "seat": 2,
+      "status": "completed",
+      "actions": 400,
+      "candidate_vp": 7,
+      "wall_seconds": 0.63
+    },
+    {
+      "seed": 20271203,
+      "seat": 3,
+      "status": "completed",
+      "actions": 367,
+      "candidate_vp": 10,
+      "wall_seconds": 0.466
+    },
+    {
+      "seed": 20271204,
+      "seat": 0,
+      "status": "completed",
+      "actions": 327,
+      "candidate_vp": 10,
+      "wall_seconds": 0.42
+    },
+    {
+      "seed": 20271204,
+      "seat": 1,
+      "status": "completed",
+      "actions": 263,
+      "candidate_vp": 7,
+      "wall_seconds": 0.398
+    },
+    {
+      "seed": 20271204,
+      "seat": 2,
+      "status": "completed",
+      "actions": 428,
+      "candidate_vp": 5,
+      "wall_seconds": 0.562
+    },
+    {
+      "seed": 20271204,
+      "seat": 3,
+      "status": "completed",
+      "actions": 326,
+      "candidate_vp": 10,
+      "wall_seconds": 0.442
+    },
+    {
+      "seed": 20271205,
+      "seat": 0,
+      "status": "completed",
+      "actions": 498,
+      "candidate_vp": 9,
+      "wall_seconds": 0.698
+    },
+    {
+      "seed": 20271205,
+      "seat": 1,
+      "status": "completed",
+      "actions": 243,
+      "candidate_vp": 2,
+      "wall_seconds": 0.398
+    },
+    {
+      "seed": 20271205,
+      "seat": 2,
+      "status": "completed",
+      "actions": 257,
+      "candidate_vp": 10,
+      "wall_seconds": 0.33
+    },
+    {
+      "seed": 20271205,
+      "seat": 3,
+      "status": "completed",
+      "actions": 199,
+      "candidate_vp": 5,
+      "wall_seconds": 0.251
+    }
+  ]
+}

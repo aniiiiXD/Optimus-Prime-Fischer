@@ -1,0 +1,36 @@
+{
+  "agent": "onevone_tactical_v1",
+  "rules": {
+    "players": 2,
+    "target_vp": 10,
+    "discard_limit": 7,
+    "friendly_robber": false,
+    "number_placement": "official_spiral",
+    "trade_offers": true,
+    "status": "provisional_local_target"
+  },
+  "value_weights": {
+    "reachable_production_0": 100000,
+    "reachable_production_1": 30000,
+    "buildable_nodes": 10000,
+    "hand_synergy": 1000,
+    "army_size": 30000
+  },
+  "dev_buy_vp_threshold": 7,
+  "dev_buy_late_bonus": 30000,
+  "tactical_min_vp": 0,
+  "tactical_max_roots": 64,
+  "tactical_max_followups": 256,
+  "robber_weights": {
+    "robber": 9.0
+  },
+  "onevone_robber": {
+    "own_production_cost": 1.2,
+    "opponent_lead_sensitivity": 0.12,
+    "min_opponent_pressure": 0.8,
+    "max_opponent_pressure": 1.45,
+    "theft_base": 0.2,
+    "theft_per_public_card": 0.08,
+    "max_theft_cards": 8
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "schema": "catanlabs-fair-value-policy-search-v1",
+  "mode": "one_board_smoke",
+  "incumbent_config": "/Users/anixd/Documents/Hyde/catanLabs/Competitive/configs/fair_army_finish.json",
+  "incumbent_config_sha256": "5f908a453c87556463170378ef92d4ce79f03ecfdf0f1c304daae93fd3222ab3",
+  "config_sha256": {
+    "fair": "a66a5b3f4c251cfe2e673a337349440878ada28b4fd1b4fcc568e255467584ba",
+    "reach_army_up": "16879424272742f8b5cacab9285773084676d0b252c106d21e26fd634e4214cb",
+    "reach_army_down": "1f7287fd80bb5a661385a40f7446485adaeb716671b6d667d5f5a44b211edf20",
+    "reach_up_sites_down": "8f975342fb582074dcf06326f9efbb166d89a643f2c739e9286d55babcd06338",
+    "reach_down_sites_up": "ae269e71a03e6890dc38ccc0c5e759584da22965d80d4443a9d647b1b2c81b33",
+    "hand_up_army_down": "fcc0b21a2ad884f50ec5b76852f6a46d341409ab69a5cd8fe814329e147a0a1f",
+    "hand_down_army_up": "7303863693955e9352b883e3e2b7e22e77267c2b709adabaf4a46f24f096066e"
+  },
+  "variant_multipliers": {
+    "reach_army_up": {
+      "reachable_production_0": 1.5,
+      "army_size": 1.5
+    },
+    "reach_army_down": {
+      "reachable_production_0": 0.5,
+      "army_size": 0.5
+    },
+    "reach_up_sites_down": {
+      "reachable_production_0": 1.5,
+      "buildable_nodes": 0.5
+    },
+    "reach_down_sites_up": {
+      "reachable_production_0": 0.5,
+      "buildable_nodes": 1.5
+    },
+    "hand_up_army_down": {
+      "hand_synergy": 1.5,
+      "army_size": 0.5
+    },
+    "hand_down_army_up": {
+      "hand_synergy": 0.5,
+      "army_size": 1.5
+    }
+  },
+  "base_weights": {
+    "reachable_production_0": 100000,
+    "army_size": 30000,
+    "buildable_nodes": 10000,
+    "hand_synergy": 1000
+  },
+  "fair_source_sha256": "5078de2b4bf5c0e6db96e847de9013bb6509d9db8b7fa4962fa23f48b55bb9de",
+  "runner_sha256": "df99f57522b6b74b37056c1d1cbb0b7ba510899c08e943315db86032eb06f518",
+  "split_file_sha256": "7096dbb1901d09562c7f982dc5964b92b1ffac2407375e589daef5384b41a2df",
+  "engine": {
+    "source": "https://github.com/bcollazo/catanatron.git",
+    "commit": "ecf931181b9a65bb4116a2153fb78c16f1438e00",
+    "python_root": "/Users/anixd/Documents/Hyde/start/catan_lab/vendor/catanatron/catanatron"
+  },
+  "rules": {
+    "players": 4,
+    "target_vp": 10,
+    "discard_limit": 7,
+    "friendly_robber": false,
+    "number_placement": "official_spiral",
+    "player_trade_offers": false,
+    "isolated_copy_rng": true,
+    "forced_search_outcomes": true
+  },
+  "stages": [
+    {
+      "name": "smoke",
+      "first_seed": 20275951,
+      "boards": 1,
+      "arms": [
+        "fair",
+        "reach_army_up",
+        "reach_army_down",
+        "reach_up_sites_down",
+        "reach_down_sites_up",
+        "hand_up_army_down",
+        "hand_down_army_up"
+      ]
+    }
+  ],
+  "objective": "equal-mix paired win-rate difference; equal-mix paired mean VP tie-break; variant name final tie-break",
+  "max_game_seconds": 20.0,
+  "wall_budget_seconds": 120.0,
+  "cpu_budget_seconds": 120.0,
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "python_hash_seed": "0"
+}

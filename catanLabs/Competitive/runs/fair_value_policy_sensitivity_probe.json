@@ -1,0 +1,178 @@
+{
+  "schema": "catanlabs-fair-value-sensitivity-probe-v1",
+  "protocol": "catanLabs-four-player-v5-canonical-actions-and-chance",
+  "engine": {
+    "source": "https://github.com/bcollazo/catanatron.git",
+    "commit": "ecf931181b9a65bb4116a2153fb78c16f1438e00",
+    "python_root": "/Users/anixd/Documents/Hyde/start/catan_lab/vendor/catanatron/catanatron"
+  },
+  "seeds": [
+    20275952,
+    20275953
+  ],
+  "mix": "mixed_strong",
+  "seats": 4,
+  "options": {
+    "dev_bonus_up": [
+      "dev_buy_late_bonus",
+      1.5
+    ],
+    "dev_bonus_down": [
+      "dev_buy_late_bonus",
+      0.5
+    ],
+    "reach1_up": [
+      "reachable_production_1",
+      1.5
+    ],
+    "reach1_down": [
+      "reachable_production_1",
+      0.5
+    ],
+    "reach_army_up": [
+      "reachable_production_0",
+      1.5
+    ]
+  },
+  "counts": {
+    "dev_bonus_up": {
+      "decisions": 706,
+      "flips": 0,
+      "games_with_flip": 0,
+      "by_phase": {}
+    },
+    "dev_bonus_down": {
+      "decisions": 706,
+      "flips": 0,
+      "games_with_flip": 0,
+      "by_phase": {}
+    },
+    "reach1_up": {
+      "decisions": 706,
+      "flips": 1,
+      "games_with_flip": 1,
+      "by_phase": {
+        "early": 1
+      }
+    },
+    "reach1_down": {
+      "decisions": 706,
+      "flips": 0,
+      "games_with_flip": 0,
+      "by_phase": {}
+    },
+    "reach_army_up": {
+      "decisions": 706,
+      "flips": 0,
+      "games_with_flip": 0,
+      "by_phase": {}
+    }
+  },
+  "games": [
+    {
+      "seed": 20275952,
+      "seat": 0,
+      "decisions": 65,
+      "flips": {
+        "dev_bonus_up": 0,
+        "dev_bonus_down": 0,
+        "reach1_up": 0,
+        "reach1_down": 0,
+        "reach_army_up": 0
+      },
+      "actions": 232
+    },
+    {
+      "seed": 20275952,
+      "seat": 1,
+      "decisions": 87,
+      "flips": {
+        "dev_bonus_up": 0,
+        "dev_bonus_down": 0,
+        "reach1_up": 0,
+        "reach1_down": 0,
+        "reach_army_up": 0
+      },
+      "actions": 280
+    },
+    {
+      "seed": 20275952,
+      "seat": 2,
+      "decisions": 69,
+      "flips": {
+        "dev_bonus_up": 0,
+        "dev_bonus_down": 0,
+        "reach1_up": 0,
+        "reach1_down": 0,
+        "reach_army_up": 0
+      },
+      "actions": 276
+    },
+    {
+      "seed": 20275952,
+      "seat": 3,
+      "decisions": 73,
+      "flips": {
+        "dev_bonus_up": 0,
+        "dev_bonus_down": 0,
+        "reach1_up": 0,
+        "reach1_down": 0,
+        "reach_army_up": 0
+      },
+      "actions": 314
+    },
+    {
+      "seed": 20275953,
+      "seat": 0,
+      "decisions": 94,
+      "flips": {
+        "dev_bonus_up": 0,
+        "dev_bonus_down": 0,
+        "reach1_up": 0,
+        "reach1_down": 0,
+        "reach_army_up": 0
+      },
+      "actions": 367
+    },
+    {
+      "seed": 20275953,
+      "seat": 1,
+      "decisions": 99,
+      "flips": {
+        "dev_bonus_up": 0,
+        "dev_bonus_down": 0,
+        "reach1_up": 0,
+        "reach1_down": 0,
+        "reach_army_up": 0
+      },
+      "actions": 485
+    },
+    {
+      "seed": 20275953,
+      "seat": 2,
+      "decisions": 111,
+      "flips": {
+        "dev_bonus_up": 0,
+        "dev_bonus_down": 0,
+        "reach1_up": 0,
+        "reach1_down": 0,
+        "reach_army_up": 0
+      },
+      "actions": 463
+    },
+    {
+      "seed": 20275953,
+      "seat": 3,
+      "decisions": 108,
+      "flips": {
+        "dev_bonus_up": 0,
+        "dev_bonus_down": 0,
+        "reach1_up": 1,
+        "reach1_down": 0,
+        "reach_army_up": 0
+      },
+      "actions": 424
+    }
+  ],
+  "wall_seconds": 6.171
+}

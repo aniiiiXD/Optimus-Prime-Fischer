@@ -1,0 +1,180 @@
+{
+  "config": {
+    "init_checkpoint": "/Users/anixd/Documents/Hyde/catanLabs/FromScratch/StrategyOne/runs/legal_ranker_v1/model.pt",
+    "output": "catanLabs/FromScratch/StrategyOne/runs/ppo_actor_critic_preliminary",
+    "updates": 8,
+    "episodes_per_update": 8,
+    "ppo_epochs": 1,
+    "learning_rate": 1e-05,
+    "gamma": 0.995,
+    "gae_lambda": 0.95,
+    "clip_ratio": 0.2,
+    "value_coefficient": 0.5,
+    "entropy_coefficient": 0.01,
+    "temperature": 1.0,
+    "max_grad_norm": 0.5,
+    "opponents": "SELF,F_BASE,VP,W,R",
+    "snapshot_every": 1,
+    "seed": 20264150,
+    "vps_to_win": 10,
+    "max_plies": 10000,
+    "device": "cpu"
+  },
+  "history": [
+    {
+      "update": 1,
+      "episodes": 8,
+      "transitions": 2843,
+      "wins": 2,
+      "draws": 0,
+      "win_rate": 0.25,
+      "mean_agent_decisions": 355.4,
+      "mean_plies": 702.0,
+      "opponents": {
+        "R": 1,
+        "SELF": 2,
+        "F_BASE": 1,
+        "VP": 3,
+        "W": 1
+      },
+      "policy_loss": -0.00016,
+      "value_loss": 0.01397,
+      "entropy": 0.5985
+    },
+    {
+      "update": 2,
+      "episodes": 8,
+      "transitions": 2200,
+      "wins": 6,
+      "draws": 0,
+      "win_rate": 0.75,
+      "mean_agent_decisions": 275.0,
+      "mean_plies": 529.9,
+      "opponents": {
+        "SELF": 1,
+        "VP": 4,
+        "R": 1,
+        "F_BASE": 1,
+        "W": 1
+      },
+      "policy_loss": 0.00223,
+      "value_loss": 0.02577,
+      "entropy": 0.71184
+    },
+    {
+      "update": 3,
+      "episodes": 8,
+      "transitions": 2566,
+      "wins": 3,
+      "draws": 0,
+      "win_rate": 0.375,
+      "mean_agent_decisions": 320.8,
+      "mean_plies": 686.6,
+      "opponents": {
+        "F_BASE": 1,
+        "SELF": 2,
+        "VP": 2,
+        "R": 2,
+        "W": 1
+      },
+      "policy_loss": -0.00182,
+      "value_loss": 0.01243,
+      "entropy": 0.57233
+    },
+    {
+      "update": 4,
+      "episodes": 8,
+      "transitions": 2983,
+      "wins": 2,
+      "draws": 0,
+      "win_rate": 0.25,
+      "mean_agent_decisions": 372.9,
+      "mean_plies": 934.1,
+      "opponents": {
+        "F_BASE": 3,
+        "VP": 2,
+        "SELF": 3
+      },
+      "policy_loss": 0.00139,
+      "value_loss": 0.01057,
+      "entropy": 0.46079
+    },
+    {
+      "update": 5,
+      "episodes": 8,
+      "transitions": 3690,
+      "wins": 7,
+      "draws": 0,
+      "win_rate": 0.875,
+      "mean_agent_decisions": 461.2,
+      "mean_plies": 976.0,
+      "opponents": {
+        "VP": 2,
+        "SELF": 3,
+        "W": 2,
+        "R": 1
+      },
+      "policy_loss": 0.00112,
+      "value_loss": 0.0165,
+      "entropy": 0.47908
+    },
+    {
+      "update": 6,
+      "episodes": 8,
+      "transitions": 1844,
+      "wins": 5,
+      "draws": 0,
+      "win_rate": 0.625,
+      "mean_agent_decisions": 230.5,
+      "mean_plies": 468.5,
+      "opponents": {
+        "W": 1,
+        "F_BASE": 2,
+        "VP": 3,
+        "R": 1,
+        "SELF": 1
+      },
+      "policy_loss": 0.00148,
+      "value_loss": 0.02325,
+      "entropy": 0.62781
+    },
+    {
+      "update": 7,
+      "episodes": 8,
+      "transitions": 2813,
+      "wins": 7,
+      "draws": 0,
+      "win_rate": 0.875,
+      "mean_agent_decisions": 351.6,
+      "mean_plies": 671.2,
+      "opponents": {
+        "W": 5,
+        "VP": 2,
+        "R": 1
+      },
+      "policy_loss": 0.00123,
+      "value_loss": 0.01612,
+      "entropy": 0.65293
+    },
+    {
+      "update": 8,
+      "episodes": 8,
+      "transitions": 2451,
+      "wins": 6,
+      "draws": 0,
+      "win_rate": 0.75,
+      "mean_agent_decisions": 306.4,
+      "mean_plies": 591.1,
+      "opponents": {
+        "R": 1,
+        "F_BASE": 1,
+        "VP": 2,
+        "SELF": 1,
+        "W": 3
+      },
+      "policy_loss": 0.00049,
+      "value_loss": 0.01993,
+      "entropy": 0.67398
+    }
+  ]
+}

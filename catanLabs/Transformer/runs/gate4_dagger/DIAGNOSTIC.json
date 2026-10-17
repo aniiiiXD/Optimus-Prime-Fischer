@@ -1,0 +1,366 @@
+{
+  "scope": "Frozen source v3 checkpoint masked teacher-action agreement; no training or final-game evaluation",
+  "datasets": {
+    "on_policy": {
+      "path": "catanLabs/Transformer/runs/gate4_dagger/dataset.npz",
+      "sha256": "ea6d717b8eb085b369870707e9a670b27d3c3f8ac41adf38bc851dd7e227e517",
+      "manifest_sha256": "0795160d0c8ebc6a2b9bb196c40074dbff56e6e046c7dcdccacbf955b793c7c4",
+      "games": 98,
+      "board_seeds_min": 20271600,
+      "board_seeds_max": 20271697,
+      "seconds_to_score": 14.277922250010306
+    },
+    "original_validation": {
+      "path": "catanLabs/Transformer/runs/gate2_native_v3/dataset.npz",
+      "sha256": "5e1939e12f36353700dc4b94180e225eb0418153215df2b786d6bbf412661bea",
+      "split_file": "catanLabs/Transformer/runs/gate2_native_v3/dataset.split.json",
+      "split_sha256": "fab3be26faaff4f470ce437f6a25bbc67ed4984c272925cb57079599ae423126",
+      "game_ids": [
+        9,
+        15,
+        28,
+        42,
+        52,
+        54,
+        61,
+        67,
+        77,
+        89
+      ],
+      "board_seed_overlap_with_on_policy": 0,
+      "seconds_to_score": 0.7242861669801641
+    }
+  },
+  "checkpoint": {
+    "path": "catanLabs/Transformer/runs/gate3_v3_choice/best.pt",
+    "sha256": "0c792198d7624a723193b42b429f99dff53c891010c6c4661c1b37b3d5f8be85",
+    "schema": "catanlabs-action-transformer-v3",
+    "feature_schema": "visible-state-tokens-v3",
+    "model_config": {
+      "width": 32,
+      "layers": 1,
+      "heads": 4
+    }
+  },
+  "on_policy": {
+    "overall": {
+      "rows": 60000,
+      "correct": 38242,
+      "agreement": 0.6373666666666666,
+      "nonforced_rows": 36311,
+      "nonforced_correct": 14553,
+      "nonforced_agreement": 0.4007876401090579
+    },
+    "phases": {
+      "BUILD_INITIAL_ROAD": {
+        "rows": 784,
+        "correct": 439,
+        "agreement": 0.5599489795918368,
+        "nonforced_rows": 784,
+        "nonforced_correct": 439,
+        "nonforced_agreement": 0.5599489795918368
+      },
+      "BUILD_INITIAL_SETTLEMENT": {
+        "rows": 784,
+        "correct": 261,
+        "agreement": 0.33290816326530615,
+        "nonforced_rows": 784,
+        "nonforced_correct": 261,
+        "nonforced_agreement": 0.33290816326530615
+      },
+      "DISCARD": {
+        "rows": 13380,
+        "correct": 5979,
+        "agreement": 0.4468609865470852,
+        "nonforced_rows": 12005,
+        "nonforced_correct": 4604,
+        "nonforced_agreement": 0.3835068721366097
+      },
+      "MOVE_ROBBER": {
+        "rows": 2768,
+        "correct": 281,
+        "agreement": 0.10151734104046242,
+        "nonforced_rows": 2768,
+        "nonforced_correct": 281,
+        "nonforced_agreement": 0.10151734104046242
+      },
+      "PLAY_TURN": {
+        "rows": 42284,
+        "correct": 31282,
+        "agreement": 0.7398070192034812,
+        "nonforced_rows": 19970,
+        "nonforced_correct": 8968,
+        "nonforced_agreement": 0.44907361041562344
+      }
+    }
+  },
+  "base_validation": {
+    "overall": {
+      "rows": 3060,
+      "correct": 2179,
+      "agreement": 0.7120915032679739,
+      "nonforced_rows": 1723,
+      "nonforced_correct": 842,
+      "nonforced_agreement": 0.4886825304701103
+    },
+    "phases": {
+      "BUILD_INITIAL_ROAD": {
+        "rows": 80,
+        "correct": 41,
+        "agreement": 0.5125,
+        "nonforced_rows": 80,
+        "nonforced_correct": 41,
+        "nonforced_agreement": 0.5125
+      },
+      "BUILD_INITIAL_SETTLEMENT": {
+        "rows": 80,
+        "correct": 10,
+        "agreement": 0.125,
+        "nonforced_rows": 80,
+        "nonforced_correct": 10,
+        "nonforced_agreement": 0.125
+      },
+      "DISCARD": {
+        "rows": 460,
+        "correct": 210,
+        "agreement": 0.45652173913043476,
+        "nonforced_rows": 460,
+        "nonforced_correct": 210,
+        "nonforced_agreement": 0.45652173913043476
+      },
+      "MOVE_ROBBER": {
+        "rows": 165,
+        "correct": 30,
+        "agreement": 0.18181818181818182,
+        "nonforced_rows": 165,
+        "nonforced_correct": 30,
+        "nonforced_agreement": 0.18181818181818182
+      },
+      "PLAY_TURN": {
+        "rows": 2275,
+        "correct": 1888,
+        "agreement": 0.8298901098901099,
+        "nonforced_rows": 938,
+        "nonforced_correct": 551,
+        "nonforced_agreement": 0.5874200426439232
+      }
+    }
+  },
+  "first_action_per_on_policy_game": {
+    "rows": 98,
+    "correct": 24,
+    "agreement": 0.24489795918367346,
+    "nonforced_rows": 98,
+    "nonforced_correct": 24,
+    "nonforced_agreement": 0.24489795918367346
+  },
+  "all_initial_settlements_on_policy": {
+    "rows": 784,
+    "correct": 261,
+    "agreement": 0.33290816326530615,
+    "nonforced_rows": 784,
+    "nonforced_correct": 261,
+    "nonforced_agreement": 0.33290816326530615
+  },
+  "disagreements": {
+    "opening_settlement": {
+      "disagreements": 523,
+      "same_action_type_different_target_or_value": 523,
+      "different_action_type": 0,
+      "top_teacher_to_policy_types": [
+        {
+          "teacher": "BUILD_SETTLEMENT",
+          "policy": "BUILD_SETTLEMENT",
+          "count": 523
+        }
+      ],
+      "teacher_type_counts_on_disagreements": {
+        "BUILD_SETTLEMENT": 523
+      },
+      "policy_type_counts_on_disagreements": {
+        "BUILD_SETTLEMENT": 523
+      }
+    },
+    "opening_road": {
+      "disagreements": 345,
+      "same_action_type_different_target_or_value": 345,
+      "different_action_type": 0,
+      "top_teacher_to_policy_types": [
+        {
+          "teacher": "BUILD_ROAD",
+          "policy": "BUILD_ROAD",
+          "count": 345
+        }
+      ],
+      "teacher_type_counts_on_disagreements": {
+        "BUILD_ROAD": 345
+      },
+      "policy_type_counts_on_disagreements": {
+        "BUILD_ROAD": 345
+      }
+    },
+    "robber": {
+      "disagreements": 2487,
+      "same_action_type_different_target_or_value": 2487,
+      "different_action_type": 0,
+      "top_teacher_to_policy_types": [
+        {
+          "teacher": "MOVE_ROBBER",
+          "policy": "MOVE_ROBBER",
+          "count": 2487
+        }
+      ],
+      "teacher_type_counts_on_disagreements": {
+        "MOVE_ROBBER": 2487
+      },
+      "policy_type_counts_on_disagreements": {
+        "MOVE_ROBBER": 2487
+      }
+    },
+    "turn": {
+      "disagreements": 11002,
+      "same_action_type_different_target_or_value": 5959,
+      "different_action_type": 5043,
+      "top_teacher_to_policy_types": [
+        {
+          "teacher": "MARITIME_TRADE",
+          "policy": "MARITIME_TRADE",
+          "count": 3472
+        },
+        {
+          "teacher": "MARITIME_TRADE",
+          "policy": "END_TURN",
+          "count": 3281
+        },
+        {
+          "teacher": "BUILD_ROAD",
+          "policy": "BUILD_ROAD",
+          "count": 2306
+        },
+        {
+          "teacher": "END_TURN",
+          "policy": "MARITIME_TRADE",
+          "count": 1390
+        },
+        {
+          "teacher": "BUILD_ROAD",
+          "policy": "BUILD_SETTLEMENT",
+          "count": 94
+        },
+        {
+          "teacher": "MARITIME_TRADE",
+          "policy": "BUY_DEVELOPMENT_CARD",
+          "count": 91
+        },
+        {
+          "teacher": "BUILD_SETTLEMENT",
+          "policy": "BUILD_SETTLEMENT",
+          "count": 68
+        },
+        {
+          "teacher": "BUILD_CITY",
+          "policy": "BUILD_CITY",
+          "count": 61
+        },
+        {
+          "teacher": "END_TURN",
+          "policy": "BUY_DEVELOPMENT_CARD",
+          "count": 50
+        },
+        {
+          "teacher": "END_TURN",
+          "policy": "BUILD_ROAD",
+          "count": 33
+        },
+        {
+          "teacher": "MARITIME_TRADE",
+          "policy": "BUILD_ROAD",
+          "count": 32
+        },
+        {
+          "teacher": "PLAY_MONOPOLY",
+          "policy": "PLAY_MONOPOLY",
+          "count": 27
+        }
+      ],
+      "teacher_type_counts_on_disagreements": {
+        "MARITIME_TRADE": 6876,
+        "BUILD_ROAD": 2432,
+        "END_TURN": 1473,
+        "BUILD_SETTLEMENT": 72,
+        "BUILD_CITY": 62,
+        "PLAY_MONOPOLY": 27,
+        "PLAY_YEAR_OF_PLENTY": 25,
+        "BUY_DEVELOPMENT_CARD": 25,
+        "PLAY_KNIGHT_CARD": 9,
+        "ROLL": 1
+      },
+      "policy_type_counts_on_disagreements": {
+        "MARITIME_TRADE": 4882,
+        "END_TURN": 3289,
+        "BUILD_ROAD": 2371,
+        "BUILD_SETTLEMENT": 163,
+        "BUY_DEVELOPMENT_CARD": 157,
+        "BUILD_CITY": 78,
+        "PLAY_YEAR_OF_PLENTY": 34,
+        "PLAY_MONOPOLY": 28
+      }
+    },
+    "robber_different_tile": 2183,
+    "robber_same_tile_different_victim": 304
+  },
+  "examples": {
+    "first_action": {
+      "dataset_row": 0,
+      "game_id": 0,
+      "phase": "BUILD_INITIAL_SETTLEMENT",
+      "legal_actions": 54,
+      "teacher": "BUILD_SETTLEMENT node 16",
+      "policy": "BUILD_SETTLEMENT node 8",
+      "other_legal_examples": [
+        "BUILD_SETTLEMENT node 0",
+        "BUILD_SETTLEMENT node 1",
+        "BUILD_SETTLEMENT node 2"
+      ]
+    },
+    "opening_settlement": {
+      "dataset_row": 0,
+      "game_id": 0,
+      "phase": "BUILD_INITIAL_SETTLEMENT",
+      "legal_actions": 54,
+      "teacher": "BUILD_SETTLEMENT node 16",
+      "policy": "BUILD_SETTLEMENT node 8",
+      "other_legal_examples": [
+        "BUILD_SETTLEMENT node 0",
+        "BUILD_SETTLEMENT node 1",
+        "BUILD_SETTLEMENT node 2"
+      ]
+    },
+    "robber": {
+      "dataset_row": 37,
+      "game_id": 0,
+      "phase": "MOVE_ROBBER",
+      "legal_actions": 21,
+      "teacher": "MOVE_ROBBER tile 14, victim relative seat 3",
+      "policy": "MOVE_ROBBER tile 8, victim relative seat 1",
+      "other_legal_examples": [
+        "MOVE_ROBBER tile 0, victim relative seat 2",
+        "MOVE_ROBBER tile 1, victim relative seat 1",
+        "MOVE_ROBBER tile 2, victim relative seat 3"
+      ]
+    },
+    "turn": {
+      "dataset_row": 38,
+      "game_id": 0,
+      "phase": "PLAY_TURN",
+      "legal_actions": 6,
+      "teacher": "END_TURN",
+      "policy": "MARITIME_TRADE offer (SHEEP x4) for BRICK",
+      "other_legal_examples": [
+        "BUY_DEVELOPMENT_CARD",
+        "MARITIME_TRADE offer (SHEEP x4) for ORE",
+        "MARITIME_TRADE offer (SHEEP x4) for WHEAT"
+      ]
+    }
+  }
+}

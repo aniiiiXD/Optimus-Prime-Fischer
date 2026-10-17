@@ -1,0 +1,142 @@
+{
+  "schema": "catanlabs-phase-rescue-partial-v1",
+  "status": "unverified_partial",
+  "arm": "fair",
+  "mix": "mixed_strong",
+  "attempts_recorded": 4,
+  "expected_games": 4,
+  "protocol": "catanLabs-four-player-v5-canonical-actions-and-chance-phase-rescue",
+  "rules": {
+    "players": 4,
+    "target_vp": 10,
+    "discard_limit": 7,
+    "friendly_robber": false,
+    "number_placement": "official_spiral",
+    "player_trade_offers": false,
+    "isolated_copy_rng": true,
+    "forced_search_outcomes": true,
+    "frozen_model_sha256": "29b0f7418a873f34a02157dbde10b7f28f4d47ef2356d74076b55173efef3bbd",
+    "fair_config_sha256": "5f908a453c87556463170378ef92d4ce79f03ecfdf0f1c304daae93fd3222ab3"
+  },
+  "candidate": {
+    "type": "fair",
+    "file": "/Users/anixd/Documents/Hyde/catanLabs/Competitive/fair_value_agent.py",
+    "sha256": "5078de2b4bf5c0e6db96e847de9013bb6509d9db8b7fa4962fa23f48b55bb9de",
+    "checkpoint": "/Users/anixd/Documents/Hyde/catanLabs/Competitive/configs/fair_army_finish.json",
+    "checkpoint_sha256": "5f908a453c87556463170378ef92d4ce79f03ecfdf0f1c304daae93fd3222ab3"
+  },
+  "first_seed": 20272952,
+  "boards_per_mix": 1,
+  "split_file_sha256": "7096dbb1901d09562c7f982dc5964b92b1ffac2407375e589daef5384b41a2df",
+  "runner_sha256": "6f8822e0b33c539d48a187333de9458c8aae4d119519c415f8def54a044c531a",
+  "tier": {
+    "summary": {
+      "attempts": 4,
+      "completed": 4,
+      "wins": 3,
+      "win_rate_all_attempts": 0.75,
+      "win_rate_wilson95": [
+        0.30064184258240184,
+        0.9544127391902995
+      ],
+      "mean_final_vp": 9.25,
+      "decision_latency_ms": {
+        "samples": 310,
+        "median": 0.356479,
+        "p95": 3.619125
+      },
+      "by_seat": {
+        "0": {
+          "attempts": 1,
+          "wins": 1
+        },
+        "1": {
+          "attempts": 1,
+          "wins": 1
+        },
+        "2": {
+          "attempts": 1,
+          "wins": 1
+        },
+        "3": {
+          "attempts": 1,
+          "wins": 0
+        }
+      }
+    },
+    "games": [
+      {
+        "seed": 20272952,
+        "seat": 0,
+        "color": "WHITE",
+        "opponent": "mixed_strong",
+        "opponent_assignments": {
+          "BLUE": "value",
+          "ORANGE": "alphabeta1",
+          "RED": "alphabeta1"
+        },
+        "status": "completed",
+        "winner": "WHITE",
+        "won": true,
+        "candidate_vp": 10,
+        "actions": 276,
+        "turns": 70,
+        "wall_seconds": 0.31
+      },
+      {
+        "seed": 20272952,
+        "seat": 1,
+        "color": "BLUE",
+        "opponent": "mixed_strong",
+        "opponent_assignments": {
+          "WHITE": "alphabeta1",
+          "ORANGE": "alphabeta1",
+          "RED": "value"
+        },
+        "status": "completed",
+        "winner": "BLUE",
+        "won": true,
+        "candidate_vp": 10,
+        "actions": 354,
+        "turns": 91,
+        "wall_seconds": 0.458
+      },
+      {
+        "seed": 20272952,
+        "seat": 2,
+        "color": "ORANGE",
+        "opponent": "mixed_strong",
+        "opponent_assignments": {
+          "WHITE": "alphabeta1",
+          "BLUE": "value",
+          "RED": "alphabeta1"
+        },
+        "status": "completed",
+        "winner": "ORANGE",
+        "won": true,
+        "candidate_vp": 10,
+        "actions": 290,
+        "turns": 76,
+        "wall_seconds": 0.326
+      },
+      {
+        "seed": 20272952,
+        "seat": 3,
+        "color": "RED",
+        "opponent": "mixed_strong",
+        "opponent_assignments": {
+          "WHITE": "value",
+          "BLUE": "alphabeta1",
+          "ORANGE": "alphabeta1"
+        },
+        "status": "completed",
+        "winner": "WHITE",
+        "won": false,
+        "candidate_vp": 7,
+        "actions": 233,
+        "turns": 66,
+        "wall_seconds": 0.282
+      }
+    ]
+  }
+}

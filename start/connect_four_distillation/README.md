@@ -86,6 +86,12 @@ The generated data/cache are local ignored artifacts. Reports and the resulting
 small checkpoint can be kept with the project. The 64-position command above
 checks the pipeline; the first measured run used 2,000 positions.
 
+For the later CPU optimization study, `generate_dataset.py` also accepts
+`--phase-balanced` and `--workers N`. The phase-balanced 4,000-position run
+is documented in [the CPU optimization report](../connect_four_transformer/CPU_OPTIMIZATION_REPORT.md).
+The tested 1,000-position pilot was not faster with four solver workers than
+with one; use the default single persistent process for these short queries.
+
 ### Run v1
 
 - Sampled 5,000 candidates from mixed-policy games at plies 28–40; kept 2,000

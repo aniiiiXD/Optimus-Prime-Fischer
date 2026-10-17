@@ -1,0 +1,957 @@
+{
+  "protocol": "catanLabs-four-player-v5-canonical-actions-and-chance-1v1-evolution-v1",
+  "engine": {
+    "source": "https://github.com/bcollazo/catanatron.git",
+    "commit": "ecf931181b9a65bb4116a2153fb78c16f1438e00",
+    "python_root": "/Users/anixd/Documents/Hyde/start/catan_lab/vendor/catanatron/catanatron"
+  },
+  "candidate_source": "/Users/anixd/Documents/Hyde/catanLabs/OneVOne/train.py",
+  "candidate_source_sha256": "b3e92cb37cf9abdc30da7bf43595ff95ad298c0cf85ade64d4a2258df3aa1a4c",
+  "baseline_config": "/Users/anixd/Documents/Hyde/catanLabs/OneVOne/configs/default.json",
+  "baseline_config_sha256": "5e0c8bb3da04bbff18e33b39100a76f222d72fd9c3dedd750a98cbc9ca73b887",
+  "rules": {
+    "players": 2,
+    "target_vp": 10,
+    "discard_limit": 7,
+    "friendly_robber": false,
+    "number_placement": "official_spiral",
+    "trade_offers": true,
+    "status": "provisional_local_target"
+  },
+  "opponents": [
+    "value",
+    "alphabeta1",
+    "alphabeta2",
+    "tactical"
+  ],
+  "train_seeds": [
+    20271400,
+    20271401,
+    20271402,
+    20271403,
+    20271404,
+    20271405,
+    20271406,
+    20271407,
+    20271408,
+    20271409,
+    20271410,
+    20271411
+  ],
+  "validation_seeds": [
+    20271500,
+    20271501,
+    20271502,
+    20271503,
+    20271504,
+    20271505,
+    20271506,
+    20271507,
+    20271508,
+    20271509,
+    20271510,
+    20271511,
+    20271512,
+    20271513,
+    20271514,
+    20271515,
+    20271516,
+    20271517,
+    20271518,
+    20271519,
+    20271520,
+    20271521,
+    20271522,
+    20271523,
+    20271524,
+    20271525,
+    20271526,
+    20271527,
+    20271528,
+    20271529,
+    20271530,
+    20271531
+  ],
+  "objective": "macro-average win rate across opponents, both seats",
+  "training": {
+    "algorithm": "seeded evolutionary parameter search over value, robber, dev-card, and tactical-scan parameters",
+    "trials": 6,
+    "train_boards": 12,
+    "validation_boards": 32,
+    "seed": 61016,
+    "wall_budget_seconds": 480.0,
+    "game_caps": {
+      "max_actions": 15000,
+      "max_turns": 500,
+      "max_game_seconds": 45.0
+    },
+    "completed_trials": 6
+  },
+  "trials": [
+    {
+      "index": 0,
+      "label": "baseline",
+      "config_sha256": "a8013aad2cd3303dcbc13440af7ebcd0cf997cbbca5edf11eed17b7009d8836a",
+      "metrics": {
+        "macro_win_rate": 0.5833333333333333,
+        "mean_win_rate": 0.5833333333333334,
+        "mean_vp_margin": 1.2916666666666667,
+        "completed": 96,
+        "capped": 0,
+        "errors": 0,
+        "by_opponent": {
+          "alphabeta1": {
+            "wins": 15,
+            "games": 24,
+            "win_rate": 0.625,
+            "completed": 24,
+            "errors": 0,
+            "capped": 0,
+            "mean_vp_margin": 1.75
+          },
+          "alphabeta2": {
+            "wins": 12,
+            "games": 24,
+            "win_rate": 0.5,
+            "completed": 24,
+            "errors": 0,
+            "capped": 0,
+            "mean_vp_margin": 0.8333333333333334
+          },
+          "tactical": {
+            "wins": 13,
+            "games": 24,
+            "win_rate": 0.5416666666666666,
+            "completed": 24,
+            "errors": 0,
+            "capped": 0,
+            "mean_vp_margin": 0.7083333333333334
+          },
+          "value": {
+            "wins": 16,
+            "games": 24,
+            "win_rate": 0.6666666666666666,
+            "completed": 24,
+            "errors": 0,
+            "capped": 0,
+            "mean_vp_margin": 1.875
+          }
+        },
+        "by_seat": {
+          "0": {
+            "wins": 27,
+            "games": 48
+          },
+          "1": {
+            "wins": 29,
+            "games": 48
+          }
+        }
+      }
+    },
+    {
+      "index": 1,
+      "label": "mutation_1",
+      "parent_config_sha256": "a8013aad2cd3303dcbc13440af7ebcd0cf997cbbca5edf11eed17b7009d8836a",
+      "config_sha256": "4a215841f2470c5f0e537be3b9687e3f97bc936bc72a3bbafe2df9c556e1e393",
+      "config": {
+        "agent": "onevone_tactical_v1",
+        "rules": {
+          "players": 2,
+          "target_vp": 10,
+          "discard_limit": 7,
+          "friendly_robber": false,
+          "number_placement": "official_spiral",
+          "trade_offers": true,
+          "status": "provisional_local_target"
+        },
+        "value_weights": {
+          "reachable_production_0": 150000.0,
+          "reachable_production_1": 30000,
+          "buildable_nodes": 10000,
+          "hand_synergy": 1000,
+          "army_size": 30000
+        },
+        "dev_buy_vp_threshold": 7,
+        "dev_buy_late_bonus": 30000,
+        "tactical_min_vp": 3,
+        "tactical_max_roots": 64,
+        "tactical_max_followups": 256,
+        "robber_weights": {
+          "robber": 7.2
+        },
+        "onevone_robber": {
+          "own_production_cost": 1.2,
+          "opponent_lead_sensitivity": 0.12,
+          "min_opponent_pressure": 0.8,
+          "max_opponent_pressure": 1.45,
+          "theft_base": 0.2,
+          "theft_per_public_card": 0.08,
+          "max_theft_cards": 8
+        }
+      },
+      "metrics": {
+        "macro_win_rate": 0.5625,
+        "mean_win_rate": 0.5625,
+        "mean_vp_margin": 0.9895833333333334,
+        "completed": 96,
+        "capped": 0,
+        "errors": 0,
+        "by_opponent": {
+          "alphabeta1": {
+            "wins": 15,
+            "games": 24,
+            "win_rate": 0.625,
+            "completed": 24,
+            "errors": 0,
+            "capped": 0,
+            "mean_vp_margin": 1.5416666666666667
+          },
+          "alphabeta2": {
+            "wins": 12,
+            "games": 24,
+            "win_rate": 0.5,
+            "completed": 24,
+            "errors": 0,
+            "capped": 0,
+            "mean_vp_margin": 0.4583333333333333
+          },
+          "tactical": {
+            "wins": 11,
+            "games": 24,
+            "win_rate": 0.4583333333333333,
+            "completed": 24,
+            "errors": 0,
+            "capped": 0,
+            "mean_vp_margin": 0.16666666666666666
+          },
+          "value": {
+            "wins": 16,
+            "games": 24,
+            "win_rate": 0.6666666666666666,
+            "completed": 24,
+            "errors": 0,
+            "capped": 0,
+            "mean_vp_margin": 1.7916666666666667
+          }
+        },
+        "by_seat": {
+          "0": {
+            "wins": 25,
+            "games": 48
+          },
+          "1": {
+            "wins": 29,
+            "games": 48
+          }
+        }
+      },
+      "candidate_latency_ms": {
+        "median": 0.002542,
+        "p95": 3.889917
+      },
+      "elapsed_seconds": 68.232
+    },
+    {
+      "index": 2,
+      "label": "mutation_2",
+      "parent_config_sha256": "4a215841f2470c5f0e537be3b9687e3f97bc936bc72a3bbafe2df9c556e1e393",
+      "config_sha256": "224ac39a7eb4b671c596b28604e5b6a7de1b0ff672fc03c1385327cdbb940db5",
+      "config": {
+        "agent": "onevone_tactical_v1",
+        "rules": {
+          "players": 2,
+          "target_vp": 10,
+          "discard_limit": 7,
+          "friendly_robber": false,
+          "number_placement": "official_spiral",
+          "trade_offers": true,
+          "status": "provisional_local_target"
+        },
+        "value_weights": {
+          "reachable_production_0": 150000.0,
+          "reachable_production_1": 30000,
+          "buildable_nodes": 10000,
+          "hand_synergy": 1000,
+          "army_size": 30000
+        },
+        "dev_buy_vp_threshold": 9,
+        "dev_buy_late_bonus": 0.0,
+        "tactical_min_vp": 3,
+        "tactical_max_roots": 64,
+        "tactical_max_followups": 256,
+        "robber_weights": {
+          "robber": 7.2
+        },
+        "onevone_robber": {
+          "own_production_cost": 1.2,
+          "opponent_lead_sensitivity": 0.12,
+          "min_opponent_pressure": 0.8,
+          "max_opponent_pressure": 1.45,
+          "theft_base": 0.2,
+          "theft_per_public_card": 0.08,
+          "max_theft_cards": 8
+        }
+      },
+      "metrics": {
+        "macro_win_rate": 0.5729166666666666,
+        "mean_win_rate": 0.5729166666666666,
+        "mean_vp_margin": 0.9270833333333334,
+        "completed": 96,
+        "capped": 0,
+        "errors": 0,
+        "by_opponent": {
+          "alphabeta1": {
+            "wins": 16,
+            "games": 24,
+            "win_rate": 0.6666666666666666,
+            "completed": 24,
+            "errors": 0,
+            "capped": 0,
+            "mean_vp_margin": 1.7083333333333333
+          },
+          "alphabeta2": {
+            "wins": 13,
+            "games": 24,
+            "win_rate": 0.5416666666666666,
+            "completed": 24,
+            "errors": 0,
+            "capped": 0,
+            "mean_vp_margin": 0.7083333333333334
+          },
+          "tactical": {
+            "wins": 11,
+            "games": 24,
+            "win_rate": 0.4583333333333333,
+            "completed": 24,
+            "errors": 0,
+            "capped": 0,
+            "mean_vp_margin": -0.125
+          },
+          "value": {
+            "wins": 15,
+            "games": 24,
+            "win_rate": 0.625,
+            "completed": 24,
+            "errors": 0,
+            "capped": 0,
+            "mean_vp_margin": 1.4166666666666667
+          }
+        },
+        "by_seat": {
+          "0": {
+            "wins": 26,
+            "games": 48
+          },
+          "1": {
+            "wins": 29,
+            "games": 48
+          }
+        }
+      },
+      "candidate_latency_ms": {
+        "median": 0.002209,
+        "p95": 3.933041
+      },
+      "elapsed_seconds": 100.95
+    },
+    {
+      "index": 3,
+      "label": "mutation_3",
+      "parent_config_sha256": "4a215841f2470c5f0e537be3b9687e3f97bc936bc72a3bbafe2df9c556e1e393",
+      "config_sha256": "5ad0d0cb2922f5b80397a9b59cab016a503f06417c97051ff29483f742b7946a",
+      "config": {
+        "agent": "onevone_tactical_v1",
+        "rules": {
+          "players": 2,
+          "target_vp": 10,
+          "discard_limit": 7,
+          "friendly_robber": false,
+          "number_placement": "official_spiral",
+          "trade_offers": true,
+          "status": "provisional_local_target"
+        },
+        "value_weights": {
+          "reachable_production_0": 180000.0,
+          "reachable_production_1": 30000,
+          "buildable_nodes": 10000,
+          "hand_synergy": 1000,
+          "army_size": 30000
+        },
+        "dev_buy_vp_threshold": 7,
+        "dev_buy_late_bonus": 30000,
+        "tactical_min_vp": 3,
+        "tactical_max_roots": 64,
+        "tactical_max_followups": 256,
+        "robber_weights": {
+          "robber": 7.2
+        },
+        "onevone_robber": {
+          "own_production_cost": 0.96,
+          "opponent_lead_sensitivity": 0.12,
+          "min_opponent_pressure": 0.8,
+          "max_opponent_pressure": 1.45,
+          "theft_base": 0.2,
+          "theft_per_public_card": 0.08,
+          "max_theft_cards": 8
+        }
+      },
+      "metrics": {
+        "macro_win_rate": 0.5625,
+        "mean_win_rate": 0.5625,
+        "mean_vp_margin": 0.9895833333333334,
+        "completed": 96,
+        "capped": 0,
+        "errors": 0,
+        "by_opponent": {
+          "alphabeta1": {
+            "wins": 15,
+            "games": 24,
+            "win_rate": 0.625,
+            "completed": 24,
+            "errors": 0,
+            "capped": 0,
+            "mean_vp_margin": 1.5416666666666667
+          },
+          "alphabeta2": {
+            "wins": 12,
+            "games": 24,
+            "win_rate": 0.5,
+            "completed": 24,
+            "errors": 0,
+            "capped": 0,
+            "mean_vp_margin": 0.4583333333333333
+          },
+          "tactical": {
+            "wins": 11,
+            "games": 24,
+            "win_rate": 0.4583333333333333,
+            "completed": 24,
+            "errors": 0,
+            "capped": 0,
+            "mean_vp_margin": 0.16666666666666666
+          },
+          "value": {
+            "wins": 16,
+            "games": 24,
+            "win_rate": 0.6666666666666666,
+            "completed": 24,
+            "errors": 0,
+            "capped": 0,
+            "mean_vp_margin": 1.7916666666666667
+          }
+        },
+        "by_seat": {
+          "0": {
+            "wins": 25,
+            "games": 48
+          },
+          "1": {
+            "wins": 29,
+            "games": 48
+          }
+        }
+      },
+      "candidate_latency_ms": {
+        "median": 0.0029585,
+        "p95": 4.267959
+      },
+      "elapsed_seconds": 141.904
+    },
+    {
+      "index": 4,
+      "label": "mutation_4",
+      "parent_config_sha256": "a8013aad2cd3303dcbc13440af7ebcd0cf997cbbca5edf11eed17b7009d8836a",
+      "config_sha256": "407af609d88be3f03ba2c7c8fda355456f8407baf054aac94b2f9d5b5bfbc3ce",
+      "config": {
+        "agent": "onevone_tactical_v1",
+        "rules": {
+          "players": 2,
+          "target_vp": 10,
+          "discard_limit": 7,
+          "friendly_robber": false,
+          "number_placement": "official_spiral",
+          "trade_offers": true,
+          "status": "provisional_local_target"
+        },
+        "value_weights": {
+          "reachable_production_0": 100000,
+          "reachable_production_1": 30000,
+          "buildable_nodes": 10000,
+          "hand_synergy": 1000,
+          "army_size": 30000
+        },
+        "dev_buy_vp_threshold": 7,
+        "dev_buy_late_bonus": 30000,
+        "tactical_min_vp": 0,
+        "tactical_max_roots": 64,
+        "tactical_max_followups": 256,
+        "robber_weights": {
+          "robber": 9.0
+        },
+        "onevone_robber": {
+          "own_production_cost": 1.2,
+          "opponent_lead_sensitivity": 0.24,
+          "min_opponent_pressure": 0.8,
+          "max_opponent_pressure": 1.2,
+          "theft_base": 0.2,
+          "theft_per_public_card": 0.08,
+          "max_theft_cards": 8
+        }
+      },
+      "metrics": {
+        "macro_win_rate": 0.5833333333333333,
+        "mean_win_rate": 0.5833333333333334,
+        "mean_vp_margin": 1.2916666666666667,
+        "completed": 96,
+        "capped": 0,
+        "errors": 0,
+        "by_opponent": {
+          "alphabeta1": {
+            "wins": 15,
+            "games": 24,
+            "win_rate": 0.625,
+            "completed": 24,
+            "errors": 0,
+            "capped": 0,
+            "mean_vp_margin": 1.75
+          },
+          "alphabeta2": {
+            "wins": 12,
+            "games": 24,
+            "win_rate": 0.5,
+            "completed": 24,
+            "errors": 0,
+            "capped": 0,
+            "mean_vp_margin": 0.8333333333333334
+          },
+          "tactical": {
+            "wins": 13,
+            "games": 24,
+            "win_rate": 0.5416666666666666,
+            "completed": 24,
+            "errors": 0,
+            "capped": 0,
+            "mean_vp_margin": 0.7083333333333334
+          },
+          "value": {
+            "wins": 16,
+            "games": 24,
+            "win_rate": 0.6666666666666666,
+            "completed": 24,
+            "errors": 0,
+            "capped": 0,
+            "mean_vp_margin": 1.875
+          }
+        },
+        "by_seat": {
+          "0": {
+            "wins": 27,
+            "games": 48
+          },
+          "1": {
+            "wins": 29,
+            "games": 48
+          }
+        }
+      },
+      "candidate_latency_ms": {
+        "median": 0.004416,
+        "p95": 5.457875
+      },
+      "elapsed_seconds": 189.07
+    },
+    {
+      "index": 5,
+      "label": "mutation_5",
+      "parent_config_sha256": "224ac39a7eb4b671c596b28604e5b6a7de1b0ff672fc03c1385327cdbb940db5",
+      "config_sha256": "60faa8554d915e03541ad4c080cf230817b81f9ddfeaf28a55a5f008e0781337",
+      "config": {
+        "agent": "onevone_tactical_v1",
+        "rules": {
+          "players": 2,
+          "target_vp": 10,
+          "discard_limit": 7,
+          "friendly_robber": false,
+          "number_placement": "official_spiral",
+          "trade_offers": true,
+          "status": "provisional_local_target"
+        },
+        "value_weights": {
+          "reachable_production_0": 150000.0,
+          "reachable_production_1": 30000,
+          "buildable_nodes": 10000,
+          "hand_synergy": 1000,
+          "army_size": 30000
+        },
+        "dev_buy_vp_threshold": 9,
+        "dev_buy_late_bonus": 0.0,
+        "tactical_min_vp": 3,
+        "tactical_max_roots": 64,
+        "tactical_max_followups": 256,
+        "robber_weights": {
+          "robber": 7.2
+        },
+        "onevone_robber": {
+          "own_production_cost": 1.44,
+          "opponent_lead_sensitivity": 0.12,
+          "min_opponent_pressure": 0.8,
+          "max_opponent_pressure": 1.45,
+          "theft_base": 0.1,
+          "theft_per_public_card": 0.08,
+          "max_theft_cards": 8
+        }
+      },
+      "metrics": {
+        "macro_win_rate": 0.5729166666666666,
+        "mean_win_rate": 0.5729166666666666,
+        "mean_vp_margin": 0.9270833333333334,
+        "completed": 96,
+        "capped": 0,
+        "errors": 0,
+        "by_opponent": {
+          "alphabeta1": {
+            "wins": 16,
+            "games": 24,
+            "win_rate": 0.6666666666666666,
+            "completed": 24,
+            "errors": 0,
+            "capped": 0,
+            "mean_vp_margin": 1.7083333333333333
+          },
+          "alphabeta2": {
+            "wins": 13,
+            "games": 24,
+            "win_rate": 0.5416666666666666,
+            "completed": 24,
+            "errors": 0,
+            "capped": 0,
+            "mean_vp_margin": 0.7083333333333334
+          },
+          "tactical": {
+            "wins": 11,
+            "games": 24,
+            "win_rate": 0.4583333333333333,
+            "completed": 24,
+            "errors": 0,
+            "capped": 0,
+            "mean_vp_margin": -0.125
+          },
+          "value": {
+            "wins": 15,
+            "games": 24,
+            "win_rate": 0.625,
+            "completed": 24,
+            "errors": 0,
+            "capped": 0,
+            "mean_vp_margin": 1.4166666666666667
+          }
+        },
+        "by_seat": {
+          "0": {
+            "wins": 26,
+            "games": 48
+          },
+          "1": {
+            "wins": 29,
+            "games": 48
+          }
+        }
+      },
+      "candidate_latency_ms": {
+        "median": 0.003458,
+        "p95": 4.975958
+      },
+      "elapsed_seconds": 230.227
+    },
+    {
+      "index": 6,
+      "label": "mutation_6",
+      "parent_config_sha256": "a8013aad2cd3303dcbc13440af7ebcd0cf997cbbca5edf11eed17b7009d8836a",
+      "config_sha256": "e23a6e5f557a41d22c47cb2e055667cbbfcca78330bb6ef3f5179b23d51ffd1a",
+      "config": {
+        "agent": "onevone_tactical_v1",
+        "rules": {
+          "players": 2,
+          "target_vp": 10,
+          "discard_limit": 7,
+          "friendly_robber": false,
+          "number_placement": "official_spiral",
+          "trade_offers": true,
+          "status": "provisional_local_target"
+        },
+        "value_weights": {
+          "reachable_production_0": 100000,
+          "reachable_production_1": 30000,
+          "buildable_nodes": 10000,
+          "hand_synergy": 700.0,
+          "army_size": 30000
+        },
+        "dev_buy_vp_threshold": 7,
+        "dev_buy_late_bonus": 30000,
+        "tactical_min_vp": 0,
+        "tactical_max_roots": 64,
+        "tactical_max_followups": 256,
+        "robber_weights": {
+          "robber": 9.0
+        },
+        "onevone_robber": {
+          "own_production_cost": 1.2,
+          "opponent_lead_sensitivity": 0.12,
+          "min_opponent_pressure": 0.8,
+          "max_opponent_pressure": 1.45,
+          "theft_base": 0.0,
+          "theft_per_public_card": 0.08,
+          "max_theft_cards": 8
+        }
+      },
+      "metrics": {
+        "macro_win_rate": 0.5833333333333333,
+        "mean_win_rate": 0.5833333333333334,
+        "mean_vp_margin": 1.2916666666666667,
+        "completed": 96,
+        "capped": 0,
+        "errors": 0,
+        "by_opponent": {
+          "alphabeta1": {
+            "wins": 15,
+            "games": 24,
+            "win_rate": 0.625,
+            "completed": 24,
+            "errors": 0,
+            "capped": 0,
+            "mean_vp_margin": 1.75
+          },
+          "alphabeta2": {
+            "wins": 12,
+            "games": 24,
+            "win_rate": 0.5,
+            "completed": 24,
+            "errors": 0,
+            "capped": 0,
+            "mean_vp_margin": 0.8333333333333334
+          },
+          "tactical": {
+            "wins": 13,
+            "games": 24,
+            "win_rate": 0.5416666666666666,
+            "completed": 24,
+            "errors": 0,
+            "capped": 0,
+            "mean_vp_margin": 0.7083333333333334
+          },
+          "value": {
+            "wins": 16,
+            "games": 24,
+            "win_rate": 0.6666666666666666,
+            "completed": 24,
+            "errors": 0,
+            "capped": 0,
+            "mean_vp_margin": 1.875
+          }
+        },
+        "by_seat": {
+          "0": {
+            "wins": 27,
+            "games": 48
+          },
+          "1": {
+            "wins": 29,
+            "games": 48
+          }
+        }
+      },
+      "candidate_latency_ms": {
+        "median": 0.003166,
+        "p95": 5.131583
+      },
+      "elapsed_seconds": 271.445
+    }
+  ],
+  "promoted_config": null,
+  "promotion_decision": "not promoted: held-out win-rate evidence did not clear the gate",
+  "selection": {
+    "label": "baseline",
+    "config_sha256": "a8013aad2cd3303dcbc13440af7ebcd0cf997cbbca5edf11eed17b7009d8836a",
+    "training_metrics": {
+      "macro_win_rate": 0.5833333333333333,
+      "mean_win_rate": 0.5833333333333334,
+      "mean_vp_margin": 1.2916666666666667,
+      "completed": 96,
+      "capped": 0,
+      "errors": 0,
+      "by_opponent": {
+        "alphabeta1": {
+          "wins": 15,
+          "games": 24,
+          "win_rate": 0.625,
+          "completed": 24,
+          "errors": 0,
+          "capped": 0,
+          "mean_vp_margin": 1.75
+        },
+        "alphabeta2": {
+          "wins": 12,
+          "games": 24,
+          "win_rate": 0.5,
+          "completed": 24,
+          "errors": 0,
+          "capped": 0,
+          "mean_vp_margin": 0.8333333333333334
+        },
+        "tactical": {
+          "wins": 13,
+          "games": 24,
+          "win_rate": 0.5416666666666666,
+          "completed": 24,
+          "errors": 0,
+          "capped": 0,
+          "mean_vp_margin": 0.7083333333333334
+        },
+        "value": {
+          "wins": 16,
+          "games": 24,
+          "win_rate": 0.6666666666666666,
+          "completed": 24,
+          "errors": 0,
+          "capped": 0,
+          "mean_vp_margin": 1.875
+        }
+      },
+      "by_seat": {
+        "0": {
+          "wins": 27,
+          "games": 48
+        },
+        "1": {
+          "wins": 29,
+          "games": 48
+        }
+      }
+    },
+    "validation_baseline_metrics": {
+      "macro_win_rate": 0.5859375,
+      "mean_win_rate": 0.5859375,
+      "mean_vp_margin": 0.81640625,
+      "completed": 256,
+      "capped": 0,
+      "errors": 0,
+      "by_opponent": {
+        "alphabeta1": {
+          "wins": 43,
+          "games": 64,
+          "win_rate": 0.671875,
+          "completed": 64,
+          "errors": 0,
+          "capped": 0,
+          "mean_vp_margin": 1.375
+        },
+        "alphabeta2": {
+          "wins": 40,
+          "games": 64,
+          "win_rate": 0.625,
+          "completed": 64,
+          "errors": 0,
+          "capped": 0,
+          "mean_vp_margin": 1.5
+        },
+        "tactical": {
+          "wins": 33,
+          "games": 64,
+          "win_rate": 0.515625,
+          "completed": 64,
+          "errors": 0,
+          "capped": 0,
+          "mean_vp_margin": 0.03125
+        },
+        "value": {
+          "wins": 34,
+          "games": 64,
+          "win_rate": 0.53125,
+          "completed": 64,
+          "errors": 0,
+          "capped": 0,
+          "mean_vp_margin": 0.359375
+        }
+      },
+      "by_seat": {
+        "0": {
+          "wins": 77,
+          "games": 128
+        },
+        "1": {
+          "wins": 73,
+          "games": 128
+        }
+      }
+    },
+    "validation_selected_metrics": {
+      "macro_win_rate": 0.5859375,
+      "mean_win_rate": 0.5859375,
+      "mean_vp_margin": 0.81640625,
+      "completed": 256,
+      "capped": 0,
+      "errors": 0,
+      "by_opponent": {
+        "alphabeta1": {
+          "wins": 43,
+          "games": 64,
+          "win_rate": 0.671875,
+          "completed": 64,
+          "errors": 0,
+          "capped": 0,
+          "mean_vp_margin": 1.375
+        },
+        "alphabeta2": {
+          "wins": 40,
+          "games": 64,
+          "win_rate": 0.625,
+          "completed": 64,
+          "errors": 0,
+          "capped": 0,
+          "mean_vp_margin": 1.5
+        },
+        "tactical": {
+          "wins": 33,
+          "games": 64,
+          "win_rate": 0.515625,
+          "completed": 64,
+          "errors": 0,
+          "capped": 0,
+          "mean_vp_margin": 0.03125
+        },
+        "value": {
+          "wins": 34,
+          "games": 64,
+          "win_rate": 0.53125,
+          "completed": 64,
+          "errors": 0,
+          "capped": 0,
+          "mean_vp_margin": 0.359375
+        }
+      },
+      "by_seat": {
+        "0": {
+          "wins": 77,
+          "games": 128
+        },
+        "1": {
+          "wins": 73,
+          "games": 128
+        }
+      }
+    },
+    "paired_win_rate_difference": {
+      "boards": 32,
+      "mean_difference": 0.0,
+      "board_cluster_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "promote": false
+    },
+    "promoted": false,
+    "promoted_config": null
+  },
+  "elapsed_seconds": 382.715
+}

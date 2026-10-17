@@ -1,0 +1,203 @@
+{
+  "description": "Held-out teacher-action imitation and model-only CPU forward latency; not win rate or action quality.",
+  "dataset": "/Users/anixd/Documents/Hyde/catanLabs/Transformer/runs/gate1_profile/dataset.npz",
+  "dataset_sha256": "0716a25b8883aa32179e65009f885ddfe9c3a5dbfcdeaf4ee4bb4c15907e436d",
+  "checkpoint": "/Users/anixd/Documents/Hyde/catanLabs/Transformer/runs/gate1_profile/short_update/best.pt",
+  "checkpoint_sha256": "fb222107d394bbbfd589f0aeb26c9d2731a8ef2a2e53626f3e492ec29125072f",
+  "feature_schema": "visible-state-tokens-v2",
+  "dataset_schema": "catanlabs-transformer-dataset-v2",
+  "heldout_games": [
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94,
+    95,
+    96,
+    97,
+    98,
+    99
+  ],
+  "heldout_rows": 6093,
+  "correct": 4068,
+  "agreement": 0.6676514032496307,
+  "legacy_unmasked_agreement": 0.3538486788117512,
+  "nonforced_rows": 3418,
+  "nonforced_agreement": 0.40754827384435344,
+  "by_phase": {
+    "BUILD_INITIAL_ROAD": {
+      "count": 160,
+      "agreement_count": 63,
+      "agreement": 0.39375,
+      "nonforced_count": 160,
+      "nonforced_agreement": 0.39375
+    },
+    "BUILD_INITIAL_SETTLEMENT": {
+      "count": 160,
+      "agreement_count": 30,
+      "agreement": 0.1875,
+      "nonforced_count": 160,
+      "nonforced_agreement": 0.1875
+    },
+    "DISCARD": {
+      "count": 810,
+      "agreement_count": 285,
+      "agreement": 0.35185185185185186,
+      "nonforced_count": 804,
+      "nonforced_agreement": 0.34701492537313433
+    },
+    "MOVE_ROBBER": {
+      "count": 361,
+      "agreement_count": 56,
+      "agreement": 0.15512465373961218,
+      "nonforced_count": 361,
+      "nonforced_agreement": 0.15512465373961218
+    },
+    "PLAY_TURN": {
+      "count": 4602,
+      "agreement_count": 3634,
+      "agreement": 0.7896566710126032,
+      "nonforced_count": 1933,
+      "nonforced_agreement": 0.4992240041386446
+    }
+  },
+  "by_teacher_action_type": {
+    "BUILD_CITY": {
+      "count": 97,
+      "agreement_count": 56,
+      "agreement": 0.5773195876288659,
+      "nonforced_count": 97,
+      "nonforced_agreement": 0.5773195876288659
+    },
+    "BUILD_ROAD": {
+      "count": 617,
+      "agreement_count": 124,
+      "agreement": 0.20097244732576985,
+      "nonforced_count": 617,
+      "nonforced_agreement": 0.20097244732576985
+    },
+    "BUILD_SETTLEMENT": {
+      "count": 299,
+      "agreement_count": 147,
+      "agreement": 0.4916387959866221,
+      "nonforced_count": 299,
+      "nonforced_agreement": 0.4916387959866221
+    },
+    "BUY_DEVELOPMENT_CARD": {
+      "count": 141,
+      "agreement_count": 0,
+      "agreement": 0.0,
+      "nonforced_count": 141,
+      "nonforced_agreement": 0.0
+    },
+    "DISCARD_RESOURCE": {
+      "count": 810,
+      "agreement_count": 285,
+      "agreement": 0.35185185185185186,
+      "nonforced_count": 804,
+      "nonforced_agreement": 0.34701492537313433
+    },
+    "END_TURN": {
+      "count": 1643,
+      "agreement_count": 1611,
+      "agreement": 0.9805234327449787,
+      "nonforced_count": 577,
+      "nonforced_agreement": 0.9445407279029463
+    },
+    "MARITIME_TRADE": {
+      "count": 359,
+      "agreement_count": 44,
+      "agreement": 0.12256267409470752,
+      "nonforced_count": 359,
+      "nonforced_agreement": 0.12256267409470752
+    },
+    "MOVE_ROBBER": {
+      "count": 361,
+      "agreement_count": 56,
+      "agreement": 0.15512465373961218,
+      "nonforced_count": 361,
+      "nonforced_agreement": 0.15512465373961218
+    },
+    "PLAY_KNIGHT_CARD": {
+      "count": 130,
+      "agreement_count": 130,
+      "agreement": 1.0,
+      "nonforced_count": 130,
+      "nonforced_agreement": 1.0
+    },
+    "PLAY_MONOPOLY": {
+      "count": 13,
+      "agreement_count": 0,
+      "agreement": 0.0,
+      "nonforced_count": 13,
+      "nonforced_agreement": 0.0
+    },
+    "PLAY_YEAR_OF_PLENTY": {
+      "count": 8,
+      "agreement_count": 0,
+      "agreement": 0.0,
+      "nonforced_count": 8,
+      "nonforced_agreement": 0.0
+    },
+    "ROLL": {
+      "count": 1615,
+      "agreement_count": 1615,
+      "agreement": 1.0,
+      "nonforced_count": 12,
+      "nonforced_agreement": 1.0
+    }
+  },
+  "disagreement_examples": [
+    {
+      "dataset_row": 23583,
+      "game_id": 80,
+      "phase": "BUILD_INITIAL_SETTLEMENT",
+      "legal_action_count": 54,
+      "teacher_choice": "BUILD_SETTLEMENT node 16",
+      "policy_choice": "BUILD_SETTLEMENT node 8",
+      "other_legal_alternatives": [
+        "BUILD_SETTLEMENT node 0",
+        "BUILD_SETTLEMENT node 1",
+        "BUILD_SETTLEMENT node 2",
+        "BUILD_SETTLEMENT node 3",
+        "BUILD_SETTLEMENT node 4"
+      ],
+      "interpretation": "Action disagreement only; the teacher choice is not proven optimal."
+    },
+    {
+      "dataset_row": 23602,
+      "game_id": 80,
+      "phase": "PLAY_TURN",
+      "legal_action_count": 9,
+      "teacher_choice": "BUILD_ROAD edge 5",
+      "policy_choice": "BUILD_ROAD edge 8",
+      "other_legal_alternatives": [
+        "BUILD_ROAD edge 9",
+        "BUILD_ROAD edge 10",
+        "BUILD_ROAD edge 11",
+        "BUILD_ROAD edge 29",
+        "BUILD_ROAD edge 35"
+      ],
+      "interpretation": "Action disagreement only; the teacher choice is not proven optimal."
+    }
+  ],
+  "cpu_forward_latency_ms": {
+    "scope": "single-example PyTorch model forward only; excludes snapshot, encoding and legal-action sorting",
+    "threads": 4,
+    "samples": 200,
+    "warmups": 20,
+    "p50": 0.2910205,
+    "p95": 0.3357771,
+    "evaluation_seconds": 1.2999249580025207
+  }
+}

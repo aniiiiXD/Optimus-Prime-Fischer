@@ -8,6 +8,10 @@
 **/.env
 **/.env.*
 !**/.env.example
+**/*.log
+
+# Local tool state accidentally created inside the repository.
+/~/
 
 # Local scratch outside the game workspace.
 /output/
@@ -27,3 +31,12 @@
 /start/connect_four_transformer/artifacts/data/
 /start/connect_four_distillation/artifacts/cache/
 /start/connect_four_distillation/artifacts/data/
+/start/connect_four_fireworks/artifacts/cache/
+/start/connect_four_fireworks/artifacts/data/
+
+# Independent Catan source checkout and regenerable training corpora.
+/catanLabs/External/catan-rl/
+/catanLabs/FromScratch/StrategyOne/data/*.jsonl
+/catanLabs/OneVOne/data/*.jsonl.gz
+/catanLabs/Transformer/runs/**/*.npz
+/catanLabs/Transformer/runs/**/*.jsonl.gz

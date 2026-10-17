@@ -24,7 +24,7 @@ WORKSPACE_ROOT = Path(__file__).resolve().parents[1]
 if str(WORKSPACE_ROOT) not in sys.path:
     sys.path.insert(0, str(WORKSPACE_ROOT))
 
-from connect_four_transformer.config import DEFAULT_CONFIG
+from connect_four_transformer.config import DEFAULT_CONFIG, ModelConfig
 from connect_four_transformer.data import (
     DEFAULT_DATASET,
     SearchDataset,
@@ -168,6 +168,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--dataset", type=Path, default=DEFAULT_DATASET)
     parser.add_argument("--extra-train", type=Path, action="append")
+    parser.add_argument("--exclude-dataset", type=Path, action="append", help="exclude these held-out boards and opening groups from every training input")
     parser.add_argument(
         "--init-checkpoint", type=Path,
         help="optional checkpoint to fine-tune; omitted means initialize from scratch",
@@ -191,6 +192,11 @@ def main() -> None:
     parser.add_argument("--q-weight", type=float, default=0.5)
     parser.add_argument("--value-weight", type=float, default=0.25)
     parser.add_argument("--threads", type=int, default=4)
+    parser.add_argument("--d-model", type=int, default=DEFAULT_CONFIG.d_model)
+    parser.add_argument("--heads", type=int, default=DEFAULT_CONFIG.n_heads)
+    parser.add_argument("--blocks", type=int, default=DEFAULT_CONFIG.n_blocks)
+    parser.add_argument("--mlp-hidden", type=int, default=DEFAULT_CONFIG.mlp_hidden)
+    parser.add_argument("--loader-workers", type=int, default=0)
     parser.add_argument("--hard-tactical-targets", action="store_true")
     parser.add_argument("--tactical-weight", type=float, default=1.0)
     parser.add_argument(
@@ -203,13 +209,21 @@ def main() -> None:
     args = parser.parse_args()
     if args.epochs is not None and args.epochs <= 0:
         parser.error("epochs must be positive")
-    if min(args.batch_size, args.threads, args.log_every) <= 0:
-        parser.error("batch-size, threads, and log-every must be positive")
+    if min(args.batch_size, args.threads, args.log_every, args.d_model, args.heads, args.blocks, args.mlp_hidden) <= 0:
+        parser.error("batch size, threads, model dimensions, and log interval must be positive")
+    if args.loader_workers < 0:
+        parser.error("loader-workers cannot be negative")
     if args.time_budget_seconds is not None and args.time_budget_seconds <= 0:
         parser.error("time-budget-seconds must be positive")
     if args.tactical_weight < 1:
         parser.error("--tactical-weight must be at least 1")
 
+    model_config = ModelConfig(
+        d_model=args.d_model,
+        n_heads=args.heads,
+        n_blocks=args.blocks,
+        mlp_hidden=args.mlp_hidden,
+    )
     torch.set_num_threads(args.threads)
     try:
         torch.set_num_interop_threads(1)
@@ -217,7 +231,20 @@ def main() -> None:
         pass
     torch.manual_seed(args.seed)
     random.seed(args.seed)
-    rows = load_rows(args.dataset)
+    excluded_rows = [
+        row for path in args.exclude_dataset or [] for row in load_rows(path)
+    ]
+    excluded_positions = {canonical_position(row) for row in excluded_rows}
+    excluded_groups = {str(row.get("opening_group", "")) for row in excluded_rows}
+    input_rows = load_rows(args.dataset)
+    rows = [
+        row for row in input_rows
+        if canonical_position(row) not in excluded_positions
+        and str(row.get("opening_group", "")) not in excluded_groups
+    ]
+    excluded_primary = len(input_rows) - len(rows)
+    if not rows:
+        raise ValueError("held-out exclusions removed every primary training row")
     split = grouped_split(rows, seed=args.seed)
     heldout_opening_groups = {
         str(rows[index].get("opening_group", ""))
@@ -226,11 +253,15 @@ def main() -> None:
     }
     duplicate_extras = 0
     excluded_group_extras = 0
+    excluded_external_extras = 0
     known_positions = {canonical_position(row) for row in rows}
     for extra_path in args.extra_train or []:
         extra = load_rows(extra_path)
         for row in extra:
             identity = canonical_position(row)
+            if identity in excluded_positions or str(row.get("opening_group", "")) in excluded_groups:
+                excluded_external_extras += 1
+                continue
             if identity in known_positions:
                 duplicate_extras += 1
                 continue
@@ -252,14 +283,14 @@ def main() -> None:
             batch_size=args.batch_size,
             shuffle=name == "train",
             generator=torch.Generator().manual_seed(args.seed),
-            num_workers=0,
+            num_workers=args.loader_workers,
         )
         for name, indices in split.items()
     }
-    model = ConnectFourTransformer(DEFAULT_CONFIG)
+    model = ConnectFourTransformer(model_config)
     if args.init_checkpoint is not None:
         initial = torch.load(args.init_checkpoint, map_location="cpu", weights_only=True)
-        if initial["model_config"] != DEFAULT_CONFIG.to_dict():
+        if initial["model_config"] != model_config.to_dict():
             raise ValueError("initial checkpoint model configuration does not match this trainer")
         model.load_state_dict(initial["model_state_dict"])
     optimizer = torch.optim.AdamW(
@@ -378,7 +409,7 @@ def main() -> None:
     torch.save(
         {
             "model_state_dict": model.state_dict(),
-            "model_config": DEFAULT_CONFIG.to_dict(),
+            "model_config": model_config.to_dict(),
             "best_epoch": best_epoch,
             "test": test,
             "dataset": str(args.dataset),
@@ -393,7 +424,7 @@ def main() -> None:
     )
     report: dict[str, Any] = {
         "model": "ConnectFourTransformer candidate policy/Q/value v0",
-        "config": DEFAULT_CONFIG.to_dict(),
+        "config": model_config.to_dict(),
         "parameters": parameter_count(model),
         "dataset": {
             "path": str(args.dataset),
@@ -401,6 +432,9 @@ def main() -> None:
             "rows": len(rows),
             "split": {key: len(value) for key, value in split.items()},
             "duplicate_extras_skipped": duplicate_extras,
+            "excluded_primary_rows": excluded_primary,
+            "excluded_external_extra_rows": excluded_external_extras,
+            "exclude_datasets": [str(path) for path in args.exclude_dataset or []],
             "heldout_opening_group_extras_skipped": excluded_group_extras,
         },
         "training": {
@@ -411,6 +445,7 @@ def main() -> None:
             "optimizer_step_wall_seconds": optimizer_step_wall_seconds,
             "best_epoch": best_epoch,
             "batch_size": args.batch_size,
+            "loader_workers": args.loader_workers,
             "learning_rate": args.learning_rate,
             "q_weight": args.q_weight,
             "value_weight": args.value_weight,

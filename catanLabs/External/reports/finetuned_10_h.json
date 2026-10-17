@@ -1,0 +1,1601 @@
+{
+  "protocol": "upstream-catan-rl-local-seat-rotation-v1",
+  "source_commit": "021279c56834b6203480e5292e1de7246e47bd68",
+  "source_modified": true,
+  "model": "/Users/anixd/Documents/Hyde/catanLabs/External/models/cpu10_finetuned.ctnn",
+  "model_sha256": "39365bd63f1157a5fb7d578f4e176e83318ffc50a4df6dd204f88b87d77d675f",
+  "binary_sha256": "ac975025a5b68696cceba527c94244a200038a887f30c1c1ac7097d7ba9e3fb4",
+  "rules": {
+    "players": 4,
+    "target_vp": 10,
+    "root_observation": "perfect information",
+    "rollouts": "clone of actual full state; random policy"
+  },
+  "opponent": "heuristic-v1",
+  "alpha_config": "8,96,300",
+  "first_seed": 777,
+  "games_per_seat": 48,
+  "elapsed_seconds": 181.588,
+  "total": {
+    "games": 192,
+    "wins": 148,
+    "win_rate": 0.7708,
+    "wilson95": [
+      0.7064,
+      0.8246
+    ],
+    "mean_vp": 9.167
+  },
+  "by_seat": [
+    {
+      "seat": 0,
+      "games": 48,
+      "wins": 42,
+      "win_rate": 0.875,
+      "mean_vp": 9.667,
+      "simulator_stdout": "=== catan-sim results ===\ngames:        48\nvictory target: 10\nplayers:      AlphaBot, HeuristicPlayer, HeuristicPlayer, HeuristicPlayer\nthreads:      10\nelapsed:      45.111s\ngames/sec:    1\navg latency:  939.817ms/game\nsteps:        23720\nsteps/sec:    526\nns/step:      1901821\navg turns:    126.1\nplayer 0 (AlphaBot): 42 wins (87.5%)\nplayer 1 (HeuristicPlayer): 2 wins (4.2%)\nplayer 2 (HeuristicPlayer): 2 wins (4.2%)\nplayer 3 (HeuristicPlayer): 2 wins (4.2%)"
+    },
+    {
+      "seat": 1,
+      "games": 48,
+      "wins": 33,
+      "win_rate": 0.6875,
+      "mean_vp": 8.812,
+      "simulator_stdout": "=== catan-sim results ===\ngames:        48\nvictory target: 10\nplayers:      HeuristicPlayer, AlphaBot, HeuristicPlayer, HeuristicPlayer\nthreads:      10\nelapsed:      46.839s\ngames/sec:    1\navg latency:  975.822ms/game\nsteps:        23166\nsteps/sec:    495\nns/step:      2021905\navg turns:    123.0\nplayer 0 (HeuristicPlayer): 7 wins (14.6%)\nplayer 1 (AlphaBot): 33 wins (68.8%)\nplayer 2 (HeuristicPlayer): 4 wins (8.3%)\nplayer 3 (HeuristicPlayer): 4 wins (8.3%)"
+    },
+    {
+      "seat": 2,
+      "games": 48,
+      "wins": 36,
+      "win_rate": 0.75,
+      "mean_vp": 9.042,
+      "simulator_stdout": "=== catan-sim results ===\ngames:        48\nvictory target: 10\nplayers:      HeuristicPlayer, HeuristicPlayer, AlphaBot, HeuristicPlayer\nthreads:      10\nelapsed:      48.676s\ngames/sec:    1\navg latency:  1014.091ms/game\nsteps:        23783\nsteps/sec:    489\nns/step:      2046687\navg turns:    127.2\nplayer 0 (HeuristicPlayer): 4 wins (8.3%)\nplayer 1 (HeuristicPlayer): 3 wins (6.2%)\nplayer 2 (AlphaBot): 36 wins (75.0%)\nplayer 3 (HeuristicPlayer): 5 wins (10.4%)"
+    },
+    {
+      "seat": 3,
+      "games": 48,
+      "wins": 37,
+      "win_rate": 0.7708,
+      "mean_vp": 9.146,
+      "simulator_stdout": "=== catan-sim results ===\ngames:        48\nvictory target: 10\nplayers:      HeuristicPlayer, HeuristicPlayer, HeuristicPlayer, AlphaBot\nthreads:      10\nelapsed:      40.893s\ngames/sec:    1\navg latency:  851.933ms/game\nsteps:        23919\nsteps/sec:    585\nns/step:      1709635\navg turns:    128.1\nplayer 0 (HeuristicPlayer): 5 wins (10.4%)\nplayer 1 (HeuristicPlayer): 4 wins (8.3%)\nplayer 2 (HeuristicPlayer): 2 wins (4.2%)\nplayer 3 (AlphaBot): 37 wins (77.1%)"
+    }
+  ],
+  "games": [
+    {
+      "seat": 0,
+      "seed_index": 33,
+      "winner": 3,
+      "won": false,
+      "turns": 83,
+      "vp": 5
+    },
+    {
+      "seat": 0,
+      "seed_index": 30,
+      "winner": 0,
+      "won": true,
+      "turns": 148,
+      "vp": 10
+    },
+    {
+      "seat": 0,
+      "seed_index": 0,
+      "winner": 0,
+      "won": true,
+      "turns": 72,
+      "vp": 10
+    },
+    {
+      "seat": 0,
+      "seed_index": 6,
+      "winner": 0,
+      "won": true,
+      "turns": 128,
+      "vp": 10
+    },
+    {
+      "seat": 0,
+      "seed_index": 9,
+      "winner": 0,
+      "won": true,
+      "turns": 148,
+      "vp": 10
+    },
+    {
+      "seat": 0,
+      "seed_index": 24,
+      "winner": 0,
+      "won": true,
+      "turns": 172,
+      "vp": 10
+    },
+    {
+      "seat": 0,
+      "seed_index": 36,
+      "winner": 0,
+      "won": true,
+      "turns": 108,
+      "vp": 10
+    },
+    {
+      "seat": 0,
+      "seed_index": 27,
+      "winner": 0,
+      "won": true,
+      "turns": 136,
+      "vp": 11
+    },
+    {
+      "seat": 0,
+      "seed_index": 18,
+      "winner": 0,
+      "won": true,
+      "turns": 180,
+      "vp": 10
+    },
+    {
+      "seat": 0,
+      "seed_index": 12,
+      "winner": 0,
+      "won": true,
+      "turns": 160,
+      "vp": 10
+    },
+    {
+      "seat": 0,
+      "seed_index": 34,
+      "winner": 0,
+      "won": true,
+      "turns": 84,
+      "vp": 10
+    },
+    {
+      "seat": 0,
+      "seed_index": 10,
+      "winner": 0,
+      "won": true,
+      "turns": 68,
+      "vp": 10
+    },
+    {
+      "seat": 0,
+      "seed_index": 37,
+      "winner": 0,
+      "won": true,
+      "turns": 84,
+      "vp": 10
+    },
+    {
+      "seat": 0,
+      "seed_index": 28,
+      "winner": 0,
+      "won": true,
+      "turns": 104,
+      "vp": 11
+    },
+    {
+      "seat": 0,
+      "seed_index": 13,
+      "winner": 0,
+      "won": true,
+      "turns": 84,
+      "vp": 10
+    },
+    {
+      "seat": 0,
+      "seed_index": 25,
+      "winner": 0,
+      "won": true,
+      "turns": 136,
+      "vp": 10
+    },
+    {
+      "seat": 0,
+      "seed_index": 31,
+      "winner": 0,
+      "won": true,
+      "turns": 188,
+      "vp": 10
+    },
+    {
+      "seat": 0,
+      "seed_index": 19,
+      "winner": 0,
+      "won": true,
+      "turns": 92,
+      "vp": 10
+    },
+    {
+      "seat": 0,
+      "seed_index": 1,
+      "winner": 0,
+      "won": true,
+      "turns": 176,
+      "vp": 10
+    },
+    {
+      "seat": 0,
+      "seed_index": 35,
+      "winner": 0,
+      "won": true,
+      "turns": 172,
+      "vp": 10
+    },
+    {
+      "seat": 0,
+      "seed_index": 11,
+      "winner": 0,
+      "won": true,
+      "turns": 136,
+      "vp": 10
+    },
+    {
+      "seat": 0,
+      "seed_index": 29,
+      "winner": 0,
+      "won": true,
+      "turns": 96,
+      "vp": 11
+    },
+    {
+      "seat": 0,
+      "seed_index": 7,
+      "winner": 0,
+      "won": true,
+      "turns": 224,
+      "vp": 10
+    },
+    {
+      "seat": 0,
+      "seed_index": 20,
+      "winner": 0,
+      "won": true,
+      "turns": 116,
+      "vp": 11
+    },
+    {
+      "seat": 0,
+      "seed_index": 26,
+      "winner": 0,
+      "won": true,
+      "turns": 120,
+      "vp": 11
+    },
+    {
+      "seat": 0,
+      "seed_index": 14,
+      "winner": 2,
+      "won": false,
+      "turns": 110,
+      "vp": 7
+    },
+    {
+      "seat": 0,
+      "seed_index": 32,
+      "winner": 0,
+      "won": true,
+      "turns": 116,
+      "vp": 10
+    },
+    {
+      "seat": 0,
+      "seed_index": 42,
+      "winner": 0,
+      "won": true,
+      "turns": 60,
+      "vp": 10
+    },
+    {
+      "seat": 0,
+      "seed_index": 8,
+      "winner": 0,
+      "won": true,
+      "turns": 132,
+      "vp": 11
+    },
+    {
+      "seat": 0,
+      "seed_index": 39,
+      "winner": 0,
+      "won": true,
+      "turns": 116,
+      "vp": 10
+    },
+    {
+      "seat": 0,
+      "seed_index": 38,
+      "winner": 0,
+      "won": true,
+      "turns": 208,
+      "vp": 10
+    },
+    {
+      "seat": 0,
+      "seed_index": 15,
+      "winner": 0,
+      "won": true,
+      "turns": 108,
+      "vp": 11
+    },
+    {
+      "seat": 0,
+      "seed_index": 46,
+      "winner": 0,
+      "won": true,
+      "turns": 136,
+      "vp": 10
+    },
+    {
+      "seat": 0,
+      "seed_index": 40,
+      "winner": 0,
+      "won": true,
+      "turns": 80,
+      "vp": 11
+    },
+    {
+      "seat": 0,
+      "seed_index": 2,
+      "winner": 0,
+      "won": true,
+      "turns": 128,
+      "vp": 10
+    },
+    {
+      "seat": 0,
+      "seed_index": 21,
+      "winner": 0,
+      "won": true,
+      "turns": 172,
+      "vp": 10
+    },
+    {
+      "seat": 0,
+      "seed_index": 43,
+      "winner": 0,
+      "won": true,
+      "turns": 136,
+      "vp": 10
+    },
+    {
+      "seat": 0,
+      "seed_index": 47,
+      "winner": 0,
+      "won": true,
+      "turns": 108,
+      "vp": 10
+    },
+    {
+      "seat": 0,
+      "seed_index": 44,
+      "winner": 3,
+      "won": false,
+      "turns": 99,
+      "vp": 7
+    },
+    {
+      "seat": 0,
+      "seed_index": 45,
+      "winner": 0,
+      "won": true,
+      "turns": 164,
+      "vp": 10
+    },
+    {
+      "seat": 0,
+      "seed_index": 16,
+      "winner": 1,
+      "won": false,
+      "turns": 121,
+      "vp": 5
+    },
+    {
+      "seat": 0,
+      "seed_index": 41,
+      "winner": 1,
+      "won": false,
+      "turns": 105,
+      "vp": 5
+    },
+    {
+      "seat": 0,
+      "seed_index": 4,
+      "winner": 0,
+      "won": true,
+      "turns": 92,
+      "vp": 10
+    },
+    {
+      "seat": 0,
+      "seed_index": 5,
+      "winner": 0,
+      "won": true,
+      "turns": 76,
+      "vp": 10
+    },
+    {
+      "seat": 0,
+      "seed_index": 23,
+      "winner": 0,
+      "won": true,
+      "turns": 140,
+      "vp": 10
+    },
+    {
+      "seat": 0,
+      "seed_index": 22,
+      "winner": 0,
+      "won": true,
+      "turns": 144,
+      "vp": 10
+    },
+    {
+      "seat": 0,
+      "seed_index": 17,
+      "winner": 0,
+      "won": true,
+      "turns": 136,
+      "vp": 10
+    },
+    {
+      "seat": 0,
+      "seed_index": 3,
+      "winner": 2,
+      "won": false,
+      "turns": 150,
+      "vp": 7
+    },
+    {
+      "seat": 1,
+      "seed_index": 24,
+      "winner": 1,
+      "won": true,
+      "turns": 81,
+      "vp": 10
+    },
+    {
+      "seat": 1,
+      "seed_index": 3,
+      "winner": 1,
+      "won": true,
+      "turns": 113,
+      "vp": 10
+    },
+    {
+      "seat": 1,
+      "seed_index": 16,
+      "winner": 3,
+      "won": false,
+      "turns": 87,
+      "vp": 5
+    },
+    {
+      "seat": 1,
+      "seed_index": 18,
+      "winner": 1,
+      "won": true,
+      "turns": 77,
+      "vp": 10
+    },
+    {
+      "seat": 1,
+      "seed_index": 6,
+      "winner": 0,
+      "won": false,
+      "turns": 100,
+      "vp": 6
+    },
+    {
+      "seat": 1,
+      "seed_index": 15,
+      "winner": 1,
+      "won": true,
+      "turns": 133,
+      "vp": 10
+    },
+    {
+      "seat": 1,
+      "seed_index": 9,
+      "winner": 1,
+      "won": true,
+      "turns": 145,
+      "vp": 10
+    },
+    {
+      "seat": 1,
+      "seed_index": 0,
+      "winner": 1,
+      "won": true,
+      "turns": 121,
+      "vp": 10
+    },
+    {
+      "seat": 1,
+      "seed_index": 4,
+      "winner": 0,
+      "won": false,
+      "turns": 112,
+      "vp": 5
+    },
+    {
+      "seat": 1,
+      "seed_index": 12,
+      "winner": 1,
+      "won": true,
+      "turns": 153,
+      "vp": 10
+    },
+    {
+      "seat": 1,
+      "seed_index": 21,
+      "winner": 1,
+      "won": true,
+      "turns": 197,
+      "vp": 10
+    },
+    {
+      "seat": 1,
+      "seed_index": 7,
+      "winner": 1,
+      "won": true,
+      "turns": 109,
+      "vp": 10
+    },
+    {
+      "seat": 1,
+      "seed_index": 25,
+      "winner": 3,
+      "won": false,
+      "turns": 199,
+      "vp": 7
+    },
+    {
+      "seat": 1,
+      "seed_index": 5,
+      "winner": 0,
+      "won": false,
+      "turns": 52,
+      "vp": 6
+    },
+    {
+      "seat": 1,
+      "seed_index": 13,
+      "winner": 1,
+      "won": true,
+      "turns": 77,
+      "vp": 11
+    },
+    {
+      "seat": 1,
+      "seed_index": 19,
+      "winner": 1,
+      "won": true,
+      "turns": 121,
+      "vp": 10
+    },
+    {
+      "seat": 1,
+      "seed_index": 10,
+      "winner": 1,
+      "won": true,
+      "turns": 77,
+      "vp": 10
+    },
+    {
+      "seat": 1,
+      "seed_index": 17,
+      "winner": 1,
+      "won": true,
+      "turns": 105,
+      "vp": 10
+    },
+    {
+      "seat": 1,
+      "seed_index": 1,
+      "winner": 1,
+      "won": true,
+      "turns": 153,
+      "vp": 10
+    },
+    {
+      "seat": 1,
+      "seed_index": 22,
+      "winner": 1,
+      "won": true,
+      "turns": 85,
+      "vp": 10
+    },
+    {
+      "seat": 1,
+      "seed_index": 11,
+      "winner": 1,
+      "won": true,
+      "turns": 65,
+      "vp": 10
+    },
+    {
+      "seat": 1,
+      "seed_index": 23,
+      "winner": 1,
+      "won": true,
+      "turns": 109,
+      "vp": 10
+    },
+    {
+      "seat": 1,
+      "seed_index": 14,
+      "winner": 1,
+      "won": true,
+      "turns": 141,
+      "vp": 10
+    },
+    {
+      "seat": 1,
+      "seed_index": 20,
+      "winner": 0,
+      "won": false,
+      "turns": 156,
+      "vp": 5
+    },
+    {
+      "seat": 1,
+      "seed_index": 2,
+      "winner": 2,
+      "won": false,
+      "turns": 126,
+      "vp": 6
+    },
+    {
+      "seat": 1,
+      "seed_index": 8,
+      "winner": 3,
+      "won": false,
+      "turns": 287,
+      "vp": 9
+    },
+    {
+      "seat": 1,
+      "seed_index": 30,
+      "winner": 1,
+      "won": true,
+      "turns": 85,
+      "vp": 11
+    },
+    {
+      "seat": 1,
+      "seed_index": 33,
+      "winner": 0,
+      "won": false,
+      "turns": 112,
+      "vp": 5
+    },
+    {
+      "seat": 1,
+      "seed_index": 27,
+      "winner": 3,
+      "won": false,
+      "turns": 107,
+      "vp": 8
+    },
+    {
+      "seat": 1,
+      "seed_index": 36,
+      "winner": 1,
+      "won": true,
+      "turns": 153,
+      "vp": 10
+    },
+    {
+      "seat": 1,
+      "seed_index": 35,
+      "winner": 0,
+      "won": false,
+      "turns": 92,
+      "vp": 5
+    },
+    {
+      "seat": 1,
+      "seed_index": 31,
+      "winner": 1,
+      "won": true,
+      "turns": 101,
+      "vp": 10
+    },
+    {
+      "seat": 1,
+      "seed_index": 26,
+      "winner": 1,
+      "won": true,
+      "turns": 213,
+      "vp": 10
+    },
+    {
+      "seat": 1,
+      "seed_index": 42,
+      "winner": 1,
+      "won": true,
+      "turns": 117,
+      "vp": 11
+    },
+    {
+      "seat": 1,
+      "seed_index": 28,
+      "winner": 2,
+      "won": false,
+      "turns": 142,
+      "vp": 5
+    },
+    {
+      "seat": 1,
+      "seed_index": 39,
+      "winner": 1,
+      "won": true,
+      "turns": 97,
+      "vp": 10
+    },
+    {
+      "seat": 1,
+      "seed_index": 32,
+      "winner": 1,
+      "won": true,
+      "turns": 125,
+      "vp": 10
+    },
+    {
+      "seat": 1,
+      "seed_index": 40,
+      "winner": 2,
+      "won": false,
+      "turns": 130,
+      "vp": 4
+    },
+    {
+      "seat": 1,
+      "seed_index": 46,
+      "winner": 1,
+      "won": true,
+      "turns": 109,
+      "vp": 10
+    },
+    {
+      "seat": 1,
+      "seed_index": 34,
+      "winner": 1,
+      "won": true,
+      "turns": 165,
+      "vp": 10
+    },
+    {
+      "seat": 1,
+      "seed_index": 38,
+      "winner": 1,
+      "won": true,
+      "turns": 105,
+      "vp": 10
+    },
+    {
+      "seat": 1,
+      "seed_index": 45,
+      "winner": 1,
+      "won": true,
+      "turns": 121,
+      "vp": 10
+    },
+    {
+      "seat": 1,
+      "seed_index": 43,
+      "winner": 1,
+      "won": true,
+      "turns": 89,
+      "vp": 10
+    },
+    {
+      "seat": 1,
+      "seed_index": 37,
+      "winner": 1,
+      "won": true,
+      "turns": 137,
+      "vp": 10
+    },
+    {
+      "seat": 1,
+      "seed_index": 47,
+      "winner": 1,
+      "won": true,
+      "turns": 109,
+      "vp": 10
+    },
+    {
+      "seat": 1,
+      "seed_index": 41,
+      "winner": 2,
+      "won": false,
+      "turns": 106,
+      "vp": 5
+    },
+    {
+      "seat": 1,
+      "seed_index": 29,
+      "winner": 0,
+      "won": false,
+      "turns": 124,
+      "vp": 9
+    },
+    {
+      "seat": 1,
+      "seed_index": 44,
+      "winner": 1,
+      "won": true,
+      "turns": 185,
+      "vp": 10
+    },
+    {
+      "seat": 2,
+      "seed_index": 37,
+      "winner": 2,
+      "won": true,
+      "turns": 82,
+      "vp": 10
+    },
+    {
+      "seat": 2,
+      "seed_index": 45,
+      "winner": 2,
+      "won": true,
+      "turns": 114,
+      "vp": 10
+    },
+    {
+      "seat": 2,
+      "seed_index": 36,
+      "winner": 2,
+      "won": true,
+      "turns": 110,
+      "vp": 10
+    },
+    {
+      "seat": 2,
+      "seed_index": 39,
+      "winner": 2,
+      "won": true,
+      "turns": 78,
+      "vp": 10
+    },
+    {
+      "seat": 2,
+      "seed_index": 12,
+      "winner": 2,
+      "won": true,
+      "turns": 146,
+      "vp": 11
+    },
+    {
+      "seat": 2,
+      "seed_index": 42,
+      "winner": 2,
+      "won": true,
+      "turns": 118,
+      "vp": 10
+    },
+    {
+      "seat": 2,
+      "seed_index": 30,
+      "winner": 2,
+      "won": true,
+      "turns": 122,
+      "vp": 10
+    },
+    {
+      "seat": 2,
+      "seed_index": 0,
+      "winner": 2,
+      "won": true,
+      "turns": 130,
+      "vp": 10
+    },
+    {
+      "seat": 2,
+      "seed_index": 6,
+      "winner": 3,
+      "won": false,
+      "turns": 159,
+      "vp": 7
+    },
+    {
+      "seat": 2,
+      "seed_index": 46,
+      "winner": 2,
+      "won": true,
+      "turns": 126,
+      "vp": 10
+    },
+    {
+      "seat": 2,
+      "seed_index": 24,
+      "winner": 2,
+      "won": true,
+      "turns": 234,
+      "vp": 10
+    },
+    {
+      "seat": 2,
+      "seed_index": 38,
+      "winner": 2,
+      "won": true,
+      "turns": 158,
+      "vp": 10
+    },
+    {
+      "seat": 2,
+      "seed_index": 40,
+      "winner": 2,
+      "won": true,
+      "turns": 102,
+      "vp": 10
+    },
+    {
+      "seat": 2,
+      "seed_index": 13,
+      "winner": 1,
+      "won": false,
+      "turns": 81,
+      "vp": 4
+    },
+    {
+      "seat": 2,
+      "seed_index": 43,
+      "winner": 2,
+      "won": true,
+      "turns": 130,
+      "vp": 10
+    },
+    {
+      "seat": 2,
+      "seed_index": 1,
+      "winner": 2,
+      "won": true,
+      "turns": 94,
+      "vp": 10
+    },
+    {
+      "seat": 2,
+      "seed_index": 33,
+      "winner": 2,
+      "won": true,
+      "turns": 122,
+      "vp": 10
+    },
+    {
+      "seat": 2,
+      "seed_index": 7,
+      "winner": 0,
+      "won": false,
+      "turns": 148,
+      "vp": 8
+    },
+    {
+      "seat": 2,
+      "seed_index": 47,
+      "winner": 2,
+      "won": true,
+      "turns": 146,
+      "vp": 10
+    },
+    {
+      "seat": 2,
+      "seed_index": 25,
+      "winner": 2,
+      "won": true,
+      "turns": 158,
+      "vp": 10
+    },
+    {
+      "seat": 2,
+      "seed_index": 14,
+      "winner": 2,
+      "won": true,
+      "turns": 146,
+      "vp": 10
+    },
+    {
+      "seat": 2,
+      "seed_index": 41,
+      "winner": 2,
+      "won": true,
+      "turns": 126,
+      "vp": 10
+    },
+    {
+      "seat": 2,
+      "seed_index": 32,
+      "winner": 3,
+      "won": false,
+      "turns": 123,
+      "vp": 7
+    },
+    {
+      "seat": 2,
+      "seed_index": 2,
+      "winner": 2,
+      "won": true,
+      "turns": 138,
+      "vp": 10
+    },
+    {
+      "seat": 2,
+      "seed_index": 8,
+      "winner": 2,
+      "won": true,
+      "turns": 130,
+      "vp": 10
+    },
+    {
+      "seat": 2,
+      "seed_index": 26,
+      "winner": 3,
+      "won": false,
+      "turns": 171,
+      "vp": 6
+    },
+    {
+      "seat": 2,
+      "seed_index": 27,
+      "winner": 3,
+      "won": false,
+      "turns": 91,
+      "vp": 3
+    },
+    {
+      "seat": 2,
+      "seed_index": 3,
+      "winner": 2,
+      "won": true,
+      "turns": 98,
+      "vp": 10
+    },
+    {
+      "seat": 2,
+      "seed_index": 31,
+      "winner": 2,
+      "won": true,
+      "turns": 214,
+      "vp": 10
+    },
+    {
+      "seat": 2,
+      "seed_index": 34,
+      "winner": 2,
+      "won": true,
+      "turns": 146,
+      "vp": 10
+    },
+    {
+      "seat": 2,
+      "seed_index": 15,
+      "winner": 2,
+      "won": true,
+      "turns": 134,
+      "vp": 10
+    },
+    {
+      "seat": 2,
+      "seed_index": 28,
+      "winner": 0,
+      "won": false,
+      "turns": 100,
+      "vp": 6
+    },
+    {
+      "seat": 2,
+      "seed_index": 44,
+      "winner": 3,
+      "won": false,
+      "turns": 179,
+      "vp": 7
+    },
+    {
+      "seat": 2,
+      "seed_index": 4,
+      "winner": 2,
+      "won": true,
+      "turns": 98,
+      "vp": 10
+    },
+    {
+      "seat": 2,
+      "seed_index": 18,
+      "winner": 1,
+      "won": false,
+      "turns": 205,
+      "vp": 9
+    },
+    {
+      "seat": 2,
+      "seed_index": 9,
+      "winner": 2,
+      "won": true,
+      "turns": 142,
+      "vp": 10
+    },
+    {
+      "seat": 2,
+      "seed_index": 29,
+      "winner": 1,
+      "won": false,
+      "turns": 97,
+      "vp": 4
+    },
+    {
+      "seat": 2,
+      "seed_index": 5,
+      "winner": 0,
+      "won": false,
+      "turns": 68,
+      "vp": 6
+    },
+    {
+      "seat": 2,
+      "seed_index": 10,
+      "winner": 2,
+      "won": true,
+      "turns": 58,
+      "vp": 11
+    },
+    {
+      "seat": 2,
+      "seed_index": 35,
+      "winner": 0,
+      "won": false,
+      "turns": 136,
+      "vp": 4
+    },
+    {
+      "seat": 2,
+      "seed_index": 16,
+      "winner": 2,
+      "won": true,
+      "turns": 94,
+      "vp": 10
+    },
+    {
+      "seat": 2,
+      "seed_index": 22,
+      "winner": 2,
+      "won": true,
+      "turns": 78,
+      "vp": 11
+    },
+    {
+      "seat": 2,
+      "seed_index": 11,
+      "winner": 2,
+      "won": true,
+      "turns": 70,
+      "vp": 10
+    },
+    {
+      "seat": 2,
+      "seed_index": 23,
+      "winner": 2,
+      "won": true,
+      "turns": 82,
+      "vp": 10
+    },
+    {
+      "seat": 2,
+      "seed_index": 20,
+      "winner": 2,
+      "won": true,
+      "turns": 106,
+      "vp": 10
+    },
+    {
+      "seat": 2,
+      "seed_index": 21,
+      "winner": 2,
+      "won": true,
+      "turns": 202,
+      "vp": 10
+    },
+    {
+      "seat": 2,
+      "seed_index": 19,
+      "winner": 2,
+      "won": true,
+      "turns": 150,
+      "vp": 10
+    },
+    {
+      "seat": 2,
+      "seed_index": 17,
+      "winner": 2,
+      "won": true,
+      "turns": 166,
+      "vp": 10
+    },
+    {
+      "seat": 3,
+      "seed_index": 45,
+      "winner": 3,
+      "won": true,
+      "turns": 75,
+      "vp": 10
+    },
+    {
+      "seat": 3,
+      "seed_index": 42,
+      "winner": 3,
+      "won": true,
+      "turns": 99,
+      "vp": 10
+    },
+    {
+      "seat": 3,
+      "seed_index": 34,
+      "winner": 3,
+      "won": true,
+      "turns": 103,
+      "vp": 10
+    },
+    {
+      "seat": 3,
+      "seed_index": 36,
+      "winner": 3,
+      "won": true,
+      "turns": 87,
+      "vp": 11
+    },
+    {
+      "seat": 3,
+      "seed_index": 24,
+      "winner": 3,
+      "won": true,
+      "turns": 139,
+      "vp": 10
+    },
+    {
+      "seat": 3,
+      "seed_index": 0,
+      "winner": 3,
+      "won": true,
+      "turns": 103,
+      "vp": 10
+    },
+    {
+      "seat": 3,
+      "seed_index": 30,
+      "winner": 3,
+      "won": true,
+      "turns": 139,
+      "vp": 10
+    },
+    {
+      "seat": 3,
+      "seed_index": 12,
+      "winner": 3,
+      "won": true,
+      "turns": 183,
+      "vp": 10
+    },
+    {
+      "seat": 3,
+      "seed_index": 33,
+      "winner": 3,
+      "won": true,
+      "turns": 147,
+      "vp": 10
+    },
+    {
+      "seat": 3,
+      "seed_index": 31,
+      "winner": 3,
+      "won": true,
+      "turns": 195,
+      "vp": 10
+    },
+    {
+      "seat": 3,
+      "seed_index": 13,
+      "winner": 2,
+      "won": false,
+      "turns": 114,
+      "vp": 4
+    },
+    {
+      "seat": 3,
+      "seed_index": 43,
+      "winner": 0,
+      "won": false,
+      "turns": 172,
+      "vp": 6
+    },
+    {
+      "seat": 3,
+      "seed_index": 46,
+      "winner": 3,
+      "won": true,
+      "turns": 155,
+      "vp": 10
+    },
+    {
+      "seat": 3,
+      "seed_index": 27,
+      "winner": 3,
+      "won": true,
+      "turns": 135,
+      "vp": 10
+    },
+    {
+      "seat": 3,
+      "seed_index": 37,
+      "winner": 3,
+      "won": true,
+      "turns": 127,
+      "vp": 10
+    },
+    {
+      "seat": 3,
+      "seed_index": 35,
+      "winner": 0,
+      "won": false,
+      "turns": 184,
+      "vp": 9
+    },
+    {
+      "seat": 3,
+      "seed_index": 1,
+      "winner": 3,
+      "won": true,
+      "turns": 183,
+      "vp": 10
+    },
+    {
+      "seat": 3,
+      "seed_index": 32,
+      "winner": 1,
+      "won": false,
+      "turns": 145,
+      "vp": 6
+    },
+    {
+      "seat": 3,
+      "seed_index": 14,
+      "winner": 1,
+      "won": false,
+      "turns": 125,
+      "vp": 7
+    },
+    {
+      "seat": 3,
+      "seed_index": 18,
+      "winner": 3,
+      "won": true,
+      "turns": 95,
+      "vp": 10
+    },
+    {
+      "seat": 3,
+      "seed_index": 28,
+      "winner": 3,
+      "won": true,
+      "turns": 143,
+      "vp": 10
+    },
+    {
+      "seat": 3,
+      "seed_index": 47,
+      "winner": 1,
+      "won": false,
+      "turns": 153,
+      "vp": 8
+    },
+    {
+      "seat": 3,
+      "seed_index": 25,
+      "winner": 3,
+      "won": true,
+      "turns": 195,
+      "vp": 10
+    },
+    {
+      "seat": 3,
+      "seed_index": 15,
+      "winner": 1,
+      "won": false,
+      "turns": 141,
+      "vp": 8
+    },
+    {
+      "seat": 3,
+      "seed_index": 26,
+      "winner": 0,
+      "won": false,
+      "turns": 88,
+      "vp": 6
+    },
+    {
+      "seat": 3,
+      "seed_index": 38,
+      "winner": 3,
+      "won": true,
+      "turns": 159,
+      "vp": 10
+    },
+    {
+      "seat": 3,
+      "seed_index": 2,
+      "winner": 3,
+      "won": true,
+      "turns": 91,
+      "vp": 10
+    },
+    {
+      "seat": 3,
+      "seed_index": 44,
+      "winner": 3,
+      "won": true,
+      "turns": 215,
+      "vp": 10
+    },
+    {
+      "seat": 3,
+      "seed_index": 29,
+      "winner": 0,
+      "won": false,
+      "turns": 108,
+      "vp": 5
+    },
+    {
+      "seat": 3,
+      "seed_index": 21,
+      "winner": 3,
+      "won": true,
+      "turns": 91,
+      "vp": 10
+    },
+    {
+      "seat": 3,
+      "seed_index": 6,
+      "winner": 3,
+      "won": true,
+      "turns": 131,
+      "vp": 10
+    },
+    {
+      "seat": 3,
+      "seed_index": 19,
+      "winner": 3,
+      "won": true,
+      "turns": 167,
+      "vp": 10
+    },
+    {
+      "seat": 3,
+      "seed_index": 16,
+      "winner": 3,
+      "won": true,
+      "turns": 67,
+      "vp": 10
+    },
+    {
+      "seat": 3,
+      "seed_index": 3,
+      "winner": 3,
+      "won": true,
+      "turns": 83,
+      "vp": 10
+    },
+    {
+      "seat": 3,
+      "seed_index": 17,
+      "winner": 3,
+      "won": true,
+      "turns": 127,
+      "vp": 10
+    },
+    {
+      "seat": 3,
+      "seed_index": 20,
+      "winner": 3,
+      "won": true,
+      "turns": 135,
+      "vp": 10
+    },
+    {
+      "seat": 3,
+      "seed_index": 9,
+      "winner": 3,
+      "won": true,
+      "turns": 111,
+      "vp": 10
+    },
+    {
+      "seat": 3,
+      "seed_index": 22,
+      "winner": 3,
+      "won": true,
+      "turns": 147,
+      "vp": 10
+    },
+    {
+      "seat": 3,
+      "seed_index": 40,
+      "winner": 3,
+      "won": true,
+      "turns": 135,
+      "vp": 10
+    },
+    {
+      "seat": 3,
+      "seed_index": 7,
+      "winner": 3,
+      "won": true,
+      "turns": 83,
+      "vp": 10
+    },
+    {
+      "seat": 3,
+      "seed_index": 39,
+      "winner": 3,
+      "won": true,
+      "turns": 143,
+      "vp": 10
+    },
+    {
+      "seat": 3,
+      "seed_index": 5,
+      "winner": 0,
+      "won": false,
+      "turns": 68,
+      "vp": 3
+    },
+    {
+      "seat": 3,
+      "seed_index": 10,
+      "winner": 3,
+      "won": true,
+      "turns": 95,
+      "vp": 10
+    },
+    {
+      "seat": 3,
+      "seed_index": 23,
+      "winner": 3,
+      "won": true,
+      "turns": 115,
+      "vp": 10
+    },
+    {
+      "seat": 3,
+      "seed_index": 8,
+      "winner": 2,
+      "won": false,
+      "turns": 118,
+      "vp": 6
+    },
+    {
+      "seat": 3,
+      "seed_index": 41,
+      "winner": 3,
+      "won": true,
+      "turns": 107,
+      "vp": 10
+    },
+    {
+      "seat": 3,
+      "seed_index": 11,
+      "winner": 3,
+      "won": true,
+      "turns": 91,
+      "vp": 10
+    },
+    {
+      "seat": 3,
+      "seed_index": 4,
+      "winner": 3,
+      "won": true,
+      "turns": 135,
+      "vp": 10
+    }
+  ]
+}

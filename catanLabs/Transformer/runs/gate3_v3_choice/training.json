@@ -1,0 +1,58 @@
+{
+  "device": "cpu",
+  "optimizer_budget_seconds": 590.0,
+  "optimizer_elapsed_seconds": 274.113,
+  "budget_respected": true,
+  "epochs": 26,
+  "stopped_reason": "validation_plateau",
+  "best_epoch": 20,
+  "parameters": 13857,
+  "examples": 29899,
+  "train_examples": 13394,
+  "forced_training_rows_excluded": 10538,
+  "include_forced_training": false,
+  "validation_examples": 3060,
+  "unique_games": 100,
+  "heldout_games": [
+    9,
+    15,
+    28,
+    42,
+    52,
+    54,
+    61,
+    67,
+    77,
+    89
+  ],
+  "sealed_final_games": [
+    12,
+    18,
+    19,
+    22,
+    35,
+    63,
+    69,
+    84,
+    88,
+    91
+  ],
+  "split": "audited disjoint board-seed split",
+  "split_file": "catanLabs/Transformer/runs/gate2_native_v3/dataset.split.json",
+  "split_file_sha256": "fab3be26faaff4f470ce437f6a25bbc67ed4984c272925cb57079599ae423126",
+  "validation": {
+    "loss": 0.7387101876969431,
+    "accuracy": 0.7120915032679739,
+    "examples": 3060
+  },
+  "architecture": {
+    "width": 32,
+    "layers": 1,
+    "heads": 4
+  },
+  "checkpoint": "catanLabs/Transformer/runs/gate3_v3_choice/best.pt",
+  "dataset": "catanLabs/Transformer/runs/gate2_native_v3/dataset.npz",
+  "dataset_sha256": "5e1939e12f36353700dc4b94180e225eb0418153215df2b786d6bbf412661bea",
+  "dataset_schema": "catanlabs-transformer-dataset-v3",
+  "feature_schema": "visible-state-tokens-v3"
+}

@@ -1,0 +1,1555 @@
+{
+  "schema": "catanlabs-transformer-dataset-v2",
+  "dataset_schema": "catanlabs-transformer-dataset-v2",
+  "feature_schema": "visible-state-tokens-v2",
+  "benchmark_protocol": "catanLabs-four-player-v5-canonical-actions-and-chance",
+  "rules_manifest_sha256": "6996bcc8f1680bbb483f64cf7281305b925bc97974e50ef8136d25d66ce2bf3e",
+  "seed": 20266000,
+  "teacher": "fair",
+  "teacher_depth": null,
+  "teacher_config": "/Users/anixd/Documents/Hyde/catanLabs/Competitive/configs/fair_army_finish.json",
+  "teacher_config_sha256": "5f908a453c87556463170378ef92d4ce79f03ecfdf0f1c304daae93fd3222ab3",
+  "teacher_source_sha256": "5078de2b4bf5c0e6db96e847de9013bb6509d9db8b7fa4962fa23f48b55bb9de",
+  "teacher_information_boundary": "player-visible policy; hidden perturbation tested",
+  "teacher_action_contract": "Selected before the real action executes; never trained from future outcomes.",
+  "outcome_contract": "Post-game analysis only; incomplete games use -1; excluded from action-policy inputs.",
+  "chance_contract": {
+    "isolated_copy_rng": true,
+    "forced_search_outcomes": true,
+    "canonical_action_order": true,
+    "python_hash_seed": "0"
+  },
+  "engine": {
+    "source": "https://github.com/bcollazo/catanatron.git",
+    "commit": "ecf931181b9a65bb4116a2153fb78c16f1438e00",
+    "python_root": "/Users/anixd/Documents/Hyde/start/catan_lab/vendor/catanatron/catanatron"
+  },
+  "unique_examples": 29676,
+  "unique_key": "player-relative visible state tokens + sorted legal actions",
+  "feature_boundary": "own private cards; public board/opponents/bank; no opponent hands or unplayed card identities",
+  "max_legal_actions": 54,
+  "games": [
+    {
+      "game_id": 0,
+      "seed": 20266000,
+      "behavior_by_input_color": [
+        "random",
+        "weighted",
+        "value",
+        "fair"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 244,
+      "turns": 74,
+      "wall_seconds": 0.355
+    },
+    {
+      "game_id": 1,
+      "seed": 20266001,
+      "behavior_by_input_color": [
+        "weighted",
+        "value",
+        "fair",
+        "alphabeta1"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 336,
+      "turns": 101,
+      "wall_seconds": 0.642
+    },
+    {
+      "game_id": 2,
+      "seed": 20266002,
+      "behavior_by_input_color": [
+        "value",
+        "fair",
+        "alphabeta1",
+        "random"
+      ],
+      "status": "completed",
+      "winner": "ORANGE",
+      "actions": 255,
+      "turns": 80,
+      "wall_seconds": 0.485
+    },
+    {
+      "game_id": 3,
+      "seed": 20266003,
+      "behavior_by_input_color": [
+        "fair",
+        "alphabeta1",
+        "random",
+        "weighted"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 341,
+      "turns": 94,
+      "wall_seconds": 0.592
+    },
+    {
+      "game_id": 4,
+      "seed": 20266004,
+      "behavior_by_input_color": [
+        "alphabeta1",
+        "random",
+        "weighted",
+        "value"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 159,
+      "turns": 50,
+      "wall_seconds": 0.307
+    },
+    {
+      "game_id": 5,
+      "seed": 20266005,
+      "behavior_by_input_color": [
+        "random",
+        "weighted",
+        "value",
+        "fair"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 258,
+      "turns": 79,
+      "wall_seconds": 0.359
+    },
+    {
+      "game_id": 6,
+      "seed": 20266006,
+      "behavior_by_input_color": [
+        "weighted",
+        "value",
+        "fair",
+        "alphabeta1"
+      ],
+      "status": "completed",
+      "winner": "ORANGE",
+      "actions": 375,
+      "turns": 107,
+      "wall_seconds": 0.665
+    },
+    {
+      "game_id": 7,
+      "seed": 20266007,
+      "behavior_by_input_color": [
+        "value",
+        "fair",
+        "alphabeta1",
+        "random"
+      ],
+      "status": "completed",
+      "winner": "ORANGE",
+      "actions": 280,
+      "turns": 86,
+      "wall_seconds": 0.527
+    },
+    {
+      "game_id": 8,
+      "seed": 20266008,
+      "behavior_by_input_color": [
+        "fair",
+        "alphabeta1",
+        "random",
+        "weighted"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 260,
+      "turns": 77,
+      "wall_seconds": 0.397
+    },
+    {
+      "game_id": 9,
+      "seed": 20266009,
+      "behavior_by_input_color": [
+        "alphabeta1",
+        "random",
+        "weighted",
+        "value"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 277,
+      "turns": 86,
+      "wall_seconds": 0.577
+    },
+    {
+      "game_id": 10,
+      "seed": 20266010,
+      "behavior_by_input_color": [
+        "random",
+        "weighted",
+        "value",
+        "fair"
+      ],
+      "status": "completed",
+      "winner": "ORANGE",
+      "actions": 249,
+      "turns": 78,
+      "wall_seconds": 0.293
+    },
+    {
+      "game_id": 11,
+      "seed": 20266011,
+      "behavior_by_input_color": [
+        "weighted",
+        "value",
+        "fair",
+        "alphabeta1"
+      ],
+      "status": "completed",
+      "winner": "ORANGE",
+      "actions": 440,
+      "turns": 120,
+      "wall_seconds": 0.731
+    },
+    {
+      "game_id": 12,
+      "seed": 20266012,
+      "behavior_by_input_color": [
+        "value",
+        "fair",
+        "alphabeta1",
+        "random"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 246,
+      "turns": 73,
+      "wall_seconds": 0.487
+    },
+    {
+      "game_id": 13,
+      "seed": 20266013,
+      "behavior_by_input_color": [
+        "fair",
+        "alphabeta1",
+        "random",
+        "weighted"
+      ],
+      "status": "completed",
+      "winner": "BLUE",
+      "actions": 370,
+      "turns": 109,
+      "wall_seconds": 0.491
+    },
+    {
+      "game_id": 14,
+      "seed": 20266014,
+      "behavior_by_input_color": [
+        "alphabeta1",
+        "random",
+        "weighted",
+        "value"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 300,
+      "turns": 86,
+      "wall_seconds": 0.601
+    },
+    {
+      "game_id": 15,
+      "seed": 20266015,
+      "behavior_by_input_color": [
+        "random",
+        "weighted",
+        "value",
+        "fair"
+      ],
+      "status": "completed",
+      "winner": "ORANGE",
+      "actions": 290,
+      "turns": 80,
+      "wall_seconds": 0.45
+    },
+    {
+      "game_id": 16,
+      "seed": 20266016,
+      "behavior_by_input_color": [
+        "weighted",
+        "value",
+        "fair",
+        "alphabeta1"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 292,
+      "turns": 81,
+      "wall_seconds": 0.677
+    },
+    {
+      "game_id": 17,
+      "seed": 20266017,
+      "behavior_by_input_color": [
+        "value",
+        "fair",
+        "alphabeta1",
+        "random"
+      ],
+      "status": "completed",
+      "winner": "ORANGE",
+      "actions": 326,
+      "turns": 91,
+      "wall_seconds": 0.662
+    },
+    {
+      "game_id": 18,
+      "seed": 20266018,
+      "behavior_by_input_color": [
+        "fair",
+        "alphabeta1",
+        "random",
+        "weighted"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 285,
+      "turns": 83,
+      "wall_seconds": 0.397
+    },
+    {
+      "game_id": 19,
+      "seed": 20266019,
+      "behavior_by_input_color": [
+        "alphabeta1",
+        "random",
+        "weighted",
+        "value"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 253,
+      "turns": 78,
+      "wall_seconds": 0.529
+    },
+    {
+      "game_id": 20,
+      "seed": 20266020,
+      "behavior_by_input_color": [
+        "random",
+        "weighted",
+        "value",
+        "fair"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 263,
+      "turns": 78,
+      "wall_seconds": 0.361
+    },
+    {
+      "game_id": 21,
+      "seed": 20266021,
+      "behavior_by_input_color": [
+        "weighted",
+        "value",
+        "fair",
+        "alphabeta1"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 303,
+      "turns": 82,
+      "wall_seconds": 0.668
+    },
+    {
+      "game_id": 22,
+      "seed": 20266022,
+      "behavior_by_input_color": [
+        "value",
+        "fair",
+        "alphabeta1",
+        "random"
+      ],
+      "status": "completed",
+      "winner": "ORANGE",
+      "actions": 267,
+      "turns": 76,
+      "wall_seconds": 0.539
+    },
+    {
+      "game_id": 23,
+      "seed": 20266023,
+      "behavior_by_input_color": [
+        "fair",
+        "alphabeta1",
+        "random",
+        "weighted"
+      ],
+      "status": "completed",
+      "winner": "BLUE",
+      "actions": 249,
+      "turns": 75,
+      "wall_seconds": 0.532
+    },
+    {
+      "game_id": 24,
+      "seed": 20266024,
+      "behavior_by_input_color": [
+        "alphabeta1",
+        "random",
+        "weighted",
+        "value"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 313,
+      "turns": 92,
+      "wall_seconds": 0.607
+    },
+    {
+      "game_id": 25,
+      "seed": 20266025,
+      "behavior_by_input_color": [
+        "random",
+        "weighted",
+        "value",
+        "fair"
+      ],
+      "status": "completed",
+      "winner": "ORANGE",
+      "actions": 190,
+      "turns": 58,
+      "wall_seconds": 0.257
+    },
+    {
+      "game_id": 26,
+      "seed": 20266026,
+      "behavior_by_input_color": [
+        "weighted",
+        "value",
+        "fair",
+        "alphabeta1"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 206,
+      "turns": 63,
+      "wall_seconds": 0.431
+    },
+    {
+      "game_id": 27,
+      "seed": 20266027,
+      "behavior_by_input_color": [
+        "value",
+        "fair",
+        "alphabeta1",
+        "random"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 364,
+      "turns": 101,
+      "wall_seconds": 0.808
+    },
+    {
+      "game_id": 28,
+      "seed": 20266028,
+      "behavior_by_input_color": [
+        "fair",
+        "alphabeta1",
+        "random",
+        "weighted"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 377,
+      "turns": 117,
+      "wall_seconds": 0.586
+    },
+    {
+      "game_id": 29,
+      "seed": 20266029,
+      "behavior_by_input_color": [
+        "alphabeta1",
+        "random",
+        "weighted",
+        "value"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 255,
+      "turns": 81,
+      "wall_seconds": 0.547
+    },
+    {
+      "game_id": 30,
+      "seed": 20266030,
+      "behavior_by_input_color": [
+        "random",
+        "weighted",
+        "value",
+        "fair"
+      ],
+      "status": "completed",
+      "winner": "ORANGE",
+      "actions": 302,
+      "turns": 95,
+      "wall_seconds": 0.383
+    },
+    {
+      "game_id": 31,
+      "seed": 20266031,
+      "behavior_by_input_color": [
+        "weighted",
+        "value",
+        "fair",
+        "alphabeta1"
+      ],
+      "status": "completed",
+      "winner": "ORANGE",
+      "actions": 358,
+      "turns": 103,
+      "wall_seconds": 0.571
+    },
+    {
+      "game_id": 32,
+      "seed": 20266032,
+      "behavior_by_input_color": [
+        "value",
+        "fair",
+        "alphabeta1",
+        "random"
+      ],
+      "status": "completed",
+      "winner": "BLUE",
+      "actions": 352,
+      "turns": 96,
+      "wall_seconds": 0.685
+    },
+    {
+      "game_id": 33,
+      "seed": 20266033,
+      "behavior_by_input_color": [
+        "fair",
+        "alphabeta1",
+        "random",
+        "weighted"
+      ],
+      "status": "completed",
+      "winner": "BLUE",
+      "actions": 206,
+      "turns": 61,
+      "wall_seconds": 0.352
+    },
+    {
+      "game_id": 34,
+      "seed": 20266034,
+      "behavior_by_input_color": [
+        "alphabeta1",
+        "random",
+        "weighted",
+        "value"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 487,
+      "turns": 116,
+      "wall_seconds": 0.827
+    },
+    {
+      "game_id": 35,
+      "seed": 20266035,
+      "behavior_by_input_color": [
+        "random",
+        "weighted",
+        "value",
+        "fair"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 229,
+      "turns": 66,
+      "wall_seconds": 0.273
+    },
+    {
+      "game_id": 36,
+      "seed": 20266036,
+      "behavior_by_input_color": [
+        "weighted",
+        "value",
+        "fair",
+        "alphabeta1"
+      ],
+      "status": "completed",
+      "winner": "BLUE",
+      "actions": 359,
+      "turns": 100,
+      "wall_seconds": 0.763
+    },
+    {
+      "game_id": 37,
+      "seed": 20266037,
+      "behavior_by_input_color": [
+        "value",
+        "fair",
+        "alphabeta1",
+        "random"
+      ],
+      "status": "completed",
+      "winner": "ORANGE",
+      "actions": 246,
+      "turns": 71,
+      "wall_seconds": 0.412
+    },
+    {
+      "game_id": 38,
+      "seed": 20266038,
+      "behavior_by_input_color": [
+        "fair",
+        "alphabeta1",
+        "random",
+        "weighted"
+      ],
+      "status": "completed",
+      "winner": "BLUE",
+      "actions": 294,
+      "turns": 92,
+      "wall_seconds": 0.421
+    },
+    {
+      "game_id": 39,
+      "seed": 20266039,
+      "behavior_by_input_color": [
+        "alphabeta1",
+        "random",
+        "weighted",
+        "value"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 222,
+      "turns": 66,
+      "wall_seconds": 0.394
+    },
+    {
+      "game_id": 40,
+      "seed": 20266040,
+      "behavior_by_input_color": [
+        "random",
+        "weighted",
+        "value",
+        "fair"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 277,
+      "turns": 76,
+      "wall_seconds": 0.384
+    },
+    {
+      "game_id": 41,
+      "seed": 20266041,
+      "behavior_by_input_color": [
+        "weighted",
+        "value",
+        "fair",
+        "alphabeta1"
+      ],
+      "status": "completed",
+      "winner": "ORANGE",
+      "actions": 346,
+      "turns": 94,
+      "wall_seconds": 0.593
+    },
+    {
+      "game_id": 42,
+      "seed": 20266042,
+      "behavior_by_input_color": [
+        "value",
+        "fair",
+        "alphabeta1",
+        "random"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 154,
+      "turns": 45,
+      "wall_seconds": 0.29
+    },
+    {
+      "game_id": 43,
+      "seed": 20266043,
+      "behavior_by_input_color": [
+        "fair",
+        "alphabeta1",
+        "random",
+        "weighted"
+      ],
+      "status": "completed",
+      "winner": "BLUE",
+      "actions": 219,
+      "turns": 69,
+      "wall_seconds": 0.327
+    },
+    {
+      "game_id": 44,
+      "seed": 20266044,
+      "behavior_by_input_color": [
+        "alphabeta1",
+        "random",
+        "weighted",
+        "value"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 395,
+      "turns": 112,
+      "wall_seconds": 0.663
+    },
+    {
+      "game_id": 45,
+      "seed": 20266045,
+      "behavior_by_input_color": [
+        "random",
+        "weighted",
+        "value",
+        "fair"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 310,
+      "turns": 87,
+      "wall_seconds": 0.482
+    },
+    {
+      "game_id": 46,
+      "seed": 20266046,
+      "behavior_by_input_color": [
+        "weighted",
+        "value",
+        "fair",
+        "alphabeta1"
+      ],
+      "status": "completed",
+      "winner": "ORANGE",
+      "actions": 412,
+      "turns": 113,
+      "wall_seconds": 0.911
+    },
+    {
+      "game_id": 47,
+      "seed": 20266047,
+      "behavior_by_input_color": [
+        "value",
+        "fair",
+        "alphabeta1",
+        "random"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 224,
+      "turns": 66,
+      "wall_seconds": 0.35
+    },
+    {
+      "game_id": 48,
+      "seed": 20266048,
+      "behavior_by_input_color": [
+        "fair",
+        "alphabeta1",
+        "random",
+        "weighted"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 171,
+      "turns": 54,
+      "wall_seconds": 0.295
+    },
+    {
+      "game_id": 49,
+      "seed": 20266049,
+      "behavior_by_input_color": [
+        "alphabeta1",
+        "random",
+        "weighted",
+        "value"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 200,
+      "turns": 66,
+      "wall_seconds": 0.37
+    },
+    {
+      "game_id": 50,
+      "seed": 20266050,
+      "behavior_by_input_color": [
+        "random",
+        "weighted",
+        "value",
+        "fair"
+      ],
+      "status": "completed",
+      "winner": "ORANGE",
+      "actions": 380,
+      "turns": 113,
+      "wall_seconds": 0.556
+    },
+    {
+      "game_id": 51,
+      "seed": 20266051,
+      "behavior_by_input_color": [
+        "weighted",
+        "value",
+        "fair",
+        "alphabeta1"
+      ],
+      "status": "completed",
+      "winner": "ORANGE",
+      "actions": 206,
+      "turns": 70,
+      "wall_seconds": 0.307
+    },
+    {
+      "game_id": 52,
+      "seed": 20266052,
+      "behavior_by_input_color": [
+        "value",
+        "fair",
+        "alphabeta1",
+        "random"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 260,
+      "turns": 77,
+      "wall_seconds": 0.43
+    },
+    {
+      "game_id": 53,
+      "seed": 20266053,
+      "behavior_by_input_color": [
+        "fair",
+        "alphabeta1",
+        "random",
+        "weighted"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 256,
+      "turns": 71,
+      "wall_seconds": 0.362
+    },
+    {
+      "game_id": 54,
+      "seed": 20266054,
+      "behavior_by_input_color": [
+        "alphabeta1",
+        "random",
+        "weighted",
+        "value"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 364,
+      "turns": 98,
+      "wall_seconds": 0.758
+    },
+    {
+      "game_id": 55,
+      "seed": 20266055,
+      "behavior_by_input_color": [
+        "random",
+        "weighted",
+        "value",
+        "fair"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 283,
+      "turns": 86,
+      "wall_seconds": 0.334
+    },
+    {
+      "game_id": 56,
+      "seed": 20266056,
+      "behavior_by_input_color": [
+        "weighted",
+        "value",
+        "fair",
+        "alphabeta1"
+      ],
+      "status": "completed",
+      "winner": "BLUE",
+      "actions": 309,
+      "turns": 79,
+      "wall_seconds": 0.603
+    },
+    {
+      "game_id": 57,
+      "seed": 20266057,
+      "behavior_by_input_color": [
+        "value",
+        "fair",
+        "alphabeta1",
+        "random"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 363,
+      "turns": 92,
+      "wall_seconds": 0.709
+    },
+    {
+      "game_id": 58,
+      "seed": 20266058,
+      "behavior_by_input_color": [
+        "fair",
+        "alphabeta1",
+        "random",
+        "weighted"
+      ],
+      "status": "completed",
+      "winner": "BLUE",
+      "actions": 232,
+      "turns": 68,
+      "wall_seconds": 0.446
+    },
+    {
+      "game_id": 59,
+      "seed": 20266059,
+      "behavior_by_input_color": [
+        "alphabeta1",
+        "random",
+        "weighted",
+        "value"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 379,
+      "turns": 107,
+      "wall_seconds": 0.699
+    },
+    {
+      "game_id": 60,
+      "seed": 20266060,
+      "behavior_by_input_color": [
+        "random",
+        "weighted",
+        "value",
+        "fair"
+      ],
+      "status": "completed",
+      "winner": "ORANGE",
+      "actions": 193,
+      "turns": 60,
+      "wall_seconds": 0.301
+    },
+    {
+      "game_id": 61,
+      "seed": 20266061,
+      "behavior_by_input_color": [
+        "weighted",
+        "value",
+        "fair",
+        "alphabeta1"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 297,
+      "turns": 82,
+      "wall_seconds": 0.485
+    },
+    {
+      "game_id": 62,
+      "seed": 20266062,
+      "behavior_by_input_color": [
+        "value",
+        "fair",
+        "alphabeta1",
+        "random"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 304,
+      "turns": 79,
+      "wall_seconds": 0.814
+    },
+    {
+      "game_id": 63,
+      "seed": 20266063,
+      "behavior_by_input_color": [
+        "fair",
+        "alphabeta1",
+        "random",
+        "weighted"
+      ],
+      "status": "completed",
+      "winner": "BLUE",
+      "actions": 196,
+      "turns": 58,
+      "wall_seconds": 0.398
+    },
+    {
+      "game_id": 64,
+      "seed": 20266064,
+      "behavior_by_input_color": [
+        "alphabeta1",
+        "random",
+        "weighted",
+        "value"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 347,
+      "turns": 104,
+      "wall_seconds": 0.577
+    },
+    {
+      "game_id": 65,
+      "seed": 20266065,
+      "behavior_by_input_color": [
+        "random",
+        "weighted",
+        "value",
+        "fair"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 334,
+      "turns": 100,
+      "wall_seconds": 0.473
+    },
+    {
+      "game_id": 66,
+      "seed": 20266066,
+      "behavior_by_input_color": [
+        "weighted",
+        "value",
+        "fair",
+        "alphabeta1"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 270,
+      "turns": 78,
+      "wall_seconds": 0.462
+    },
+    {
+      "game_id": 67,
+      "seed": 20266067,
+      "behavior_by_input_color": [
+        "value",
+        "fair",
+        "alphabeta1",
+        "random"
+      ],
+      "status": "completed",
+      "winner": "BLUE",
+      "actions": 287,
+      "turns": 84,
+      "wall_seconds": 0.436
+    },
+    {
+      "game_id": 68,
+      "seed": 20266068,
+      "behavior_by_input_color": [
+        "fair",
+        "alphabeta1",
+        "random",
+        "weighted"
+      ],
+      "status": "completed",
+      "winner": "BLUE",
+      "actions": 300,
+      "turns": 85,
+      "wall_seconds": 0.465
+    },
+    {
+      "game_id": 69,
+      "seed": 20266069,
+      "behavior_by_input_color": [
+        "alphabeta1",
+        "random",
+        "weighted",
+        "value"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 254,
+      "turns": 72,
+      "wall_seconds": 0.616
+    },
+    {
+      "game_id": 70,
+      "seed": 20266070,
+      "behavior_by_input_color": [
+        "random",
+        "weighted",
+        "value",
+        "fair"
+      ],
+      "status": "completed",
+      "winner": "ORANGE",
+      "actions": 373,
+      "turns": 105,
+      "wall_seconds": 0.701
+    },
+    {
+      "game_id": 71,
+      "seed": 20266071,
+      "behavior_by_input_color": [
+        "weighted",
+        "value",
+        "fair",
+        "alphabeta1"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 290,
+      "turns": 77,
+      "wall_seconds": 0.561
+    },
+    {
+      "game_id": 72,
+      "seed": 20266072,
+      "behavior_by_input_color": [
+        "value",
+        "fair",
+        "alphabeta1",
+        "random"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 416,
+      "turns": 115,
+      "wall_seconds": 0.759
+    },
+    {
+      "game_id": 73,
+      "seed": 20266073,
+      "behavior_by_input_color": [
+        "fair",
+        "alphabeta1",
+        "random",
+        "weighted"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 360,
+      "turns": 100,
+      "wall_seconds": 0.546
+    },
+    {
+      "game_id": 74,
+      "seed": 20266074,
+      "behavior_by_input_color": [
+        "alphabeta1",
+        "random",
+        "weighted",
+        "value"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 402,
+      "turns": 121,
+      "wall_seconds": 0.624
+    },
+    {
+      "game_id": 75,
+      "seed": 20266075,
+      "behavior_by_input_color": [
+        "random",
+        "weighted",
+        "value",
+        "fair"
+      ],
+      "status": "completed",
+      "winner": "ORANGE",
+      "actions": 347,
+      "turns": 98,
+      "wall_seconds": 0.601
+    },
+    {
+      "game_id": 76,
+      "seed": 20266076,
+      "behavior_by_input_color": [
+        "weighted",
+        "value",
+        "fair",
+        "alphabeta1"
+      ],
+      "status": "completed",
+      "winner": "ORANGE",
+      "actions": 224,
+      "turns": 69,
+      "wall_seconds": 0.369
+    },
+    {
+      "game_id": 77,
+      "seed": 20266077,
+      "behavior_by_input_color": [
+        "value",
+        "fair",
+        "alphabeta1",
+        "random"
+      ],
+      "status": "completed",
+      "winner": "ORANGE",
+      "actions": 369,
+      "turns": 104,
+      "wall_seconds": 0.774
+    },
+    {
+      "game_id": 78,
+      "seed": 20266078,
+      "behavior_by_input_color": [
+        "fair",
+        "alphabeta1",
+        "random",
+        "weighted"
+      ],
+      "status": "completed",
+      "winner": "BLUE",
+      "actions": 288,
+      "turns": 86,
+      "wall_seconds": 0.422
+    },
+    {
+      "game_id": 79,
+      "seed": 20266079,
+      "behavior_by_input_color": [
+        "alphabeta1",
+        "random",
+        "weighted",
+        "value"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 314,
+      "turns": 96,
+      "wall_seconds": 0.571
+    },
+    {
+      "game_id": 80,
+      "seed": 20266080,
+      "behavior_by_input_color": [
+        "random",
+        "weighted",
+        "value",
+        "fair"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 347,
+      "turns": 103,
+      "wall_seconds": 0.492
+    },
+    {
+      "game_id": 81,
+      "seed": 20266081,
+      "behavior_by_input_color": [
+        "weighted",
+        "value",
+        "fair",
+        "alphabeta1"
+      ],
+      "status": "completed",
+      "winner": "BLUE",
+      "actions": 328,
+      "turns": 90,
+      "wall_seconds": 0.61
+    },
+    {
+      "game_id": 82,
+      "seed": 20266082,
+      "behavior_by_input_color": [
+        "value",
+        "fair",
+        "alphabeta1",
+        "random"
+      ],
+      "status": "completed",
+      "winner": "ORANGE",
+      "actions": 269,
+      "turns": 74,
+      "wall_seconds": 0.583
+    },
+    {
+      "game_id": 83,
+      "seed": 20266083,
+      "behavior_by_input_color": [
+        "fair",
+        "alphabeta1",
+        "random",
+        "weighted"
+      ],
+      "status": "completed",
+      "winner": "BLUE",
+      "actions": 454,
+      "turns": 126,
+      "wall_seconds": 0.705
+    },
+    {
+      "game_id": 84,
+      "seed": 20266084,
+      "behavior_by_input_color": [
+        "alphabeta1",
+        "random",
+        "weighted",
+        "value"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 416,
+      "turns": 116,
+      "wall_seconds": 0.994
+    },
+    {
+      "game_id": 85,
+      "seed": 20266085,
+      "behavior_by_input_color": [
+        "random",
+        "weighted",
+        "value",
+        "fair"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 256,
+      "turns": 79,
+      "wall_seconds": 0.317
+    },
+    {
+      "game_id": 86,
+      "seed": 20266086,
+      "behavior_by_input_color": [
+        "weighted",
+        "value",
+        "fair",
+        "alphabeta1"
+      ],
+      "status": "completed",
+      "winner": "ORANGE",
+      "actions": 268,
+      "turns": 73,
+      "wall_seconds": 0.452
+    },
+    {
+      "game_id": 87,
+      "seed": 20266087,
+      "behavior_by_input_color": [
+        "value",
+        "fair",
+        "alphabeta1",
+        "random"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 327,
+      "turns": 88,
+      "wall_seconds": 0.582
+    },
+    {
+      "game_id": 88,
+      "seed": 20266088,
+      "behavior_by_input_color": [
+        "fair",
+        "alphabeta1",
+        "random",
+        "weighted"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 250,
+      "turns": 76,
+      "wall_seconds": 0.395
+    },
+    {
+      "game_id": 89,
+      "seed": 20266089,
+      "behavior_by_input_color": [
+        "alphabeta1",
+        "random",
+        "weighted",
+        "value"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 261,
+      "turns": 78,
+      "wall_seconds": 0.522
+    },
+    {
+      "game_id": 90,
+      "seed": 20266090,
+      "behavior_by_input_color": [
+        "random",
+        "weighted",
+        "value",
+        "fair"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 294,
+      "turns": 83,
+      "wall_seconds": 0.459
+    },
+    {
+      "game_id": 91,
+      "seed": 20266091,
+      "behavior_by_input_color": [
+        "weighted",
+        "value",
+        "fair",
+        "alphabeta1"
+      ],
+      "status": "completed",
+      "winner": "ORANGE",
+      "actions": 276,
+      "turns": 82,
+      "wall_seconds": 0.429
+    },
+    {
+      "game_id": 92,
+      "seed": 20266092,
+      "behavior_by_input_color": [
+        "value",
+        "fair",
+        "alphabeta1",
+        "random"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 261,
+      "turns": 70,
+      "wall_seconds": 0.482
+    },
+    {
+      "game_id": 93,
+      "seed": 20266093,
+      "behavior_by_input_color": [
+        "fair",
+        "alphabeta1",
+        "random",
+        "weighted"
+      ],
+      "status": "completed",
+      "winner": "BLUE",
+      "actions": 228,
+      "turns": 75,
+      "wall_seconds": 0.352
+    },
+    {
+      "game_id": 94,
+      "seed": 20266094,
+      "behavior_by_input_color": [
+        "alphabeta1",
+        "random",
+        "weighted",
+        "value"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 174,
+      "turns": 53,
+      "wall_seconds": 0.342
+    },
+    {
+      "game_id": 95,
+      "seed": 20266095,
+      "behavior_by_input_color": [
+        "random",
+        "weighted",
+        "value",
+        "fair"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 281,
+      "turns": 82,
+      "wall_seconds": 0.376
+    },
+    {
+      "game_id": 96,
+      "seed": 20266096,
+      "behavior_by_input_color": [
+        "weighted",
+        "value",
+        "fair",
+        "alphabeta1"
+      ],
+      "status": "completed",
+      "winner": "BLUE",
+      "actions": 300,
+      "turns": 81,
+      "wall_seconds": 0.591
+    },
+    {
+      "game_id": 97,
+      "seed": 20266097,
+      "behavior_by_input_color": [
+        "value",
+        "fair",
+        "alphabeta1",
+        "random"
+      ],
+      "status": "completed",
+      "winner": "RED",
+      "actions": 401,
+      "turns": 120,
+      "wall_seconds": 0.808
+    },
+    {
+      "game_id": 98,
+      "seed": 20266098,
+      "behavior_by_input_color": [
+        "fair",
+        "alphabeta1",
+        "random",
+        "weighted"
+      ],
+      "status": "completed",
+      "winner": "BLUE",
+      "actions": 524,
+      "turns": 140,
+      "wall_seconds": 0.926
+    },
+    {
+      "game_id": 99,
+      "seed": 20266099,
+      "behavior_by_input_color": [
+        "alphabeta1",
+        "random",
+        "weighted",
+        "value"
+      ],
+      "status": "completed",
+      "winner": "WHITE",
+      "actions": 178,
+      "turns": 58,
+      "wall_seconds": 0.288
+    }
+  ],
+  "phases": {
+    "BUILD_INITIAL_SETTLEMENT": 800,
+    "BUILD_INITIAL_ROAD": 800,
+    "PLAY_TURN": 22384,
+    "MOVE_ROBBER": 1579,
+    "DISCARD": 4113
+  },
+  "trajectory_policies": {
+    "fair": 6712,
+    "weighted": 4878,
+    "random": 4849,
+    "value": 6654,
+    "alphabeta1": 6583
+  },
+  "collection_wall_seconds": 55.288,
+  "profile_seconds": {
+    "observation_encoding": 10.308948,
+    "teacher_scoring": 22.628621,
+    "behavior_decision": 17.632028,
+    "game_stepping": 0.533151
+  },
+  "dataset_sha256": "0716a25b8883aa32179e65009f885ddfe9c3a5dbfcdeaf4ee4bb4c15907e436d"
+}

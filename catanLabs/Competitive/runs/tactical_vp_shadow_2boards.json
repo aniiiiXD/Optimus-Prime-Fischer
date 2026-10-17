@@ -1,0 +1,238 @@
+{
+  "probe": "fair-value shadowed by deterministic late-turn VP scanner",
+  "seed": 20271200,
+  "boards": 2,
+  "seats_per_board": 4,
+  "config": {
+    "value_weights": {
+      "reachable_production_0": 100000,
+      "reachable_production_1": 30000,
+      "buildable_nodes": 10000,
+      "hand_synergy": 1000,
+      "army_size": 30000
+    },
+    "dev_buy_vp_threshold": 7,
+    "dev_buy_late_bonus": 30000,
+    "tactical_min_vp": 7,
+    "tactical_max_roots": 64,
+    "tactical_max_followups": 256
+  },
+  "totals": {
+    "own_decisions": 784,
+    "eligible_decisions": 84,
+    "found_lines": 13,
+    "overrides": 6,
+    "truncated": 0,
+    "roots": 612,
+    "followups": 1847,
+    "visibility_checks": 8
+  },
+  "scan_latency_ms": {
+    "median": 2.057,
+    "p95": 25.853,
+    "max": 59.775,
+    "mean": 6.532
+  },
+  "examples": [
+    {
+      "seed": 20271200,
+      "seat": 1,
+      "turn": 87,
+      "vp": 8,
+      "baseline": "END_TURN",
+      "tactical": "MARITIME_TRADE",
+      "line_vp": 10,
+      "line": {
+        "first": [
+          "MARITIME_TRADE",
+          "('WHEAT', 'WHEAT', None, None, 'BRICK')"
+        ],
+        "second": [
+          "BUILD_ROAD",
+          "(52, 53)"
+        ],
+        "result_vp": 10
+      },
+      "scan_ms": 1.505
+    },
+    {
+      "seed": 20271200,
+      "seat": 1,
+      "turn": 91,
+      "vp": 8,
+      "baseline": "MARITIME_TRADE",
+      "tactical": "MARITIME_TRADE",
+      "line_vp": 10,
+      "line": {
+        "first": [
+          "MARITIME_TRADE",
+          "('WHEAT', 'WHEAT', None, None, 'BRICK')"
+        ],
+        "second": [
+          "BUILD_ROAD",
+          "(52, 53)"
+        ],
+        "result_vp": 10
+      },
+      "scan_ms": 1.769
+    },
+    {
+      "seed": 20271201,
+      "seat": 3,
+      "turn": 69,
+      "vp": 8,
+      "baseline": "BUILD_ROAD",
+      "tactical": "MARITIME_TRADE",
+      "line_vp": 9,
+      "line": {
+        "first": [
+          "MARITIME_TRADE",
+          "('WOOD', 'WOOD', 'WOOD', 'WOOD', 'SHEEP')"
+        ],
+        "second": [
+          "BUILD_SETTLEMENT",
+          "28"
+        ],
+        "result_vp": 9
+      },
+      "scan_ms": 51.382
+    },
+    {
+      "seed": 20271201,
+      "seat": 3,
+      "turn": 69,
+      "vp": 8,
+      "baseline": "BUILD_ROAD",
+      "tactical": "MARITIME_TRADE",
+      "line_vp": 9,
+      "line": {
+        "first": [
+          "MARITIME_TRADE",
+          "('WOOD', 'WOOD', 'WOOD', 'WOOD', 'SHEEP')"
+        ],
+        "second": [
+          "BUILD_SETTLEMENT",
+          "28"
+        ],
+        "result_vp": 9
+      },
+      "scan_ms": 28.353
+    },
+    {
+      "seed": 20271201,
+      "seat": 3,
+      "turn": 69,
+      "vp": 8,
+      "baseline": "BUILD_ROAD",
+      "tactical": "MARITIME_TRADE",
+      "line_vp": 9,
+      "line": {
+        "first": [
+          "MARITIME_TRADE",
+          "('WHEAT', 'WHEAT', 'WHEAT', 'WHEAT', 'SHEEP')"
+        ],
+        "second": [
+          "BUILD_SETTLEMENT",
+          "28"
+        ],
+        "result_vp": 9
+      },
+      "scan_ms": 17.889
+    },
+    {
+      "seed": 20271201,
+      "seat": 3,
+      "turn": 81,
+      "vp": 8,
+      "baseline": "MARITIME_TRADE",
+      "tactical": "MARITIME_TRADE",
+      "line_vp": 9,
+      "line": {
+        "first": [
+          "MARITIME_TRADE",
+          "('WHEAT', 'WHEAT', 'WHEAT', 'WHEAT', 'SHEEP')"
+        ],
+        "second": [
+          "BUILD_SETTLEMENT",
+          "28"
+        ],
+        "result_vp": 9
+      },
+      "scan_ms": 1.916
+    }
+  ],
+  "games": [
+    {
+      "seed": 20271200,
+      "seat": 0,
+      "status": "completed",
+      "actions": 499,
+      "winner": "WHITE",
+      "candidate_vp": 8,
+      "wall_seconds": 1.468
+    },
+    {
+      "seed": 20271200,
+      "seat": 1,
+      "status": "completed",
+      "actions": 329,
+      "winner": "BLUE",
+      "candidate_vp": 10,
+      "wall_seconds": 0.897
+    },
+    {
+      "seed": 20271200,
+      "seat": 2,
+      "status": "completed",
+      "actions": 291,
+      "winner": "BLUE",
+      "candidate_vp": 4,
+      "wall_seconds": 0.82
+    },
+    {
+      "seed": 20271200,
+      "seat": 3,
+      "status": "completed",
+      "actions": 337,
+      "winner": "BLUE",
+      "candidate_vp": 6,
+      "wall_seconds": 1.126
+    },
+    {
+      "seed": 20271201,
+      "seat": 0,
+      "status": "completed",
+      "actions": 480,
+      "winner": "BLUE",
+      "candidate_vp": 11,
+      "wall_seconds": 1.748
+    },
+    {
+      "seed": 20271201,
+      "seat": 1,
+      "status": "completed",
+      "actions": 466,
+      "winner": "WHITE",
+      "candidate_vp": 9,
+      "wall_seconds": 1.183
+    },
+    {
+      "seed": 20271201,
+      "seat": 2,
+      "status": "completed",
+      "actions": 400,
+      "winner": "RED",
+      "candidate_vp": 6,
+      "wall_seconds": 0.651
+    },
+    {
+      "seed": 20271201,
+      "seat": 3,
+      "status": "completed",
+      "actions": 318,
+      "winner": "RED",
+      "candidate_vp": 10,
+      "wall_seconds": 0.623
+    }
+  ]
+}

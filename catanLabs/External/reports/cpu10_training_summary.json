@@ -1,0 +1,43 @@
+{
+  "protocol": "catan-rl-cpu10-finetune-v1",
+  "host": "macOS-27.0.1-arm64-arm-64bit",
+  "cpu": "Apple M5",
+  "device": "cpu",
+  "initial_stopped_run": {
+    "updates": 19,
+    "new_decisions": 466944,
+    "recorded_wall_seconds": 18.8,
+    "last_sps": 10304.8
+  },
+  "corrected_run": {
+    "updates": 387,
+    "new_decisions": 9510912,
+    "recorded_wall_seconds": 482.0,
+    "last_sps": 15977.7
+  },
+  "total_recorded_wall_seconds": 500.8,
+  "training_budget_seconds": 600,
+  "starting_checkpoint_sha256": "c4258f235c673efe6968b0aa4de66a1411f01012fa14fe71f548dfff681525a3",
+  "fine_tuned_checkpoint_sha256": "3d8d5cd885ee5dd5e0ab132a0c5fdfd87fd4e387f76624dc445e2aa49f484a55",
+  "config": {
+    "name": "cpu10_finetune_fixed_20261015",
+    "minutes": 8.0,
+    "num_envs": 256,
+    "rollout": 96,
+    "victory_target": 10,
+    "vp_delta": 0.0,
+    "visibility": "perfect",
+    "lr": 0.0001,
+    "epochs": 4,
+    "minibatch": 4096,
+    "hidden": 512,
+    "device": "cpu",
+    "seed": 61018,
+    "eval_every": 999999,
+    "metrics": "../reports/cpu10_finetune_fixed_metrics.jsonl",
+    "resume": "models/catan-512-best.pt",
+    "entropy_coef": 0.01,
+    "vp_delta_final": null,
+    "train_seats": "policy,heuristic,policy,heuristic_v2"
+  }
+}

@@ -1,0 +1,136 @@
+{
+  "probe": "FairValue plays; robber victim tie-break shadowed",
+  "seed": 20272700,
+  "boards": 2,
+  "seats_per_board": 4,
+  "opponents": [
+    "value",
+    "alphabeta1",
+    "alphabeta1"
+  ],
+  "config": {
+    "value_weights": {
+      "reachable_production_0": 100000,
+      "reachable_production_1": 30000,
+      "buildable_nodes": 10000,
+      "hand_synergy": 1000,
+      "army_size": 30000
+    },
+    "dev_buy_vp_threshold": 7,
+    "dev_buy_late_bonus": 30000
+  },
+  "totals": {
+    "own_decisions": 730,
+    "robber_decisions": 31,
+    "chosen_tile_multi_victim": 26,
+    "overrides": 6,
+    "visibility_checks": 8
+  },
+  "scanner_latency_ms": {
+    "median": 0.0043,
+    "p95": 0.0053,
+    "max": 0.0077
+  },
+  "examples": [
+    {
+      "seed": 20272700,
+      "seat": 0,
+      "turn": 58,
+      "baseline_victim_vp": 3,
+      "selected_victim_vp": 5
+    },
+    {
+      "seed": 20272700,
+      "seat": 1,
+      "turn": 115,
+      "baseline_victim_vp": 7,
+      "selected_victim_vp": 9
+    },
+    {
+      "seed": 20272700,
+      "seat": 2,
+      "turn": 92,
+      "baseline_victim_vp": 4,
+      "selected_victim_vp": 5
+    },
+    {
+      "seed": 20272700,
+      "seat": 2,
+      "turn": 96,
+      "baseline_victim_vp": 4,
+      "selected_victim_vp": 5
+    },
+    {
+      "seed": 20272701,
+      "seat": 0,
+      "turn": 42,
+      "baseline_victim_vp": 3,
+      "selected_victim_vp": 4
+    },
+    {
+      "seed": 20272701,
+      "seat": 0,
+      "turn": 46,
+      "baseline_victim_vp": 3,
+      "selected_victim_vp": 4
+    }
+  ],
+  "games": [
+    {
+      "seed": 20272700,
+      "seat": 0,
+      "status": "completed",
+      "actions": 512,
+      "wall_seconds": 0.76
+    },
+    {
+      "seed": 20272700,
+      "seat": 1,
+      "status": "completed",
+      "actions": 483,
+      "wall_seconds": 0.889
+    },
+    {
+      "seed": 20272700,
+      "seat": 2,
+      "status": "completed",
+      "actions": 419,
+      "wall_seconds": 0.587
+    },
+    {
+      "seed": 20272700,
+      "seat": 3,
+      "status": "completed",
+      "actions": 431,
+      "wall_seconds": 0.583
+    },
+    {
+      "seed": 20272701,
+      "seat": 0,
+      "status": "completed",
+      "actions": 330,
+      "wall_seconds": 0.509
+    },
+    {
+      "seed": 20272701,
+      "seat": 1,
+      "status": "completed",
+      "actions": 222,
+      "wall_seconds": 0.26
+    },
+    {
+      "seed": 20272701,
+      "seat": 2,
+      "status": "completed",
+      "actions": 229,
+      "wall_seconds": 0.29
+    },
+    {
+      "seed": 20272701,
+      "seat": 3,
+      "status": "completed",
+      "actions": 187,
+      "wall_seconds": 0.224
+    }
+  ]
+}

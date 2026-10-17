@@ -1,0 +1,3392 @@
+{
+  "protocol": "catanLabs-four-player-v5-canonical-actions-and-chance-selective-rescue",
+  "engine": {
+    "source": "https://github.com/bcollazo/catanatron.git",
+    "commit": "ecf931181b9a65bb4116a2153fb78c16f1438e00",
+    "python_root": "/Users/anixd/Documents/Hyde/start/catan_lab/vendor/catanatron/catanatron"
+  },
+  "rules": {
+    "players": 4,
+    "target_vp": 10,
+    "discard_limit": 7,
+    "friendly_robber": false,
+    "number_placement": "official_spiral",
+    "player_trade_offers": false,
+    "isolated_copy_rng": true,
+    "forced_search_outcomes": true,
+    "frozen_model_sha256": "29b0f7418a873f34a02157dbde10b7f28f4d47ef2356d74076b55173efef3bbd",
+    "fair_config_sha256": "5f908a453c87556463170378ef92d4ce79f03ecfdf0f1c304daae93fd3222ab3"
+  },
+  "candidate": {
+    "type": "opening",
+    "file": "/Users/anixd/Documents/Hyde/catanLabs/Competitive/selective_fair_rescue_agent.py",
+    "sha256": "e3a6864f650ad8b8ada583e407922182ffb14ab11aa01e6afa5ee756c793dbd4",
+    "checkpoint": "/Users/anixd/Documents/Hyde/catanLabs/Competitive/configs/selective_rescue_opening.json",
+    "checkpoint_sha256": "1a6caf76fdfe7085c4e3377bc9dcc454fd892199670b9e20d6a5c6770070e895"
+  },
+  "model_checkpoint": "/Users/anixd/Documents/Hyde/catanLabs/Transformer/runs/gate5_dagger_finetune/best.pt",
+  "fair_config": "/Users/anixd/Documents/Hyde/catanLabs/Competitive/configs/fair_army_finish.json",
+  "split_file": "/Users/anixd/Documents/Hyde/catanLabs/Transformer/runs/gate4_merged_v3/dataset.split.json",
+  "split_file_sha256": "7096dbb1901d09562c7f982dc5964b92b1ffac2407375e589daef5384b41a2df",
+  "boards_per_mix": 8,
+  "first_seed": 20273500,
+  "compositions": {
+    "mixed_diverse": [
+      "weighted",
+      "value",
+      "alphabeta1"
+    ],
+    "mixed_strong": [
+      "value",
+      "alphabeta1",
+      "alphabeta1"
+    ]
+  },
+  "caps": {
+    "max_actions": 15000,
+    "max_turns": 500,
+    "max_game_seconds": 20.0
+  },
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "python_hash_seed": "0",
+  "runner_sha256": "cb893621cbf7f0c9aa4f431650048430e3c54278379bbc72854e3964ac2d1e1c",
+  "tiers": {
+    "mixed_diverse": {
+      "summary": {
+        "attempts": 32,
+        "completed": 32,
+        "wins": 5,
+        "win_rate_all_attempts": 0.15625,
+        "win_rate_wilson95": [
+          0.0686442028250571,
+          0.3175414959753039
+        ],
+        "mean_final_vp": 5.9375,
+        "decision_latency_ms": {
+          "samples": 2748,
+          "median": 0.8672915,
+          "p95": 1.357875
+        },
+        "by_seat": {
+          "0": {
+            "attempts": 8,
+            "wins": 2
+          },
+          "1": {
+            "attempts": 8,
+            "wins": 2
+          },
+          "2": {
+            "attempts": 8,
+            "wins": 0
+          },
+          "3": {
+            "attempts": 8,
+            "wins": 1
+          }
+        }
+      },
+      "games": [
+        {
+          "seed": 20273500,
+          "seat": 0,
+          "color": "ORANGE",
+          "opponent": "mixed_diverse",
+          "opponent_assignments": {
+            "WHITE": "weighted",
+            "RED": "value",
+            "BLUE": "alphabeta1"
+          },
+          "status": "completed",
+          "winner": "RED",
+          "won": false,
+          "candidate_vp": 3,
+          "actions": 350,
+          "turns": 96,
+          "wall_seconds": 0.291,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 73,
+            "forced": 29,
+            "consulted": 4,
+            "disagreed": 4,
+            "overrides": 4,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "DISCARD": {
+                "decisions": 13
+              },
+              "MOVE_ROBBER": {
+                "decisions": 2
+              },
+              "PLAY_TURN": {
+                "decisions": 54,
+                "forced": 29
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273500,
+          "seat": 1,
+          "color": "WHITE",
+          "opponent": "mixed_diverse",
+          "opponent_assignments": {
+            "ORANGE": "value",
+            "RED": "alphabeta1",
+            "BLUE": "weighted"
+          },
+          "status": "completed",
+          "winner": "RED",
+          "won": false,
+          "candidate_vp": 9,
+          "actions": 302,
+          "turns": 84,
+          "wall_seconds": 0.286,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 77,
+            "forced": 34,
+            "consulted": 4,
+            "disagreed": 3,
+            "overrides": 3,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "DISCARD": {
+                "decisions": 4
+              },
+              "MOVE_ROBBER": {
+                "decisions": 5
+              },
+              "PLAY_TURN": {
+                "decisions": 64,
+                "forced": 34
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273500,
+          "seat": 2,
+          "color": "RED",
+          "opponent": "mixed_diverse",
+          "opponent_assignments": {
+            "ORANGE": "alphabeta1",
+            "WHITE": "weighted",
+            "BLUE": "value"
+          },
+          "status": "completed",
+          "winner": "BLUE",
+          "won": false,
+          "candidate_vp": 5,
+          "actions": 330,
+          "turns": 93,
+          "wall_seconds": 0.265,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 95,
+            "forced": 33,
+            "consulted": 4,
+            "disagreed": 4,
+            "overrides": 4,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "DISCARD": {
+                "decisions": 21
+              },
+              "MOVE_ROBBER": {
+                "decisions": 2
+              },
+              "PLAY_TURN": {
+                "decisions": 68,
+                "forced": 33
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273500,
+          "seat": 3,
+          "color": "BLUE",
+          "opponent": "mixed_diverse",
+          "opponent_assignments": {
+            "ORANGE": "weighted",
+            "WHITE": "value",
+            "RED": "alphabeta1"
+          },
+          "status": "completed",
+          "winner": "WHITE",
+          "won": false,
+          "candidate_vp": 7,
+          "actions": 452,
+          "turns": 127,
+          "wall_seconds": 0.343,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 119,
+            "forced": 40,
+            "consulted": 4,
+            "disagreed": 3,
+            "overrides": 3,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "DISCARD": {
+                "decisions": 18
+              },
+              "MOVE_ROBBER": {
+                "decisions": 6
+              },
+              "PLAY_TURN": {
+                "decisions": 91,
+                "forced": 40
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273501,
+          "seat": 0,
+          "color": "RED",
+          "opponent": "mixed_diverse",
+          "opponent_assignments": {
+            "WHITE": "value",
+            "BLUE": "alphabeta1",
+            "ORANGE": "weighted"
+          },
+          "status": "completed",
+          "winner": "RED",
+          "won": true,
+          "candidate_vp": 10,
+          "actions": 389,
+          "turns": 106,
+          "wall_seconds": 0.334,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 124,
+            "forced": 36,
+            "consulted": 4,
+            "disagreed": 2,
+            "overrides": 2,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "DISCARD": {
+                "decisions": 28
+              },
+              "MOVE_ROBBER": {
+                "decisions": 8
+              },
+              "PLAY_TURN": {
+                "decisions": 84,
+                "forced": 36
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273501,
+          "seat": 1,
+          "color": "WHITE",
+          "opponent": "mixed_diverse",
+          "opponent_assignments": {
+            "RED": "alphabeta1",
+            "BLUE": "weighted",
+            "ORANGE": "value"
+          },
+          "status": "completed",
+          "winner": "ORANGE",
+          "won": false,
+          "candidate_vp": 5,
+          "actions": 361,
+          "turns": 113,
+          "wall_seconds": 0.288,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 93,
+            "forced": 37,
+            "consulted": 4,
+            "disagreed": 4,
+            "overrides": 4,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "DISCARD": {
+                "decisions": 14
+              },
+              "MOVE_ROBBER": {
+                "decisions": 4
+              },
+              "PLAY_TURN": {
+                "decisions": 71,
+                "forced": 37
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273501,
+          "seat": 2,
+          "color": "BLUE",
+          "opponent": "mixed_diverse",
+          "opponent_assignments": {
+            "RED": "weighted",
+            "WHITE": "value",
+            "ORANGE": "alphabeta1"
+          },
+          "status": "completed",
+          "winner": "WHITE",
+          "won": false,
+          "candidate_vp": 5,
+          "actions": 308,
+          "turns": 91,
+          "wall_seconds": 0.29,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 68,
+            "forced": 31,
+            "consulted": 4,
+            "disagreed": 4,
+            "overrides": 4,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "DISCARD": {
+                "decisions": 4
+              },
+              "MOVE_ROBBER": {
+                "decisions": 3
+              },
+              "PLAY_TURN": {
+                "decisions": 57,
+                "forced": 31
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273501,
+          "seat": 3,
+          "color": "ORANGE",
+          "opponent": "mixed_diverse",
+          "opponent_assignments": {
+            "RED": "value",
+            "WHITE": "alphabeta1",
+            "BLUE": "weighted"
+          },
+          "status": "completed",
+          "winner": "RED",
+          "won": false,
+          "candidate_vp": 6,
+          "actions": 246,
+          "turns": 74,
+          "wall_seconds": 0.254,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 68,
+            "forced": 27,
+            "consulted": 4,
+            "disagreed": 2,
+            "overrides": 2,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "DISCARD": {
+                "decisions": 5
+              },
+              "MOVE_ROBBER": {
+                "decisions": 2
+              },
+              "PLAY_TURN": {
+                "decisions": 57,
+                "forced": 27
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273502,
+          "seat": 0,
+          "color": "ORANGE",
+          "opponent": "mixed_diverse",
+          "opponent_assignments": {
+            "RED": "alphabeta1",
+            "WHITE": "weighted",
+            "BLUE": "value"
+          },
+          "status": "completed",
+          "winner": "BLUE",
+          "won": false,
+          "candidate_vp": 5,
+          "actions": 363,
+          "turns": 101,
+          "wall_seconds": 0.382,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 89,
+            "forced": 41,
+            "consulted": 4,
+            "disagreed": 4,
+            "overrides": 4,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "DISCARD": {
+                "decisions": 12
+              },
+              "MOVE_ROBBER": {
+                "decisions": 2
+              },
+              "PLAY_TURN": {
+                "decisions": 71,
+                "forced": 41
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273502,
+          "seat": 1,
+          "color": "RED",
+          "opponent": "mixed_diverse",
+          "opponent_assignments": {
+            "ORANGE": "weighted",
+            "WHITE": "value",
+            "BLUE": "alphabeta1"
+          },
+          "status": "completed",
+          "winner": "BLUE",
+          "won": false,
+          "candidate_vp": 5,
+          "actions": 432,
+          "turns": 109,
+          "wall_seconds": 0.326,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 118,
+            "forced": 41,
+            "consulted": 4,
+            "disagreed": 3,
+            "overrides": 3,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "DISCARD": {
+                "decisions": 32
+              },
+              "MOVE_ROBBER": {
+                "decisions": 9
+              },
+              "PLAY_TURN": {
+                "decisions": 73,
+                "forced": 41
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273502,
+          "seat": 2,
+          "color": "WHITE",
+          "opponent": "mixed_diverse",
+          "opponent_assignments": {
+            "ORANGE": "value",
+            "RED": "alphabeta1",
+            "BLUE": "weighted"
+          },
+          "status": "completed",
+          "winner": "RED",
+          "won": false,
+          "candidate_vp": 7,
+          "actions": 593,
+          "turns": 155,
+          "wall_seconds": 0.515,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 136,
+            "forced": 59,
+            "consulted": 4,
+            "disagreed": 3,
+            "overrides": 3,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "DISCARD": {
+                "decisions": 26
+              },
+              "MOVE_ROBBER": {
+                "decisions": 5
+              },
+              "PLAY_TURN": {
+                "decisions": 101,
+                "forced": 59
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273502,
+          "seat": 3,
+          "color": "BLUE",
+          "opponent": "mixed_diverse",
+          "opponent_assignments": {
+            "ORANGE": "alphabeta1",
+            "RED": "weighted",
+            "WHITE": "value"
+          },
+          "status": "completed",
+          "winner": "BLUE",
+          "won": true,
+          "candidate_vp": 10,
+          "actions": 286,
+          "turns": 85,
+          "wall_seconds": 0.246,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 79,
+            "forced": 34,
+            "consulted": 4,
+            "disagreed": 3,
+            "overrides": 3,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "DISCARD": {
+                "decisions": 8
+              },
+              "MOVE_ROBBER": {
+                "decisions": 5
+              },
+              "PLAY_TURN": {
+                "decisions": 62,
+                "forced": 34
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273503,
+          "seat": 0,
+          "color": "BLUE",
+          "opponent": "mixed_diverse",
+          "opponent_assignments": {
+            "WHITE": "weighted",
+            "RED": "value",
+            "ORANGE": "alphabeta1"
+          },
+          "status": "completed",
+          "winner": "RED",
+          "won": false,
+          "candidate_vp": 6,
+          "actions": 176,
+          "turns": 56,
+          "wall_seconds": 0.175,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 46,
+            "forced": 19,
+            "consulted": 4,
+            "disagreed": 2,
+            "overrides": 2,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "MOVE_ROBBER": {
+                "decisions": 2
+              },
+              "PLAY_TURN": {
+                "decisions": 40,
+                "forced": 19
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273503,
+          "seat": 1,
+          "color": "WHITE",
+          "opponent": "mixed_diverse",
+          "opponent_assignments": {
+            "BLUE": "value",
+            "RED": "alphabeta1",
+            "ORANGE": "weighted"
+          },
+          "status": "completed",
+          "winner": "WHITE",
+          "won": true,
+          "candidate_vp": 11,
+          "actions": 323,
+          "turns": 87,
+          "wall_seconds": 0.28,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 99,
+            "forced": 35,
+            "consulted": 4,
+            "disagreed": 1,
+            "overrides": 1,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "DISCARD": {
+                "decisions": 21
+              },
+              "MOVE_ROBBER": {
+                "decisions": 7
+              },
+              "PLAY_TURN": {
+                "decisions": 67,
+                "forced": 35
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273503,
+          "seat": 2,
+          "color": "RED",
+          "opponent": "mixed_diverse",
+          "opponent_assignments": {
+            "BLUE": "alphabeta1",
+            "WHITE": "weighted",
+            "ORANGE": "value"
+          },
+          "status": "completed",
+          "winner": "BLUE",
+          "won": false,
+          "candidate_vp": 9,
+          "actions": 354,
+          "turns": 94,
+          "wall_seconds": 0.317,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 90,
+            "forced": 33,
+            "consulted": 4,
+            "disagreed": 1,
+            "overrides": 1,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "DISCARD": {
+                "decisions": 12
+              },
+              "MOVE_ROBBER": {
+                "decisions": 2
+              },
+              "PLAY_TURN": {
+                "decisions": 72,
+                "forced": 33
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273503,
+          "seat": 3,
+          "color": "ORANGE",
+          "opponent": "mixed_diverse",
+          "opponent_assignments": {
+            "BLUE": "weighted",
+            "WHITE": "value",
+            "RED": "alphabeta1"
+          },
+          "status": "completed",
+          "winner": "RED",
+          "won": false,
+          "candidate_vp": 5,
+          "actions": 401,
+          "turns": 104,
+          "wall_seconds": 0.409,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 80,
+            "forced": 39,
+            "consulted": 4,
+            "disagreed": 2,
+            "overrides": 2,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "DISCARD": {
+                "decisions": 12
+              },
+              "MOVE_ROBBER": {
+                "decisions": 2
+              },
+              "PLAY_TURN": {
+                "decisions": 62,
+                "forced": 39
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273504,
+          "seat": 0,
+          "color": "ORANGE",
+          "opponent": "mixed_diverse",
+          "opponent_assignments": {
+            "BLUE": "value",
+            "RED": "alphabeta1",
+            "WHITE": "weighted"
+          },
+          "status": "completed",
+          "winner": "BLUE",
+          "won": false,
+          "candidate_vp": 7,
+          "actions": 488,
+          "turns": 119,
+          "wall_seconds": 0.506,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 140,
+            "forced": 47,
+            "consulted": 4,
+            "disagreed": 3,
+            "overrides": 3,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "DISCARD": {
+                "decisions": 24
+              },
+              "MOVE_ROBBER": {
+                "decisions": 8
+              },
+              "PLAY_TURN": {
+                "decisions": 104,
+                "forced": 47
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273504,
+          "seat": 1,
+          "color": "BLUE",
+          "opponent": "mixed_diverse",
+          "opponent_assignments": {
+            "ORANGE": "alphabeta1",
+            "RED": "weighted",
+            "WHITE": "value"
+          },
+          "status": "completed",
+          "winner": "ORANGE",
+          "won": false,
+          "candidate_vp": 3,
+          "actions": 288,
+          "turns": 82,
+          "wall_seconds": 0.304,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 72,
+            "forced": 31,
+            "consulted": 4,
+            "disagreed": 3,
+            "overrides": 3,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "DISCARD": {
+                "decisions": 17
+              },
+              "MOVE_ROBBER": {
+                "decisions": 3
+              },
+              "PLAY_TURN": {
+                "decisions": 48,
+                "forced": 31
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273504,
+          "seat": 2,
+          "color": "RED",
+          "opponent": "mixed_diverse",
+          "opponent_assignments": {
+            "ORANGE": "weighted",
+            "BLUE": "value",
+            "WHITE": "alphabeta1"
+          },
+          "status": "completed",
+          "winner": "BLUE",
+          "won": false,
+          "candidate_vp": 2,
+          "actions": 262,
+          "turns": 75,
+          "wall_seconds": 0.246,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 54,
+            "forced": 27,
+            "consulted": 4,
+            "disagreed": 4,
+            "overrides": 4,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "DISCARD": {
+                "decisions": 5
+              },
+              "MOVE_ROBBER": {
+                "decisions": 2
+              },
+              "PLAY_TURN": {
+                "decisions": 43,
+                "forced": 27
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273504,
+          "seat": 3,
+          "color": "WHITE",
+          "opponent": "mixed_diverse",
+          "opponent_assignments": {
+            "ORANGE": "value",
+            "BLUE": "alphabeta1",
+            "RED": "weighted"
+          },
+          "status": "completed",
+          "winner": "ORANGE",
+          "won": false,
+          "candidate_vp": 7,
+          "actions": 260,
+          "turns": 78,
+          "wall_seconds": 0.22,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 80,
+            "forced": 30,
+            "consulted": 4,
+            "disagreed": 3,
+            "overrides": 3,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "DISCARD": {
+                "decisions": 12
+              },
+              "MOVE_ROBBER": {
+                "decisions": 4
+              },
+              "PLAY_TURN": {
+                "decisions": 60,
+                "forced": 30
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273505,
+          "seat": 0,
+          "color": "RED",
+          "opponent": "mixed_diverse",
+          "opponent_assignments": {
+            "BLUE": "alphabeta1",
+            "ORANGE": "weighted",
+            "WHITE": "value"
+          },
+          "status": "completed",
+          "winner": "WHITE",
+          "won": false,
+          "candidate_vp": 4,
+          "actions": 218,
+          "turns": 61,
+          "wall_seconds": 0.184,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 54,
+            "forced": 25,
+            "consulted": 4,
+            "disagreed": 3,
+            "overrides": 3,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "DISCARD": {
+                "decisions": 12
+              },
+              "MOVE_ROBBER": {
+                "decisions": 1
+              },
+              "PLAY_TURN": {
+                "decisions": 37,
+                "forced": 25
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273505,
+          "seat": 1,
+          "color": "BLUE",
+          "opponent": "mixed_diverse",
+          "opponent_assignments": {
+            "RED": "weighted",
+            "ORANGE": "value",
+            "WHITE": "alphabeta1"
+          },
+          "status": "completed",
+          "winner": "WHITE",
+          "won": false,
+          "candidate_vp": 4,
+          "actions": 262,
+          "turns": 73,
+          "wall_seconds": 0.248,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 56,
+            "forced": 27,
+            "consulted": 4,
+            "disagreed": 3,
+            "overrides": 3,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "DISCARD": {
+                "decisions": 5
+              },
+              "MOVE_ROBBER": {
+                "decisions": 2
+              },
+              "PLAY_TURN": {
+                "decisions": 45,
+                "forced": 27
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273505,
+          "seat": 2,
+          "color": "ORANGE",
+          "opponent": "mixed_diverse",
+          "opponent_assignments": {
+            "RED": "value",
+            "BLUE": "alphabeta1",
+            "WHITE": "weighted"
+          },
+          "status": "completed",
+          "winner": "BLUE",
+          "won": false,
+          "candidate_vp": 3,
+          "actions": 387,
+          "turns": 107,
+          "wall_seconds": 0.416,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 90,
+            "forced": 39,
+            "consulted": 4,
+            "disagreed": 3,
+            "overrides": 3,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "DISCARD": {
+                "decisions": 16
+              },
+              "MOVE_ROBBER": {
+                "decisions": 6
+              },
+              "PLAY_TURN": {
+                "decisions": 64,
+                "forced": 39
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273505,
+          "seat": 3,
+          "color": "WHITE",
+          "opponent": "mixed_diverse",
+          "opponent_assignments": {
+            "RED": "alphabeta1",
+            "BLUE": "weighted",
+            "ORANGE": "value"
+          },
+          "status": "completed",
+          "winner": "ORANGE",
+          "won": false,
+          "candidate_vp": 3,
+          "actions": 259,
+          "turns": 76,
+          "wall_seconds": 0.179,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 69,
+            "forced": 30,
+            "consulted": 4,
+            "disagreed": 3,
+            "overrides": 3,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "DISCARD": {
+                "decisions": 16
+              },
+              "MOVE_ROBBER": {
+                "decisions": 3
+              },
+              "PLAY_TURN": {
+                "decisions": 46,
+                "forced": 30
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273506,
+          "seat": 0,
+          "color": "ORANGE",
+          "opponent": "mixed_diverse",
+          "opponent_assignments": {
+            "RED": "weighted",
+            "BLUE": "value",
+            "WHITE": "alphabeta1"
+          },
+          "status": "completed",
+          "winner": "WHITE",
+          "won": false,
+          "candidate_vp": 5,
+          "actions": 346,
+          "turns": 89,
+          "wall_seconds": 0.335,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 96,
+            "forced": 30,
+            "consulted": 4,
+            "disagreed": 1,
+            "overrides": 1,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2
+              },
+              "DISCARD": {
+                "decisions": 35
+              },
+              "MOVE_ROBBER": {
+                "decisions": 4
+              },
+              "PLAY_TURN": {
+                "decisions": 53,
+                "forced": 30
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273506,
+          "seat": 1,
+          "color": "RED",
+          "opponent": "mixed_diverse",
+          "opponent_assignments": {
+            "ORANGE": "value",
+            "BLUE": "alphabeta1",
+            "WHITE": "weighted"
+          },
+          "status": "completed",
+          "winner": "RED",
+          "won": true,
+          "candidate_vp": 10,
+          "actions": 275,
+          "turns": 79,
+          "wall_seconds": 0.215,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 81,
+            "forced": 33,
+            "consulted": 4,
+            "disagreed": 3,
+            "overrides": 3,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "DISCARD": {
+                "decisions": 9,
+                "forced": 1
+              },
+              "MOVE_ROBBER": {
+                "decisions": 6
+              },
+              "PLAY_TURN": {
+                "decisions": 62,
+                "forced": 32
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273506,
+          "seat": 2,
+          "color": "BLUE",
+          "opponent": "mixed_diverse",
+          "opponent_assignments": {
+            "ORANGE": "alphabeta1",
+            "RED": "weighted",
+            "WHITE": "value"
+          },
+          "status": "completed",
+          "winner": "WHITE",
+          "won": false,
+          "candidate_vp": 5,
+          "actions": 230,
+          "turns": 65,
+          "wall_seconds": 0.239,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 52,
+            "forced": 26,
+            "consulted": 4,
+            "disagreed": 3,
+            "overrides": 3,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "DISCARD": {
+                "decisions": 4
+              },
+              "MOVE_ROBBER": {
+                "decisions": 2
+              },
+              "PLAY_TURN": {
+                "decisions": 42,
+                "forced": 26
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273506,
+          "seat": 3,
+          "color": "WHITE",
+          "opponent": "mixed_diverse",
+          "opponent_assignments": {
+            "ORANGE": "weighted",
+            "RED": "value",
+            "BLUE": "alphabeta1"
+          },
+          "status": "completed",
+          "winner": "BLUE",
+          "won": false,
+          "candidate_vp": 5,
+          "actions": 324,
+          "turns": 96,
+          "wall_seconds": 0.292,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 88,
+            "forced": 28,
+            "consulted": 4,
+            "disagreed": 1,
+            "overrides": 1,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "DISCARD": {
+                "decisions": 12
+              },
+              "MOVE_ROBBER": {
+                "decisions": 2
+              },
+              "PLAY_TURN": {
+                "decisions": 70,
+                "forced": 28
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273507,
+          "seat": 0,
+          "color": "ORANGE",
+          "opponent": "mixed_diverse",
+          "opponent_assignments": {
+            "WHITE": "value",
+            "BLUE": "alphabeta1",
+            "RED": "weighted"
+          },
+          "status": "completed",
+          "winner": "ORANGE",
+          "won": true,
+          "candidate_vp": 10,
+          "actions": 299,
+          "turns": 86,
+          "wall_seconds": 0.245,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 86,
+            "forced": 24,
+            "consulted": 4,
+            "disagreed": 1,
+            "overrides": 1,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "DISCARD": {
+                "decisions": 8
+              },
+              "MOVE_ROBBER": {
+                "decisions": 5
+              },
+              "PLAY_TURN": {
+                "decisions": 69,
+                "forced": 24
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273507,
+          "seat": 1,
+          "color": "WHITE",
+          "opponent": "mixed_diverse",
+          "opponent_assignments": {
+            "ORANGE": "alphabeta1",
+            "BLUE": "weighted",
+            "RED": "value"
+          },
+          "status": "completed",
+          "winner": "RED",
+          "won": false,
+          "candidate_vp": 7,
+          "actions": 500,
+          "turns": 133,
+          "wall_seconds": 0.437,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 121,
+            "forced": 54,
+            "consulted": 4,
+            "disagreed": 3,
+            "overrides": 3,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "DISCARD": {
+                "decisions": 17
+              },
+              "MOVE_ROBBER": {
+                "decisions": 8
+              },
+              "PLAY_TURN": {
+                "decisions": 92,
+                "forced": 54
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273507,
+          "seat": 2,
+          "color": "BLUE",
+          "opponent": "mixed_diverse",
+          "opponent_assignments": {
+            "ORANGE": "weighted",
+            "WHITE": "value",
+            "RED": "alphabeta1"
+          },
+          "status": "completed",
+          "winner": "WHITE",
+          "won": false,
+          "candidate_vp": 3,
+          "actions": 286,
+          "turns": 83,
+          "wall_seconds": 0.235,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 67,
+            "forced": 36,
+            "consulted": 4,
+            "disagreed": 3,
+            "overrides": 3,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "DISCARD": {
+                "decisions": 16
+              },
+              "MOVE_ROBBER": {
+                "decisions": 3
+              },
+              "PLAY_TURN": {
+                "decisions": 44,
+                "forced": 36
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273507,
+          "seat": 3,
+          "color": "RED",
+          "opponent": "mixed_diverse",
+          "opponent_assignments": {
+            "ORANGE": "value",
+            "WHITE": "alphabeta1",
+            "BLUE": "weighted"
+          },
+          "status": "completed",
+          "winner": "ORANGE",
+          "won": false,
+          "candidate_vp": 4,
+          "actions": 333,
+          "turns": 94,
+          "wall_seconds": 0.261,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 88,
+            "forced": 35,
+            "consulted": 4,
+            "disagreed": 3,
+            "overrides": 3,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "DISCARD": {
+                "decisions": 20
+              },
+              "MOVE_ROBBER": {
+                "decisions": 7
+              },
+              "PLAY_TURN": {
+                "decisions": 57,
+                "forced": 35
+              }
+            },
+            "trade_directions": {}
+          }
+        }
+      ],
+      "rescue_summary": {
+        "consulted": 128,
+        "decisions": 2748,
+        "disagreed": 88,
+        "forced": 1090,
+        "overrides": 88
+      }
+    },
+    "mixed_strong": {
+      "summary": {
+        "attempts": 32,
+        "completed": 32,
+        "wins": 2,
+        "win_rate_all_attempts": 0.0625,
+        "win_rate_wilson95": [
+          0.017310567031640967,
+          0.2014712314415458
+        ],
+        "mean_final_vp": 5.4375,
+        "decision_latency_ms": {
+          "samples": 2666,
+          "median": 0.871333,
+          "p95": 1.366167
+        },
+        "by_seat": {
+          "0": {
+            "attempts": 8,
+            "wins": 0
+          },
+          "1": {
+            "attempts": 8,
+            "wins": 0
+          },
+          "2": {
+            "attempts": 8,
+            "wins": 2
+          },
+          "3": {
+            "attempts": 8,
+            "wins": 0
+          }
+        }
+      },
+      "games": [
+        {
+          "seed": 20273500,
+          "seat": 0,
+          "color": "ORANGE",
+          "opponent": "mixed_strong",
+          "opponent_assignments": {
+            "WHITE": "value",
+            "RED": "alphabeta1",
+            "BLUE": "alphabeta1"
+          },
+          "status": "completed",
+          "winner": "RED",
+          "won": false,
+          "candidate_vp": 5,
+          "actions": 322,
+          "turns": 92,
+          "wall_seconds": 0.347,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 85,
+            "forced": 35,
+            "consulted": 4,
+            "disagreed": 4,
+            "overrides": 4,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "DISCARD": {
+                "decisions": 13,
+                "forced": 1
+              },
+              "MOVE_ROBBER": {
+                "decisions": 7
+              },
+              "PLAY_TURN": {
+                "decisions": 61,
+                "forced": 34
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273500,
+          "seat": 1,
+          "color": "WHITE",
+          "opponent": "mixed_strong",
+          "opponent_assignments": {
+            "ORANGE": "alphabeta1",
+            "RED": "alphabeta1",
+            "BLUE": "value"
+          },
+          "status": "completed",
+          "winner": "RED",
+          "won": false,
+          "candidate_vp": 5,
+          "actions": 426,
+          "turns": 112,
+          "wall_seconds": 0.587,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 96,
+            "forced": 35,
+            "consulted": 4,
+            "disagreed": 3,
+            "overrides": 3,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "DISCARD": {
+                "decisions": 17,
+                "forced": 1
+              },
+              "MOVE_ROBBER": {
+                "decisions": 3
+              },
+              "PLAY_TURN": {
+                "decisions": 72,
+                "forced": 34
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273500,
+          "seat": 2,
+          "color": "RED",
+          "opponent": "mixed_strong",
+          "opponent_assignments": {
+            "ORANGE": "alphabeta1",
+            "WHITE": "value",
+            "BLUE": "alphabeta1"
+          },
+          "status": "completed",
+          "winner": "RED",
+          "won": true,
+          "candidate_vp": 10,
+          "actions": 434,
+          "turns": 116,
+          "wall_seconds": 0.527,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 111,
+            "forced": 48,
+            "consulted": 4,
+            "disagreed": 4,
+            "overrides": 4,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "DISCARD": {
+                "decisions": 10
+              },
+              "MOVE_ROBBER": {
+                "decisions": 7
+              },
+              "PLAY_TURN": {
+                "decisions": 90,
+                "forced": 48
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273500,
+          "seat": 3,
+          "color": "BLUE",
+          "opponent": "mixed_strong",
+          "opponent_assignments": {
+            "ORANGE": "value",
+            "WHITE": "alphabeta1",
+            "RED": "alphabeta1"
+          },
+          "status": "completed",
+          "winner": "ORANGE",
+          "won": false,
+          "candidate_vp": 3,
+          "actions": 321,
+          "turns": 90,
+          "wall_seconds": 0.386,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 72,
+            "forced": 26,
+            "consulted": 4,
+            "disagreed": 2,
+            "overrides": 2,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2
+              },
+              "DISCARD": {
+                "decisions": 17
+              },
+              "MOVE_ROBBER": {
+                "decisions": 2
+              },
+              "PLAY_TURN": {
+                "decisions": 49,
+                "forced": 26
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273501,
+          "seat": 0,
+          "color": "RED",
+          "opponent": "mixed_strong",
+          "opponent_assignments": {
+            "WHITE": "alphabeta1",
+            "BLUE": "alphabeta1",
+            "ORANGE": "value"
+          },
+          "status": "completed",
+          "winner": "BLUE",
+          "won": false,
+          "candidate_vp": 7,
+          "actions": 382,
+          "turns": 112,
+          "wall_seconds": 0.537,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 96,
+            "forced": 44,
+            "consulted": 4,
+            "disagreed": 2,
+            "overrides": 2,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "DISCARD": {
+                "decisions": 12
+              },
+              "MOVE_ROBBER": {
+                "decisions": 5
+              },
+              "PLAY_TURN": {
+                "decisions": 75,
+                "forced": 44
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273501,
+          "seat": 1,
+          "color": "WHITE",
+          "opponent": "mixed_strong",
+          "opponent_assignments": {
+            "RED": "alphabeta1",
+            "BLUE": "value",
+            "ORANGE": "alphabeta1"
+          },
+          "status": "completed",
+          "winner": "BLUE",
+          "won": false,
+          "candidate_vp": 6,
+          "actions": 413,
+          "turns": 116,
+          "wall_seconds": 0.515,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 93,
+            "forced": 40,
+            "consulted": 4,
+            "disagreed": 4,
+            "overrides": 4,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "DISCARD": {
+                "decisions": 8
+              },
+              "MOVE_ROBBER": {
+                "decisions": 4
+              },
+              "PLAY_TURN": {
+                "decisions": 77,
+                "forced": 40
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273501,
+          "seat": 2,
+          "color": "BLUE",
+          "opponent": "mixed_strong",
+          "opponent_assignments": {
+            "RED": "value",
+            "WHITE": "alphabeta1",
+            "ORANGE": "alphabeta1"
+          },
+          "status": "completed",
+          "winner": "RED",
+          "won": false,
+          "candidate_vp": 5,
+          "actions": 274,
+          "turns": 82,
+          "wall_seconds": 0.391,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 65,
+            "forced": 27,
+            "consulted": 4,
+            "disagreed": 3,
+            "overrides": 3,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "DISCARD": {
+                "decisions": 4
+              },
+              "MOVE_ROBBER": {
+                "decisions": 2
+              },
+              "PLAY_TURN": {
+                "decisions": 55,
+                "forced": 27
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273501,
+          "seat": 3,
+          "color": "ORANGE",
+          "opponent": "mixed_strong",
+          "opponent_assignments": {
+            "RED": "alphabeta1",
+            "WHITE": "alphabeta1",
+            "BLUE": "value"
+          },
+          "status": "completed",
+          "winner": "RED",
+          "won": false,
+          "candidate_vp": 3,
+          "actions": 585,
+          "turns": 150,
+          "wall_seconds": 0.708,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 123,
+            "forced": 58,
+            "consulted": 4,
+            "disagreed": 3,
+            "overrides": 3,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "DISCARD": {
+                "decisions": 21,
+                "forced": 2
+              },
+              "MOVE_ROBBER": {
+                "decisions": 7
+              },
+              "PLAY_TURN": {
+                "decisions": 91,
+                "forced": 56
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273502,
+          "seat": 0,
+          "color": "ORANGE",
+          "opponent": "mixed_strong",
+          "opponent_assignments": {
+            "RED": "alphabeta1",
+            "WHITE": "value",
+            "BLUE": "alphabeta1"
+          },
+          "status": "completed",
+          "winner": "BLUE",
+          "won": false,
+          "candidate_vp": 9,
+          "actions": 396,
+          "turns": 101,
+          "wall_seconds": 0.508,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 100,
+            "forced": 33,
+            "consulted": 4,
+            "disagreed": 3,
+            "overrides": 3,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "DISCARD": {
+                "decisions": 17
+              },
+              "MOVE_ROBBER": {
+                "decisions": 6
+              },
+              "PLAY_TURN": {
+                "decisions": 73,
+                "forced": 33
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273502,
+          "seat": 1,
+          "color": "RED",
+          "opponent": "mixed_strong",
+          "opponent_assignments": {
+            "ORANGE": "value",
+            "WHITE": "alphabeta1",
+            "BLUE": "alphabeta1"
+          },
+          "status": "completed",
+          "winner": "BLUE",
+          "won": false,
+          "candidate_vp": 4,
+          "actions": 389,
+          "turns": 105,
+          "wall_seconds": 0.438,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 92,
+            "forced": 42,
+            "consulted": 4,
+            "disagreed": 3,
+            "overrides": 3,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "DISCARD": {
+                "decisions": 17
+              },
+              "MOVE_ROBBER": {
+                "decisions": 6
+              },
+              "PLAY_TURN": {
+                "decisions": 65,
+                "forced": 42
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273502,
+          "seat": 2,
+          "color": "WHITE",
+          "opponent": "mixed_strong",
+          "opponent_assignments": {
+            "ORANGE": "alphabeta1",
+            "RED": "alphabeta1",
+            "BLUE": "value"
+          },
+          "status": "completed",
+          "winner": "ORANGE",
+          "won": false,
+          "candidate_vp": 3,
+          "actions": 468,
+          "turns": 122,
+          "wall_seconds": 0.68,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 98,
+            "forced": 49,
+            "consulted": 4,
+            "disagreed": 4,
+            "overrides": 4,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "DISCARD": {
+                "decisions": 12
+              },
+              "MOVE_ROBBER": {
+                "decisions": 3
+              },
+              "PLAY_TURN": {
+                "decisions": 79,
+                "forced": 49
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273502,
+          "seat": 3,
+          "color": "BLUE",
+          "opponent": "mixed_strong",
+          "opponent_assignments": {
+            "ORANGE": "alphabeta1",
+            "RED": "value",
+            "WHITE": "alphabeta1"
+          },
+          "status": "completed",
+          "winner": "ORANGE",
+          "won": false,
+          "candidate_vp": 7,
+          "actions": 426,
+          "turns": 114,
+          "wall_seconds": 0.489,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 119,
+            "forced": 38,
+            "consulted": 4,
+            "disagreed": 2,
+            "overrides": 2,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "DISCARD": {
+                "decisions": 26
+              },
+              "MOVE_ROBBER": {
+                "decisions": 5
+              },
+              "PLAY_TURN": {
+                "decisions": 84,
+                "forced": 38
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273503,
+          "seat": 0,
+          "color": "BLUE",
+          "opponent": "mixed_strong",
+          "opponent_assignments": {
+            "WHITE": "value",
+            "RED": "alphabeta1",
+            "ORANGE": "alphabeta1"
+          },
+          "status": "completed",
+          "winner": "RED",
+          "won": false,
+          "candidate_vp": 3,
+          "actions": 202,
+          "turns": 60,
+          "wall_seconds": 0.212,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 42,
+            "forced": 21,
+            "consulted": 4,
+            "disagreed": 1,
+            "overrides": 1,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "DISCARD": {
+                "decisions": 4
+              },
+              "MOVE_ROBBER": {
+                "decisions": 1
+              },
+              "PLAY_TURN": {
+                "decisions": 33,
+                "forced": 21
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273503,
+          "seat": 1,
+          "color": "WHITE",
+          "opponent": "mixed_strong",
+          "opponent_assignments": {
+            "BLUE": "alphabeta1",
+            "RED": "alphabeta1",
+            "ORANGE": "value"
+          },
+          "status": "completed",
+          "winner": "ORANGE",
+          "won": false,
+          "candidate_vp": 3,
+          "actions": 204,
+          "turns": 61,
+          "wall_seconds": 0.225,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 54,
+            "forced": 22,
+            "consulted": 4,
+            "disagreed": 3,
+            "overrides": 3,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "DISCARD": {
+                "decisions": 13
+              },
+              "MOVE_ROBBER": {
+                "decisions": 3
+              },
+              "PLAY_TURN": {
+                "decisions": 34,
+                "forced": 22
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273503,
+          "seat": 2,
+          "color": "RED",
+          "opponent": "mixed_strong",
+          "opponent_assignments": {
+            "BLUE": "alphabeta1",
+            "WHITE": "value",
+            "ORANGE": "alphabeta1"
+          },
+          "status": "completed",
+          "winner": "ORANGE",
+          "won": false,
+          "candidate_vp": 4,
+          "actions": 188,
+          "turns": 61,
+          "wall_seconds": 0.223,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 50,
+            "forced": 23,
+            "consulted": 4,
+            "disagreed": 2,
+            "overrides": 2,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "DISCARD": {
+                "decisions": 5
+              },
+              "MOVE_ROBBER": {
+                "decisions": 2
+              },
+              "PLAY_TURN": {
+                "decisions": 39,
+                "forced": 23
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273503,
+          "seat": 3,
+          "color": "ORANGE",
+          "opponent": "mixed_strong",
+          "opponent_assignments": {
+            "BLUE": "value",
+            "WHITE": "alphabeta1",
+            "RED": "alphabeta1"
+          },
+          "status": "completed",
+          "winner": "BLUE",
+          "won": false,
+          "candidate_vp": 6,
+          "actions": 271,
+          "turns": 78,
+          "wall_seconds": 0.322,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 63,
+            "forced": 30,
+            "consulted": 4,
+            "disagreed": 3,
+            "overrides": 3,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "DISCARD": {
+                "decisions": 8
+              },
+              "MOVE_ROBBER": {
+                "decisions": 2
+              },
+              "PLAY_TURN": {
+                "decisions": 49,
+                "forced": 30
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273504,
+          "seat": 0,
+          "color": "ORANGE",
+          "opponent": "mixed_strong",
+          "opponent_assignments": {
+            "BLUE": "alphabeta1",
+            "RED": "alphabeta1",
+            "WHITE": "value"
+          },
+          "status": "completed",
+          "winner": "BLUE",
+          "won": false,
+          "candidate_vp": 4,
+          "actions": 406,
+          "turns": 115,
+          "wall_seconds": 0.477,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 89,
+            "forced": 45,
+            "consulted": 4,
+            "disagreed": 2,
+            "overrides": 2,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "DISCARD": {
+                "decisions": 8
+              },
+              "MOVE_ROBBER": {
+                "decisions": 3
+              },
+              "PLAY_TURN": {
+                "decisions": 74,
+                "forced": 45
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273504,
+          "seat": 1,
+          "color": "BLUE",
+          "opponent": "mixed_strong",
+          "opponent_assignments": {
+            "ORANGE": "alphabeta1",
+            "RED": "value",
+            "WHITE": "alphabeta1"
+          },
+          "status": "completed",
+          "winner": "ORANGE",
+          "won": false,
+          "candidate_vp": 3,
+          "actions": 409,
+          "turns": 110,
+          "wall_seconds": 0.576,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 95,
+            "forced": 34,
+            "consulted": 4,
+            "disagreed": 3,
+            "overrides": 3,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "DISCARD": {
+                "decisions": 27
+              },
+              "MOVE_ROBBER": {
+                "decisions": 3
+              },
+              "PLAY_TURN": {
+                "decisions": 61,
+                "forced": 34
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273504,
+          "seat": 2,
+          "color": "RED",
+          "opponent": "mixed_strong",
+          "opponent_assignments": {
+            "ORANGE": "value",
+            "BLUE": "alphabeta1",
+            "WHITE": "alphabeta1"
+          },
+          "status": "completed",
+          "winner": "WHITE",
+          "won": false,
+          "candidate_vp": 6,
+          "actions": 428,
+          "turns": 117,
+          "wall_seconds": 0.564,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 104,
+            "forced": 40,
+            "consulted": 4,
+            "disagreed": 3,
+            "overrides": 3,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "DISCARD": {
+                "decisions": 20,
+                "forced": 1
+              },
+              "MOVE_ROBBER": {
+                "decisions": 4
+              },
+              "PLAY_TURN": {
+                "decisions": 76,
+                "forced": 39
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273504,
+          "seat": 3,
+          "color": "WHITE",
+          "opponent": "mixed_strong",
+          "opponent_assignments": {
+            "ORANGE": "alphabeta1",
+            "BLUE": "alphabeta1",
+            "RED": "value"
+          },
+          "status": "completed",
+          "winner": "RED",
+          "won": false,
+          "candidate_vp": 7,
+          "actions": 440,
+          "turns": 120,
+          "wall_seconds": 0.479,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 124,
+            "forced": 46,
+            "consulted": 4,
+            "disagreed": 2,
+            "overrides": 2,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "DISCARD": {
+                "decisions": 22,
+                "forced": 2
+              },
+              "MOVE_ROBBER": {
+                "decisions": 8
+              },
+              "PLAY_TURN": {
+                "decisions": 90,
+                "forced": 44
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273505,
+          "seat": 0,
+          "color": "RED",
+          "opponent": "mixed_strong",
+          "opponent_assignments": {
+            "BLUE": "alphabeta1",
+            "ORANGE": "value",
+            "WHITE": "alphabeta1"
+          },
+          "status": "completed",
+          "winner": "WHITE",
+          "won": false,
+          "candidate_vp": 6,
+          "actions": 251,
+          "turns": 69,
+          "wall_seconds": 0.36,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 54,
+            "forced": 26,
+            "consulted": 4,
+            "disagreed": 4,
+            "overrides": 4,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "MOVE_ROBBER": {
+                "decisions": 3
+              },
+              "PLAY_TURN": {
+                "decisions": 47,
+                "forced": 26
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273505,
+          "seat": 1,
+          "color": "BLUE",
+          "opponent": "mixed_strong",
+          "opponent_assignments": {
+            "RED": "value",
+            "ORANGE": "alphabeta1",
+            "WHITE": "alphabeta1"
+          },
+          "status": "completed",
+          "winner": "WHITE",
+          "won": false,
+          "candidate_vp": 9,
+          "actions": 325,
+          "turns": 81,
+          "wall_seconds": 0.506,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 84,
+            "forced": 26,
+            "consulted": 4,
+            "disagreed": 2,
+            "overrides": 2,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "DISCARD": {
+                "decisions": 12
+              },
+              "MOVE_ROBBER": {
+                "decisions": 4
+              },
+              "PLAY_TURN": {
+                "decisions": 64,
+                "forced": 26
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273505,
+          "seat": 2,
+          "color": "ORANGE",
+          "opponent": "mixed_strong",
+          "opponent_assignments": {
+            "RED": "alphabeta1",
+            "BLUE": "alphabeta1",
+            "WHITE": "value"
+          },
+          "status": "completed",
+          "winner": "WHITE",
+          "won": false,
+          "candidate_vp": 6,
+          "actions": 239,
+          "turns": 65,
+          "wall_seconds": 0.343,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 61,
+            "forced": 24,
+            "consulted": 4,
+            "disagreed": 3,
+            "overrides": 3,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "DISCARD": {
+                "decisions": 4
+              },
+              "PLAY_TURN": {
+                "decisions": 53,
+                "forced": 24
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273505,
+          "seat": 3,
+          "color": "WHITE",
+          "opponent": "mixed_strong",
+          "opponent_assignments": {
+            "RED": "alphabeta1",
+            "BLUE": "value",
+            "ORANGE": "alphabeta1"
+          },
+          "status": "completed",
+          "winner": "BLUE",
+          "won": false,
+          "candidate_vp": 6,
+          "actions": 397,
+          "turns": 95,
+          "wall_seconds": 0.501,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 91,
+            "forced": 27,
+            "consulted": 4,
+            "disagreed": 3,
+            "overrides": 3,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "DISCARD": {
+                "decisions": 21
+              },
+              "MOVE_ROBBER": {
+                "decisions": 2
+              },
+              "PLAY_TURN": {
+                "decisions": 64,
+                "forced": 27
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273506,
+          "seat": 0,
+          "color": "ORANGE",
+          "opponent": "mixed_strong",
+          "opponent_assignments": {
+            "RED": "value",
+            "BLUE": "alphabeta1",
+            "WHITE": "alphabeta1"
+          },
+          "status": "completed",
+          "winner": "WHITE",
+          "won": false,
+          "candidate_vp": 7,
+          "actions": 328,
+          "turns": 89,
+          "wall_seconds": 0.389,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 82,
+            "forced": 33,
+            "consulted": 4,
+            "disagreed": 1,
+            "overrides": 1,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2
+              },
+              "DISCARD": {
+                "decisions": 16
+              },
+              "MOVE_ROBBER": {
+                "decisions": 5
+              },
+              "PLAY_TURN": {
+                "decisions": 57,
+                "forced": 33
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273506,
+          "seat": 1,
+          "color": "RED",
+          "opponent": "mixed_strong",
+          "opponent_assignments": {
+            "ORANGE": "alphabeta1",
+            "BLUE": "alphabeta1",
+            "WHITE": "value"
+          },
+          "status": "completed",
+          "winner": "WHITE",
+          "won": false,
+          "candidate_vp": 3,
+          "actions": 240,
+          "turns": 69,
+          "wall_seconds": 0.292,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 55,
+            "forced": 18,
+            "consulted": 4,
+            "disagreed": 3,
+            "overrides": 3,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "DISCARD": {
+                "decisions": 8
+              },
+              "MOVE_ROBBER": {
+                "decisions": 3
+              },
+              "PLAY_TURN": {
+                "decisions": 40,
+                "forced": 18
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273506,
+          "seat": 2,
+          "color": "BLUE",
+          "opponent": "mixed_strong",
+          "opponent_assignments": {
+            "ORANGE": "alphabeta1",
+            "RED": "value",
+            "WHITE": "alphabeta1"
+          },
+          "status": "completed",
+          "winner": "ORANGE",
+          "won": false,
+          "candidate_vp": 3,
+          "actions": 252,
+          "turns": 74,
+          "wall_seconds": 0.305,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 65,
+            "forced": 33,
+            "consulted": 4,
+            "disagreed": 2,
+            "overrides": 2,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "DISCARD": {
+                "decisions": 15,
+                "forced": 1
+              },
+              "MOVE_ROBBER": {
+                "decisions": 2
+              },
+              "PLAY_TURN": {
+                "decisions": 44,
+                "forced": 32
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273506,
+          "seat": 3,
+          "color": "WHITE",
+          "opponent": "mixed_strong",
+          "opponent_assignments": {
+            "ORANGE": "value",
+            "RED": "alphabeta1",
+            "BLUE": "alphabeta1"
+          },
+          "status": "completed",
+          "winner": "BLUE",
+          "won": false,
+          "candidate_vp": 6,
+          "actions": 332,
+          "turns": 88,
+          "wall_seconds": 0.428,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 86,
+            "forced": 30,
+            "consulted": 4,
+            "disagreed": 4,
+            "overrides": 4,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "DISCARD": {
+                "decisions": 23,
+                "forced": 2
+              },
+              "MOVE_ROBBER": {
+                "decisions": 3
+              },
+              "PLAY_TURN": {
+                "decisions": 56,
+                "forced": 28
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273507,
+          "seat": 0,
+          "color": "ORANGE",
+          "opponent": "mixed_strong",
+          "opponent_assignments": {
+            "WHITE": "alphabeta1",
+            "BLUE": "alphabeta1",
+            "RED": "value"
+          },
+          "status": "completed",
+          "winner": "WHITE",
+          "won": false,
+          "candidate_vp": 6,
+          "actions": 381,
+          "turns": 103,
+          "wall_seconds": 0.475,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 83,
+            "forced": 37,
+            "consulted": 4,
+            "disagreed": 2,
+            "overrides": 2,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "DISCARD": {
+                "decisions": 9
+              },
+              "MOVE_ROBBER": {
+                "decisions": 2
+              },
+              "PLAY_TURN": {
+                "decisions": 68,
+                "forced": 37
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273507,
+          "seat": 1,
+          "color": "WHITE",
+          "opponent": "mixed_strong",
+          "opponent_assignments": {
+            "ORANGE": "alphabeta1",
+            "BLUE": "value",
+            "RED": "alphabeta1"
+          },
+          "status": "completed",
+          "winner": "BLUE",
+          "won": false,
+          "candidate_vp": 6,
+          "actions": 247,
+          "turns": 72,
+          "wall_seconds": 0.273,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 71,
+            "forced": 23,
+            "consulted": 4,
+            "disagreed": 3,
+            "overrides": 3,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "DISCARD": {
+                "decisions": 17,
+                "forced": 1
+              },
+              "MOVE_ROBBER": {
+                "decisions": 3
+              },
+              "PLAY_TURN": {
+                "decisions": 47,
+                "forced": 22
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273507,
+          "seat": 2,
+          "color": "BLUE",
+          "opponent": "mixed_strong",
+          "opponent_assignments": {
+            "ORANGE": "value",
+            "WHITE": "alphabeta1",
+            "RED": "alphabeta1"
+          },
+          "status": "completed",
+          "winner": "BLUE",
+          "won": true,
+          "candidate_vp": 10,
+          "actions": 348,
+          "turns": 96,
+          "wall_seconds": 0.402,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 90,
+            "forced": 40,
+            "consulted": 4,
+            "disagreed": 3,
+            "overrides": 3,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "DISCARD": {
+                "decisions": 9,
+                "forced": 1
+              },
+              "MOVE_ROBBER": {
+                "decisions": 5
+              },
+              "PLAY_TURN": {
+                "decisions": 72,
+                "forced": 39
+              }
+            },
+            "trade_directions": {}
+          }
+        },
+        {
+          "seed": 20273507,
+          "seat": 3,
+          "color": "RED",
+          "opponent": "mixed_strong",
+          "opponent_assignments": {
+            "ORANGE": "alphabeta1",
+            "WHITE": "alphabeta1",
+            "BLUE": "value"
+          },
+          "status": "completed",
+          "winner": "WHITE",
+          "won": false,
+          "candidate_vp": 3,
+          "actions": 285,
+          "turns": 79,
+          "wall_seconds": 0.336,
+          "rescue": {
+            "intervention": "opening",
+            "decisions": 73,
+            "forced": 23,
+            "consulted": 4,
+            "disagreed": 3,
+            "overrides": 3,
+            "by_phase": {
+              "BUILD_INITIAL_ROAD": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 1,
+                "overrides": 1
+              },
+              "BUILD_INITIAL_SETTLEMENT": {
+                "consulted": 2,
+                "decisions": 2,
+                "disagreed": 2,
+                "overrides": 2
+              },
+              "DISCARD": {
+                "decisions": 18
+              },
+              "MOVE_ROBBER": {
+                "decisions": 5
+              },
+              "PLAY_TURN": {
+                "decisions": 46,
+                "forced": 23
+              }
+            },
+            "trade_directions": {}
+          }
+        }
+      ],
+      "rescue_summary": {
+        "consulted": 128,
+        "decisions": 2666,
+        "disagreed": 89,
+        "forced": 1076,
+        "overrides": 89
+      }
+    }
+  }
+}

@@ -1,0 +1,743 @@
+{
+  "games": 26,
+  "wins": 1,
+  "win_rate": 0.038461538461538464,
+  "events": 2965,
+  "mlp_action_categories": {
+    "territory": 179,
+    "turn_flow": 2615,
+    "vp_building": 28,
+    "robber": 143
+  },
+  "teacher_action_categories": {
+    "territory": 181,
+    "turn_flow": 2397,
+    "economy": 244,
+    "robber": 143
+  },
+  "action_category_pairs": {
+    "territory -> territory": 179,
+    "turn_flow -> turn_flow": 2386,
+    "turn_flow -> economy": 229,
+    "vp_building -> economy": 15,
+    "robber -> robber": 143,
+    "vp_building -> turn_flow": 11,
+    "vp_building -> territory": 2
+  },
+  "phase_action_category_pairs": {
+    "opening: territory -> territory": 117,
+    "opening: turn_flow -> turn_flow": 368,
+    "opening: turn_flow -> economy": 14,
+    "opening: vp_building -> economy": 4,
+    "opening: robber -> robber": 15,
+    "midgame: turn_flow -> turn_flow": 862,
+    "midgame: turn_flow -> economy": 78,
+    "midgame: robber -> robber": 62,
+    "late_game: turn_flow -> economy": 137,
+    "late_game: turn_flow -> turn_flow": 1156,
+    "late_game: robber -> robber": 66,
+    "midgame: territory -> territory": 23,
+    "late_game: territory -> territory": 39,
+    "late_game: vp_building -> turn_flow": 6,
+    "late_game: vp_building -> economy": 5,
+    "midgame: vp_building -> turn_flow": 3,
+    "midgame: vp_building -> economy": 6,
+    "opening: vp_building -> turn_flow": 2,
+    "midgame: vp_building -> territory": 1,
+    "late_game: vp_building -> territory": 1
+  },
+  "action_type_pairs": {
+    "BUILD_SETTLEMENT -> BUILD_SETTLEMENT": 52,
+    "BUILD_ROAD -> BUILD_ROAD": 119,
+    "ROLL -> ROLL": 942,
+    "END_TURN -> END_TURN": 712,
+    "END_TURN -> BUY_DEVELOPMENT_CARD": 229,
+    "BUILD_CITY -> BUY_DEVELOPMENT_CARD": 15,
+    "DISCARD_RESOURCE -> DISCARD_RESOURCE": 732,
+    "MOVE_ROBBER -> MOVE_ROBBER": 143,
+    "BUILD_SETTLEMENT -> BUILD_ROAD": 8,
+    "BUILD_CITY -> END_TURN": 11,
+    "BUILD_CITY -> BUILD_ROAD": 2
+  },
+  "exact_teacher_match_by_mlp_category": {
+    "territory": 0.017,
+    "turn_flow": 0.738,
+    "vp_building": 0.0,
+    "robber": 0.0
+  },
+  "phase_summary": {
+    "opening": {
+      "mlp_actual_vp": 1.873,
+      "teacher_actual_vp": 1.952,
+      "mlp_resource_cards": 4.548,
+      "teacher_resource_cards": 3.958,
+      "mlp_production_pips": 18.344,
+      "teacher_production_pips": 20.717,
+      "mlp_roads": 1.902,
+      "teacher_roads": 2.442,
+      "mlp_settlements": 1.727,
+      "teacher_settlements": 1.856,
+      "mlp_cities": 0.073,
+      "teacher_cities": 0.048,
+      "teacher_action_match_rate": 0.665
+    },
+    "midgame": {
+      "mlp_actual_vp": 2.471,
+      "teacher_actual_vp": 3.533,
+      "mlp_resource_cards": 8.465,
+      "teacher_resource_cards": 5.433,
+      "mlp_production_pips": 23.137,
+      "teacher_production_pips": 31.005,
+      "mlp_roads": 2.941,
+      "teacher_roads": 4.494,
+      "mlp_settlements": 1.643,
+      "teacher_settlements": 2.289,
+      "mlp_cities": 0.388,
+      "teacher_cities": 0.503,
+      "teacher_action_match_rate": 0.671
+    },
+    "late_game": {
+      "mlp_actual_vp": 3.406,
+      "teacher_actual_vp": 6.508,
+      "mlp_resource_cards": 9.967,
+      "teacher_resource_cards": 6.132,
+      "mlp_production_pips": 28.469,
+      "teacher_production_pips": 48.109,
+      "mlp_roads": 4.133,
+      "teacher_roads": 8.44,
+      "mlp_settlements": 1.27,
+      "teacher_settlements": 3.114,
+      "mlp_cities": 0.948,
+      "teacher_cities": 1.0,
+      "teacher_action_match_rate": 0.633
+    }
+  },
+  "average_final_gap_in_losses_mlp_minus_teacher": {
+    "actual_vp": -6.8,
+    "resource_cards": 5.48,
+    "production_pips": -51.52,
+    "roads": -6.68,
+    "settlements": -1.6,
+    "cities": -1.48
+  },
+  "loss_action_type_pairs": {
+    "BUILD_SETTLEMENT -> BUILD_SETTLEMENT": 50,
+    "BUILD_ROAD -> BUILD_ROAD": 110,
+    "ROLL -> ROLL": 915,
+    "END_TURN -> END_TURN": 692,
+    "END_TURN -> BUY_DEVELOPMENT_CARD": 223,
+    "BUILD_CITY -> BUY_DEVELOPMENT_CARD": 14,
+    "DISCARD_RESOURCE -> DISCARD_RESOURCE": 712,
+    "MOVE_ROBBER -> MOVE_ROBBER": 140,
+    "BUILD_SETTLEMENT -> BUILD_ROAD": 6,
+    "BUILD_CITY -> END_TURN": 10
+  },
+  "loss_action_category_pairs": {
+    "territory -> territory": 166,
+    "turn_flow -> turn_flow": 2319,
+    "turn_flow -> economy": 223,
+    "vp_building -> economy": 14,
+    "robber -> robber": 140,
+    "vp_building -> turn_flow": 10
+  },
+  "games_detail": [
+    {
+      "game_id": 0,
+      "seed": 20265500,
+      "mlp_won": false,
+      "completed": true,
+      "plies": 276,
+      "mlp_final": {
+        "actual_vp": 3,
+        "resource_cards": 13,
+        "production_pips": 28,
+        "roads": 2,
+        "settlements": 1,
+        "cities": 1
+      },
+      "teacher_final": {
+        "actual_vp": 10,
+        "resource_cards": 4,
+        "production_pips": 81,
+        "roads": 9,
+        "settlements": 4,
+        "cities": 2
+      }
+    },
+    {
+      "game_id": 1,
+      "seed": 20265505,
+      "mlp_won": false,
+      "completed": true,
+      "plies": 259,
+      "mlp_final": {
+        "actual_vp": 2,
+        "resource_cards": 7,
+        "production_pips": 14,
+        "roads": 4,
+        "settlements": 2,
+        "cities": 0
+      },
+      "teacher_final": {
+        "actual_vp": 10,
+        "resource_cards": 6,
+        "production_pips": 81,
+        "roads": 15,
+        "settlements": 4,
+        "cities": 2
+      }
+    },
+    {
+      "game_id": 2,
+      "seed": 20265510,
+      "mlp_won": false,
+      "completed": true,
+      "plies": 313,
+      "mlp_final": {
+        "actual_vp": 6,
+        "resource_cards": 22,
+        "production_pips": 50,
+        "roads": 7,
+        "settlements": 2,
+        "cities": 2
+      },
+      "teacher_final": {
+        "actual_vp": 10,
+        "resource_cards": 0,
+        "production_pips": 66,
+        "roads": 15,
+        "settlements": 5,
+        "cities": 1
+      }
+    },
+    {
+      "game_id": 3,
+      "seed": 20265515,
+      "mlp_won": false,
+      "completed": true,
+      "plies": 121,
+      "mlp_final": {
+        "actual_vp": 3,
+        "resource_cards": 6,
+        "production_pips": 24,
+        "roads": 6,
+        "settlements": 1,
+        "cities": 1
+      },
+      "teacher_final": {
+        "actual_vp": 10,
+        "resource_cards": 5,
+        "production_pips": 79,
+        "roads": 12,
+        "settlements": 4,
+        "cities": 2
+      }
+    },
+    {
+      "game_id": 4,
+      "seed": 20265520,
+      "mlp_won": false,
+      "completed": true,
+      "plies": 232,
+      "mlp_final": {
+        "actual_vp": 4,
+        "resource_cards": 11,
+        "production_pips": 24,
+        "roads": 3,
+        "settlements": 0,
+        "cities": 2
+      },
+      "teacher_final": {
+        "actual_vp": 10,
+        "resource_cards": 0,
+        "production_pips": 74,
+        "roads": 11,
+        "settlements": 0,
+        "cities": 4
+      }
+    },
+    {
+      "game_id": 5,
+      "seed": 20265525,
+      "mlp_won": false,
+      "completed": true,
+      "plies": 230,
+      "mlp_final": {
+        "actual_vp": 2,
+        "resource_cards": 12,
+        "production_pips": 17,
+        "roads": 6,
+        "settlements": 2,
+        "cities": 0
+      },
+      "teacher_final": {
+        "actual_vp": 10,
+        "resource_cards": 10,
+        "production_pips": 78,
+        "roads": 9,
+        "settlements": 4,
+        "cities": 2
+      }
+    },
+    {
+      "game_id": 6,
+      "seed": 20265530,
+      "mlp_won": false,
+      "completed": true,
+      "plies": 226,
+      "mlp_final": {
+        "actual_vp": 6,
+        "resource_cards": 16,
+        "production_pips": 40,
+        "roads": 4,
+        "settlements": 0,
+        "cities": 3
+      },
+      "teacher_final": {
+        "actual_vp": 10,
+        "resource_cards": 4,
+        "production_pips": 82,
+        "roads": 9,
+        "settlements": 2,
+        "cities": 3
+      }
+    },
+    {
+      "game_id": 7,
+      "seed": 20265535,
+      "mlp_won": false,
+      "completed": true,
+      "plies": 211,
+      "mlp_final": {
+        "actual_vp": 2,
+        "resource_cards": 6,
+        "production_pips": 14,
+        "roads": 7,
+        "settlements": 2,
+        "cities": 0
+      },
+      "teacher_final": {
+        "actual_vp": 10,
+        "resource_cards": 6,
+        "production_pips": 77,
+        "roads": 10,
+        "settlements": 2,
+        "cities": 3
+      }
+    },
+    {
+      "game_id": 8,
+      "seed": 20265540,
+      "mlp_won": false,
+      "completed": true,
+      "plies": 265,
+      "mlp_final": {
+        "actual_vp": 3,
+        "resource_cards": 4,
+        "production_pips": 28,
+        "roads": 3,
+        "settlements": 1,
+        "cities": 1
+      },
+      "teacher_final": {
+        "actual_vp": 10,
+        "resource_cards": 4,
+        "production_pips": 77,
+        "roads": 15,
+        "settlements": 4,
+        "cities": 2
+      }
+    },
+    {
+      "game_id": 9,
+      "seed": 20265545,
+      "mlp_won": false,
+      "completed": true,
+      "plies": 280,
+      "mlp_final": {
+        "actual_vp": 4,
+        "resource_cards": 9,
+        "production_pips": 30,
+        "roads": 5,
+        "settlements": 4,
+        "cities": 0
+      },
+      "teacher_final": {
+        "actual_vp": 10,
+        "resource_cards": 2,
+        "production_pips": 77,
+        "roads": 14,
+        "settlements": 4,
+        "cities": 2
+      }
+    },
+    {
+      "game_id": 10,
+      "seed": 20265550,
+      "mlp_won": false,
+      "completed": true,
+      "plies": 232,
+      "mlp_final": {
+        "actual_vp": 2,
+        "resource_cards": 5,
+        "production_pips": 17,
+        "roads": 2,
+        "settlements": 2,
+        "cities": 0
+      },
+      "teacher_final": {
+        "actual_vp": 10,
+        "resource_cards": 3,
+        "production_pips": 82,
+        "roads": 15,
+        "settlements": 4,
+        "cities": 2
+      }
+    },
+    {
+      "game_id": 11,
+      "seed": 20265555,
+      "mlp_won": false,
+      "completed": true,
+      "plies": 303,
+      "mlp_final": {
+        "actual_vp": 4,
+        "resource_cards": 27,
+        "production_pips": 38,
+        "roads": 2,
+        "settlements": 0,
+        "cities": 2
+      },
+      "teacher_final": {
+        "actual_vp": 10,
+        "resource_cards": 14,
+        "production_pips": 70,
+        "roads": 15,
+        "settlements": 5,
+        "cities": 1
+      }
+    },
+    {
+      "game_id": 12,
+      "seed": 20265560,
+      "mlp_won": false,
+      "completed": true,
+      "plies": 287,
+      "mlp_final": {
+        "actual_vp": 6,
+        "resource_cards": 27,
+        "production_pips": 46,
+        "roads": 8,
+        "settlements": 0,
+        "cities": 3
+      },
+      "teacher_final": {
+        "actual_vp": 10,
+        "resource_cards": 10,
+        "production_pips": 86,
+        "roads": 10,
+        "settlements": 0,
+        "cities": 4
+      }
+    },
+    {
+      "game_id": 13,
+      "seed": 20265565,
+      "mlp_won": false,
+      "completed": true,
+      "plies": 247,
+      "mlp_final": {
+        "actual_vp": 2,
+        "resource_cards": 12,
+        "production_pips": 16,
+        "roads": 5,
+        "settlements": 2,
+        "cities": 0
+      },
+      "teacher_final": {
+        "actual_vp": 10,
+        "resource_cards": 7,
+        "production_pips": 79,
+        "roads": 15,
+        "settlements": 4,
+        "cities": 2
+      }
+    },
+    {
+      "game_id": 14,
+      "seed": 20265570,
+      "mlp_won": true,
+      "completed": true,
+      "plies": 173,
+      "mlp_final": {
+        "actual_vp": 10,
+        "resource_cards": 14,
+        "production_pips": 84,
+        "roads": 9,
+        "settlements": 0,
+        "cities": 4
+      },
+      "teacher_final": {
+        "actual_vp": 7,
+        "resource_cards": 4,
+        "production_pips": 51,
+        "roads": 5,
+        "settlements": 1,
+        "cities": 3
+      }
+    },
+    {
+      "game_id": 15,
+      "seed": 20265575,
+      "mlp_won": false,
+      "completed": true,
+      "plies": 147,
+      "mlp_final": {
+        "actual_vp": 2,
+        "resource_cards": 15,
+        "production_pips": 19,
+        "roads": 2,
+        "settlements": 2,
+        "cities": 0
+      },
+      "teacher_final": {
+        "actual_vp": 10,
+        "resource_cards": 5,
+        "production_pips": 86,
+        "roads": 6,
+        "settlements": 0,
+        "cities": 4
+      }
+    },
+    {
+      "game_id": 16,
+      "seed": 20265580,
+      "mlp_won": false,
+      "completed": true,
+      "plies": 178,
+      "mlp_final": {
+        "actual_vp": 2,
+        "resource_cards": 17,
+        "production_pips": 18,
+        "roads": 2,
+        "settlements": 2,
+        "cities": 0
+      },
+      "teacher_final": {
+        "actual_vp": 10,
+        "resource_cards": 9,
+        "production_pips": 55,
+        "roads": 7,
+        "settlements": 4,
+        "cities": 1
+      }
+    },
+    {
+      "game_id": 17,
+      "seed": 20265585,
+      "mlp_won": false,
+      "completed": true,
+      "plies": 168,
+      "mlp_final": {
+        "actual_vp": 3,
+        "resource_cards": 5,
+        "production_pips": 26,
+        "roads": 2,
+        "settlements": 1,
+        "cities": 1
+      },
+      "teacher_final": {
+        "actual_vp": 10,
+        "resource_cards": 5,
+        "production_pips": 69,
+        "roads": 9,
+        "settlements": 3,
+        "cities": 2
+      }
+    },
+    {
+      "game_id": 18,
+      "seed": 20265590,
+      "mlp_won": false,
+      "completed": true,
+      "plies": 334,
+      "mlp_final": {
+        "actual_vp": 3,
+        "resource_cards": 8,
+        "production_pips": 29,
+        "roads": 9,
+        "settlements": 1,
+        "cities": 1
+      },
+      "teacher_final": {
+        "actual_vp": 10,
+        "resource_cards": 8,
+        "production_pips": 71,
+        "roads": 15,
+        "settlements": 4,
+        "cities": 2
+      }
+    },
+    {
+      "game_id": 19,
+      "seed": 20265595,
+      "mlp_won": false,
+      "completed": true,
+      "plies": 246,
+      "mlp_final": {
+        "actual_vp": 4,
+        "resource_cards": 16,
+        "production_pips": 30,
+        "roads": 11,
+        "settlements": 0,
+        "cities": 2
+      },
+      "teacher_final": {
+        "actual_vp": 10,
+        "resource_cards": 6,
+        "production_pips": 80,
+        "roads": 10,
+        "settlements": 4,
+        "cities": 2
+      }
+    },
+    {
+      "game_id": 20,
+      "seed": 20265600,
+      "mlp_won": false,
+      "completed": true,
+      "plies": 268,
+      "mlp_final": {
+        "actual_vp": 3,
+        "resource_cards": 6,
+        "production_pips": 16,
+        "roads": 7,
+        "settlements": 1,
+        "cities": 1
+      },
+      "teacher_final": {
+        "actual_vp": 10,
+        "resource_cards": 6,
+        "production_pips": 80,
+        "roads": 15,
+        "settlements": 4,
+        "cities": 2
+      }
+    },
+    {
+      "game_id": 21,
+      "seed": 20265605,
+      "mlp_won": false,
+      "completed": true,
+      "plies": 179,
+      "mlp_final": {
+        "actual_vp": 2,
+        "resource_cards": 7,
+        "production_pips": 16,
+        "roads": 2,
+        "settlements": 2,
+        "cities": 0
+      },
+      "teacher_final": {
+        "actual_vp": 10,
+        "resource_cards": 7,
+        "production_pips": 83,
+        "roads": 10,
+        "settlements": 2,
+        "cities": 3
+      }
+    },
+    {
+      "game_id": 22,
+      "seed": 20265610,
+      "mlp_won": false,
+      "completed": true,
+      "plies": 168,
+      "mlp_final": {
+        "actual_vp": 3,
+        "resource_cards": 11,
+        "production_pips": 28,
+        "roads": 2,
+        "settlements": 1,
+        "cities": 1
+      },
+      "teacher_final": {
+        "actual_vp": 10,
+        "resource_cards": 13,
+        "production_pips": 82,
+        "roads": 7,
+        "settlements": 0,
+        "cities": 4
+      }
+    },
+    {
+      "game_id": 23,
+      "seed": 20265615,
+      "mlp_won": false,
+      "completed": true,
+      "plies": 204,
+      "mlp_final": {
+        "actual_vp": 4,
+        "resource_cards": 19,
+        "production_pips": 30,
+        "roads": 2,
+        "settlements": 0,
+        "cities": 2
+      },
+      "teacher_final": {
+        "actual_vp": 10,
+        "resource_cards": 11,
+        "production_pips": 80,
+        "roads": 8,
+        "settlements": 0,
+        "cities": 4
+      }
+    },
+    {
+      "game_id": 24,
+      "seed": 20265620,
+      "mlp_won": false,
+      "completed": true,
+      "plies": 245,
+      "mlp_final": {
+        "actual_vp": 2,
+        "resource_cards": 9,
+        "production_pips": 17,
+        "roads": 4,
+        "settlements": 2,
+        "cities": 0
+      },
+      "teacher_final": {
+        "actual_vp": 10,
+        "resource_cards": 5,
+        "production_pips": 68,
+        "roads": 8,
+        "settlements": 5,
+        "cities": 1
+      }
+    },
+    {
+      "game_id": 25,
+      "seed": 20265625,
+      "mlp_won": false,
+      "completed": true,
+      "plies": 230,
+      "mlp_final": {
+        "actual_vp": 3,
+        "resource_cards": 6,
+        "production_pips": 18,
+        "roads": 3,
+        "settlements": 1,
+        "cities": 1
+      },
+      "teacher_final": {
+        "actual_vp": 10,
+        "resource_cards": 9,
+        "production_pips": 78,
+        "roads": 8,
+        "settlements": 0,
+        "cities": 4
+      }
+    }
+  ]
+}

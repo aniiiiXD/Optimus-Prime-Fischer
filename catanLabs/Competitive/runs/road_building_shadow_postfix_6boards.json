@@ -1,0 +1,562 @@
+{
+  "probe": "Road Building shadowed against FairValue",
+  "seed": 20272400,
+  "boards": 6,
+  "seats_per_board": 4,
+  "config": {
+    "value_weights": {
+      "reachable_production_0": 100000,
+      "reachable_production_1": 30000,
+      "buildable_nodes": 10000,
+      "hand_synergy": 1000,
+      "army_size": 30000
+    },
+    "dev_buy_vp_threshold": 7,
+    "dev_buy_late_bonus": 30000,
+    "road_building_max_first_roads": 64,
+    "road_building_max_second_roads": 256,
+    "road_building_score_margin": 0
+  },
+  "totals": {
+    "own_decisions": 1879,
+    "card_available": 30,
+    "overrides": 11,
+    "first_roads": 311,
+    "second_roads": 2066,
+    "truncated": 0,
+    "visibility_checks": 8
+  },
+  "scan_latency_ms": {
+    "median": 40.756,
+    "p95": 46.347,
+    "max": 67.421,
+    "samples": [
+      28.617,
+      30.528,
+      30.101,
+      18.597,
+      67.421,
+      39.438,
+      46.469,
+      44.654,
+      41.269,
+      44.288,
+      45.539,
+      40.901,
+      40.612,
+      45.295,
+      42.954,
+      42.427,
+      45.786,
+      46.196,
+      41.797,
+      41.784,
+      41.43,
+      4.832,
+      2.321,
+      4.545,
+      2.608,
+      2.402,
+      4.703,
+      2.529,
+      4.768,
+      2.732
+    ]
+  },
+  "examples": [
+    {
+      "seed": 20272400,
+      "seat": 3,
+      "turn": 105,
+      "baseline": "PLAY_KNIGHT_CARD",
+      "override": false,
+      "best_line": {
+        "first_road": "(0, 20)",
+        "second_road": "(19, 20)",
+        "result_vp": 9
+      },
+      "baseline_score": 2700000008559844.0,
+      "best_score": 2700000008535677.5,
+      "scan_ms": 28.617
+    },
+    {
+      "seed": 20272400,
+      "seat": 3,
+      "turn": 109,
+      "baseline": "ROLL",
+      "override": true,
+      "best_line": {
+        "first_road": "(0, 20)",
+        "second_road": "(19, 20)",
+        "result_vp": 9
+      },
+      "baseline_score": 2700000022449360.5,
+      "best_score": 2700000022455182.5,
+      "scan_ms": 30.528
+    },
+    {
+      "seed": 20272400,
+      "seat": 3,
+      "turn": 109,
+      "baseline": "BUY_DEVELOPMENT_CARD",
+      "override": false,
+      "best_line": {
+        "first_road": "(0, 20)",
+        "second_road": "(19, 20)",
+        "result_vp": 9
+      },
+      "baseline_score": 2700000036367730.5,
+      "best_score": 2700000036343872.0,
+      "scan_ms": 30.101
+    },
+    {
+      "seed": 20272401,
+      "seat": 1,
+      "turn": 99,
+      "baseline": "PLAY_KNIGHT_CARD",
+      "override": false,
+      "best_line": {
+        "first_road": "(0, 20)",
+        "second_road": "(0, 5)",
+        "result_vp": 9
+      },
+      "baseline_score": 2400000050198458.0,
+      "best_score": 2400000050168458.0,
+      "scan_ms": 18.597
+    },
+    {
+      "seed": 20272405,
+      "seat": 2,
+      "turn": 48,
+      "baseline": "ROLL",
+      "override": true,
+      "best_line": {
+        "first_road": "(24, 25)",
+        "second_road": "(25, 26)",
+        "result_vp": 7
+      },
+      "baseline_score": 2100000119638763.8,
+      "best_score": 2100000119684275.8,
+      "scan_ms": 67.421
+    },
+    {
+      "seed": 20272405,
+      "seat": 2,
+      "turn": 48,
+      "baseline": "BUILD_ROAD",
+      "override": true,
+      "best_line": {
+        "first_road": "(24, 25)",
+        "second_road": "(25, 26)",
+        "result_vp": 7
+      },
+      "baseline_score": 2100000119663175.8,
+      "best_score": 2100000119684278.8,
+      "scan_ms": 39.438
+    },
+    {
+      "seed": 20272405,
+      "seat": 2,
+      "turn": 48,
+      "baseline": "BUILD_ROAD",
+      "override": false,
+      "best_line": {
+        "first_road": "(25, 26)",
+        "second_road": "(26, 27)",
+        "result_vp": 7
+      },
+      "baseline_score": 2100000119684289.8,
+      "best_score": 2100000119684277.0,
+      "scan_ms": 46.469
+    },
+    {
+      "seed": 20272405,
+      "seat": 2,
+      "turn": 48,
+      "baseline": "MARITIME_TRADE",
+      "override": false,
+      "best_line": {
+        "first_road": "(26, 27)",
+        "second_road": "(8, 27)",
+        "result_vp": 7
+      },
+      "baseline_score": 2100000119684512.8,
+      "best_score": 2100000119684280.2,
+      "scan_ms": 44.654
+    },
+    {
+      "seed": 20272405,
+      "seat": 2,
+      "turn": 48,
+      "baseline": "BUILD_SETTLEMENT",
+      "override": false,
+      "best_line": {
+        "first_road": "(26, 27)",
+        "second_road": "(8, 27)",
+        "result_vp": 7
+      },
+      "baseline_score": 2400000133562923.0,
+      "best_score": 2100000119684503.2,
+      "scan_ms": 41.269
+    },
+    {
+      "seed": 20272405,
+      "seat": 2,
+      "turn": 48,
+      "baseline": "END_TURN",
+      "override": false,
+      "best_line": {
+        "first_road": "(26, 27)",
+        "second_road": "(27, 28)",
+        "result_vp": 8
+      },
+      "baseline_score": 2400000133562923.0,
+      "best_score": 2400000133562913.5,
+      "scan_ms": 44.288
+    },
+    {
+      "seed": 20272405,
+      "seat": 2,
+      "turn": 52,
+      "baseline": "ROLL",
+      "override": false,
+      "best_line": {
+        "first_road": "(26, 27)",
+        "second_road": "(27, 28)",
+        "result_vp": 8
+      },
+      "baseline_score": 2400000133563093.5,
+      "best_score": 2400000133563040.5,
+      "scan_ms": 45.539
+    },
+    {
+      "seed": 20272405,
+      "seat": 2,
+      "turn": 52,
+      "baseline": "MARITIME_TRADE",
+      "override": false,
+      "best_line": {
+        "first_road": "(26, 27)",
+        "second_road": "(27, 28)",
+        "result_vp": 8
+      },
+      "baseline_score": 2400000133563276.0,
+      "best_score": 2400000133563043.5,
+      "scan_ms": 40.901
+    },
+    {
+      "seed": 20272405,
+      "seat": 2,
+      "turn": 52,
+      "baseline": "END_TURN",
+      "override": false,
+      "best_line": {
+        "first_road": "(26, 27)",
+        "second_road": "(27, 28)",
+        "result_vp": 8
+      },
+      "baseline_score": 2400000133563276.0,
+      "best_score": 2400000133563266.5,
+      "scan_ms": 40.612
+    },
+    {
+      "seed": 20272405,
+      "seat": 2,
+      "turn": 56,
+      "baseline": "ROLL",
+      "override": false,
+      "best_line": {
+        "first_road": "(26, 27)",
+        "second_road": "(27, 28)",
+        "result_vp": 8
+      },
+      "baseline_score": 2400000133563599.0,
+      "best_score": 2400000133563566.5,
+      "scan_ms": 45.295
+    },
+    {
+      "seed": 20272405,
+      "seat": 2,
+      "turn": 56,
+      "baseline": "MARITIME_TRADE",
+      "override": false,
+      "best_line": {
+        "first_road": "(26, 27)",
+        "second_road": "(27, 28)",
+        "result_vp": 8
+      },
+      "baseline_score": 2400000133563704.0,
+      "best_score": 2400000133563566.5,
+      "scan_ms": 42.954
+    },
+    {
+      "seed": 20272405,
+      "seat": 2,
+      "turn": 56,
+      "baseline": "BUILD_SETTLEMENT",
+      "override": false,
+      "best_line": {
+        "first_road": "(26, 27)",
+        "second_road": "(27, 28)",
+        "result_vp": 8
+      },
+      "baseline_score": 2700000147417669.5,
+      "best_score": 2400000133563694.5,
+      "scan_ms": 42.427
+    },
+    {
+      "seed": 20272405,
+      "seat": 2,
+      "turn": 56,
+      "baseline": "END_TURN",
+      "override": false,
+      "best_line": {
+        "first_road": "(26, 27)",
+        "second_road": "(27, 28)",
+        "result_vp": 9
+      },
+      "baseline_score": 2700000147417669.5,
+      "best_score": 2700000147417660.0,
+      "scan_ms": 45.786
+    },
+    {
+      "seed": 20272405,
+      "seat": 2,
+      "turn": 60,
+      "baseline": "ROLL",
+      "override": false,
+      "best_line": {
+        "first_road": "(26, 27)",
+        "second_road": "(27, 28)",
+        "result_vp": 9
+      },
+      "baseline_score": 2700000147418064.5,
+      "best_score": 2700000147418037.0,
+      "scan_ms": 46.196
+    },
+    {
+      "seed": 20272405,
+      "seat": 2,
+      "turn": 60,
+      "baseline": "BUY_DEVELOPMENT_CARD",
+      "override": false,
+      "best_line": {
+        "first_road": "(26, 27)",
+        "second_road": "(27, 28)",
+        "result_vp": 9
+      },
+      "baseline_score": 2700000147447731.5,
+      "best_score": 2700000147418040.0,
+      "scan_ms": 41.797
+    },
+    {
+      "seed": 20272405,
+      "seat": 2,
+      "turn": 60,
+      "baseline": "MARITIME_TRADE",
+      "override": false,
+      "best_line": {
+        "first_road": "(26, 27)",
+        "second_road": "(27, 28)",
+        "result_vp": 9
+      },
+      "baseline_score": 2700000147417954.5,
+      "best_score": 2700000147417722.0,
+      "scan_ms": 41.784
+    }
+  ],
+  "games": [
+    {
+      "seed": 20272400,
+      "seat": 0,
+      "status": "completed",
+      "actions": 431,
+      "candidate_vp": 7,
+      "wall_seconds": 0.574
+    },
+    {
+      "seed": 20272400,
+      "seat": 1,
+      "status": "completed",
+      "actions": 331,
+      "candidate_vp": 3,
+      "wall_seconds": 0.496
+    },
+    {
+      "seed": 20272400,
+      "seat": 2,
+      "status": "completed",
+      "actions": 286,
+      "candidate_vp": 10,
+      "wall_seconds": 0.303
+    },
+    {
+      "seed": 20272400,
+      "seat": 3,
+      "status": "completed",
+      "actions": 438,
+      "candidate_vp": 10,
+      "wall_seconds": 0.805
+    },
+    {
+      "seed": 20272401,
+      "seat": 0,
+      "status": "completed",
+      "actions": 299,
+      "candidate_vp": 6,
+      "wall_seconds": 0.496
+    },
+    {
+      "seed": 20272401,
+      "seat": 1,
+      "status": "completed",
+      "actions": 375,
+      "candidate_vp": 9,
+      "wall_seconds": 0.541
+    },
+    {
+      "seed": 20272401,
+      "seat": 2,
+      "status": "completed",
+      "actions": 361,
+      "candidate_vp": 8,
+      "wall_seconds": 0.581
+    },
+    {
+      "seed": 20272401,
+      "seat": 3,
+      "status": "completed",
+      "actions": 228,
+      "candidate_vp": 3,
+      "wall_seconds": 0.352
+    },
+    {
+      "seed": 20272402,
+      "seat": 0,
+      "status": "completed",
+      "actions": 446,
+      "candidate_vp": 7,
+      "wall_seconds": 0.672
+    },
+    {
+      "seed": 20272402,
+      "seat": 1,
+      "status": "completed",
+      "actions": 414,
+      "candidate_vp": 8,
+      "wall_seconds": 0.647
+    },
+    {
+      "seed": 20272402,
+      "seat": 2,
+      "status": "completed",
+      "actions": 305,
+      "candidate_vp": 3,
+      "wall_seconds": 0.405
+    },
+    {
+      "seed": 20272402,
+      "seat": 3,
+      "status": "completed",
+      "actions": 279,
+      "candidate_vp": 10,
+      "wall_seconds": 0.344
+    },
+    {
+      "seed": 20272403,
+      "seat": 0,
+      "status": "completed",
+      "actions": 306,
+      "candidate_vp": 6,
+      "wall_seconds": 0.341
+    },
+    {
+      "seed": 20272403,
+      "seat": 1,
+      "status": "completed",
+      "actions": 317,
+      "candidate_vp": 7,
+      "wall_seconds": 0.332
+    },
+    {
+      "seed": 20272403,
+      "seat": 2,
+      "status": "completed",
+      "actions": 397,
+      "candidate_vp": 10,
+      "wall_seconds": 0.536
+    },
+    {
+      "seed": 20272403,
+      "seat": 3,
+      "status": "completed",
+      "actions": 301,
+      "candidate_vp": 11,
+      "wall_seconds": 0.323
+    },
+    {
+      "seed": 20272404,
+      "seat": 0,
+      "status": "completed",
+      "actions": 197,
+      "candidate_vp": 5,
+      "wall_seconds": 0.313
+    },
+    {
+      "seed": 20272404,
+      "seat": 1,
+      "status": "completed",
+      "actions": 321,
+      "candidate_vp": 10,
+      "wall_seconds": 0.456
+    },
+    {
+      "seed": 20272404,
+      "seat": 2,
+      "status": "completed",
+      "actions": 237,
+      "candidate_vp": 5,
+      "wall_seconds": 0.385
+    },
+    {
+      "seed": 20272404,
+      "seat": 3,
+      "status": "completed",
+      "actions": 182,
+      "candidate_vp": 2,
+      "wall_seconds": 0.303
+    },
+    {
+      "seed": 20272405,
+      "seat": 0,
+      "status": "completed",
+      "actions": 181,
+      "candidate_vp": 3,
+      "wall_seconds": 0.237
+    },
+    {
+      "seed": 20272405,
+      "seat": 1,
+      "status": "completed",
+      "actions": 193,
+      "candidate_vp": 4,
+      "wall_seconds": 0.295
+    },
+    {
+      "seed": 20272405,
+      "seat": 2,
+      "status": "completed",
+      "actions": 197,
+      "candidate_vp": 10,
+      "wall_seconds": 1.213
+    },
+    {
+      "seed": 20272405,
+      "seat": 3,
+      "status": "completed",
+      "actions": 404,
+      "candidate_vp": 8,
+      "wall_seconds": 0.639
+    }
+  ]
+}
