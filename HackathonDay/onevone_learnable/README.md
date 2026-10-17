@@ -83,6 +83,12 @@ from the expert. Set `prior_weight=0` for selection entirely by the learned
 score, while retaining legality and the win guard. Setting `scorer=heuristic`
 uses the expert alone. Switching networks does not change candidate generation.
 
+The existing two-action tactical VP preference is preserved as a soft part of
+the expert rank. The model also receives each root's known prospective VP gain.
+It can override nonwinning tactical preferences. The tactical feature pass has
+a fixed node limit so feature values do not depend on incidental CPU scheduling;
+the separate winning-line search has both node and CPU limits.
+
 The default heuristic coefficients retain the previous expert's preferences;
 the redesign makes these preferences replaceable rather than claiming that
 the coefficients themselves have been solved. The learned value predicts

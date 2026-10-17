@@ -164,6 +164,8 @@ def main():
     if args.games < 4 or args.games%2 or min(args.workers, args.repeats) < 1:
         p.error("Use at least four games in complete board pairs and positive workers/repeats")
     args.output.mkdir(parents=True, exist_ok=False)
+    source_paths = [*sorted(ROOT.glob("*.py")), ROOT/"config.json"]
+    source_hashes = {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in source_paths}
     start, all_rows, games = time.monotonic(), [], []
     jobs = [(i, args.seed0, args.branches, args.repeats) for i in range(args.games)]
     with ProcessPoolExecutor(max_workers=args.workers, mp_context=mp.get_context("spawn")) as pool:
@@ -181,9 +183,13 @@ def main():
                 "continuation_games": sum(g["continuation_games"] for g in games),
                 "rows": len(all_rows), "opponent": "official F", "clocks": "training unclocked",
                 "started_seed": args.seed0, "finished_utc": datetime.now(timezone.utc).isoformat(),
+                "policy_source_hashes": source_hashes,
+                "source_unchanged": source_hashes == {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in source_paths},
                 "wall_seconds": time.monotonic()-start,
                 "dataset_sha256": hashlib.sha256((args.output/"dataset.npz").read_bytes()).hexdigest()}
     (args.output/"manifest.json").write_text(json.dumps(manifest, indent=2)+"\n")
+    if not manifest["source_unchanged"]:
+        raise RuntimeError("Source changed during data generation; discard this dataset")
     print(json.dumps({k:v for k,v in manifest.items() if k not in ("games", "feature_names")}, indent=2))
 
 

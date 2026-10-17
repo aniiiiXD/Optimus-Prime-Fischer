@@ -1,0 +1,273 @@
+{
+  "totals": {
+    "decisions": 368,
+    "model_calls": 368,
+    "model_changes": 42,
+    "win_guards": 5,
+    "clock_fallbacks": 0,
+    "model_errors": 0
+  },
+  "games": [
+    {
+      "seed": 2026880000,
+      "first": true,
+      "stats": {
+        "decisions": 49,
+        "model_calls": 49,
+        "model_changes": 7,
+        "win_guards": 0,
+        "clock_fallbacks": 0,
+        "model_errors": 0
+      },
+      "won": false,
+      "examples": [
+        {
+          "turn": 1,
+          "expert_action": "Action(color=C.RED, action_type=AT.BUILD_SETTLEMENT, value=22)",
+          "executed_action": "Action(color=C.RED, action_type=AT.BUILD_SETTLEMENT, value=20)",
+          "expert_logit": -0.6428431868553162,
+          "chosen_logit": -0.17208795249462128
+        },
+        {
+          "turn": 25,
+          "expert_action": "Action(color=C.RED, action_type=AT.MARITIME_TRADE, value=('BRICK', 'BRICK', 'BRICK', 'BRICK', 'WOOD'))",
+          "executed_action": "Action(color=C.RED, action_type=AT.END_TURN, value=None)",
+          "expert_logit": -1.6426860094070435,
+          "chosen_logit": -1.101608395576477
+        },
+        {
+          "turn": 52,
+          "expert_action": "Action(color=C.RED, action_type=AT.DISCARD_RESOURCE, value='BRICK')",
+          "executed_action": "Action(color=C.RED, action_type=AT.DISCARD_RESOURCE, value='SHEEP')",
+          "expert_logit": -2.254570245742798,
+          "chosen_logit": -2.2101259231567383
+        }
+      ]
+    },
+    {
+      "seed": 2026880000,
+      "first": false,
+      "stats": {
+        "decisions": 55,
+        "model_calls": 55,
+        "model_changes": 6,
+        "win_guards": 0,
+        "clock_fallbacks": 0,
+        "model_errors": 0
+      },
+      "won": false,
+      "examples": [
+        {
+          "turn": 0,
+          "expert_action": "Action(color=C.BLUE, action_type=AT.BUILD_SETTLEMENT, value=15)",
+          "executed_action": "Action(color=C.BLUE, action_type=AT.BUILD_SETTLEMENT, value=20)",
+          "expert_logit": -0.01232991274446249,
+          "chosen_logit": 0.6235682368278503
+        },
+        {
+          "turn": 30,
+          "expert_action": "Action(color=C.BLUE, action_type=AT.BUILD_ROAD, value=(0, 5))",
+          "executed_action": "Action(color=C.BLUE, action_type=AT.BUILD_ROAD, value=(7, 8))",
+          "expert_logit": -0.8714902400970459,
+          "chosen_logit": -0.5256101489067078
+        },
+        {
+          "turn": 54,
+          "expert_action": "Action(color=C.BLUE, action_type=AT.DISCARD_RESOURCE, value='BRICK')",
+          "executed_action": "Action(color=C.BLUE, action_type=AT.DISCARD_RESOURCE, value='SHEEP')",
+          "expert_logit": -3.83804988861084,
+          "chosen_logit": -3.824371099472046
+        }
+      ]
+    },
+    {
+      "seed": 2026880001,
+      "first": true,
+      "stats": {
+        "decisions": 86,
+        "model_calls": 86,
+        "model_changes": 8,
+        "win_guards": 0,
+        "clock_fallbacks": 0,
+        "model_errors": 0
+      },
+      "won": false,
+      "examples": [
+        {
+          "turn": 0,
+          "expert_action": "Action(color=C.RED, action_type=AT.BUILD_SETTLEMENT, value=15)",
+          "executed_action": "Action(color=C.RED, action_type=AT.BUILD_SETTLEMENT, value=20)",
+          "expert_logit": -0.02189233899116516,
+          "chosen_logit": 0.8698707818984985
+        },
+        {
+          "turn": 22,
+          "expert_action": "Action(color=C.RED, action_type=AT.DISCARD_RESOURCE, value='WHEAT')",
+          "executed_action": "Action(color=C.RED, action_type=AT.DISCARD_RESOURCE, value='ORE')",
+          "expert_logit": -1.4717319011688232,
+          "chosen_logit": -1.4495867490768433
+        },
+        {
+          "turn": 22,
+          "expert_action": "Action(color=C.RED, action_type=AT.DISCARD_RESOURCE, value='WHEAT')",
+          "executed_action": "Action(color=C.RED, action_type=AT.DISCARD_RESOURCE, value='ORE')",
+          "expert_logit": -1.6316791772842407,
+          "chosen_logit": -1.6106489896774292
+        }
+      ]
+    },
+    {
+      "seed": 2026880001,
+      "first": false,
+      "stats": {
+        "decisions": 58,
+        "model_calls": 58,
+        "model_changes": 1,
+        "win_guards": 1,
+        "clock_fallbacks": 0,
+        "model_errors": 0
+      },
+      "won": true,
+      "examples": [
+        {
+          "turn": 1,
+          "expert_action": "Action(color=C.BLUE, action_type=AT.BUILD_SETTLEMENT, value=9)",
+          "executed_action": "Action(color=C.BLUE, action_type=AT.BUILD_SETTLEMENT, value=20)",
+          "expert_logit": -0.37706270813941956,
+          "chosen_logit": 0.022640731185674667
+        }
+      ]
+    },
+    {
+      "seed": 2026880002,
+      "first": true,
+      "stats": {
+        "decisions": 35,
+        "model_calls": 35,
+        "model_changes": 7,
+        "win_guards": 2,
+        "clock_fallbacks": 0,
+        "model_errors": 0
+      },
+      "won": true,
+      "examples": [
+        {
+          "turn": 0,
+          "expert_action": "Action(color=C.RED, action_type=AT.BUILD_SETTLEMENT, value=21)",
+          "executed_action": "Action(color=C.RED, action_type=AT.BUILD_SETTLEMENT, value=8)",
+          "expert_logit": 0.325726181268692,
+          "chosen_logit": 0.6107245683670044
+        },
+        {
+          "turn": 2,
+          "expert_action": "Action(color=C.RED, action_type=AT.BUILD_SETTLEMENT, value=11)",
+          "executed_action": "Action(color=C.RED, action_type=AT.BUILD_SETTLEMENT, value=20)",
+          "expert_logit": -0.585623562335968,
+          "chosen_logit": 0.2348223626613617
+        },
+        {
+          "turn": 8,
+          "expert_action": "Action(color=C.RED, action_type=AT.MOVE_ROBBER, value=((-1, 0, 1), C.BLUE))",
+          "executed_action": "Action(color=C.RED, action_type=AT.MOVE_ROBBER, value=((0, 2, -2), C.BLUE))",
+          "expert_logit": 0.5591031908988953,
+          "chosen_logit": 0.6184690594673157
+        }
+      ]
+    },
+    {
+      "seed": 2026880002,
+      "first": false,
+      "stats": {
+        "decisions": 34,
+        "model_calls": 34,
+        "model_changes": 3,
+        "win_guards": 1,
+        "clock_fallbacks": 0,
+        "model_errors": 0
+      },
+      "won": true,
+      "examples": [
+        {
+          "turn": 1,
+          "expert_action": "Action(color=C.BLUE, action_type=AT.BUILD_SETTLEMENT, value=12)",
+          "executed_action": "Action(color=C.BLUE, action_type=AT.BUILD_SETTLEMENT, value=20)",
+          "expert_logit": 0.14987479150295258,
+          "chosen_logit": 1.1019703149795532
+        },
+        {
+          "turn": 25,
+          "expert_action": "Action(color=C.BLUE, action_type=AT.BUILD_ROAD, value=(22, 23))",
+          "executed_action": "Action(color=C.BLUE, action_type=AT.BUILD_ROAD, value=(10, 29))",
+          "expert_logit": -0.16377930343151093,
+          "chosen_logit": 0.4394431412220001
+        },
+        {
+          "turn": 35,
+          "expert_action": "Action(color=C.BLUE, action_type=AT.BUILD_ROAD, value=(22, 23))",
+          "executed_action": "Action(color=C.BLUE, action_type=AT.BUILD_ROAD, value=(7, 8))",
+          "expert_logit": 1.8912044763565063,
+          "chosen_logit": 2.7077481746673584
+        }
+      ]
+    },
+    {
+      "seed": 2026880003,
+      "first": true,
+      "stats": {
+        "decisions": 40,
+        "model_calls": 40,
+        "model_changes": 9,
+        "win_guards": 1,
+        "clock_fallbacks": 0,
+        "model_errors": 0
+      },
+      "won": true,
+      "examples": [
+        {
+          "turn": 1,
+          "expert_action": "Action(color=C.RED, action_type=AT.BUILD_SETTLEMENT, value=22)",
+          "executed_action": "Action(color=C.RED, action_type=AT.BUILD_SETTLEMENT, value=16)",
+          "expert_logit": 0.5983019471168518,
+          "chosen_logit": 0.8651794791221619
+        },
+        {
+          "turn": 11,
+          "expert_action": "Action(color=C.RED, action_type=AT.MARITIME_TRADE, value=('ORE', 'ORE', 'ORE', 'ORE', 'WOOD'))",
+          "executed_action": "Action(color=C.RED, action_type=AT.END_TURN, value=None)",
+          "expert_logit": 0.2565198242664337,
+          "chosen_logit": 0.7242774367332458
+        },
+        {
+          "turn": 13,
+          "expert_action": "Action(color=C.RED, action_type=AT.MARITIME_TRADE, value=('ORE', 'ORE', 'ORE', 'ORE', 'WOOD'))",
+          "executed_action": "Action(color=C.RED, action_type=AT.END_TURN, value=None)",
+          "expert_logit": 0.25357717275619507,
+          "chosen_logit": 0.7212820649147034
+        }
+      ]
+    },
+    {
+      "seed": 2026880003,
+      "first": false,
+      "stats": {
+        "decisions": 11,
+        "model_calls": 11,
+        "model_changes": 1,
+        "win_guards": 0,
+        "clock_fallbacks": 0,
+        "model_errors": 0
+      },
+      "won": false,
+      "examples": [
+        {
+          "turn": 0,
+          "expert_action": "Action(color=C.BLUE, action_type=AT.BUILD_SETTLEMENT, value=15)",
+          "executed_action": "Action(color=C.BLUE, action_type=AT.BUILD_SETTLEMENT, value=8)",
+          "expert_logit": 0.25131955742836,
+          "chosen_logit": 0.4876457750797272
+        }
+      ]
+    }
+  ],
+  "purpose": "activity audit; unclocked and not a playing-strength estimate"
+}

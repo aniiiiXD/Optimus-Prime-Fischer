@@ -106,6 +106,39 @@ class PolicyTests(unittest.TestCase):
         self.assertEqual(policy.last_decision["reason"], "guaranteed_win")
         self.assertEqual(game.playable_actions[choice].action_type, ActionType.BUILD_CITY)
 
+    def test_trade_then_city_guaranteed_win_is_protected(self):
+        game, color = rich_position()
+        own, ps = prefix(game, color), game.state.player_state
+        for resource, count in zip(RESOURCES, (4, 0, 0, 2, 2)):
+            ps[own+resource+"_IN_HAND"] = count
+        ps[own+"ACTUAL_VICTORY_POINTS"] = ps[own+"VICTORY_POINTS"] = 9
+        game.playable_actions = generate_playable_actions(game.state)
+        end = next(i for i,a in enumerate(game.playable_actions) if a.action_type == ActionType.END_TURN)
+        config = load_config()
+        config.update(learning_weight=20, max_decision_ms=100, tactical_ms=80)
+        policy = LearnableOneVOne(color, config, TargetScorer(end))
+        choice = policy.decide(game, game.playable_actions)
+        self.assertEqual(policy.last_decision["reason"], "guaranteed_win")
+        self.assertEqual(game.playable_actions[choice].action_type, ActionType.MARITIME_TRADE)
+        game.execute(game.playable_actions[choice])
+        next_choice = policy.decide(game, game.playable_actions)
+        self.assertEqual(game.playable_actions[next_choice].action_type, ActionType.BUILD_CITY)
+
+    def test_nonwinning_tactical_priority_stays_overridable(self):
+        game, color = rich_position()
+        own, ps = prefix(game, color), game.state.player_state
+        for resource, count in zip(RESOURCES, (2, 2, 1, 1, 0)):
+            ps[own+resource+"_IN_HAND"] = count
+        game.playable_actions = generate_playable_actions(game.state)
+        config = load_config()
+        config.update(prior_weight=0, learning_weight=2, heuristic_plan_ms=80)
+        end = next(i for i,a in enumerate(game.playable_actions) if a.action_type == ActionType.END_TURN)
+        policy = LearnableOneVOne(color, config, TargetScorer(end))
+        _, candidates = policy.prepare_candidates(game, game.playable_actions)
+        self.assertTrue(any(c.tactical_preferred for c in candidates))
+        self.assertEqual(policy.decide(game, game.playable_actions), end)
+        self.assertEqual(policy.last_decision["reason"], "scored")
+
     def test_invalid_model_outputs_use_expert_and_are_reported(self):
         class Bad:
             def predict(self, board, candidates):

@@ -97,7 +97,7 @@ class LearnableOneVOne:
             self.last_decision = {"chosen": choice, "reason": "clock_reserve", "candidates": []}
             return choice
         _, candidates = self.prepare_candidates(game, actions)
-        prior_choice = max(range(len(candidates)), key=lambda i: candidates[i].score)
+        prior_choice = max(range(len(candidates)), key=lambda i: candidates[i].rank)
         board = encode_board(game, self.color) if self.scorer is not None else None
         choice, logits, combined, error = self.select_candidate(board, candidates)
         if logits is not None and error is None:

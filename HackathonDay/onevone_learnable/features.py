@@ -10,7 +10,7 @@ from catanatron.features import build_production_features, reachability_features
 from catanatron.models.board import STATIC_GRAPH
 from catanatron.players.value import value_production
 
-SCHEMA = "onevone-visible-v1"
+SCHEMA = "onevone-visible-v2"
 RESOURCES = ("WOOD", "BRICK", "SHEEP", "WHEAT", "ORE")
 DEVS = ("KNIGHT", "YEAR_OF_PLENTY", "MONOPOLY", "ROAD_BUILDING", "VICTORY_POINT")
 ACTIONS = (

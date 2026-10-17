@@ -16,7 +16,12 @@ had zero faults or budget overruns on the local machine.
 
 The [win/loss analysis](ONEVONE_WIN_LOSS_ANALYSIS.md) compares all 200 games,
 four component-removal experiments, and concrete late-game decision mistakes.
-The baseline is unchanged; V2 improvements have not been implemented.
+The baseline is unchanged; experimental candidates are evaluated separately.
+
+The [learnable OneVOne redesign](onevone_learnable/README.md) adds interchangeable
+heuristic, trained MLP and trained transformer scorers over the full legal action
+list, with separate guaranteed-win protection. Its fresh 200-game tests and
+controls are recorded in [the redesign results](onevone_learnable/RESULTS.md).
 
 Open `index.html` to read the report. Edit `report.json` to update it, then run:
 

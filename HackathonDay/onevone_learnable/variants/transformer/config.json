@@ -1,7 +1,7 @@
 {
-  "schema": "onevone-visible-v1",
+  "schema": "onevone-visible-v2",
   "scorer": "transformer",
-  "checkpoint": "models/transformer_v1/model.npz",
+  "checkpoint": "models/transformer_v2/model.npz",
   "learning_weight": 0.35,
   "max_decision_ms": 9.0,
   "tactical_ms": 2.0,
@@ -15,5 +15,6 @@
   },
   "dev_buy_vp_threshold": 7,
   "dev_buy_late_bonus": 30000,
-  "prior_weight": 1.0
+  "prior_weight": 1.0,
+  "heuristic_plan_nodes": 128
 }
