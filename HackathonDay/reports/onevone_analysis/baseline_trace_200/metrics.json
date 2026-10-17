@@ -1,0 +1,380 @@
+{
+  "definitions": {
+    "a": "Frozen OneVOne baseline",
+    "b": "Official F agent",
+    "turn": "Engine turn counter spanning both players; not a player's own turn count",
+    "production": "Expected cards per dice roll, before robber blocking and bank shortages",
+    "first_build": "Mean among games where built; never-built games reported separately",
+    "cohorts": "Grouped by final outcome; descriptive associations, not causal estimates"
+  },
+  "wins": {
+    "games": 127,
+    "mean_turns": 66.37007874015748,
+    "a": {
+      "mean_production_drawn": 70.88188976377953,
+      "mean_production_expected": 69.82152366929134,
+      "mean_blocked_production_expected": 6.49431379527559,
+      "mean_discarded": 7.307086614173229,
+      "mean_trades": 6.244094488188976,
+      "mean_trade_cards_spent": 23.937007874015748,
+      "mean_trade_turns_no_conversion": 1.6535433070866141,
+      "mean_end_turn_high_hand": 2.779527559055118,
+      "mean_end_turn_with_build_available": 0,
+      "mean_end_turn_settlement_affordable_no_site": 0.12598425196850394,
+      "first_settlement_turn": {
+        "mean_when_built": 25.929133858267715,
+        "games_built": 127,
+        "games_never_built": 0
+      },
+      "first_city_turn": {
+        "mean_when_built": 26.388429752066116,
+        "games_built": 121,
+        "games_never_built": 6
+      },
+      "opening_mean_production": 0.6060803307086614,
+      "final_mean_vp": 10.141732283464567,
+      "final_vp_histogram": {
+        "10": 109,
+        "11": 18
+      },
+      "final_longest_road_holder_games": 92,
+      "final_largest_army_holder_games": 36,
+      "final_mean_cities": 2.559055118110236,
+      "mean_actions": {
+        "BUILD_CITY": 2.559055118110236,
+        "BUILD_ROAD": 6.921259842519685,
+        "BUILD_SETTLEMENT": 2.9291338582677167,
+        "BUY_DEVELOPMENT_CARD": 2.661417322834646,
+        "DISCARD_RESOURCE": 7.307086614173229,
+        "END_TURN": 31.929133858267715,
+        "MARITIME_TRADE": 6.244094488188976,
+        "MOVE_ROBBER": 6.984251968503937,
+        "PLAY_KNIGHT_CARD": 1.3622047244094488,
+        "PLAY_MONOPOLY": 0.2440944881889764,
+        "PLAY_ROAD_BUILDING": 0.015748031496062992,
+        "PLAY_YEAR_OF_PLENTY": 0.15748031496062992,
+        "ROLL": 32.74015748031496
+      },
+      "checkpoints": {
+        "10": {
+          "games_still_running": 127,
+          "mean_vp": 2.188976377952756,
+          "mean_production": 0.6609797716535434
+        },
+        "20": {
+          "games_still_running": 127,
+          "mean_vp": 2.9921259842519685,
+          "mean_production": 0.8709536456692913
+        },
+        "40": {
+          "games_still_running": 124,
+          "mean_vp": 5.403225806451613,
+          "mean_production": 1.33803775
+        },
+        "60": {
+          "games_still_running": 74,
+          "mean_vp": 6.783783783783784,
+          "mean_production": 1.5491742162162163
+        },
+        "80": {
+          "games_still_running": 29,
+          "mean_vp": 7.827586206896552,
+          "mean_production": 1.720306724137931
+        },
+        "100": {
+          "games_still_running": 7,
+          "mean_vp": 8.428571428571429,
+          "mean_production": 1.8333332857142857
+        }
+      }
+    },
+    "b": {
+      "mean_production_drawn": 52.181102362204726,
+      "mean_production_expected": 53.133419685039364,
+      "mean_blocked_production_expected": 6.803805677165355,
+      "mean_discarded": 7.346456692913386,
+      "mean_trades": 4.125984251968504,
+      "mean_trade_cards_spent": 16.118110236220474,
+      "mean_trade_turns_no_conversion": 1.6614173228346456,
+      "mean_end_turn_high_hand": 3.6535433070866143,
+      "mean_end_turn_with_build_available": 0,
+      "mean_end_turn_settlement_affordable_no_site": 0.16535433070866143,
+      "first_settlement_turn": {
+        "mean_when_built": 32.678899082568805,
+        "games_built": 109,
+        "games_never_built": 18
+      },
+      "first_city_turn": {
+        "mean_when_built": 33.411764705882355,
+        "games_built": 85,
+        "games_never_built": 42
+      },
+      "opening_mean_production": 0.5966753070866142,
+      "final_mean_vp": 5.724409448818897,
+      "final_vp_histogram": {
+        "2": 1,
+        "3": 14,
+        "4": 24,
+        "5": 17,
+        "6": 25,
+        "7": 24,
+        "8": 14,
+        "9": 8
+      },
+      "final_longest_road_holder_games": 28,
+      "final_largest_army_holder_games": 3,
+      "final_mean_cities": 1.1968503937007875,
+      "mean_actions": {
+        "BUILD_CITY": 1.1968503937007875,
+        "BUILD_ROAD": 5.78740157480315,
+        "BUILD_SETTLEMENT": 1.8425196850393701,
+        "BUY_DEVELOPMENT_CARD": 0.8976377952755905,
+        "DISCARD_RESOURCE": 7.346456692913386,
+        "END_TURN": 32.44094488188976,
+        "MARITIME_TRADE": 4.125984251968504,
+        "MOVE_ROBBER": 5.346456692913386,
+        "PLAY_KNIGHT_CARD": 0.48031496062992124,
+        "PLAY_MONOPOLY": 0.06299212598425197,
+        "PLAY_YEAR_OF_PLENTY": 0.05511811023622047,
+        "ROLL": 32.44094488188976
+      },
+      "checkpoints": {
+        "10": {
+          "games_still_running": 127,
+          "mean_vp": 2.062992125984252,
+          "mean_production": 0.6146105669291339
+        },
+        "20": {
+          "games_still_running": 127,
+          "mean_vp": 2.4330708661417324,
+          "mean_production": 0.6944443937007875
+        },
+        "40": {
+          "games_still_running": 124,
+          "mean_vp": 3.7983870967741935,
+          "mean_production": 0.978270620967742
+        },
+        "60": {
+          "games_still_running": 74,
+          "mean_vp": 4.9324324324324325,
+          "mean_production": 1.1944444864864865
+        },
+        "80": {
+          "games_still_running": 29,
+          "mean_vp": 6.379310344827586,
+          "mean_production": 1.4224137586206897
+        },
+        "100": {
+          "games_still_running": 7,
+          "mean_vp": 6.714285714285714,
+          "mean_production": 1.392857
+        }
+      }
+    },
+    "winning_actions": {
+      "BUY_DEVELOPMENT_CARD": 25,
+      "BUILD_CITY": 21,
+      "BUILD_SETTLEMENT": 43,
+      "BUILD_ROAD": 14,
+      "PLAY_KNIGHT_CARD": 24
+    }
+  },
+  "losses": {
+    "games": 73,
+    "mean_turns": 65.58904109589041,
+    "a": {
+      "mean_production_drawn": 54.082191780821915,
+      "mean_production_expected": 54.82039605479453,
+      "mean_blocked_production_expected": 7.250000397260273,
+      "mean_discarded": 6.123287671232877,
+      "mean_trades": 5.027397260273973,
+      "mean_trade_cards_spent": 19.80821917808219,
+      "mean_trade_turns_no_conversion": 1.8904109589041096,
+      "mean_end_turn_high_hand": 2.7534246575342465,
+      "mean_end_turn_with_build_available": 0,
+      "mean_end_turn_settlement_affordable_no_site": 0.0136986301369863,
+      "first_settlement_turn": {
+        "mean_when_built": 32.833333333333336,
+        "games_built": 66,
+        "games_never_built": 7
+      },
+      "first_city_turn": {
+        "mean_when_built": 32.84126984126984,
+        "games_built": 63,
+        "games_never_built": 10
+      },
+      "opening_mean_production": 0.5955098219178082,
+      "final_mean_vp": 5.972602739726027,
+      "final_vp_histogram": {
+        "2": 2,
+        "3": 3,
+        "4": 9,
+        "5": 18,
+        "6": 11,
+        "7": 15,
+        "8": 9,
+        "9": 6
+      },
+      "final_longest_road_holder_games": 5,
+      "final_largest_army_holder_games": 1,
+      "final_mean_cities": 1.726027397260274,
+      "mean_actions": {
+        "BUILD_CITY": 1.726027397260274,
+        "BUILD_ROAD": 5.205479452054795,
+        "BUILD_SETTLEMENT": 1.9315068493150684,
+        "BUY_DEVELOPMENT_CARD": 0.5342465753424658,
+        "DISCARD_RESOURCE": 6.123287671232877,
+        "END_TURN": 32.054794520547944,
+        "MARITIME_TRADE": 5.027397260273973,
+        "MOVE_ROBBER": 4.684931506849315,
+        "PLAY_KNIGHT_CARD": 0.2191780821917808,
+        "PLAY_MONOPOLY": 0.0273972602739726,
+        "ROLL": 32.054794520547944
+      },
+      "checkpoints": {
+        "10": {
+          "games_still_running": 73,
+          "mean_vp": 2.0821917808219177,
+          "mean_production": 0.6111110273972603
+        },
+        "20": {
+          "games_still_running": 73,
+          "mean_vp": 2.4657534246575343,
+          "mean_production": 0.7130897671232876
+        },
+        "40": {
+          "games_still_running": 70,
+          "mean_vp": 3.9857142857142858,
+          "mean_production": 1.0317460857142857
+        },
+        "60": {
+          "games_still_running": 47,
+          "mean_vp": 5.404255319148936,
+          "mean_production": 1.302009595744681
+        },
+        "80": {
+          "games_still_running": 14,
+          "mean_vp": 6,
+          "mean_production": 1.375
+        },
+        "100": {
+          "games_still_running": 2,
+          "mean_vp": 7,
+          "mean_production": 1.652777
+        }
+      }
+    },
+    "b": {
+      "mean_production_drawn": 72.47945205479452,
+      "mean_production_expected": 69.3607364109589,
+      "mean_blocked_production_expected": 5.648401726027397,
+      "mean_discarded": 9.534246575342467,
+      "mean_trades": 5.904109589041096,
+      "mean_trade_cards_spent": 22.767123287671232,
+      "mean_trade_turns_no_conversion": 2.1232876712328768,
+      "mean_end_turn_high_hand": 4,
+      "mean_end_turn_with_build_available": 0,
+      "mean_end_turn_settlement_affordable_no_site": 0.2328767123287671,
+      "first_settlement_turn": {
+        "mean_when_built": 25.506849315068493,
+        "games_built": 73,
+        "games_never_built": 0
+      },
+      "first_city_turn": {
+        "mean_when_built": 27.47945205479452,
+        "games_built": 73,
+        "games_never_built": 0
+      },
+      "opening_mean_production": 0.6088278630136986,
+      "final_mean_vp": 10.10958904109589,
+      "final_vp_histogram": {
+        "10": 65,
+        "11": 8
+      },
+      "final_longest_road_holder_games": 68,
+      "final_largest_army_holder_games": 5,
+      "final_mean_cities": 2.6986301369863015,
+      "mean_actions": {
+        "BUILD_CITY": 2.6986301369863015,
+        "BUILD_ROAD": 7.876712328767123,
+        "BUILD_SETTLEMENT": 3.26027397260274,
+        "BUY_DEVELOPMENT_CARD": 0.9863013698630136,
+        "DISCARD_RESOURCE": 9.534246575342467,
+        "END_TURN": 31.534246575342465,
+        "MARITIME_TRADE": 5.904109589041096,
+        "MOVE_ROBBER": 6.2465753424657535,
+        "PLAY_KNIGHT_CARD": 0.6301369863013698,
+        "PLAY_MONOPOLY": 0.0958904109589041,
+        "PLAY_YEAR_OF_PLENTY": 0.0273972602739726,
+        "ROLL": 32.50684931506849
+      },
+      "checkpoints": {
+        "10": {
+          "games_still_running": 73,
+          "mean_vp": 2.2465753424657535,
+          "mean_production": 0.6799847123287671
+        },
+        "20": {
+          "games_still_running": 73,
+          "mean_vp": 2.9726027397260273,
+          "mean_production": 0.8546423835616439
+        },
+        "40": {
+          "games_still_running": 70,
+          "mean_vp": 5.3428571428571425,
+          "mean_production": 1.3150795714285715
+        },
+        "60": {
+          "games_still_running": 47,
+          "mean_vp": 7.1063829787234045,
+          "mean_production": 1.6294327234042554
+        },
+        "80": {
+          "games_still_running": 14,
+          "mean_vp": 7.571428571428571,
+          "mean_production": 1.7539684285714285
+        },
+        "100": {
+          "games_still_running": 2,
+          "mean_vp": 8.5,
+          "mean_production": 1.958333
+        }
+      }
+    },
+    "winning_actions": {
+      "BUILD_CITY": 27,
+      "BUILD_ROAD": 13,
+      "BUILD_SETTLEMENT": 30,
+      "PLAY_KNIGHT_CARD": 2,
+      "BUY_DEVELOPMENT_CARD": 1
+    }
+  },
+  "seat_wins": {
+    "first": 65,
+    "second": 62
+  },
+  "board_pair_outcomes": {
+    "ab": 30,
+    "ba": 27,
+    "aa": 35,
+    "bb": 8
+  },
+  "position_audit": {
+    "saved_positions": 1199,
+    "searched_positions": 294,
+    "truncated_searches": 0,
+    "guaranteed_alternative_positions": 13,
+    "guaranteed_alternative_games": 11,
+    "guaranteed_alternatives_in_losses": 0,
+    "alternative_choice_types": {
+      "BUY_DEVELOPMENT_CARD": 10,
+      "END_TURN": 3
+    },
+    "monopoly_plays": 33,
+    "zero_card_monopolies": 5,
+    "zero_card_monopolies_in_losses": 0,
+    "inferior_exact_score_monopolies": 9,
+    "inferior_exact_score_monopolies_in_losses": 0
+  },
+  "baseline_hashes_match_original": true
+}

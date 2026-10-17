@@ -4,654 +4,186 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark">
-  <title>Hackathon Day · Catan agent lab</title>
+  <title>Hackathon Day · Catan Lab</title>
   <style>
-    :root {
-      --ink:#101b1a; --deep:#0a1212; --panel:#172321; --panel2:#1d2c29;
-      --line:#39504a; --text:#eef3e8; --muted:#afc0b4; --mint:#b7e5cd;
-      --lime:#dbf29c; --gold:#e4c580; --red:#efada5;
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{margin:0;background:var(--deep);color:var(--text);font:15px/1.55 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-    a{color:var(--lime);text-decoration-thickness:1px;text-underline-offset:3px}
-    a:hover{color:#fff}
-    .shell{max-width:1260px;margin:auto;padding:0 30px}
-    .topbar{border-bottom:1px solid var(--line);background:rgba(10,18,18,.95);position:sticky;top:0;z-index:10;backdrop-filter:blur(15px)}
-    .topbar-inner{display:flex;justify-content:space-between;align-items:center;gap:20px;min-height:62px}
-    .brand{display:flex;gap:13px;align-items:center;text-decoration:none;color:var(--text);font-weight:800;letter-spacing:.13em;text-transform:uppercase;font-size:12px}
-    .brand-mark{display:grid;place-items:center;width:30px;height:30px;border:1px solid var(--lime);color:var(--lime);font-size:17px}
-    nav{display:flex;gap:22px;flex-wrap:wrap} nav a{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.12em;text-decoration:none} nav a:hover{color:var(--lime)}
-    .hero{position:relative;overflow:hidden;padding:79px 0 65px;background:radial-gradient(circle at 78% 28%,#2b4939 0,transparent 36%),linear-gradient(135deg,#172721,#0a1212 72%)}
-    .hero:after{content:"";position:absolute;right:-180px;top:-180px;width:650px;height:650px;border:1px solid rgba(219,242,156,.13);border-radius:50%;box-shadow:0 0 0 100px rgba(219,242,156,.025),0 0 0 200px rgba(219,242,156,.018);pointer-events:none}
-    .eyebrow{display:flex;align-items:center;gap:12px;color:var(--lime);font-size:12px;font-weight:750;letter-spacing:.22em;text-transform:uppercase}
-    .eyebrow:before{content:"";width:33px;height:1px;background:var(--lime)}
-    h1{font-size:clamp(47px,7vw,102px);line-height:.95;letter-spacing:-.07em;max-width:920px;margin:26px 0 25px;font-weight:820}
-    h1 span{color:var(--lime)}
-    .lead{font-size:clamp(17px,2vw,22px);line-height:1.47;max-width:760px;color:#d7e8d9;margin:0}
-    .hero-meta{display:flex;gap:25px;flex-wrap:wrap;margin-top:38px;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.11em}
-    .hero-meta strong{color:var(--text);font-weight:700}
-    section{padding:68px 0;border-top:1px solid var(--line)}
-    .section-head{display:grid;grid-template-columns:180px 1fr;gap:28px;align-items:start;margin-bottom:30px}
-    .section-number{color:var(--lime);font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;padding-top:8px}
-    h2{font-size:clamp(28px,3vw,44px);line-height:1.06;letter-spacing:-.045em;margin:0 0 12px}
-    .section-head p{max-width:740px;color:var(--muted);margin:0}
-    .verdict{display:grid;grid-template-columns:1.3fr .7fr;gap:18px}
-    .feature{background:var(--panel);border:1px solid var(--line);padding:28px;min-height:230px}
-    .feature.primary{background:linear-gradient(145deg,#243b31,#152520);border-color:#66937a}
-    .label{color:var(--lime);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.18em}
-    .feature h3{font-size:26px;line-height:1.12;letter-spacing:-.035em;margin:18px 0 12px}
-    .feature p{color:var(--muted);margin:0;max-width:640px}
-    .big-number{font-size:clamp(35px,4.4vw,62px);font-weight:850;line-height:1;letter-spacing:-.07em;color:var(--lime);margin:24px 0 12px}
-    .fact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
-    .fact{padding:19px 20px;border:1px solid var(--line);background:#14211e}
-    .fact strong{display:block;color:var(--text);font-size:18px;margin-bottom:3px}
-    .fact span{font-size:12px;color:var(--muted)}
-    .protocol{border-left:3px solid var(--gold);background:#25291f;padding:21px 24px;display:grid;gap:8px;margin-top:18px}
-    .protocol strong{color:var(--gold);font-size:12px;letter-spacing:.16em;text-transform:uppercase}
-    .protocol p{margin:0;color:#dfdfcf}
-    .table-wrap{overflow-x:auto;border:1px solid var(--line);background:var(--panel)}
-    table{width:100%;border-collapse:collapse;min-width:800px}
-    thead{background:#20332c;color:var(--mint)}
-    th{font-size:11px;text-transform:uppercase;letter-spacing:.13em;text-align:left;padding:15px 15px;white-space:nowrap}
-    td{border-top:1px solid #31453f;padding:12px 15px;font-size:13px}
-    tbody tr:hover{background:#21352e} tbody tr:first-child{background:#294433}
-    .rank,.seat,.denom{color:var(--muted)} .number{white-space:nowrap;font-variant-numeric:tabular-nums}
-    .profile-name{font-weight:650;min-width:200px}
-    .rate{min-width:210px} .rate-line{display:flex;gap:12px;align-items:center}
-    .rate-line strong{width:50px;font-variant-numeric:tabular-nums}
-    .bar{height:7px;background:#3b4b40;border-radius:9px;flex:1;overflow:hidden}
-    .bar span{display:block;background:linear-gradient(90deg,#719e76,var(--lime));height:100%;border-radius:9px}
-    .evidence{font-size:12px;white-space:nowrap}
-    .toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
-    .toolbar label{display:flex;flex-direction:column;gap:5px;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.12em;font-weight:700}
-    .toolbar input,.toolbar select{height:42px;border:1px solid #52665b;background:#1d3029;color:var(--text);padding:0 13px;font:14px system-ui;min-width:160px}
-    .toolbar input{min-width:min(340px,80vw)}
-    .filter-count{margin-left:auto;align-self:end;color:var(--muted);font-size:12px;padding-bottom:9px}
-    .cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-    .experiment{border:1px solid var(--line);background:var(--panel);padding:23px 23px 21px;display:flex;flex-direction:column;min-height:345px}
-    .experiment:hover{border-color:#84ad8c;background:#1c2d27}
-    .experiment[hidden]{display:none}
-    .experiment-top{display:flex;flex-wrap:wrap;gap:7px;align-items:center}
-    .track,.kind,.status{padding:4px 8px;font-size:10px;text-transform:uppercase;letter-spacing:.11em;font-weight:800}
-    .track{background:#35473c;color:var(--lime)} .kind{background:#293934;color:#bdd0c1}
-    .status{margin-left:auto;border:1px solid #5b7064;color:#d1e3d2}
-    .status-leader,.status-gain{border-color:#87ab7a;color:var(--lime)}
-    .status-failed,.status-no-gain{border-color:#a77169;color:#f0b9ae}
-    .status-mixed,.status-partial{border-color:#a69066;color:#e7d196}
-    .experiment h3{font-size:21px;letter-spacing:-.027em;line-height:1.15;margin:17px 0 8px}
-    .metric{font-size:15px;font-weight:800;color:var(--lime);margin:0 0 4px}
-    .comparison{font-size:12px;color:var(--muted);margin:0 0 12px}
-    .experiment p:not(.comparison){margin:0 0 15px;color:#d9e3d7}
-    .decision{margin-top:auto;border-top:1px solid var(--line);padding-top:12px;color:#dbe5d8;font-size:13px}
-    .decision span{color:var(--gold);font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;margin-right:9px}
-    .experiment .evidence{margin-top:13px}
-    .questions{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-    .questions li{border:1px solid var(--line);background:var(--panel);padding:19px;display:flex;gap:15px}
-    .questions span{color:var(--lime);font-weight:800;font-variant-numeric:tabular-nums}
-    footer{border-top:1px solid var(--line);padding:30px 0 45px;color:var(--muted);font-size:12px}
-    footer .shell{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
-    @media(max-width:850px){.section-head{grid-template-columns:1fr;gap:7px}.verdict,.cards,.questions{grid-template-columns:1fr}.fact-grid{grid-template-columns:1fr 1fr}}
-    @media(max-width:600px){.shell{padding:0 17px}.topbar-inner{align-items:start;padding-top:12px;padding-bottom:12px;flex-direction:column}nav{gap:13px}.hero{padding:58px 0}section{padding:49px 0}.fact-grid{grid-template-columns:1fr}.filter-count{width:100%}.experiment{min-height:0}}
-    @media print{:root{--deep:#fff;--panel:#fff;--text:#17231c;--muted:#42544b;--line:#becbc1;--lime:#1b6a3f}body{background:#fff;color:#17231c}.topbar,.toolbar{display:none}.hero{background:#fff;padding:20px 0}.feature,.fact,.experiment,.table-wrap,.questions li{background:#fff;color:#17231c;break-inside:avoid}.cards{grid-template-columns:1fr 1fr}a{color:#235e41}section{padding:24px 0}}
+    :root { --bg:#0b1412; --panel:#172622; --line:#3a5046; --text:#eef4eb; --muted:#b6c8bd; --accent:#d8f49c; --gold:#f0cf8c; }
+    * { box-sizing:border-box }
+    body { margin:0; background:var(--bg); color:var(--text); font:16px/1.55 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif }
+    .wrap { max-width:1100px; margin:auto; padding:0 26px }
+    header { border-bottom:1px solid var(--line); padding:20px 0; color:var(--accent); font-size:12px; font-weight:800; letter-spacing:.18em; text-transform:uppercase }
+    .hero { padding:86px 0 76px; background:radial-gradient(circle at 85% 20%,#2a4936,transparent 35%) }
+    .eyebrow { color:var(--accent); font-size:12px; font-weight:800; letter-spacing:.2em; text-transform:uppercase }
+    h1 { font-size:clamp(54px,9vw,110px); line-height:.94; letter-spacing:-.075em; margin:22px 0 24px; max-width:850px }
+    h1 span { color:var(--accent) }
+    .lead { max-width:680px; font-size:21px; color:#d8e6d8; margin:0 }
+    .meta { display:flex; gap:30px; flex-wrap:wrap; margin-top:35px; font-size:12px; text-transform:uppercase; letter-spacing:.12em; color:var(--muted) }
+    .meta strong { color:var(--text) }
+    section { border-top:1px solid var(--line); padding:65px 0 }
+    .section-head { display:flex; justify-content:space-between; align-items:end; gap:20px; margin-bottom:24px }
+    h2 { font-size:clamp(30px,4vw,47px); letter-spacing:-.05em; line-height:1.05; margin:0 }
+    .count { color:var(--accent); font-weight:750; font-size:14px; white-space:nowrap }
+    .focus { background:linear-gradient(140deg,#253f30,#172622); border:1px solid #658571; padding:30px; max-width:800px }
+    .focus label { color:var(--accent); font-size:11px; font-weight:800; letter-spacing:.15em; text-transform:uppercase }
+    .focus p { font-size:23px; line-height:1.3; margin:12px 0 0 }
+    .toolbar { display:flex; gap:12px; flex-wrap:wrap; margin:0 0 20px }
+    input,select { background:#1b3026; color:var(--text); border:1px solid var(--line); padding:11px 13px; font:inherit }
+    input { min-width:min(340px,100%) }
+    .cards { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px }
+    .card { background:var(--panel); border:1px solid var(--line); padding:26px; display:flex; flex-direction:column }
+    .card[hidden] { display:none }
+    .card-top { display:flex; justify-content:space-between; gap:12px; color:var(--muted); font-size:12px; letter-spacing:.08em }
+    .badge { color:var(--gold); text-transform:uppercase; font-weight:800 }
+    .badge.improved { color:var(--accent) }
+    .badge.failed,.badge.no-gain { color:#eeb0a5 }
+    h3 { font-size:24px; line-height:1.12; letter-spacing:-.035em; margin:24px 0 18px }
+    dl { margin:0 }
+    dt { color:var(--gold); font-size:11px; letter-spacing:.15em; text-transform:uppercase; font-weight:800; margin-top:17px }
+    dd { margin:3px 0 0; color:#e0e9dc }
+    .evidence { color:var(--accent); margin-top:26px }
+    .empty { grid-column:1/-1; padding:60px 30px; border:1px dashed #678071; color:var(--muted); text-align:center; background:#14221c }
+    footer { border-top:1px solid var(--line); color:var(--muted); padding:30px 0; font-size:13px }
+    @media(max-width:700px) { .wrap{padding:0 18px} .hero{padding:64px 0} section{padding:48px 0} .cards{grid-template-columns:1fr} .section-head{align-items:start;flex-direction:column} }
   </style>
 </head>
 <body>
-  <header class="topbar"><div class="shell topbar-inner">
-    <a class="brand" href="#top"><span class="brand-mark">⬡</span> Hackathon Day / Catan Lab</a>
-    <nav aria-label="Report sections"><a href="#verdict">Verdict</a><a href="#grid">20 profiles</a><a href="#ledger">Experiment ledger</a><a href="#questions">Next gates</a></nav>
-  </div></header>
-  <main id="top">
-    <div class="hero"><div class="shell">
-      <div class="eyebrow">Hackathon Day / live strategy report</div>
-      <h1>Build to <span>win.</span><br>Measure everything.</h1>
-      <p class="lead">Winning games is the objective. Keep the strongest measured policy in play while every new idea earns promotion on fresh, paired games.</p>
-      <div class="hero-meta"><div>Report as of <strong>2026-10-17</strong></div><div><strong>20</strong> measured 1v1 profiles</div><div><strong>31</strong> documented trials</div></div>
+  <header><div class="wrap">⬡ &nbsp; Hackathon Day / Catan Lab</div></header>
+  <main>
+    <div class="hero"><div class="wrap">
+      <div class="eyebrow">Fresh experiment log</div>
+      <h1>Build to <span>win.</span><br>Log the evidence.</h1>
+      <p class="lead">Build and test a Catan agent that wins consistently.</p>
+      <div class="meta"><div>Started <strong>2026-10-17</strong></div><div><strong>8</strong> log entries</div></div>
     </div></div>
-    <section id="verdict"><div class="shell">
-      <div class="section-head"><div class="section-number">01 / Current position</div><div><h2>The measured incumbent</h2><p>One decision for play, with every alternative kept visible as evidence.</p></div></div>
-      <div class="verdict">
-        <div class="feature primary"><div class="label">Agent in play</div><h3>OneVOne for the provisional 1v1 Catanatron arena</h3><p>Winning games is the objective. Keep the strongest measured policy in play while every new idea earns promotion on fresh, paired games.</p></div>
-        <div class="feature"><div class="label">Broad 1v1 diagnostic</div><div class="big-number">71.7%</div><p>1,474 / 2,056 wins (71.7%) against the pinned web bot on the 1,028-board diagnostic grid</p></div>
-      </div>
-      <div class="fact-grid">
-        <div class="fact"><strong>291 / 412</strong><span>Outcome-Transformer hybrid; plain OneVOne 290 / 412 on the same held-out games</span></div>
-        <div class="fact"><strong>50 / 50</strong><span>OneVOne versus the transferred short-trained Benjamin CPU checkpoint</span></div>
-        <div class="fact"><strong>67 / 128</strong><span>Fixed-horizon trade/build planner; OneVOne 93 / 128 on the same screen</span></div>
-      </div>
-      <div class="protocol"><strong>Interpret the score correctly</strong><p>1v1 tests: two players, 10 VP, official spiral, discard at 7, no friendly robber. Four-player tests are a separate arena and are never pooled with 1v1 rates.</p><p>The 1,028-board grid reuses dataset board seeds, so it is a broad diagnostic rather than an independent holdout. Fresh confirmation and direct head-to-head runs are labeled separately.</p></div>
+    <section><div class="wrap">
+      <div class="section-head"><h2>Current focus</h2></div>
+      <div class="focus"><label>What we are doing now</label><p>OneVOne won 609/1,000 fresh official-harness games against F with no faults or CPU overruns. Earlier win/loss and component audits point to early economy and expansion as the next candidate areas; V2 changes remain unimplemented.</p></div>
     </div></section>
-    <section id="grid"><div class="shell">
-      <div class="section-head"><div class="section-number">02 / Common grid</div><div><h2>Every 1v1 profile</h2><p>Each profile played 1,028 board seeds from both seats against the same pinned Catanatron web bot. This grid compares agents on a common schedule; it does not establish an independent held-out rate.</p></div></div>
-      <div class="table-wrap"><table><thead><tr><th>Rank</th><th>Profile</th><th>Wins</th><th>Win rate</th><th>Seat 0 / 1</th><th>Raw result</th></tr></thead><tbody><tr><td class="rank">01</td><td class="profile-name">OneVOne</td><td class="number">1,474<span class="denom"> / 2,056</span></td><td class="rate"><div class="rate-line"><strong>71.7%</strong><span class="bar"><span style="width:71.69%"></span></span></div></td><td class="seat">767 / 707</td><td><a class="evidence" href="../catanLabs/OneVOne/experiment_catalog/reports/all_1028/onevone.jsonl">Game log ↗</a></td></tr>
-<tr><td class="rank">02</td><td class="profile-name">OneVOne / MLP phase hybrid</td><td class="number">1,411<span class="denom"> / 2,056</span></td><td class="rate"><div class="rate-line"><strong>68.6%</strong><span class="bar"><span style="width:68.63%"></span></span></div></td><td class="seat">725 / 686</td><td><a class="evidence" href="../catanLabs/OneVOne/experiment_catalog/reports/all_1028/hybrid.jsonl">Game log ↗</a></td></tr>
-<tr><td class="rank">03</td><td class="profile-name">AlphaBeta depth 2, unpruned</td><td class="number">1,268<span class="denom"> / 2,056</span></td><td class="rate"><div class="rate-line"><strong>61.7%</strong><span class="bar"><span style="width:61.67%"></span></span></div></td><td class="seat">651 / 617</td><td><a class="evidence" href="../catanLabs/OneVOne/experiment_catalog/reports/all_1028/alphabeta2_unpruned.jsonl">Game log ↗</a></td></tr>
-<tr><td class="rank">04</td><td class="profile-name">HexMachina mechanism approximation</td><td class="number">1,253<span class="denom"> / 2,056</span></td><td class="rate"><div class="rate-line"><strong>60.9%</strong><span class="bar"><span style="width:60.94%"></span></span></div></td><td class="seat">642 / 611</td><td><a class="evidence" href="../catanLabs/OneVOne/experiment_catalog/reports/all_1028/hex_approx.jsonl">Game log ↗</a></td></tr>
-<tr><td class="rank">05</td><td class="profile-name">Invest/convert, fixed horizon</td><td class="number">1,200<span class="denom"> / 2,056</span></td><td class="rate"><div class="rate-line"><strong>58.4%</strong><span class="bar"><span style="width:58.37%"></span></span></div></td><td class="seat">596 / 604</td><td><a class="evidence" href="../catanLabs/OneVOne/experiment_catalog/reports/all_1028/invest_static.jsonl">Game log ↗</a></td></tr>
-<tr><td class="rank">06</td><td class="profile-name">Invest/convert, dynamic horizon</td><td class="number">1,187<span class="denom"> / 2,056</span></td><td class="rate"><div class="rate-line"><strong>57.7%</strong><span class="bar"><span style="width:57.73%"></span></span></div></td><td class="seat">599 / 588</td><td><a class="evidence" href="../catanLabs/OneVOne/experiment_catalog/reports/all_1028/invest_dynamic.jsonl">Game log ↗</a></td></tr>
-<tr><td class="rank">07</td><td class="profile-name">HexMachina published player</td><td class="number">1,110<span class="denom"> / 2,056</span></td><td class="rate"><div class="rate-line"><strong>54.0%</strong><span class="bar"><span style="width:53.99%"></span></span></div></td><td class="seat">593 / 517</td><td><a class="evidence" href="../catanLabs/OneVOne/experiment_catalog/reports/all_1028/hex_published.jsonl">Game log ↗</a></td></tr>
-<tr><td class="rank">08</td><td class="profile-name">Buy development trigger</td><td class="number">304<span class="denom"> / 2,056</span></td><td class="rate"><div class="rate-line"><strong>14.8%</strong><span class="bar"><span style="width:14.79%"></span></span></div></td><td class="seat">165 / 139</td><td><a class="evidence" href="../catanLabs/OneVOne/experiment_catalog/reports/all_1028/buydev.jsonl">Game log ↗</a></td></tr>
-<tr><td class="rank">09</td><td class="profile-name">Five-head MLP, 64 boards</td><td class="number">274<span class="denom"> / 2,056</span></td><td class="rate"><div class="rate-line"><strong>13.3%</strong><span class="bar"><span style="width:13.33%"></span></span></div></td><td class="seat">123 / 151</td><td><a class="evidence" href="../catanLabs/OneVOne/experiment_catalog/reports/all_1028/onevone_mlp64.jsonl">Game log ↗</a></td></tr>
-<tr><td class="rank">10</td><td class="profile-name">MLP + same-turn win search</td><td class="number">260<span class="denom"> / 2,056</span></td><td class="rate"><div class="rate-line"><strong>12.6%</strong><span class="bar"><span style="width:12.65%"></span></span></div></td><td class="seat">133 / 127</td><td><a class="evidence" href="../catanLabs/OneVOne/experiment_catalog/reports/all_1028/same_turn.jsonl">Game log ↗</a></td></tr>
-<tr><td class="rank">11</td><td class="profile-name">Settlement head, 7 epochs</td><td class="number">235<span class="denom"> / 2,056</span></td><td class="rate"><div class="rate-line"><strong>11.4%</strong><span class="bar"><span style="width:11.43%"></span></span></div></td><td class="seat">120 / 115</td><td><a class="evidence" href="../catanLabs/OneVOne/experiment_catalog/reports/all_1028/settlement7.jsonl">Game log ↗</a></td></tr>
-<tr><td class="rank">12</td><td class="profile-name">Settlement head, 12 epochs</td><td class="number">235<span class="denom"> / 2,056</span></td><td class="rate"><div class="rate-line"><strong>11.4%</strong><span class="bar"><span style="width:11.43%"></span></span></div></td><td class="seat">125 / 110</td><td><a class="evidence" href="../catanLabs/OneVOne/experiment_catalog/reports/all_1028/settlement12.jsonl">Game log ↗</a></td></tr>
-<tr><td class="rank">13</td><td class="profile-name">Settlement head, 4 epochs</td><td class="number">226<span class="denom"> / 2,056</span></td><td class="rate"><div class="rate-line"><strong>11.0%</strong><span class="bar"><span style="width:10.99%"></span></span></div></td><td class="seat">114 / 112</td><td><a class="evidence" href="../catanLabs/OneVOne/experiment_catalog/reports/all_1028/settlement4.jsonl">Game log ↗</a></td></tr>
-<tr><td class="rank">14</td><td class="profile-name">Five-head MLP, 16 boards</td><td class="number">215<span class="denom"> / 2,056</span></td><td class="rate"><div class="rate-line"><strong>10.5%</strong><span class="bar"><span style="width:10.46%"></span></span></div></td><td class="seat">92 / 123</td><td><a class="evidence" href="../catanLabs/OneVOne/experiment_catalog/reports/all_1028/onevone_mlp16.jsonl">Game log ↗</a></td></tr>
-<tr><td class="rank">15</td><td class="profile-name">Settlement dice-pip rule</td><td class="number">187<span class="denom"> / 2,056</span></td><td class="rate"><div class="rate-line"><strong>9.1%</strong><span class="bar"><span style="width:9.10%"></span></span></div></td><td class="seat">90 / 97</td><td><a class="evidence" href="../catanLabs/OneVOne/experiment_catalog/reports/all_1028/settlement_pips.jsonl">Game log ↗</a></td></tr>
-<tr><td class="rank">16</td><td class="profile-name">History Transformer residual</td><td class="number">161<span class="denom"> / 2,056</span></td><td class="rate"><div class="rate-line"><strong>7.8%</strong><span class="bar"><span style="width:7.83%"></span></span></div></td><td class="seat">88 / 73</td><td><a class="evidence" href="../catanLabs/OneVOne/experiment_catalog/reports/all_1028/history.jsonl">Game log ↗</a></td></tr>
-<tr><td class="rank">17</td><td class="profile-name">State-only residual control</td><td class="number">151<span class="denom"> / 2,056</span></td><td class="rate"><div class="rate-line"><strong>7.3%</strong><span class="bar"><span style="width:7.34%"></span></span></div></td><td class="seat">86 / 65</td><td><a class="evidence" href="../catanLabs/OneVOne/experiment_catalog/reports/all_1028/state_control.jsonl">Game log ↗</a></td></tr>
-<tr><td class="rank">18</td><td class="profile-name">Calibrated legal-action MLP</td><td class="number">134<span class="denom"> / 2,056</span></td><td class="rate"><div class="rate-line"><strong>6.5%</strong><span class="bar"><span style="width:6.52%"></span></span></div></td><td class="seat">69 / 65</td><td><a class="evidence" href="../catanLabs/OneVOne/experiment_catalog/reports/all_1028/strategy_calibrated.jsonl">Game log ↗</a></td></tr>
-<tr><td class="rank">19</td><td class="profile-name">Raw legal-action MLP</td><td class="number">89<span class="denom"> / 2,056</span></td><td class="rate"><div class="rate-line"><strong>4.3%</strong><span class="bar"><span style="width:4.33%"></span></span></div></td><td class="seat">40 / 49</td><td><a class="evidence" href="../catanLabs/OneVOne/experiment_catalog/reports/all_1028/strategy_raw.jsonl">Game log ↗</a></td></tr>
-<tr><td class="rank">20</td><td class="profile-name">PPO legal-action MLP</td><td class="number">82<span class="denom"> / 2,056</span></td><td class="rate"><div class="rate-line"><strong>4.0%</strong><span class="bar"><span style="width:3.99%"></span></span></div></td><td class="seat">38 / 44</td><td><a class="evidence" href="../catanLabs/OneVOne/experiment_catalog/reports/all_1028/strategy_ppo.jsonl">Game log ↗</a></td></tr></tbody></table></div>
-    </div></section>
-    <section id="ledger"><div class="shell">
-      <div class="section-head"><div class="section-number">03 / Trial ledger</div><div><h2>What worked. What failed.</h2><p>Experiments retain their own opponents, rule sets and sample sizes. Compare each candidate with its paired control inside its card.</p></div></div>
-      <div class="toolbar" role="group" aria-label="Filter experiments">
-        <label>Search<input id="search" type="search" placeholder="Model, move, result…" autocomplete="off"></label>
-        <label>Arena<select id="track"><option value="all">All arenas</option><option value="1v1">1v1</option><option value="4-player">4-player</option></select></label>
-        <label>Outcome<select id="status"><option value="all">All outcomes</option><option value="leader">Current leader</option>
-<option value="gain">Measured gain</option>
-<option value="partial">Partial repair</option>
-<option value="mixed">Mixed result</option>
-<option value="no-gain">No gain</option>
-<option value="failed">Failed gate</option>
-<option value="diagnostic">Diagnostic</option>
-<option value="foundation">Foundation</option></select></label>
-        <div class="filter-count" id="filter-count" aria-live="polite">31 trials shown</div>
-      </div>
+    <section><div class="wrap">
+      <div class="section-head"><h2>Experiment log</h2><div class="count" id="count">8 entries</div></div>
+      <div class="toolbar"><input id="search" type="search" placeholder="Search experiments" aria-label="Search experiments"><select id="status" aria-label="Filter by status"><option value="all">All statuses</option><option value="documented">Documented</option><option value="measured">Measured baseline</option><option value="planned">Planned</option><option value="running">Running</option><option value="improved">Improved</option><option value="no-gain">No gain</option><option value="failed">Failed</option><option value="inconclusive">Inconclusive</option></select></div>
       <div class="cards" id="cards">
-        <article class="experiment" data-track="1v1"
-                 data-status="foundation" data-search="external-teacher trajectory set data 1v1 foundation 1,028 unique games · 156,471 decisions value base, value contender and victory point teachers each row stores a visible observation, legal actions, the chosen teacher action and final outcome. the games are not fixed move scripts for later agents to replay. useful for imitation and state-value diagnostics; win rate still needs new games.">
-          <div class="experiment-top">
-            <span class="track">1v1</span>
-            <span class="kind">Data</span>
-            <span class="status status-foundation">Foundation</span>
-          </div>
-          <h3>External-teacher trajectory set</h3>
-          <div class="metric">1,028 unique games · 156,471 decisions</div>
-          <p class="comparison">Value Base, Value Contender and Victory Point teachers</p>
-          <p>Each row stores a visible observation, legal actions, the chosen teacher action and final outcome. The games are not fixed move scripts for later agents to replay.</p>
-          <div class="decision"><span>Decision</span>Useful for imitation and state-value diagnostics; win rate still needs new games.</div>
-          <a class="evidence" href="../catanLabs/OneVOne/experiment_catalog/RESULTS_1028.md">Evidence ↗</a>
+        <article class="card" data-status="measured" data-search="onevone-fresh-confirmation1000 2026-10-17 onevone fresh 1,000-game run against official f measured estimate the frozen heuristic&#x27;s win rate against the supplied f bot on more unseen boards. 1,000 games / 500 boards, both seats; seeds 2026200000–2026200499; official examples/f_agent.py; original coefficients and tactical limits; official local clock enforced. 609/1,000 wins (60.9%); evaluator 95% interval ±3.02 percentage points; 118.8 ms mean / 494.3 ms worst cpu per game; 0 errors in 50,753 decisions, 0 clock overruns, 0 timeouts or crashes; 251.2 s wall time. the frozen diagnostic policy exceeded 50% wins against f on a fresh 500-board schedule and stayed within the local clock. this does not measure strength against private bot o, other teams, or organizer hardware. test new candidate strategies against f and frozen onevone on paired boards, then confirm promising changes on unused seeds and event hardware.">
+          <div class="card-top"><time>2026-10-17</time><span class="badge measured">Measured baseline</span></div>
+          <h3>OneVOne fresh 1,000-game run against official F</h3>
+          <dl>
+            <dt>Question</dt><dd>Estimate the frozen heuristic&#x27;s win rate against the supplied F bot on more unseen boards.</dd>
+            <dt>Setup</dt><dd>1,000 games / 500 boards, both seats; seeds 2026200000–2026200499; official examples/f_agent.py; original coefficients and tactical limits; official local clock enforced.</dd>
+            <dt>Result</dt><dd>609/1,000 wins (60.9%); evaluator 95% interval ±3.02 percentage points; 118.8 ms mean / 494.3 ms worst CPU per game; 0 errors in 50,753 decisions, 0 clock overruns, 0 timeouts or crashes; 251.2 s wall time.</dd>
+            <dt>Learning</dt><dd>The frozen diagnostic policy exceeded 50% wins against F on a fresh 500-board schedule and stayed within the local clock. This does not measure strength against private bot O, other teams, or organizer hardware.</dd>
+            <dt>Next</dt><dd>Test new candidate strategies against F and frozen OneVOne on paired boards, then confirm promising changes on unused seeds and event hardware.</dd>
+          </dl>
+          <a class="evidence" href="reports/onevone_baseline/baseline_f_1000_fresh.json">Open evidence ↗</a>
         </article>
 
-        <article class="experiment" data-track="1v1"
-                 data-status="leader" data-search="onevone incumbent heuristic + tactics 1v1 leader 1,474 / 2,056 wins · 71.7% pinned catanatron web bot; 1,028 boards × both seats production, expansion, hand value, robber pressure and deterministic vp conversion are scored together. this remains the strongest profile on the broad 1v1 grid. keep as the 1v1 benchmark and playable agent.">
-          <div class="experiment-top">
-            <span class="track">1v1</span>
-            <span class="kind">Heuristic + tactics</span>
-            <span class="status status-leader">Current leader</span>
-          </div>
-          <h3>OneVOne incumbent</h3>
-          <div class="metric">1,474 / 2,056 wins · 71.7%</div>
-          <p class="comparison">Pinned Catanatron web bot; 1,028 boards × both seats</p>
-          <p>Production, expansion, hand value, robber pressure and deterministic VP conversion are scored together. This remains the strongest profile on the broad 1v1 grid.</p>
-          <div class="decision"><span>Decision</span>Keep as the 1v1 benchmark and playable agent.</div>
-          <a class="evidence" href="../catanLabs/OneVOne/experiment_catalog/RESULTS_1028.md">Evidence ↗</a>
+        <article class="card" data-status="measured" data-search="onevone-position-audit 2026-10-17 guaranteed-win and monopoly decision audit measured find concrete decision mistakes without changing the playing agent. 1,199 saved masked positions; bounded deterministic search at 294 selected late-game positions, depth up to three actions; exact-resource scoring of 33 selected monopoly plays. found 13 positions across 11 games with guaranteed winning alternatives: ten development purchases and three end-turn decisions. five monopoly plays took zero cards; nine chose a resource with a lower exact successor score. all of these findings were in games eventually won. the development-card shortcut, two-action search depth and production-based monopoly estimate have reproducible limitations. these findings do not explain the 73 losses and do not establish a win-rate gain from fixing them. test exact visible resource transfers and guaranteed-win handling separately, then investigate the broader early-game deficit.">
+          <div class="card-top"><time>2026-10-17</time><span class="badge measured">Measured baseline</span></div>
+          <h3>Guaranteed-win and Monopoly decision audit</h3>
+          <dl>
+            <dt>Question</dt><dd>Find concrete decision mistakes without changing the playing agent.</dd>
+            <dt>Setup</dt><dd>1,199 saved masked positions; bounded deterministic search at 294 selected late-game positions, depth up to three actions; exact-resource scoring of 33 selected Monopoly plays.</dd>
+            <dt>Result</dt><dd>Found 13 positions across 11 games with guaranteed winning alternatives: ten development purchases and three end-turn decisions. Five Monopoly plays took zero cards; nine chose a resource with a lower exact successor score. All of these findings were in games eventually won.</dd>
+            <dt>Learning</dt><dd>The development-card shortcut, two-action search depth and production-based Monopoly estimate have reproducible limitations. These findings do not explain the 73 losses and do not establish a win-rate gain from fixing them.</dd>
+            <dt>Next</dt><dd>Test exact visible resource transfers and guaranteed-win handling separately, then investigate the broader early-game deficit.</dd>
+          </dl>
+          <a class="evidence" href="reports/onevone_analysis/baseline_trace_200/position_checks.json">Open evidence ↗</a>
         </article>
 
-        <article class="experiment" data-track="1v1"
-                 data-status="no-gain" data-search="mutating onevone weights parameter search 1v1 no-gain 150 / 256 baseline validation wins 32 boards, four opponent types, both seats two seeded searches over value, robber and search parameters selected the unchanged baseline. sampled mutations did not improve paired held-out wins. no trained configuration was promoted.">
-          <div class="experiment-top">
-            <span class="track">1v1</span>
-            <span class="kind">Parameter search</span>
-            <span class="status status-no-gain">No gain</span>
-          </div>
-          <h3>Mutating OneVOne weights</h3>
-          <div class="metric">150 / 256 baseline validation wins</div>
-          <p class="comparison">32 boards, four opponent types, both seats</p>
-          <p>Two seeded searches over value, robber and search parameters selected the unchanged baseline. Sampled mutations did not improve paired held-out wins.</p>
-          <div class="decision"><span>Decision</span>No trained configuration was promoted.</div>
-          <a class="evidence" href="../catanLabs/OneVOne/TRAINING_RESULTS.md">Evidence ↗</a>
+        <article class="card" data-status="measured" data-search="onevone-component-removals 2026-10-17 four controlled component removals measured measure which existing onevone components contribute against official f. four isolated copies, 200 games each on the baseline board/seat schedule; 800 diagnostic games total; no baseline edits. tactical override disabled: 118/200 (59.0%); default value weights: 122/200 (61.0%); generic robber: 127/200 (63.5%); late development bonus removed: 122/200 (61.0%). all runs had zero faults and overruns. the tactical layer has the strongest positive signal in this screen. all paired 95% intervals for differences include or touch zero; fresh confirmation is needed. effects cannot be added together. preserve the baseline and test proposed v2 changes independently; confirm any gains on fresh paired boards.">
+          <div class="card-top"><time>2026-10-17</time><span class="badge measured">Measured baseline</span></div>
+          <h3>Four controlled component removals</h3>
+          <dl>
+            <dt>Question</dt><dd>Measure which existing OneVOne components contribute against official F.</dd>
+            <dt>Setup</dt><dd>Four isolated copies, 200 games each on the baseline board/seat schedule; 800 diagnostic games total; no baseline edits.</dd>
+            <dt>Result</dt><dd>Tactical override disabled: 118/200 (59.0%); default value weights: 122/200 (61.0%); generic robber: 127/200 (63.5%); late development bonus removed: 122/200 (61.0%). All runs had zero faults and overruns.</dd>
+            <dt>Learning</dt><dd>The tactical layer has the strongest positive signal in this screen. All paired 95% intervals for differences include or touch zero; fresh confirmation is needed. Effects cannot be added together.</dd>
+            <dt>Next</dt><dd>Preserve the baseline and test proposed V2 changes independently; confirm any gains on fresh paired boards.</dd>
+          </dl>
+          <a class="evidence" href="reports/onevone_analysis/component_removals/summary.json">Open evidence ↗</a>
         </article>
 
-        <article class="experiment" data-track="1v1"
-                 data-status="failed" data-search="five-head mlp from mixed teachers imitation mlp 1v1 failed 7 / 64 vs web bot · 3 / 64 vs onevone larger 768-game, 64-board training corpus family accuracy reached 86.8%, but choosing a broad action family did not reliably choose its legal target. earlier 16-board training scored 1/64 versus the web bot. do not replace the heuristic with this imitation policy.">
-          <div class="experiment-top">
-            <span class="track">1v1</span>
-            <span class="kind">Imitation MLP</span>
-            <span class="status status-failed">Failed gate</span>
-          </div>
-          <h3>Five-head MLP from mixed teachers</h3>
-          <div class="metric">7 / 64 vs web bot · 3 / 64 vs OneVOne</div>
-          <p class="comparison">Larger 768-game, 64-board training corpus</p>
-          <p>Family accuracy reached 86.8%, but choosing a broad action family did not reliably choose its legal target. Earlier 16-board training scored 1/64 versus the web bot.</p>
-          <div class="decision"><span>Decision</span>Do not replace the heuristic with this imitation policy.</div>
-          <a class="evidence" href="../catanLabs/OneVOne/TRAINING_RESULTS.md">Evidence ↗</a>
+        <article class="card" data-status="measured" data-search="onevone-win-loss-trace 2026-10-17 replay and diagnosis of all 200 baseline games measured compare how wins and losses develop under the official rules. engine-side observation of the same 100 boards in both seats; frozen agent hashes verified; official observation boundary and clocks preserved. reproduced 127 wins, 73 losses and 9,934 decisions with zero faults or overruns. first additional settlement: mean turn 25.9 in wins versus 32.8 in losses, among games where built. in 58/73 losses we finished at seven vp or below. an economy and expansion gap is visible by turn 20. these outcome-grouped differences are associations, not proof that a particular heuristic caused the losses. use the recorded losing positions to isolate resource and expansion decisions; compare controlled changes on fresh boards.">
+          <div class="card-top"><time>2026-10-17</time><span class="badge measured">Measured baseline</span></div>
+          <h3>Replay and diagnosis of all 200 baseline games</h3>
+          <dl>
+            <dt>Question</dt><dd>Compare how wins and losses develop under the official rules.</dd>
+            <dt>Setup</dt><dd>Engine-side observation of the same 100 boards in both seats; frozen agent hashes verified; official observation boundary and clocks preserved.</dd>
+            <dt>Result</dt><dd>Reproduced 127 wins, 73 losses and 9,934 decisions with zero faults or overruns. First additional settlement: mean turn 25.9 in wins versus 32.8 in losses, among games where built. In 58/73 losses we finished at seven VP or below.</dd>
+            <dt>Learning</dt><dd>An economy and expansion gap is visible by turn 20. These outcome-grouped differences are associations, not proof that a particular heuristic caused the losses.</dd>
+            <dt>Next</dt><dd>Use the recorded losing positions to isolate resource and expansion decisions; compare controlled changes on fresh boards.</dd>
+          </dl>
+          <a class="evidence" href="ONEVONE_WIN_LOSS_ANALYSIS.md">Open evidence ↗</a>
         </article>
 
-        <article class="experiment" data-track="1v1"
-                 data-status="failed" data-search="legal-action mlp from catanatron teachers imitation mlp 1v1 failed 12 / 128 fresh wins · 9.4% pinned web bot on the planner confirmation schedule the policy matched teachers on many easy choices but often ended turns with usable cards, missed development purchases, and lagged in production and vp. teacher agreement is not the promotion metric.">
-          <div class="experiment-top">
-            <span class="track">1v1</span>
-            <span class="kind">Imitation MLP</span>
-            <span class="status status-failed">Failed gate</span>
-          </div>
-          <h3>Legal-action MLP from Catanatron teachers</h3>
-          <div class="metric">12 / 128 fresh wins · 9.4%</div>
-          <p class="comparison">Pinned web bot on the planner confirmation schedule</p>
-          <p>The policy matched teachers on many easy choices but often ended turns with usable cards, missed development purchases, and lagged in production and VP.</p>
-          <div class="decision"><span>Decision</span>Teacher agreement is not the promotion metric.</div>
-          <a class="evidence" href="../catanLabs/OneVOne/experiment_catalog/LEARNED.md">Evidence ↗</a>
+        <article class="card" data-status="measured" data-search="onevone-official-baseline200 2026-10-17 onevone initial baseline against official f measured establish a measured starting win rate under the official harness. 200 games / 100 boards, both seats; seeds 2026101800–2026101899; official examples/f_agent.py; original coefficients and tactical limits. 127/200 wins (63.5%); reported 95% interval ±6.67 percentage points; 111.4 ms mean / 333.3 ms worst cpu per game; 0 errors in 9,934 decisions; 0 clock overruns, timeouts or crashes. the copied policy runs successfully against official f and exceeded 50% wins on this initial screen. this establishes a starting baseline, not an improvement over another candidate or a result against o. cpu was measured on local macos, not the organizer machine. freeze this baseline, record detailed losing-game decisions, and compare one controlled change at a time on paired boards. verify cpu on the organizer machine.">
+          <div class="card-top"><time>2026-10-17</time><span class="badge measured">Measured baseline</span></div>
+          <h3>OneVOne initial baseline against official F</h3>
+          <dl>
+            <dt>Question</dt><dd>Establish a measured starting win rate under the official harness.</dd>
+            <dt>Setup</dt><dd>200 games / 100 boards, both seats; seeds 2026101800–2026101899; official examples/f_agent.py; original coefficients and tactical limits.</dd>
+            <dt>Result</dt><dd>127/200 wins (63.5%); reported 95% interval ±6.67 percentage points; 111.4 ms mean / 333.3 ms worst CPU per game; 0 errors in 9,934 decisions; 0 clock overruns, timeouts or crashes.</dd>
+            <dt>Learning</dt><dd>The copied policy runs successfully against official F and exceeded 50% wins on this initial screen. This establishes a starting baseline, not an improvement over another candidate or a result against O. CPU was measured on local macOS, not the organizer machine.</dd>
+            <dt>Next</dt><dd>Freeze this baseline, record detailed losing-game decisions, and compare one controlled change at a time on paired boards. Verify CPU on the organizer machine.</dd>
+          </dl>
+          <a class="evidence" href="reports/onevone_baseline/baseline_200.json">Open evidence ↗</a>
         </article>
 
-        <article class="experiment" data-track="1v1"
-                 data-status="no-gain" data-search="short ppo fine-tune ppo 1v1 no-gain 44 / 128 vs 45 / 128 imitation matched sealed mixed-bot screen terminal win/loss training on a small run did not repair rare development purchases or the midgame expansion gap. ppo checkpoint was not promoted; this does not rule out longer or better-shaped rl.">
-          <div class="experiment-top">
-            <span class="track">1v1</span>
-            <span class="kind">PPO</span>
-            <span class="status status-no-gain">No gain</span>
-          </div>
-          <h3>Short PPO fine-tune</h3>
-          <div class="metric">44 / 128 vs 45 / 128 imitation</div>
-          <p class="comparison">Matched sealed mixed-bot screen</p>
-          <p>Terminal win/loss training on a small run did not repair rare development purchases or the midgame expansion gap.</p>
-          <div class="decision"><span>Decision</span>PPO checkpoint was not promoted; this does not rule out longer or better-shaped RL.</div>
-          <a class="evidence" href="../catanLabs/OneVOne/experiment_catalog/LEARNED.md">Evidence ↗</a>
+        <article class="card" data-status="measured" data-search="onevone-official-smoke20 2026-10-17 onevone official-harness smoke test measured check the adapter plays legally and fits the official cpu clock. 20 games / 10 boards, both seats; seeds 2026101700–2026101709; official examples/f_agent.py; clock enforced. 13/20 wins (65%); 97.2 ms mean / 246.2 ms worst cpu per game; 0 errors in 870 decisions, 0 overruns, 0 timeouts/crashes. interface and timing passed this smoke test. twenty games are too few for a stable strength estimate. run 200 games on 100 different paired boards against f.">
+          <div class="card-top"><time>2026-10-17</time><span class="badge measured">Measured baseline</span></div>
+          <h3>OneVOne official-harness smoke test</h3>
+          <dl>
+            <dt>Question</dt><dd>Check the adapter plays legally and fits the official CPU clock.</dd>
+            <dt>Setup</dt><dd>20 games / 10 boards, both seats; seeds 2026101700–2026101709; official examples/f_agent.py; clock enforced.</dd>
+            <dt>Result</dt><dd>13/20 wins (65%); 97.2 ms mean / 246.2 ms worst CPU per game; 0 errors in 870 decisions, 0 overruns, 0 timeouts/crashes.</dd>
+            <dt>Learning</dt><dd>Interface and timing passed this smoke test. Twenty games are too few for a stable strength estimate.</dd>
+            <dt>Next</dt><dd>Run 200 games on 100 different paired boards against F.</dd>
+          </dl>
+          <a class="evidence" href="reports/onevone_baseline/smoke_20.json">Open evidence ↗</a>
         </article>
 
-        <article class="experiment" data-track="1v1"
-                 data-status="partial" data-search="action-type calibration learned correction 1v1 partial 57 / 128 vs 37 / 128 mixed-bot wins frozen mlp plus a learned residual and end turn adjustment held-out buy development matches moved from 0/173 to 78/173. the win gain came largely against weaker opponents; value base improved only 1/26 to 3/26. useful targeted repair, insufficient as a standalone agent.">
-          <div class="experiment-top">
-            <span class="track">1v1</span>
-            <span class="kind">Learned correction</span>
-            <span class="status status-partial">Partial repair</span>
-          </div>
-          <h3>Action-type calibration</h3>
-          <div class="metric">57 / 128 vs 37 / 128 mixed-bot wins</div>
-          <p class="comparison">Frozen MLP plus a learned residual and End Turn adjustment</p>
-          <p>Held-out Buy Development matches moved from 0/173 to 78/173. The win gain came largely against weaker opponents; Value Base improved only 1/26 to 3/26.</p>
-          <div class="decision"><span>Decision</span>Useful targeted repair, insufficient as a standalone agent.</div>
-          <a class="evidence" href="../catanLabs/OneVOne/experiment_catalog/LEARNED.md">Evidence ↗</a>
+        <article class="card" data-status="documented" data-search="onevone-official-adapter 2026-10-17 self-contained onevone adapter and official environment documented port the existing heuristic to the official observation/index interface without changing its coefficients. pinned official kit 04fffac and engine d3f4ad0; separate python 3.11.15 environment; copied four helper/policy modules plus configuration and a new entry point. official self-check passed, including reference seed, deterministic replay and example-agent cpu checks. all scoring weights and tactical search limits preserved. the old workspace engine was a different commit; isolated official-engine evaluation is necessary. the heuristic needs no ml packages, so unused ml-wheel downloads were stopped and omitted. measure wins, faults and cpu under the official clock. preserve provenance before considering submission eligibility.">
+          <div class="card-top"><time>2026-10-17</time><span class="badge documented">Documented</span></div>
+          <h3>Self-contained OneVOne adapter and official environment</h3>
+          <dl>
+            <dt>Question</dt><dd>Port the existing heuristic to the official observation/index interface without changing its coefficients.</dd>
+            <dt>Setup</dt><dd>Pinned official kit 04fffac and engine d3f4ad0; separate Python 3.11.15 environment; copied four helper/policy modules plus configuration and a new entry point.</dd>
+            <dt>Result</dt><dd>Official self-check passed, including reference seed, deterministic replay and example-agent CPU checks. All scoring weights and tactical search limits preserved.</dd>
+            <dt>Learning</dt><dd>The old workspace engine was a different commit; isolated official-engine evaluation is necessary. The heuristic needs no ML packages, so unused ML-wheel downloads were stopped and omitted.</dd>
+            <dt>Next</dt><dd>Measure wins, faults and CPU under the official clock. Preserve provenance before considering submission eligibility.</dd>
+          </dl>
+          <a class="evidence" href="ONEVONE_ADAPTATION_PLAN.md">Open evidence ↗</a>
         </article>
 
-        <article class="experiment" data-track="1v1"
-                 data-status="partial" data-search="settlement-location reranker learned target head 1v1 partial 126 / 256 vs 113 / 256 mixed-bot wins acts only after the mlp chooses to build a settlement teacher-node match rose from 26.2% to 39.7%, but value base stayed 3/52 and the model still made weak build-timing decisions. keep as a narrow component, not a whole-policy fix.">
-          <div class="experiment-top">
-            <span class="track">1v1</span>
-            <span class="kind">Learned target head</span>
-            <span class="status status-partial">Partial repair</span>
-          </div>
-          <h3>Settlement-location reranker</h3>
-          <div class="metric">126 / 256 vs 113 / 256 mixed-bot wins</div>
-          <p class="comparison">Acts only after the MLP chooses to build a settlement</p>
-          <p>Teacher-node match rose from 26.2% to 39.7%, but Value Base stayed 3/52 and the model still made weak build-timing decisions.</p>
-          <div class="decision"><span>Decision</span>Keep as a narrow component, not a whole-policy fix.</div>
-          <a class="evidence" href="../catanLabs/OneVOne/experiment_catalog/LEARNED.md">Evidence ↗</a>
-        </article>
-
-        <article class="experiment" data-track="1v1"
-                 data-status="no-gain" data-search="longer settlement-head training training ablation 1v1 no-gain 125 / 256 at 4 epochs · 125 at 7 · 123 at 12 two fresh matched mixed-bot screens lower training loss and stronger label fit did not turn into more game wins; the longest run did slightly worse. stop using extra epochs as the default remedy.">
-          <div class="experiment-top">
-            <span class="track">1v1</span>
-            <span class="kind">Training ablation</span>
-            <span class="status status-no-gain">No gain</span>
-          </div>
-          <h3>Longer settlement-head training</h3>
-          <div class="metric">125 / 256 at 4 epochs · 125 at 7 · 123 at 12</div>
-          <p class="comparison">Two fresh matched mixed-bot screens</p>
-          <p>Lower training loss and stronger label fit did not turn into more game wins; the longest run did slightly worse.</p>
-          <div class="decision"><span>Decision</span>Stop using extra epochs as the default remedy.</div>
-          <a class="evidence" href="../catanLabs/OneVOne/experiment_catalog/LEARNED.md">Evidence ↗</a>
-        </article>
-
-        <article class="experiment" data-track="1v1"
-                 data-status="mixed" data-search="dice-pip and development triggers heuristic ablation 1v1 mixed 118 / 256 pips · 127 / 256 buy trigger · 125 control same calibrated mlp and settlement head choosing settlement nodes only by adjacent pips hurt. buying a development card before end turn with eight cards gained only two games. neither rule cleared a convincing promotion bar.">
-          <div class="experiment-top">
-            <span class="track">1v1</span>
-            <span class="kind">Heuristic ablation</span>
-            <span class="status status-mixed">Mixed result</span>
-          </div>
-          <h3>Dice-pip and development triggers</h3>
-          <div class="metric">118 / 256 pips · 127 / 256 buy trigger · 125 control</div>
-          <p class="comparison">Same calibrated MLP and settlement head</p>
-          <p>Choosing settlement nodes only by adjacent pips hurt. Buying a development card before End Turn with eight cards gained only two games.</p>
-          <div class="decision"><span>Decision</span>Neither rule cleared a convincing promotion bar.</div>
-          <a class="evidence" href="../catanLabs/OneVOne/experiment_catalog/LEARNED.md">Evidence ↗</a>
-        </article>
-
-        <article class="experiment" data-track="1v1"
-                 data-status="failed" data-search="public-history action residual transformer 1v1 failed 26 / 64 vs 36 / 64 unchanged agent sixteen public events; fresh mixed-bot screen teacher action agreement improved, yet the residual displaced winning choices. a state-only residual scored 20/64. do not deploy this teacher-trained residual.">
-          <div class="experiment-top">
-            <span class="track">1v1</span>
-            <span class="kind">Transformer</span>
-            <span class="status status-failed">Failed gate</span>
-          </div>
-          <h3>Public-history action residual</h3>
-          <div class="metric">26 / 64 vs 36 / 64 unchanged agent</div>
-          <p class="comparison">Sixteen public events; fresh mixed-bot screen</p>
-          <p>Teacher action agreement improved, yet the residual displaced winning choices. A state-only residual scored 20/64.</p>
-          <div class="decision"><span>Decision</span>Do not deploy this teacher-trained residual.</div>
-          <a class="evidence" href="../../Hyde-catan-experiments/catanLabs/FromScratch/StrategyOne/reports/HISTORY_AND_SEARCH_EXPERIMENTS.md">Evidence ↗</a>
-        </article>
-
-        <article class="experiment" data-track="1v1"
-                 data-status="gain" data-search="bounded same-turn win scan tactical search 1v1 gain 276 / 512 vs 269 / 512 fresh matched mixed-bot games, four screens searching deterministic trade and build sequences to an immediate win flipped seven results toward the agent and none the other way in these screens. promising low-cost tactical component; gain is small.">
-          <div class="experiment-top">
-            <span class="track">1v1</span>
-            <span class="kind">Tactical search</span>
-            <span class="status status-gain">Measured gain</span>
-          </div>
-          <h3>Bounded same-turn win scan</h3>
-          <div class="metric">276 / 512 vs 269 / 512</div>
-          <p class="comparison">Fresh matched mixed-bot games, four screens</p>
-          <p>Searching deterministic trade and build sequences to an immediate win flipped seven results toward the agent and none the other way in these screens.</p>
-          <div class="decision"><span>Decision</span>Promising low-cost tactical component; gain is small.</div>
-          <a class="evidence" href="../../Hyde-catan-experiments/catanLabs/FromScratch/StrategyOne/reports/HISTORY_AND_SEARCH_EXPERIMENTS.md">Evidence ↗</a>
-        </article>
-
-        <article class="experiment" data-track="1v1"
-                 data-status="diagnostic" data-search="backward loss counterfactuals search diagnosis 1v1 diagnostic 3 / 13 alternatives favored by paired rollouts six losses, 13 earlier decision states two promising alternatives were end turn versus maritime trade. copied games contained true hidden cards, so these oracle values are not fair live-policy labels. use only as diagnosis until belief-state sampling is implemented.">
-          <div class="experiment-top">
-            <span class="track">1v1</span>
-            <span class="kind">Search diagnosis</span>
-            <span class="status status-diagnostic">Diagnostic</span>
-          </div>
-          <h3>Backward loss counterfactuals</h3>
-          <div class="metric">3 / 13 alternatives favored by paired rollouts</div>
-          <p class="comparison">Six losses, 13 earlier decision states</p>
-          <p>Two promising alternatives were End Turn versus maritime trade. Copied games contained true hidden cards, so these oracle values are not fair live-policy labels.</p>
-          <div class="decision"><span>Decision</span>Use only as diagnosis until belief-state sampling is implemented.</div>
-          <a class="evidence" href="../../Hyde-catan-experiments/catanLabs/FromScratch/StrategyOne/reports/HISTORY_AND_SEARCH_EXPERIMENTS.md">Evidence ↗</a>
-        </article>
-
-        <article class="experiment" data-track="1v1"
-                 data-status="partial" data-search="trade-to-build invest/convert planner turn planner 1v1 partial 67 / 128 fixed · 64 / 128 dynamic · 12 / 128 frozen mlp fresh web-bot confirmation; onevone scored 93/128 explicit legal trade→build search repaired resource conversion. the changing investment horizon lost three games to fixed horizon. planning helps the mlp, but neither planner replaces onevone.">
-          <div class="experiment-top">
-            <span class="track">1v1</span>
-            <span class="kind">Turn planner</span>
-            <span class="status status-partial">Partial repair</span>
-          </div>
-          <h3>Trade-to-build invest/convert planner</h3>
-          <div class="metric">67 / 128 fixed · 64 / 128 dynamic · 12 / 128 frozen MLP</div>
-          <p class="comparison">Fresh web-bot confirmation; OneVOne scored 93/128</p>
-          <p>Explicit legal trade→build search repaired resource conversion. The changing investment horizon lost three games to fixed horizon.</p>
-          <div class="decision"><span>Decision</span>Planning helps the MLP, but neither planner replaces OneVOne.</div>
-          <a class="evidence" href="../../Hyde-catan-experiments/catanLabs/FromScratch/StrategyOne/reports/INVEST_CONVERT_RESULT.md">Evidence ↗</a>
-        </article>
-
-        <article class="experiment" data-track="1v1"
-                 data-status="failed" data-search="planner inside onevone&#x27;s main turn policy hybrid 1v1 failed 85 / 128 hybrid vs 96 / 128 onevone second fresh paired web-bot confirmation the planner rescued some onevone losses but reversed more of its wins during post-roll play. leave onevone&#x27;s main-turn decisions intact.">
-          <div class="experiment-top">
-            <span class="track">1v1</span>
-            <span class="kind">Policy hybrid</span>
-            <span class="status status-failed">Failed gate</span>
-          </div>
-          <h3>Planner inside OneVOne&#x27;s main turn</h3>
-          <div class="metric">85 / 128 hybrid vs 96 / 128 OneVOne</div>
-          <p class="comparison">Second fresh paired web-bot confirmation</p>
-          <p>The planner rescued some OneVOne losses but reversed more of its wins during post-roll play.</p>
-          <div class="decision"><span>Decision</span>Leave OneVOne&#x27;s main-turn decisions intact.</div>
-          <a class="evidence" href="../../Hyde-catan-experiments/catanLabs/FromScratch/StrategyOne/reports/INVEST_CONVERT_RESULT.md">Evidence ↗</a>
-        </article>
-
-        <article class="experiment" data-track="1v1"
-                 data-status="failed" data-search="tiny transformer cloning onevone transformer 1v1 failed 1 / 12 with memory · 0 / 12 without · teacher 11 / 12 fresh web-bot games after teacher-action training four prior observations raised held-out move agreement only 53.17%→53.41%. cloning discarded the teacher&#x27;s tactical calculation. retain the heuristic as scaffold instead of replacing it with imitation.">
-          <div class="experiment-top">
-            <span class="track">1v1</span>
-            <span class="kind">Transformer</span>
-            <span class="status status-failed">Failed gate</span>
-          </div>
-          <h3>Tiny Transformer cloning OneVOne</h3>
-          <div class="metric">1 / 12 with memory · 0 / 12 without · teacher 11 / 12</div>
-          <p class="comparison">Fresh web-bot games after teacher-action training</p>
-          <p>Four prior observations raised held-out move agreement only 53.17%→53.41%. Cloning discarded the teacher&#x27;s tactical calculation.</p>
-          <div class="decision"><span>Decision</span>Retain the heuristic as scaffold instead of replacing it with imitation.</div>
-          <a class="evidence" href="../../Hyde-onevone-transformer/catanLabs/OneVOne/MEMORY_EXPERIMENT.md">Evidence ↗</a>
-        </article>
-
-        <article class="experiment" data-track="1v1"
-                 data-status="no-gain" data-search="outcome transformer beside onevone heuristic + transformer 1v1 no-gain 291 / 412 hybrid vs 290 / 412 onevone 822 training games, 206 sealed boards × both seats the model changed 745 same-type moves. it gained 76 paired wins and lost 75; +1 overall is inconclusive despite held-out position auc 0.8895. keep plain onevone as incumbent.">
-          <div class="experiment-top">
-            <span class="track">1v1</span>
-            <span class="kind">Heuristic + Transformer</span>
-            <span class="status status-no-gain">No gain</span>
-          </div>
-          <h3>Outcome Transformer beside OneVOne</h3>
-          <div class="metric">291 / 412 hybrid vs 290 / 412 OneVOne</div>
-          <p class="comparison">822 training games, 206 sealed boards × both seats</p>
-          <p>The model changed 745 same-type moves. It gained 76 paired wins and lost 75; +1 overall is inconclusive despite held-out position AUC 0.8895.</p>
-          <div class="decision"><span>Decision</span>Keep plain OneVOne as incumbent.</div>
-          <a class="evidence" href="../../Hyde-onevone-transformer/catanLabs/OneVOne/HYBRID_1028_RESULT.md">Evidence ↗</a>
-        </article>
-
-        <article class="experiment" data-track="1v1"
-                 data-status="diagnostic" data-search="benjamin architecture on cpu external rl reproduction 1v1 diagnostic 7 / 40 bc · 3 / 40 ppo · 2 / 40 self-play native 15-vp r1 rules versus its fixed heuristic the cpu pipeline runs end to end, but this 256-teacher-game, 12,288-transition pilot did not improve wins. treat as an architecture and throughput test, not a full-strength reproduction.">
-          <div class="experiment-top">
-            <span class="track">1v1</span>
-            <span class="kind">External RL reproduction</span>
-            <span class="status status-diagnostic">Diagnostic</span>
-          </div>
-          <h3>Benjamin architecture on CPU</h3>
-          <div class="metric">7 / 40 BC · 3 / 40 PPO · 2 / 40 self-play</div>
-          <p class="comparison">Native 15-VP R1 rules versus its fixed heuristic</p>
-          <p>The CPU pipeline runs end to end, but this 256-teacher-game, 12,288-transition pilot did not improve wins.</p>
-          <div class="decision"><span>Decision</span>Treat as an architecture and throughput test, not a full-strength reproduction.</div>
-          <a class="evidence" href="../../Hyde-benjamin-cpu/benjamin_cpu/README.md">Evidence ↗</a>
-        </article>
-
-        <article class="experiment" data-track="1v1"
-                 data-status="failed" data-search="benjamin cpu checkpoints on catanatron external policy transfer 1v1 failed 0 / 40 for each of three checkpoints pinned web bot; onevone scored 27/40 on same boards all actions were legal and games completed. the small checkpoint crossed a 15-vp-to-10-vp engine boundary with approximate opponent-hand features. do not generalize this result to a fully trained native benjamin agent.">
-          <div class="experiment-top">
-            <span class="track">1v1</span>
-            <span class="kind">External policy transfer</span>
-            <span class="status status-failed">Failed gate</span>
-          </div>
-          <h3>Benjamin CPU checkpoints on Catanatron</h3>
-          <div class="metric">0 / 40 for each of three checkpoints</div>
-          <p class="comparison">Pinned web bot; OneVOne scored 27/40 on same boards</p>
-          <p>All actions were legal and games completed. The small checkpoint crossed a 15-VP-to-10-VP engine boundary with approximate opponent-hand features.</p>
-          <div class="decision"><span>Decision</span>Do not generalize this result to a fully trained native Benjamin agent.</div>
-          <a class="evidence" href="../../Hyde-benjamin-cpu/benjamin_cpu/CATANATRON_TRANSFER_RESULT.md">Evidence ↗</a>
-        </article>
-
-        <article class="experiment" data-track="1v1"
-                 data-status="failed" data-search="benjamin cpu pilot versus onevone direct head-to-head 1v1 failed 0 / 50 benjamin · 50 / 50 onevone 25 random board seeds, both seats, zero errors or caps benjamin averaged 3.16 vp and never built beyond its two setup settlements or a city. onevone averaged 10.20 vp. the transferred short-trained checkpoint is not competitive with onevone.">
-          <div class="experiment-top">
-            <span class="track">1v1</span>
-            <span class="kind">Direct head-to-head</span>
-            <span class="status status-failed">Failed gate</span>
-          </div>
-          <h3>Benjamin CPU pilot versus OneVOne</h3>
-          <div class="metric">0 / 50 Benjamin · 50 / 50 OneVOne</div>
-          <p class="comparison">25 random board seeds, both seats, zero errors or caps</p>
-          <p>Benjamin averaged 3.16 VP and never built beyond its two setup settlements or a city. OneVOne averaged 10.20 VP.</p>
-          <div class="decision"><span>Decision</span>The transferred short-trained checkpoint is not competitive with OneVOne.</div>
-          <a class="evidence" href="../../Hyde-benjamin-cpu/benjamin_cpu/CATANATRON_TRANSFER_RESULT.md">Evidence ↗</a>
-        </article>
-
-        <article class="experiment" data-track="1v1"
-                 data-status="diagnostic" data-search="hexmachina published player and mechanism port external agent reproduction 1v1 diagnostic 17 / 32 published vs web · 14 / 32 vs onevone small paired-seat compatibility probes the published player&#x27;s direct field lookups did not fully match the local engine; its phase and resource heuristic were inactive after placement in this run. the mechanism port is an approximation. use as comparison evidence, not proof of relative global strength.">
-          <div class="experiment-top">
-            <span class="track">1v1</span>
-            <span class="kind">External agent reproduction</span>
-            <span class="status status-diagnostic">Diagnostic</span>
-          </div>
-          <h3>HexMachina published player and mechanism port</h3>
-          <div class="metric">17 / 32 published vs web · 14 / 32 vs OneVOne</div>
-          <p class="comparison">Small paired-seat compatibility probes</p>
-          <p>The published player&#x27;s direct field lookups did not fully match the local engine; its phase and resource heuristic were inactive after placement in this run. The mechanism port is an approximation.</p>
-          <div class="decision"><span>Decision</span>Use as comparison evidence, not proof of relative global strength.</div>
-          <a class="evidence" href="../catanLabs/OneVOne/experiment_catalog/OUTSIDE_BOTS.md">Evidence ↗</a>
-        </article>
-
-        <article class="experiment" data-track="4-player"
-                 data-status="gain" data-search="fairvalue policy heuristic 4-player gain 32 / 96 vs three value bots; value control 24 / 96 four seats on 24 boards; alphabeta1 28/96 vs 27/96 connected sites, hand synergy, army and late development value helped against value. the alphabeta1 difference was uncertain. useful four-player heuristic base; separate from 1v1 results.">
-          <div class="experiment-top">
-            <span class="track">4-player</span>
-            <span class="kind">Heuristic</span>
-            <span class="status status-gain">Measured gain</span>
-          </div>
-          <h3>FairValue policy</h3>
-          <div class="metric">32 / 96 vs three Value bots; Value control 24 / 96</div>
-          <p class="comparison">Four seats on 24 boards; AlphaBeta1 28/96 vs 27/96</p>
-          <p>Connected sites, hand synergy, army and late development value helped against Value. The AlphaBeta1 difference was uncertain.</p>
-          <div class="decision"><span>Decision</span>Useful four-player heuristic base; separate from 1v1 results.</div>
-          <a class="evidence" href="../catanLabs/Competitive/RESULTS.md">Evidence ↗</a>
-        </article>
-
-        <article class="experiment" data-track="4-player"
-                 data-status="failed" data-search="initial standalone transformer transformer 4-player failed 0 / 16 vs value · 0 / 16 vs alphabeta1 small four-player local pilot the learned policy alone did not convert enough resources or expand reliably. use stronger policy structure and real games as the test.">
-          <div class="experiment-top">
-            <span class="track">4-player</span>
-            <span class="kind">Transformer</span>
-            <span class="status status-failed">Failed gate</span>
-          </div>
-          <h3>Initial standalone Transformer</h3>
-          <div class="metric">0 / 16 vs Value · 0 / 16 vs AlphaBeta1</div>
-          <p class="comparison">Small four-player local pilot</p>
-          <p>The learned policy alone did not convert enough resources or expand reliably.</p>
-          <div class="decision"><span>Decision</span>Use stronger policy structure and real games as the test.</div>
-          <a class="evidence" href="../catanLabs/Competitive/RESULTS.md">Evidence ↗</a>
-        </article>
-
-        <article class="experiment" data-track="4-player"
-                 data-status="mixed" data-search="fair-policy guided search two-action search 4-player mixed 88 / 192 vs 64 / 192 against alphabeta1 strong mixed table: 36/96 search vs 38/96 control search beat the control consistently on the uniform alphabeta1 tier, but did not win more on the stronger mixed table. keep as an opponent-specific candidate, not universal incumbent.">
-          <div class="experiment-top">
-            <span class="track">4-player</span>
-            <span class="kind">Two-action search</span>
-            <span class="status status-mixed">Mixed result</span>
-          </div>
-          <h3>Fair-policy guided search</h3>
-          <div class="metric">88 / 192 vs 64 / 192 against AlphaBeta1</div>
-          <p class="comparison">Strong mixed table: 36/96 search vs 38/96 control</p>
-          <p>Search beat the control consistently on the uniform AlphaBeta1 tier, but did not win more on the stronger mixed table.</p>
-          <div class="decision"><span>Decision</span>Keep as an opponent-specific candidate, not universal incumbent.</div>
-          <a class="evidence" href="../catanLabs/Competitive/SEARCH_EXPERIMENT.md">Evidence ↗</a>
-        </article>
-
-        <article class="experiment" data-track="4-player"
-                 data-status="no-gain" data-search="transformer prior for guided search policy-guided search 4-player no-gain 35 / 96 vs 33 / 96 value · 40 / 96 vs 41 / 96 alphabeta1 same 24-board search screen differences were uncertain and inference cost rose; the learned root prior had no demonstrated strength benefit. retain only as an ablation.">
-          <div class="experiment-top">
-            <span class="track">4-player</span>
-            <span class="kind">Policy-guided search</span>
-            <span class="status status-no-gain">No gain</span>
-          </div>
-          <h3>Transformer prior for guided search</h3>
-          <div class="metric">35 / 96 vs 33 / 96 Value · 40 / 96 vs 41 / 96 AlphaBeta1</div>
-          <p class="comparison">Same 24-board search screen</p>
-          <p>Differences were uncertain and inference cost rose; the learned root prior had no demonstrated strength benefit.</p>
-          <div class="decision"><span>Decision</span>Retain only as an ablation.</div>
-          <a class="evidence" href="../catanLabs/Competitive/SEARCH_EXPERIMENT.md">Evidence ↗</a>
-        </article>
-
-        <article class="experiment" data-track="4-player"
-                 data-status="gain" data-search="tactical two-action vp scan vp search 4-player gain 183 / 400 vs 142 / 400 on strong mixed table five fresh confirmation tables; all 4,000 candidate/control games complete a deterministic visible trade/build scan delivered a board-clustered gain and survived direct comparison with its prior control. promoted for the local four-player arena.">
-          <div class="experiment-top">
-            <span class="track">4-player</span>
-            <span class="kind">VP search</span>
-            <span class="status status-gain">Measured gain</span>
-          </div>
-          <h3>Tactical two-action VP scan</h3>
-          <div class="metric">183 / 400 vs 142 / 400 on strong mixed table</div>
-          <p class="comparison">Five fresh confirmation tables; all 4,000 candidate/control games complete</p>
-          <p>A deterministic visible trade/build scan delivered a board-clustered gain and survived direct comparison with its prior control.</p>
-          <div class="decision"><span>Decision</span>Promoted for the local four-player arena.</div>
-          <a class="evidence" href="../catanLabs/Competitive/TACTICAL_VP_MIN0_CONFIRM.md">Evidence ↗</a>
-        </article>
-
-        <article class="experiment" data-track="4-player"
-                 data-status="no-gain" data-search="last-seat opening pair opening planner 4-player no-gain 22 / 64 vs 21 / 64 strong-mix control 16 boards, all seats, both opponent mixes the candidate changed legal fourth-seat openings but its paired interval crossed zero and its effect was limited to one seat. no promotion.">
-          <div class="experiment-top">
-            <span class="track">4-player</span>
-            <span class="kind">Opening planner</span>
-            <span class="status status-no-gain">No gain</span>
-          </div>
-          <h3>Last-seat opening pair</h3>
-          <div class="metric">22 / 64 vs 21 / 64 strong-mix control</div>
-          <p class="comparison">16 boards, all seats, both opponent mixes</p>
-          <p>The candidate changed legal fourth-seat openings but its paired interval crossed zero and its effect was limited to one seat.</p>
-          <div class="decision"><span>Decision</span>No promotion.</div>
-          <a class="evidence" href="../catanLabs/Competitive/OPENING_PAIR_SCREEN.md">Evidence ↗</a>
-        </article>
-
-        <article class="experiment" data-track="4-player"
-                 data-status="no-gain" data-search="road building continuation dev-card continuation 4-player no-gain 32 / 96 vs 32 / 96 strong-mix control 24 fresh boards, all seats the action continuation worked and remained legal, but finished-game wins did not move in the strong table. no promotion.">
-          <div class="experiment-top">
-            <span class="track">4-player</span>
-            <span class="kind">Dev-card continuation</span>
-            <span class="status status-no-gain">No gain</span>
-          </div>
-          <h3>Road Building continuation</h3>
-          <div class="metric">32 / 96 vs 32 / 96 strong-mix control</div>
-          <p class="comparison">24 fresh boards, all seats</p>
-          <p>The action continuation worked and remained legal, but finished-game wins did not move in the strong table.</p>
-          <div class="decision"><span>Decision</span>No promotion.</div>
-          <a class="evidence" href="../catanLabs/Competitive/ROAD_BUILDING_SCREEN.md">Evidence ↗</a>
-        </article>
-
-        <article class="experiment" data-track="4-player"
-                 data-status="mixed" data-search="highest-vp robber victim robber tie-break 4-player mixed 31 / 96 vs 28 / 96 strong · 38 / 96 vs 41 / 96 diverse 24 fresh boards, all seats, paired controls targeting the public vp leader gained in one mix and lost in the other; both intervals included zero. no promotion.">
-          <div class="experiment-top">
-            <span class="track">4-player</span>
-            <span class="kind">Robber tie-break</span>
-            <span class="status status-mixed">Mixed result</span>
-          </div>
-          <h3>Highest-VP robber victim</h3>
-          <div class="metric">31 / 96 vs 28 / 96 strong · 38 / 96 vs 41 / 96 diverse</div>
-          <p class="comparison">24 fresh boards, all seats, paired controls</p>
-          <p>Targeting the public VP leader gained in one mix and lost in the other; both intervals included zero.</p>
-          <div class="decision"><span>Decision</span>No promotion.</div>
-          <a class="evidence" href="../catanLabs/Competitive/ROBBER_VICTIM_SCREEN.md">Evidence ↗</a>
-        </article>
-
-        <article class="experiment" data-track="4-player"
-                 data-status="partial" data-search="heuristic rescue of model openings model diagnosis 4-player partial 5 / 32 opening rescue vs 2 / 32 frozen model fairvalue control won 12/32; eight-board diverse mix opening overrides improved vp but did not close the full model gap. robber and trade/end overrides did not consistently improve wins. focus diagnosis on later main-turn and discard choices.">
-          <div class="experiment-top">
-            <span class="track">4-player</span>
-            <span class="kind">Model diagnosis</span>
-            <span class="status status-partial">Partial repair</span>
-          </div>
-          <h3>Heuristic rescue of model openings</h3>
-          <div class="metric">5 / 32 opening rescue vs 2 / 32 frozen model</div>
-          <p class="comparison">FairValue control won 12/32; eight-board diverse mix</p>
-          <p>Opening overrides improved VP but did not close the full model gap. Robber and trade/end overrides did not consistently improve wins.</p>
-          <div class="decision"><span>Decision</span>Focus diagnosis on later main-turn and discard choices.</div>
-          <a class="evidence" href="../catanLabs/Competitive/SELECTIVE_RESCUE.md">Evidence ↗</a>
-        </article>
-
-        <article class="experiment" data-track="4-player"
-                 data-status="failed" data-search="external ppo policy on catanatron external policy transfer 4-player failed 8 / 64 vs 21 / 64 fairvalue against value same 16-board, four-seat schedule the transferred network ran legally and fast, but its policy alone was weaker after engine and observation translation. do not infer the upstream full-agent strength from a policy-only port.">
-          <div class="experiment-top">
-            <span class="track">4-player</span>
-            <span class="kind">External policy transfer</span>
-            <span class="status status-failed">Failed gate</span>
-          </div>
-          <h3>External PPO policy on Catanatron</h3>
-          <div class="metric">8 / 64 vs 21 / 64 FairValue against Value</div>
-          <p class="comparison">Same 16-board, four-seat schedule</p>
-          <p>The transferred network ran legally and fast, but its policy alone was weaker after engine and observation translation.</p>
-          <div class="decision"><span>Decision</span>Do not infer the upstream full-agent strength from a policy-only port.</div>
-          <a class="evidence" href="../catanLabs/External/TRANSFER_EXPERIMENT.md">Evidence ↗</a>
+        <article class="card" data-status="documented" data-search="official-kit-logistics 2026-10-17 official kit logistics and requirements documented establish the official interface, compute budget, evaluation and submission process. inspected lyric-hyde/catan-hackathon-agent at commit 04fffac90e00610f60e0b06d919f262f4b3ed9db: readme, problem statement, requirements and harness source. created logistics.md. no agent training or game evaluation was run. the official harness enforces a 1.5-second maximum cpu allowance per game; eligibility and runtime rules must guide new work. pass the official self-check, implement the event agent interface and run a 20-game smoke test.">
+          <div class="card-top"><time>2026-10-17</time><span class="badge documented">Documented</span></div>
+          <h3>Official kit logistics and requirements</h3>
+          <dl>
+            <dt>Question</dt><dd>Establish the official interface, compute budget, evaluation and submission process.</dd>
+            <dt>Setup</dt><dd>Inspected lyric-hyde/catan-hackathon-agent at commit 04fffac90e00610f60e0b06d919f262f4b3ed9db: README, problem statement, requirements and harness source.</dd>
+            <dt>Result</dt><dd>Created LOGISTICS.md. No agent training or game evaluation was run.</dd>
+            <dt>Learning</dt><dd>The official harness enforces a 1.5-second maximum CPU allowance per game; eligibility and runtime rules must guide new work.</dd>
+            <dt>Next</dt><dd>Pass the official self-check, implement the event agent interface and run a 20-game smoke test.</dd>
+          </dl>
+          <a class="evidence" href="LOGISTICS.md">Open evidence ↗</a>
         </article></div>
     </div></section>
-    <section id="questions"><div class="shell">
-      <div class="section-head"><div class="section-number">04 / Next gates</div><div><h2>Questions that change the agent</h2><p>A candidate must beat OneVOne on fresh board seeds, from both seats, with legal moves, no game caps, and a paired win-rate improvement before promotion.</p></div></div>
-      <ol class="questions"><li><span>01</span>What are the released competition rules, observation contract, runtime cap and opponent set?</li>
-<li><span>02</span>Which action class causes the largest paired win loss: opening, road access, trade conversion, robber, development purchase or defense?</li>
-<li><span>03</span>Can a win-trained state/action value model improve OneVOne without disturbing its tactical choices?</li>
-<li><span>04</span>Can search sample hidden states from public evidence and beat the incumbent on fresh boards?</li></ol>
-    </div></section>
   </main>
-  <footer><div class="shell"><div>Hackathon Day / Catan Agent Lab · compiled 2026-10-17</div><div>Update <code>report.json</code>, then run <code>python3 render.py</code>.</div></div></footer>
+  <footer><div class="wrap">Update report.json, then run python3 HackathonDay/render.py.</div></footer>
   <script>
-    const cards = [...document.querySelectorAll('.experiment')];
-    const controls = ['search','track','status'].map(id => document.getElementById(id));
-    function filterCards() {
-      const query = controls[0].value.trim().toLowerCase();
-      const track = controls[1].value;
-      const status = controls[2].value;
+    const cards = [...document.querySelectorAll('.card')];
+    const search = document.getElementById('search');
+    const status = document.getElementById('status');
+    function filter() {
+      const query = search.value.trim().toLowerCase();
       let visible = 0;
       for (const card of cards) {
-        const show = (!query || card.dataset.search.includes(query)) &&
-          (track === 'all' || card.dataset.track === track) &&
-          (status === 'all' || card.dataset.status === status);
+        const show = (!query || card.dataset.search.includes(query)) && (status.value === 'all' || card.dataset.status === status.value);
         card.hidden = !show;
         visible += show;
       }
-      document.getElementById('filter-count').textContent = `${visible} of ${cards.length} trials shown`;
+      document.getElementById('count').textContent = `${visible} of ${cards.length} entries`;
     }
-    controls.forEach(control => control.addEventListener('input', filterCards));
+    search.addEventListener('input', filter);
+    status.addEventListener('change', filter);
   </script>
 </body>
 </html>

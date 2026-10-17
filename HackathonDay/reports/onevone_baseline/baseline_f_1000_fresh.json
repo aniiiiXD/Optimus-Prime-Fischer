@@ -1,0 +1,63 @@
+{
+  "status": "passed",
+  "started_utc": "2026-10-17T05:47:50.103344+00:00",
+  "command": [
+    "/Users/anixd/Documents/Hyde/HackathonDay/.venv/bin/python",
+    "-u",
+    "-m",
+    "catan_kit.evaluate",
+    "--a",
+    "/Users/anixd/Documents/Hyde/HackathonDay/onevone_baseline/agent.py",
+    "--b",
+    "/Users/anixd/Documents/Hyde/HackathonDay/official-kit/examples/f_agent.py",
+    "--games",
+    "1000",
+    "--seed0",
+    "2026200000"
+  ],
+  "working_directory": "/Users/anixd/Documents/Hyde/HackathonDay/official-kit",
+  "kit_commit": "04fffac90e00610f60e0b06d919f262f4b3ed9db",
+  "engine_commit": "d3f4ad05bb78d8b2309631d6d3cfa8fcb6fda816",
+  "python": "3.11.15 (main, Mar  3 2026, 00:52:57) [Clang 17.0.0 (clang-1700.6.3.2)]",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "packages": {
+    "catanatron": "3.3.0",
+    "numpy": "2.4.6",
+    "networkx": "3.6.1",
+    "psutil": "7.2.2"
+  },
+  "unused_ml_packages": "torch, scipy and scikit-learn omitted; this heuristic does not import them",
+  "agent_files_sha256": {
+    "PROVENANCE.json": "91665c3b4fd3183174bf533e2219752c9c33947638898ae8ead5b5f89d620ad1",
+    "agent.py": "7d88b0007eb7e21898769d81c9e09cfe64d2f0289ecea9ffa0368249e8cb37e7",
+    "competitive.py": "74e10c1774af34e15cf7735c87fdd83ece4b92691bd709ad42dcd5ebb235dba8",
+    "config.json": "a36c6ff8bb359ac043732f73041fe9a44df874d2e5f4e5480e3cb8fc66a80c81",
+    "fair_value.py": "f0641a0330cd678789f7cca732b7b94484250ea3712f7c6a0d19505d8985e37e",
+    "onevone.py": "a82f272b663420113be82762ff91b4bba27f181552cf0847835f7336f80a9e34",
+    "tactical_vp.py": "163ce3a23efc9710a24c112d72d646452c8d48d52fcd09830eebda476db8cc1c"
+  },
+  "games": 1000,
+  "boards": 500,
+  "seed_start": 2026200000,
+  "seed_end": 2026200499,
+  "opponent": "official examples/f_agent.py",
+  "clock": "official defaults, enforced",
+  "exit_code": 0,
+  "finished_utc": "2026-10-17T05:52:01.514145+00:00",
+  "result": {
+    "wins": 609,
+    "games": 1000,
+    "win_rate": 0.609,
+    "reported_ci95_half_width": 0.0302,
+    "errors": 0,
+    "decisions": 50753,
+    "timeouts": 0,
+    "crashes": 0,
+    "mean_cpu_ms": 118.8,
+    "worst_cpu_ms": 494.3,
+    "games_over_budget": 0,
+    "random_moves_after_budget": 0,
+    "load_seconds": 0.0,
+    "wall_seconds": 251.2
+  }
+}

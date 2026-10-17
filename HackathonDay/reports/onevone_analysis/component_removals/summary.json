@@ -1,0 +1,194 @@
+{
+  "no_tactics": {
+    "variant": "no_tactics",
+    "change": "Disable tactical override by requiring 10 VP in a game that ends at 10.",
+    "summary": {
+      "games": 200,
+      "wins": 118,
+      "win_rate": 0.59,
+      "ci95": 0.06816461838813447,
+      "no_winner": 0,
+      "mean_cpu_s": 0.06939356499999999,
+      "worst_cpu_s": 0.157245,
+      "decisions": 10641,
+      "games_over_budget": 0,
+      "random_moves": 0,
+      "errors": 0,
+      "timeouts": 0,
+      "crashes": 0
+    },
+    "opponent_summary": {
+      "games": 200,
+      "wins": 82,
+      "win_rate": 0.41,
+      "ci95": 0.06816461838813447,
+      "no_winner": 0,
+      "mean_cpu_s": 0.07583740499999998,
+      "worst_cpu_s": 0.146943,
+      "decisions": 10717,
+      "games_over_budget": 0,
+      "random_moves": 0,
+      "errors": 0,
+      "timeouts": 0,
+      "crashes": 0
+    },
+    "load": {
+      "a_init_s": 0.0032586249872110784,
+      "b_init_s": 0.0022576669580303133
+    },
+    "paired_vs_baseline": {
+      "difference_percentage_points": -4.5,
+      "board_bootstrap_95_pp": [
+        -9.5,
+        0.0
+      ],
+      "gained_games": 6,
+      "lost_games": 15
+    },
+    "baseline_wins": 127
+  },
+  "default_value_weights": {
+    "variant": "default_value_weights",
+    "change": "Replace the five OneVOne value-weight overrides with engine default values.",
+    "summary": {
+      "games": 200,
+      "wins": 122,
+      "win_rate": 0.61,
+      "ci95": 0.06759869229504369,
+      "no_winner": 0,
+      "mean_cpu_s": 0.11480020999999997,
+      "worst_cpu_s": 0.358687,
+      "decisions": 10389,
+      "games_over_budget": 0,
+      "random_moves": 0,
+      "errors": 0,
+      "timeouts": 0,
+      "crashes": 0
+    },
+    "opponent_summary": {
+      "games": 200,
+      "wins": 78,
+      "win_rate": 0.39,
+      "ci95": 0.06759869229504369,
+      "no_winner": 0,
+      "mean_cpu_s": 0.07834039999999998,
+      "worst_cpu_s": 0.176289,
+      "decisions": 10610,
+      "games_over_budget": 0,
+      "random_moves": 0,
+      "errors": 0,
+      "timeouts": 0,
+      "crashes": 0
+    },
+    "load": {
+      "a_init_s": 0.003380750014912337,
+      "b_init_s": 0.0023402500082738698
+    },
+    "paired_vs_baseline": {
+      "difference_percentage_points": -2.5,
+      "board_bootstrap_95_pp": [
+        -9.5,
+        4.0
+      ],
+      "gained_games": 17,
+      "lost_games": 22
+    },
+    "baseline_wins": 127
+  },
+  "generic_robber": {
+    "variant": "generic_robber",
+    "change": "Use the inherited generic robber policy instead of the duel-specific scorer.",
+    "summary": {
+      "games": 200,
+      "wins": 127,
+      "win_rate": 0.635,
+      "ci95": 0.06672281618756809,
+      "no_winner": 0,
+      "mean_cpu_s": 0.10939272000000004,
+      "worst_cpu_s": 0.329169,
+      "decisions": 9919,
+      "games_over_budget": 0,
+      "random_moves": 0,
+      "errors": 0,
+      "timeouts": 0,
+      "crashes": 0
+    },
+    "opponent_summary": {
+      "games": 200,
+      "wins": 73,
+      "win_rate": 0.365,
+      "ci95": 0.06672281618756809,
+      "no_winner": 0,
+      "mean_cpu_s": 0.07741321000000001,
+      "worst_cpu_s": 0.158937,
+      "decisions": 10417,
+      "games_over_budget": 0,
+      "random_moves": 0,
+      "errors": 0,
+      "timeouts": 0,
+      "crashes": 0
+    },
+    "load": {
+      "a_init_s": 0.003833250026218593,
+      "b_init_s": 0.0002756670000962913
+    },
+    "paired_vs_baseline": {
+      "difference_percentage_points": 0.0,
+      "board_bootstrap_95_pp": [
+        -4.0,
+        4.0
+      ],
+      "gained_games": 9,
+      "lost_games": 9
+    },
+    "baseline_wins": 127
+  },
+  "no_late_dev_bonus": {
+    "variant": "no_late_dev_bonus",
+    "change": "Remove only the development-buy bonus applied at >=7 VP.",
+    "summary": {
+      "games": 200,
+      "wins": 122,
+      "win_rate": 0.61,
+      "ci95": 0.06759869229504369,
+      "no_winner": 0,
+      "mean_cpu_s": 0.11016803999999998,
+      "worst_cpu_s": 0.290601,
+      "decisions": 9875,
+      "games_over_budget": 0,
+      "random_moves": 0,
+      "errors": 0,
+      "timeouts": 0,
+      "crashes": 0
+    },
+    "opponent_summary": {
+      "games": 200,
+      "wins": 78,
+      "win_rate": 0.39,
+      "ci95": 0.06759869229504369,
+      "no_winner": 0,
+      "mean_cpu_s": 0.07822561500000003,
+      "worst_cpu_s": 0.167834,
+      "decisions": 10707,
+      "games_over_budget": 0,
+      "random_moves": 0,
+      "errors": 0,
+      "timeouts": 0,
+      "crashes": 0
+    },
+    "load": {
+      "a_init_s": 0.0034192909952253103,
+      "b_init_s": 0.0031532919965684414
+    },
+    "paired_vs_baseline": {
+      "difference_percentage_points": -2.5,
+      "board_bootstrap_95_pp": [
+        -6.0,
+        1.0
+      ],
+      "gained_games": 5,
+      "lost_games": 10
+    },
+    "baseline_wins": 127
+  }
+}

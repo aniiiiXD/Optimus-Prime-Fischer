@@ -1,0 +1,24 @@
+catan_kit self-check
+
+environment
+  [ok  ] python >= 3.11   found 3.11.15
+  [ok  ] catanatron == 3.3.0   found 3.3.0
+  [ok  ] networkx == 3.6.1   found 3.6.1
+  [ok  ] determinism patch applied
+  [ok  ] PYTHONHASHSEED == 0   found '0'
+
+engine
+  [ok  ] action set matches the pinned engine
+
+determinism  (the same seed must give the same game)
+  [ok  ] one game repeats exactly   ('Color.RED', 111) x4
+  [ok  ] seed 4256 matches the reference   got ('Color.RED', 111), reference ('Color.RED', 111)
+
+example agents
+  [ok  ] f_agent beats random_agent   win rate 1.00 over 20 games
+  [ok  ] f_agent raises no errors   0 errors
+  [ok  ] f_agent stays inside the CPU clock   89 ms mean per game, 0 games over
+  [ok  ] random_agent loses to f_agent   win rate 0.00 over 20 games
+  [ok  ] a repeated run is identical   976 then 976 decisions
+
+all checks passed. You are ready to start.
