@@ -52,16 +52,42 @@
       <div class="eyebrow">Fresh experiment log</div>
       <h1>Build to <span>win.</span><br>Log the evidence.</h1>
       <p class="lead">Build and test a Catan agent that wins consistently.</p>
-      <div class="meta"><div>Started <strong>2026-10-17</strong></div><div><strong>8</strong> log entries</div></div>
+      <div class="meta"><div>Started <strong>2026-10-17</strong></div><div><strong>10</strong> log entries</div></div>
     </div></div>
     <section><div class="wrap">
       <div class="section-head"><h2>Current focus</h2></div>
-      <div class="focus"><label>What we are doing now</label><p>OneVOne won 609/1,000 fresh official-harness games against F with no faults or CPU overruns. Earlier win/loss and component audits point to early economy and expansion as the next candidate areas; V2 changes remain unimplemented.</p></div>
+      <div class="focus"><label>What we are doing now</label><p>Learnable OneVOne now supports trained MLP and transformer scorers while preserving game rules and tactical priors. Fresh 200-game runs: MLP hybrid 112 wins against F, original 110, same redesigned expert 114; direct match 86/200 against original. No faults or CPU overruns. Learning is operational but has no established strength gain.</p></div>
     </div></section>
     <section><div class="wrap">
-      <div class="section-head"><h2>Experiment log</h2><div class="count" id="count">8 entries</div></div>
+      <div class="section-head"><h2>Experiment log</h2><div class="count" id="count">10 entries</div></div>
       <div class="toolbar"><input id="search" type="search" placeholder="Search experiments" aria-label="Search experiments"><select id="status" aria-label="Filter by status"><option value="all">All statuses</option><option value="documented">Documented</option><option value="measured">Measured baseline</option><option value="planned">Planned</option><option value="running">Running</option><option value="improved">Improved</option><option value="no-gain">No gain</option><option value="failed">Failed</option><option value="inconclusive">Inconclusive</option></select></div>
       <div class="cards" id="cards">
+        <article class="card" data-status="no-gain" data-search="onevone-learnable-final200 2026-10-17 learnable onevone final 200-game test and controls no-gain measure whether the trained hybrid improves playing strength and obeys the official cpu clock. official kit 04fffac and engine d3f4ad0, clocks enforced. 100 paired boards against f, seeds 2026890000-2026890099. separate 100-board direct match, seeds 2026891000-2026891099. architecture and blend frozen before testing. mlp hybrid 112/200 vs f; original 110/200; same redesigned expert without ml 114/200. mlp hybrid 86/200 directly against original. all four 200-game runs had zero illegal indices, exceptions, timeouts, crashes, cpu overruns or post-limit random moves on either side. the redesign runs and permits learning. this learner shows no established gain: paired hybrid-minus-original +1.0 pp, board-bootstrap 95% interval [-7.5,+9.5]; hybrid-minus-same-expert -1.0 pp [-9.5,+8.0]. the earlier regressing design and discarded timed-feature dataset remain documented. keep original onevone as the established baseline; treat trained models and new policy as development candidates.">
+          <div class="card-top"><time>2026-10-17</time><span class="badge no-gain">No gain</span></div>
+          <h3>Learnable OneVOne final 200-game test and controls</h3>
+          <dl>
+            <dt>Question</dt><dd>Measure whether the trained hybrid improves playing strength and obeys the official CPU clock.</dd>
+            <dt>Setup</dt><dd>Official kit 04fffac and engine d3f4ad0, clocks enforced. 100 paired boards against F, seeds 2026890000-2026890099. Separate 100-board direct match, seeds 2026891000-2026891099. Architecture and blend frozen before testing.</dd>
+            <dt>Result</dt><dd>MLP hybrid 112/200 vs F; original 110/200; same redesigned expert without ML 114/200. MLP hybrid 86/200 directly against original. All four 200-game runs had zero illegal indices, exceptions, timeouts, crashes, CPU overruns or post-limit random moves on either side.</dd>
+            <dt>Learning</dt><dd>The redesign runs and permits learning. This learner shows no established gain: paired hybrid-minus-original +1.0 pp, board-bootstrap 95% interval [-7.5,+9.5]; hybrid-minus-same-expert -1.0 pp [-9.5,+8.0]. The earlier regressing design and discarded timed-feature dataset remain documented.</dd>
+            <dt>Next</dt><dd>Keep original OneVOne as the established baseline; treat trained models and new policy as development candidates.</dd>
+          </dl>
+          <a class="evidence" href="onevone_learnable/RESULTS.md">Open evidence ↗</a>
+        </article>
+
+        <article class="card" data-status="measured" data-search="onevone-learnable-redesign 2026-10-17 learning-compatible onevone architecture and trained neural scorers measured make strategic preferences learnable while preserving legal actions and bounded guaranteed-win protection. separate experiment/onevone-learnable worktree. versioned visible board/action features, compressed expert ranks, replaceable mlp/transformer scorer, configurable blend, separate win guard. final training: 512 games plus 423 continuations, 10,354 examples; whole-board train/validation split. both networks trained and exported to numpy. nine behavior checks pass. the chosen mlp changed 42/368 actual audited decisions after guards, with zero model failures. mlp and transformer passed official-clock smoke tests. a neural network can guide this heuristic without changing the rules engine. active model influence is demonstrated; prediction loss and changed moves do not establish improved winning strength. use the preserved official baseline and the same-expert control when measuring subsequent learning methods.">
+          <div class="card-top"><time>2026-10-17</time><span class="badge measured">Measured baseline</span></div>
+          <h3>Learning-compatible OneVOne architecture and trained neural scorers</h3>
+          <dl>
+            <dt>Question</dt><dd>Make strategic preferences learnable while preserving legal actions and bounded guaranteed-win protection.</dd>
+            <dt>Setup</dt><dd>Separate experiment/onevone-learnable worktree. Versioned visible board/action features, compressed expert ranks, replaceable MLP/transformer scorer, configurable blend, separate win guard. Final training: 512 games plus 423 continuations, 10,354 examples; whole-board train/validation split.</dd>
+            <dt>Result</dt><dd>Both networks trained and exported to NumPy. Nine behavior checks pass. The chosen MLP changed 42/368 actual audited decisions after guards, with zero model failures. MLP and transformer passed official-clock smoke tests.</dd>
+            <dt>Learning</dt><dd>A neural network can guide this heuristic without changing the rules engine. Active model influence is demonstrated; prediction loss and changed moves do not establish improved winning strength.</dd>
+            <dt>Next</dt><dd>Use the preserved official baseline and the same-expert control when measuring subsequent learning methods.</dd>
+          </dl>
+          <a class="evidence" href="onevone_learnable/README.md">Open evidence ↗</a>
+        </article>
+
         <article class="card" data-status="measured" data-search="onevone-fresh-confirmation1000 2026-10-17 onevone fresh 1,000-game run against official f measured estimate the frozen heuristic&#x27;s win rate against the supplied f bot on more unseen boards. 1,000 games / 500 boards, both seats; seeds 2026200000–2026200499; official examples/f_agent.py; original coefficients and tactical limits; official local clock enforced. 609/1,000 wins (60.9%); evaluator 95% interval ±3.02 percentage points; 118.8 ms mean / 494.3 ms worst cpu per game; 0 errors in 50,753 decisions, 0 clock overruns, 0 timeouts or crashes; 251.2 s wall time. the frozen diagnostic policy exceeded 50% wins against f on a fresh 500-board schedule and stayed within the local clock. this does not measure strength against private bot o, other teams, or organizer hardware. test new candidate strategies against f and frozen onevone on paired boards, then confirm promising changes on unused seeds and event hardware.">
           <div class="card-top"><time>2026-10-17</time><span class="badge measured">Measured baseline</span></div>
           <h3>OneVOne fresh 1,000-game run against official F</h3>

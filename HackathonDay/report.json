@@ -3,7 +3,7 @@
   "title": "Hackathon Day",
   "started": "2026-10-17",
   "objective": "Build and test a Catan agent that wins consistently.",
-  "current_focus": "OneVOne won 609/1,000 fresh official-harness games against F with no faults or CPU overruns. Earlier win/loss and component audits point to early economy and expansion as the next candidate areas; V2 changes remain unimplemented.",
+  "current_focus": "Learnable OneVOne now supports trained MLP and transformer scorers while preserving game rules and tactical priors. Fresh 200-game runs: MLP hybrid 112 wins against F, original 110, same redesigned expert 114; direct match 86/200 against original. No faults or CPU overruns. Learning is operational but has no established strength gain.",
   "entries": [
     {
       "id": "official-kit-logistics",
@@ -35,7 +35,7 @@
       "title": "OneVOne official-harness smoke test",
       "status": "measured",
       "objective": "Check the adapter plays legally and fits the official CPU clock.",
-      "setup": "20 games / 10 boards, both seats; seeds 2026101700–2026101709; official examples/f_agent.py; clock enforced.",
+      "setup": "20 games / 10 boards, both seats; seeds 2026101700\u20132026101709; official examples/f_agent.py; clock enforced.",
       "result": "13/20 wins (65%); 97.2 ms mean / 246.2 ms worst CPU per game; 0 errors in 870 decisions, 0 overruns, 0 timeouts/crashes.",
       "learning": "Interface and timing passed this smoke test. Twenty games are too few for a stable strength estimate.",
       "next_step": "Run 200 games on 100 different paired boards against F.",
@@ -47,8 +47,8 @@
       "title": "OneVOne initial baseline against official F",
       "status": "measured",
       "objective": "Establish a measured starting win rate under the official harness.",
-      "setup": "200 games / 100 boards, both seats; seeds 2026101800–2026101899; official examples/f_agent.py; original coefficients and tactical limits.",
-      "result": "127/200 wins (63.5%); reported 95% interval ±6.67 percentage points; 111.4 ms mean / 333.3 ms worst CPU per game; 0 errors in 9,934 decisions; 0 clock overruns, timeouts or crashes.",
+      "setup": "200 games / 100 boards, both seats; seeds 2026101800\u20132026101899; official examples/f_agent.py; original coefficients and tactical limits.",
+      "result": "127/200 wins (63.5%); reported 95% interval \u00b16.67 percentage points; 111.4 ms mean / 333.3 ms worst CPU per game; 0 errors in 9,934 decisions; 0 clock overruns, timeouts or crashes.",
       "learning": "The copied policy runs successfully against official F and exceeded 50% wins on this initial screen. This establishes a starting baseline, not an improvement over another candidate or a result against O. CPU was measured on local macOS, not the organizer machine.",
       "next_step": "Freeze this baseline, record detailed losing-game decisions, and compare one controlled change at a time on paired boards. Verify CPU on the organizer machine.",
       "evidence": "reports/onevone_baseline/baseline_200.json"
@@ -95,11 +95,35 @@
       "title": "OneVOne fresh 1,000-game run against official F",
       "status": "measured",
       "objective": "Estimate the frozen heuristic's win rate against the supplied F bot on more unseen boards.",
-      "setup": "1,000 games / 500 boards, both seats; seeds 2026200000–2026200499; official examples/f_agent.py; original coefficients and tactical limits; official local clock enforced.",
-      "result": "609/1,000 wins (60.9%); evaluator 95% interval ±3.02 percentage points; 118.8 ms mean / 494.3 ms worst CPU per game; 0 errors in 50,753 decisions, 0 clock overruns, 0 timeouts or crashes; 251.2 s wall time.",
+      "setup": "1,000 games / 500 boards, both seats; seeds 2026200000\u20132026200499; official examples/f_agent.py; original coefficients and tactical limits; official local clock enforced.",
+      "result": "609/1,000 wins (60.9%); evaluator 95% interval \u00b13.02 percentage points; 118.8 ms mean / 494.3 ms worst CPU per game; 0 errors in 50,753 decisions, 0 clock overruns, 0 timeouts or crashes; 251.2 s wall time.",
       "learning": "The frozen diagnostic policy exceeded 50% wins against F on a fresh 500-board schedule and stayed within the local clock. This does not measure strength against private bot O, other teams, or organizer hardware.",
       "next_step": "Test new candidate strategies against F and frozen OneVOne on paired boards, then confirm promising changes on unused seeds and event hardware.",
       "evidence": "reports/onevone_baseline/baseline_f_1000_fresh.json"
+    },
+    {
+      "id": "onevone-learnable-redesign",
+      "date": "2026-10-17",
+      "title": "Learning-compatible OneVOne architecture and trained neural scorers",
+      "status": "measured",
+      "objective": "Make strategic preferences learnable while preserving legal actions and bounded guaranteed-win protection.",
+      "setup": "Separate experiment/onevone-learnable worktree. Versioned visible board/action features, compressed expert ranks, replaceable MLP/transformer scorer, configurable blend, separate win guard. Final training: 512 games plus 423 continuations, 10,354 examples; whole-board train/validation split.",
+      "result": "Both networks trained and exported to NumPy. Nine behavior checks pass. The chosen MLP changed 42/368 actual audited decisions after guards, with zero model failures. MLP and transformer passed official-clock smoke tests.",
+      "learning": "A neural network can guide this heuristic without changing the rules engine. Active model influence is demonstrated; prediction loss and changed moves do not establish improved winning strength.",
+      "next_step": "Use the preserved official baseline and the same-expert control when measuring subsequent learning methods.",
+      "evidence": "onevone_learnable/README.md"
+    },
+    {
+      "id": "onevone-learnable-final200",
+      "date": "2026-10-17",
+      "title": "Learnable OneVOne final 200-game test and controls",
+      "status": "no-gain",
+      "objective": "Measure whether the trained hybrid improves playing strength and obeys the official CPU clock.",
+      "setup": "Official kit 04fffac and engine d3f4ad0, clocks enforced. 100 paired boards against F, seeds 2026890000-2026890099. Separate 100-board direct match, seeds 2026891000-2026891099. Architecture and blend frozen before testing.",
+      "result": "MLP hybrid 112/200 vs F; original 110/200; same redesigned expert without ML 114/200. MLP hybrid 86/200 directly against original. All four 200-game runs had zero illegal indices, exceptions, timeouts, crashes, CPU overruns or post-limit random moves on either side.",
+      "learning": "The redesign runs and permits learning. This learner shows no established gain: paired hybrid-minus-original +1.0 pp, board-bootstrap 95% interval [-7.5,+9.5]; hybrid-minus-same-expert -1.0 pp [-9.5,+8.0]. The earlier regressing design and discarded timed-feature dataset remain documented.",
+      "next_step": "Keep original OneVOne as the established baseline; treat trained models and new policy as development candidates.",
+      "evidence": "onevone_learnable/RESULTS.md"
     }
   ]
 }
