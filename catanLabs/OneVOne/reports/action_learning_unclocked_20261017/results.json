@@ -1,0 +1,118 @@
+{
+  "arms": {
+    "original": {
+      "summary": {
+        "games": 40,
+        "wins": 23,
+        "win_rate": 0.575,
+        "ci95": 0.15319848236846212,
+        "no_winner": 0,
+        "mean_cpu_s": 0.6310000000000001,
+        "worst_cpu_s": 1.23,
+        "decisions": 1818,
+        "games_over_budget": 0,
+        "random_moves": 0,
+        "errors": 0,
+        "timeouts": 0,
+        "crashes": 0
+      },
+      "wall_s": 29.891467340999952,
+      "trace": {
+        "decisions": 0,
+        "proposed_decisions": 0,
+        "rejected_proposals": 0,
+        "unmatched_proposals": 0,
+        "fallback_moves": 0,
+        "accepted_harness_moves": 1818,
+        "ml_changed": 0,
+        "cross_type": 0,
+        "winning_override": 0,
+        "move_change_rate": 0.0
+      }
+    },
+    "heuristic": {
+      "summary": {
+        "games": 40,
+        "wins": 26,
+        "win_rate": 0.65,
+        "ci95": 0.14781441066418388,
+        "no_winner": 0,
+        "mean_cpu_s": 0.8157500000000001,
+        "worst_cpu_s": 1.59,
+        "decisions": 1797,
+        "games_over_budget": 0,
+        "random_moves": 0,
+        "errors": 0,
+        "timeouts": 0,
+        "crashes": 0
+      },
+      "wall_s": 29.89675150599942,
+      "trace": {
+        "decisions": 1797,
+        "proposed_decisions": 1797,
+        "rejected_proposals": 0,
+        "unmatched_proposals": 0,
+        "fallback_moves": 0,
+        "accepted_harness_moves": 1797,
+        "ml_changed": 0,
+        "cross_type": 0,
+        "winning_override": 43,
+        "move_change_rate": 0.0
+      },
+      "versus_original": {
+        "win_rate_difference": 0.075,
+        "board_bootstrap_ci95": [
+          -0.05,
+          0.225
+        ]
+      }
+    },
+    "learned": {
+      "summary": {
+        "games": 40,
+        "wins": 26,
+        "win_rate": 0.65,
+        "ci95": 0.14781441066418388,
+        "no_winner": 0,
+        "mean_cpu_s": 0.9342500000000001,
+        "worst_cpu_s": 2.0,
+        "decisions": 1746,
+        "games_over_budget": 0,
+        "random_moves": 0,
+        "errors": 0,
+        "timeouts": 0,
+        "crashes": 0
+      },
+      "wall_s": 34.619178077999095,
+      "trace": {
+        "decisions": 1746,
+        "proposed_decisions": 1746,
+        "rejected_proposals": 0,
+        "unmatched_proposals": 0,
+        "fallback_moves": 0,
+        "accepted_harness_moves": 1746,
+        "ml_changed": 163,
+        "cross_type": 154,
+        "winning_override": 48,
+        "move_change_rate": 0.09335624284077892
+      },
+      "versus_heuristic": {
+        "win_rate_difference": 0.0,
+        "board_bootstrap_ci95": [
+          -0.15,
+          0.15
+        ]
+      },
+      "versus_original": {
+        "win_rate_difference": 0.075,
+        "board_bootstrap_ci95": [
+          -0.075,
+          0.25
+        ]
+      }
+    }
+  },
+  "wall_s": 95.33685252199939,
+  "promoted": false,
+  "limitation": "Small screening evaluation; no strength confirmation."
+}

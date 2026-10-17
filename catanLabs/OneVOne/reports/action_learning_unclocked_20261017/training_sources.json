@@ -1,0 +1,52 @@
+{
+  "sha256": {
+    "catanLabs/OneVOne/action_planner.py": "c09c23036d5d149572fd36b8cdef19cb60291e2970fc2bde2df046dab6537498",
+    "catanLabs/OneVOne/learning.py": "cf67dc055d118d0e14f5e713a0f5c0fa54c14d4026ffae2089e68d57e025e47e",
+    "catanLabs/OneVOne/agent.py": "5cf459cf2275f8601bada861631b9373686b4ae66799e0722f42a72e7ce42a4d",
+    "catanLabs/OneVOne/hackathon/agent.py": "1d3cd6a911f70ee16f27b358e0ff2ac374cfadf58fd7d742286883c52a2d9875",
+    "catanLabs/OneVOne/hackathon/learning_agent.py": "2a9f7a5ef0abb075c607c89db8d0b961bd6633ece78c3b617f25641438ceedb3",
+    "catanLabs/OneVOne/hackathon/action_learning.py": "e133f8444e925af68ec29a3151a52d9bed03e940e20fb34e6b6b0711033ddbd1",
+    "catanLabs/OneVOne/configs/default.json": "5e0c8bb3da04bbff18e33b39100a76f222d72fd9c3dedd750a98cbc9ca73b887",
+    "catanLabs/OneVOne/hackathon/critic_experiment.py": "c76f2b6203738597df6f746be14e91616d7a2650b9dc2cb9e6ae4547627d9126",
+    "catanLabs/Competitive/fair_value_agent.py": "5078de2b4bf5c0e6db96e847de9013bb6509d9db8b7fa4962fa23f48b55bb9de",
+    "catanLabs/Competitive/tactical_vp_agent.py": "864e06be6403788bbead134c224a54d2f5e928cedb61093cae93aee61645e2fe"
+  },
+  "config": {
+    "agent": "onevone_tactical_v1",
+    "rules": {
+      "players": 2,
+      "target_vp": 10,
+      "discard_limit": 7,
+      "friendly_robber": false,
+      "number_placement": "official_spiral",
+      "trade_offers": true,
+      "status": "provisional_local_target"
+    },
+    "value_weights": {
+      "reachable_production_0": 100000,
+      "reachable_production_1": 30000,
+      "buildable_nodes": 10000,
+      "hand_synergy": 1000,
+      "army_size": 30000
+    },
+    "dev_buy_vp_threshold": 7,
+    "dev_buy_late_bonus": 30000,
+    "tactical_min_vp": 0,
+    "tactical_max_roots": 64,
+    "tactical_max_followups": 256,
+    "robber_weights": {
+      "robber": 9.0
+    },
+    "onevone_robber": {
+      "own_production_cost": 1.2,
+      "opponent_lead_sensitivity": 0.12,
+      "min_opponent_pressure": 0.8,
+      "max_opponent_pressure": 1.45,
+      "theft_base": 0.2,
+      "theft_per_public_card": 0.08,
+      "max_theft_cards": 8
+    }
+  },
+  "python": "3.11.15 (main, May 10 2026, 19:28:18) [Clang 22.1.3 ]",
+  "platform": "linux"
+}

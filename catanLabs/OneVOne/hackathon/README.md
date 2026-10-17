@@ -23,6 +23,25 @@ then run `critic_experiment.py`, `tune_cmaes.py`, `priority_experiments.py`, or
 `resource_experiments.py` from this directory. Use a new output directory when
 rerunning an experiment. Scores from different runtimes are separate experiments.
 
+For action learning from the agent's own games:
+
+```bash
+PYTHONHASHSEED=0 catanLabs/OneVOne/hackathon/.venv/bin/python \
+  catanLabs/OneVOne/hackathon/action_learning.py \
+  --output catanLabs/OneVOne/reports/action_learning_new --games 40 --online-games 8 --unclocked
+```
+
+This compares the original, a shared planner with economy features, and that
+same planner with learned residual action scores. Every legal move remains
+selectable, both variants use identical lookahead, and verified wins are protected.
+Training compares alternative actions through completed practice rollouts; no
+human labels are needed. A replay update runs after four actual practice losses.
+Learning stops before evaluation on separate paired boards. `--unclocked`
+disables both seats' game CPU budgets; omit it to use the official clock.
+Reports count only ML changes accepted by the harness and preserve
+failures, CPU usage, source hashes and checkpoints. This is an experiment;
+the default OneVOne agent stays unchanged.
+
 Run from the workspace root. Requires `git` and `uv`; setup downloads Python
 3.11 and installs an isolated runtime. It does not need Torch or the old local
 Catanatron checkout.

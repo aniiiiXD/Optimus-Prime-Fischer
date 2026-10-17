@@ -1,0 +1,101 @@
+{
+  "finding": "The heuristic and ML arms each won 26/40 versus the original 23/40; ML added no wins over the heuristic in this small uncapped screen.",
+  "learning_changed_executed_moves": {
+    "decisions": 1746,
+    "proposed_decisions": 1746,
+    "rejected_proposals": 0,
+    "unmatched_proposals": 0,
+    "fallback_moves": 0,
+    "accepted_harness_moves": 1746,
+    "ml_changed": 163,
+    "cross_type": 154,
+    "winning_override": 48,
+    "move_change_rate": 0.09335624284077892
+  },
+  "examples": [
+    {
+      "heuristic_index": 0,
+      "model_index": 1,
+      "executed_index": 1,
+      "winning_override": false,
+      "ml_changed": true,
+      "cross_type": true,
+      "legal_count": 5,
+      "heuristic_action": "END_TURN:None",
+      "model_action": "MARITIME_TRADE:('WHEAT', 'WHEAT', 'WHEAT', 'WHEAT', 'BRICK')",
+      "executed_action": "MARITIME_TRADE:('WHEAT', 'WHEAT', 'WHEAT', 'WHEAT', 'BRICK')",
+      "heuristic_prior": 1.0,
+      "executed_prior": 0.8309967748862883,
+      "heuristic_residual": -0.8320811658965341,
+      "executed_residual": -0.3968521014291427,
+      "search_trace_hash": "86b6497942a81f8abdf19fdedd0b32a71a8e51b271189622ff6eed85c5eb1aab",
+      "followups": 9,
+      "turn": 18,
+      "seat": "RED",
+      "pid": 38,
+      "request": 17
+    },
+    {
+      "heuristic_index": 0,
+      "model_index": 8,
+      "executed_index": 8,
+      "winning_override": false,
+      "ml_changed": true,
+      "cross_type": true,
+      "legal_count": 12,
+      "heuristic_action": "END_TURN:None",
+      "model_action": "BUILD_ROAD:(0, 5)",
+      "executed_action": "BUILD_ROAD:(0, 5)",
+      "heuristic_prior": 1.0,
+      "executed_prior": 0.8249868830496654,
+      "heuristic_residual": -0.8320811658965341,
+      "executed_residual": -0.3987899243727624,
+      "search_trace_hash": "35f29d8d2bcbafb0d44d1370df4e6c23b67ebb2aae5773bc7aae8444967bf81a",
+      "followups": 0,
+      "turn": 40,
+      "seat": "RED",
+      "pid": 38,
+      "request": 31
+    },
+    {
+      "heuristic_index": 0,
+      "model_index": 2,
+      "executed_index": 2,
+      "winning_override": false,
+      "ml_changed": true,
+      "cross_type": true,
+      "legal_count": 5,
+      "heuristic_action": "END_TURN:None",
+      "model_action": "MARITIME_TRADE:('WHEAT', 'WHEAT', 'WHEAT', 'WHEAT', 'ORE')",
+      "executed_action": "MARITIME_TRADE:('WHEAT', 'WHEAT', 'WHEAT', 'WHEAT', 'ORE')",
+      "heuristic_prior": 1.0,
+      "executed_prior": 0.9999965288769191,
+      "heuristic_residual": -0.8320811658965341,
+      "executed_residual": -0.48338773417788256,
+      "search_trace_hash": "14659f037c79756a6ed9cc89102ccf7a848f07cda09fe23fbcf8d8f5d85097d0",
+      "followups": 12,
+      "turn": 48,
+      "seat": "RED",
+      "pid": 38,
+      "request": 34
+    }
+  ],
+  "checks": {
+    "focused_tests_passed": 4,
+    "policy_and_evaluation_sources_unchanged_during_matches": true,
+    "identical_fresh_boards_and_both_seats": true,
+    "all_arms_no_failures_or_fallbacks": true
+  },
+  "online_practice": {
+    "games": 8,
+    "losses": 2,
+    "actual_updates": 0,
+    "note": "Only two online practice losses occurred, so the four-loss update did not trigger in this run; the focused replay check covers that trigger."
+  },
+  "limitations": [
+    "Uncapped games are not official-clock strength results.",
+    "Forty games per arm is a small screen; paired intervals include no improvement.",
+    "Warm training had only two decisive pairs and no decisive validation pairs.",
+    "The learned arm used more CPU per game; no default strategy was promoted."
+  ]
+}
